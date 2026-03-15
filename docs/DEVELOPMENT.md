@@ -38,6 +38,7 @@ High-value shared docs to maintain:
 - Validate workflows by running `scripts/doc_search.py --list-versions`.
 - Validate versioned lookups by running `scripts/doc_search.py --version <version> --pattern <term>`.
 - Validate page-bundle lookups by running `scripts/doc_search.py --version <version> --scope pages --pattern <term>`.
+- Re-run `validate_doc_search.py` when changing `doc_search.py` or version-routing behavior so CLI semantics, invalid-version handling, and root-path restrictions stay stable.
 - Re-run generation after changing `version_catalog.py` so `version_inventory.md` and `versions/*.md` stay in sync with the topic set.
 - Re-run `validate_authoring_sources.py` before `generate_bundled_pages.py` so missing `gcam-doc` inputs or version-map drift fail fast instead of silently producing incomplete bundles.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.

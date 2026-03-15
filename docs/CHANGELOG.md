@@ -31,3 +31,4 @@
 - Strengthened `validate_version_routes.py` to compare route docs against `generate_version_references.py` output and regenerated all `reference/versions/*.md` files so they include the current shared topic set.
 - Tightened `doc_search.py` so invalid `--version` values fail cleanly across all scopes and `--root` cannot escape the bundled `reference/` tree.
 - Added `validate_all.py` as a one-shot entry point for the bundled validation suite.
+- Added `validate_doc_search.py` and wired it into `validate_all.py` so representative search commands, invalid-version handling, and `--root` restrictions are automatically checked.

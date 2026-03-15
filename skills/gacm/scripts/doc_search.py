@@ -5,6 +5,7 @@ Search bundled `gacm` reference docs.
 Examples:
   python scripts/doc_search.py --pattern "target finder"
   python scripts/doc_search.py --version v7.1 --pattern "hydrogen"
+  python scripts/doc_search.py --version v8.2 --scope pages --pattern "GCAM-macro"
   python scripts/doc_search.py --list-versions
 """
 
@@ -16,7 +17,7 @@ import sys
 from pathlib import Path
 from typing import Iterable, List, Tuple
 
-from version_catalog import REFERENCE_ROOT, get_version_info, ordered_versions
+from version_catalog import REFERENCE_ROOT, VERSION_PAGES_ROOT, get_version_info, ordered_versions
 
 
 def iter_files(root: Path, exts: Tuple[str, ...]) -> Iterable[Path]:
@@ -33,6 +34,12 @@ def collect_search_paths(version: str | None, scope: str) -> List[Path]:
     paths: List[Path] = []
     if scope in {"all", "topics"}:
         paths.extend(path for path in REFERENCE_ROOT.glob("*.md"))
+    if scope in {"all", "pages"} and version:
+        bundle_root = VERSION_PAGES_ROOT / get_version_info(version).version
+        if bundle_root.exists():
+            paths.extend(iter_files(bundle_root, (".md",)))
+    if scope == "pages" and not version:
+        paths.extend(sorted((VERSION_PAGES_ROOT).rglob("*.md")))
     if scope in {"all", "versions"} and version:
         info = get_version_info(version)
         paths.append(REFERENCE_ROOT / "versions" / f"{info.version}.md")
@@ -62,9 +69,9 @@ def main() -> int:
     parser.add_argument("--version", help="Optional GCAM version filter.")
     parser.add_argument(
         "--scope",
-        choices=("all", "topics", "versions"),
+        choices=("all", "topics", "versions", "pages"),
         default="all",
-        help="Search topic docs, version route docs, or both.",
+        help="Search topic docs, version route docs, bundled page docs, or any combination through 'all'.",
     )
     parser.add_argument(
         "--root",

@@ -17,6 +17,7 @@ from typing import Dict, Iterable, Tuple
 
 REFERENCE_ROOT = Path(__file__).resolve().parent.parent / "reference"
 VERSIONS_ROOT = REFERENCE_ROOT / "versions"
+VERSION_PAGES_ROOT = REFERENCE_ROOT / "version_pages"
 
 
 @dataclass(frozen=True)

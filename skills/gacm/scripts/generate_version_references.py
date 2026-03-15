@@ -36,6 +36,9 @@ def render_inventory() -> str:
     lines.extend(
         [
             "",
+            "## Detailed Version Page Bundles",
+            "For page-level detail, open `version_pages/<version>/INDEX.md` after routing to the exact version.",
+            "",
             "## Shared Topic Docs",
             "These bundled topic docs are the main progressive-disclosure entry points after version routing.",
         ]
@@ -90,6 +93,9 @@ def render_version_file(info) -> str:
 
     lines.extend(
         [
+            "",
+            "## Detailed Bundled Page Directory",
+            f"- `version_pages/{info.version}/INDEX.md`",
             "",
             "## Shared Topic Docs To Load On Demand",
         ]

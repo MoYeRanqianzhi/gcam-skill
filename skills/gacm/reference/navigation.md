@@ -9,7 +9,12 @@ Always determine version before topic.
 - If the user does not specify a version, default to the bundled baseline `v8.2`.
 - If the user asks for comparison, open only the involved version route files plus the minimum topic docs needed.
 
-## Second Decision: Topic
+## Second Decision: Detail Level
+- For cross-version conceptual answers, use the shared topic docs below.
+- For exact version page detail, open `version_pages/<version>/INDEX.md` and then only the needed page file.
+- For `delta-only` versions, open `version_pages/<version>/release_note.md` first and `cmp_index.md` when provenance matters.
+
+## Third Decision: Topic
 After version routing, open only the topic docs needed for the task:
 
 - `overview.md`: high-level model structure and core concepts
@@ -36,6 +41,9 @@ After version routing, open only the topic docs needed for the task:
 
 ## Version Families
 Open `version_families.md` when the user asks about structural differences across eras.
+
+## Version Page Bundles
+Open `version_pages/README.md` if you need the rules for the page-level bundled reference trees.
 
 ## Runtime Rule
 This skill is self-contained. Do not assume the user has a local `gcam-doc`, `gcam-core`, `gcamreader`, or `gcamextractor` checkout unless they explicitly provide one.

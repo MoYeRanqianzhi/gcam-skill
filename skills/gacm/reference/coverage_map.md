@@ -6,6 +6,7 @@ Purpose:
 - make the bundled skill traceable
 - show that `v8.2` coverage is rooted in the `gcam-doc` root tree
 - clarify which bundled file to open for a given source topic family
+- distinguish the page-level version bundles from the synthesized shared topic docs
 
 ## Root `v8.2` Topic Coverage
 - `index.md`, `overview.md` -> `overview.md`
@@ -26,6 +27,11 @@ Purpose:
 - `fusion.md`, `dev-guide.md`, `dev-guide/*` -> `developer_workflows.md`
 - `data-system.md` -> `data_system.md`
 - `updates.md`, release-note/CMP material -> `updates.md` plus `versions/*.md`
+
+## Page-Level Version Bundles
+- `reference/version_pages/v8.2/*` contains adapted page-level bundled copies of the `gcam-doc` root and `dev-guide` markdown sources.
+- `reference/version_pages/v3.2/*` through `reference/version_pages/v7.1/*` contain adapted page-level bundled copies of each historical full-tree version.
+- `reference/version_pages/v7.2/*` through `reference/version_pages/v8.7/*` contain delta-specific `release_note.md` and `cmp_index.md` files instead of fake standalone page trees.
 
 ## Version Routing Coverage
 - Historical full-doc families from `v3.2` through `v7.1` are represented in `version_inventory.md`, `version_families.md`, and `versions/*.md`.

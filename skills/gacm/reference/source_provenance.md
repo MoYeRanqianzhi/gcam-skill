@@ -14,6 +14,7 @@ This skill is a bundled synthesis, not a verbatim vendor drop.
 - The skill is designed to be portable and open-source.
 - It does not require those upstream repositories to exist beside the skill at runtime.
 - It bundles summarized operational knowledge, routing logic, and version cues derived from those materials.
+- It also bundles page-level adapted version trees under `reference/version_pages/` so the skill can progressively disclose exact version pages without external repo dependence.
 - `coverage_map.md` documents how the bundled `v8.2` topic docs map back to the root source topics.
 
 ## What This Skill Does Not Pretend

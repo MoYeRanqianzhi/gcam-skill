@@ -10,3 +10,5 @@
 - Rebuilt the skill to remove machine-specific absolute paths and runtime dependence on sibling source repositories.
 - Standardized wording so `v8.2` is explicitly the bundled current full-topic baseline derived from the root `gcam-doc` tree.
 - Expanded the bundled reference layer with dedicated topic docs for assumptions, choice/marketplace, energy, land, water, economy, emissions/climate, developer workflows, and coverage mapping.
+- Added page-level bundled version trees for all full-tree versions and delta-specific page bundles for release-only versions.
+- Added `generate_bundled_pages.py` and page-bundle-aware search paths in `doc_search.py`.

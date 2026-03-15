@@ -33,6 +33,9 @@ Rules:
 | `v4.2` | `compact-modern` | `version-summary` | `versions/v4.2.md` |
 | `v3.2` | `legacy-wiki` | `version-summary` | `versions/v3.2.md` |
 
+## Detailed Version Page Bundles
+For page-level detail, open `version_pages/<version>/INDEX.md` after routing to the exact version.
+
 ## Shared Topic Docs
 These bundled topic docs are the main progressive-disclosure entry points after version routing.
 - `navigation.md`

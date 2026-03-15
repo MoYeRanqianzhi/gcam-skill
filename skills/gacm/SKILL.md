@@ -41,10 +41,15 @@ Open `reference/version_inventory.md` first to identify the correct documentatio
 - For `v8.2` / `root` / `current`, open the relevant current-version summary in `reference/`.
 - For any historical version or release-note-only version, open `reference/versions/<version>.md`.
 
-### Level 3: Exact Sources
+### Level 3: Version Page Index
+- For page-level version detail, open `reference/version_pages/<version>/INDEX.md`.
+- For `delta-only` versions, start with `reference/version_pages/<version>/release_note.md`.
+
+### Level 4: Exact Sources
 Open only the specific bundled docs needed for the user's question.
 - Use `scripts/doc_search.py --version <version> --pattern "term"` for targeted lookups.
-- For `delta-only` versions, start from the version file and `reference/updates.md`.
+- For exact version pages, search `scripts/doc_search.py --version <version> --scope pages --pattern "term"`.
+- For `delta-only` versions, combine the release note and CMP trace page with the minimum necessary bundled topic docs.
 - Use `reference/navigation.md` to choose the smallest topic set that answers the request.
 
 ## Default Response Structure

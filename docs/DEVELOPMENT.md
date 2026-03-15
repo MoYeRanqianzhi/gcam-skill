@@ -47,6 +47,8 @@ High-value shared docs to maintain:
 - Treat `reference/version_pages/README.md` and `reference/version_pages/*/INDEX.md` as generated artifacts from `generate_bundled_pages.py`; do not hand-edit them unless you also intend to update the generator.
 - Treat `reference/version_pages/**/*.md` as generated artifacts from `generate_bundled_pages.py`; if a page bundle must change, prefer changing the generator or authoring source and then regenerating.
 - Re-run `validate_shared_references.py` after editing shared docs, routing docs, or `SKILL.md` so template placeholders, real local references, and topic listings stay consistent.
+- `validate_shared_references.py` also enforces root shared-doc inventory parity: every `skills/gacm/reference/*.md` runtime doc must either be declared in `version_catalog.COMMON_TOPICS` or be the generated `version_inventory.md`.
+- `validate_shared_references.py` also fails if `SKILL.md`, root shared docs, or `docs/*.md` embed markdown/HTML image markup; the agent-facing layer must stay pure text.
 - `validate_shared_references.py` also covers `docs/*.md`; treat broken local references in project-memory docs as regressions, not just shared runtime-doc drift.
 - Re-run `validate_version_routes.py` after changing `version_catalog.py`, regenerating `versions/*.md`, or modifying key route docs so version inventory, route docs, page directories, and `v8.2` baseline declarations stay aligned.
 - Treat `version_inventory.md` and `reference/versions/*.md` as generated artifacts from `generate_version_references.py`; do not hand-edit them unless you also intend to update the generator.
@@ -62,6 +64,7 @@ High-value shared docs to maintain:
 - Bundled pages must stay text-only: strip raw image markup and avoid bundling binary figure assets.
 - Shared topic docs should translate upstream GUI instructions into agent-usable CLI and configuration workflows whenever possible.
 - Shared topic docs are the authoritative agent layer; keep them phrased in terms of headless execution, XML/config editing, and batch extraction, while leaving historical UI prose inside `reference/version_pages/` only as traceable evidence.
+- If you add a new root shared runtime doc under `skills/gacm/reference/`, also add it to `version_catalog.COMMON_TOPICS` and regenerate the version references, or the inventory-parity validator will fail.
 - Authoring-time generation scripts may depend on the bundled `gcam-doc/` authoring tree; runtime skill use must not depend on that tree being present.
 - Runtime docs and scripts must stay portable: never hardcode local machine paths such as `E:\...`, `C:\...`, `/Users/...`, `/home/...`, `file://`, or `vscode://`.
 - Re-run `validate_portability.py` when editing runtime docs, scripts, or shared references so machine-specific absolute paths and file-URI references do not re-enter the open-source skill.

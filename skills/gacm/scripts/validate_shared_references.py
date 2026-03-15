@@ -3,9 +3,11 @@
 Validate shared GCAM skill references.
 
 Checks:
+- shared root-doc inventory matches the progressive-disclosure topic model
 - all shared topic docs listed in version_catalog exist
 - version_inventory shared topic bullets match version_catalog COMMON_TOPICS
 - navigation covers the shared topic docs
+- agent-facing docs stay text-only and do not embed image markup
 - real local `.md` / `.py` references in SKILL.md, shared docs, and project docs resolve
 
 Notes:
@@ -36,6 +38,7 @@ BULLET_CODE_RE = re.compile(r"^\s*-\s+`([^`]+)`", re.MULTILINE)
 CODE_FILE_RE = re.compile(
     r"`((?:skills/gacm/|reference/|version_pages/|versions/|scripts/|docs/)?[^`\n]*\.(?:md|py)(?:[#?][^`\n]+)?)`"
 )
+IMAGE_MARKUP_RE = re.compile(r"!\[[^\]]*\]\([^)]+\)|<img\b|<figure\b", re.IGNORECASE)
 
 
 def extract_section(text: str, heading: str) -> str:
@@ -91,6 +94,22 @@ def validate_topic_files(errors: list[str]) -> None:
             errors.append(f"Missing bundled topic doc: {topic}")
 
 
+def validate_shared_doc_inventory(errors: list[str]) -> None:
+    expected = set(bundled_topic_docs()) | {"version_inventory.md"}
+    unexpected = sorted(SHARED_DOCS - expected)
+    missing = sorted(expected - SHARED_DOCS)
+    if unexpected:
+        errors.append(
+            "Unexpected shared root docs outside progressive-disclosure inventory: "
+            + ", ".join(unexpected)
+        )
+    if missing:
+        errors.append(
+            "Missing shared root docs from progressive-disclosure inventory: "
+            + ", ".join(missing)
+        )
+
+
 def validate_version_inventory(errors: list[str]) -> None:
     text = VERSION_INVENTORY.read_text(encoding="utf-8")
     section = extract_section(text, "Shared Topic Docs")
@@ -113,6 +132,16 @@ def validate_navigation(errors: list[str]) -> None:
         )
 
 
+def validate_text_only_docs(errors: list[str]) -> None:
+    docs = [SKILL_FILE, *sorted(REFERENCE_ROOT.glob("*.md")), *sorted(DOCS_ROOT.glob("*.md"))]
+    for doc in docs:
+        text = doc.read_text(encoding="utf-8")
+        if IMAGE_MARKUP_RE.search(text):
+            errors.append(
+                f"{doc.relative_to(REPO_ROOT)} contains image markup; agent-facing docs must stay text-only"
+            )
+
+
 def validate_local_refs(errors: list[str]) -> None:
     docs = [SKILL_FILE, *sorted(REFERENCE_ROOT.glob("*.md")), *sorted(DOCS_ROOT.glob("*.md"))]
     for doc in docs:
@@ -127,9 +156,11 @@ def validate_local_refs(errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
+    validate_shared_doc_inventory(errors)
     validate_topic_files(errors)
     validate_version_inventory(errors)
     validate_navigation(errors)
+    validate_text_only_docs(errors)
     validate_local_refs(errors)
 
     if errors:

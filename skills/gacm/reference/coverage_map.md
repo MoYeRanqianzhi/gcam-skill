@@ -17,6 +17,7 @@ Purpose:
 - `demand_water.md`, `supply_water.md`, `details_water.md` -> `water_system.md`
 - `economy.md`, `inputs_economy.md` -> `economy.md`
 - `emissions.md`, `details_emissions.md`, `hector.md` -> `emissions_climate.md`
+- `details_inputs.md`, `details_trade.md` -> `inputs_outputs.md`
 - `user-guide.md` -> `running_gcam.md`, `tools.md`
 - `user-guide.md` configuration, batch, and target-finder sections -> `configuration_workflows.md`
 - `user-guide.md` batch query, batch command, and XML DB control sections -> `query_automation.md`
@@ -27,10 +28,15 @@ Purpose:
 - `inputs_demand.md`, `inputs_supply.md`, `inputs_land.md`, `outputs_quantity.md`, `outputs_prices.md`, `outputs_emissions.md`, `outputs_land.md`, `outputs_trade.md` -> `inputs_outputs.md`
 - `ssp.md` -> `ssp.md`
 - `gcam-usa.md` -> `gcam_usa.md`
-- `fusion.md`, `dev-guide.md`, `dev-guide/*` -> `developer_workflows.md`
+- `community-guide.md`, `fusion.md`, `dev-guide.md`, `dev-guide/*` -> `developer_workflows.md`
 - `data-system.md` -> `data_system.md`
 - `updates.md`, release-note/CMP material -> `updates.md` plus `versions/*.md`
+- `toc.md` -> `navigation.md`
 - `versions/*.md`, `version_families.md`, selected build/user-guide pages -> `version_operation_notes.md`
+
+## Root `v8.2` Bundle-Only / Meta Pages
+- `references.md` -> page-bundle-only trace; no dedicated synthesized shared topic doc
+- `LICENSE.md` -> page-bundle-only legal/reference artifact; no dedicated synthesized shared topic doc
 
 ## Page-Level Version Bundles
 - `reference/version_pages/v8.2/*` contains adapted page-level bundled copies of the `gcam-doc` root and `dev-guide` markdown sources.

@@ -25,6 +25,11 @@ Open this topic when the user asks:
 - Rebuilding foundational XML inputs or changing baseline data assumptions usually does.
 - The data system is part of the GCAM ecosystem, not a runtime dependency of the `gacm` skill itself.
 
+## Version Notes
+- `v5.x` is the important era where the data system becomes more explicitly separated into the `gcamdata` ecosystem workflow.
+- `v8.2` root docs are the bundled current baseline for data-system interpretation in this skill.
+- If the user asks about a historical preprocessing structure or exact generated XML lineage, route to the exact version and inspect any provided workspace before assuming the modern `gcamdata` split.
+
 ## Related References
 - `common_assumptions.md` for shared structural assumptions
 - `inputs_outputs.md` for the kinds of files the data system helps produce

@@ -33,3 +33,4 @@
 - Added `validate_all.py` as a one-shot entry point for the bundled validation suite.
 - Added `validate_doc_search.py` and wired it into `validate_all.py` so representative search commands, invalid-version handling, and `--root` restrictions are automatically checked.
 - Added `validate_page_bundle_content_parity.py` and wired it into `validate_all.py` so the full bundled `reference/version_pages/**/*.md` tree is checked against fresh generator output.
+- Normalized path separators inside `validate_doc_search.py` so the search-behavior validator is not tied to Windows-style output paths.

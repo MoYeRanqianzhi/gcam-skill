@@ -26,3 +26,5 @@
 - Added `validate_shared_references.py` to verify shared-doc topic coverage, navigation references, and real local bundled references without misflagging `<version>` templates or upstream source-topic examples.
 - Tightened shared operational docs so the agent-facing layer stays headless/CLI-first while historical UI wording remains confined to page-bundle evidence.
 - Added `validate_version_routes.py` to verify that `version_catalog.py`, `version_inventory.md`, `versions/*.md`, `version_pages/<version>/`, and key `v8.2` baseline route docs do not drift apart.
+- Added `validate_authoring_sources.py` and fail-fast preflight checks in `generate_bundled_pages.py` so missing `gcam-doc` inputs or catalog drift do not silently generate incomplete bundles.
+- Removed an invalid `v8.2` entry from the delta-only CMP source map in the page-bundle generator.

@@ -3,6 +3,7 @@
 ## Data and Tooling
 - `gcamreader` and `gcamextractor` are not installed by default; users must install them in their Python/R environments to run examples.
 - If a user wants repository-specific edits, they must provide an actual checkout or files; the bundled skill does not invent repository state.
+- Authoring-time regeneration scripts depend on the bundled `gcam-doc/` source tree; this is a maintainer requirement, not a runtime dependency of the published skill.
 
 ## Runtime Constraints
 - GCAM runs are resource intensive; typical memory and disk needs are high (see GCAM user guide for exact guidance).

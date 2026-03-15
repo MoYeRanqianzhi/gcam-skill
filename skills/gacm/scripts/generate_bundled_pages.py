@@ -20,6 +20,15 @@ from version_catalog import VERSION_PAGES_ROOT, get_version_info, ordered_versio
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 AUTHORING_ROOT = REPO_ROOT / "gcam-doc"
 
+ROOT_REQUIRED_FILES = (
+    "index.md",
+    "overview.md",
+    "user-guide.md",
+    "gcam-build.md",
+    "updates.md",
+)
+ROOT_REQUIRED_DIRS = ("dev-guide",)
+
 FULL_TREE_VERSIONS = (
     "v3.2",
     "v4.2",
@@ -41,7 +50,6 @@ DELTA_SOURCE_MAP = {
     "v7.4": (),
     "v8.0": (("cmp/404-Base_Year_Update_Move_Model_Base_Year_to_2021.pdf", "direct"),),
     "v8.1": (("cmp/401-Ukraine_as_an_independent_region.pdf", "direct"),),
-    "v8.2": (("cmp/403-Misc_Bugfix_2025.pdf", "direct"),),
     "v8.3": (("cmp/405-Gcamstr_A_String_Interning_in-GCAM.pdf", "direct"),),
     "v8.4": (("cmp/410-Socioeconomic_Macro_Data_compressed.pdf", "direct"),),
     "v8.5": (
@@ -79,6 +87,59 @@ ALT_SOURCE_RELATIONS = {
 }
 
 VERSION_INDEX = {version: index for index, version in enumerate(FULL_TREE_VERSIONS)}
+
+
+def validate_authoring_sources() -> list[str]:
+    errors: list[str] = []
+    if not AUTHORING_ROOT.exists():
+        return [f"Missing authoring root: {AUTHORING_ROOT}"]
+
+    expected_full_tree = tuple(
+        info.version for info in ordered_versions() if info.coverage_mode != "delta-only"
+    )
+    if FULL_TREE_VERSIONS != expected_full_tree[::-1]:
+        errors.append(
+            "FULL_TREE_VERSIONS drifted from version_catalog non-delta-only versions"
+        )
+
+    expected_delta_versions = {
+        info.version for info in ordered_versions() if info.coverage_mode == "delta-only"
+    }
+    if set(DELTA_SOURCE_MAP) != expected_delta_versions:
+        missing = sorted(expected_delta_versions - set(DELTA_SOURCE_MAP))
+        extra = sorted(set(DELTA_SOURCE_MAP) - expected_delta_versions)
+        if missing:
+            errors.append("DELTA_SOURCE_MAP missing versions: " + ", ".join(missing))
+        if extra:
+            errors.append("DELTA_SOURCE_MAP has unexpected versions: " + ", ".join(extra))
+
+    for name in ROOT_REQUIRED_FILES:
+        if not (AUTHORING_ROOT / name).exists():
+            errors.append(f"Missing v8.2/root source file: gcam-doc/{name}")
+    for name in ROOT_REQUIRED_DIRS:
+        if not (AUTHORING_ROOT / name).exists():
+            errors.append(f"Missing v8.2/root source directory: gcam-doc/{name}")
+
+    if not list(iter_v82_source_files()):
+        errors.append("No markdown source files found in the v8.2/root authoring tree")
+
+    for version in FULL_TREE_VERSIONS:
+        if version == "v8.2":
+            continue
+        source_root = AUTHORING_ROOT / version
+        if not source_root.exists():
+            errors.append(f"Missing full-tree version source directory: gcam-doc/{version}")
+            continue
+        if not any(source_root.rglob("*.md")):
+            errors.append(f"No markdown source files found in: gcam-doc/{version}")
+
+    for version, refs in DELTA_SOURCE_MAP.items():
+        for rel_path, _confidence in refs:
+            candidate = AUTHORING_ROOT / rel_path
+            if not candidate.exists():
+                errors.append(f"{version} -> missing CMP source file: gcam-doc/{rel_path}")
+
+    return errors
 
 
 def strip_front_matter(text: str) -> tuple[str, str]:
@@ -666,6 +727,13 @@ def write_root_readme() -> None:
 
 
 def main() -> int:
+    errors = validate_authoring_sources()
+    if errors:
+        for item in errors[:200]:
+            print(item)
+        if len(errors) > 200:
+            print(f"... truncated {len(errors) - 200} additional errors")
+        return 1
     VERSION_PAGES_ROOT.mkdir(parents=True, exist_ok=True)
     write_root_readme()
     for info in ordered_versions():

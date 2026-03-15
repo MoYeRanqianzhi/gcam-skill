@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Regional_Scope_Socioeconomics_and_Trade.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -22,37 +23,36 @@ GCAM is a global model. &nbsp;The economy and energy system are&nbsp;disaggregat
 
 |                |                     |                |
 |----------------|---------------------|----------------|
-| Africa         
-                 
- Australia\_NZ   
-                 
- Canada          
-                 
- China           
-                 
- Eastern Europe  | Former Soviet Union 
-                                       
-                  India                
-                                       
-                  Japan                
-                                       
-                  Korea                
-                                       
-                  Latin America        | Middle East    
-                                                        
-                                        Southeast Asia  
-                                                        
-                                        USA             
-                                                        
-                                        Western Europe  
-                                                        
+| Africa
+
+ Australia\_NZ
+
+ Canada
+
+ China
+
+ Eastern Europe  | Former Soviet Union
+
+                  India
+
+                  Japan
+
+                  Korea
+
+                  Latin America        | Middle East
+
+                                        Southeast Asia
+
+                                        USA
+
+                                        Western Europe
+
                                         &lt;br&gt;      |
 
 ###### Table 1: GCAM Regions
 
 &lt;br&gt;
 
-Image reference: untitled image (images/GCAMRegions.png "GCAMRegions.png")
 
 ###### Figure 1:&nbsp;GCAM&nbsp;Region Definitions&lt;br&gt;
 
@@ -65,11 +65,9 @@ Socioeconomics&lt;br&gt;
 
 GCAM computes the potential GDP of each region using exogenous assumptions about population, labor participation, and labor productivity growth. &nbsp;In some formulations of the model, GDP is adjusted to reflect the effect of changing energy prices on economic growth. &nbsp;However, the default assumption does not include this feedback. Population and GDP in the current baseline scenario are shown in Figures 2 and 3.&lt;br&gt;&lt;br&gt;
 
-Image reference: html-image (images/Population.png)
 
 ###### Figure 2:&nbsp;Population&lt;br&gt;
 
-Image reference: html-image (images/GDP.png)
 
 ###### Figure 3:&nbsp;GDP&lt;br&gt;
 

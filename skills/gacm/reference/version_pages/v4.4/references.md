@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.4`.
 - Source root: `gcam-doc/v4.4`
 - Source path: `references.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -28,10 +29,10 @@ Clarke JF and JA Edmonds. 1993. "Modeling Energy Technologies in a Competitive M
 
 Edmonds J, M Wise, H Pitcher, R Richels, T Wigley, and C MacCracken. 1996. "An Integrated Assessment of Climate Change and the Accelerated Introduction of Advanced Energy Technologies: An Application of MiniCAM 1.0," *Mitigation and Adaptation Strategies for Global Change* 1(4):311-339.
 
-Edmonds, J. and J. Reilly. 1985. *Global Energy: Assessing the Future*, Oxford University Press, New York. 
+Edmonds, J. and J. Reilly. 1985. *Global Energy: Assessing the Future*, Oxford University Press, New York.
 
 Edmonds, J. and J. Reilly. 1983a. "Global Energy Production and Use to
-the Year 2050," *Energy*, 8(6):419-32. 
+the Year 2050," *Energy*, 8(6):419-32.
 
 Edmonds, J. and J. Reilly. 1983b. "Global Energy and CO2 to the Year 2050," *The Energy Journal*, 4(3):21-47.
 
@@ -55,7 +56,7 @@ Dooley JJ, SH Kim, JA Edmonds, SJ Friedman, and MA Wise. 2005. "A
 First Order Global Geologic CO2 Storage Potential Supply Curve and its
 Application in a Global Integrated Assessment Model," in *Greenhouse
 Gas Control Technologies, Volume I*, eds ES Rubin, DW Keith, and CF
-Gilboy, Elsevier Science. pp. 573-581 
+Gilboy, Elsevier Science. pp. 573-581
 
 Dooley James J. and Friedman S.J. 2004. "A Regionally disaggregated
 global accounting of CO2 storage capacity: data and
@@ -67,7 +68,7 @@ Number PNWD-3431".
 Zhang, Y., SJ Smith, GP Kyle, and PW Stackhouse Jr. 2010.  "Modeling the Potential for Thermal Concentrating Solar Power Technologies" *Energy Policy*, 38 pp. 7884-7897. [doi:10.1016/j.enpol.2010.09.00](http://dx.doi.org/10.1016/j.enpol.2010.09.008).
 
 Smith SJ, AC Volke, and S Delgado Arias. 2010. "Enhancement of Solar
-Energy Representation in the GCAM Model," PNNL-18829. 
+Energy Representation in the GCAM Model," PNNL-18829.
 
 Hannam, P., Kyle, P., and Smith, SJ. 2010.  "Global Deployment of Geothermal Energy Using a New Characterization in GCAM 1.0," PNNL-19231.
 

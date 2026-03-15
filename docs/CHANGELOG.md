@@ -16,3 +16,5 @@
 - Added automatic inherited page bundles for version-linked pages missing from a version's authoring snapshot, with explicit provenance notes instead of silent omission.
 - Added automatic CMP trace pages so local CMP PDF references remain traceable without pretending the binary assets are bundled.
 - Added `validate_bundled_pages.py` and brought bundled page markdown link validation to a clean pass.
+- Rewrote the runtime skill and top-level reference docs to be CLI-first, text-only, and agent-oriented rather than GUI-first.
+- Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.

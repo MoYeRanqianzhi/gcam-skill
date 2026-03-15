@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `inputs_economy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -24,9 +25,9 @@ Table 1: External inputs used for economics<sup>[1](#table_footnote1)</sup>
 | Population  | Population by country and year, used for 1700-1900 | External data set | Maddison | Country/region and year | Thousands |
 | Population  | Population by country and year, used for 1950-2015 | External data set | UN | Country/region and year | Thousands |
 | Population  | Population by country and year, used for 2015-2100 | External data set | <a href="https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about">SSP database</a> | Country and year | Thousands |
-| GDP | Historical GDP used for most countries for GDP prior to 2015 | External data set | <a href="http://www.ers.usda.gov/datafiles/International_Macroeconomic_Data/Historical_Data_Files/HistoricalRealGDPValues.xls">USDA</a> | Country and year | billion US$2010/yr (MER) | 
-| GDP | Historical GDP used for remaining countries for GDP prior to 2015 | External data set | World Bank | Country and year | billion US$2010/yr (MER) | 
-| GDP growth rate | Near-term growth rate of GDP (2015-2024) | External data set | <a href="http://www.imf.org/external/pubs/ft/weo/2015/02/weodata/index.aspx">IMF</a> | Country and year | % |  
+| GDP | Historical GDP used for most countries for GDP prior to 2015 | External data set | <a href="http://www.ers.usda.gov/datafiles/International_Macroeconomic_Data/Historical_Data_Files/HistoricalRealGDPValues.xls">USDA</a> | Country and year | billion US$2010/yr (MER) |
+| GDP | Historical GDP used for remaining countries for GDP prior to 2015 | External data set | World Bank | Country and year | billion US$2010/yr (MER) |
+| GDP growth rate | Near-term growth rate of GDP (2015-2024) | External data set | <a href="http://www.imf.org/external/pubs/ft/weo/2015/02/weodata/index.aspx">IMF</a> | Country and year | % |
 | GDP  | GDP by country and year, used for 2025-2100 | External data set | <a href="https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about">SSP database, OECD Model</a> | Country and year | billion US$2005/yr (PPP) |
 
 <font size="-1">
@@ -46,6 +47,6 @@ Future population is provided in [SSP_database_v9.csv](https://github.com/JGCRI/
 #### GDP
 Historical GDP is provided in [USDA_GDP_MER.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/USDA_GDP_MER.csv) (used through 2015).
 
-Near-term GDP growth rates are provided in [IMF_GDP_growth.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/IMF_GDP_growth.csv). 
+Near-term GDP growth rates are provided in [IMF_GDP_growth.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/IMF_GDP_growth.csv).
 
 Future GDP is provided in [SSP_database_v9.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv).

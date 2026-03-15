@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v4.2`
 - Source path: `hector.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 - Source provenance: inherited from `v4.2` because `v3.2` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v3.2` as `hector.md`.
@@ -13,19 +14,16 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, there is now the option to run Hector (Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models. 
+This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, there is now the option to run Hector (Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models.
 
-Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, land, and ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas. 
+Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, land, and ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas.
 
-Image reference: Hector Carbon Cycle diagram (gcam-figs/hector_box_model.png)<br/>
-Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean. The atmosphere consists of one well-mixed box. The ocean consists of four boxes, with advection and water mass exchange simulating thermohaline circulation. At steady state, the high-latitude surface ocean takes up carbon from the atmosphere, while the low-latitude surface ocean off-gases carbon to the atmosphere. The land consists of a user-defined number of biomes or regions for vegetation, detritus and soil. At steady state the vegetation takes up carbon from the atmosphere while the detritus and soil release carbon back into the atmosphere. The earth pool is continually debited with each time step to act as a mass balance check on the carbon system. 
-{: .fig}
+Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean. The atmosphere consists of one well-mixed box. The ocean consists of four boxes, with advection and water mass exchange simulating thermohaline circulation. At steady state, the high-latitude surface ocean takes up carbon from the atmosphere, while the low-latitude surface ocean off-gases carbon to the atmosphere. The land consists of a user-defined number of biomes or regions for vegetation, detritus and soil. At steady state the vegetation takes up carbon from the atmosphere while the detritus and soil release carbon back into the atmosphere. The earth pool is continually debited with each time step to act as a mass balance check on the carbon system.
 
 ## GCAM-Hector interactions
-Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.)  
+Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.)
 
-Table 1: Emissions and sources from each sector passed to Hector.  
-{: .fig}
+Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------| :------ |
@@ -52,18 +50,18 @@ Table 1: Emissions and sources from each sector passed to Hector.
 | HFC245fa| Industrial Processes | |
 | HFC365mfc| Industrial Processes | not included in Hector |
 
-<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheri-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes. 
+<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheri-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes.
 
 dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)
 
 Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partiioned among the carbon pools (Hartin et al., 2015).
 
 ## Hector Outputs
-At every time step Hector calculates and outputs key climate variables.  
+At every time step Hector calculates and outputs key climate variables.
 <dl>
 <dt>Atmosphere</dt>
 <dd><ul>
-	<li>Global mean temperature change</li> 
+	<li>Global mean temperature change</li>
 	<li>Radiative forcing of all emissions</li>
 	<li>Atmospheric CO<sub>2</sub> concentrations.</li>
 	</ul>
@@ -80,7 +78,7 @@ At every time step Hector calculates and outputs key climate variables.
 <dd><ul>
 	<li>Air-sea carbon fluxes</li>
 	<li>Carbon pools (high and low latitude surface, intermediate and deep)</li>
-	<li>Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite 
+	<li>Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite
 	saturations)</li>
 	<li>surface ocean temperature</li>
 	<li>oceanic heat flux</li>
@@ -101,12 +99,12 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
    `cvs/objects/climate/source/hector`. Note that the name of the
    workspace that GCAM will be looking for will be “hector”.  If you
    wish to retain version numbering etc we recommend creating a
-   symlink: 
+   symlink:
 
 ```
 	cd  cvs/objects/climate/source
 	ln –s /path/to/your/hector-v1.1.2 hector
-```	
+```
 
 2. Verify that both GCAM and hector successfully build independently.  If not you should consult the build instructions for each. [BuildHector](https://github.com/JGCRI/hector/wiki/BuildHector)
 
@@ -117,11 +115,11 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
    Macros and add to whichever build configuration you need:  `USE_HECTOR=1`
 
 5. Go to the Build Settings and find the Other Linker Flags and add to
-   whichever build configuration you need: `-lgsl -lgslcblas -lm` 
+   whichever build configuration you need: `-lgsl -lgslcblas -lm`
 
 6. Go to the Build Settings and find the Library Search Paths and add
    to whichever build configuration you need: `<path to gsl
-   install>/lib` 
+   install>/lib`
 
 7. Go to the Build Settings and find the User Header Search Paths and
 	add to it the following entry: `../../climate/source/hector/headers`
@@ -134,7 +132,7 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
     “objects” project properties in the Project Navigator and select
     `Add to “objects”…`. Select the Hector project file which is
     located in
-    `cvs/objects/climate/source/hector/project_files/Xcode/hector.xcodeproj` 
+    `cvs/objects/climate/source/hector/project_files/Xcode/hector.xcodeproj`
 
 11. Under the “objects” project properties from the Project Navigator go to the Build Phases.
 	Open the Target Dependencies and click the +.  In the dialog find “hector-lib” from under the “Hector” project.
@@ -146,7 +144,7 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
 1.  Move or symlink the Hector workspace under the GCAM workspace under `cvs/objects/climate/source/hector` Note that the name of the workspace that GCAM will be looking for will be “Hector”.  If you wish to retain version numbering etc we recommend creating a symlink:
 
 ```
-	cd  cvs/objects/climate/source  
+	cd  cvs/objects/climate/source
 	mklink /D  hector c:/path/to/your/hector-v1.1.2
 ```
 
@@ -157,7 +155,7 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
 4. Locate the “objects-main” project properties from the Solution
    Explorer. Go to the Configuration Properties –- C/C++ --
    Preprocessor and find the Preprocessor Definitions and add to
-   whichever build configuration you need: `USE_HECTOR` 
+   whichever build configuration you need: `USE_HECTOR`
 
 5. Go to the Configuration Properties –- C/C++ -- General and find the Additional Include Directories and add to it the following entry: `..\..\climate\source\hector\headers`
 
@@ -169,11 +167,11 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
    “Solution” project properties in the Solution Explorer and select
    `Add -> Existing project…`. Select the Hector project file which is
    located in
-   `cvs/objects/climate/source/hector/project_files/VS/hector-lib.vcxproj` 
+   `cvs/objects/climate/source/hector/project_files/VS/hector-lib.vcxproj`
 
 9. Right click on “objects-main” from the Solution Explorer and select
    References. In the dialog click the button Add New References…  In
-   the dialog check the “hector-lib” and click ok and ok again. 
+   the dialog check the “hector-lib” and click ok and ok again.
 
 10. Now you can build solution and GCAM and Hector will be re-built as necessary and link them together.  The GCAM is still run the same as always and will control calling Hector (if configured via add-on files to use Hector instead of MAGICC).
 
@@ -182,12 +180,12 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
    Bond-Lamberty, B. P.: A simple object-oriented and open-source
    model for scientific and policy analyses of the global climate
    system – Hector v1.0, Geosci. Model Dev., 8, 939-955,
-   doi:10.5194/gmd-8-939-2015, 2015. [link](http://www.geosci-model-dev.net/8/939/2015/)  
+   doi:10.5194/gmd-8-939-2015, 2015. [link](http://www.geosci-model-dev.net/8/939/2015/)
 2. Hartin, C. A., Bond-Lamberty, B., Patel, P., and Mundra, A.: Ocean
    acidification over the next three centuries using a simple global
    climate carbon-cycle model: projections and sensitivities,
    Biogeosciences, 13, 4329-4342,
-   doi:10.5194/bg-13-4329-2016, 2016. [link](http://www.biogeosciences.net/13/4329/2016/bg-13-4329-2016.html)  
+   doi:10.5194/bg-13-4329-2016, 2016. [link](http://www.biogeosciences.net/13/4329/2016/bg-13-4329-2016.html)
 3. Wigley, T. M. (2008), MAGICC/SENGEN 5.3: User manual (version 2),
-   edited, p. 80, NCAR, Boulder CO.  
+   edited, p. 80, NCAR, Boulder CO.
 4. [Hector wiki](https://github.com/JGCRI/hector/wiki)

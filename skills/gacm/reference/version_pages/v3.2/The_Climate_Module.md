@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `The_Climate_Module.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -61,7 +62,7 @@ Direct and indirect forcing from aerosols is included. Direct forcing
 from sulfur dioxide, black carbon, and organic carbon are taken to be
 proportional to SO2, BC, and OC emissions, respectively. The GCAM
 version of MAGICC has been updated to include a direct representation
-of BC and OC emissions provided by GCAM.<sup><a href="#ref4">[4]</a></sup> 
+of BC and OC emissions provided by GCAM.<sup><a href="#ref4">[4]</a></sup>
 In the distribution version of MAGICC, BC
 and OC forcing is, in contrast, inferred from proxy measures such as
 land-use change and SO2 or CO emissions. Indirect cloud forcing in
@@ -124,7 +125,7 @@ scenarios.
     <td> CFCs</td>
     <td> Exogenous</td>
   </tr>
-  
+
   <tr style="background-color: LemonChiffon">
     <td> HFCs</td>
     <td> Endogenous, mitigation with MAC</td>
@@ -134,7 +135,7 @@ scenarios.
     <td> PFCs</td>
     <td> Endogenous, mitigation with MAC</td>
   </tr>
-  
+
   <tr style="background-color: LemonChiffon">
     <td> SF<sub>y</sub></td>
     <td> Endogenous, mitigation with MAC</td>
@@ -207,7 +208,7 @@ References
 
 <a name="ref1">[1]</a> Wigley, T.M.L. and Raper, S.C.B. 1992. Implications for Climate
 And Sea-Level of Revised IPCC Emissions Scenarios, _Nature_ 357,
-293–300. 
+293–300.
 
 <a name="ref2">[2]</a> Wigley, T.M.L. and Raper, S.C.B. 2002. Reasons
 for larger warming projections in the IPCC Third Assessment Report, _J. Climate_ 15, 2945–2952.

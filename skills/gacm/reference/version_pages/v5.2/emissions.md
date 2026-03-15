@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.2`.
 - Source root: `gcam-doc/v5.2`
 - Source path: `emissions.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -17,7 +18,7 @@ GCAM projects emissions of a suite of greenhouse gases (GHGs) and air pollutants
 
 CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<sub>6</sub>, SF<sub>6</sub>, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC143a, HFC152a, HFC227ea, HFC236fa, HFC245fa, HFC365mfc, SO<sub>2</sub>, BC, OC, CO, VOCs, NO<sub>x</sub>, NH<sub>3</sub>
 
-Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population) and technology mix. How this is represented in GCAM varies by emission type. 
+Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population) and technology mix. How this is represented in GCAM varies by emission type.
 
 Table Of Contents
 
@@ -30,7 +31,7 @@ Table Of Contents
 
 ## <a name="co2-emissions">CO<sub>2</sub> Emissions</a>
 
-GCAM endogenously estimates CO<sub>2</sub> fossil-fuel related emissions based on fossil fuel consumption and global emission factors by fuel (oil, unconventional oil, natural gas, and coal). These emission factors are consistent with global emissions by fuel from the CDIAC global inventory ([CDIAC 2017](#cdiac2017)). 
+GCAM endogenously estimates CO<sub>2</sub> fossil-fuel related emissions based on fossil fuel consumption and global emission factors by fuel (oil, unconventional oil, natural gas, and coal). These emission factors are consistent with global emissions by fuel from the CDIAC global inventory ([CDIAC 2017](#cdiac2017)).
 
 GCAM can be considered as a process model for CO<sub>2</sub> emissions and reductions. CO<sub>2</sub> emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO<sub>2</sub> as a carbon-price is applied within the model.
 
@@ -39,7 +40,7 @@ CO<sub>2</sub> emissions from limestone used in cement production are also estim
 CO<sub>2</sub> emissions from gas flaring are not currently included in GCAM.
 
 ### <a name="co2-luc-emissions">CO<sub>2</sub> Emissions From Land-Use/Land-Use Change (LULUC)</a>
- 
+
 Land-Use Change emissions are tracked separately. In general, emissions are estimated as:
 
 $$
@@ -50,9 +51,7 @@ Where E indicates carbon emissions, S indicates carbon stocks, A indicates land 
 
 When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow, as shown in the figure below.
 
-Image reference: Figure 1 (gcam-figs/forest_carbon_evolution.png)<br/>
 Figure 1: Timescales for forest regrowth in GCAM.
-{: .fig}
 
 Changes in the carbon content of soils due to land-use change also exponentially approach an equilibrium value using a region-dependent timescale. This represents the timescales for carbon pool changes in soils.
 
@@ -74,7 +73,7 @@ Most base-year non-CO<sub>2</sub> emissions are calibrated to the EDGAR 4.2 emis
 
 ####  Agriculture and Land-Use Drivers
 * Emissions in the agriculture and land use system can be driven by output (e.g., for crop production) or land area (e.g., for forest fires).
-* Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarser, typically only available by sector and country. 
+* Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarser, typically only available by sector and country.
 
 ####  Naming Conventions
 There are some naming conventions for a few emission species/sectors within GCAM that are useful to note.
@@ -112,7 +111,7 @@ Note that a species-specific emissions market can also be specified using advanc
 
 Most fluorinated gas emissions are linked either to the industrial sector as a whole (e.g., semiconductor-related F-gas emissions are driven by growth in the "industry" sector), or population and GDP (e.g., fire extinguishers). As those drivers change, emissions will change. Additionally, we include abatement options based on EPA MAC curves.
 
-SF<sub>6</sub> emissions from electric transformers scale with electricity consumption.  HFC134a from cooling (e.g., air conditioners) scale with air conditioner electricity consumption. For these emissions we also make additional exogenous adjustments to emissions factors in future periods in developing regions to reflect their continued transition from CFCs to HFCs. 
+SF<sub>6</sub> emissions from electric transformers scale with electricity consumption.  HFC134a from cooling (e.g., air conditioners) scale with air conditioner electricity consumption. For these emissions we also make additional exogenous adjustments to emissions factors in future periods in developing regions to reflect their continued transition from CFCs to HFCs.
 
 ## <a name="air-pollutant-emissions">Air Pollutant Emissions</a>
 
@@ -130,7 +129,7 @@ $$
 
 where *pcGDP* stands for the per-capita GDP, and *steepness* is an exogenous constant, specific to each technology and pollutant species, that governs the degree to which changes in per-capita GDP will be translated to emissions controls. The purpose here is to capture the general global trend of increasing pollutant controls over time, but does not capture regional and technological heterogeneity.
 
-Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)). 
+Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)).
 
 ## <a name="user-options">Advanced Non-CO<sub>2</sub> User Options</a>
 
@@ -143,7 +142,7 @@ For information on using markets for non-CO2 emissions see the [markets For non-
 
 Emission objects can be added/changed via user input in any time period. New parameters (such as emission factors) overwrite any previous values. Note that emission control objects will be copied forward. For vintaged technologies (e.g. electric generation, road transport), any new emission object will be applied to new vintages. Old vintages will retain the previously read-in emission characteristics.
 
-This also means that GHG objects can be removed or overwritten after a given year by reading in a new GHG object for that gas. This also applies to GHG control objects. Reading in a new control object, for example, in 2020 for an electric generation technology will negate the effect of a previously read in control object of the same name for that vintage and future vintages. This can, for example, represent a transition from some emissions control regime applied to older vintages to a regime defined by new source performance standards. 
+This also means that GHG objects can be removed or overwritten after a given year by reading in a new GHG object for that gas. This also applies to GHG control objects. Reading in a new control object, for example, in 2020 for an electric generation technology will negate the effect of a previously read in control object of the same name for that vintage and future vintages. This can, for example, represent a transition from some emissions control regime applied to older vintages to a regime defined by new source performance standards.
 
 In addition to the GDP control object, a linear-control object is also available that allows a user to specify that an emission factor will linearly change over time to a user-defined value over a specified time period. The parameters controlling the linear-control object are:
 

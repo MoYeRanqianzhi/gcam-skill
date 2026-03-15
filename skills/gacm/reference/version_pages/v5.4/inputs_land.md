@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `inputs_land.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -45,7 +46,7 @@ The raw data used for historical land cover is provided in [Land_type_area_ha.cs
 Historical harvested area by crop and country is provided in [FAO_ag_HA_ha_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_HA_ha_PRODSTAT.csv).
 
 #### Terrestrial Carbon Information
-The mature age and carbon density information used in GCAM is provided in [Various_CarbonData_LTsage.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_CarbonData_LTsage.csv). 
+The mature age and carbon density information used in GCAM is provided in [Various_CarbonData_LTsage.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_CarbonData_LTsage.csv).
 
 #### Soil time scale
 The soil time scale is provided in [A_soil_time_scale_R.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_soil_time_scale_R.csv)

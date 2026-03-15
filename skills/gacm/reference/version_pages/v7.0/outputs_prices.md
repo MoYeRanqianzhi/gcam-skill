@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `outputs_prices.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -20,7 +21,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 
 <br/>
-Outputs are specified in the `startVisitMarket` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+Outputs are specified in the `startVisitMarket` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 
 <font size="-1">
 <a name="table_footnote1">1</a>: There is a long list of standard queries that report price results. The price query above will report prices for all markets, while other queries filter those results. For example, the "ag commodity prices" query reports prices for agriculture and forestry commodities only. <br/>

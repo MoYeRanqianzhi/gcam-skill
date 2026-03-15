@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `GCAM-parallel.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -65,10 +66,10 @@ overwrite the previous version of the GCAM executable file, if any.
 
 GCAM-parallel adds one additional parameter, `parallel-grain-size`, to
 the GCAM configuration file. It is set in the "ints" section of the
-main configuration file:  
+main configuration file:
 ```
-<Value name="parallel-grain-size">5</Value> 
-```  
+<Value name="parallel-grain-size">5</Value>
+```
 
 This parameter controls the target grain size in the parallel
 decomposition. Actual grain sizes may differ significantly from the
@@ -125,7 +126,7 @@ options for submitting GCAM-parallel as a batch job (you should not
 try to run it on one of the login nodes). You must ensure that the
 system does not attempt to run more than one GCAM instance per
 node. The best way to do this is to put the following in your batch
-script:  
+script:
 <code>
 #PBS -l nodes=1  <br>
 #PBS -l walltime=10:00  <br>
@@ -148,14 +149,14 @@ the hyperthreading slots as additional processors, and it will run
 worker threads on them. So far we have not been able to test
 performance with and without hyperthreading, so we cannot say for
 certain whether having hyperthreading enabled is helpful, harmful, or
-neutral for performance. 
+neutral for performance.
 
 Implementation Details
 ----------------------
 
 ### The GCAM Data Flow Graph
 
-Image reference: html-image (images/Gcam-usa-energy-small.png) Parallel analysis of GCAM begins with the construction of a flow
+[omitted image: Flow graph for the energy portion of the USA region. There are additional independent tasks in the USA region, and each region is currently independent of all the others.] Parallel analysis of GCAM begins with the construction of a flow
 graph, which describes all of the computational tasks required for a
 single GCAM evaluation and the dependencies between them. Most of the
 work required to produce this graph, *including* breaking cyclic
@@ -181,7 +182,7 @@ between these two competing factors.
 
 ### Graph Analysis
 
-Image reference: html-image (images/Gcam-usa-clans-small.png) Parsing
+[omitted image: Hierarchical breakdown of the full GCAM USA region (a superset of the graph in the previous figure).] Parsing
 a flow graph into grains begins with a hierarchical breakdown of the
 graph into a tree of aggregations called "clans." Each clan is an
 aggregation of nodes from the original flow graph, such that a node
@@ -203,7 +204,7 @@ which is linear. This scenario represents five distinct linear paths
 through the graph, all of which can be run concurrently, but which
 must maintain their internal ordering.
 
-Image reference: html-image (images/Gcam-usa-grain020.png) Once we have assembled the tree of clans, we can walk
+[omitted image: Grain flow graph of the GCAM USA region with a target grain size of 20 tasks per grain. Note that some grains end up being significantly larger or smaller than the target size] Once we have assembled the tree of clans, we can walk
 down the tree until we find clans that are close in size to our
 desired grain size. We make grains out of those clans, and we use the
 information in the original flow graph to create dependence edges
@@ -214,14 +215,14 @@ flow graph to dispatch the tasks in a GCAM parallel evaluation.
 
 A parallel model evaluation is invoked by calling `World::calc()` with
 a second argument that is a pointer to a TBB flow graph. The prototype
-for this call is:  
+for this call is:
 
-`   void World::calc(int period, GcamFlowGraph *work_graph);`  
+`   void World::calc(int period, GcamFlowGraph *work_graph);`
 
 The World class stores a pointer to the global flow graph, so full
-model evaluations can be run by calling:  
+model evaluations can be run by calling:
 
-`   world->calc(aPeriod, world->getGlobalFlowGraph());`  
+`   world->calc(aPeriod, world->getGlobalFlowGraph());`
 
 In principle, partial model evaluations (such as those that occur when
 computing partial derivatives) could be accomplished by creating a
@@ -231,8 +232,8 @@ functions currently do not generate any partial flow graphs. Partial
 evaluations can be performed serially by calling the standard version
 of `World::calc()`:
 
-`   const std::vector<IActivity*>& affectedNodes = mkts[partj].getDependencies();`  
-`   world->calc(period, affectedNodes);`  
+`   const std::vector<IActivity*>& affectedNodes = mkts[partj].getDependencies();`
+`   world->calc(period, affectedNodes);`
 
 There is also a mechanism for passing a mask that allows you to run
 the global flow graph while skipping undesired nodes.

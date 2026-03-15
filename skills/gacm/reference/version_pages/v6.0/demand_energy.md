@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `demand_energy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -70,57 +71,43 @@ The remaining industrial sectors are collectively modeled as "Other industry", a
 The Iron and Steel sector in GCAM consists of three distinct subsectors: Basic Oxygen Furnace (BOF), Electric Arc Furnace with scrap (EAF), and EAF with Direct Reduced Iron (DRI). Each subsector includes several competing technologies, such as fossil fuels w/ & w/o CCS, electricity, hydrogen, and biomass. Globally consistent cost assumptions for technologies in each subsector are estimated from the literature ([Ren et al. 2021](demand_energy.md#Ren2021)
 ;[Santos 2013](demand_energy.md#Santos2013)). Historical Iron and steel energy use is calibrated using energy data from IEA (flow codes include IRONSTL, TBLASTFUR, EBLASTFUR, TCOKEOVS, and ECOKEOVs; for definitions see [IEA 2021](demand_energy.md#iea2021)) and steel production from the World Steel Association (WSA). The income elasticities that drive future iron and steel production across GCAM regions are estimated using NLIT (Non-linear inverse with time-efficiency-factor) function ([Van Ruijven et al. 2016](demand_energy.md#VanRuijven2016)).
 
-Image reference: html-image (gcam-figs/iron_steel.jpg)<br/>
 GCAM's representation of iron and steel production technologies and subsectors.
-{: .fig}
 
 #### Chemicals
 
 The chemicals sector represents the chemicals and petrochemicals industry, which is the largest industrial consumer of oil and gas. The chemicals sector is disaggregated into chemicals energy use and feedstocks. Historical chemicals energy use and feedstocks are calibrated from IEA energy balances (flow codes include CHEMICAL and NECHEM). For regions that only have feedstock use but no energy consumption in the IEA data, feedstocks are adjusted to zero (e.g., Africa_Eastern and South Asia).
 
-Image reference: html-image (gcam-figs/Chemicals.png)<br/>
 GCAM's representation of Chemicals sector.
-{: .fig}
 
 #### Aluminum
 
 The aluminum production in GCAM involves two main steps: (1) alumina refining, to refine bauxite ore into alumina, and (2) aluminum smelting, to convert alumina to aluminum. Alumina refining has multiple competing technologies, such as coal, refined liquids, gas, and biomass with and without CCS. Aluminum smelting uses alumina as an input and consumes electricity. The aluminum and alumina subsectors are calibrated using production and energy use data from the International Aluminum Association (IAA). This data from IAA is provided by broader aggregate regions and is down-scaled to individual countries and GCAM regions using country-level data on electrolytic aluminum production from the United States Geological Survey (USGS). For countries with recorded energy use but no production, energy use is adjusted to zero. The intensity coefficients for alumina/aluminum production technologies are estimated from IEA energy data and the country-level production data.
 
-Image reference: html-image (gcam-figs/aluminum.png)<br/>
 GCAM's representation of Aluminum sector.
-{: .fig}
 
 #### Construction
 
 The construction sector includes energy use and feedstocks for construction of buildings, roads, railways, utility projects, and other civil engineering projects, as classified in the IEA energy balances (CONSTRUC and NECONSTRUC flow codes). Historical and base year construction energy use and feedstocks are calibrated using IEA energy balances. In 2017, refined liquids made up 51% of construction energy use, electricity was 26%, gas was 15%, and coal was 6%. Construction feedstocks are primarily bitumen. Construction energy use is further disaggregated into mobile and stationary uses. The reason for doing this is that the mobile equipment relies 100% on liquid hydrocarbon fuels at present, with no options for substitution, whereas the stationary uses rely on a variety of fuels whose relative shares can be expected to be price-elastic. For calibration, 80% of the liquid fuel consumption for construction energy-use is assigned to mobile equipment, and 20% is assigned to the stationary uses. In future time periods, battery-electric and hydrogen-powered technology options are allowed to compete for market share within the mobile segment.
 
-Image reference: html-image (gcam-figs/Construction.png)<br/>
 GCAM's representation of Construction sector.
-{: .fig}
 
 #### Mining Energy use
 
-In GCAM, mining energy use includes mining of metal ores and other materials such as stone, sand, clay, peat, and chemical/fertilizer minerals, as classified in the IEA energy balances (MINING flow). To better represent technology competition and fuel substitution, mining energy use is also disaggregated into mobile and stationary uses, in similar fashion to construction energy use described above. 
+In GCAM, mining energy use includes mining of metal ores and other materials such as stone, sand, clay, peat, and chemical/fertilizer minerals, as classified in the IEA energy balances (MINING flow). To better represent technology competition and fuel substitution, mining energy use is also disaggregated into mobile and stationary uses, in similar fashion to construction energy use described above.
 
-Image reference: html-image (gcam-figs/Mining.png)<br/>
 GCAM's representation of Mining sector.
-{: .fig}
 
 #### Agricultural Energy use
 
 Agricultural Energy use includes energy use to operate machinery and equipment, and for heating, cooling, and power in buildings. Refined liquids currently make up about half of agricultural energy consumption, and electricity about a quarter. To better represent technology competition and fuel substitution, agricultural energy use is also disaggregated into mobile and stationary uses, with hydrogen and battery-electric mobile technologies introduced in future periods.
 
-Image reference: html-image (gcam-figs/Agriculture_energy.png)<br/>
 GCAM's representation of Agricultural energy use sector.
-{: .fig}
 
 #### Cement
 
 GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
-Image reference: html-image (gcam-figs/cement.png)<br/>
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
-{: .fig}
 
 Cement is treated as a final demand in GCAM; demands are driven by population and income, and the commodity is not an input to any further modeled processes.
 
@@ -132,9 +119,7 @@ The representation of nitrogenous fertilizers ("N fertilizer"), indicated in Mt 
 
 Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.md#iea2007). The schematic below shows how N fertilizer is situated between the energy and agricultural systems of GCAM.
 
-Image reference: html-image (gcam-figs/Nfertilizer.png)<br/>
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of N fertilizer on the energy inputs, and unitless for the N fertilizer inputs to crop production). Note that the fuel/feedstock sources are competing technologies, not fixed inputs to a production function.**
-{: .fig}
 
 The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.md#doe2015).
 
@@ -152,7 +137,7 @@ The passenger sector consists of up to five nesting levels, corresponding to dif
 
 Demand for transportation services depends on income and the price of these services (see [equations for transportation service demand](#transportation-service-demand)). These final service demands are supplied by transportation supply sectors, which, as with other supply sectors in GCAM, are composed of subsectors and ultimately technologies. The functional forms for computing costs in both the subsectors and technologies differ slightly from other parts of the model (see [equations for transportation subsector competition](#transportation-subsector-competition)). This competition requires a wage rate. The wage rate is calculated as the per-capita GDP divided by the number of working hours in the year, and the speed of each mode is exogenous (see [Inputs to the Module](#inputs-to-the-module) above for a list of exogenous variables). The time value multiplier is assumed for each mode, according to literature estimates of peoples' valuation of their time in transport (e.g., [Zamparini and Reggiani 2007](demand_energy.md#zamparini2007), [VTPI 2013](demand_energy.md#vtpi2013)), also considering the waiting times (and costs thereof) inherent in each mode ([Polzin and Chu 2005](demand_energy.md#polzin2005)). Note that the time value term does not influence technology-level competition (e.g., between different vehicle sizes or fuels). Time value is also not considered in the freight sector, where the future inter-modal competition takes place on the basis of the evolution of the weighted average technology costs alone.
 
-The time value term is only used for modeling the competition between passenger modes. The net effects of including the time value in the modal competition are (1) a shift towards faster modes of transportation as incomes increase, and (2) relative stabilization of the number of hours per person per day spent in transportation. This is because the time value of all forms of transportation increases with GDP, which tends to increase transportation costs at high levels of income. These effects are consistent with the econometric literature on modal shifting and time travel budgets (e.g., [Shafer 1998](demand_energy.md#shafer1998), [Shafer and Victor 2000](demand_energy.md#shafer2000)). 
+The time value term is only used for modeling the competition between passenger modes. The net effects of including the time value in the modal competition are (1) a shift towards faster modes of transportation as incomes increase, and (2) relative stabilization of the number of hours per person per day spent in transportation. This is because the time value of all forms of transportation increases with GDP, which tends to increase transportation costs at high levels of income. These effects are consistent with the econometric literature on modal shifting and time travel budgets (e.g., [Shafer 1998](demand_energy.md#shafer1998), [Shafer and Victor 2000](demand_energy.md#shafer2000)).
 
 Transportation services in GCAM are ultimately supplied by [transportation technologies](en_technologies.md#transportation-technologies), which take inputs of energy and produce outputs of service-distance (e.g., passenger-km, tonne-km) (see [equation](#transportation-technology-cost) below). The non-fuel costs are estimated for some technologies (e.g., light-duty vehicles) from exogenous assumptions about vehicle capital costs, non-fuel operations and maintenance costs, financing assumptions, and annual vehicle utilization (vehicle-km per year). For others, such as all freight technologies and passenger bus and rail, the non-fuel cost is estimated by deducting estimated fuel costs from reported total service costs (e.g., [BTS 2015](demand_energy.md#bts2015)). In either case, the non-fuel cost is converted to dollars per vehicle-km for the equation above. The model then computes market shares of the different technologies as described in [logit choice](choice.md).
 
@@ -182,12 +167,12 @@ The modeling approach is documented in [Kyle et al. (2021)](demand_energy.md#kyl
 
 
 
-## Equations 
+## Equations
 The equations that determine energy demand are described here.
 
 ### Technology or subsector share
 
-GCAM uses one of [two different logit formulations](choice.md#the-logit) to calculate the shares for each technology or subsector. 
+GCAM uses one of [two different logit formulations](choice.md#the-logit) to calculate the shares for each technology or subsector.
 
 The first option, also known as the `relative-cost-logit`, is:
 
@@ -197,7 +182,7 @@ $$
 
 where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
 
-The second option, also known as the `absolute-cost-logit`, is: 
+The second option, also known as the `absolute-cost-logit`, is:
 
 $$
 s_i = \frac{\alpha_i \exp(\beta c_i)}{\sum_{j=1}^{N} \alpha_j
@@ -216,9 +201,9 @@ The demand for residential per-capita floorspace, f, in future time period t is 
 
 $$ f_{t,r} = (UnadjSat_{r} – a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_{t,r})))  + k_{r} $$
 
-`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.  
-`a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.  
-Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the DS.  
+`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.
+`a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.
+Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the DS.
 Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year (2015). It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
 
 
@@ -295,14 +280,13 @@ See `calcCost` in [tran_technology.cpp](https://github.com/JGCRI/gcam-core/blob/
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
-GCAM has the capability to model three technologies which consume thermal and/or electrical energy for the sole purpose of removing carbon dioxide from the atmosphere, broadly referred to as direct air capture with carbon storage (DACCS). The first is an aqueous hydroxide solvent process requiring water, high-temperature thermal energy from natural gas for solvent regeneration, and electricity to run ancillary equipment.  The second archetype relies on the same aqueous hydroxide solvent process but uses electricity to generate the high temperatures (>900 ˚C) required for regeneration. The third uses solid adsorbents, with the lower-temperature heat required for sorbent regeneration generated by an electric heat pump. These technologies remove CO2 from the atmosphere and send it to geologic storage, along with any captured combustion emissions from process heat.  The techno-economic assessment for the input parameters of DACCS was based on the work of [Keith et. al. 2018](https://www.sciencedirect.com/science/article/pii/S2542435118302253), [Mazzotti et. al. 2013](https://link.springer.com/article/10.1007/s10584-012-0679-y), [Beuttler et. al. 2019](https://www.frontiersin.org/articles/10.3389/fclim.2019.00010/full), and [Fasihi et. al. 2019](https://www.sciencedirect.com/science/article/pii/S0959652619307772).  
+GCAM has the capability to model three technologies which consume thermal and/or electrical energy for the sole purpose of removing carbon dioxide from the atmosphere, broadly referred to as direct air capture with carbon storage (DACCS). The first is an aqueous hydroxide solvent process requiring water, high-temperature thermal energy from natural gas for solvent regeneration, and electricity to run ancillary equipment.  The second archetype relies on the same aqueous hydroxide solvent process but uses electricity to generate the high temperatures (>900 ˚C) required for regeneration. The third uses solid adsorbents, with the lower-temperature heat required for sorbent regeneration generated by an electric heat pump. These technologies remove CO2 from the atmosphere and send it to geologic storage, along with any captured combustion emissions from process heat.  The techno-economic assessment for the input parameters of DACCS was based on the work of [Keith et. al. 2018](https://www.sciencedirect.com/science/article/pii/S2542435118302253), [Mazzotti et. al. 2013](https://link.springer.com/article/10.1007/s10584-012-0679-y), [Beuttler et. al. 2019](https://www.frontiersin.org/articles/10.3389/fclim.2019.00010/full), and [Fasihi et. al. 2019](https://www.sciencedirect.com/science/article/pii/S0959652619307772).
 
-[Fuhrman et. al. 2020 (a)](https://www.nature.com/articles/s41558-020-0876-z), and [Fuhrman et al 2020 (b)](https://academic.oup.com/oocc/article/1/1/kgab004/6284217) used GCAM to study the global and regional potential of DACCS processes using natural gas for high temperature heat as well as the implications of their deployment for the food-energy-water systems. The Methods and Supplementary Information of these studies document the general approach to modeling DACCS in GCAM, which is summarized in more detail below. 
+[Fuhrman et. al. 2020 (a)](https://www.nature.com/articles/s41558-020-0876-z), and [Fuhrman et al 2020 (b)](https://academic.oup.com/oocc/article/1/1/kgab004/6284217) used GCAM to study the global and regional potential of DACCS processes using natural gas for high temperature heat as well as the implications of their deployment for the food-energy-water systems. The Methods and Supplementary Information of these studies document the general approach to modeling DACCS in GCAM, which is summarized in more detail below.
 
-In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and (b) other carbon removal technologies such as BECCS and afforestation based on its cost and the subsidy paid for CO2 removal (i.e., the carbon emissions price). This competition is created by defining an additional "no-DAC" technology which does not capture carbon and has zero cost. 
+In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and (b) other carbon removal technologies such as BECCS and afforestation based on its cost and the subsidy paid for CO2 removal (i.e., the carbon emissions price). This competition is created by defining an additional "no-DAC" technology which does not capture carbon and has zero cost.
 
 
-Image reference: html-image (gcam-figs/dac_structure.png)<br/>
 
 
 
@@ -311,7 +295,7 @@ Image reference: html-image (gcam-figs/dac_structure.png)<br/>
 
 
 
-## Equations 
+## Equations
 The equations that determine energy demand are described here.
 
 The demand ($$D$$) for industrial services in region $$r$$ and time period $$t$$ is given by the following equation:
@@ -377,18 +361,18 @@ $$
 
 Where:
 
-$$α_i$$ = the shareweight of the technology. 
+$$α_i$$ = the shareweight of the technology.
 
-$$β$$ = the logit coefficient, which determines how large a cost difference is required to produce a given difference in market share. 
+$$β$$ = the logit coefficient, which determines how large a cost difference is required to produce a given difference in market share.
 
-Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in 2020, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price). 
+Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in 2020, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price).
 
 In each region, the base year service demand for the CO2 removal sector (currently, the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO2 per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO2 removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
 
 
-## Policy options 
+## Policy options
 
-There are a number of policy available to the user when it comes to energy demand. Many of these policy options are implemented as a part of the SSP scenarios. For example, there are different income elasticities for demand that are implemented for the different industry sectors such as intron-steel, aluminum and chemicals.  
+There are a number of policy available to the user when it comes to energy demand. Many of these policy options are implemented as a part of the SSP scenarios. For example, there are different income elasticities for demand that are implemented for the different industry sectors such as intron-steel, aluminum and chemicals.
 
 ## Insights and intuition
 
@@ -471,7 +455,7 @@ Residential and commercial
 
 <a name="iea2021">[IEA 2021]</a> International Energy Agency, 2007, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
 
-<a name="keith2018">[Keith et al 2018]</a> Keith, D. W., Holmes, G., St Angelo, D., and Heidel, K. “A Process for Capturing CO 2 from the Atmosphere” (2018) [Link](https://doi.org/10.1016/j.joule.2018.05.006) 
+<a name="keith2018">[Keith et al 2018]</a> Keith, D. W., Holmes, G., St Angelo, D., and Heidel, K. “A Process for Capturing CO 2 from the Atmosphere” (2018) [Link](https://doi.org/10.1016/j.joule.2018.05.006)
 
 <a name="kim2006">[Kim et al. 2006]</a> Kim, S., Edmonds, J., Lurz, J., Smith, S.J., and Wise, M. 2006. The objECTS Framework for integrated Assessment: Hybrid Modeling of Transportation. *The Energy Journal* 27, Special Issue: Hybrid Modeling of Energy-Environment Policies: Reconciling Bottom-up and Top-down, pp. 63-91. [Link](http://www.iaee.org/en/publications/ejarticle.aspx?id=2168)
 
@@ -485,7 +469,7 @@ Residential and commercial
 
 <a name="mahasenan2005">[Mahasenan et al. 2005]</a> Mahasenan, N., Dahowski, R.T., and Davidson, C.L. 2005. The role of carbon dioxide capture and storage in reducing emissions from cement plants in North America. *Proceedings of the 7th International Conference on Greenhouse Gas Control Technologies* 1, pp. 901-909. [Link](https://www.sciencedirect.com/science/article/pii/B9780080447049500914)
 
-<a name="mazzotti2013">[Mazzotti et al. 2013]</a> Mazzotti, M., Baciocchi, R., Desmond, M. J., and Socolow, R. H. “Direct Air Capture of CO2 with Chemicals: Optimization of a Two-Loop Hydroxide Carbonate System Using a Countercurrent Air-Liquid Contactor” *Climatic Change* 118, no. 1 (2013): 119–135. [Link](http://link.springer.com/10.1007/s10584-012-0679-y) 
+<a name="mazzotti2013">[Mazzotti et al. 2013]</a> Mazzotti, M., Baciocchi, R., Desmond, M. J., and Socolow, R. H. “Direct Air Capture of CO2 with Chemicals: Optimization of a Two-Loop Hydroxide Carbonate System Using a Countercurrent Air-Liquid Contactor” *Climatic Change* 118, no. 1 (2013): 119–135. [Link](http://link.springer.com/10.1007/s10584-012-0679-y)
 
 <a name="mishra2013">[Mishra et al. 2013]</a> Mishra, G.S., Kyle, P., Teter, J., Morrison, G.M., Kim, S., and Yeh, S. 2013. *Transportation Module of Global Change Assessment Model (GCAM): Model Documentation*, Research Report UCD-ITS-RR-13-05, Institute of Transportation Studies, University of California, Davis. [Link] (https://itspubs.ucdavis.edu/wp-content/themes/ucdavis/pubs/download_pdf.php?id=1884)
 

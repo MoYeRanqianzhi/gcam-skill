@@ -55,13 +55,17 @@ DELTA_SOURCE_MAP = {
 FRONT_MATTER_RE = re.compile(r"\A---\n(.*?)\n---\n*", re.DOTALL)
 LINKED_IMAGE_RE = re.compile(r"\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)")
 MD_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
-HTML_IMG_RE = re.compile(r"<img\b[^>]*src=\"([^\"]+)\"[^>]*\/?>", re.IGNORECASE)
+HTML_IMG_RE = re.compile(r"<img\b[^>]*\/?>", re.IGNORECASE)
+HTML_IMG_SRC_RE = re.compile(r'src="([^"]+)"', re.IGNORECASE)
+HTML_IMG_ALT_RE = re.compile(r'alt="([^"]+)"', re.IGNORECASE)
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
 HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
+IMAGE_PLACEHOLDER_RE = re.compile(r"\[\[IMAGE_OMITTED:([^\]]+)\]\]")
+FIGURE_ARTIFACT_RE = re.compile(r"(?i)(?:<br\s*/?>|&lt;br&gt;|&nbsp;|\{:\s*\.fig\s*\})")
 
 WIKILINK_ALIAS_MAP = {
     "v3.2": {
@@ -113,14 +117,59 @@ def strip_duplicate_heading(body: str, title: str) -> str:
     return body
 
 
+def normalize_image_label(label: str) -> str:
+    cleaned = label.strip().strip('"').strip("'")
+    cleaned = cleaned.replace("fig:", "").replace("html-image", "")
+    cleaned = re.sub(r"\s+", " ", cleaned).strip()
+    return cleaned
+
+
+def image_label_from_alt_or_path(alt: str, path: str) -> str:
+    label = normalize_image_label(alt)
+    if label and label.lower() != "untitled image":
+        return label
+    stem = Path(path.split("#", 1)[0].split("?", 1)[0]).stem
+    stem = normalize_image_label(stem.replace("_", " ").replace("-", " "))
+    return stem or "figure"
+
+
+def html_image_label(tag: str) -> str:
+    alt_match = HTML_IMG_ALT_RE.search(tag)
+    src_match = HTML_IMG_SRC_RE.search(tag)
+    alt = alt_match.group(1) if alt_match else ""
+    src = src_match.group(1) if src_match else ""
+    return image_label_from_alt_or_path(alt, src)
+
+
 def rewrite_images(text: str) -> str:
     text = LINKED_IMAGE_RE.sub(
-        lambda m: f"{m.group(1) or 'Linked image'} link: {m.group(3)} (image: {m.group(2)})",
+        lambda m: f"[{image_label_from_alt_or_path(m.group(1), m.group(2))}]({m.group(3)})",
         text,
     )
-    text = MD_IMAGE_RE.sub(lambda m: f"Image reference: {m.group(1) or 'untitled image'} ({m.group(2)})", text)
-    text = HTML_IMG_RE.sub(lambda m: f"Image reference: html-image ({m.group(1)})", text)
+    text = MD_IMAGE_RE.sub(
+        lambda m: f"[[IMAGE_OMITTED:{image_label_from_alt_or_path(m.group(1), m.group(2))}]]",
+        text,
+    )
+    text = HTML_IMG_RE.sub(lambda m: f"[[IMAGE_OMITTED:{html_image_label(m.group(0))}]]", text)
     return text
+
+
+def is_standalone_image_placeholder(line: str) -> bool:
+    normalized = FIGURE_ARTIFACT_RE.sub(" ", line.strip())
+    normalized = re.sub(r"\s+", " ", normalized).strip()
+    return bool(IMAGE_PLACEHOLDER_RE.fullmatch(normalized))
+
+
+def strip_image_artifacts(text: str) -> str:
+    lines: list[str] = []
+    for raw_line in text.splitlines():
+        if raw_line.strip() == "{: .fig}":
+            continue
+        if is_standalone_image_placeholder(raw_line):
+            continue
+        line = IMAGE_PLACEHOLDER_RE.sub(lambda m: f"[omitted image: {m.group(1)}]", raw_line)
+        lines.append(line.rstrip())
+    return "\n".join(lines)
 
 
 def split_target_and_title(raw: str) -> tuple[str, str]:
@@ -213,6 +262,7 @@ def apply_outside_code_fences(text: str, transform) -> str:
 def sanitize_body(text: str, version: str) -> str:
     text = rewrite_images(text)
     text = apply_outside_code_fences(text, lambda chunk: rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version))
+    text = strip_image_artifacts(text)
     return text.strip() + "\n"
 
 
@@ -278,6 +328,7 @@ def render_source_page(
         f"- Source root: `{source_root_label(source_version)}`",
         f"- Source path: `{rel_source.as_posix()}`",
         f"- Coverage mode: `{coverage_mode}`",
+        "- Bundle mode: `text-only page bundle; images omitted`",
         f"- Version page index: `version_pages/{bundle_version}/INDEX.md`",
     ]
     if source_version != bundle_version:

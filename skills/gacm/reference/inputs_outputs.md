@@ -64,7 +64,7 @@ Trade is inferred from production vs. consumption. GCAM uses Armington-style tra
 
 ## Practical Notes
 - Query XML files define the exact aggregation and filtering logic; output interpretation depends heavily on query choice.
-- Use ModelInterface, `gcamreader`, or other extraction tools to run queries against the BaseX database.
+- Prefer headless extraction paths such as ModelInterface batch mode, `gcamreader`, `rgcam`, or `gcamextractor` when querying the BaseX database.
 - When the user asks for a specific variable, identify the query family first before explaining the number.
 
 ## Historical Notes

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `updates.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -13,40 +14,40 @@ Load this page when the user needs version-specific detail from this exact page 
 
 Below are summaries of the updates included in each GCAM Release. Including links to the Core Model Proposals, which provide full documentation of recent changes, including methods of implementation and analysis of impacts on key results. Note that since GCAM 7.1 each update will receive its own release and version. Major releases, which correspond to those with release packages on Github, will also note a DOI.
 
-GCAM v8.7 
+GCAM v8.7
 * [Cement Data Updates](cmp/408-Cement_Data_Updates.md)
 
-GCAM v8.6 
+GCAM v8.6
 * [Electricity Generation CCS Emission Factors](cmp/400-Electricity_Generation_CCS_Emission_Factors.md)
 
-GCAM v8.5 
+GCAM v8.5
 * [GCAM Bugfix Fall 2025](cmp/422-GCAM_Bugfix_Fall_2025.md)
 
-GCAM v8.4 
+GCAM v8.4
 * [Socioeconomic and Macro Data Updates](cmp/410-Socioeconomic_Macro_Data_compressed.md)
 
-GCAM v8.3 
+GCAM v8.3
 * [Gcamstr: A String Interning Implemention in GCAM](cmp/405-Gcamstr_A_String_Interning_in-GCAM.md)
 
-GCAM v8.2 DOI link: https://doi.org/10.5281/zenodo.15581174 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.15581174.svg)
+GCAM v8.2 [DOI](https://doi.org/10.5281/zenodo.15581174)
 * [Miscellaneous Bugfixes Prior to 2025 Annual Meeting](cmp/403-Misc_Bugfix_2025.md)
 
-GCAM v8.1 
+GCAM v8.1
 * [Ukraine as an independent region](cmp/401-Ukraine_as_an_independent_region.md)
 
-GCAM v8.0 
+GCAM v8.0
 * [Base Year Update: Move Model Base Year to 2021](cmp/404-Base_Year_Update_Move_Model_Base_Year_to_2021.md)
 
-GCAM v7.4 
+GCAM v7.4
 * [Base Year Update: Initial updates preparing for the new base year](cmp/309-BYU_initial.md)
 
-GCAM v7.3 
+GCAM v7.3
 * [Updated approach for intermittent electricity integration](cmp/394-Intermittent_electricity_integration.md)
 
-GCAM v7.2 
+GCAM v7.2
 * [Updating the SSP Database (v3.0)](cmp/399-SSP_Database2024.md)
 
-GCAM v7.1 DOI link: https://doi.org/10.5281/zenodo.11481167 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.11481167.svg)
+GCAM v7.1 [DOI](https://doi.org/10.5281/zenodo.11481167)
 1. [Adding detail to Forest sectors in GCAM](cmp/369-Adding_Detail_To_Forestry_Sector.md)
 2. [Hydrogen Update](cmp/386-Hydrogen_Update.md)
 3. [Ammonia Trade](cmp/389-Ammonia_Trade.md)
@@ -59,7 +60,7 @@ GCAM v7.1 DOI link: https://doi.org/10.5281/zenodo.11481167 (image: https://zeno
 10. [Hector v3.2](cmp/397-Update_to_Hector_v3.2.0.md)
 11. [Final Bugfix before GCAM 7.1](cmp/391-GCAM_7.0_Bugfixes.md)
 
-GCAM v7.0 DOI link: https://doi.org/10.5281/zenodo.8010145 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)
+GCAM v7.0 [DOI](https://doi.org/10.5281/zenodo.8010145)
 1. [Fix Extrapolation in Residue Biomass](cmp/366-Fix_Extrapolation_in_Residue_Biomass.md)
 2. [Add Land Use History Output](cmp/365-Add_Land_Use_History_Output.md)
 3. [Miscellaneous Bug Fixes Part 1](cmp/371-Miscellaneous_Bug_Fixes.md)
@@ -77,7 +78,7 @@ GCAM v7.0 DOI link: https://doi.org/10.5281/zenodo.8010145 (image: https://zenod
 15. [Update to Hector v3](cmp/384-Update_to_Hector_v3.md)
 16. Bugfix before 7.0 Release
 
-GCAM v6.0 DOI link: https://doi.org/10.5281/zenodo.6619287 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.6619287.svg):
+GCAM v6.0 [DOI](https://doi.org/10.5281/zenodo.6619287):
 1. A new residential floorspace expansion model.
 2. Bio-energy updates: additional limits to "unsustainable" deployment
 3. Default hotelling rate for climate stabilization scenarios is now 3%.
@@ -98,7 +99,7 @@ GCAM v6.0 DOI link: https://doi.org/10.5281/zenodo.6619287 (image: https://zenod
 18. Reduce memory usage (offsets additional memory from expanded crop commodities).
 19. `gcamdata`: Renv and user modification chunks.
 
-GCAM v5.4: DOI link: https://doi.org/10.5281/zenodo.5093192 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)
+GCAM v5.4: [DOI](https://doi.org/10.5281/zenodo.5093192)
 
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
  1. Updated technology costs for electricity and transportation technologies
@@ -111,7 +112,7 @@ Several changes have been made to GCAM since the last release version (v5.3). Th
  8. gcamdata updated to use drake and work with dplyr 1.0.0
  9. Removed unused code
  10. Minor updates and bugfixes
- 11. Optional features (not turned on by default):   
-	- Direct Air Capture  
-	- Ability to specify exogenous floorspace pathways  
+ 11. Optional features (not turned on by default):
+	- Direct Air Capture
+	- Ability to specify exogenous floorspace pathways
 	- Ability to scale CH<sub>4</sub> and N<sub>2</sub>O emissions to EPA inventories

@@ -2,6 +2,13 @@
 
 This file is the main bundled routing map for the open-source `gacm` skill.
 
+## Agent Mode
+This skill is optimized for agent use, not GUI walkthroughs.
+
+- Default to command-line execution, XML/configuration editing, and headless extraction.
+- Use page-level GUI material only when the user explicitly asks for historical ModelInterface or IDE behavior.
+- Prefer shared topic docs for operational guidance and page bundles for traceable evidence.
+
 ## First Decision: Version
 Always determine version before topic.
 
@@ -25,15 +32,15 @@ After version routing, open only the topic docs needed for the task:
 - `water_system.md`: basin water demand and supply, cooling, scarcity, and water markets
 - `economy.md`: GDP, macro module, KLEM, SAM consistency, and economic interpretation
 - `emissions_climate.md`: CO2 and non-CO2 emissions, MACs, Hector coupling, and climate constraints
-- `running_gcam.md`: reference runs, configuration, batch mode, target finder, ModelInterface
-- `building_gcam.md`: compilation and runtime prerequisites
+- `running_gcam.md`: reference runs, configuration, batch mode, target finder, XML DB controls, and headless query flow
+- `building_gcam.md`: command-line compilation and runtime prerequisites
 - `solver.md`: solver algorithms and configuration logic
 - `policies_scenarios.md`: policy types, scenario components, targeting
-- `inputs_outputs.md`: input classes, output classes, query patterns
+- `inputs_outputs.md`: input classes, output classes, and query/extraction patterns
 - `ssp.md`: SSP assumptions and scenario framing
 - `gcam_usa.md`: GCAM-USA scope and interpretation
-- `tools.md`: gcamreader and gcamextractor usage
-- `developer_workflows.md`: Fusion, dev/debug workflows, and broader GCAM ecosystem tools
+- `tools.md`: headless extraction and automation tools such as gcamreader, rgcam, and gcamextractor
+- `developer_workflows.md`: Fusion, dev/debug workflows, pygcam, and the broader GCAM ecosystem
 - `updates.md`: release evolution and delta-only version notes
 - `data_system.md`: GCAM data system role
 - `coverage_map.md`: map from bundled docs back to the `v8.2` root topic pages

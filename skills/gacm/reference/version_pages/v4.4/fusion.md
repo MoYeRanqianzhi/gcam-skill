@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.4`.
 - Source root: `gcam-doc/v4.4`
 - Source path: `fusion.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -14,7 +15,7 @@ Load this page when the user needs version-specific detail from this exact page 
 Here we discuss the GCAM Fusion API modelers tools to perform two way coupling
 with a running GCAM simulation.  We start with an introduction then move on to
 some more in-depth documentation some of which may only be relevant for someone
-who is interested in modifying or adding new components to GCAM itself.  
+who is interested in modifying or adding new components to GCAM itself.
 
 *Note:* the discussion that follows is aimed at an audience proficient with
  C++.
@@ -30,7 +31,7 @@ up the abstractions and relationships with in the model; however it does not
 make it easy or convenient to get data in and out of the model.  We generally
 set inputs data once at the start of the model by parsing the XML input
 files.  We retrieve data mostly through the use of custom visitors at the end of
-a scenario, or after the run has completed via an XML database.  
+a scenario, or after the run has completed via an XML database.
 
 These limitations have been a hinderance for modelers who would like to
 implement one-way or two-way coupling bwteen their own model and GCAM, in which
@@ -57,7 +58,7 @@ Currently we are providing the following hooks for users to call their feedbacks
 * Just before a simulation period of GCAM begins its solution process.
 * After a simulation period of GCAM has solved and the `hector` climate model
   has been called.
-  
+
 Limiting access to the API in this way is a key part of our strategy for keeping
 the model structure manageable.  Arbitrary updates to model internals can happen
 _only_ at designated times.  This prevents every model object from becoming, in
@@ -65,13 +66,13 @@ effect, a global variable.
 
 You create a feedback calculation by creating a "feedback object", which is an
 instance of a class that implements `IModelFeedbackCalc` interface.  The key
-functions in the interface are  
+functions in the interface are
 
 * `calcFeedbacksBeforePeriod`: A callback function that will be called at the
-  start of a model period.  
+  start of a model period.
 
 * `calcFeedbacksAfterPeriod`:  A callback function that will be called at the
-  end of a model period. 
+  end of a model period.
 
 The full definition of `IModelFeedbackCalc` is:
 
@@ -85,7 +86,7 @@ The full definition of `IModelFeedbackCalc` is:
  *          Before a new model period is about to start and after a model period has
  *          has finished solving and climate model results for the period are available.
  *          A references to the Scenario and IClimateModel will be provided however
- *          it is implied that the subclasses of this interface will utilize the 
+ *          it is implied that the subclasses of this interface will utilize the
  *          GCAM Fusion capabilities to gain access to the internal model state
  *          necessary to compute and/or push feedbacks into GCAM.
  * \warning MAGICC does not currently run between periods so these feedbacks may
@@ -101,7 +102,7 @@ class IModelFeedbackCalc : public INamed,
 {
 public:
     virtual ~IModelFeedbackCalc() { }
-    
+
     /*!
      * \brief A call back to indicate that a new simulation period is about to begin.
      * \details Note that climate model results will not yet be available for the current.
@@ -114,7 +115,7 @@ public:
      * \param aPeriod The model period that is about to begin calculation.
      */
     virtual void calcFeedbacksBeforePeriod( Scenario* aScenario, const IClimateModel* aClimateModel, const int aPeriod ) = 0;
-    
+
     /*!
      * \brief A call back to indicate that a simulation period has ended and the climate
      *        model has been run updated through this period.
@@ -147,7 +148,7 @@ the heating and cooling degree days with in GCAM for the next simulation period.
 
 <a name="feedback"></a>
 To start we will create a new class which implements the feedback interface
-mentioned above.  
+mentioned above.
 
 ```cpp
 #include "containers/include/imodel_feedback_calc.h"
@@ -164,35 +165,35 @@ class DegreeDaysFeedback : public IModelFeedbackCalc
 public:
     DegreeDaysFeedback();
     virtual ~DegreeDaysFeedback();
-    
+
     static const std::string& getXMLNameStatic();
-    
+
     // INamed methods
     virtual const std::string& getName() const;
-    
+
     // IParsable methods
     virtual bool XMLParse( const xercesc::DOMNode* aNode );
-    
+
     // IRoundTrippable methods
     virtual void toInputXML( std::ostream& aOut, Tabs* aTabs ) const;
-    
+
     // IModelFeedbackCalc methods
     virtual void calcFeedbacksBeforePeriod( Scenario* aScenario, const
                                             IClimateModel* aClimateModel, const int aPeriod );
-    
+
     virtual void calcFeedbacksAfterPeriod( Scenario* aScenario, const
-                                           IClimateModel* aClimateModel, const int aPeriod ); 
-    
+                                           IClimateModel* aClimateModel, const int aPeriod );
+
 protected:
     //! The name of this feedback
     std::string mName;
-    
+
     //! A HDD feedback coefficient of sorts
     double mHDDCoef;
-    
+
     //! A CDD feedback coefficient of sorts
     double mCDDCoef;
-    
+
     //! The base year emissions value to calculate feedback from
     double mBaseYearValue;
 };
@@ -201,7 +202,7 @@ protected:
 You will notice that we have also included the XML parsing hooks that GCAM uses
 to initialize its components such as `XMLParse` and `toInputXML`.  These
 functions allow us to activate our feedback by including them in an XML add-on
-file 
+file
 
 The source code that goes with this declaration will then look like the following skeleton:
 
@@ -244,22 +245,22 @@ bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
 }
 
 void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
-	// Code to write the object's configuration as XML 
+	// Code to write the object's configuration as XML
 	// (This is used when saving a configuration to be reread later)
 }
 
-void DegreeDaysFeedback::calcFeedbacksBeforePeriod( Scenario* aSceanrio, 
-                                                    const IClimateModel* aClimateModel, 
-													const int aPeriod ) 
+void DegreeDaysFeedback::calcFeedbacksBeforePeriod( Scenario* aSceanrio,
+                                                    const IClimateModel* aClimateModel,
+													const int aPeriod )
 {
     // code that gets called just before a period will begin to solve
 }
 
-void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, 
+void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario,
                                                    const IClimateModel* aClimateModel,
                                                    const int aPeriod )
 {
-    // code that gets called after a period is done solving, 
+    // code that gets called after a period is done solving,
 }
 ```
 
@@ -270,18 +271,18 @@ files.  Here is how they are defined:
 bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
     /*! \pre Make sure we were passed a valid node. */
     assert( aNode );
-    
+
     // get the name attribute.
     mName = XMLHelper<string>::getAttr( aNode, XMLHelper<void>::name() );
 
     // get all child nodes.
     DOMNodeList* nodeList = aNode->getChildNodes();
-    
+
     // loop through the child nodes.
     for( unsigned int i = 0; i < nodeList->getLength(); i++ ){
         DOMNode* curr = nodeList->item( i );
         string nodeName = XMLHelper<string>::safeTranscode( curr->getNodeName() );
-        
+
         if( nodeName == XMLHelper<void>::text() ) {
             continue;
         }
@@ -297,7 +298,7 @@ bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
             mainLog << "Unknown element " << nodeName << " encountered while parsing " << getXMLNameStatic() << endl;
         }
     }
-    
+
     return true;
 }
 
@@ -306,7 +307,7 @@ void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
 
     XMLWriteElement( mHDDCoef, "hdd-coef", aOut, aTabs );
     XMLWriteElement( mCDDCoef, "cdd-coef", aOut, aTabs );
-    
+
     XMLWriteClosingTag( getXMLNameStatic(), aOut, aTabs );
 }
 
@@ -389,10 +390,10 @@ The `GCAMFusion` object takes four template parameters:
 -   A boolean flag to indicate whether the handler will process the start of each
     step taken into a `CONTAINER` object (default is `false`).
 -   A boolean flag to indicate whether the handler will process stepping out of
-    a `CONTAINER` object (default is false). 
+    a `CONTAINER` object (default is false).
 -   A boolean flag to indicate whether the handler will process the data being found
     (default is `true`).
-	
+
 The last flag (the one that defaults to `true`) is the most common use case, and
 it's the only one we will use in this example.
 
@@ -423,7 +424,7 @@ void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, const IC
     // Results are not returned and instead the processData callback function of the
     // GatherEmiss class is called when a matching emissions value is found.
 
-    // We can then retrieve the result to use it in our impact calculations 
+    // We can then retrieve the result to use it in our impact calculations
     double currGlobalEmiss = gatherEmissProc.mEmiss;
     cout << "Curr global emissions are " << currGlobalEmiss << " in period " << aPeriod << endl;
 }
@@ -438,7 +439,7 @@ value.
 
 As mentioned above, when GCAMFusion finds a result that matches the search it
 will call `processData` and the user can get or set the value as appropriate for
-their needs:  
+their needs:
 
 ```cpp
 template<typename T>
@@ -449,7 +450,7 @@ template<>
 void GatherEmiss::processData<Value>( Value& aData ) {
     mEmiss += aData;
 }
-```  
+```
 GCAMFusion cannot know what the type of the result of the search is going to be
 ahead of time.  Searches are made at runtime while the code to handle the
 results are generated at compile time.  This is the reason the processData
@@ -467,7 +468,7 @@ If for some reason it does, then the run will abort with an error.
 Next we do something with our results.  To keep things simple for illustrative
 purposes, we'll adjust degree days by a scale factor, but you could in principle
 do anything here, including running another model and passing it the data you
-just received.  
+just received.
 
 ```cpp
     if( aPeriod == modeltime->getFinalCalibrationPeriod() ) {
@@ -492,7 +493,7 @@ for building heating and cooling services:
     ddFilterSteps.push_back( new FilterStep( "degree-days", new IndexFilter( new IntEquals( aPeriod + 1 ) ) ) );
     GCAMFusion<DegreeDaysFeedback> scaleHDD( *this, ddFilterSteps );
     scaleHDD.startFilter( aScenario );
-    
+
     mCurrDDScaler = ( currGlobalEmiss / mBaseYearValue ) * mCDDCoef;
     // only updating the service name filter of our query, we can keep the rest of it the same
     delete ddFilterSteps[ ddFilterSteps.size() - 2 ];
@@ -547,7 +548,7 @@ model to GCAM.  There are three options for doing this.
 
 This method is a little clunky, but it is probably the easiest to get up and
 running in most cases.  You will run your model as a stand-alone process, and
-you will communicate with GCAM via interprocess communication (IPC).  
+you will communicate with GCAM via interprocess communication (IPC).
 
 The easiest form of IPC to get up and running is the
 [named pipe](http://www.linuxjournal.com/article/2156). (The linked article is
@@ -611,7 +612,7 @@ modification.  Your model will not need any particular knowledge of GCAM's
 internal structure and might even be indifferent to whether it is getting data
 from GCAM or from some other source.  The disadvantage of this method is that it
 requires you to make some changes to GCAM, particularly where initializing your
-model is concerend.  
+model is concerend.
 
 This is the method used to implement the one-way coupling between GCAM and
 Hector, so looking at that model may provide some guidance on how to proceed.
@@ -652,15 +653,15 @@ Intended Use of GCAM Fusion
 
 Note that GCAM Fusion gives the users full access to all the internal parameters
 of GCAM for better or for worse.  Just because you are able to change these
-values doesn't mean GCAM will be able to operate normally when doing so. 
+values doesn't mean GCAM will be able to operate normally when doing so.
 Therefore we only reccommend using GCAM Fusion inside of the `IModelFeedback`
 methods.  Making feedbacks during the solution of a model period would require
 additional dependencies and linkages to ensure proper solution and GCAM Fusion
-would entirely circumvent those procedures. 
+would entirely circumvent those procedures.
 As a rule of thumb adjusting the same model perameters which are parsed in GCAM
 XML input files should be fine to modify.  It should **not** be used to
 curcimvent normal object orientened principals or designs.  Object encapsulation
-allows us to ensure some level of consistency. 
+allows us to ensure some level of consistency.
 
 To be clear there are no sofware limitation imposed on the use of GCAM Fusion
 however code proposed for inclusion into the Core GCAM model may be rejected due
@@ -678,7 +679,7 @@ Some Documentation for Filter Steps
 A FilterStep is the object that GCAMFusion uses to search a single GCAM
 container's data vector.  It can optionally specify a data name to match which
 is compared against the `Data::mDataName`.  If the data name in the FilterStep
-is empty it is assumed to match *any* data name.  
+is empty it is assumed to match *any* data name.
 
 The other optional parameter is a [Filter](#filter-objects).  Filter objects are
 valid for search targets that are containers for other objects.  Such containers
@@ -687,7 +688,7 @@ be used to select any single element of the matched container.  If no filter is
 specified, it is assumed to be `NoFilter`, which selects the entire
 container.  Note that if a Filter other than `NoFilter` is set, and the matched
 object is not a container (i.e., has the `SIMPLE` flag, then the match will be
-rejected even if the data name matches.  
+rejected even if the data name matches.
 
 In addition if no data name and no filter is set then not only does this
 FilterStep match all data but it also enables special "descendant step"
@@ -739,17 +740,17 @@ The `parseFilterString` utility allows users to construct filters using a
 convenient text notation, instead of constructing them manually.  The rules for
 constructing the string are:
 
-* Separate steps with `/`.  Each step matches a data name. *E.g.*, `region/sector`. 
-* A filter object can optionally be specified inside square brackets. *E.g.*, `/ghg[NamedFilter,StringEquals,CO2]` 
+* Separate steps with `/`.  Each step matches a data name. *E.g.*, `region/sector`.
+* A filter object can optionally be specified inside square brackets. *E.g.*, `/ghg[NamedFilter,StringEquals,CO2]`
   * All characters in a filter step up to the opening bracket assumed to the
     data name. (`ghg` in the example)
   * All characters in between the '\[' and '\]' (if they exist) are split by
     ','.  In the example the elements would be `NamedFilter`, `StringEquals`,
     and `CO2`.
-    * The first element is the [Filter](#filter-objects)  
+    * The first element is the [Filter](#filter-objects)
     * Unless the filter is a `NoFilter`, there must be a total of three elements.  Note it is an error to use `NoFilter` and supply predicate values as well.
-    * The second element is a predicate [predicate](#predicates).  
-	* The third element is the value to match in the predicate.  
+    * The second element is a predicate [predicate](#predicates).
+	* The third element is the value to match in the predicate.
 * A `//` can be used to cause the next filter step to match an arbitrary number
   of levels (including zero) down the tree.  *E.g.*, `sector//technology`.
 
@@ -766,19 +767,19 @@ C++ classes.
 ### Background and rationale
 
 To accomplish our goals set out earlier for coming up with a high level API for
-implementing two-way feedbacks with GCAM we need to:  
+implementing two-way feedbacks with GCAM we need to:
 * Provide a way to traverse the heirarchical GCAM strucuture from a high level.
 * Avoid forcing users to become familiar with the internals of GCAM, instead
-  leveraging their knowledge of the XML strucuture.  
+  leveraging their knowledge of the XML strucuture.
 * Avoid putting too much burden on GCAM developers to maintain the API when
-  developing new capabilities.  
+  developing new capabilities.
 
 
 Our first challenge is that, while we currently have a mapping from XML name to
 data objects (such as XMLParse, toInputXML, or XMLDB output),  it is mostly a
 manual process replicated in EACH of these cases where it is needed. It would be
 better if we associated that name just one time together with the declartion of
-the variable. 
+the variable.
 
 We can illustrate this with a pseudocode example.  C++ only needs to know what
 type the data member is and what you will call it in your C++ code, and you
@@ -854,7 +855,7 @@ class Sector {
 
 Class inheritance presents an extra challenge.  Each subclass is allowed to
 define its own list of data, which is _cumulative_ with the data defined by its
-class ancestors. 
+class ancestors.
 
 ```cpp
 class PassThroughSector: public Sector {
@@ -866,12 +867,12 @@ class PassThroughSector: public Sector {
         DEFINE_VARIABLE( SIMPLE, string, mMarginalRevenueSector, "marginal-revenue-sector" )
     )
 }
-``` 
+```
 
 In order to treat these subclasses properly, GCAM Fusion will have to splice the
 lists of data from all the classes in the hierarchy together at run
 time.  Therefore, we need additional tags to provide the information it needs to
-do that. 
+do that.
 
 ```cpp
 class PassThroughSector: public Sector {
@@ -938,9 +939,9 @@ struct Data {
      *        instead simply holds reference to some original source.
      */
     virtual ~Data() { }
-    
+
     /*!
-     * \brief The human readable name for this data. 
+     * \brief The human readable name for this data.
      */
     const char* mDataName;
 
@@ -948,12 +949,12 @@ struct Data {
      * \brief A reference to the actual data stored.
      */
     T& mData;
-    
+
     /*!
      * \brief Type for this data item
      */
     typedef T value_type;
-    
+
     /*!
      * \brief A constexpr (compile time) function that checks if a given aDataFlag
      *        matches any of the flags set set in DataFlagsDefinition.
@@ -965,7 +966,7 @@ struct Data {
     static constexpr bool hasDataFlag( const int aDataFlag ) {
         return ( ( aDataFlag & ~DataFlagsDefinition ) == 0 );
     }
-    
+
     /*!
      * \pre All Data definitions must at the very least be tagged as SIMPLE,
      *      ARRAY, or CONTAINER.
@@ -1040,7 +1041,7 @@ These calls are used to wrap all of the class data member definitions.  A user
 must use the `DEFINE_DATA_WITH_PARENT` for any class that is derived from a
 base class.  Even if that base class is abstract with no data members.  The very
 first argument to the `DEFINE_DATA_WITH_PARENT` is the name of the direct
-parent of this subclass for instance: 
+parent of this subclass for instance:
 
 
 ```cpp
@@ -1101,7 +1102,7 @@ class ITechnology: public IParsedComponent, private boost::noncopyable {
 Within the `DEFINE_DATA*` sections after the declarations related to the
 subclass tree navigation are the actual data member definitions.  They are
 listed one after the other separated by commas.  Each definition will use one of
-the following Macros depending on the nature of that data definition: 
+the following Macros depending on the nature of that data definition:
 
 ```cpp
 class Sector {
@@ -1118,13 +1119,13 @@ class Sector {
 
         //! subsector objects
         DEFINE_VARIABLE( CONTAINER, "subsector", mSubsectors, std::vector<Subsector*> ),
-        
+
         //! Sector price by period updated with solution prices.
         DEFINE_VARIABLE( ARRAY, "price", mPrice, objects::PeriodVector<double> ),
 
         //! The discrete choice model used to calculate sector shares.
         DEFINE_VARIABLE( CONTAINER, "discrete-choice-function", mDiscreteChoiceModel, IDiscreteChoice* )
-                
+
     )
 };
 ```
@@ -1165,7 +1166,7 @@ vector&lt;Subsector\*&gt; for instance this allows us to search only the one
 that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
 isn't a vector and just a single object it may still make sense to filter by
 name, such an example would be the climate model
-`/climate-model[@name='hector']`. 
+`/climate-model[@name='hector']`.
 
 
 
@@ -1210,7 +1211,7 @@ be managed for the purposes of partial derivative calculations.  By "state"
 variables we refer to any variable whose value gets set during a call
 to `World::calc`.  Such an example would be `mPrice` of the `Sector` class as the
 price of intermediate sectors are dynamically calculated as the share weighted
-cost of it's competing inputs. 
+cost of it's competing inputs.
 
 
 State variables are of interest since during partial derivative calculations we
@@ -1226,25 +1227,25 @@ from the "base" state.  However such a strategy would essentially double the
 number of computation required to calculate partial derivatives.  Instead GCAM
 has code to track and manage state to be able to quickly reset the "base" state
 when calculating partial derivatives.  However prior to GCAM Fusion this code
-was strewn throughout the code in many places: 
+was strewn throughout the code in many places:
 
 -   Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them.
 -   Any GCAM object that needed to addToSupply/Demand would have to keep an
     additional "state" member variables to make the call to the market
-    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );` 
+    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );`
 -   Any other state would get lazily recalculated by marking at the Activity
     level a "stale" flag.  If a Demand Activity was still marked as stale when
     it needed to recalculate a partial derivative then it would be forced to
     recalculate it's Price Activity.  A strategy which creates extra work and
-    potentially easy to break/get wrong. 
+    potentially easy to break/get wrong.
 
 
-With the changes to central manage state that come along with GCAM Fusion we simplify this to: 
+With the changes to central manage state that come along with GCAM Fusion we simplify this to:
 
 -   The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory.
 -   Any GCAM object that needed to addToSupply/Demand must do so with a
-    `Value` member variable marked as 
-	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );` 
+    `Value` member variable marked as
+	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
 
 
 The new approach is simpler, and it's easier to guarantee we didn't miss
@@ -1253,7 +1254,7 @@ something by using
 running with GCAM Parallel enabled we can allocate a "scratch" space for every
 thread allowing for each of the ~470 partial derivative calculations to be
 calculated completely independently and in parallel from each other.  This gives
-us far greater parallelism than we had previously. 
+us far greater parallelism than we had previously.
 
 
 To make this work, developers must tag the Data definitions in classes they are
@@ -1294,14 +1295,14 @@ store the centrally managed data in a two dimensional array.  The first
 dimension is an entry for each state variable.  The second dimension is for the
 states, where the first is the "base" state and the rest are "scratch".  Without
 parallel enabled there is just 1 scratch state.  However, when parallel
-calculations are enabled there is one scratch space for each thread.  
+calculations are enabled there is one scratch space for each thread.
 
 Since we need to be able to quickly copy over scratch state we need to store the
 data contigiously.  Thus in order to keep several copies of state and quickly
 replace it is important we keep that total number of state variables to a
 reasonable amount.  Currently we observe 300,000 to 700,000 double values
 depending on the model period which is ~ 2 - 5 MB worth of memory per scratch
-space.  
+space.
 
 
 
@@ -1423,7 +1424,7 @@ compiler to set the appropriate type at compile time. If the compiler can't
 figure it out unambigously then it will raise an error. This is particularly
 useful when dealing with templated typedefs and nested or derivived types, where
 the type defininitions can get quite complex. For example, it is easier to write
-and understand: 
+and understand:
 
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
@@ -1434,7 +1435,7 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 }
 ```
 
-Than to write: 
+Than to write:
 
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
@@ -1469,9 +1470,9 @@ template<typename SomeVectorDef>
 functionName( SomeVectorDef aVector ) -> decltype( aVector )::const_iterator {
     return aVector.begin();
 }
-``` 
+```
 
-### Closures 
+### Closures
 
 Closures allow you to construct anonymous functions that capture variables
 from their immediate environment.  They are especially useful in conjunction
@@ -1480,8 +1481,8 @@ with algorithm templates from the `std::algorithm` library, such as `find_if`.
     int nsub = successors_subgraph.count();
     typename groupset_t::iterator it_sg_ex_srcs =
       find_if(subgroups.begin(), subgroups.end(),
-              [nsub] (const groupid_t &g) -> bool {return g.nodes().count() == nsub && g.type == linear;}); 
-```														 
+              [nsub] (const groupid_t &g) -> bool {return g.nodes().count() == nsub && g.type == linear;});
+```
 
 Likewise, when dealing with structures of unknown and differing types, as might
 happen when writing a template class or function, we need to use templated
@@ -1503,7 +1504,7 @@ Helper func(aName);
 bool isNameCoal = boost::fusion::any(vec, func);
 ```
 
-With closures this can be written more simply: 
+With closures this can be written more simply:
 
 ```cpp
 boost::fusion::vector<Sector, Subsector, ITechnology> vec(aSector, aSubsector, aTech);
@@ -1512,19 +1513,19 @@ bool isNameCoal = boost::fusion::any(vec,
         return aClass->getName() == aName;
     }
 );
-``` 
+```
 
 The values in the `[ ]` names the variables from the local scope to be made
 available in the closure.  Including an `&` in front of the variable indicates
 to pass by reference.  Simply providing the `&` indicates make available all
-local variables by reference. 
+local variables by reference.
 
 
 ### Foreach in C++
 
 
 C++ introduced its version of foreach, which reduces the verbosity of looping
-over arrays of data. So instead of: 
+over arrays of data. So instead of:
 
 
 ```cpp

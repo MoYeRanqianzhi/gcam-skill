@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `dev-guide/git.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 - Source provenance: inherited from `v5.3` because `v7.1` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v7.1` as `dev-guide/git.md`.
@@ -24,24 +25,24 @@ for GCAM will be to learn to use it.  Here are some resources for
 getting started with Git:
 
 * The [Pro Git](https://git-scm.com/book/en/v2) book (available for
-  free online).  
+  free online).
   [Chapters 1-3](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
-  cover the most important topics.  
+  cover the most important topics.
 * [Git training videos](https://www.youtube.com/playlist?list=PL0lo9MOBetEHhfG9vJzVCTiDYcbhAiEqL)
-  from GitHub.  
+  from GitHub.
 
 Git can be used entirely through text commands, but there are also
 graphical clients available, which provide a point and click
 interface, along with some visualization capabilities to help you
 understand how various branches relate to each other.
 
-* [Atlassian SourceTree](https://www.sourcetreeapp.com)  
-* [GitHub Desktop](https://desktop.github.com)  
-* [Tortoise Git](https://tortoisegit.org) (Microsoft Windows only)  
+* [Atlassian SourceTree](https://www.sourcetreeapp.com)
+* [GitHub Desktop](https://desktop.github.com)
+* [Tortoise Git](https://tortoisegit.org) (Microsoft Windows only)
 * Many IDEs, including Xcode, Microsoft Visual Studio, PyCharm, and
-  Rstudio, provide tools for working with Git.  
-  
-### GCAM repositories  
+  Rstudio, provide tools for working with Git.
+
+### GCAM repositories
 
 The dev team maintains two GCAM repositories, one internal and one
 public.  The internal one is hosted on PNNL's
@@ -63,7 +64,7 @@ PNNL staff should use the internal server.  Your project lead will be
 able to get you write access to the repository, and after that you can
 push your branch (q.v. [creating branches](#Creating-branches)) to the
 server and open a pull request
-(q.v. [opening pull requests](#Opening-pull-requests)). 
+(q.v. [opening pull requests](#Opening-pull-requests)).
 
 Outside users should use the GitHub repository.  You will have read
 access to this repository, but you won't be able to write to it.
@@ -72,7 +73,7 @@ Instead, if you want to do development, use the
 button on GitHub to create your own copy of the repository.  You will
 be able to create branches in your copy, and you will be able to open
 pull requests from your copy back to the main repository.
-  
+
 ### GCAM Git workflow
 
 GCAM development uses the
@@ -90,10 +91,10 @@ most recent release version of GCAM.  This will usually be the most
 recent commit on the `master` branch.  We have a lot of branches open
 on the GCAM repository at any given time, so it's important to keep
 the branches organized.  We use a hierarchical naming scheme with
-names in the following form:  
+names in the following form:
 ```
 <user>/<branch-type>/<name>
-```  
+```
 The first part is a user identifier, so everyone knows whom to talk to
 if they have questions about the branch.  For branches on Bitbucket,
 use your initials for this part.  For branches on GitHub, use your
@@ -138,15 +139,15 @@ write a change proposal (q.v. [GCAM Review Process](review.md)).
 * Talk to someone on the core development team before you start a new
   development.  Finding out if a feature you have in mind is already
   being developed, or if it conflicts with something that is being
-  developed, before you start can save you a lot of wasted effort. 
+  developed, before you start can save you a lot of wasted effort.
 * Keep your branches small and focused.  Generally, you want a feature
   to be the smallest set of changes that will make sense as a unit.
   Combining two features on separate branches is a lot easier than
   separating them from a single monster branch.
 * Commit early and commit often, but try to make sure that each commit
-  at least builds, and preferably runs without errors.  
-* If you make a mistake, and you haven't pushed the commit yet, use 
-  `git commit --amend` to fix it in the old commit. 
+  at least builds, and preferably runs without errors.
+* If you make a mistake, and you haven't pushed the commit yet, use
+  `git commit --amend` to fix it in the old commit.
 * Where possible, _don't_ merge the target branch into your branch if
   it has had new material added since you branched.  If you need to
   merge the new code to test your code with it, do that on a test

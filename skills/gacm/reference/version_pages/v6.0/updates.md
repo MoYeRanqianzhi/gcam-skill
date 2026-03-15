@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `updates.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 - Source provenance: inherited from `v5.4` because `v6.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v6.0` as `updates.md`.
@@ -13,7 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-GCAM v5.4: DOI link: https://doi.org/10.5281/zenodo.5093192 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)
+GCAM v5.4: [DOI](https://doi.org/10.5281/zenodo.5093192)
 
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
  1. Updated technology costs for electricity and transportation technologies
@@ -26,7 +27,7 @@ Several changes have been made to GCAM since the last release version (v5.3). Th
  8. gcamdata updated to use drake and work with dplyr 1.0.0
  9. Removed unused code
  10. Minor updates and bugfixes
- 11. Optional features (not turned on by default):   
-	- Direct Air Capture  
-	- Ability to specify exogenous floorspace pathways  
+ 11. Optional features (not turned on by default):
+	- Direct Air Capture
+	- Ability to specify exogenous floorspace pathways
 	- Ability to scale CH<sub>4</sub> and N<sub>2</sub>O emissions to EPA inventories

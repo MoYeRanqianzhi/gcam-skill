@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `en_technologies.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -36,11 +37,11 @@ The following section includes a glossary of parameters that characterize techno
 * **non-energy-use-capture-component**: this tag indicates that some portion of the carbon in the input fuel is used in a non-energy application, where it may be not emitted as CO2.
 * non-energy-use-capture-component/**remove-fraction**: the portion of the carbon in the input fuel that is not emitted.
 * non-energy-use-capture-component/**target-gas**: the CO2 name
-* **profit-shutdown-decider**: the profit shutdown decider indicates to decrease the output of technologies installed in prior time periods as the variable (fuel + emissions) costs approach the price of the commodity being produced. The functional form is as follows:  
+* **profit-shutdown-decider**: the profit shutdown decider indicates to decrease the output of technologies installed in prior time periods as the variable (fuel + emissions) costs approach the price of the commodity being produced. The functional form is as follows:
 
 $$
 {OutputFraction}=1-{MaxShutDown}*\frac{ ({Midpoint}+1)^{steepness} }{ ({Midpoint}+1)^{steepness}+({MarginalProfit}+1)^{steepness} }
-$$  
+$$
 
 $$
 {MarginalProfit}=\frac{ {MarginalRevenue}-{VariableCost} }{|VariableCost|}
@@ -48,7 +49,7 @@ $$
 
 * profit-shutdown-decider/**median-shutdown-point**: The midpoint of the profit shutdown function above
 * profit-shutdown-decider/**steepness**: Shape parameter of profit shutdown function above.
-* **s-curve-shutdown-decider**: this is a type of phased retirement function, for technologies whose assumed lifetime is greater than one model timestep. From the installation period to the end of the assumed lifetime, the output is calculated according to the following functional form:  
+* **s-curve-shutdown-decider**: this is a type of phased retirement function, for technologies whose assumed lifetime is greater than one model timestep. From the installation period to the end of the assumed lifetime, the output is calculated according to the following functional form:
 
 $$
 {OutputFraction}=\frac{1}{1+e^{ {steepness}*(t-halflife)} }

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `dev-guide/style.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 - Source provenance: inherited from `v5.3` because `v5.4` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v5.4` as `dev-guide/style.md`.
@@ -34,10 +35,10 @@ This document is organized into five sections:
 * [Recommended Programming Practices](#5-recommended-programming-practices)
 
 The `(C++)` or `(Java)` notation is used to denote language specific information. Within tables, "n/a" denotes "not applicable".
- 
+
 ### 1 Directory Structure
 All custom source and header files should be grouped into relevant topics and placed within the topic directory. Header and source files should be further separated in Include and Source directories within the topic directory. Libraries should be placed in separate locations and added through the IDE. If the project involves mixed-code (i.e. Fortran and C++) it is acceptable to separate the source code by language, with a single folder named after each language. As projects become more complex, this standard is likely to evolve.
- 
+
 ### 2 File Organization
 #### 2.0 File Contents
 Files should be used to organize related code modules, either at the class (for C++ and Java) or function (for C) level. The following table identifies the contents of individual files for each language:
@@ -68,7 +69,7 @@ public methods	|X	|X
 protected methods	|X	|X
 private methods	|X	|X
 functions	|X	|n/a
-  
+
 `(C++)` When its possible to put a needed `#include` line in the source file instead of in the header file, do so.  This will reduce unnecessary file dependencies and save a little compile time.
 
 #### 2.2 Header File Layout
@@ -96,14 +97,14 @@ functions	|X	|n/a
 
 #### 2.3 Header File Guard
 `(C++)` All header files should contain a file guard mechanism to prevent multiple inclusion. This mechanism is implemented as shown by the following lines:
-   
+
 ```cpp
-#ifndef MeaningfulNameH         // first line of the header file  
+#ifndef MeaningfulNameH         // first line of the header file
 #define MeaningfulNameH         // second line of the header file
 
-                       
-                      // body of the header file. 
-          
+
+                      // body of the header file.
+
 #endif  // MeaningfulNameH      // last line of the header file; note comment
 ```
 
@@ -118,7 +119,7 @@ The following standard Copyright Notice will appear first in the prolog in every
 * CONTRACTOR MAKES ANY WARRANTY, EXPRESS OR IMPLIED, OR ASSUMES ANY
 * LIABILITY FOR THE USE OF THIS SOFTWARE. This notice including this
 * sentence must appear on any copies of this computer software.
-* 
+*
 * EXPORT CONTROL
 * User agrees that the Software will not be shipped, transferred or
 * exported into any country or used in any manner prohibited by the
@@ -133,11 +134,11 @@ The following standard Copyright Notice will appear first in the prolog in every
 * (including without limitation Iran, Syria, Sudan, Cuba, and North Korea)
 *     and that User is not otherwise prohibited
 * under the Export Laws from receiving the Software.
-* 
+*
 * Copyright 2011 Battelle Memorial Institute.  All Rights Reserved.
-* Distributed as open-source under the terms of the Educational Community 
+* Distributed as open-source under the terms of the Educational Community
 * License version 2.0 (ECL 2.0). http://www.opensource.org/licenses/ecl2.php
-* 
+*
 * For further details, see: http://www.globalchange.umd.edu/models/gcam/
 *
 */
@@ -157,7 +158,7 @@ The following comment block should appear next.
 * \file filename
 * \ingroup project name
 * \brief Brief description
-* 
+*
 * Detailed description
 * \author Author // Use one /author tag for each author
 * \date $Date$ Leave this exactly as written.
@@ -186,15 +187,15 @@ argument variable |	    aMeaningfulName7 |	     aMeaningfulName7	|     aMeaningf
 const, static final variable |	MEANINGFUL_NAME7|	MEANINGFUL_NAME7|	MEANINGFUL_NAME7
 source file	| .c |	.cpp | 	.java
 header file	| .h| .h |	n/a
- 
-`(Java)` 1 Package names are entirely lower case.  
-`(C++, Java)` 2 Most names are abutted word(s) with first letter of each word capitalized and the remaining letters of each word in lower-case.  
-`(Java)`  3  Interface names start with capital "I". The rest of the name is as in 2.  
-`(C++, Java)` 4  Function/method and object/variable names are abutted word(s) with first letter of each word except the first word capitalized and the remaining letters of each word in lower-case.  The first letter of the first word is lower-case.  
-`(C++, Java)`  5 Global variable names start with a lower-case g;  the rest of the name is as in 2.  
-`(C++, Java)`  6 Member variable names start with a lower-case m; the rest of the name is as in  2.  
-`(C++, Java)`  7 Argument variable names start with a lower-case a; the rest of the name is as in  2.  
-`(C++, Java)`  8 Names are entirely in capital letters; words are separated with an underscore.  
+
+`(Java)` 1 Package names are entirely lower case.
+`(C++, Java)` 2 Most names are abutted word(s) with first letter of each word capitalized and the remaining letters of each word in lower-case.
+`(Java)`  3  Interface names start with capital "I". The rest of the name is as in 2.
+`(C++, Java)` 4  Function/method and object/variable names are abutted word(s) with first letter of each word except the first word capitalized and the remaining letters of each word in lower-case.  The first letter of the first word is lower-case.
+`(C++, Java)`  5 Global variable names start with a lower-case g;  the rest of the name is as in 2.
+`(C++, Java)`  6 Member variable names start with a lower-case m; the rest of the name is as in  2.
+`(C++, Java)`  7 Argument variable names start with a lower-case a; the rest of the name is as in  2.
+`(C++, Java)`  8 Names are entirely in capital letters; words are separated with an underscore.
 
 #### 3.1 Descriptive Names
 Names should be readable and self-documenting. Abbreviations and contractions are discouraged. Shorter synonyms are allowed when they follow common usage within the domain.
@@ -206,14 +207,14 @@ All names should begin with a letter. Individual words in compound names are dif
 Filenames should only contain one period, to separate the file extension.
 
 #### 3.4 Function Names
-Function names should preferably be an action verb. Boolean-valued functions (those that have two possible return values) should use the "is" prefix as in `isEmpty()`.  
+Function names should preferably be an action verb. Boolean-valued functions (those that have two possible return values) should use the "is" prefix as in `isEmpty()`.
 `(C++)` All functions must be prototyped, with the prototypes residing in header files.
 
 #### 3.5 Namespaces
-Namespace collision should be minimized without introducing cryptic naming conventions by using the C++ namespace or Java package constructs.  
+Namespace collision should be minimized without introducing cryptic naming conventions by using the C++ namespace or Java package constructs.
 `(Java)` Create a new Java package to group classes of related functionality. Package source and class files then reside in a convenient hierarchical directory structure that maps directly to the package name.
- 
- 
+
+
 ### 4 Style Guidelines
 The primary purpose of style guidelines is to facilitate long-term maintenance. During maintenance, programmers who are usually not the original authors are responsible for understanding source code from a variety of applications. Having a common presentation format reduces confusion and speeds comprehension. Therefore, the following guidelines are specified based on the principles of good programming practice and readability. In the cases where two or more equally valid alternatives are available, one was selected to simplify specification. In the future, automated tools may be used to apply style guidelines to source code files.
 
@@ -342,7 +343,7 @@ Conditional statements found in `if`, `while`, and `do` statements should be exp
         }
         bool value = getValue();           // could be RWBoolean too.
         if ( !value ) {            	     // right
-                doSomethingElse();         
+                doSomethingElse();
         }
 ```
 
@@ -358,7 +359,7 @@ Conditional statements found in `if`, `while`, and `do` statements should be exp
 `(C++)` For both source and header files, #include statements should be grouped together at the top of the file after the prolog. Includes should be logically grouped together, with the groups separated by a blank line. System includes should use the `<file.h>` notation, and all other includes should use the `"file.h"` notation. Path names should never be explicitly used in `#include` statements (with the exception of vendor library files such as Motif), since this is inherently non-portable. For example:
 ```cpp
         #include <stdlib.h>                     // right
-        #include <stdio.h>                      //                      
+        #include <stdio.h>                      //
         #include <Xm/Xm.h>                      //
         #include "meaningfulname.h"             //
 
@@ -377,7 +378,7 @@ Each variable should be individually declared on a separate line. Variables may 
         int     c;              //
         double  d;              //
         double  e;              //
-        double  a;              // right 
+        double  a;              // right
 
         double  d;              // acceptable - not grouped by type
         int     b;              //
@@ -388,11 +389,11 @@ Each variable should be individually declared on a separate line. Variables may 
                                 // on separate lines
 
         int*    a,              // wrong - not individually declared
-                b,              //      
+                b,              //
                 c;              //
 ```
 
-The two preceding examples are prone to error; notice that a is declared as a pointer to integer and b and c are declared as integers, not as pointers to integers. 
+The two preceding examples are prone to error; notice that a is declared as a pointer to integer and b and c are declared as integers, not as pointers to integers.
 
 ##### 4.5.2 External Variable Declaration
 `(C++)` All external variables should be placed in header files. In general the use of global variables is discouraged. Use the following method to allow external variables to be created only once while using a single declaration. In the header file which declares the global variable, use a flag to cause the default action on inclusion to be referencing of an externally created variable. Only in the source file that wants to actually create the variable will this flag be defined.
@@ -401,7 +402,7 @@ In the header file `MeaningfulName.h`,
         #ifdef MeaningfulNameInit    // the flag is called MeaningfulNameInit
         #define EXTERN               // create the variable (only in main.cpp)
         #else
-        #define EXTERN extern         // just a reference (default) 
+        #define EXTERN extern         // just a reference (default)
         #endif
         EXTERN ErrorLogger errorLog;
         #undef EXTERN
@@ -430,9 +431,9 @@ Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric cons
 `(C++)` The enum type name and enumerated constants should each reside on a separate line. Constants and comments should be aligned vertically. Following is an example of a valid enum declaration:
 ```cpp
         enum CompassPoints {    // Enums used to specify direction.
-                NORTH = 0,      // 
-                SOUTH = 1,      // 
-                EAST  = 2,      // 
+                NORTH = 0,      //
+                SOUTH = 1,      //
+                EAST  = 2,      //
                 WEST  = 3       //
         };
 ```
@@ -458,7 +459,7 @@ Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric cons
                 ~Value();                       // Destructor.
                 void setValue( int newValue );  // Set value.
                 int getValue();                 // Get value.
- 
+
         protected:
                 void incrementValue();          // Increment value.
 
@@ -466,7 +467,7 @@ Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric cons
                 int value;                      // The value.
         };
 ```
- 
+
 ### 5 Recommended Programming Practices
 
 #### 5.1 Placement of Declarations
@@ -487,7 +488,7 @@ Use constants instead of literal values wherever possible. For example:
 const double PI = 3.141259;                     // right
 const char APP_NAME = "ACME Spreadsheet 1.0";   // right
 
-area = 3.141259 * radius * radius;              // not recommended 
+area = 3.141259 * radius * radius;              // not recommended
 cout << "ACME Spreadsheet 1.0" << endl;         // not recommended
 ```
 
@@ -496,12 +497,12 @@ In general, explicitly initialize all variables before use.
 It is very strongly recommended that you initialize all pointers either to `0` or to an object.  Do not allow a pointer to have garbage in it or an address in it, that will no longer be used.
 
 #### 5.7 Constructs to Avoid
-`(C++)`  
-The use of `#define` constants is strongly discouraged, using `const` is recommended instead.  
-The use of `#define` macros is strongly discouraged, using inline functions is recommended instead.  
-The use of `typedef` is discouraged when actual types such as `class`, `struct`, or `enum` would be a better choice.  
-The use of `extern` (e.g., global) variables is strongly discouraged. The exception is for programs which benefit from having a small number of object pointers accessible globally via `extern`.  
-The use of `goto` statements is not allowed.  
+`(C++)`
+The use of `#define` constants is strongly discouraged, using `const` is recommended instead.
+The use of `#define` macros is strongly discouraged, using inline functions is recommended instead.
+The use of `typedef` is discouraged when actual types such as `class`, `struct`, or `enum` would be a better choice.
+The use of `extern` (e.g., global) variables is strongly discouraged. The exception is for programs which benefit from having a small number of object pointers accessible globally via `extern`.
+The use of `goto` statements is not allowed.
 
 #### 5.8 Macros
 `(C++)` All arguments to macros should be enclosed in parentheses to eliminate ambiguity on expansion. For example:
@@ -543,18 +544,18 @@ void C::function( int p_notChanged, int& p_result );  // pass by reference
 `(C++)` When overriding virtual functions in a new subclass, explicitly declare the functions virtual. Although not required by the compiler, this aids maintainability by making clear that the function is virtual without having to refer to the base class header file.
 
 #### 5.16 Const Member Functions
-`(C++)` It is recommended that all member functions (example:  `func(...) const {...}`) which do not modify the member variables of an object be declared `const`. This allows these functions to be called for objects which were either declared as `const` or passed as `const` arguments.  
+`(C++)` It is recommended that all member functions (example:  `func(...) const {...}`) which do not modify the member variables of an object be declared `const`. This allows these functions to be called for objects which were either declared as `const` or passed as `const` arguments.
 `(C++)` It is recommended that all member function parameters be declared const (example:  `func(const int i){...}`) when possible.
 
 #### 5.17 Referencing Non-C++ Functions
 `(C++)` Use the `extern "C"` mechanism to allow access to non-C++ (not just C) functions. This mechanism disables C++ name mangling, which allows the linker to resolve the function references. For example:
 ```cpp
 extern "C" {
-    void aFunction();           // single non-C++ function prototype 
+    void aFunction();           // single non-C++ function prototype
 }
 
 extern "C" {
-#include "functions.h"          // library of non-C++ functions 
+#include "functions.h"          // library of non-C++ functions
 }
 ```
 
@@ -571,7 +572,7 @@ extern "C" {
 `(C++,Java)` Where possible, move object declarations and instantiations out of loops, using assignment to change the state of the object at each iteration. This minimizes overhead due to memory allocation from the heap.
 
 #### 5.22 Encapsulation
-`(C++,Java)` Instance variables of a class should not be declared `public`. Open access to internal variables exposes structure and does not allow methods to assume values are valid.  
+`(C++,Java)` Instance variables of a class should not be declared `public`. Open access to internal variables exposes structure and does not allow methods to assume values are valid.
 `(C++)`  Putting variables in the private section is preferable over the protected section, for more complete encapsulation.  Use get and set methods in either protected or public if needed.
 
 #### 5.23 Default Constructor
@@ -582,7 +583,7 @@ extern "C" {
 
 #### 5.25 Exception Handling
 `(C++)`  In general, avoid exception handling.  It is sometimes needed for third party code, but in general, use return values instead.  If you need it, document the reason for using it.
- 
+
 -----
 Additional Coding Standards and Style Guides
 For additional background and suggestions, there are a number of coding standard documents available on the Web:

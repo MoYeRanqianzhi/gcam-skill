@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.4`.
 - Source root: `gcam-doc/v4.4`
 - Source path: `aglu.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -39,7 +40,7 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 
 ### Outputs
 
-GCAM's outputs include variables related to production, consumption, prices, land, carbon, and other emissions. 
+GCAM's outputs include variables related to production, consumption, prices, land, carbon, and other emissions.
 
 <dl>
 <dt>Production</dt> <dd>Outputs include production of all crops and
@@ -76,14 +77,14 @@ deforestation, and savannah burning. Livestock emissions are
 calculated annually at the 32 region level. All other emissions are
 calculated annually at the 283 region level.</dd>
 </dl><br/>
-  
+
 ## Economic Modeling Approach
 
 In this section, we describe and discuss the approach we have developed for the economic modeling of agriculture, forestry, and land use in the Global Change Assessment Model (GCAM). We discuss the math determining land allocation in the model, as well as its interpretation. We explain the land nesting strategy and its implications, the math used in calibrating the model, and the types of data required for calibration (the data itself is discussed in later sections). We finish this section with an explanation and discussion of methods for introducing new crops and technologies into the competition beyond the calibration year. More information, including a comparison to other models, is available in Wise et al. (2014).
 
 <a name="logit"></a>
 
-### Land Sharing Approach 
+### Land Sharing Approach
 
 Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The logit approach was developed by McFadden (1974) to describe the distribution of consumer choice, but a similar mathematical approach works well here for our purposes. The interpretation of this sharing system in GCAM is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
 
@@ -97,14 +98,12 @@ The strategy for nesting competing land uses and nesting nests of competing land
 
 Before discussing our nesting approach, it is useful to consider the space of possible nesting strategies. One approach is that of a single nest: the assumption that the land regions are small enough that all competing options are equally substitutable.  This assumption implies that it is just as easy to switch from forest to wheat as it is to switch from corn to wheat. However, this conversion would not happen unless wheat was more profitable than forest or corn.  With a high enough logit exponent for this single nest, the land sharing approaches an optimal “winner-take-all” result in that all land within a region will be dedicated to the most profitable product in that region. A single nest with a high exponent represents the extreme end of unconstrained optimization in which there is no transition cost or other hurdle for switching from one land type to another.
 
-The other extreme is that of no substitution. This would be accomplished with near zero or zero logit exponents, whether in a single nest or multiple nests. This implies that either it is physically impossible or the transition costs are too high to allow switching from one land type to another. Currently, in GCAM, we use zero logit exponents in a very limited number of situations, where we do not want any substitution (e.g., we do not allow cropland to expand into desert or tundra).  However, in most situations, we employ positive logit exponents and allow economics to dictate the land allocation within a region. 
+The other extreme is that of no substitution. This would be accomplished with near zero or zero logit exponents, whether in a single nest or multiple nests. This implies that either it is physically impossible or the transition costs are too high to allow switching from one land type to another. Currently, in GCAM, we use zero logit exponents in a very limited number of situations, where we do not want any substitution (e.g., we do not allow cropland to expand into desert or tundra).  However, in most situations, we employ positive logit exponents and allow economics to dictate the land allocation within a region.
 
 Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with an AEZ subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
 
 
-Image reference: AgLU Land Nesting Diagram (gcam-figs/AgLUTree.bmp)<br/>
 Figure 1: AgLU Land Nest
-{: .fig}
 
 The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that several crops are included explicitly in the CropLand node, and the grouping of “AllOtherCrops” is simply a convenience for this figure.
 
@@ -113,23 +112,23 @@ more or less difficult by choosing lower or higher logit parameters.
 
 ## Calibration
 
-While the profit-based logit land sharing is fairly straightforward, it must be calibrated to match historical data on land use shares, crop yields, costs, and land prices in the base year. The calibration method is algebraically simple, but it can be difficult conceptually. The aim of the calibration is to infer distributions and underlying parameters from the historical data. Based on the logit model chosen, including nesting and exponents, underlying economic values of the various land types are implied from the real world shares of each land. 
+While the profit-based logit land sharing is fairly straightforward, it must be calibrated to match historical data on land use shares, crop yields, costs, and land prices in the base year. The calibration method is algebraically simple, but it can be difficult conceptually. The aim of the calibration is to infer distributions and underlying parameters from the historical data. Based on the logit model chosen, including nesting and exponents, underlying economic values of the various land types are implied from the real world shares of each land.
 
-For calibration, base year data sets must include values of physical results such as land use, agriculture and forest production, demand for all agricultural and forestry products, product yields per unit of land, and other data such as carbon densities. The calibration data also needs to include product prices and land prices. 
+For calibration, base year data sets must include values of physical results such as land use, agriculture and forest production, demand for all agricultural and forestry products, product yields per unit of land, and other data such as carbon densities. The calibration data also needs to include product prices and land prices.
 
 The approach to calibration is to solve for parameters that adjust observed profit rates, which are based on base year data, such that they equal the potential average profit rates implied by base year shares and the assumed average price of unmanaged land. The potential average profit rates implied by the shares can be interpreted as the average profit if all land were devoted to that use. Here, we will refer to these rates as the calibration profit rates. The calibration parameters, which we have called calibration profit scalers in the code, should not be confused with the logit share weights that we use in the energy model. They serve much the same function, but their derivation is more complicated, and they should not be assumed to be transformable. Unlike the share weights, the absolute values of the calibration profit scalers have meaning, not just their relative values. Therefore, they cannot be transformed by indexing them around a value of one for convenience like we can do with the share weights in the energy sector.
 
-In future model periods, the calibration profit scalers are used to adjust the future profit rates in the logit sharing and profit equations. The calibration routine ensures that the future is grounded in history. If prices, demand, and crop yields were unchanged in future modeling periods, shares, profits, and land allocations would equal the base year values. When future conditions evolve in the model such that costs, prices, yields, and other factors deviate from historical values, shares and profits will also change from their base year values. 
+In future model periods, the calibration profit scalers are used to adjust the future profit rates in the logit sharing and profit equations. The calibration routine ensures that the future is grounded in history. If prices, demand, and crop yields were unchanged in future modeling periods, shares, profits, and land allocations would equal the base year values. When future conditions evolve in the model such that costs, prices, yields, and other factors deviate from historical values, shares and profits will also change from their base year values.
 
 ## Variable Costs
 
-Variable costs are defined here as the non-land costs of crop production, per-unit of crop.  Variable costs set hard price floors in the model: production goes to zero when price is less than or equal to the variable costs. As a result, these costs should be interpreted as pure minimum or shut-down costs. They should be just the cost of materials and hired labor for producing a crop or product with a given technology in a subregion. 
+Variable costs are defined here as the non-land costs of crop production, per-unit of crop.  Variable costs set hard price floors in the model: production goes to zero when price is less than or equal to the variable costs. As a result, these costs should be interpreted as pure minimum or shut-down costs. They should be just the cost of materials and hired labor for producing a crop or product with a given technology in a subregion.
 
 Value-added categories should not be included in the variable costs. In addition, variable costs should not include land costs, as the model is based on allocating land on per unit profits. They should also not include cost categories that represent return to capital or profits. We can assume these costs are captured in the distribution of profit rates behind the logit. Otherwise, consider that if these costs are put into our variable costs, ultimately all marginal profit rates (from economic theory) would be zero and provide no value to our modeling. In addition, accounting costs such as depreciation should not be part of variable costs.
 
 Data on labor costs can be difficult to use, since some farm wage categories are income that the farmer either earns or expects to be paid and thus, some labor costs are really profit to the land-owner (i.e., farmer). Therefore, we have restricted our variable cost data to include what is labeled as “hired labor”.
 
-Note that introducing variable costs that differ by region can result in unintended consequences. Different variable costs create different price floors, which can result in a region ceasing production of a particular product if technical change lowers the global product price significantly (i.e., to a point where the variable cost is less than the price received). 
+Note that introducing variable costs that differ by region can result in unintended consequences. Different variable costs create different price floors, which can result in a region ceasing production of a particular product if technical change lowers the global product price significantly (i.e., to a point where the variable cost is less than the price received).
 
 The main points can be summarized as:
 
@@ -141,7 +140,7 @@ The main points can be summarized as:
 
 The calibration process can accommodate gaps or imprecisions of the price and cost data for the crops and land uses in base year calibration data set. Changing the values of inputs such as land prices, product prices, and product variable costs will change the values of the calibration parameters internal to the model. Algebraically, the calibration parameters adjust or compensate to make the profit rates consistent with the base year shares and crop yields. In most situations, these changes will not affect model results either in the calibration year or future years. The calibration is to an extent self-correcting.
 
-However, there are a few important exceptions to this rule.  First, as previously noted, variable costs introduce price floors and thus, increasing these values may result in some regions ceasing production in future years.  Second, exceptions occur when we introduce crops, technologies, or policies that are not part of the base year calibration data set. One example is when new biomass crops are introduced. To introduce a new crop or a new crop technology, the model has to evaluate how its profitability compares to all other crops and uses of land. In this case, the actual values of the prices and costs that determine profits do matter. In the biomass example, it is important not only to have the variable costs and yields of the biomass correct, we also have to have the magnitudes of the profits of the competing crops correct for the competition to be valid. That means we have to have the prices and costs for all of the crops correct. Calibration cannot compensate for this problem. 
+However, there are a few important exceptions to this rule.  First, as previously noted, variable costs introduce price floors and thus, increasing these values may result in some regions ceasing production in future years.  Second, exceptions occur when we introduce crops, technologies, or policies that are not part of the base year calibration data set. One example is when new biomass crops are introduced. To introduce a new crop or a new crop technology, the model has to evaluate how its profitability compares to all other crops and uses of land. In this case, the actual values of the prices and costs that determine profits do matter. In the biomass example, it is important not only to have the variable costs and yields of the biomass correct, we also have to have the magnitudes of the profits of the competing crops correct for the competition to be valid. That means we have to have the prices and costs for all of the crops correct. Calibration cannot compensate for this problem.
 
 The same would be true for introducing new technologies for growing existing crops that are part of the calibration data set. For example, if we introduce a new management technique for growing corn to compete with the existing technique, the variable costs for both the new technology and the existing technology would have to be correct for the competition to be valid.
 
@@ -165,7 +164,7 @@ to explain patterns in the study of international production and trade
 regions will produce more of what they are better at and import more
 of what they are not as good at producing.
 
-This appears obvious, but the distinction between comparative advantage and an “absolute” advantage is often confused. First, consider a situation of two crop products, Crop 1 and Crop 2 produced in two countries, A and B. The solution is trivial if Country A produces Crop 1 better (at a higher profit) than Country B while Country B produces Crop 2 better than Country A. In this example, Country A will tend to produce more of Crop 1 to export to Country B while importing more of Crop 2 from Country B, and the world is better off from the trade. Although the principle of comparative advantage is satisfied here, the fact that it also a situation of absolute advantage trivializes the concept and is not fully explanatory. 
+This appears obvious, but the distinction between comparative advantage and an “absolute” advantage is often confused. First, consider a situation of two crop products, Crop 1 and Crop 2 produced in two countries, A and B. The solution is trivial if Country A produces Crop 1 better (at a higher profit) than Country B while Country B produces Crop 2 better than Country A. In this example, Country A will tend to produce more of Crop 1 to export to Country B while importing more of Crop 2 from Country B, and the world is better off from the trade. Although the principle of comparative advantage is satisfied here, the fact that it also a situation of absolute advantage trivializes the concept and is not fully explanatory.
 
 To clarify the distinction between absolute and comparative advantage, consider a more realistic situation in which Region A has higher yields and lower costs of producing both Crop 1 and Crop 2 than Region B: Region A has an absolute advantage over Region B in both crops. Does that mean Region A will grow both crops and Region B will grow nothing?  Clearly not. Assume that Crop 1 has a much higher value or price than Crop 2. The comparative advantage solution is that will be that Region A will maximize it profits by growing more of Crop 1 and exporting it to Region B. This will leave a market opportunity for Region B to specialize in Crop 2 and export it to Region A. Region B has a comparative advantage in Crop 2 and thus have higher profits than if it grew Crop 1, for which it would not be competitive with Region A.
 
@@ -177,7 +176,7 @@ Although GCAM is not structured as an optimization model, the allocation of prod
 
 ## Terrestrial Carbon Approach
 
-Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.  
+Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.
 
 ### Vegetation Carbon
 
@@ -201,11 +200,11 @@ With this policy, we can set aside some land, removing it from economic competit
 
 ### Valuing Carbon in Land
 
-In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.  
+In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
 
 ### Bioenergy Constraints
 
-We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. 
+We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met.
 
 ### Land expansion costs/constraints
 
@@ -219,7 +218,7 @@ We have also included code to implement a crop technology that plants trees as d
 
 ## References
 
-Beach, Robert and Bruce McCarl. 2010. US Agricultural and Forestry Impacts of the Energy Independence and Security Act: FASOM Results and Model Description. RTI International. Research Triangle Park, NC. 
+Beach, Robert and Bruce McCarl. 2010. US Agricultural and Forestry Impacts of the Energy Independence and Security Act: FASOM Results and Model Description. RTI International. Research Triangle Park, NC.
 
 Birur, Dileep K., Thomas W. Hertel, and Wallace E. Tyner, 2008. Impact Of Biofuel Production On World Agricultural Markets: A Computable General Equilibrium Analysis. GTAP Technical Paper No. 53. https://www.gtap.agecon.purdue.edu.
 
@@ -249,11 +248,11 @@ FAPRI, 2011. FAPRI Models. http://www.fapri.iastate.edu/models/.  Retrieved Nove
 
 GTAP, 2011. About GTAP: Center for Global Trade Analysis. https://www.gtap.agecon.purdue.edu/about/center.asp. Retrieved November 9, 2011.
 
-Gurgel, A., J. Reilly, S. Paltsev (2007). “Potential Land Use Implications of a Global Biofuels Industry.” Journal of Agricultural and Food Industrial Organization 5(2), 1202. 
+Gurgel, A., J. Reilly, S. Paltsev (2007). “Potential Land Use Implications of a Global Biofuels Industry.” Journal of Agricultural and Food Industrial Organization 5(2), 1202.
 
 Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and Bond-Lamberty, B. P.: A simple object-oriented and open-source model for scientific and policy analyses of the global climate system – Hector v1.0, Geosci. Model Dev., 8, 939-955, doi:10.5194/gmd-8-939-2015, 2015.
 
-Havlík, P., Schneider, A.U., Schmid, E., Böttcher, H., Fritz, S., Skalský, R., Aoki, K., de Cara, S., Kindermann, G., Kraxner, F., Leduc, S., McCallum, I., Mosnier, A, Sauer, T. and Obersteiner, M. (2011). Global land-use implications of first and second generation biofuel targets. Energy Policy 39: 5690-5702. 
+Havlík, P., Schneider, A.U., Schmid, E., Böttcher, H., Fritz, S., Skalský, R., Aoki, K., de Cara, S., Kindermann, G., Kraxner, F., Leduc, S., McCallum, I., Mosnier, A, Sauer, T. and Obersteiner, M. (2011). Global land-use implications of first and second generation biofuel targets. Energy Policy 39: 5690-5702.
 
 Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.
 

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `supply_water.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -53,7 +54,7 @@ Desalinated water is available as source of freshwater from purified saline wate
 
 ### Water distribution
 
-Conveyance losses and improvements to water distribution efficiencies are included in the water distribution sectors. Conveyance losses for irrigated water use has been included and differentiated for each GCAM region. Conveyance losses/efficiencies for GCAM regions are derived from country level data from [Rohwer et al. 2007](#rohwer2007) and are the weighted mean of the original country level data weighted by irrigated harvested area. 
+Conveyance losses and improvements to water distribution efficiencies are included in the water distribution sectors. Conveyance losses for irrigated water use has been included and differentiated for each GCAM region. Conveyance losses/efficiencies for GCAM regions are derived from country level data from [Rohwer et al. 2007](#rohwer2007) and are the weighted mean of the original country level data weighted by irrigated harvested area.
 
 ### Water markets
 
@@ -63,7 +64,7 @@ Water supplies and demands at each basin are balanced through a market mechanism
 
 The water distribution sector for each demand category includes the cost of water transport, distribution and/or treatment and other adjustments such as subsidies, in addition to the resource cost of water. Thus, water prices for each demand category is differentiated. This framework provides a covenient location for including water subsidies or reduced water costs from allocation rights for irrigated agriculture. In GCAM, the price of water for agriculture use has been reduced to 5% of the general water price (see `water.IRR_PRICE_SUBSIDY_MULT` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R)). This factor is based on an OECD report on water pricing ([OECD 2009](#oecd2009)) which indicates that industrial and household water users pay more than 100 times as much as agriculture users. In some regions, the marginal cost of irrigated water use is zero. Crop growth requires substantial water inputs and the profitability of agricultural relies on the low cost of water provisions. Without this subsidy, historical calibration of agriculture production in GCAM is not possible for historically water scarce regions with high cost of water. Water subsidies for irrigated agriculture have not been differentiated by region and basin, and improved understanding of regional differences in water subsidies and their impact on agriculture production remain for future work.
 
-## Equations 
+## Equations
 
 To be completed...
 

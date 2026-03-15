@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `common_assumptions.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -106,8 +107,8 @@ We have represented the water at the scale of major river basins. Currently 235 
 39|Dnieper|89|Indus|139	|Peninsula Malaysia|189|Australia-East Coast
 40|St Lawrence|90|Farahrud|140|Krishna|190|Africa-Indian Ocean Coast
 41|France-West Coast|91|Baja California|141|Andaman-Nicobar Islands|191|Australia-West Coast
-42|Gobi Interior|92|Plateau of Tibet Interior|142|Africa-West Coast|192|Sao Francisco 
-43|Amur|93|Red Sea-East Coast|143|Caribbean Coast|193|Australia-Interior 
+42|Gobi Interior|92|Plateau of Tibet Interior|142|Africa-West Coast|192|Sao Francisco
+43|Amur|93|Red Sea-East Coast|143|Caribbean Coast|193|Australia-Interior
 44|Loire|94|Arabian Peninsula|144|Africa-North Interior|194|Orange
 45|Caspian Sea Coast|95|Dead Sea|145|India East Coast|195|Uruguay-Brazil-South Atlantic Coast
 46|Seine|96|Mexico-Northwest Coast|146|Chao Phraya|196|Namibia-Coast
@@ -120,7 +121,7 @@ We have represented the water at the scale of major river basins. Currently 235 
 
 ### Global Land Units
 
-For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5+ switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Moirai](https://github.com/JGCRI/moirai), described in Di Vittorio et al. (2016). 
+For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5+ switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Moirai](https://github.com/JGCRI/moirai), described in Di Vittorio et al. (2016).
 
 
 ## Temporal Resolution
@@ -131,7 +132,7 @@ The GCAM data system can produce such data sets annually beginning in 1971. Curr
 
 ### Future Years
 
-Currently, GCAM models the future from 2020 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R). 
+Currently, GCAM models the future from 2020 to 2100 in 5 year time steps. The time step is variable and can be changed in [the data system](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R).
 
 ## Economic Choice
 

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `toc.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -32,11 +33,9 @@ energy system. An important feature of the GCAM architecture is that
 the GCAM terrestrial carbon cycle model is embedded within the
 agriculture-land-use system model.
 
-Image reference: untitled image (images/Figure_1.png "Figure 1.png")
 
 ###### Figure 1: Overall structure of the general structure of the energy system of the GCAM
 
-Image reference: untitled image (images/Figure_2.png "Figure 2.png")
 
 ###### Figure 2: Overall structure of the agriculture-land-use module of the GCAM
 
@@ -68,7 +67,6 @@ and captured CO2 explicitly. CO2 storage reservoirs are disaggregated
 by region, type and grade. Similarly nuclear waste storage represents
 a potential limit on cumulative deployment and reactor choice.
 
-&lt;br&gt;Image reference: untitled image (images/Figure_3.png "fig:Figure 3.png")
 
 ###### Figure 3: Overview of energy production and transformation in GCAM.
 

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `details_energy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -24,17 +25,11 @@ This page provides more detailed explanations of the descriptions provided in th
 
 ## Resources
 
-### Depletable Resources 
+### Depletable Resources
 
 The figures below show some illustrative examples of supply curves used within GCAM.
 
-Image reference: html-image (gcam-figs/oil_supply_curve.png)
-{: .fig}
-Image reference: html-image (gcam-figs/gas_supply_curve.png)
-{: .fig}
-Image reference: html-image (gcam-figs/coal_supply_curve.png)<br/>
 **Illustrative examples of supply curves and total supplies for fossil resources in GCAM**
-{: .fig}
 
 
 #### Representation of unconventional oil as a technology within crude oil
@@ -65,17 +60,13 @@ In energy transformation sectors, the output unit and input unit are EJ (per yea
 
 In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
 
-Image reference: html-image (gcam-figs/energy_system_structure.jpg)<br/>
 **Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.**
-{: .fig}
 
 ### Electricity
 
 The nesting structure of the electric sector is shown in the figure below, with a focus on one repesentative technology.
 
-Image reference: html-image (gcam-figs/elec_structure.png)<br/>
 **Schematic showing the nesting structure of the electric sector, with levels for choices between fuels, technologies, and cooling systems. Note that this is a simplification of the actual structure used, which includes "pass-through" sectors.**
-{: .fig}
 
 Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) are documented in [Inputs for Modeling Supply](inputs_supply.md#energy). GCAM also includes the water inputs to electricity generation, in a third nest, as shown in the figure above. That is, within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types; this is documented in the [water demand section](demand_water.md).
 
@@ -83,17 +74,13 @@ Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factor
 
 The structure of refining in the broader energy system is shown in the following figure, with example input-output coefficients.
 
-Image reference: html-image (gcam-figs/refining.png)<br/>
 **Structure of refining sector and associated products within the energy system, with sample input-output coefficients shown. Electricity and natural gas inputs to oil refining not shown for simplicity.**
-{: .fig}
 
 #### Oil Refining
 
 In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity. This is depicted graphically below, with typical input-output coefficients shown.
 
-Image reference: html-image (gcam-figs/oil_refining.png)<br/>
 **Oil refining production technology, with example coefficients.**
-{: .fig}
 
 #### Biomass Liquids
 
@@ -120,9 +107,7 @@ The biomass liquids subsector includes up to eight technologies in each region, 
 
 The structure of the natural gas supply and distribution in GCAM is shown below:
 
-Image reference: html-image (gcam-figs/gas_processing.png)<br/>
 **Gas processing and distribution, with example coefficients.**
-{: .fig}
 
 Note that in this structure, biogas and coal gas compete for market share of the "gas processing" market, which is upstream of the gas pipeline and distribution sectors. This structure is intended to allow for substitution away from natural gas as the feedstock for the gaseous fuels used by the energy transformation and consumption sectors, as determined by the relative economics.
 
@@ -133,25 +118,19 @@ Note however that the following sectors consume natural gas upstream of the netw
 
 In regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below.
 
-Image reference: html-image (gcam-figs/district_heat.png)<br/>
 **District heating structure, with example input-output coefficients shown.**
-{: .fig}
 
 As shown, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors. This simplistic representation reflects the lack of data on district heating globally, and that the delineation of what constitutes a "third party sale" as opposed to on-site use is often unclear. This is illustrated further in the graphic below.
 
-Image reference: html-image (gcam-figs/IEA_pulp_paper.png)<br/>
 **Energy flows in the pulp and paper industries, illustrating the delineation between energy producers and energy consumers. These components may or may not be located on the same property, or owned by the same entity, and the physical flows themselves often include backflows of combustible wastes from the "consumers" to the "producers". This complicates the accounting of what constitutes a "third party" sale of heat. Source: [IEA (2007)](energy.md#iea2007)**
-{: .fig}
 
 Another accounting issue that pertains to district heating is that the regions where it is represented also tend to have a large share, up to 100% in some years, of their district heat produced at "main activity CHP plants", which are modeled in the electricity sector in GCAM (see  [IEA Mapping](details_inputs.md#mapping-the-iea-energy-balances)). These are combined heat and power facilities whose primary purpose is sale of heat and/or electricity to third parties. In regions where heat is modeled as an energy commodity, the heat output of these main activity CHP plants is treated as a secondary output, and added to the total district heat produced in the given region. In future years, any new installations in the power sector are not assigned this secondary output of district heat; over time, these two sectors are modeled separately.
 
 ### Hydrogen
 
-Structure of hydrogen transmission, distribution and end use, with illustrative input-output coefficients (GJ of energy input per GJ of hydrogen) showing the approximate energy requirements of each stage of hydrogen compression, refrigeration, transportation, and storage, is shown in the figure below. 
+Structure of hydrogen transmission, distribution and end use, with illustrative input-output coefficients (GJ of energy input per GJ of hydrogen) showing the approximate energy requirements of each stage of hydrogen compression, refrigeration, transportation, and storage, is shown in the figure below.
 
-Image reference: html-image (gcam-figs/hydrogen.png)<br/>
 **Hydrogen structure, with example input-output coefficients shown.**
-{: .fig}
 
 The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
 
@@ -164,24 +143,18 @@ Hydrogen produced centrally can be distributed through two means: pipeline and l
 ### Fossil fuel trade
 
  The figure below depicts the fossil fuel trade structures (using coal as an example). In previous versions of GCAM, every region produced and consumed from a single global market. All crude oil, coal, and natural gas production was sent to a shared market, from which, every region consumed. Only net trade could be tracked and supply was affected by global rather than regional demand. The current structure maintains a global market (e.g. traded coal), but distinguishes between direct consumption of domestic resources and consumption of imported fossil fuels.
- 
-Image reference: html-image (gcam-figs/Fossil_fuel_trade.png)<br/>
+
 **Schematics of the structures for the flows of the "Coal" commodity in GCAM, with only 3 regions shown for simplicity.**
-{: .fig}
 
 #### Natural gas trade
 
  Natural gas has been further disaggregated into traded pipeline gas and traded liquefied natural gas (LNG). LNG is traded at the global market level, while pipeline gas is traded in 6 regional markets: North America, Latin America, Europe, Russia+, Africa and Middle East, and Asia-Pacific (see figures). Each GCAM region will export to only one of the regional pipeline markets, but can potentially import from multiple. The choice to have each region export from only one network is largely driven by convenience / simplicity; the pipeline networks a given region can import from is informed by bilateral UN Comtrade data on country-level gas trade (see the following section).
- 
-Image reference: html-image (gcam-figs/ng_pipeline_map.png)<br/>
-{: .fig}
-Image reference: html-image (gcam-figs/ng_pipeline_venn.png)<br/>
-**Regional gas pipeline networks. Western hemisphere (N.Amer and LA) pipeline networks are isolated. Eastern hemisphere networks partially overlap. Arrows on the map indicate additional pipeline networks that specific regions may import from, in addition to its own. Regions are located in the circles for the pipeline networks from which they import (up to 3).  The boxes for each region are color coded to match the primary network that region is a part of (i.e., the one it exports to).** 
-{: .fig}
- 
+
+**Regional gas pipeline networks. Western hemisphere (N.Amer and LA) pipeline networks are isolated. Eastern hemisphere networks partially overlap. Arrows on the map indicate additional pipeline networks that specific regions may import from, in addition to its own. Regions are located in the circles for the pipeline networks from which they import (up to 3).  The boxes for each region are color coded to match the primary network that region is a part of (i.e., the one it exports to).**
+
 #### Data calibration for fossil fuel trade
 
-Each region's share of the global (e.g. traded coal) market as well as the split for domestic and imported goods are calibrated in the final base year. IEA's data set cannot be used to make this calibration because it lacks a bilateral trade accounting. Instead the GCAM data system uses the UN's Comtrade data set to account for intraregional trade to avoid double counting any gross trade. For example trade done within an aggregated GCAM region (e.g. Germany trading with France, both of which are in GCAM's EU-15 region) should not be counted as part of that region's gross trade. The Comtrade trade data is used to calculate gross trade for each region. This is then combined with the data on production and consumption of fossil fuels calculated within the data system (production is calculated from the fossil fuel supply curves and IEA data and consumption is initialized from IEA energy balances) to compute trade balances. 
+Each region's share of the global (e.g. traded coal) market as well as the split for domestic and imported goods are calibrated in the final base year. IEA's data set cannot be used to make this calibration because it lacks a bilateral trade accounting. Instead the GCAM data system uses the UN's Comtrade data set to account for intraregional trade to avoid double counting any gross trade. For example trade done within an aggregated GCAM region (e.g. Germany trading with France, both of which are in GCAM's EU-15 region) should not be counted as part of that region's gross trade. The Comtrade trade data is used to calculate gross trade for each region. This is then combined with the data on production and consumption of fossil fuels calculated within the data system (production is calculated from the fossil fuel supply curves and IEA data and consumption is initialized from IEA energy balances) to compute trade balances.
 
 ## Energy for water
 
@@ -237,13 +210,12 @@ Electricity used for non-renewable groundwater pumping is represented in future 
 If the base assumptions are not desired, user-specified residential or commercial building floorspace values (in billion m<sup>2</sup>) can be added in a `.csv` file that is outside that datasystem. An XML can be generated from this `.csv` through Model Interface using the following header:
 
 ```
-Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input, 
+Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input,
 building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world
 ```
 
-The figure below is an example XML of user-specified residential floorspace values for Maine. 
+The figure below is an example XML of user-specified residential floorspace values for Maine.
 
-Image reference: html-image (gcam-figs/floorspace_Maine.PNG)<br/>
 
 
 ## References

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.3`.
 - Source root: `gcam-doc/v5.1`
 - Source path: `water.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.3/INDEX.md`
 - Source provenance: inherited from `v5.1` because `v5.3` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v5.3` as `water.md`.

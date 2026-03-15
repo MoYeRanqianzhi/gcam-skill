@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `inputs_demand.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -56,11 +57,11 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 
 #### Data
 
-Throughout GCAM, the number in the name of assumption file indicates to which sector the file applies. Files with `A32` in the name are assumptions for industry, `A321` indicates cement, and `A322` indicates fertilizer. Files with `A44` in the name are assumptions for buildings. Files with `A54` in the name are assumptions for transportation. 
+Throughout GCAM, the number in the name of assumption file indicates to which sector the file applies. Files with `A32` in the name are assumptions for industry, `A321` indicates cement, and `A322` indicates fertilizer. Files with `A44` in the name are assumptions for buildings. Files with `A54` in the name are assumptions for transportation.
 
 ##### Historical demand for energy
 
-GCAM uses IEA energy balances as a source for historical energy supply and demand. IEA data are proprietary and thus are not provided in the GCAM data repository. Instead, we provide all of the `R` code used to process the IEA data so that the user can replicate the processing _if_ they purchase the IEA data. In addition, we provide aggregated data after it has undergone processing so that GCAM input files can be created and used by the user community. 
+GCAM uses IEA energy balances as a source for historical energy supply and demand. IEA data are proprietary and thus are not provided in the GCAM data repository. Instead, we provide all of the `R` code used to process the IEA data so that the user can replicate the processing _if_ they purchase the IEA data. In addition, we provide aggregated data after it has undergone processing so that GCAM input files can be created and used by the user community.
 
 ##### Elasticities of demand
 
@@ -90,7 +91,7 @@ Retirement rules are specified in [A322.globaltech_retirement.csv](https://githu
 
 ##### Logit exponents
 
-Logit exponents are specified in [A32.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.sector.csv), [A32.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_logit.csv), [A321.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_logit.csv), [A322.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_logit.csv), [A44.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.sector.csv),  [A44.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_logit.csv), [A54.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.sector.csv), and  [A54.tranSubsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_logit.csv). 
+Logit exponents are specified in [A32.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.sector.csv), [A32.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.subsector_logit.csv), [A321.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.subsector_logit.csv), [A322.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.subsector_logit.csv), [A44.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.sector.csv),  [A44.subsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.subsector_logit.csv), [A54.sector.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.sector.csv), and  [A54.tranSubsector_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_logit.csv).
 
 #### Share weight interpolation rules
 
@@ -108,7 +109,7 @@ Multipliers used to determine the value of time in transit are specified in [A54
 
 Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.satiation_flsp.csv) and [A44.demand_satiation_mult](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.demand_satiation_mult.csv).
 
-##### Emissions 
+##### Emissions
 
 Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
@@ -143,7 +144,7 @@ The raw data used for agricultural water coefficients is provided in [Mekonnen_H
 
 ##### Industrial manufacturing water coefficients
 
-The data specifying manufacturing water coefficients is specified in [Vassolo_mfg_water.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/Vassolo_mfg_water.csv). Note that this data is derived from the [Vassolo and Döll 2005](#vassolo2005) global inventory of manufacturing and electric power water demands for a base year of 1995. The manufacturing water demands of each country are multiplied by an exogenous ratio of self-supply to total industrial withdrawals (about 0.8; this comes from US-specific data in [Kenny et al. 2009](#kenny2009)), and extrapolated to all historical years assuming a fixed ratio between industrial electricity and water demands. The values estimated from this bottom-up calculation are limited to a maximum of 85% of the corresponding nation and year's estimate of industrial water withdrawals in [FAO Aquastat](#fao2016). 
+The data specifying manufacturing water coefficients is specified in [Vassolo_mfg_water.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/water/Vassolo_mfg_water.csv). Note that this data is derived from the [Vassolo and Döll 2005](#vassolo2005) global inventory of manufacturing and electric power water demands for a base year of 1995. The manufacturing water demands of each country are multiplied by an exogenous ratio of self-supply to total industrial withdrawals (about 0.8; this comes from US-specific data in [Kenny et al. 2009](#kenny2009)), and extrapolated to all historical years assuming a fixed ratio between industrial electricity and water demands. The values estimated from this bottom-up calculation are limited to a maximum of 85% of the corresponding nation and year's estimate of industrial water withdrawals in [FAO Aquastat](#fao2016).
 
 ### Food, Feed, and Forestry
 
@@ -160,7 +161,7 @@ Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#t
 | Food demand parameters | Set of 11 parameters required for the food demand model | External data | [Ambrosia](https://github.com/jgcri/ambrosia) | | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
-<font size="-1"><a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.md#inputs-to-the-module">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>  
+<font size="-1"><a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.md#inputs-to-the-module">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
 
 <br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.

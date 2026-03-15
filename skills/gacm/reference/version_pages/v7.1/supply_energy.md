@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `supply_energy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -43,11 +44,11 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ### Resources
 
-#### Depletable Resources 
+#### Depletable Resources
 
 GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. The fossil resources are produced from these supply curves using a "Resource / Reserve" model.  In this approach as the market price of the resource increases, we look up the [supply curve](details_energy.md#depletable-resources) to determine the additional quantity available and move that quantity of "resource" into a "reserve".  We assume production of that reserve over some well / mine lifetime appropriate for each fuel.  Technical change can be applied to reduce the extraction cost of the "resource" in future years. See [Energy Trade](#energy-trade) for a discussion of fossil fuel trade.
 
-#### Renewable Resources 
+#### Renewable Resources
 
 GCAM's renewable resources include onshore wind, offshore wind, solar, geothermal, hydropower, and biomass; some regions are also assigned a "traditional biomass" resource. In contrast to the depletable resources, whose cumulative stocks are explicitly tracked, renewable resource quantities in GCAM are always indicated in terms of annual flows. Wind and solar are considered as options for producing electricity or hydrogen, while geothermal and hydropower are only considered as options for producing electricity. None of these resources are traded between regions. Traditional biomass is only used by the buildings sector in selected regions. Of the six renewable energy resources, only biomass is (a) traded globally, and (b) used as an energy form or feedstock in a wide variety of sectors.
 
@@ -72,7 +73,7 @@ Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropow
 
 ##### Biomass
 
-While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.md), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as described in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.md#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast". 
+While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.md), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as described in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.md#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast".
 The supply curve of the residual biomass is updated (in GCAM `v7.1`) based on information in [Hanssen et al. (2020)](https://doi.org/10.1007/s10584-019-02539-x), see [CMP #393](cmp/393-AgLU_Parameters_Update.md).
 
 ##### Traditional biomass
@@ -88,7 +89,7 @@ Broadly, the energy transformation sectors in GCAM consist of all supplysectors 
 
 The GCAM electricity sector models the conversion of primary fuels (e.g., coal, gas, oil, bioenergy) to electricity. For most fuels, GCAM includes several different technology options (e.g., pulverized coal, coal integrated gasification combined cycle (IGCC), etc.). Individual technologies compete for market share based on their technological characteristics (conversion efficiency in the production of products from inputs), and cost of inputs and price of outputs. The cost of a technology in any period depends on (1) its exogenously specified non-energy cost, (2) its endogenously calculated fuel cost, and (3) any cost of emissions, as determined by the climate policy. The first term, non-energy cost, represents capital, fixed and variable O&M costs incurred over the lifetime of the equipment (except for fuel or electricity costs). For electricity technologies, GCAM reads in each of these terms and computes the levelized cost of energy within the model. For example, the non-energy cost of coal-fired power plant is calculated as the sum of overnight capital cost (amortized using a capital recovery factor and converted to dollars per unit of energy output by applying a capacity factor), fixed and variable operations and maintenance costs. The second term, fuel or electricity cost, depends on the specified efficiency of the technology, which determines the amount of fuel or electricity required to produce each unit of output, as well as the cost of the fuel or electricity. For more information, see [electricity](details_energy.md#electricity).
 
-#### Refining 
+#### Refining
 
 The refining sector, or liquid fuels production sector, explicitly tracks all energy inputs, emissions, and costs involved with converting primary energy forms into liquid fuels. Liquid fuels include gasoline, diesel, kerosene, ethanol and many other liquid hydrocarbon fuels; for the full mapping see [Mapping the IEA Energy Balances](details_inputs.md#mapping-the-iea-energy-balances). Although liquid fuels encompasses many products, GCAM only models a single "refined liquids" product that is consumed by all end-use sectors. The refining sector includes subsectors of oil refining, biomass liquids, gas to liquids, and coal to liquids, each of which are described below. Each of these four subsectors is available starting in the first future time period, and the capital stocks of refineries are explicitly tracked.  For more information, see [refining](details_energy.md#refining).
 
@@ -136,13 +137,13 @@ Hydrogen is represented as a commodity in future time periods that is available 
 
 ### Energy Trade
 
-GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach that is described in [fossil fuel trade](details_energy.md#fossil-fuel-trade). Under this approach regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. This approach allows for the computation of a regionally distinct consumption price for fossil fuels based on the domestic and imported consumption. 
+GCAM models trade for coal, gas, oil, and bioenergy using an Armington approach that is described in [fossil fuel trade](details_energy.md#fossil-fuel-trade). Under this approach regions are allowed to choose between domestically produced products or globally traded products when making a consumption decision. This approach allows for the computation of a regionally distinct consumption price for fossil fuels based on the domestic and imported consumption.
 
 Other primary energy carriers (e.g., solar, wind, geothermal) are not traded and all secondary fuels (e.g., electricity, refined liquids, hydrogen) are not traded inter-regionally. For more generalinformation, see the [discussion of approaches to international trade](details_trade.md).
 
-## Equations 
+## Equations
 
-The equations that determine energy supply are described here. 
+The equations that determine energy supply are described here.
 
 ### Total technology cost
 
@@ -152,13 +153,13 @@ $$
 C = t + \sum_{j=1}^{n} i_j + \sum_{k=1}^{m} g_k - \sum_{l=1}^{o} v_l
 $$
 
-Where $$C$$ is the total cost, $$t$$$ is the exogenously specified technology cost (capturing capital cost and operating & maintenance costs), $$i_j$$ is the cost of input $$j$$ (e.g., a fuel),  $$g_k$$ is the GHG value of gas $$k$$, and $$v_l$$ is the value of secondary output $$l$$. Costs vary by region, technology, and year. 
+Where $$C$$ is the total cost, $$t$$$ is the exogenously specified technology cost (capturing capital cost and operating & maintenance costs), $$i_j$$ is the cost of input $$j$$ (e.g., a fuel),  $$g_k$$ is the GHG value of gas $$k$$, and $$v_l$$ is the value of secondary output $$l$$. Costs vary by region, technology, and year.
 
 See `calcCost` for total cost calculation,  `getTotalInputCost` for the calculation of input costs, and `calcSecondaryValue` for the calculation of secondary values including the GHG value. All three methods are specified in [technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/technology.cpp).
 
 ### Technology or subsector share
 
-GCAM uses one of [two different logit formulations](choice.md#the-logit) to calculate the shares for each technology or subsector. 
+GCAM uses one of [two different logit formulations](choice.md#the-logit) to calculate the shares for each technology or subsector.
 
 The first option, also known as the `relative-cost-logit`, is:
 
@@ -168,7 +169,7 @@ $$
 
 where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the share weight, $$c_i$$ is the cost of technology or subsector $$i$$, and $$beta$$ is the logit exponent.
 
-The second option, also known as the `absolute-cost-logit`, is: 
+The second option, also known as the `absolute-cost-logit`, is:
 
 $$
 s_i = \frac{\alpha_i \exp(\beta c_i)}{\sum_{j=1}^{N} \alpha_j
@@ -191,12 +192,12 @@ Where Q refers to the quantity of electricity produced, P the price, and the rem
 
 See `annualsupply` in [smooth_renewable_subresource.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/resources/source/smooth_renewable_subresource.cpp).
 
-## Policy options 
-This section summarizes some of the energy-based policy options available in GCAM. 
+## Policy options
+This section summarizes some of the energy-based policy options available in GCAM.
 
 ### Energy production policies
 
-Users can include [energy production policies](policies.md#energy-production-policies), which can constrain energy production or create incentives to increase or decrease production. 
+Users can include [energy production policies](policies.md#energy-production-policies), which can constrain energy production or create incentives to increase or decrease production.
 
 ### Energy intensity standards
 
@@ -341,7 +342,7 @@ Hydrogen
 
 <a name="iea2012">[IEA 2012]</a> International Energy Agency, 2011, *Energy Balances of OECD Countries 1960-2010 and Energy Balances of Non-OECD Countries 1971-2010*, International Energy Agency, Paris, France. [Link](http://www.iea.org/bookshop/661-Energy_Balances_of_OECD_Countries)
 
-<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France. 
+<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France.
 
 <a name="iha2000">[IHA 2000]</a> International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.3`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `dev-guide/analysis.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -32,7 +33,7 @@ _Repository_:  https://github.com/JGCRI/gcam_reader
 
 #### `modelinterface`
 
-The `modelinterface` is distributed with GCAM as the default tool for generating XML inputs and viewing results from an XML GCAM output database.  
+The `modelinterface` is distributed with GCAM as the default tool for generating XML inputs and viewing results from an XML GCAM output database.
 
 _Repository_:  https://github.com/JGCRI/modelinterface
 

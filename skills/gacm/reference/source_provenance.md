@@ -15,6 +15,8 @@ This skill is a bundled synthesis, not a verbatim vendor drop.
 - It does not require those upstream repositories to exist beside the skill at runtime.
 - It bundles summarized operational knowledge, routing logic, and version cues derived from those materials.
 - It also bundles page-level adapted version trees under `reference/version_pages/` so the skill can progressively disclose exact version pages without external repo dependence.
+- The page-level bundles are adapted into text-only form; images and screenshots are omitted rather than bundled as binary assets.
+- Shared topic docs deliberately translate human-facing UI guidance into agent-facing CLI, config-editing, and headless extraction workflows.
 - `coverage_map.md` documents how the bundled `v8.2` topic docs map back to the root source topics.
 
 ## What This Skill Does Not Pretend

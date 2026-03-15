@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `outputs_emissions.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -22,7 +23,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | CO<sub>2</sub> Sequestration<sup>[6](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | MtC / year  | <span id="CO2 sequestration by tech"><button onclick='getQuery("CO2 sequestration by tech", "CO2 sequestration by tech")'>CO2 sequestration by tech</button></span> | `emissions-sequestered` |
 
 <br/>
-Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 
 <font size="-1">
 <a name="table_footnote">1</a>: While the query is called "nonCO2 emissions", it also includes CO<sub>2</sub> emissions. A full list of gases included in GCAM is provided on the <a href="emissions.md#iamc-reference-card">emissions page</a>.  <br/>

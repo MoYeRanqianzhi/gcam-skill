@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `outputs_land.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -23,7 +24,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Profit rate | By GLU and land leaf | 1975$/thous km<sup>2</sup> | <span id="profit rate"><button onclick='getQuery("profit rate", "profit rate")'>profit rate</button></span> | `profit-rate` |
 
 <br/>
-Outputs are specified in the `startVisitLandLeaf` and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+Outputs are specified in the `startVisitLandLeaf` and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 
 <font size="-1">
 <a name="table_footnote">1</a>: There is a long list of standard queries that report land allocation outputs. The "detailed land allocation" query will list land for every single land leaf and region combo (see <a href="details_land.md#land-nesting-strategy">land nesting</a> for a complete list of land leafs). The "aggregated land allocation" query listed above will aggregate land into 12 categories (e.g., crops, biomass, etc.). There are also queries that will return land allocation for an individual GLU ("land allocation in a specified land use region") or total land by crop ("land allocation by land crop"). <br/>

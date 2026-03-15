@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.1`.
 - Source root: `gcam-doc/v5.1`
 - Source path: `choice.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -20,7 +21,7 @@ feed stocks, between different technologies, and between
 transportation modes.  In some cases the choice is between different
 uses of a limited resource, such as when we allocate land area to
 different uses.  In each of these cases we must allocate the total
-activity to the available alternatives.  
+activity to the available alternatives.
 
 Choice in GCAM is based on a single numerical value that orders the
 alternatives by preference.  Generically, we call this the *choice
@@ -41,13 +42,13 @@ best choice does not necessarily capture the entire market.  A variety
 of factors not captured in the model, such as individual preferences,
 local variations in cost, and simple happenstance cause some of the
 market to go to alternatives that, based on their indicator alone, are
-theoretically inferior choices.  
+theoretically inferior choices.
 
 GCAM provides a flexible system for specifying choice functions at
 runtime on a sector-by-sector basis.  Choice functions are represented
 in the code by classes that implement the `IDiscreteChoice` interface.
 Two such classes, the *Logit* and the *Modified Logit* are currently
-provided.  
+provided.
 
 Both of these choice functions are part of a family of that assume
 that the fitness of a choice alternative is a sum of two components,
@@ -55,9 +56,9 @@ one determined entirely by the choice indicator (*e.g.*, cost), and
 another determined by factors not captured in the model.  This latter
 component is assumed to be random with some specified distribution.
 The particular distribution chosen determines the discrete choice
-model in use.  
+model in use.
 
-### The Logit 
+### The Logit
 
 The first of the two discrete choice models used by GCAM is the Logit
 model<sup>[[1](#ref1)][[2](#ref2)]</sup>.  In the Logit model the
@@ -113,7 +114,7 @@ the Logit model.  The share ratio for this choice function is
 
 $$
 \frac{s_i}{s_j} = \frac{\alpha_i}{\alpha_j}
-\left(\frac{p_i}{p_j}\right)^\gamma 
+\left(\frac{p_i}{p_j}\right)^\gamma
 $$
 
 Evidently, the ratio of the choice indicators serves a similar role in
@@ -148,15 +149,12 @@ function that is partially deterministic (represented by the choice
 indicator, $$p$$) and partly random with a prescribed distribution.
 In the Logit case the distribution is the *Generalized Extreme Value
 (GEV)* distribution, while in the Modified Logit case the distribution
-is the *Weibull* distribution.  
+is the *Weibull* distribution.
 
-Image reference: html-image (gcam-figs/gev.png)
-Image reference: html-image (gcam-figs/weibull.png)<br/>
 Figure 1: Comparison of the probability distributions underlying the
 two choice functions.  Increasing the mean of the GEV (left)
 translates the distribution along the x-axis unchanged.  Increasing
 the mean of the Weibull (right) also broadens the distribution.
-{: .fig}
 
 From Figure 1 it is apparent that changing the mean of a GEV
 distribution while keeping its logit coefficient constant does not
@@ -196,11 +194,11 @@ _equivalent_<sup>[[8](#note8)]</sup> Modified Logit model is
 specified, and GCAM calculates the corresponding logit coefficient.
 This allows users to switch easily from Logit to Modified Logit or
 vice versa without
-recalculating the parameters.  
+recalculating the parameters.
 
 A choice function is specified by including its declaration in the
 sector to which it will pertain.  Consider this excerpt from the GCAM
-Reference Scenario (GRS) configuration:  
+Reference Scenario (GRS) configuration:
 
 ```xml
          <supplysector name="electricity">
@@ -214,10 +212,10 @@ Reference Scenario (GRS) configuration:
                <relative-cost-logit>
                   <logit-exponent fillout="1" year="1975">-10</logit-exponent>
                </relative-cost-logit>
-			   
-   . . . 
 
-``` 
+   . . .
+
+```
 
 This snippet configures the Electricity sector with a Modified Logit
 choice function for allocating market shares to the available

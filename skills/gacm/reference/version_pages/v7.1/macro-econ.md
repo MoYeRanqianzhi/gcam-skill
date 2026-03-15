@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `macro-econ.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 - Source provenance: inherited from `v5.3` because `v7.1` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v7.1` as `macro-econ.md`.
@@ -13,7 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-The socioeconomic componenta of GCAM set the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP. 
+The socioeconomic componenta of GCAM set the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP.
 
 ### Inputs and Outputs
 
@@ -21,7 +22,7 @@ GCAM's **inputs** include information on population and the rate of per capita i
 
 * Population: The number of people living in each GCAM region in the benchmark and projection years.
 * GDP Per Capita Growth:   The annual average rate of growth for per capita GDP over each time step in the projection. Time steps are 5 years by default.
-  
+
 The macro-economic module takes both of these to produce overall GDP in each GCAM energy-ecoonomic region.
 
 ## Macro-Economic Modeling Approach

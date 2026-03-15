@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `supply_water.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -55,7 +56,7 @@ Desalinated water is available as a source of freshwater from purified brackish 
 
 ### Water distribution
 
-Conveyance losses and improvements to water distribution efficiencies are included in the water distribution sectors. Conveyance losses for irrigated water use has been included and differentiated for each GCAM region. Conveyance losses/efficiencies for GCAM regions are derived from country level data from [Rohwer et al. 2007](#rohwer2007) and are the weighted mean of the original country level data weighted by irrigated harvested area. 
+Conveyance losses and improvements to water distribution efficiencies are included in the water distribution sectors. Conveyance losses for irrigated water use has been included and differentiated for each GCAM region. Conveyance losses/efficiencies for GCAM regions are derived from country level data from [Rohwer et al. 2007](#rohwer2007) and are the weighted mean of the original country level data weighted by irrigated harvested area.
 
 ### Water markets
 

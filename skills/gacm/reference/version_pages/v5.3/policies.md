@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.3`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `policies.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -52,7 +53,7 @@ Note that the GCAM default set-up includes economic feedbacks for methane and ni
 
 Markets in GCAM can be set for any emission species. (e.g., CH<sub>4</sub> -only market, NOx market, etc.)
 
-Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices. 
+Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices.
 
 xml inputs within the MAC curve that will be needed to set-up new markets are:
 
@@ -87,7 +88,6 @@ In addition to identifying policy prices as one measure of cost, GCAM employs th
 
 A detailed description of the method used in GCAM is documented in [Bradley et al. (1991)](policies.md#Bradley1991). In general, the approach is as follows. GCAM calculates the cost of emissions mitigation at each GCAM time step. For example in the figure below, the cost of moving from a reference path without a carbon tax (blue) to the emissions path with a carbon tax (green) in period T can be calculated simply. Successive scenarios with fixed carbon taxes in period T are run. The associated emissions are recorded for each carbon tax. The cost is calculated as the area of the purple triangle, which is the integral of each emissions mitigation step weighted by the carbon tax that was required to deliver the reduction. The final ton of carbon emissions is the most expensive ton, because it is assumed that for a carbon tax, emissions mitigation occurs with the least expensive tons being reduced first. The final ton of carbon is simply the carbon tax rate itself. The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below.
 
-Image reference: html-image (gcam-figs/policy cost.png)
 
 As discussed in [Bradley et al. (1991)](policies.md#Bradley1991) and demonstrated in [Calvin et al. (2014)](policies.md#Calvin2014), the approach can be used to calculate costs for a wide range of heterogeneous non-price policies. While conceptually similar to the simple approach above, the other is tedious. Similarly, the deadweight loss approach can be used to calculate the cost of policies other than carbon taxes. It is completely general [Mankiw & Hakes (2012)](policies.md#Mankiw2012).
 
@@ -95,7 +95,7 @@ The approach is employed at each GCAM time step. Costs occurring between time st
 
 The deadweight loss approach is not without its limitations. While the numerical calculation is simple for a uniform carbon tax (or a cap-and-trade regime), more complex policies are more tedious to represent. Second, there is no link back to the macro-economy. Changes of the magnitude associated with stringent climate policies will have macro-economic consequences. Those consequence will, in turn affect the scale of economic activity. Third, there is no way to calculate the effects of alternative uses of tax revenue or carbon permit allocations.
 
-Note that calculation of policy costs is currently only supported for polices pegged to CO<sub>2</sub> prices. 
+Note that calculation of policy costs is currently only supported for polices pegged to CO<sub>2</sub> prices.
 
 
 ## References

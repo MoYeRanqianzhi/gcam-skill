@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `details_inputs.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -53,7 +54,7 @@ The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and
 
 **Table 3<a name="table3"/>:** Mapping from IEA flows to GCAM sectors
   (and subsectors where appropriate)
-{: .tbl}  
+{: .tbl}
 
 | flow_code | flow_name                                     | sector                                                  |
 |:-----------|:-----------------------------------------------|:---------------------------------------------------------|
@@ -243,6 +244,6 @@ Exceptions to one-to-one mapping from the categories in the IEA Energy Balances 
 
 <a name="iea2011">[IEA 2011]</a> International Energy Agency, 2011, *Energy Balances of OECD Countries: Documentation for Beyond 2020 Files*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf)
 
-<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France. 
+<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France.
 
 <a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France.

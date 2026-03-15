@@ -5,13 +5,14 @@ Bundled adapted source page for GCAM `v5.2`.
 - Source root: `gcam-doc/v5.2`
 - Source path: `macro-econ.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-The socioeconomic componenta of GCAM set the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP. 
+The socioeconomic componenta of GCAM set the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP.
 
 ### Inputs and Outputs
 
@@ -19,7 +20,7 @@ GCAM's **inputs** include information on population and the rate of per capita i
 
 * Population: The number of people living in each GCAM region in the benchmark and projection years.
 * GDP Per Capita Growth:   The annual average rate of growth for per capita GDP over each time step in the projection. Time steps are 5 years by default.
-  
+
 The macro-economic module takes both of these to produce overall GDP in each GCAM energy-ecoonomic region.
 
 ## Macro-Economic Modeling Approach

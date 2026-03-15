@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `gcam-build.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -48,12 +49,12 @@ Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/mor
 
 ```
 cd <GCAM Workspace>/libs/boost-lib
-bootstrap.bat 
+bootstrap.bat
 b2 --with-system --with-filesystem address-model=64 stage
 ```
 
 #### 2.1.2 Building Boost Mac Notes
-Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Note for users who want to use [Xcode](#42-building-with-xcode) to build, the default project file setting is to use `libc++` instead of `libstdc++` so you should build boost accordingly. 
+Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Note for users who want to use [Xcode](#42-building-with-xcode) to build, the default project file setting is to use `libc++` instead of `libstdc++` so you should build boost accordingly.
 
 It is generally simplest to build using the command line by using the following commands:
 
@@ -175,7 +176,7 @@ Users should copy into `<GCAM Workspace>/libs/jars` a copy of all of the third p
 #### 2.3.6 BaseX
 BaseX is an XML database used for writing out comprehensive GCAM model output. Most users will be set-up for using BaseX by copying libraries
 and model interface files from a distribution version of GCAM as discussed above. If for some reason you are downloading BaseX directly from the [BaseX web site](https://basex.org/download/)
-note that the BaseX.jar library must be renamed exactly as `BaseX-9.5.0.jar`. 
+note that the BaseX.jar library must be renamed exactly as `BaseX-9.5.0.jar`.
 
 ### 2.4 Eigen
 Eigen is used by GCAM to provide linear algebra algorithms, utilities, and data structures which are used during the solution process.  Eigen is a modern C++ template library which is header only.  In other words, users do not need to compile and install Eigen.  Instead they just need to download the `3.4` release "source code" from [the Eigen Git repo](https://gitlab.com/libeigen/eigen/-/archive/3.4.0/eigen-3.4.0.tar.gz) and copy it into their `libs/`, unzip, and rename / symlink the folder to be called just "eigen" (no version number).
@@ -189,7 +190,7 @@ The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utili
 **Warning**: users may want to disable `GCAM_PARALLEL_ENABLED`, or set the `max-parallelism` in their `configuration.xml` to `1`, for any scenario that they will need to be able to **exactly** reproduce.  Since when running with parallelism we can get slightly different round off errors, which in turn could take a different route through the solver.  Ultimately all supplies and demands will be with in tolerance, however sometimes things like land use change emissions can be noticeably different in some land regions even if the market for the ag commodities are within tolerance.
 
 ## 3 Compiling Hector
-[Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
+[Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).
 
 The GCAM Make / project files are expecting the hector source to be in `<GCAM Workspace>/cvs/objects/climate/source/hector`.  If you cloned the GCAM Git repository onto your local system, you can place hector into the appropriate location within the GCAM workspace by initializing it's submodule:
 
@@ -271,22 +272,18 @@ JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
 
-Image reference: Xcode Scheme (gcam-figs/mac-build-scheme.png)
 
 Then under the `Info` tab change the build configuration to `Release`:
 
-Image reference: Xcode build configuration (gcam-figs/mac-build-config.png)
 
 Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 4.3 Building with Visual Studio
 Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://visualstudio.microsoft.com/vs/express/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
-Image reference: Visual Studio build configuration (gcam-figs/vs-build-config.png)
 
 Also you will likely have to change the `Platform Toolset` under menu `Project -> objects-main Properties..` to the latest toolset installed with your Visual Studio.  Note that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory within your workspace and update the [PATH environment variable to find jvm.dll](#232-java-on-windows). This is done within the same project properties dialog under the `Debugging` section and properties `Working Directory` and `Environment`.
 
-Image reference: Visual Studio Platform Toolset (gcam-figs/vs-platform-toolset.png)
 
 Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.bat` to run it.
 
@@ -320,5 +317,5 @@ Below we list some issues that you may encounter along with potential solutions.
 
 * Build fails on a unix/MacOS system with an error:
    `ld: library not found for -lboost_system`
-	
+
 	You may have not complied the necessary boost libraries. See section above on compiling boost.

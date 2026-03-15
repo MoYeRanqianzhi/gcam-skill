@@ -5,13 +5,14 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `updates.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-GCAM v7.0 DOI link: https://doi.org/10.5281/zenodo.8010145 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.8010145.svg)
+GCAM v7.0 [DOI](https://doi.org/10.5281/zenodo.8010145)
 1. [Fix Extrapolation in Residue Biomass](cmp/366-Fix_Extrapolation_in_Residue_Biomass.md)
 2. [Add Land Use History Output](cmp/365-Add_Land_Use_History_Output.md)
 3. [Miscellaneous Bug Fixes Part 1](cmp/371-Miscellaneous_Bug_Fixes.md)
@@ -29,7 +30,7 @@ GCAM v7.0 DOI link: https://doi.org/10.5281/zenodo.8010145 (image: https://zenod
 15. [Update to Hector v3](cmp/384-Update_to_Hector_v3.md)
 16. Bugfix before 7.0 Release
 
-GCAM v6.0 DOI link: https://doi.org/10.5281/zenodo.6619287 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.6619287.svg):
+GCAM v6.0 [DOI](https://doi.org/10.5281/zenodo.6619287):
 1. A new residential floorspace expansion model.
 2. Bio-energy updates: additional limits to "unsustainable" deployment
 3. Default hotelling rate for climate stabilization scenarios is now 3%.
@@ -50,7 +51,7 @@ GCAM v6.0 DOI link: https://doi.org/10.5281/zenodo.6619287 (image: https://zenod
 18. Reduce memory usage (offsets additional memory from expanded crop commodities).
 19. `gcamdata`: Renv and user modification chunks.
 
-GCAM v5.4: DOI link: https://doi.org/10.5281/zenodo.5093192 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)
+GCAM v5.4: [DOI](https://doi.org/10.5281/zenodo.5093192)
 
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
  1. Updated technology costs for electricity and transportation technologies
@@ -63,7 +64,7 @@ Several changes have been made to GCAM since the last release version (v5.3). Th
  8. gcamdata updated to use drake and work with dplyr 1.0.0
  9. Removed unused code
  10. Minor updates and bugfixes
- 11. Optional features (not turned on by default):   
-	- Direct Air Capture  
-	- Ability to specify exogenous floorspace pathways  
+ 11. Optional features (not turned on by default):
+	- Direct Air Capture
+	- Ability to specify exogenous floorspace pathways
 	- Ability to scale CH<sub>4</sub> and N<sub>2</sub>O emissions to EPA inventories

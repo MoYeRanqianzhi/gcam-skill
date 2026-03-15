@@ -7,11 +7,12 @@ GCAM Skill provides a portable, self-contained workflow for working with the GCA
 This skill is intended to help an agent:
 1. Understand GCAM model structure, assumptions, and outputs.
 2. Run or configure GCAM scenarios (reference, policy, batch, target finder).
-3. Interpret results using ModelInterface, query files, and database outputs.
-4. Use companion tools (`gcamreader`, `gcamextractor`) for Python/R post-processing.
+3. Interpret results through headless query files, BaseX outputs, and command-line extraction workflows.
+4. Use companion tools (`gcamreader`, `rgcam`, `gcamextractor`, and related automation tooling) for Python/R post-processing.
 5. Maintain traceability: every answer should cite the local source file(s) used.
 6. Route correctly across historical families and the `v8.2` root-doc baseline without inventing missing source trees.
 7. Open exact bundled version pages when the user needs page-level detail from a specific release.
+8. Prefer pure text, CLI, and configuration editing over GUI walkthroughs.
 
 ## Primary Sources (Local, Traceable)
 The runtime skill uses only bundled references under `skills/gacm/reference/`.
@@ -41,3 +42,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-15: Expanded the reference layer into topic-specific bundled docs to improve progressive disclosure.
 - 2026-03-15: Added page-level bundled version trees under `reference/version_pages/` for full-tree versions and delta-specific page bundles for release-only versions.
 - 2026-03-15: Added inherited page bundles and CMP trace pages so all known version-linked routes remain portable and locally traceable without hardcoded external paths.
+- 2026-03-15: Reoriented the skill around agent-facing CLI, XML/configuration editing, and headless extraction instead of GUI-first workflows.

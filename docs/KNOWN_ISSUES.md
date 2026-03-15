@@ -12,5 +12,6 @@
 - Some specialized topics (e.g., deep module internals, custom code changes) require a real GCAM repository checkout beyond the bundled conceptual docs.
 - `delta-only` releases in the bundled skill summarize release deltas rather than restating a full standalone doc set.
 - The skill is substantially more explicit for `v8.2` root coverage now, but it still synthesizes topic docs rather than mirroring every upstream page one-to-one.
-- Page-level bundles now normalize local markdown links and materialize inherited or CMP trace pages where needed, but figures are still represented as text references rather than bundled binary image assets.
+- Page-level bundles normalize local markdown links and materialize inherited or CMP trace pages where needed, but some exact source pages still refer to omitted figures in prose because the upstream documentation depended on diagrams.
 - Inherited page bundles are explicitly labeled, but they still reflect the nearest traceable source file rather than a guaranteed version-local restatement when the upstream version tree omitted that page.
+- Some exact page bundles still preserve historical GUI prose for traceability; shared topic docs are the authoritative agent-first CLI guidance.

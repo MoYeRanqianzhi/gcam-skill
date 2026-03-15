@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.3`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `updates.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.

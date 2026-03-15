@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `dev-guide/examples.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 - Source provenance: inherited from `v5.3` because `v7.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v7.0` as `dev-guide/examples.md`.
@@ -37,7 +38,7 @@ Load this page when the user needs version-specific detail from this exact page 
 A FilterStep is the object that GCAMFusion uses to search a single GCAM
 container's data vector.  It can optionally specify a data name to match which
 is compared against the `Data::mDataName`.  If the data name in the FilterStep
-is empty it is assumed to match *any* data name.  
+is empty it is assumed to match *any* data name.
 
 The other optional parameter is a [Filter](#filter-objects).  Filter objects are
 valid for search targets that are containers for other objects.  Such containers
@@ -46,7 +47,7 @@ be used to select any single element of the matched container.  If no filter is
 specified, it is assumed to be `NoFilter`, which selects the entire
 container.  Note that if a Filter other than `NoFilter` is set, and the matched
 object is not a container (i.e., has the `SIMPLE` flag, then the match will be
-rejected even if the data name matches.  
+rejected even if the data name matches.
 
 In addition if no data name and no filter is set then not only does this
 FilterStep match all data but it also enables special "descendant step"
@@ -98,17 +99,17 @@ The `parseFilterString` utility allows users to construct filters using a
 convenient text notation, instead of constructing them manually.  The rules for
 constructing the string are:
 
-* Separate steps with `/`.  Each step matches a data name. *E.g.*, `region/sector`. 
-* A filter object can optionally be specified inside square brackets. *E.g.*, `/ghg[NamedFilter,StringEquals,CO2]` 
+* Separate steps with `/`.  Each step matches a data name. *E.g.*, `region/sector`.
+* A filter object can optionally be specified inside square brackets. *E.g.*, `/ghg[NamedFilter,StringEquals,CO2]`
   * All characters in a filter step up to the opening bracket assumed to the
     data name. (`ghg` in the example)
   * All characters in between the '\[' and '\]' (if they exist) are split by
     ','.  In the example the elements would be `NamedFilter`, `StringEquals`,
     and `CO2`.
-    * The first element is the [Filter](#filter-objects)  
+    * The first element is the [Filter](#filter-objects)
     * Unless the filter is a `NoFilter`, there must be a total of three elements.  Note it is an error to use `NoFilter` and supply predicate values as well.
-    * The second element is a predicate [predicate](#predicates).  
-	* The third element is the value to match in the predicate.  
+    * The second element is a predicate [predicate](#predicates).
+	* The third element is the value to match in the predicate.
 * A `//` can be used to cause the next filter step to match an arbitrary number
   of levels (including zero) down the tree.  *E.g.*, `sector//technology`.
 
@@ -125,19 +126,19 @@ C++ classes.
 ### Background and rationale
 
 To accomplish our goals set out earlier for coming up with a high level API for
-implementing two-way feedbacks with GCAM we need to:  
+implementing two-way feedbacks with GCAM we need to:
 * Provide a way to traverse the heirarchical GCAM strucuture from a high level.
 * Avoid forcing users to become familiar with the internals of GCAM, instead
-  leveraging their knowledge of the XML strucuture.  
+  leveraging their knowledge of the XML strucuture.
 * Avoid putting too much burden on GCAM developers to maintain the API when
-  developing new capabilities.  
+  developing new capabilities.
 
 
 Our first challenge is that, while we currently have a mapping from XML name to
 data objects (such as XMLParse, toInputXML, or XMLDB output),  it is mostly a
 manual process replicated in EACH of these cases where it is needed. It would be
 better if we associated that name just one time together with the declartion of
-the variable. 
+the variable.
 
 We can illustrate this with a pseudocode example.  C++ only needs to know what
 type the data member is and what you will call it in your C++ code, and you
@@ -213,7 +214,7 @@ class Sector {
 
 Class inheritance presents an extra challenge.  Each subclass is allowed to
 define its own list of data, which is _cumulative_ with the data defined by its
-class ancestors. 
+class ancestors.
 
 ```cpp
 class PassThroughSector: public Sector {
@@ -225,12 +226,12 @@ class PassThroughSector: public Sector {
         DEFINE_VARIABLE( SIMPLE, string, mMarginalRevenueSector, "marginal-revenue-sector" )
     )
 }
-``` 
+```
 
 In order to treat these subclasses properly, GCAM Fusion will have to splice the
 lists of data from all the classes in the hierarchy together at run
 time.  Therefore, we need additional tags to provide the information it needs to
-do that. 
+do that.
 
 ```cpp
 class PassThroughSector: public Sector {
@@ -297,9 +298,9 @@ struct Data {
      *        instead simply holds reference to some original source.
      */
     virtual ~Data() { }
-    
+
     /*!
-     * \brief The human readable name for this data. 
+     * \brief The human readable name for this data.
      */
     const char* mDataName;
 
@@ -307,12 +308,12 @@ struct Data {
      * \brief A reference to the actual data stored.
      */
     T& mData;
-    
+
     /*!
      * \brief Type for this data item
      */
     typedef T value_type;
-    
+
     /*!
      * \brief A constexpr (compile time) function that checks if a given aDataFlag
      *        matches any of the flags set set in DataFlagsDefinition.
@@ -324,7 +325,7 @@ struct Data {
     static constexpr bool hasDataFlag( const int aDataFlag ) {
         return ( ( aDataFlag & ~DataFlagsDefinition ) == 0 );
     }
-    
+
     /*!
      * \pre All Data definitions must at the very least be tagged as SIMPLE,
      *      ARRAY, or CONTAINER.
@@ -399,7 +400,7 @@ These calls are used to wrap all of the class data member definitions.  A user
 must use the `DEFINE_DATA_WITH_PARENT` for any class that is derived from a
 base class.  Even if that base class is abstract with no data members.  The very
 first argument to the `DEFINE_DATA_WITH_PARENT` is the name of the direct
-parent of this subclass for instance: 
+parent of this subclass for instance:
 
 
 ```cpp
@@ -460,7 +461,7 @@ class ITechnology: public IParsedComponent, private boost::noncopyable {
 Within the `DEFINE_DATA*` sections after the declarations related to the
 subclass tree navigation are the actual data member definitions.  They are
 listed one after the other separated by commas.  Each definition will use one of
-the following Macros depending on the nature of that data definition: 
+the following Macros depending on the nature of that data definition:
 
 ```cpp
 class Sector {
@@ -477,13 +478,13 @@ class Sector {
 
         //! subsector objects
         DEFINE_VARIABLE( CONTAINER, "subsector", mSubsectors, std::vector<Subsector*> ),
-        
+
         //! Sector price by period updated with solution prices.
         DEFINE_VARIABLE( ARRAY, "price", mPrice, objects::PeriodVector<double> ),
 
         //! The discrete choice model used to calculate sector shares.
         DEFINE_VARIABLE( CONTAINER, "discrete-choice-function", mDiscreteChoiceModel, IDiscreteChoice* )
-                
+
     )
 };
 ```
@@ -524,7 +525,7 @@ vector&lt;Subsector\*&gt; for instance this allows us to search only the one
 that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
 isn't a vector and just a single object it may still make sense to filter by
 name, such an example would be the climate model
-`/climate-model[@name='hector']`. 
+`/climate-model[@name='hector']`.
 
 
 
@@ -570,7 +571,7 @@ be managed for the purposes of partial derivative calculations.  By "state"
 variables we refer to any variable whose value gets set during a call
 to `World::calc`.  Such an example would be `mPrice` of the `Sector` class as the
 price of intermediate sectors are dynamically calculated as the share weighted
-cost of it's competing inputs. 
+cost of it's competing inputs.
 
 
 State variables are of interest since during partial derivative calculations we
@@ -586,25 +587,25 @@ from the "base" state.  However such a strategy would essentially double the
 number of computation required to calculate partial derivatives.  Instead GCAM
 has code to track and manage state to be able to quickly reset the "base" state
 when calculating partial derivatives.  However prior to GCAM Fusion this code
-was strewn throughout the code in many places: 
+was strewn throughout the code in many places:
 
 -   Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them.
 -   Any GCAM object that needed to addToSupply/Demand would have to keep an
     additional "state" member variables to make the call to the market
-    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );` 
+    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );`
 -   Any other state would get lazily recalculated by marking at the Activity
     level a "stale" flag.  If a Demand Activity was still marked as stale when
     it needed to recalculate a partial derivative then it would be forced to
     recalculate it's Price Activity.  A strategy which creates extra work and
-    potentially easy to break/get wrong. 
+    potentially easy to break/get wrong.
 
 
-With the changes to central manage state that come along with GCAM Fusion we simplify this to: 
+With the changes to central manage state that come along with GCAM Fusion we simplify this to:
 
 -   The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory.
 -   Any GCAM object that needed to addToSupply/Demand must do so with a
-    `Value` member variable marked as 
-	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );` 
+    `Value` member variable marked as
+	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
 
 
 The new approach is simpler, and it's easier to guarantee we didn't miss
@@ -613,7 +614,7 @@ something by using
 running with GCAM Parallel enabled we can allocate a "scratch" space for every
 thread allowing for each of the ~470 partial derivative calculations to be
 calculated completely independently and in parallel from each other.  This gives
-us far greater parallelism than we had previously. 
+us far greater parallelism than we had previously.
 
 
 To make this work, developers must tag the Data definitions in classes they are
@@ -654,14 +655,14 @@ store the centrally managed data in a two dimensional array.  The first
 dimension is an entry for each state variable.  The second dimension is for the
 states, where the first is the "base" state and the rest are "scratch".  Without
 parallel enabled there is just 1 scratch state.  However, when parallel
-calculations are enabled there is one scratch space for each thread.  
+calculations are enabled there is one scratch space for each thread.
 
 Since we need to be able to quickly copy over scratch state we need to store the
 data contigiously.  Thus in order to keep several copies of state and quickly
 replace it is important we keep that total number of state variables to a
 reasonable amount.  Currently we observe 300,000 to 700,000 double values
 depending on the model period which is ~ 2 - 5 MB worth of memory per scratch
-space.  
+space.
 
 
 
@@ -783,7 +784,7 @@ compiler to set the appropriate type at compile time. If the compiler can't
 figure it out unambigously then it will raise an error. This is particularly
 useful when dealing with templated typedefs and nested or derivived types, where
 the type defininitions can get quite complex. For example, it is easier to write
-and understand: 
+and understand:
 
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
@@ -794,7 +795,7 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 }
 ```
 
-Than to write: 
+Than to write:
 
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
@@ -829,9 +830,9 @@ template<typename SomeVectorDef>
 functionName( SomeVectorDef aVector ) -> decltype( aVector )::const_iterator {
     return aVector.begin();
 }
-``` 
+```
 
-### Closures 
+### Closures
 
 Closures allow you to construct anonymous functions that capture variables
 from their immediate environment.  They are especially useful in conjunction
@@ -840,8 +841,8 @@ with algorithm templates from the `std::algorithm` library, such as `find_if`.
     int nsub = successors_subgraph.count();
     typename groupset_t::iterator it_sg_ex_srcs =
       find_if(subgroups.begin(), subgroups.end(),
-              [nsub] (const groupid_t &g) -> bool {return g.nodes().count() == nsub && g.type == linear;}); 
-```														 
+              [nsub] (const groupid_t &g) -> bool {return g.nodes().count() == nsub && g.type == linear;});
+```
 
 Likewise, when dealing with structures of unknown and differing types, as might
 happen when writing a template class or function, we need to use templated
@@ -863,7 +864,7 @@ Helper func(aName);
 bool isNameCoal = boost::fusion::any(vec, func);
 ```
 
-With closures this can be written more simply: 
+With closures this can be written more simply:
 
 ```cpp
 boost::fusion::vector<Sector, Subsector, ITechnology> vec(aSector, aSubsector, aTech);
@@ -872,19 +873,19 @@ bool isNameCoal = boost::fusion::any(vec,
         return aClass->getName() == aName;
     }
 );
-``` 
+```
 
 The values in the `[ ]` names the variables from the local scope to be made
 available in the closure.  Including an `&` in front of the variable indicates
 to pass by reference.  Simply providing the `&` indicates make available all
-local variables by reference. 
+local variables by reference.
 
 
 ### Foreach in C++
 
 
 C++ introduced its version of foreach, which reduces the verbosity of looping
-over arrays of data. So instead of: 
+over arrays of data. So instead of:
 
 
 ```cpp

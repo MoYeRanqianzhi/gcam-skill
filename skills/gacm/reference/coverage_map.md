@@ -17,7 +17,7 @@ Purpose:
 - `demand_water.md`, `supply_water.md`, `details_water.md` -> `water_system.md`
 - `economy.md`, `inputs_economy.md` -> `economy.md`
 - `emissions.md`, `details_emissions.md`, `hector.md` -> `emissions_climate.md`
-- `user-guide.md` -> `running_gcam.md`
+- `user-guide.md` -> `running_gcam.md`, `tools.md`
 - `gcam-build.md` -> `building_gcam.md`
 - `solver.md` -> `solver.md`
 - `policies.md`, `policies_examples.md` -> `policies_scenarios.md`
@@ -39,6 +39,9 @@ Purpose:
 - `v8.2` is the bundled current full-topic baseline because it maps to the root `gcam-doc` tree.
 
 ## Tooling Coverage
+- `user-guide.md` ModelInterface batch and XML DB control sections -> `running_gcam.md`
+- `user-guide.md` R/Python extraction sections -> `tools.md`
 - `gcamreader` authoring references -> `tools.md`
+- `rgcam` authoring references -> `tools.md`
 - `gcamextractor` authoring references -> `tools.md`
 - broader GCAM ecosystem references -> `developer_workflows.md`

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.4`.
 - Source root: `gcam-doc/v4.4`
 - Source path: `user-guide.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -13,17 +14,17 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Table Of Contents
   [1. Introduction](#gcam-intro)
-  
+
   [2. Quickstart](#gcam-quickstart)
-  
+
   [3. GCAM User's Guide](#gcam-users-guide)
-  
+
 * [Configuration File](#configuration-file)
 * [GCAM Batch file](#gcam-batch-mode)
 * [Target finder mode](#target-finder)
 * [ModelInterface](#modelinterface)
 * [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
-    
+
 ## <a name="gcam-intro"> 1.Introduction </a>
  This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 4.4 release.  There will be a few files available for download:
 
@@ -56,14 +57,14 @@ After a successful model run the log file will end with the following text (depe
 
 ```
 Starting output to XML Database.
-Data Readin, Model Run & Write Time: 1273.42 seconds. 
+Data Readin, Model Run & Write Time: 1273.42 seconds.
 Model run completed.
 Model exiting successfully.
 ```
 
 #### 2.1.1 Common failures
 
-The most common failure to run GCAM when double clicking the `run-gcam` executable script typically relate to Java.  Dealing with Java differs depending on your system. 
+The most common failure to run GCAM when double clicking the `run-gcam` executable script typically relate to Java.  Dealing with Java differs depending on your system.
 
 #### 2.1.1.1 Windows
 
@@ -92,30 +93,26 @@ On the Mac a missing Java usually prompts an install of "legacy Java" from Apple
 
 Comprehensive model output from each scenario is stored in an XML database. (Note that the current BaseX database is not compatible with older versions of GCAM and the GCAM model interface that use the .dbxml format.)
 
-To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine. 
+To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine.
 
 Select `Open` from the Model Interface File menu and then select `DB Open` from the sub-menu. The default setting is that the XML database is located in the `Output` subdirectory and is called `database_basexdb`. Select `database_basexdb` and you should see the following on your screen.
 
 Note as of GCAM 4.4 the ModelInterface package on the Mac may prompt you to select your query file if it can not locate it.  This file is typically located in `<GCAM Workspace>/output/queries/Main_queries.xml`.
 
-Image reference: Figure UG-1 (gcam-figs/ModelInterface_Screenshot.png) <br/>
 Figure UG-1:  Screenshot of GCAM ModelInterface after an XML database has been opened, but before any queries have been run.
-{: .fig}
 
 To view data select one or more scenarios, one or more regions, and one or more queries. The "Run Query" button will become available once one of each of these elements has been selected. Press this button and model output will appear as shown below:
 
-Image reference: Figure UG-2 (gcam-figs/ModelInterface_Query_Output.png) <br/>
 Figure UG-2:  Screenshot of GCAM ModelInterface after a query has been run.
-{: .fig}
 
-A tabular data display will appear on the left and a simple graphical output will appear on the right. If multiple queries were selected, these will open in different tabs. 
+A tabular data display will appear on the left and a simple graphical output will appear on the right. If multiple queries were selected, these will open in different tabs.
 
 *Sorting*: You can sort results in the Model Interface tables by clicking on the table heading. You can add secondary sorting by holding ctrl while click another column heading.
 
 *Copying Data*: You can copy the table to Excel by selecting copy from the file menu and pasting it to a worksheet. Column labels will not copy. An output table can also be directly dragged to an Excel worksheet by clicking on the output tab and dragging to an open Excel worksheet. Graphs will not be copied, only data.
 
 ## 3. <a name="gcam-users-guide"> GCAM User's Guide </a>
- 
+
 This user's guide contains the following sections:
 
 * [Configuration File](#configuration-file)
@@ -132,9 +129,9 @@ Config Section | Description
 ------------ | -------------
 Files| Points GCAM to various core input and output file locations. The most common item in this block that might need to be changed is the `xmldb-location`. Changing this item allows the user to change the name and location of the output xml database.
 ScenarioComponents | This is where GCAM reads in the data that define a scenario. Each entry has a name and a path that must point to a valid GCAM xml input file. Note that the name attribute of each ScenarioComponent is for readability only, these are not used by GCAM.
-Strings | The primary component in this section that should be modified is the `scenarioName`, which should be a short descriptive name for the scenario.  
+Strings | The primary component in this section that should be modified is the `scenarioName`, which should be a short descriptive name for the scenario.
 Bools | These boolean variables alter how GCAM runs and allow some alternative modes for GCAM operation.
-Ints | These integer variables set various GCAM run and output options. 
+Ints | These integer variables set various GCAM run and output options.
 
 #### 3.1.1 Scenario Components
 
@@ -151,15 +148,15 @@ The following table summarizes the options available under the `<Files>` section
 File Tag | Description
 ------------ | -------------
 xmlInputFileName | First XML file read in. In recent versions of GCAM this is used to readin the modeltime object, which sets the time intervals for GCAM. The modeltime object can only be read in once.
-BatchFileName | Name of the [batch file input](#gcam-batch-mode). This will only be used if the `BatchMode` boolean is set to 1. 
+BatchFileName | Name of the [batch file input](#gcam-batch-mode). This will only be used if the `BatchMode` boolean is set to 1.
 policy-target-file | Run the model in [target finder mode](#target-finder).  This will only be used if `find-path` boolean is set to 1.
-GHGInputFileName | Default MAGICC input for GHG emissions time series. 
+GHGInputFileName | Default MAGICC input for GHG emissions time series.
 xmldb-location | Location and name of xml output database
 xmlOutputFileName | Output xml filename. This xml file contains a complete input dataset that will replicate this scenario. Note that these files can be very large.
 xmlDebugFileName | Name of debug output file. For the specified `debug-region` (see below), a set of internal state variables will be output at the end of each model period.
 climatFileName | Output file that contains the GHG and pollutant emissions that was passed to MAGICC.
 outFileName | csv formatted GCAM output.  Note These results are not maintained, users should prefer xmldb output instead.
-costCurvesOutputFileName | Output for cost curves if `createCostCurve` is set to 1. 
+costCurvesOutputFileName | Output for cost curves if `createCostCurve` is set to 1.
 batchCSVOutputFile | csv output of a minimal set of variables. This is useful during large batch runs where creating an xml database would result in excessively large files.
 
 #### 3.1.3 `<Strings>` Input Options
@@ -182,7 +179,7 @@ File Tag | Description
 CalibrationActive | Activates model calibration. Under normal operation this should be turned on.
 BatchMode | Activates [GCAM batch mode](#gcam-batch-mode) operation. A valid `BatchFileName` must also be specified.
 find-path | [Turn on path finding capability](#target-finder). A valid `policy-target-file` must also be specified.
-createCostCurve | Turns on calculation of a CO2 cost curve. The model will be run multiple times to generate a CO2 cost curve, which will be integrated to estimate total policy costs. 
+createCostCurve | Turns on calculation of a CO2 cost curve. The model will be run multiple times to generate a CO2 cost curve, which will be integrated to estimate total policy costs.
 debugChecking | Turns on some internal consistency checks.
 
 #### 3.1.5 `<Ints>` Input Options
@@ -215,7 +212,7 @@ The Batch file has the following format:
 	</ComponentSet>
 </BatchRunner>
 ```
-   
+
 The XML files within each `FileSet` block will be read in after the `ScenarioComponents` in the configuration file and then run. The scenario name of the run will be the name of each `FileSet` appended to the `scenarioName` in the configuration file.
 
 If there are multiple `ComponentSet` blocks, then all permutations of `FileSets` within each `ComponentSet` will be run.
@@ -228,16 +225,16 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
 
 ```XML
 <policy-target-runner name="forcing_4p5">
-    <!-- tax-name | default: CO2 | The market name to change the price on --> 
-	<tax-name>CO2</tax-name> 
+    <!-- tax-name | default: CO2 | The market name to change the price on -->
+	<tax-name>CO2</tax-name>
 
-    <!-- target-value | no default | The target value such as concentration 
+    <!-- target-value | no default | The target value such as concentration
          or forcing.
      -->
     <target-value>4.5</target-value>
 
     <!-- target-tolerance | default: 0.01 | The solution tolerance -->
-    <target-tolerance>0.005</target-tolerance> 
+    <target-tolerance>0.005</target-tolerance>
 
     <!-- path-discount-rate | default: 0.05 | The hotelling rate -->
     <path-discount-rate>0.05</path-discount-rate>
@@ -274,11 +271,11 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
 
     <!-- stabilization | This is the default behavior is to stabilize the target
          overshoot year="2100" | Allow for an overshoot to hit in the target in
-                                 given year.  If the year is not provided the 
-                                 last model year will be assumed.  If it is 
-                                 provided and before the last model year then 
+                                 given year.  If the year is not provided the
+                                 last model year will be assumed.  If it is
+                                 provided and before the last model year then
                                  it will have to stay on target after that year.
-     --> 
+     -->
      <stabilization />
 
     <!-- max-tax | default: 4999 | Set a maximum tax to try in any given period
@@ -513,14 +510,14 @@ or
 NOTE: If the first form is used, the arguments -db-path, --doc-name, and --xml are all required.
       Options can be abbreviated using any unique prefix, e.g., --db=XXX --doc=YYY -x foo.xml
 
-Option             Description                          
-------             -----------                          
---db-path          Path to XML database                 
---doc-name         The unique name to call the document 
-                     in the DB                          
---help             Print this message                   
---print-java-home  Print the path to the Java home      
-                     directory and exit                 
+Option             Description
+------             -----------
+--db-path          Path to XML database
+--doc-name         The unique name to call the document
+                     in the DB
+--help             Print this message
+--print-java-home  Print the path to the Java home
+                     directory and exit
 --xml              The exported GCAM results XML file to
-                     load                               
+                     load
 ```

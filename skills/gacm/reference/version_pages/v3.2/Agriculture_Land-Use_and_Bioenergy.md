@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Agriculture_Land-Use_and_Bioenergy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -76,7 +77,6 @@ Competition between alternative land uses in the GCAM is modeled using
 a [nested logit architecture](Nested_logit_architecture.md). A
 representative, simplified nnesting structure is depicted in Figure 1.
 
-Image reference: untitled image (images/Land_small.png "fig:Land small.png")&lt;br&gt;
 
 ###### Figure 1. Competition for Land in GCAM
 

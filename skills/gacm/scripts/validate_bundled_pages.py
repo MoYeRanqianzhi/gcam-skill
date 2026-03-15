@@ -17,6 +17,10 @@ from version_catalog import VERSION_PAGES_ROOT
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
+RAW_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
+RAW_HTML_IMG_RE = re.compile(r"<img\b", re.IGNORECASE)
+LEGACY_IMAGE_RE = re.compile(r"Image reference:")
+PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
 
 
 def strip_code_fences(text: str) -> str:
@@ -59,13 +63,21 @@ def main() -> int:
                 errors.append(
                     f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> missing target: {target}"
                 )
+        if RAW_MD_IMAGE_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw markdown image syntax remains")
+        if RAW_HTML_IMG_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html image tag remains")
+        if LEGACY_IMAGE_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
+        if PLACEHOLDER_IMAGE_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> unresolved image placeholder remains")
     if errors:
         for item in errors[:200]:
             print(item)
         if len(errors) > 200:
             print(f"... truncated {len(errors) - 200} additional errors")
         return 1
-    print("All bundled page markdown links resolved.")
+    print("All bundled page markdown links resolved and text-only checks passed.")
     return 0
 
 

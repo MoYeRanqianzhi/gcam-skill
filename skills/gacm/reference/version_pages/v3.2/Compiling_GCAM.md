@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Compiling_GCAM.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -30,26 +31,26 @@ results requires the Java bindings to be built as well (--enable-java
 flag to the build script). WARNING: bugs the in DBXML library affect
 the Model Interface and patches (provided under
 `Main_User_Workspace/libs/dbxml-patches`) should be applied before
-building DBXML. 
+building DBXML.
 
 Some users have had additional issues when compiling the Berkeley
-DBXML libraries:  
+DBXML libraries:
 
 1. In building dbxml, I got a compile error that says:
-   
+
    ```
    In file included from ../src/framework/ReferenceCounted.cpp:24:0:
    ../include/xqilla/framework/XPath2MemoryManager.hpp:90:11: error: ‘ptrdiff_t’ does not name a type
    ```
-   
+
    I found a fix, which worked for me. Just insert:
    `#include <cstddef>` before the line of `#include <algorithm>` in
-   `../include/xqilla/framework/XPath2MemoryManager.hpp` 
-   
+   `../include/xqilla/framework/XPath2MemoryManager.hpp`
+
 2. Building with --enable-java resulting in a java failure during
    configuration that was resolved by setting an option to increase
    memory:
-   
+
    ```bash
    export _JAVA_OPTIONS="-Xmx256M"
    ```
@@ -67,9 +68,9 @@ export BOOST_INCLUDE=<GCAM directory>/Main_User_Workspace/libs/boost-lib
 
 The makefile is located under: `<GCAM directory>/Main_User_Workspace/cvs/objects/build/linux`
 
-And can be started by simply typing `make` (note you may add the 
+And can be started by simply typing `make` (note you may add the
 `-j <N>` option to use multiple cores to compile, where N is a number which
-makes sense for your system). 
+makes sense for your system).
 
 The executable `gcam.exe` will be copied to `<GCAM directory>/Main_User_Workspace/exe`
 
@@ -86,8 +87,8 @@ to find the DBXML libraries as well. This may be accomplished by
 setting:
 
 ```bash
-  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<DBXML directory>/dbxml-2.5.16/install/lib  
-  cd <GCAM directory>/ModelInterface  
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:<DBXML directory>/dbxml-2.5.16/install/lib
+  cd <GCAM directory>/ModelInterface
   java -jar ModelInterface.jar
 ```
 
@@ -95,7 +96,7 @@ Alternatively you could avoid setting `LD_LIBRARY_PATH` and set the
 library path directly in Java:
 
 ```bash
-  java -Djava.library.path=<DBXML directory> 
+  java -Djava.library.path=<DBXML directory>
   /dbxml-2.5.16/install/lib -jar ModelInterface.jar
 ```
 

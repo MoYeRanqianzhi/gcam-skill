@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `toc.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -45,7 +46,7 @@ Load this page when the user needs version-specific detail from this exact page 
 	- [Land](details_land.md)
 	- [Trade](details_trade.md)
 	- [Water](details_water.md)
-* [Climate](hector.md) 
+* [Climate](hector.md)
 * [Policies and costs](policies.md)
     - [Examples of how to implement policies in GCAM](policies_examples.md)
 * [GCAM-USA](gcam-usa.md)

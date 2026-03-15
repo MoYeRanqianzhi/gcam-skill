@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `outputs_emissions.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -25,7 +26,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | CO<sub>2</sub> Sequestration<sup>[6](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | MtC / year  | <span id="CO2 sequestration by tech"><button onclick='getQuery("CO2 sequestration by tech", "CO2 sequestration by tech")'>CO2 sequestration by tech</button></span> | `emissions-sequestered` |
 
 <br/>
-Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp). 
+Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 <br/> <br/>
 Note that the query "CO<sub>2</sub> emissions by region" represents gross CO<sub>2</sub> emissions for a region and is equal to the sum of all emissions from "CO<sub>2</sub> emissions by tech (excluding resource production)" and all emissions from "CO<sub>2</sub> emissions by resource production". A region's net CO<sub>2</sub> emissions can be calculated by adding "CO<sub>2</sub> emissions by region" and "LUC emissions by region".
 <br/> <br/>

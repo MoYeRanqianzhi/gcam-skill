@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Nested_logit_architecture.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -19,7 +20,7 @@ each of the level of the nesting structure. Note that calibration and
 reproduction of historical results does not depend on the nesting
 strategy or the logit exponents used. Instead, these assumptions
 affect future period results as conditions or policies change from
-history. 
+history.
 
 Nesting strategies
 ------------------
@@ -77,7 +78,6 @@ Land nesting approach in GCAM
 
 Our current approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with an AEZ subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
 
-Image reference: untitled image (images/Land_small.png "Land small.png")
 
 ###### Figure 1: Competition for land in GCAM
 

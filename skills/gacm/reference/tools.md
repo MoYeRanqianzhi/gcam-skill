@@ -1,6 +1,15 @@
-# GCAM Tooling (gcamreader + gcamextractor)
+# GCAM Tooling (Headless Extraction)
 
-Bundled summary of common GCAM ecosystem tools outside the core model runtime.
+Bundled summary of GCAM ecosystem tools that fit agent-oriented text and command-line workflows.
+
+## Selection Rule
+Choose the smallest tool that matches the task:
+- raw query XML to CSV or DataFrame: `gcamreader`
+- R-native extraction project workflow: `rgcam`
+- standardized parameter/class extraction tables: `gcamextractor`
+- multi-run orchestration and automation around GCAM: see `developer_workflows.md` for `pygcam`
+
+Do not default to ModelInterface GUI instructions when one of these tools can solve the task headlessly.
 
 ## gcamreader (Python)
 Purpose: run GCAM query XML against a BaseX database and return Pandas DataFrames or CSV output.
@@ -18,9 +27,10 @@ gcamreader local \
   --output_path <output_dir> \
   --force true
 ```
+
 Notes:
 - `database_path` is the directory that contains the `*.basex` files.
-- Outputs are written as `*.csv` with `|` separator.
+- Outputs are written as `*.csv` with `|` separators.
 
 ### CLI (Remote DB)
 ```bash
@@ -34,6 +44,19 @@ gcamreader remote \
   --output_path <output_dir> \
   --force true
 ```
+
+## rgcam (R)
+Purpose: extract data from GCAM output databases into an R-native project data file.
+
+Use when:
+- the user already works in R
+- they want repeatable query extraction across scenarios
+- they want a persistent project-data representation rather than ad hoc CSV files
+
+Bundled role summary:
+- runs the same query families used for ModelInterface batch extraction
+- stores imported results in an R-friendly project data file
+- supports repeated analysis without manually re-querying the XML DB every time
 
 ## gcamextractor (R)
 Purpose: extract GCAM data to standardized tables, convert units, and aggregate by parameter/class.
@@ -57,7 +80,7 @@ dataGCAM <- gcamextractor::readgcam(
 )
 ```
 
-### Output Structure (readgcam)
+### Output Structure
 - `data`: raw table
 - `dataAggParam`: aggregated by parameter
 - `dataAggClass1`: aggregated by class 1
@@ -65,5 +88,14 @@ dataGCAM <- gcamextractor::readgcam(
 - `dataAll`: full table with original query metadata
 - `scenarios`, `queries`: metadata
 
-### .Proj Files
-gcamextractor can read or write `.Proj` files for cached extraction.
+### Cached Project Files
+`gcamextractor` can read or write `.Proj` files for cached extraction workflows.
+
+## Headless Query Engine Fallback
+If the user already has GCAM query XML and wants exact upstream query behavior without an interactive GUI, use ModelInterface batch mode from the command line:
+
+```bash
+java -cp "$CLASSPATH" ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
+```
+
+Treat this as a headless query engine, not as the preferred human-facing interface.

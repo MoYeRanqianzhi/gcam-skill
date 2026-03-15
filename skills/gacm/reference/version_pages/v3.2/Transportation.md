@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Transportation.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -17,7 +18,6 @@ GCAM contains a detailed representation of transportation energy use and service
 
 &lt;br&gt;
 
-Image reference: untitled image (images/Transportation.png "fig:Transportation.png")&lt;br&gt;
 
 ###### Figure 1. GCAM transportation representation.&lt;br&gt;
 

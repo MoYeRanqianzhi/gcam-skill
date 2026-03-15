@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Resource_Supply_Curves.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -22,19 +23,15 @@ Depletable resource supply curves are input for each region as the amount of eac
 
 &lt;br&gt;
 
-Image reference: html-image (images/NatGasSupplyCurve.gif)
 
 ###### Figure 1. Natural gas resource supply curves
 
-Image reference: html-image (images/CrudeOilSupplyCurve.gif)
 
 ###### Figure 2. Crude oil resource supply curves
 
-Image reference: html-image (images/UnconvOilSupplyCurve.gif)
 
 ###### Figure 3. Unconventional oil resource supply curves
 
-Image reference: html-image (images/CoalSupplyCurve.gif)
 
 ###### Figure 4. Coal resource supply curves
 
@@ -49,7 +46,6 @@ Wind supply curves in each region include all costs of producing electricity exc
 
 &lt;br&gt;
 
-Image reference: html-image (images/WindSupply.gif)
 
 ###### Figure 5. Wind resource supply curves, in EJ/yr of electricity output.
 
@@ -61,7 +57,6 @@ The costs of producing central electricity from solar power are input at the lev
 
 &lt;br&gt;
 
-Image reference: html-image (images/PVSupply.gif)
 
 ###### Figure 6. Rooftop PV resource supply curves, in EJ/yr of electricity output.
 
@@ -73,7 +68,7 @@ Geothermal modeling in GCAM&nbsp;is documented in Hannam et al. (2009).&lt;ref&g
 
 &lt;br&gt;
 
-Image reference: html-image (images/HydrothermalSupply.gif) Image reference: html-image (images/EGSSupply.gif)
+[omitted image: HydrothermalSupply.gif] [omitted image: EGSSupply.gif]
 
 ###### Figure 7. Hydrothermal and EGS supply curves, in EJ/yr of heat production. Note that geothermal electric technologies are assigned a 10% conversion efficiency.
 
@@ -85,7 +80,6 @@ The waste biomass supply curves in each region include several forms of waste th
 
 &lt;br&gt;
 
-Image reference: html-image (images/WasteBioSupply.gif)
 
 ###### Figure 8. Waste biomass supply curves, in EJ/yr of combustible energy.
 

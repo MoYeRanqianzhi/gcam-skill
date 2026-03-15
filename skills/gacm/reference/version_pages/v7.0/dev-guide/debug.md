@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `dev-guide/debug.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 - Source provenance: inherited from `v5.3` because `v7.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v7.0` as `dev-guide/debug.md`.
@@ -15,11 +16,11 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Debugging: common issues
 
-### Types of messages in GCAM  
-GCAM prints different levels of messages to help identify issues.  
+### Types of messages in GCAM
+GCAM prints different levels of messages to help identify issues.
 
 * WARNING: a notification of a potential problem; however, since this could be benign the model will continue (e.g., unrecognized text string in an xml input file).
- 
+
 * ERROR: a notification of a likely problem. In some cases, the model will continue to run (e.g., the sum of area read in for all land leafs in a region is more than 0.1% different from the total area read in for that region); in other cases, the model will abort (e.g., if the difference is more than 5%).
 
 * SEVERE: Major issue that will prohibit the model from running properly (e.g., no world within the scenario container)
@@ -29,9 +30,9 @@ GCAM prints different levels of messages to help identify issues.
 #### Problem: Immediate crash
 _Message immediately follows "Parsing input files..."_
 
-Message: `ERROR: Unexpected XML Read Exception` 
+Message: `ERROR: Unexpected XML Read Exception`
 
-Possible causes: 
+Possible causes:
 
 * The gcamdata system has not yet been run or did not produce XMLs
 
@@ -45,7 +46,7 @@ _Message immediately follows the parsing of an individual input file._
 
 Message: `ERROR: Unexpected XML Read Exception`
 
-Possible causes: 
+Possible causes:
 
 * File was not found (look for typos in the file name)
 
@@ -57,7 +58,7 @@ _Message immediately follows "XML parsing complete."_
 
 Message: `ERROR: Could not find global technology for...`
 
-Possible causes:  
+Possible causes:
 
 * Mis-spelled a technology name (Cement instead of cement). Strings in GCAM are case-sensitive.
 
@@ -79,7 +80,7 @@ _A calibration failure means that the read-in values for supply and demand do no
 
 Message: `Model did not calibrate successfully in period...`
 
-Cause: Unbalanced supply and demand in calibration years. Check all calibration data, including coefficients to debug. 
+Cause: Unbalanced supply and demand in calibration years. Check all calibration data, including coefficients to debug.
 
 #### Solver failures
 _A solver failure means that the model cannot find a set of prices where supply and demand are equal for all commodities._
@@ -88,13 +89,13 @@ Message: `Model did not solve within set iteration...`
 
 _Note: solution issues can be difficult to decipher_
 
-Things to try: 
+Things to try:
 
 * Useful to make ”one” change at a time
 
 * Double check your configuration
 
-* Use supply / demand curves feature to check problem markets (`input/extra/supply_demand_curves.xml`). Discontinuities and vertical supply or demand curves are difficult to solve. 
+* Use supply / demand curves feature to check problem markets (`input/extra/supply_demand_curves.xml`). Discontinuities and vertical supply or demand curves are difficult to solve.
 
 * Increase the iteration count in the solver configuration file. [Note: there is no guarantee this will work, but it is easy to try and has helped in the past]
 

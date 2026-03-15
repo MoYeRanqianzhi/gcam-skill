@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `demand_land.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -55,9 +56,9 @@ Shares of feed are determined by a [logit sharing approach](choice.md), which de
 
 ### Non-food, non-feed demand
 
-Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size. 
+Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size.
 
-## Equations 
+## Equations
 The equations that determine food, feed, and forest demand are described here.
 
 ### Food demand
@@ -66,11 +67,11 @@ $$
 q = A * (x^{h(x)}) * (w_{self}^{e_{self}(x)}) * (w_{cross}^{e_{cross}(x)})
 $$
 
-where $$A$$ is a scale parameter, $$x$$ is the income divided by price of materials, $$h(x)$$ is the income elasticity, and $$w_i$$ is the price of the food input divided by the price of materials times some scale factor, and $$e_i$$ are price elasticities. 
- 
+where $$A$$ is a scale parameter, $$x$$ is the income divided by price of materials, $$h(x)$$ is the income elasticity, and $$w_i$$ is the price of the food input divided by the price of materials times some scale factor, and $$e_i$$ are price elasticities.
+
 $$x^{h(x)}$$ is calculated all together depending on the type of FoodDemandInput. See `StaplesFoodDemandInput::calcIncomeTerm` and `NonStaplesFoodDemandInput::calcIncomeTerm` in [food_demand_input.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_input.cpp).
 
-$$e_{self} =  g_{self} - \alpha * f(x)$$, $$e_{cross} = g_{cross} - \alpha_{cross} * f(x)$$, where $$g_{self}$$ is self price elasticity parameter, $$g_{cross}$$ is the cross price elasticity, $$\alpha$$ is the share of the total budget for the good, and $$f(x)$$ is the derivative of the income term. See `StaplesFoodDemandInput::getCrossPriceElasticity`, `NonStaplesFoodDemandInput::getCrossPriceElasticity`, `StaplesFoodDemandInput::calcIncomeTermDerivative`, and `NonStaplesFoodDemandInput::calcIncomeTermDerivative` in [food_demand_input.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_input.cpp). 
+$$e_{self} =  g_{self} - \alpha * f(x)$$, $$e_{cross} = g_{cross} - \alpha_{cross} * f(x)$$, where $$g_{self}$$ is self price elasticity parameter, $$g_{cross}$$ is the cross price elasticity, $$\alpha$$ is the share of the total budget for the good, and $$f(x)$$ is the derivative of the income term. See `StaplesFoodDemandInput::getCrossPriceElasticity`, `NonStaplesFoodDemandInput::getCrossPriceElasticity`, `StaplesFoodDemandInput::calcIncomeTermDerivative`, and `NonStaplesFoodDemandInput::calcIncomeTermDerivative` in [food_demand_input.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_input.cpp).
 
 See also [food_demand_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/food_demand_function.cpp)
 
@@ -80,7 +81,7 @@ Per-capita non-food, non-feed demands (*D*) from time period *t-1* to time perio
 
 $$
 D_t = D_{t-1} * (\frac{pcGDP_t}{pcGDP_{t-1}})^{\alpha^i_t} *
-  (\frac{P_t}{P_{t-1}})^{\alpha^p_t} 
+  (\frac{P_t}{P_{t-1}})^{\alpha^p_t}
 $$
 
 where $$pcGDP$$ is per-capita GDP, $$P$$ is the commodity price, $$\alpha^i_t$$ is the income elasticity in time $$t$$ and $$\alpha^p_t$$ is the price elasticity at time t
@@ -88,9 +89,9 @@ where $$pcGDP$$ is per-capita GDP, $$P$$ is the commodity price, $$\alpha^i_t$$ 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
 
-## Policy options 
+## Policy options
 
-One of the main policy options is the usage of the food preference elasticity for SSPs (especially SSP1) which increases the demand for certain food types which correspond to a more sustainable diet which reduces meat consumption. Moreover, the bio-externality cost adds restrictions to the amount of bio-energy that will be demanded. This is also a user modifiable parameter. 
+One of the main policy options is the usage of the food preference elasticity for SSPs (especially SSP1) which increases the demand for certain food types which correspond to a more sustainable diet which reduces meat consumption. Moreover, the bio-externality cost adds restrictions to the amount of bio-energy that will be demanded. This is also a user modifiable parameter.
 
 ## Insights and intuition
 
@@ -100,7 +101,7 @@ Future food demand is determined dynamically by changes in income and prices. Th
 
 ### Land conservation effectively limits the supply of productive land, while biofuel consumption increases the demand and competition for that land
 
-This paper looked at demand pathways across sectors under different land scarcity scenarios. [(Dolan et al. 2022)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002466) 
+This paper looked at demand pathways across sectors under different land scarcity scenarios. [(Dolan et al. 2022)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002466)
 
 
 

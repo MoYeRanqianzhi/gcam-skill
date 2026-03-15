@@ -11,7 +11,16 @@ Open this file for:
 - GCAM Fusion coupling questions
 - broader ecosystem and workflow-tool selection
 
-Open `building_gcam.md` for compiler and dependency setup. Open `tools.md` for focused `gcamreader` and `gcamextractor` usage.
+Open `building_gcam.md` for compiler and dependency setup. Open `tools.md` for focused `gcamreader`, `rgcam`, and `gcamextractor` usage.
+
+## Agent Bias
+For this skill, prefer tools that support:
+- scripted execution
+- text outputs
+- repeatable configuration edits
+- headless extraction
+
+Visualization and point-and-click tooling are part of the broader ecosystem, but they are not the default recommendation path here.
 
 ## Common Development Concerns
 Recurring developer topics in the bundled authoring sources include:
@@ -45,13 +54,20 @@ Fusion is an advanced C++-level developer topic. Use it only when the user is cl
 
 ## Ecosystem Map
 The bundled authoring sources group companion tooling roughly like this:
-- extraction and reporting: `modelinterface`, `rgcam`, `gcam_reader`, `gcamrpt`
+- extraction and reporting: `rgcam`, `gcam_reader`, `gcamrpt`, headless `modelinterface` batch usage
 - execution and workflow: `pygcam`
 - data development: `gcamdata`, `moirai`
 - single-system companions: `hector`, `xanthos`, `persephone`, `gcamfd`, `gcamland`
 - disaggregation: `tethys`, `demeter`
 - visualization: `gcammaptools`, dashboard tooling
 - integration: `cassandra`
+
+## Recommended Tool Order
+When the user wants to automate work around GCAM:
+1. Use native GCAM configuration and batch files first.
+2. Use `pygcam` when the task is scenario orchestration, workflow automation, or repeated execution.
+3. Use `gcamreader`, `rgcam`, or `gcamextractor` when the task is output extraction.
+4. Use Fusion only for true coupling or callback-style model integration.
 
 ## Runtime Rule
 These tools are conceptual context, not runtime dependencies of the `gacm` skill.

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `demand_water.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -80,7 +81,7 @@ The approach for modeling the water demands of primary energy production is docu
 
 ### Municipal uses
 
-Water withdrawals from [FAO Aquastat](#fao2016) are assigned to a "municipal water" sector in each region that grows with population and GDP, with the demand levels moderated by assumed technical change. Municipal water prices come from the International Benchmarking Network for Water and Sanitation Utilities ([IBNET](#ibnet)). The functional form used for projecting future municipal water demand takes future water price increases into account. 
+Water withdrawals from [FAO Aquastat](#fao2016) are assigned to a "municipal water" sector in each region that grows with population and GDP, with the demand levels moderated by assumed technical change. Municipal water prices come from the International Benchmarking Network for Water and Sanitation Utilities ([IBNET](#ibnet)). The functional form used for projecting future municipal water demand takes future water price increases into account.
 
 Municipal water consumption is also modeled; the distinction between the two comes from an assumed overall municipal water supply efficiency, based on [Shiklomanov 2000](#shiklomanov2000). Where the withdrawal volume indicates the total water input to the municipal water supply system, consumption indicates only the water that is used by consumers in a way that it is not returned to the immediate water environment.
 
@@ -101,7 +102,7 @@ For more information, see  [Hejazi et al. 2013](#hejazi2013) and summarized in [
 Agricultural water demand is modeled at the basin level directly. Demands for water from other sectors are modeled at the geopolitical region and then mapped to the basin. For more information, see the detailed description of the [basin mapping](details_water.md#basin-to-region-and-basin-to-sector-mapping).
 
 
-## Equations 
+## Equations
 The equations that determine water demand are described here.
 
 #### Municipal water demand
@@ -125,7 +126,7 @@ When water supply constraints are not imposed or when water prices and scarcity 
 
 ### Future evolution of virtual water trading in the United States electricity sector
 
-Future transformations in the electricity sector could entail major shifts in power sector technology mixes and electricity trade, with consequences for the trading of virtual water. Under a business-as-usual scenario, virtual water trading in 2050 decreases by 3% relative to 2015 levels. By contrast, virtual water trading increases respectively by 3%, 26%, and 32%, in scenarios characterized by higher socioeconomic growth, higher potential for transmission expansion, and low-carbon transitions. [(Graham et al. 2021)](https://iopscience.iop.org/article/10.1088/1748-9326/ac3289/meta) 
+Future transformations in the electricity sector could entail major shifts in power sector technology mixes and electricity trade, with consequences for the trading of virtual water. Under a business-as-usual scenario, virtual water trading in 2050 decreases by 3% relative to 2015 levels. By contrast, virtual water trading increases respectively by 3%, 26%, and 32%, in scenarios characterized by higher socioeconomic growth, higher potential for transmission expansion, and low-carbon transitions. [(Graham et al. 2021)](https://iopscience.iop.org/article/10.1088/1748-9326/ac3289/meta)
 
 ## IAMC Reference Card
 
@@ -167,7 +168,7 @@ Not applicable. The IAMC reference card does not have water demand related entri
 
 <a name="rohwer2007">[Rowher et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling* PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik-potsdam.de/research/publications/pikreports/.files/pr104.pdf)
 
-<a name="shiklomanov2000">[Shiklomanov 2000]</a> Shiklomanov, I. 2000. World water resources and water use: present assessment and outlook for 2025. pp. 160-203 in: Rijsberman, F.R. (Ed.), *World Water Scenarios: Analysis of Global Water Resources and Use*. Earthscan, London, UK. 
+<a name="shiklomanov2000">[Shiklomanov 2000]</a> Shiklomanov, I. 2000. World water resources and water use: present assessment and outlook for 2025. pp. 160-203 in: Rijsberman, F.R. (Ed.), *World Water Scenarios: Analysis of Global Water Resources and Use*. Earthscan, London, UK.
 
 <a name="solley1998">[Solley et al. 1998]</a> Solley, W., R. Pierce, H. Perlman. 1998. *Estimated use of water in the United States in 1995* Circular 1200, U.S. Geological Survey, U.S. Department of the Interior, Reston, Virginia. [Link](https://pubs.usgs.gov/circ/1998/1200/report.pdf)
 

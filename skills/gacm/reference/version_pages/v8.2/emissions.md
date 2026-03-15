@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `emissions.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -50,7 +51,7 @@ Future emissions are determined by the evolution of drivers (such as energy cons
 
 ### <a name="co2-emissions"/>CO<sub>2</sub> Emissions
 
-GCAM endogenously estimates CO<sub>2</sub> fossil-fuel related emissions based on fossil fuel consumption and global emission factors by fuel (oil, unconventional oil, natural gas, and coal). These emission factors are consistent with global emissions by fuel from the CDIAC global inventory ([CDIAC 2017](#cdiac2017)). 
+GCAM endogenously estimates CO<sub>2</sub> fossil-fuel related emissions based on fossil fuel consumption and global emission factors by fuel (oil, unconventional oil, natural gas, and coal). These emission factors are consistent with global emissions by fuel from the CDIAC global inventory ([CDIAC 2017](#cdiac2017)).
 
 GCAM can be considered as a process model for CO<sub>2</sub> emissions and reductions. CO<sub>2</sub> emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO<sub>2</sub> as a carbon-price is applied within the model.
 
@@ -61,7 +62,7 @@ CO<sub>2</sub> emissions from limestone used in cement production are also estim
 Fugitive CO<sub>2</sub> emissions from fossil resource production are also included in GCAM. These include CO<sub>2</sub> emissions resulting from natural gas flaring that occurs at the point of extraction (e.g., oil well flares) as well as CO<sub>2</sub> gas released from oil, gas, or coal resources during the process of extraction. See the IPCC Guidelines for national GHG Inventories chapter on fugitive emissions ([IPCC2019](#IPCC2019)) for more information. Fugitive CO<sub>2</sub> emissions from fossil resource production in GCAM are initialized from the [CEDS inventory](https://github.com/JGCRI/CEDS) ([Hoesly et al 2018](#Hoesly2018)) and are modeled using the  [Non-CO<sub>2</sub> emissions](emissions.md#non-co2-overview) approach. Note that unconventional oil fugitive CO<sub>2</sub> emissions are initialized in a slightly different way as described below.
 
 ### <a name="co2-luc-emissions"/>CO<sub>2</sub> Emissions From Land-Use and Land-Cover Change (LULCC)
- 
+
 Land-Use and Land-Cover Change emissions are tracked separately. See [Carbon Emissions](land.md#carbon-emissions).
 
 ### <a name="non-co2-overview"/>Non-CO<sub>2</sub> Emissions Overview
@@ -77,7 +78,7 @@ We summarize here some general points common to non-CO<sub>2</sub> emissions in 
 
 * Non-CO<sub>2</sub> and fugitive CO<sub>2</sub> emissions from unconventional oil production are initialized using emissions factors derived from the IPCC Guidelines for national GHG Inventories chapter on fugitive emissions ([IPCC 2019](#IPCC2019)). These emissions factors are used to calculate emissions in future periods for regions that do not have historical production, and to disaggregate historical conventional and unconventional oil emissions for regions that do.
 
-* The CEDS inventory do not contain emissions for grasslands, forest fires, deforestation and agricultural waste burning on fields. The data for these categories of emissions were added from the GFED LULC data set(as used in CMIP6). 
+* The CEDS inventory do not contain emissions for grasslands, forest fires, deforestation and agricultural waste burning on fields. The data for these categories of emissions were added from the GFED LULC data set(as used in CMIP6).
 
 * CEDS does not have a breakdown of emissions for road transport by mode. Therefore, GAINS emission factors by transport sectors (passenger, freight) and fuels to supplement the CEDS road emissions and derive emissions by different modes using emissions factors from the [GAINS data set](https://iiasa.ac.at/web/home/research/researchPrograms/air/ECLIPSEv5.html).
 
@@ -101,7 +102,7 @@ Note that technology shifts still play a role, since emission factors can differ
 #####  Agriculture and Land-Use Drivers
 
 * Emissions in the agriculture and land use system can be driven by output (e.g., for crop production) or land area (e.g., for forest fires).
-* Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarser, typically only available by sector and country. 
+* Emissions are modeled at the level of agricultural technologies: region, water basin, crop type, and irrigation and management level. Note however that the underlying inventory data is far coarser, typically only available by sector and country.
 
 #####  Naming Conventions
 
@@ -118,7 +119,7 @@ Outlier air pollutant emission factors are replaced with the global (GCAM) or na
 
 * GCAM-USA: Outlier emission factors are identified as being two standard deviations above or three below the national median for a given pollutant, year, supplysector, subsector, and technology. These outliers, and emission factors that are missing or infinite, are replaced with the national median for the given pollutant, year, supplysector, subsector, and technology. This method is applied to replace outlier emission factors for air pollutants in the GCAM-USA transportation, electricity generation, buildings, and industrial energy use sectors.
 
-### Equations 
+### Equations
 
 #### <a name="non-co2-ghg-emissions"/>Non-CO<sub>2</sub> GHG Emissions
 
@@ -153,16 +154,16 @@ Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
-The parameter technological change (`tech-change`) represents annual improvement of reduction potential at all prices (essentially shifting the entire MAC curve to the right). For non-CO<sub>2</sub> GHGs, MAC is typically defined in the initial available year (typically 2025), while tech.change starts from the next modeling period (i.e. 2030) to adjust the base-year MAC. `tech-change` from 2030 to 2050 is backward calculated from the maximum mitigation potential in [EPA 2019](#epa2019), and tech.change after 2050 is assumed to be the average of pre-2050 tech.change (since current EPA mitigation report only contains mitigation potential till 2050) ([Ou et al. 2021](#ou2021a)). 
+The parameter technological change (`tech-change`) represents annual improvement of reduction potential at all prices (essentially shifting the entire MAC curve to the right). For non-CO<sub>2</sub> GHGs, MAC is typically defined in the initial available year (typically 2025), while tech.change starts from the next modeling period (i.e. 2030) to adjust the base-year MAC. `tech-change` from 2030 to 2050 is backward calculated from the maximum mitigation potential in [EPA 2019](#epa2019), and tech.change after 2050 is assumed to be the average of pre-2050 tech.change (since current EPA mitigation report only contains mitigation potential till 2050) ([Ou et al. 2021](#ou2021a)).
 
 $$
 R_{t_2, p}=R_{t_1, p}*(1+TC_{t_2})^{t_2-t_1}
 $$
-where $$R_{t_1, p}$$ and $$R_{t_2, p}$$ represent MAC reduction in year $$t_1$$ and $$t_2$$ at emission price $$p$$, respectively. $$TC_{t_2}$$ is the tech.change in $$t_2$$.  
+where $$R_{t_1, p}$$ and $$R_{t_2, p}$$ represent MAC reduction in year $$t_1$$ and $$t_2$$ at emission price $$p$$, respectively. $$TC_{t_2}$$ is the tech.change in $$t_2$$.
 
 In general, MAC curve is an aggregated representation of physical changes (retrofit, technology upgrade, process optimization), and in real world, these changes take time to finish. If omitting these "time costs" or other institutional barriers, the first MAC year (as well as the carbon price year) would lead to a dramatic yet sometimes unrealistic MAC-driven emission reductions. `mac-phase-in-time` offers users an option to make additional adjustment for the existing MAC reductions due to factors other than "zero-cost" emission reductions and technological changes. A primary purpose is to smoothly phase in MACs in early modeling periods, so `mac-phase-in-time` can be applied to make the reduction in those first several modeling periods more realistic; A second purpose is to allow users to explore scenarios when different regions have different MAC phase-in periods. The default `mac-phase-in-time` is 25 years.
 
-Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well. 
+Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well.
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
@@ -170,7 +171,7 @@ Note that a species-specific emissions market can also be specified using advanc
 
 Most fluorinated gas emissions are linked either to the industrial sector as a whole (e.g., semiconductor-related F-gas emissions are driven by growth in the "industry" sector), or population and GDP (e.g., fire extinguishers). As those drivers change, emissions will change. Additionally, we include abatement options based on EPA MAC curves.
 
-SF<sub>6</sub> emissions from electric transformers scale with electricity consumption.  HFC134a from cooling (e.g., air conditioners) scale with air conditioner electricity consumption. For these emissions we also make additional exogenous adjustments to emissions factors in future periods in developing regions to reflect their continued transition from CFCs to HFCs. 
+SF<sub>6</sub> emissions from electric transformers scale with electricity consumption.  HFC134a from cooling (e.g., air conditioners) scale with air conditioner electricity consumption. For these emissions we also make additional exogenous adjustments to emissions factors in future periods in developing regions to reflect their continued transition from CFCs to HFCs.
 
 #### Air Pollutant Emissions
 
@@ -188,13 +189,13 @@ $$
 
 where *pcGDP* stands for the per-capita GDP, and *steepness* is an exogenous constant, specific to each technology and pollutant species, that governs the degree to which changes in per-capita GDP will be translated to emissions controls. The purpose here is to capture the general global trend of increasing pollutant controls over time, but does not capture regional and technological heterogeneity.
 
-Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)). 
+Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)).
 
-## Policy options 
+## Policy options
 
-Users are allowed to selectively specify both new vintage specific emissions factors and existing vintage retrofits for technologies when calculating emissions. Users can also specify a GDP level at which emissions controls are applied to the model. 
+Users are allowed to selectively specify both new vintage specific emissions factors and existing vintage retrofits for technologies when calculating emissions. Users can also specify a GDP level at which emissions controls are applied to the model.
 
-Users can also specify marginal abatement cost curves (MACC) for emissions in the model. These can be specified by the user directly or the user can also select to apply pre-calculated MACC curves from the EPA to the GCAM sectors. Note that the EPA sectors were harmonized with the GCAM sectors when calculating these MACC curves. MACC are applied with technological change applied over time and there are different levels of change applied for the different SSPs. 
+Users can also specify marginal abatement cost curves (MACC) for emissions in the model. These can be specified by the user directly or the user can also select to apply pre-calculated MACC curves from the EPA to the GCAM sectors. Note that the EPA sectors were harmonized with the GCAM sectors when calculating these MACC curves. MACC are applied with technological change applied over time and there are different levels of change applied for the different SSPs.
 
 There are three main policy approaches that can be applied in GCAM to reduce emissions of CO<sub>2</sub> or other greenhouse gases: a fixed carbon or GHG price, emissions constraints, or climate constraints. In all cases, GCAM implements the policy approach by placing a price on emissions. This price then filters down through all the systems in GCAM and alters production and demand. For example, a price on carbon would put a cost on emitting fossil fuels. This cost would then influence the cost of producing electricity from fossil-fired power plants that emit CO<sub>2</sub>, which would then influence their relative cost compared to other electricity generating technologies and increase the price of electricity. The increased price of electricity would then make its way to consumers that use electricity, potentially decreasing its competitiveness relative to other fuels. The three policy approaches are described below.
 
@@ -223,7 +224,7 @@ Note that the GCAM default set-up includes economic feedbacks for methane and ni
 
 Markets in GCAM can be set for any emission species. (e.g., CH<sub>4</sub> -only market, NOx market, etc.)
 
-Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. For instance, you've added relevant MAC curves, or explicit technology options with differing emissions rates. For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices. 
+Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. For instance, you've added relevant MAC curves, or explicit technology options with differing emissions rates. For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices.
 
 XML inputs within the MAC curve that will be needed to set-up new markets are:
 
@@ -241,7 +242,7 @@ zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MA
 
 ### NonCO<sub>2</sub> GHG abatement
 
-In summary, nonCO<sub>2</sub> GHG emissions can be controlled by three mechanisms. First, changes in activity (phasing out of carbon-intensive fuels due to climate policy) will reduce non-CO<sub>2</sub> GHG emissions (e.g. fugitive CH4 from natural gas production). Second, for emission sources without explicit representation of the underlying activity, emission reductions are calculated off of [MAC curves](#equations) that are parametrized to abatement technologies and abatement levels. While decarbonization-driven fuel switching mainly reduces non-CO<sub>2</sub> emissions from fuel extraction and end use, targeted non-CO<sub>2</sub> mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z). Finally, carbon prices can be directly passed to nonCO<sub>2</sub> GHGs, see [example](policies_examples.md#linked-policy). 
+In summary, nonCO<sub>2</sub> GHG emissions can be controlled by three mechanisms. First, changes in activity (phasing out of carbon-intensive fuels due to climate policy) will reduce non-CO<sub>2</sub> GHG emissions (e.g. fugitive CH4 from natural gas production). Second, for emission sources without explicit representation of the underlying activity, emission reductions are calculated off of [MAC curves](#equations) that are parametrized to abatement technologies and abatement levels. While decarbonization-driven fuel switching mainly reduces non-CO<sub>2</sub> emissions from fuel extraction and end use, targeted non-CO<sub>2</sub> mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z). Finally, carbon prices can be directly passed to nonCO<sub>2</sub> GHGs, see [example](policies_examples.md#linked-policy).
 
 
 ### Markets
@@ -252,7 +253,7 @@ For information on using markets for non-CO<sub>2</sub> emissions see the [marke
 
 Emission objects can be added/changed via user input in any time period. New parameters (such as emission factors) overwrite any previous values. Note that emission control objects will be copied forward. For vintaged technologies (e.g. electric generation, road transport), any new emission object will be applied to new vintages. Old vintages will retain the previously read-in emission characteristics.
 
-This also means that GHG objects can be removed or overwritten after a given year by reading in a new GHG object for that gas. This also applies to GHG control objects. Reading in a new control object, for example, in 2020 for an electric generation technology will negate the effect of a previously read in control object of the same name for that vintage and future vintages. This can, for example, represent a transition from some emissions control regime applied to older vintages to a regime defined by new source performance standards. 
+This also means that GHG objects can be removed or overwritten after a given year by reading in a new GHG object for that gas. This also applies to GHG control objects. Reading in a new control object, for example, in 2020 for an electric generation technology will negate the effect of a previously read in control object of the same name for that vintage and future vintages. This can, for example, represent a transition from some emissions control regime applied to older vintages to a regime defined by new source performance standards.
 
 In addition to the GDP control object, a linear-control object is also available that allows a user to specify that an emission factor will linearly change over time to a user-defined value over a specified time period. The parameters controlling the linear-control object are:
 

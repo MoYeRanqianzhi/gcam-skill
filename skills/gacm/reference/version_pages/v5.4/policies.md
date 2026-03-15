@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `policies.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -23,7 +24,7 @@ Table Of Contents
 * [Emissions-Related Policies](#emissions-policies)
 * [Calculating Emissions Policy Costs](#policy-costs)
 
-## <a name="emissions-policies"/> Emissions-Related Policies 
+## <a name="emissions-policies"/> Emissions-Related Policies
 
 There are three main policy approaches that can be applied in GCAM to reduce emissions of CO<sub>2</sub> or other greenhouse gases: carbon or GHG prices, emissions constraints, or climate constraints. In all cases, GCAM implements the policy approach by placing a price on emissions. This price then filters down through all the systems in GCAM and alters production and demand. For example, a price on carbon would put a cost on emitting fossil fuels. This cost would then influence the cost of producing electricity from fossil-fired power plants that emit CO<sub>2</sub>, which would then influence their relative cost compared to other electricity generating technologies and increase the price of electricity. The increased price of electricity would then make its way to consumers that use electricity, decreasing its competitiveness relative to other fuels and leading to a decrease in electricity demand. The three policy approaches are described below.
 
@@ -52,7 +53,7 @@ Note that the GCAM default set-up includes economic feedbacks for methane and ni
 
 Markets in GCAM can be set for any emission species. (e.g., CH<sub>4</sub> -only market, NOx market, etc.)
 
-Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices. 
+Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO<sub>2</sub> and NO<sub>x</sub> markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices.
 
 xml inputs within the MAC curve that will be needed to set-up new markets are:
 
@@ -69,7 +70,7 @@ zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MA
 
 There are times in which users would like to explore the implications of a constraint on production or a minimum production requirement. This capability allows GCAM users to model policies such as renewable portfolio standards and biofuels standards. Across sectors, these constraints must be applied as quantity constraints, but they can be applied as share constraints within individual sectors (e.g., fraction of electricity that comes from solar power). In implementing these policies, this can either be a lower bound or upper bound. The model will solve for the tax (upper bound) or subsidy (lower bound) required to reach the given constraint. Examples of [bioenergy constraints](policies_examples.md#energy-constraint) are provided.
 
-## <a name="land-use-policies"/> Land-Use Policies 
+## <a name="land-use-policies"/> Land-Use Policies
 
 There are a number of ways that policies can be applied directly to influence the land sector in GCAM. These include the following.
 
@@ -81,7 +82,7 @@ There are a number of ways that policies can be applied directly to influence th
 
 * Land constraints: GCAM users can constraint the amount of land of a particular type in a given region. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. See [example](policies_examples.md#land-constraint).
 
-## <a name="policy-costs"/> Calculating Emissions Policy Costs 
+## <a name="policy-costs"/> Calculating Emissions Policy Costs
 
 The cost of GHG emissions mitigation is a concept that is not uniquely defined. A wide range of measures are used in the literature. These include, the price of carbon (or as appropriate given the policy) needed to achieve a desired emission mitigation goal, reduction in Gross Domestic Product (GDP), consumption loss, deadweight loss, and equivalent variation. Beyond that the concept of net cost, which includes the benefits of emissions mitigation as well as the resource cost of emissions reduction and the social cost of carbon are also encountered. GCAM makes no attempt to calculate the benefits.
 
@@ -89,7 +90,6 @@ In addition to identifying policy prices as one measure of cost, GCAM employs th
 
 A detailed description of the method used in GCAM is documented in [Bradley et al. (1991)](policies.md#Bradley1991). In general, the approach is as follows. GCAM calculates the cost of emissions mitigation at each GCAM time step. For example in the figure below, the cost of moving from a reference path without a carbon tax (blue) to the emissions path with a carbon tax (green) in period T can be calculated simply. Successive scenarios with fixed carbon taxes in period T are run. The associated emissions are recorded for each carbon tax. The cost is calculated as the area of the purple triangle, which is the integral of each emissions mitigation step weighted by the carbon tax that was required to deliver the reduction. The final ton of carbon emissions is the most expensive ton, because it is assumed that for a carbon tax, emissions mitigation occurs with the least expensive tons being reduced first. The final ton of carbon is simply the carbon tax rate itself. The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below.
 
-Image reference: html-image (gcam-figs/policy cost.png)
 
 As discussed in [Bradley et al. (1991)](policies.md#Bradley1991) and demonstrated in [Calvin et al. (2014)](policies.md#Calvin2014), the approach can be used to calculate costs for a wide range of heterogeneous non-price policies. While conceptually similar to the simple approach above, the other is tedious. Similarly, the deadweight loss approach can be used to calculate the cost of policies other than carbon taxes. It is completely general [Mankiw & Hakes (2012)](policies.md#Mankiw2012).
 
@@ -97,7 +97,7 @@ The approach is employed at each GCAM time step. Costs occurring between time st
 
 The deadweight loss approach is not without its limitations. While the numerical calculation is simple for a uniform carbon tax (or a cap-and-trade regime), more complex policies are more tedious to represent. Second, there is no link back to the macro-economy. Changes of the magnitude associated with stringent climate policies will have macro-economic consequences. Those consequence will, in turn affect the scale of economic activity. Third, there is no way to calculate the effects of alternative uses of tax revenue or carbon permit allocations.
 
-Note that calculation of policy costs is currently only supported for polices pegged to CO<sub>2</sub> prices. 
+Note that calculation of policy costs is currently only supported for polices pegged to CO<sub>2</sub> prices.
 
 
 ## References

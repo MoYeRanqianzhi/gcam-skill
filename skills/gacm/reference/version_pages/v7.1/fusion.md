@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `fusion.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -14,7 +15,7 @@ Load this page when the user needs version-specific detail from this exact page 
 Here we discuss the GCAM Fusion API modelers tools to perform two way coupling
 with a running GCAM simulation.  We start with an introduction then move on to
 some more in-depth documentation some of which may only be relevant for someone
-who is interested in modifying or adding new components to GCAM itself.  
+who is interested in modifying or adding new components to GCAM itself.
 
 *Note:* the discussion that follows is aimed at an audience proficient with
  C++.  GCAM developers looking to understand how to make their GCAM module complaint with GCAM Fusion should check the [Developer Guide](dev-guide/examples.md).
@@ -30,7 +31,7 @@ up the abstractions and relationships with in the model; however it does not
 make it easy or convenient to get data in and out of the model.  We generally
 set inputs data once at the start of the model by parsing the XML input
 files.  We retrieve data mostly through the use of custom visitors at the end of
-a scenario, or after the run has completed via an XML database.  
+a scenario, or after the run has completed via an XML database.
 
 These limitations have been a hinderance for modelers who would like to
 implement one-way or two-way coupling bwteen their own model and GCAM, in which
@@ -57,7 +58,7 @@ Currently we are providing the following hooks for users to call their feedbacks
 * Just before a simulation period of GCAM begins its solution process.
 * After a simulation period of GCAM has solved and the `hector` climate model
   has been called.
-  
+
 Limiting access to the API in this way is a key part of our strategy for keeping
 the model structure manageable.  Arbitrary updates to model internals can happen
 _only_ at designated times.  This prevents every model object from becoming, in
@@ -65,13 +66,13 @@ effect, a global variable.
 
 You create a feedback calculation by creating a "feedback object", which is an
 instance of a class that implements `IModelFeedbackCalc` interface.  The key
-functions in the interface are  
+functions in the interface are
 
 * `calcFeedbacksBeforePeriod`: A callback function that will be called at the
-  start of a model period.  
+  start of a model period.
 
 * `calcFeedbacksAfterPeriod`:  A callback function that will be called at the
-  end of a model period. 
+  end of a model period.
 
 The full definition of `IModelFeedbackCalc` is:
 
@@ -85,7 +86,7 @@ The full definition of `IModelFeedbackCalc` is:
  *          Before a new model period is about to start and after a model period has
  *          has finished solving and climate model results for the period are available.
  *          A references to the Scenario and IClimateModel will be provided however
- *          it is implied that the subclasses of this interface will utilize the 
+ *          it is implied that the subclasses of this interface will utilize the
  *          GCAM Fusion capabilities to gain access to the internal model state
  *          necessary to compute and/or push feedbacks into GCAM.
  * \warning MAGICC does not currently run between periods so these feedbacks may
@@ -101,7 +102,7 @@ class IModelFeedbackCalc : public INamed,
 {
 public:
     virtual ~IModelFeedbackCalc() { }
-    
+
     /*!
      * \brief A call back to indicate that a new simulation period is about to begin.
      * \details Note that climate model results will not yet be available for the current.
@@ -114,7 +115,7 @@ public:
      * \param aPeriod The model period that is about to begin calculation.
      */
     virtual void calcFeedbacksBeforePeriod( Scenario* aScenario, const IClimateModel* aClimateModel, const int aPeriod ) = 0;
-    
+
     /*!
      * \brief A call back to indicate that a simulation period has ended and the climate
      *        model has been run updated through this period.
@@ -147,7 +148,7 @@ the heating and cooling degree days with in GCAM for the next simulation period.
 
 <a name="feedback"></a>
 To start we will create a new class which implements the feedback interface
-mentioned above.  
+mentioned above.
 
 ```cpp
 #include "containers/include/imodel_feedback_calc.h"
@@ -164,35 +165,35 @@ class DegreeDaysFeedback : public IModelFeedbackCalc
 public:
     DegreeDaysFeedback();
     virtual ~DegreeDaysFeedback();
-    
+
     static const std::string& getXMLNameStatic();
-    
+
     // INamed methods
     virtual const std::string& getName() const;
-    
+
     // IParsable methods
     virtual bool XMLParse( const xercesc::DOMNode* aNode );
-    
+
     // IRoundTrippable methods
     virtual void toInputXML( std::ostream& aOut, Tabs* aTabs ) const;
-    
+
     // IModelFeedbackCalc methods
     virtual void calcFeedbacksBeforePeriod( Scenario* aScenario, const
                                             IClimateModel* aClimateModel, const int aPeriod );
-    
+
     virtual void calcFeedbacksAfterPeriod( Scenario* aScenario, const
-                                           IClimateModel* aClimateModel, const int aPeriod ); 
-    
+                                           IClimateModel* aClimateModel, const int aPeriod );
+
 protected:
     //! The name of this feedback
     std::string mName;
-    
+
     //! A HDD feedback coefficient of sorts
     double mHDDCoef;
-    
+
     //! A CDD feedback coefficient of sorts
     double mCDDCoef;
-    
+
     //! The base year emissions value to calculate feedback from
     double mBaseYearValue;
 };
@@ -201,7 +202,7 @@ protected:
 You will notice that we have also included the XML parsing hooks that GCAM uses
 to initialize its components such as `XMLParse` and `toInputXML`.  These
 functions allow us to activate our feedback by including them in an XML add-on
-file 
+file
 
 The source code that goes with this declaration will then look like the following skeleton:
 
@@ -244,22 +245,22 @@ bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
 }
 
 void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
-	// Code to write the object's configuration as XML 
+	// Code to write the object's configuration as XML
 	// (This is used when saving a configuration to be reread later)
 }
 
-void DegreeDaysFeedback::calcFeedbacksBeforePeriod( Scenario* aSceanrio, 
-                                                    const IClimateModel* aClimateModel, 
-													const int aPeriod ) 
+void DegreeDaysFeedback::calcFeedbacksBeforePeriod( Scenario* aSceanrio,
+                                                    const IClimateModel* aClimateModel,
+													const int aPeriod )
 {
     // code that gets called just before a period will begin to solve
 }
 
-void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, 
+void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario,
                                                    const IClimateModel* aClimateModel,
                                                    const int aPeriod )
 {
-    // code that gets called after a period is done solving, 
+    // code that gets called after a period is done solving,
 }
 ```
 
@@ -270,18 +271,18 @@ files.  Here is how they are defined:
 bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
     /*! \pre Make sure we were passed a valid node. */
     assert( aNode );
-    
+
     // get the name attribute.
     mName = XMLHelper<string>::getAttr( aNode, XMLHelper<void>::name() );
 
     // get all child nodes.
     DOMNodeList* nodeList = aNode->getChildNodes();
-    
+
     // loop through the child nodes.
     for( unsigned int i = 0; i < nodeList->getLength(); i++ ){
         DOMNode* curr = nodeList->item( i );
         string nodeName = XMLHelper<string>::safeTranscode( curr->getNodeName() );
-        
+
         if( nodeName == XMLHelper<void>::text() ) {
             continue;
         }
@@ -297,7 +298,7 @@ bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
             mainLog << "Unknown element " << nodeName << " encountered while parsing " << getXMLNameStatic() << endl;
         }
     }
-    
+
     return true;
 }
 
@@ -306,7 +307,7 @@ void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
 
     XMLWriteElement( mHDDCoef, "hdd-coef", aOut, aTabs );
     XMLWriteElement( mCDDCoef, "cdd-coef", aOut, aTabs );
-    
+
     XMLWriteClosingTag( getXMLNameStatic(), aOut, aTabs );
 }
 
@@ -389,10 +390,10 @@ The `GCAMFusion` object takes four template parameters:
 -   A boolean flag to indicate whether the handler will process the start of each
     step taken into a `CONTAINER` object (default is `false`).
 -   A boolean flag to indicate whether the handler will process stepping out of
-    a `CONTAINER` object (default is false). 
+    a `CONTAINER` object (default is false).
 -   A boolean flag to indicate whether the handler will process the data being found
     (default is `true`).
-	
+
 The last flag (the one that defaults to `true`) is the most common use case, and
 it's the only one we will use in this example.
 
@@ -423,7 +424,7 @@ void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, const IC
     // Results are not returned and instead the processData callback function of the
     // GatherEmiss class is called when a matching emissions value is found.
 
-    // We can then retrieve the result to use it in our impact calculations 
+    // We can then retrieve the result to use it in our impact calculations
     double currGlobalEmiss = gatherEmissProc.mEmiss;
     cout << "Curr global emissions are " << currGlobalEmiss << " in period " << aPeriod << endl;
 }
@@ -438,7 +439,7 @@ value.
 
 As mentioned above, when GCAMFusion finds a result that matches the search it
 will call `processData` and the user can get or set the value as appropriate for
-their needs:  
+their needs:
 
 ```cpp
 template<typename T>
@@ -449,7 +450,7 @@ template<>
 void GatherEmiss::processData<Value>( Value& aData ) {
     mEmiss += aData;
 }
-```  
+```
 GCAMFusion cannot know what the type of the result of the search is going to be
 ahead of time.  Searches are made at runtime while the code to handle the
 results are generated at compile time.  This is the reason the processData
@@ -467,7 +468,7 @@ If for some reason it does, then the run will abort with an error.
 Next we do something with our results.  To keep things simple for illustrative
 purposes, we'll adjust degree days by a scale factor, but you could in principle
 do anything here, including running another model and passing it the data you
-just received.  
+just received.
 
 ```cpp
     if( aPeriod == modeltime->getFinalCalibrationPeriod() ) {
@@ -492,7 +493,7 @@ for building heating and cooling services:
     ddFilterSteps.push_back( new FilterStep( "degree-days", new IndexFilter( new IntEquals( aPeriod + 1 ) ) ) );
     GCAMFusion<DegreeDaysFeedback> scaleHDD( *this, ddFilterSteps );
     scaleHDD.startFilter( aScenario );
-    
+
     mCurrDDScaler = ( currGlobalEmiss / mBaseYearValue ) * mCDDCoef;
     // only updating the service name filter of our query, we can keep the rest of it the same
     delete ddFilterSteps[ ddFilterSteps.size() - 2 ];
@@ -547,7 +548,7 @@ model to GCAM.  There are three options for doing this.
 
 This method is a little clunky, but it is probably the easiest to get up and
 running in most cases.  You will run your model as a stand-alone process, and
-you will communicate with GCAM via interprocess communication (IPC).  
+you will communicate with GCAM via interprocess communication (IPC).
 
 The easiest form of IPC to get up and running is the
 [named pipe](http://www.linuxjournal.com/article/2156). (The linked article is
@@ -611,7 +612,7 @@ modification.  Your model will not need any particular knowledge of GCAM's
 internal structure and might even be indifferent to whether it is getting data
 from GCAM or from some other source.  The disadvantage of this method is that it
 requires you to make some changes to GCAM, particularly where initializing your
-model is concerend.  
+model is concerend.
 
 This is the method used to implement the one-way coupling between GCAM and
 Hector, so looking at that model may provide some guidance on how to proceed.
@@ -652,15 +653,15 @@ Intended Use of GCAM Fusion
 
 Note that GCAM Fusion gives the users full access to all the internal parameters
 of GCAM for better or for worse.  Just because you are able to change these
-values doesn't mean GCAM will be able to operate normally when doing so. 
+values doesn't mean GCAM will be able to operate normally when doing so.
 Therefore we only reccommend using GCAM Fusion inside of the `IModelFeedback`
 methods.  Making feedbacks during the solution of a model period would require
 additional dependencies and linkages to ensure proper solution and GCAM Fusion
-would entirely circumvent those procedures. 
+would entirely circumvent those procedures.
 As a rule of thumb adjusting the same model perameters which are parsed in GCAM
 XML input files should be fine to modify.  It should **not** be used to
 curcimvent normal object orientened principals or designs.  Object encapsulation
-allows us to ensure some level of consistency. 
+allows us to ensure some level of consistency.
 
 To be clear there are no sofware limitation imposed on the use of GCAM Fusion
 however code proposed for inclusion into the Core GCAM model may be rejected due

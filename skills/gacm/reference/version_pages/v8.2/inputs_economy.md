@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `inputs_economy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -42,13 +43,13 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 #### Population
 Historical population is provided in [Maddison_population.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/Maddison_population.csv) (used for 1700-1900) and [UN_popTot.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/UN_popTot.csv) (used for 1950-2015).
 
-Future population is provided in [SSP_database_2024.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP/SSP_database_2024.csv.gz). 
+Future population is provided in [SSP_database_2024.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP/SSP_database_2024.csv.gz).
 
 #### GDP and national accounts
 Historical GDP is provided in [USDA_GDP_MER.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/USDA_GDP_MER.csv) (used through 2015).
 
-Future GDP is provided in [SSP_database_2024.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP/SSP_database_2024.csv.gz). 
+Future GDP is provided in [SSP_database_2024.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP/SSP_database_2024.csv.gz).
 
-Historical national accounts from Penn World Table are provided in [pwt91.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91.csv) and [pwt91_na.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91_na.csv). 
+Historical national accounts from Penn World Table are provided in [pwt91.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91.csv) and [pwt91_na.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91_na.csv).
 
 GTAP data (proprietary) is aggregated, processed (into value shares) and stored in [PREBUILT_DATA](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/data/PREBUILT_DATA.red.csv).

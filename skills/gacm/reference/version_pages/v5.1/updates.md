@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.1`.
 - Source root: `gcam-doc/v5.1`
 - Source path: `updates.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -27,7 +28,7 @@ The sections below provide short summaries of all changes.
 GCAM5.1 represents demand for water by sector and technology, including both water withdrawals and water consumption.
 
 ## Land Regions
-GCAM5.1 switches land use regions from climatically defined agro-ecological zones (AEZs) developed by the GTAP group to water basin-defined geographic land units (GLUs), developed in house. 
+GCAM5.1 switches land use regions from climatically defined agro-ecological zones (AEZs) developed by the GTAP group to water basin-defined geographic land units (GLUs), developed in house.
 
 ## Agricultural Management
 GCAM5.1 endogenizes yields and fertilizer application rates, making these levels each a function of crop prices, production costs, and other contributors to modeled land profit rates. This is achieved by nesting four different crop technologies within the logit structure (irrigated/hi fertilizer, irrigated/lo fertilizer, rainfed/hi fertilizer, rainfed/lo fertilizer).

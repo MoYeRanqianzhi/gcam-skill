@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.3`
 - Source path: `dev-guide/test_framework.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 - Source provenance: inherited from `v5.3` because `v5.4` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v5.4` as `dev-guide/test_framework.md`.
@@ -55,15 +56,15 @@ At this point you can open your pull request and the automated tests will use yo
 The following software / serices may be useful to review and describe their purpose given users may not be familiar with them.  Note we are relying on these services being provided by PNNL's Dev Central which is currently being provided free of charge code.  It does of course imply these tests can only be launched from inside the PNNL network.
 
 #### Bitbucket (aka stash)
-We have been using Bitbucket to manage the internal GCAM Git repository.  It is only worth mentioning since within the  "Pull Request" section is where most users will interact with the testing framework.  
+We have been using Bitbucket to manage the internal GCAM Git repository.  It is only worth mentioning since within the  "Pull Request" section is where most users will interact with the testing framework.
 Note the JGCRI project is located at: https://stash.pnnl.gov/projects/JGCRI
 
 #### Jenkins
-Jenkins provides a "continuous integration" service, which simply means regularly run some arbitrary set of tests on your version controlled code.  It is extremely flexible in terms of how to configure and run tests.  In addition PNNL has configured several "build servers" available through Jenkins to use with varying pre-installed tools and operating systems.  
+Jenkins provides a "continuous integration" service, which simply means regularly run some arbitrary set of tests on your version controlled code.  It is extremely flexible in terms of how to configure and run tests.  In addition PNNL has configured several "build servers" available through Jenkins to use with varying pre-installed tools and operating systems.
 Note the JGCRI project is located at: https://ci.pnnl.gov/jenkins/job/JGCRI/
 
 #### Artifactory
-Artifactory is essentially a file server.  You can upload any arbitrary files to save there, attach meta data and have multiple versions of.  In addition it offers front ends to serve as a local proxy for such services as CRAN (R packages), Docker Hub, PyPi (Python packages), and many more.  
+Artifactory is essentially a file server.  You can upload any arbitrary files to save there, attach meta data and have multiple versions of.  In addition it offers front ends to serve as a local proxy for such services as CRAN (R packages), Docker Hub, PyPi (Python packages), and many more.
 You can browse the files at: https://artifactory.pnnl.gov and specific locations where we will save artifacts are noted below.
 
 ### Docker
@@ -77,7 +78,7 @@ This is the counterpart for the "Pull Request Notifier for Bitbucket".  It will 
 Documentation, again on it's Github page: https://github.com/jenkinsci/generic-webhook-trigger-plugin
 
 #### Notify Bitbucket Instance Plugin for Jenkins
-A plugin to update the build status (In Progress, Failure, Success) in Bitbucket.  The Jenkins plugin takes care of all of the details for us automatically filling in the name of the test, build number, and link back to Jenkins so a user can watch the progress / look at logs or build artifacts after the fact.  
+A plugin to update the build status (In Progress, Failure, Success) in Bitbucket.  The Jenkins plugin takes care of all of the details for us automatically filling in the name of the test, build number, and link back to Jenkins so a user can watch the progress / look at logs or build artifacts after the fact.
 The plugin makes use of [Bitbucket Build Status API](https://developer.atlassian.com/server/bitbucket/how-tos/updating-build-status-for-commits/) which actually need to call directly to add / update the builds status of the jobs submitted on PIC.
 
 ### Testing Framework Scripts

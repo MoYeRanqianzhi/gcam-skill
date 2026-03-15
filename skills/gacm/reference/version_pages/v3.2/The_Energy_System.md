@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `The_Energy_System.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -62,7 +63,6 @@ The GCAM models two distinct liquid fuel technologies for conversion of cellulos
 
 ###### **Figure 1: Technology options in liquid fuel refining.**
 
-Image reference: html-image (images/Refining_diagram_r4503.gif)&lt;br&gt;
 
 &lt;br&gt;
 
@@ -123,11 +123,9 @@ Hydrogen is a component of present end-use fuel consumption. However, like renew
 
 ###### Table 2. Hydrogen production efficiencies by technology in reference and advanced scenarios.&lt;br&gt;
 
-Image reference: html-image (images/Hydrogen.png)&lt;br&gt;
 
 ###### Table 3. Hydrogen non-energy costs by technology in reference and advanced scenarios (2004$ / GJ).&lt;br&gt;
 
-Image reference: html-image (images/Hydrogen2.png)
 
 &lt;br&gt;
 
@@ -156,7 +154,6 @@ The second portion of the CCS cost pertains to the transport and storage of CO&l
 
 ###### Table 4. Carbon capture costs, in terms of additional energy requirements, and additional costs, by technology. &lt;br&gt;
 
-Image reference: html-image (images/CCS.png)&lt;br&gt;
 
 Sources: Refining: Dooley and Dahowski (2008)&lt;ref name="dooley08"&gt;Dooley, J.J., and R.T. Dahowski (2008). Large Scale U.S. Unconventional Fuels Production and the Role of Carbon Dioxide Capture and Storage Technologies in Reducing Their Greenhouse Gas Emissions. Presented at the 9th International Conference on Greenhouse Gas Control Technologies, November 2008, Washington, D.C.&lt;/ref&gt;; Electricity: David and Herzog (2000)&lt;ref name="herzog00"&gt;David J and H Herzog. 2000. The Cost of Carbon Capture. Presented at the Fifth International Conference on Greenhouse Gas Control Technologies, Cairns, Australia, August 13 - August 16.&lt;/ref&gt;; Hydrogen: H2A model (DOE 2008)&lt;ref name="defriesDOE08"&gt;DeFries R, M Hansen, JRG Townshend, AC Janetos, and TR Loveland. 2000. A New Global 1km Data Set of Percent Tree Cover Derived from Remote Sensing. Global Change Biology 6:247-254. DOE (2008). DOE Hydrogen Program: H2A Analysis. U.S. Department of Energy, Hydrogen Program. Accessed at <http://www.hydrogen.energy.gov/h2a_analysis.html>.&lt;/ref&gt;; Cement: Mahasenan et al. (2005)&lt;ref name="mahasenan05"&gt;Mahasenan, N., R.T. Dahowski, and C.L. Davidson (2005). The Role of Carbon Dioxide Capture and Storage in Reducing Emissions from Cement Plants in North America. In Greenhouse Gas Control Technologies, Volume I, eds. E.S. Rubin, D.W. Keith, and C.F. Gilbor, Elsevier Science.&lt;/ref&gt;.
 
@@ -166,7 +163,6 @@ Sources: Refining: Dooley and Dahowski (2008)&lt;ref name="dooley08"&gt;Dooley, 
 
 ###### Table 5. Carbon capture rates, by technology. The remaining CO&lt;sub&gt;2&lt;/sub&gt; is vented to the atmosphere, and is subject to any applicable carbon prices. &lt;br&gt;
 
-Image reference: html-image (images/CCS2.png)
 
 CO&lt;sub&gt;2&lt;/sub&gt; storage can also be treated as a finite geographically distributed resource in GCAM as described in Edmonds, et al. (2007)&lt;ref name="edmonds07"&gt;Edmonds, J., J. Dooley, S. Kim, S. Friedman, and M. Wise. 2007. “Technology in an Integrated Assessment Model: The Potential Regional Deployment of Carbon Capture and Storage in the Context of Global CO2 Stabilization,” Human-Induced Climate Change: An Interdisciplinary Perspective, (eds. Michael Schlesinger, Francisco C. de la Chesnaye, Haroon Kheshgi, Charles D. Kolstad, John Reilly, Joel B. Smith and Tom Wilson), Cambridge University Press. pp.181-197.&lt;/ref&gt;. In this mode GCAM distinguishes five candidate geologic storage reservoirs types:&lt;br&gt;
 

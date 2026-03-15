@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `economy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -32,7 +33,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Description
 
-The socioeconomic component of GCAM sets the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. 
+The socioeconomic component of GCAM sets the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM.
 
 One of the most important determinants of energy, agriculture, and land-use is the scale of economic activity, which we assume is proportional to GDP. In previous versions of GCAM, dating back to the model's earliest formulations, the level of GDP was prescribed exogenously. There has been an option to endogenously modify the initial GDP assumption to reflect changes in the cost of delivering energy services within a scenario (Edmonds and Reilly, 1983; Edmonds and Reilly, 1985). However, that feedback elasticity was not determined structurally and was a simple scalar parameter. In other words, population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP.
 
@@ -40,19 +41,17 @@ Since GCAM v7, GCAM incorporates a macroeconomic module that allows for fully en
 
 
 
-Image reference: html-image (gcam-figs/GCAM_macro_schematic.png)<br/>
 Figure 1: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange
-{: .fig}
 
 
-### GCAM-macro (KLEM) Description 
+### GCAM-macro (KLEM) Description
 
 At the heart of the "production" of GDP in the macroeconomic model is the materials sector ($$X$$). The materials sector is the source of all net output not originating in the energy system ($$E$$). $$X_{M}$$ represents the sale of new final goods and services. Additionally, the materials sector consumes all net $E$ output, measured here as efficiency-weighted end-use energy. $$X_{M}$$ therefore serves as the retailer to the economy.
 
 
 
 $$
-X_M = F_M (X_{K,M}, X_{L,M}, X_{E,M})  
+X_M = F_M (X_{K,M}, X_{L,M}, X_{E,M})
 $$
 
 $$
@@ -72,7 +71,7 @@ X_M = \left( a \left( bX_{L,M}^{\eta} + X_{K,M}^{\eta} \right)^{\frac{\rho}{\eta
 $$
 where $$a$$, $$b$$, $$c$$, $$\rho$$, and $$\eta$$ are constants.
 
-We calculate GDP for a region using equation (3), where: 
+We calculate GDP for a region using equation (3), where:
 $$
 GDP = P_M F_M (X_{K,M}, X_{L,M}, X_{E,M}) + NX_E + X_{I,M} \label{eq:3}
 $$
@@ -148,9 +147,7 @@ Another example of a useful cross-check is the equality between net exports of n
 
 
 
-Image reference: html-image (gcam-figs/GCAM_macro_SAM.png)<br/>
 Figure 2: GCAM-macro (KLEM) Social Accounting Matrix
-{: .fig}
 
 ### Historical Data for Calibration
 
@@ -158,7 +155,7 @@ Historical calibration of national income accounts, such as GDP, capital stock, 
 
 Final energy service expenditure for each GCAM region was calculated from calibrated energy quantities and endogenous service prices from GCAM to ensure consistency of historical and projected future energy expenditures at the 32-region representation. Calibration of energy quantities for all fuels and energy carriers for historical periods is based on the IEA Energy Balances [(IEA 2023)](economy.md#iea2023). This, along with historical global fuel prices, ensures robust estimates of energy expenditures for GCAM regions. Calculation of future final energy service is determined endogenously in response to changes in the demand for energy and prices resulting from the interplay of resource supplies and demands. Investment demands by the energy sector are determined endogenously. Energy sector investments include all capital investments associated with the production, transformation, and delivery of energy services. All other investments are attributed to the Materials sector.
 
-For any projected labor force and GDP pathway, total factor productivity values can be selected to reproduce that pathway. That is, the model can be calibrated to replicate reference scenario GDP values or to match any alternative future scenarios of GDP pathways, such as the Shared-Socioeconomic Pathways (SSPs) (IIASA, 2018). Alternatively, estimates of future labor supply and assumptions of total factor/labor/capital/energy productivity improvements can be used directly to determine future GDP outcomes. In all cases, these projects can subsequently be run in open GDP mode (the default option in GCAM v7). 
+For any projected labor force and GDP pathway, total factor productivity values can be selected to reproduce that pathway. That is, the model can be calibrated to replicate reference scenario GDP values or to match any alternative future scenarios of GDP pathways, such as the Shared-Socioeconomic Pathways (SSPs) (IIASA, 2018). Alternatively, estimates of future labor supply and assumptions of total factor/labor/capital/energy productivity improvements can be used directly to determine future GDP outcomes. In all cases, these projects can subsequently be run in open GDP mode (the default option in GCAM v7).
 
 Assumptions of savings and depreciation rates for future periods are exogenous inputs and can be readily changed. A simple regression model of the relationship between historical per capita GDP and savings rates was applied to adjust future savings rates from initial historical rates by region. Depreciation rates were held fixed at historical values, as they are more uniform across regions.
 

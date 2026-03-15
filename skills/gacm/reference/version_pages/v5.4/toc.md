@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `toc.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -38,7 +39,7 @@ Load this page when the user needs version-specific detail from this exact page 
 	- [Prices](outputs_prices.md)
 	- [Quantity](outputs_quantity.md)
 	- [Trade](outputs_trade.md)
-* [Climate](hector.md) 
+* [Climate](hector.md)
 * [Policies and costs](policies.md)
     - [Examples of how to implement policies in GCAM](policies_examples.md)
 * [GCAM-USA](gcam-usa.md)

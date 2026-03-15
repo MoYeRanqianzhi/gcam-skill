@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `details_inputs.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -53,7 +54,7 @@ The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and
 
 **Table 3<a name="table3"/>:** Mapping from IEA flows to GCAM sectors
   (and subsectors where appropriate)
-{: .tbl}  
+{: .tbl}
 
 | flow_code | flow_name                                     | sector                                                  |
 |:-----------|:-----------------------------------------------|:---------------------------------------------------------|

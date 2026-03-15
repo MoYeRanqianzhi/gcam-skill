@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v4.2`
 - Source path: `gcam-build.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 - Source provenance: inherited from `v4.2` because `v3.2` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v3.2` as `gcam-build.md`.
@@ -55,7 +56,7 @@ Set the following environment variables:
 * `XERCES_SRC`: Set to the top-level directory created when you unpacked the xerces zip or tar file.
 * `XERCES_INSTALL`:  Set to the directory in which you want to install xerces.
 
-Example:  
+Example:
 
 ```
 export XERCES_SRC=$HOME/GCAM/build/xerces-c-3.1.1
@@ -72,7 +73,7 @@ make install
 
 After installing xerces, you can optionally delete all the intermediate files that were generated during the xerces build by running:
 
-```	
+```
 make clean
 ```
 
@@ -179,21 +180,17 @@ Note the `-j 8` is simply to compile multiple sources files at a time and is onl
 ### 3.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), any version 3.2+ will work.  Users can find the project file under `<Release Package>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
 
-Image reference: Xcode Scheme (gcam-figs/mac-build-scheme.png)
 
 Then under the `Info` tab change the build configuration to `Release`:
 
-Image reference: Xcode build configuration (gcam-figs/mac-build-config.png)
 
 Finally selcet menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<Release Package>/Main_User_Workspace/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 3.3 Building with Visual Studio
 Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Any version 2010+ will work as the 64-bit C++ compiler is required.  Note Microsoft does provide a free option called ["Express"](https://www.microsoft.com/en-us/download/details.aspx?id=44914).  Users can find the project file under `<Release Package>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
-Image reference: Visual Studio build configuration (gcam-figs/vs-build-config.png)
 
 Also you will likely have to change the `Platform Toolset` under menu `Project -> objects-main Properties..` to the latest toolset installed with your Visual Studio.  Note that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory within your workspace and update the [PATH environment variable to find jvm.dll](#java-on-windows). This is done within the same project properties dialog under the `Debugging` section and properties `Working Directory` and `Environment`.
 
-Image reference: Visual Studio Platform Toolset (gcam-figs/vs-platform-toolset.png)
 
 Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<Release Package>/Main_User_Workspace/exe` and you can still use `run-gcam.bat` to run it.

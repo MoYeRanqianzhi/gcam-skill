@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.3`.
 - Source root: `gcam-doc/v4.3`
 - Source path: `gcam-build.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -43,7 +44,7 @@ cd <GCAM Workspace>/libs/boost-lib
 ```
 
 #### 2.1.2 Building Boost Mac Notes
-Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Note for users who want to use [Xcode](#building-with-xcode) to build, the default project file setting is to use `libc++` instead of `libstdc++` so you should build boost accordingly. 
+Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Note for users who want to use [Xcode](#building-with-xcode) to build, the default project file setting is to use `libc++` instead of `libstdc++` so you should build boost accordingly.
 
 It is generally simplest to build using the command line by using the following commands:
 
@@ -93,7 +94,7 @@ Set the following environment variables:
 * `XERCES_SRC`: Set to the top-level directory created when you unpacked the xerces zip or tar file.
 * `XERCES_INSTALL`:  Set to the directory in which you want to install xerces.
 
-Example:  
+Example:
 
 ```
 export XERCES_SRC=$HOME/GCAM/build/xerces-c-3.1.1
@@ -110,7 +111,7 @@ make install
 
 After installing xerces, you can optionally delete all the intermediate files that were generated during the xerces build by running:
 
-```	
+```
 make clean
 ```
 
@@ -188,7 +189,7 @@ ln -s ${JAVA_HOME}/jre/lib/server lib
 Please use the appropriate methods on your platform for installing Java.  Please see the [Compiling with Makefile](#building-with-makefile) for how to set environment variables so that your Java installation is found by GCAM.
 
 ## 3 Compiling Hector
-[Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
+[Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).
 
 The GCAM Make / project files are expecting the hector source to be in `<GCAM Workspace>/cvs/objects/climate/source/hector`.  If you cloned the GCAM Git repository onto your local system, you can place hector into the appropriate location within the GCAM workspace by initializing it's submodule:
 
@@ -244,22 +245,18 @@ Note the `-j 8` is simply to compile multiple sources files at a time (set as ap
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), any version 3.2+ will work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
 
-Image reference: Xcode Scheme (gcam-figs/mac-build-scheme.png)
 
 Then under the `Info` tab change the build configuration to `Release`:
 
-Image reference: Xcode build configuration (gcam-figs/mac-build-config.png)
 
 Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 4.3 Building with Visual Studio
 Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Any version 2010+ will work as the 64-bit C++ compiler is required.  Note Microsoft does provide a free option called ["Express"](https://www.microsoft.com/en-us/download/details.aspx?id=44914).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
-Image reference: Visual Studio build configuration (gcam-figs/vs-build-config.png)
 
 Also you will likely have to change the `Platform Toolset` under menu `Project -> objects-main Properties..` to the latest toolset installed with your Visual Studio.  Note that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory within your workspace and update the [PATH environment variable to find jvm.dll](#java-on-windows). This is done within the same project properties dialog under the `Debugging` section and properties `Working Directory` and `Environment`.
 
-Image reference: Visual Studio Platform Toolset (gcam-figs/vs-platform-toolset.png)
 
 Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.bat` to run it.
 
@@ -290,5 +287,5 @@ Below we list some issues that you may encounter along with potential solutions.
 
 * Build fails on a unix/MacOS system with an error:
    `ld: library not found for -lboost_system`
-	
+
 	You may have not complied the necessary boost libraries. See section above on compiling boost.

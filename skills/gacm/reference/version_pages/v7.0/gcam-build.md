@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `gcam-build.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -131,7 +132,7 @@ The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utili
 
 
 ## 3 Compiling Hector
-[Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).  
+[Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).
 
 The GCAM Make / project files are expecting the hector source to be in `<GCAM Workspace>/cvs/objects/climate/source/hector`.  If you cloned the GCAM Git repository onto your local system, you can place hector into the appropriate location within the GCAM workspace by initializing it's submodule:
 
@@ -210,22 +211,18 @@ JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
 ### 4.2 Building with Xcode
 Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
 
-Image reference: Xcode Scheme (gcam-figs/mac-build-scheme.png)
 
 Then under the `Info` tab change the build configuration to `Release`:
 
-Image reference: Xcode build configuration (gcam-figs/mac-build-config.png)
 
 Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
 
 ### 4.3 Building with Visual Studio
 Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 7.0 you will need a version which supports the C++ 17 standard.  Visual Studio 2017 is known to work.  Note Microsoft does provide a free option called ["Community"](https://visualstudio.microsoft.com/free-developer-offers/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
 
-Image reference: Visual Studio build configuration (gcam-figs/vs-build-config.png)
 
 Also you will likely have to change the `Platform Toolset` under menu `Project -> objects-main Properties..` to the latest toolset installed with your Visual Studio.  Note that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory within your workspace and update the [PATH environment variable to find jvm.dll](#232-java-on-windows). This is done within the same project properties dialog under the `Debugging` section and properties `Working Directory` and `Environment`.
 
-Image reference: Visual Studio Platform Toolset (gcam-figs/vs-platform-toolset.png)
 
 Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.bat` to run it.
 

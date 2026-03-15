@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `inputs_land.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -41,18 +42,18 @@ Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are use
 ### Data
 
 #### Historical Land Use and Land Cover
-The raw data used for historical land cover is mainly provided in [Land_type_area_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/Land_type_area_ha.csv). 
+The raw data used for historical land cover is mainly provided in [Land_type_area_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/Land_type_area_ha.csv).
 
-The arable land, temporary crops, and temporary fallow land are provided in [GCAMFAOSTAT_LandCover.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_LandCover.csv).  
+The arable land, temporary crops, and temporary fallow land are provided in [GCAMFAOSTAT_LandCover.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_LandCover.csv).
 
 #### Historical Harvested Area
 Historical harvested area by crop and country is provided in [GCAMFAOSTAT_NonFodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_NonFodderProdArea.csv.gz) and [GCAMFAOSTAT_FodderProdArea.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_FodderProdArea.csv.gz).
 
-The data used to separate crops into irrigated and rainfed is provided in [MIRCA_irrHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_irrHA_ha.csv) and [MIRCA_rfdHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_rfdHA_ha.csv).   
+The data used to separate crops into irrigated and rainfed is provided in [MIRCA_irrHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_irrHA_ha.csv) and [MIRCA_rfdHA_ha.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/LDS/MIRCA_rfdHA_ha.csv).
 
 #### Terrestrial Carbon Information
 The mature age and carbon density information used in GCAM is provided in [Various_CarbonData_LTsage.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_CarbonData_LTsage.csv).
-Crops that use C4 photosynthesis and tree crops are each disaggregated in the land allocator; the specific FAO crops that are mapped to these categories are indicated in  [FAO_ag_items_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_items_PRODSTAT.csv). The vegetation carbon densities of tree crops are estimated according to an assumed ratio between crop yield and vegetation carbon density for each specific type of tree crop, in [Various_Tree_C_yield_ratios.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_Tree_C_yield_ratios.csv) 
+Crops that use C4 photosynthesis and tree crops are each disaggregated in the land allocator; the specific FAO crops that are mapped to these categories are indicated in  [FAO_ag_items_PRODSTAT.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/FAO_ag_items_PRODSTAT.csv). The vegetation carbon densities of tree crops are estimated according to an assumed ratio between crop yield and vegetation carbon density for each specific type of tree crop, in [Various_Tree_C_yield_ratios.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/Various_Tree_C_yield_ratios.csv)
 
 #### Soil time scale
 The soil time scale is provided in [A_soil_time_scale_R.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_soil_time_scale_R.csv)

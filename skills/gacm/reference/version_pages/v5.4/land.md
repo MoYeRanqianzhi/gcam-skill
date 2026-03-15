@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `land.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -45,7 +46,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 In this section, we describe and discuss the approach we have developed for the economic modeling of land allocation in the Global Change Analysis Model (GCAM). More information, including a comparison to other models, is available in Wise et al. (2014).
 
-#### Land Sharing Approach 
+#### Land Sharing Approach
 
 Economic land use decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. In GCAM, there is a distribution of profit behind each competing land use within a region. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. For more information, see the detailed description of the [land sharing approach](details_land.md#land-sharing-approach).
 
@@ -53,13 +54,11 @@ Economic land use decisions in GCAM are based on a logit model of sharing based 
 
 The way land types are nested in GCAM, in combination with the logit exponents used, determines the substitutability of different land types in the model in future periods. Figure 1 shows a simplified nesting diagram of land with a subregion. Note that crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer. For more information, see the detailed description of the [land nesting strategy](details_land.md#land-nesting-strategy).
 
-Image reference: AgLU Land Nesting Diagram (gcam-figs/AgLUTree.bmp)<br/>
 Figure 1: AgLU Land Nest
-{: .fig}
 
 #### Intensification
 
-The inclusion of multiple management types for each crop within each subregion of GCAM allows the model to represent price-induced intensification. That is, we can increase yields via increased fertilizer or irrigation if economic conditions favor those options. Like the rest of the land allocation decisions in GCAM, the share of each management practice depends on relative profitability. As profits of one option increase, more land will be allocated to that option. If the option is higher yielding, then average yields will increase (an intensification response). In general, GCAM will intensify when there is a lot of land competition (like when carbon in land is valued). Note that it is possible for average yields in a subregion to decline over time; this will happen if commodity prices decline or if the price of fertilizer and/or water increases. 
+The inclusion of multiple management types for each crop within each subregion of GCAM allows the model to represent price-induced intensification. That is, we can increase yields via increased fertilizer or irrigation if economic conditions favor those options. Like the rest of the land allocation decisions in GCAM, the share of each management practice depends on relative profitability. As profits of one option increase, more land will be allocated to that option. If the option is higher yielding, then average yields will increase (an intensification response). In general, GCAM will intensify when there is a lot of land competition (like when carbon in land is valued). Note that it is possible for average yields in a subregion to decline over time; this will happen if commodity prices decline or if the price of fertilizer and/or water increases.
 
 #### Calibration
 
@@ -70,7 +69,7 @@ In its determination of the economic allocation of crop production and land use 
 
 ### Terrestrial Carbon Approach
 
-Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.  
+Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.
 
 #### Vegetation Carbon
 
@@ -84,7 +83,7 @@ For soil carbon, we assume we assume both emissions and uptake are exponential, 
 
 GCAM tracks carbon stocks by calculating and storing cumulative land-use change emissions, and then applying those emissions as time proceeds. As land expands, we compute future uptake to be added to the carbon stock, and as land contracts we compute future emissions to subtract from the carbon stock.
 
-## Equations 
+## Equations
 TODO: Add new land leaf equations
 
 The equations that determine land allocation and the resulting carbon emissions from land use and land cover change are described here.
@@ -98,7 +97,7 @@ See `setProfitRate` in [land_leaf.cpp](https://github.com/JGCRI/gcam-core/blob/m
 
 #### Node profit
 
-The average profit of a node is calculated as 
+The average profit of a node is calculated as
 
 $$
 \pi_i = \left[{\sum_{j=1}^{N} \lambda_j^\rho \pi_j^\rho}\right]^{\frac{1}{\rho}}
@@ -128,7 +127,7 @@ $$
 a_i = a_{above} * s_i
 $$
 
-where $$a_i$$ is the area for leaf or node $$i$$, $$s_i$$ is the [share](land.md#shares), and $$a_{above}$$ is the area of the parent node. 
+where $$a_i$$ is the area for leaf or node $$i$$, $$s_i$$ is the [share](land.md#shares), and $$a_{above}$$ is the area of the parent node.
 
 See `calcLandAllocation` in [land_leaf.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_leaf.cpp) and [land_node.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/land_allocator/source/land_node.cpp).
 
@@ -151,13 +150,13 @@ where $$E$$ indicates carbon emissions due to a land use change in timestep $$t$
 
 If vegetation emissions are positive (i.e., $$E^{veg}_{t} > 0$$), then all emissions are released in the current year, $$y$$. That is, $$E^{veg}_{y} = E^{veg}_{t}$$.
 
-If vegetation emissions are negative, then these emissions are spread out over time using a sigmoid function: 
+If vegetation emissions are negative, then these emissions are spread out over time using a sigmoid function:
 
 $$
 E^{veg}_{y} = E^{veg}_{t} * \left[1 - e^{\frac{-3.0 * (y - t + 1)}{M}} \right]^2 - \left[1 - e^{\frac{-3.0 * (y - t)}{M}} \right]^2
 $$
 
-where $$t$$ is the time of land conversion, $$y$$ is the current year, $$M$$ is the mature age (specified by land type and region). 
+where $$t$$ is the time of land conversion, $$y$$ is the current year, $$M$$ is the mature age (specified by land type and region).
 
 See `precalc_sigmoid_helper` in [land_carbon_densities.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/land_carbon_densities.cpp) for the implementation of the sigmoid and `calcAboveGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of vegetation carbon emissions. For more information on the sigmoid function and its sensitivity to mature age, see [Figure](details_land.md#land-use-change-emissions).
 
@@ -171,7 +170,7 @@ $$
 
 where $$\kappa = \frac{ log(2) }{ s / 10.0}$$ and $$s$$ is the soil time scale, specified by region (see [inputs_land](inputs_land.md#description)).
 
-See `calcBelowGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of soil carbon emissions. 
+See `calcBelowGroundCarbonEmission` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp) for the calculation of soil carbon emissions.
 
 ### Carbon Stock
 
@@ -185,7 +184,7 @@ where $$E^{veg}_{y}$$ are vegetation carbon emissions in year $$y$$ and $$E^{soi
 
 See `calc` in [asimple_carbon_calc.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/ccarbon_model/source/asimple_carbon_calc.cpp).
 
-## Policy options 
+## Policy options
 This section summarizes some of the land-based policy options available in GCAM. More information on the trade-offs of these options is available in Calvin et al. (2014).
 
 ### Protecting Lands
@@ -196,7 +195,7 @@ With this policy, we can set aside some land, removing it from economic competit
 
 In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
 
-An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).  
+An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).
 
 ### Bioenergy Constraints
 
@@ -222,7 +221,7 @@ We have also included code to implement a crop technology that plants trees as d
 The GCAM land model has been evaluated using a hindcast experiment, as shown in [Calvin et al. (2017)](https://www.worldscientific.com/doi/abs/10.1142/S2010007817500051) and [Snyder et al. (2017)](https://gmd.copernicus.org/articles/10/4307/2017/). A few insights emerge from these studies. First, GCAM cannot predict policy, but the inclusion of policies that exist in the real world (e.g., biofuels targets) improves the performance of the model. Second, the use of forecasted yields to drive land allocation decisions improves the performance of the model as compared to using observed yields. Third, GCAM does better at trends than interannual variability. Finally, GCAM does better at some crops and regions than other crops and regions.
 
 ### Sensitivity to parameters
-The effect of a change in profitability of one land type on land allocation depends on the choice of parameters, as shown in [Zhao et al. (2020)](https://www.worldscientific.com/doi/abs/10.1142/S2010007820500049). Larger logit exponents will result in a stronger transition to a land type whose profit increases than would occur with lower logit exponents. Note that this paper replicates the GCAM land allocation mechanism in a simple offline example and does not use the full GCAM. 
+The effect of a change in profitability of one land type on land allocation depends on the choice of parameters, as shown in [Zhao et al. (2020)](https://www.worldscientific.com/doi/abs/10.1142/S2010007820500049). Larger logit exponents will result in a stronger transition to a land type whose profit increases than would occur with lower logit exponents. Note that this paper replicates the GCAM land allocation mechanism in a simple offline example and does not use the full GCAM.
 
 ### Differences across regions
 The effect of an increase in one type of land depends on where that increase occurs and what it displaces because of differences in regional land allocation and carbon densities as shown in [Wise et al. (2015)](https://www.sciencedirect.com/science/article/pii/S0140988315001619). For example, expanding bioenergy in a forested region will result in higher carbon emissions per unit of fuel produced than expanding bioenergy in a non-forested region.

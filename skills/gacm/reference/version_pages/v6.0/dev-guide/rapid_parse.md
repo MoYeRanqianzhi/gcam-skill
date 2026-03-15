@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc root tree`
 - Source path: `dev-guide/rapid_parse.md`
 - Coverage mode: `inherited page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 - Source provenance: inherited from `v8.2` because `v6.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v6.0` as `dev-guide/rapid_parse.md`.
@@ -47,7 +48,7 @@ To answer this question we set up some simple standalone experiment: use the XML
 | Xerces/SAX  | 11s   | 1   MB |
 | Rapid (DOM) | 3s    | 900 MB |
 
-  
+
 From these test we can see actually the different Xerces parsers run in a very similar time.  There is an incredible difference in memory usage however which seems to be where SAX parsing's real advantage lies.  Rapid XML indeed is much faster and an in between in terms of memory usage. Although at this point we are not concerned with memory usage as GCAM's actual memory use high will far eclipse the usage during XML Parse.  So let's take a closer look at Rapid XML to understand why it is so fast and are it's trade off ones we can live with.
 
 ### Rapid XML Parser
@@ -75,7 +76,7 @@ The basic premise of [GCAM Fusion](examples.md#gcam-fusion-related-documentation
 DEFINE_DATA(
     /*! \brief Scenario is the only member of this container hierarchy. */
     DEFINE_SUBCLASS_FAMILY( Scenario ),
-            
+
     /*! \brief The Scenario name. */
     DEFINE_VARIABLE( SIMPLE, "name", mName, std::string ),
 
@@ -84,16 +85,16 @@ DEFINE_DATA(
 
     /*! \brief The goods and services marketplace. */
     DEFINE_VARIABLE( CONTAINER | NOT_PARSABLE, "marketplace", mMarketplace, Marketplace* ),
-            
+
     /*! \brief The goods and services marketplace. */
     DEFINE_VARIABLE( CONTAINER, "world", mWorld, World* ),
-            
+
     /*! \brief A vector booleans, one per period, which denotes whether each period is valid. */
     DEFINE_VARIABLE( SIMPLE | NOT_PARSABLE, "is-valid-period", mIsValidPeriod, std::vector<bool> ),
-            
+
     /*! \brief Unsolved periods. */
     DEFINE_VARIABLE( ARRAY | NOT_PARSABLE, "unsolved-periods", mUnsolvedPeriods, std::vector<int> ),
-            
+
     /*! \brief A pass through object used to parse SolutionInfo parameters
      *         until markets are created.
      */
@@ -147,7 +148,7 @@ void ParseChildData::processDataVector( DataVectorType aDataVector ) {
             });
         }
     }
-    
+
     // loop over child nodes and attempt to match them to any elements in the Data vector
     for(rapidxml::xml_node<char>* child = mParentNode->first_node(); child; child = child->next_sibling()) {
         // skip whitespace for instance
@@ -349,12 +350,12 @@ void>::type parseDataI(const rapidxml::xml_node<char>* aNode, DataType& aData) {
     using data_type = typename GetActualContainerType<DataType>::data_type;
     using value_type = typename GetActualContainerType<DataType>::value_type;
     using FactoryType = typename GetActualContainerType<DataType>::FactoryType;
-    
+
     string nodeName(aNode->name(), aNode->name_size());
     map<string, string> attrs = XMLParseHelper::getAllAttrs(aNode);
     bool deleteFlagSet = XMLParseHelper::isAttrFlagSet( attrs, "delete" );
     bool noCreateFlagSet = XMLParseHelper::isAttrFlagSet( attrs, "nocreate" );
-    
+
     // We need to try to find in the array if the container exists
     auto dataIter = aData.mData.end();
     bool found = false;
@@ -382,7 +383,7 @@ void>::type parseDataI(const rapidxml::xml_node<char>* aNode, DataType& aData) {
         }
         else {
             // No previous container so add a new one.
-            
+
             // Some error checking to make sure the type of class that was created is
             // actually a subclass of the type aData was declared as.  For instance
             // LandAllocator has a base class ALandAllocatorItem however in
@@ -417,7 +418,7 @@ void>::type parseDataI(const rapidxml::xml_node<char>* aNode, DataType& aData) {
             // TODO: we should check to make sure the XML names are the same but we would currently fail this check often
         }
     }
-    
+
     // parse child nodes
     ParseChildData parseChildHelper(aNode, attrs);
     parseChildHelper.setContainer(currContainer);
@@ -478,7 +479,7 @@ bool ReserveSubResource::debugXMLParse(const rapidxml::xml_node<char>* aNode) {
             mainLog << attr.first << " = " << attr.second << " ";
         }
         mainLog << endl;
-        
+
         // and all the direct child tags as well
         for(rapidxml::xml_node<char>* child = aNode->first_node(); child; child = child->next_sibling()) {
             // skip whitespace for instance
@@ -491,7 +492,7 @@ bool ReserveSubResource::debugXMLParse(const rapidxml::xml_node<char>* aNode) {
                     mainLog << attr.first << " = " << attr.second << " ";
                 }
                 mainLog << "value: " << nodeValue << endl;
-                
+
                 if(nodeName == "cal-production") {
                     // we can get it to convert to the C++ type using getValue
                     // for basically any type that has the << operator defined
@@ -520,7 +521,7 @@ bool ReserveSubResource::debugXMLParse(const rapidxml::xml_node<char>* aNode) {
 
 Then when run we can check our `main_log` and see the debugging messages:
 ```
-In reserve-subresource name = natural gas 
+In reserve-subresource name = natural gas
 Saw: average-production-lifetime value: 30
 Saw: price-adder year = 2100 value: 0
 Saw: cal-reserve year = 1975 value: 548.537244652028
@@ -528,8 +529,8 @@ Saw: cal-reserve year = 1990 value: 0
 Saw: cal-reserve year = 2005 value: 526.509163108651
 Saw: cal-reserve year = 2010 value: 103.042527916847
 Saw: cal-reserve year = 2015 value: 157.05722479823
-Saw: resource-reserve-technology name = natural gas value: 
-                        
+Saw: resource-reserve-technology name = natural gas value:
+
 Saw: techChange fillout = 1 year = 1975 value: 0.005
 array content: 0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,0.005,
 Saw: techChange fillout = 1 year = 2005 value: 0.0075

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Getting_Started_with_GCAM.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -38,11 +39,11 @@ addition, we have included a list of model parameters
   do not have to be registered to view the archive on the
   website.
 
-**Research with GCAM:**  Individual researchers within and without PNNL are welcome to make any changes they like for their own research interests. 
+**Research with GCAM:**  Individual researchers within and without PNNL are welcome to make any changes they like for their own research interests.
 
 > However, any revised version must be identified not as GCAM but as
 > GCAM-xxxx. For example, the GCAM version that has been customized to
-> India is referred to as GCAM-IIM (for India Institute of Management) 
+> India is referred to as GCAM-IIM (for India Institute of Management)
 
 Before attempting to run the model, please review the
 [minimum system requirements for GCAM](Minimum_system_requirements_for_GCAM.md).

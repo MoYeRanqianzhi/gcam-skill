@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.3`.
 - Source root: `gcam-doc/v4.3`
 - Source path: `overview.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -21,33 +22,27 @@ Throughout its lifetime, GCAM has evolved in response to the need to address an 
 
 GCAM is an integrated assessment model. The role of integrated assessment research and integrated assessment modeling is to bring multiple human and physical Earth systems together in one place to shed light on system interactions and provide scientific insights that would not otherwise be available from the pursuit of traditional disciplinary scientific research alone. IA models are constructed to explore these interactions in a single computational platform with a sufficiently low computational requirement to allow for broad explorations of scenarios and uncertainties. IA models include both human and physical Earth systems, Figure 1. Components of an IA model are designed to capture the behavior of human and physical systems, but they do not necessarily include the most detailed process-scale representations of its constituent components. On the other hand, IA model components in principle provide a faithful representation of the best current scientific understanding of underlying behavior.
 
-Image reference: html-image (gcam-figs/overview_fig1.png)<br/>
 Figure 1: Illustrative Schematic of IA modeling and research, linking human and Earth systems. Note that not all IA models represent all of the systems shown in this illustrative figure.
-{: .fig}
 
 In general IAMs can be divided into two categories, those that are highly aggregated and whose core problem is the conduct of global, century-scale, cost-benefit analysis (examples include DICE, FUND, and PAGE), and higher resolution models whose core problem is understanding the physical and economic details of human and physical Earth system interactions. GCAM is a member of the latter class of more highly-resolved IA models.
 
-IA models like GCAM, as with any model, are not predictors of the future. They are used to provide conditional forecasts of the future. GCAM takes in external "scenario assumptions" about key drivers such as population, economic activity, technology, and policies, analyzes the implications of these through representations of human and physical systems operate and interact, and then developed a more complete, modeled scenario description that includes the implications of the scenarios assumptions, for example, on commodity prices, energy use, land use, water use, emissions, and concentrations. 
+IA models like GCAM, as with any model, are not predictors of the future. They are used to provide conditional forecasts of the future. GCAM takes in external "scenario assumptions" about key drivers such as population, economic activity, technology, and policies, analyzes the implications of these through representations of human and physical systems operate and interact, and then developed a more complete, modeled scenario description that includes the implications of the scenarios assumptions, for example, on commodity prices, energy use, land use, water use, emissions, and concentrations.
 
-Image reference: html-image (gcam-figs/overview_fig2.png)<br/>
 Figure 2: Conceptual diagram of the way that IA models use scenario assumptions to produce fuller, modeled scenarios that include a wide range of additional information
-{: .fig}
 
 Conditional forecasts with a single set of scenario assumptions is the most common way that a model such as GCAM is used to explore scientific and assessment questions. However, another class of question that GCAM has taken up is the systematic representation of uncertainty. As early as the 1980s, GCAM was used to map the implications of uncertain key input assumptions and parameters into implied distributions of outputs such as greenhouse gas emissions, energy use, energy prices, and trade patterns. A range of techniques has been employed using GCAM to explore the potential range of future outcomes. Techniques include, scenarios analysis, sensitivity analysis, and Monte Carlo simulations. Exploring and understanding the role of uncertainty in shaping events remains an important research use of GCAM.
 
-## Overview of GCAM Computational Components 
+## Overview of GCAM Computational Components
 
 The GCAM framework includes three independent pieces: (1) the GCAM data system, (2) the GCAM core in which the economic decisions and dynamic interactions between human and Earth systems are represented, and (3) a set of disaggregation models that allow for more spatially and temporally disaggregated representations of GCAM output than are possible in the GCAM core. Many GCAM users will only focus on use of the GCAM core, using a XML input data set and producing output into an output database written in BaseX Others will also work with the data system to develop new versions of the model with different assumptions or different model resolution. Disaggregation models are produced and available separately and not included in the release version of GCAM.
 
-Image reference: html-image (gcam-figs/overview_fig3.png)<br/>
 Figure 3: Overview of the three components of the GCAM modeling framework
-{: .fig}
 
 The GCAM Data System combines and reconciles a wide range of different data sets, and systematically incorporates a range of future assumptions. The output of the data system is an XML dataset with historical and base-year data for calibrating the model along with assumptions about future trajectories such as GDP, population, and technology. It includes the necessary information for representing energy, water, land, and the economic system. The GCAM Data System is largely constructed in R, but accommodates inputs in a range of different formats. Creating new scenarios does not require the use of the GCAM data system. New, "add on" xml files can be created to overwrite key future scenario assumptions such as population, economic activity, and technology cost and performance, among others.
 
 The GCAM core (discussed below) is the component of the model in which economic decisions are made, for example land use and technology choices, and in which dynamics and interactions are modeled within and among different human and Earth systems. The GCAM core is written in C++ and takes in inputs in XML. Outputs are produced into a BaseX database file.
 
-Many applications of GCAM require information at finer spatial and temporal scales than is provided by the GCAM core. A number of additional disaggregation models have been developed to create this information. These models are not included in the release version of GCAM, but can be obtained separately. 
+Many applications of GCAM require information at finer spatial and temporal scales than is provided by the GCAM core. A number of additional disaggregation models have been developed to create this information. These models are not included in the release version of GCAM, but can be obtained separately.
 
 ## Overview of Integrated Dynamics in the GCAM Core
 
@@ -107,15 +102,13 @@ The core operating principle for GCAM is that of market equilibrium. Representat
 
 As an example, in any single model period, GCAM derives a demand for natural gas starting with all of the uses to which natural gas might be put, such as passenger and freight transport, power generation, hydrogen production, heating, cooling and cooking, fertilizer production, and other industrial energy uses. Those demands depend on the external assumptions about, for example, electricity generating technology efficiencies, but also on the price of all of the commodities in the model. GCAM computes the supplies of all of the goods and services in the model. For example, it calculates the amount of natural gas that suppliers would like to supply given their available technology for extracting resources, and the market price. The model gathers all of the supplies and demands for commodities and adjusts prices so that in every market during that period supplies of everything from rice to solar power match demands.
 
-Image reference: html-image (gcam-figs/overview_fig4.png)<br/>
 Figure 4: Conceptual Schematic of the Operation of the GCAM Core
-{: .fig}
 
 GCAM is a dynamic recursive model, which means that it moves forward with decision-makers in the model making decisions based only on current conditions rather than based on optimization over the full future, as is the case in intertemporal optimization models. After it solves each period, the model then uses the resulting state of the world, including the consequences of decisions made in that period - such as resource depletion, capital stock retirements and installations, and changes to the landscape - and then moves to the next time step and performs the same exercise.
 
 The release version of GCAM is typically operated in five-year time steps with 2010 as the base year. However, the model has flexibility to be operated at different temporal resolutions through user-defined parameters, which means that it can be run, for example, at 10-year or one-year time steps. At the same time, GCAM was originally constructed to represent longer-term dynamics and not annual fluctuations. Current research is focused on better representing shorter time-scale and finer spatial scale phenomena, for example, water storage, food storage, and "stickiness" in key variables such as food demands.
 
-While the agents in the GCAM model are assumed to act to maximize their own self-interest, the model as a whole is not performing an optimization calculation. In fact, actors in GCAM can make decisions that "seemed like a good idea at the time", but which are not optimal from a larger social perspective and which the decision maker would not have made had the decision maker known what lay ahead in the future. For example, the model's actors do not know about future climate regulations, and could install fossil fuel power in the years preceding the implementation of such policies. 
+While the agents in the GCAM model are assumed to act to maximize their own self-interest, the model as a whole is not performing an optimization calculation. In fact, actors in GCAM can make decisions that "seemed like a good idea at the time", but which are not optimal from a larger social perspective and which the decision maker would not have made had the decision maker known what lay ahead in the future. For example, the model's actors do not know about future climate regulations, and could install fossil fuel power in the years preceding the implementation of such policies.
 
 Key Scenario Assumptions for the GCAM Core
 
@@ -125,7 +118,7 @@ Key Scenario Assumptions for the GCAM Core
 
 * Agricultural Technology Characteristics: e.g., crop yields, costs, carbon contents, water requirements
 
-* Energy and Other Resources: e.g., fossil fuels, wind, solar, uranium, groundwater 
+* Energy and Other Resources: e.g., fossil fuels, wind, solar, uranium, groundwater
 
 * Policies: e.g., emissions constraints, renewable portfolio standards
 
@@ -139,13 +132,13 @@ Key Scenario Results from the GCAM Core
 
 * Emissions: 16 greenhouse gases and short-lived species:  CO2, CH4, N2O, halocarbons, carbonaceous aerosols, reactive gases, sulfur dioxide.
 
-## Regional Versions of GCAM 
+## Regional Versions of GCAM
 
-In addition to disaggregation algorithms, another option for increased spatial resolution in GCAM is to increase the resolution at which the model operates within the GCAM Core. GCAM has been designed to allow for a "telescoping capability" to allow greater resolution in sectors or regions. Because GCAM is largely input-driven, creating higher resolution does not require changes to the structure of the code in the GCAM Core; it requires only changes to the GCAM Data System to create data at a higher resolution in the sectors or regions of interest. Two specific versions of GCAM have been created for this purpose. [GCAM-USA](gcam-usa.md) includes greater regional detail for the economic and energy systems in the United States, while retaining the same resolution for water and agriculture and retaining the same spatial resolution for energy and the economy in the remaining 31 regions in GCAM. A research version for China, GCAM-China uses the same approach, separating the energy and economic systems in China into provinces. 
+In addition to disaggregation algorithms, another option for increased spatial resolution in GCAM is to increase the resolution at which the model operates within the GCAM Core. GCAM has been designed to allow for a "telescoping capability" to allow greater resolution in sectors or regions. Because GCAM is largely input-driven, creating higher resolution does not require changes to the structure of the code in the GCAM Core; it requires only changes to the GCAM Data System to create data at a higher resolution in the sectors or regions of interest. Two specific versions of GCAM have been created for this purpose. [GCAM-USA](gcam-usa.md) includes greater regional detail for the economic and energy systems in the United States, while retaining the same resolution for water and agriculture and retaining the same spatial resolution for energy and the economy in the remaining 31 regions in GCAM. A research version for China, GCAM-China uses the same approach, separating the energy and economic systems in China into provinces.
 
 ## Community Modeling with GCAM
 
-GCAM is a community model. This means that GCAM is fully available for [download](http://www.globalchange.umd.edu/archived-models/gcam/download/). A Community Listserv is available to users. The listserv is the primary means used for distributing information about GCAM. While the GCAM development group cannot provide technical support, the GCAM development group makes every effort to answer queries posted to the listserv. Users are encouraged to report publications using GCAM to the coordinating researchers at the Joint Global Change Research Institute. Release versions of GCAM are the versions that are released to the GCAM community. These are provided at regular intervals, depending on the nature of underlying model developments. They are numbered so as to uniquely identify each release. 
+GCAM is a community model. This means that GCAM is fully available for [download](http://www.globalchange.umd.edu/archived-models/gcam/download/). A Community Listserv is available to users. The listserv is the primary means used for distributing information about GCAM. While the GCAM development group cannot provide technical support, the GCAM development group makes every effort to answer queries posted to the listserv. Users are encouraged to report publications using GCAM to the coordinating researchers at the Joint Global Change Research Institute. Release versions of GCAM are the versions that are released to the GCAM community. These are provided at regular intervals, depending on the nature of underlying model developments. They are numbered so as to uniquely identify each release.
 
 In addition to release versions, researchers in the GCAM community may work with "research" versions of the model that are customized to particular needs or that are being developed to add new capabilities to the model. Researchers who download GCAM are welcome to make any changes they like to either the data input files or the underlying source code for their own research versions of the model. However, any revised version, with altered input data or model code, must be identified not as GCAM but as GCAM-xxxx. For example, the GCAM version that has been customized with input data specific for India by research at the India Institute of Management Ahmadabad is referred to as GCAM-IIM.
 
@@ -153,11 +146,11 @@ As a community model, development of GCAM is open to the GCAM Community. Researc
 
 ## References
 
-Edmonds, J. and J. Reilly. 1982a. "Global energy and CO2 to the year 2050," IEA/ORAU Working Paper Contribution No. 82-6. 
+Edmonds, J. and J. Reilly. 1982a. "Global energy and CO2 to the year 2050," IEA/ORAU Working Paper Contribution No. 82-6.
 
 Edmonds, J. and J. Reilly. 1982b. "Global energy production and use to the year 2050," IEA/ORAU Working Paper Contribution No. 82-7.
 
-Edmonds, J. and J. Reilly. 1982c. An introduction to the use of the IEA/ORAU, Long-term, global energy model," IEA/ORAU Working Paper Contribution No. 82-9. 
+Edmonds, J. and J. Reilly. 1982c. An introduction to the use of the IEA/ORAU, Long-term, global energy model," IEA/ORAU Working Paper Contribution No. 82-9.
 
 Edmonds, J. and J. Reilly. 1983a. "Global Energy and CO2 to the Year 2050," The Energy Journal, 4(3):21-47.
 
@@ -165,7 +158,7 @@ Edmonds, J. and J. Reilly. 1983b. "A Long-Term, Global, Energy-Economic Model of
 
 Edmonds, J. and J. Reilly. 1983c. "Global Energy Production and Use to the Year 2050," Energy, 8(6):419-32.
 
-Edmonds, J., J. Reilly, J.R. Trabalka and D.E. Reichle. 1984. An Analysis of Possible Future Atmospheric Retention of Fossil Fuel CO2. TR013, DOE/OR/21400-1. National Technical Information Service, U.S. Department of Commerce, Springfield Virginia 22161. 
+Edmonds, J., J. Reilly, J.R. Trabalka and D.E. Reichle. 1984. An Analysis of Possible Future Atmospheric Retention of Fossil Fuel CO2. TR013, DOE/OR/21400-1. National Technical Information Service, U.S. Department of Commerce, Springfield Virginia 22161.
 
 Reilly, J.M., Edmonds, J.A., Gardner, R.H., and Brenkert, A.L. 1987. "Uncertainty Analysis of the IEA/ORAU CO2 Emissions Model," The Energy Journal, 8(3):1-29. Response Strategies Working Group, Intergovernmental Panel on Climate Change. 1990. Emissions Scenarios.
 

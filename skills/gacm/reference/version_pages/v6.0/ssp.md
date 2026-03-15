@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `ssp.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -15,9 +16,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 The GCAM model was one of six models used in the quantification of the Shared Socioeconomic Pathways (SSP; Riahi et al., 2017). The SSPs are new reference scenarios for climate change modeling and research (Moss et al. 2010, van Vuuren et al., 2014). That is the five SSPs assume no additional policies and measures explicitly designed to reduce greenhouse gas emissions.  However, each of the five reference scenarios can be paired with a set of emissions mitigation assumptions.  Thus, when paired with a limit of 2.6, 4.5, or 6.0, the resulting scenario can be used in combination with the corresponding climate model experiments in the CMIP data base. The five SSPs are defined along two different axes: challenges to mitigation and challenges to adaptation (see Figure below).
 
-Image reference: SSP Definitions (gcam-figs/ssp_axes.png)<br/>
 Figure 1: Definitions of SSPs in terms of Challenges to Mitigation and Challenges to Adaptation
-{: .fig}
 
 Each of the six IAMs produced results for between three and five of the SSPs, with one model identified as the "marker" for each SSP and the others providing estimates of uncertainty. GCAM was the marker model for the SSP4. Marker models, and models providing uncertainty estimates, for all SSPs are listed in the Table below.
 
@@ -36,7 +35,7 @@ Each of the six IAMs produced results for between three and five of the SSPs, wi
 
 Official SSP data, as planned for use in [CMIP6](http://www.geosci-model-dev.net/9/3461/2016/), must be downloaded from the official [SSP database](https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about).
 
-The GCAM data for the SSP4 and the GCAM representation of all other SSPs (Calvin et al., 2017) are being made available to interested researchers for scenario analysis and comparison. 
+The GCAM data for the SSP4 and the GCAM representation of all other SSPs (Calvin et al., 2017) are being made available to interested researchers for scenario analysis and comparison.
 
 ## Implementation in GCAM
 
@@ -69,12 +68,12 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 | Marker | Model | IMAGE | MESSAGE-GLOBIOM | AIM | GCAM | REMIND-MAGPIE | |
 |           | Reference  | Van Vuuren et al. (2016) | Riahi et al. (2016) | Fujimori et al. (2016) | Calvin et al. (2016) | Kriegler et al. (2016) | |
 | Challenges | Challenges to Mitigation | Low | Medium | High | Low | High | |
-|           | Challenges to Adaptation | Low | Medium | High | High | Low | |  
+|           | Challenges to Adaptation | Low | Medium | High | High | Low | |
 
 <br/>
 
 ### Electricity Assumptions
- 
+
 <a name="table3"></a>Table 3 maps technology & SSP to either core, advanced (less expensive), or low (more expensive). Costs are assumed to be equal across regions; however, resource bases for renewable energy technologies differ across regions, leading to differences in deployment in the future. Inputs are specified in the [Advanced Technology](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_adv.csv) and [Low Technology](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_low.csv) input files.
 
 **Table 3**: Capital Costs for Electric Power Plants across SSPs
@@ -173,7 +172,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>CORE</p></td>
 </tr>
 </tbody>
-</table>  
+</table>
 
 <br/>
 
@@ -184,12 +183,12 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 **Table 4a**: Fossil Fuel Assumptions across SSPs: Technical Change on Extraction Cost (% per year)
 {: .tbl}
 
-| Fuel | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** | 
+| Fuel | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 |:---------- |:----------|:----------|:----------|:----------|:----------|
-| Coal | 0.5% | 0.5% | 1% | 0.5% | 2% | 
-| Gas | 0.5% | 0.5% | 0.5% | 1% | 2% | 
-| Conventional Oil | 0.5% | 0.5% | 0.5% | 1% | 2% | 
-| Unconventional Oil | 0% |  0.5% | 0.5% | 2% | 
+| Coal | 0.5% | 0.5% | 1% | 0.5% | 2% |
+| Gas | 0.5% | 0.5% | 0.5% | 1% | 2% |
+| Conventional Oil | 0.5% | 0.5% | 0.5% | 1% | 2% |
+| Unconventional Oil | 0% |  0.5% | 0.5% | 2% |
 
 
 **Table 4b**: Fossil Fuel Assumptions across SSPs: Cost Adder in 2100 ($/GJ)
@@ -258,9 +257,9 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 
 | Income Group | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
-| High Income | 2025 | 2040 | 2040 | 2025 | 2040 | 
-| Medium Income | 2025 | 2040 | 2040 | 2025 | 2040 | 
-| Low Income | 2025 | 2040 | 2050 | 2025 | 2040 | 
+| High Income | 2025 | 2040 | 2040 | 2025 | 2040 |
+| Medium Income | 2025 | 2040 | 2040 | 2025 | 2040 |
+| Low Income | 2025 | 2040 | 2050 | 2025 | 2040 |
 
 **Table 7b**: Policy Assumptions across SSPs: Land Policy
 {: .tbl}

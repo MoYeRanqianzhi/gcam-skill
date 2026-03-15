@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Economic_land_sharing.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -22,7 +23,6 @@ Figure 1 below shows a competition between two options with distributions of pro
 
 &lt;br&gt;
 
-Image reference: Example competition between two options with a distribution of potential profits (Land competition.png "Example competition between two options with a distribution of potential profits")
 
 ###### Figure 1: Example competition between two options with distributions of potential profit
 
@@ -52,13 +52,13 @@ In GCAM, competing uses of land are nested within land nodes. Within each land n
 
 &lt;br&gt;
 
-The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, is shown here. &nbsp; &nbsp;&nbsp;Image reference: untitled image (images/Share.png "fig:Share.png")
+The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, is shown here. &nbsp; &nbsp;&nbsp;[omitted image: Share.png "Share]
 
-where Image reference: untitled image (images/Prod.png "fig:Prod.png")&nbsp;is the profit rate of option i and p is the logit exponent.
+where [omitted image: Prod.png "Prod]&nbsp;is the profit rate of option i and p is the logit exponent.
 
 &lt;br&gt;
 
-The average profit rate for a node resulting from the share competition in each nest is given by Image reference: untitled image (images/Average profit.png "fig:Average profit.png")
+The average profit rate for a node resulting from the share competition in each nest is given by [omitted image: Average profit.png "Average profit]
 
 &lt;br&gt; These formulas apply at each level of competition in a nest, up to the top node.&nbsp;Note again the difference in interpretation between the average profit rates used in the logit equation from marginal profits. These average profit rates, as will be clarified in the discussion of calibration, are the potential average profit rates across the entire distribution of profit rates per penetration rates for each option. These average profits are unrealized but instead inferred from the calibration and the base year shares. Although relative average profit rates are used in the logit sharing equations, the theory behind the math is that land shares are determined so the land is allocated across uses up until the point at which the marginal profit rates are equal to each other. Therefore, the land values at the margin are also equal. As a result, all land uses within a nesting structure have equal value at the margin and further substitution will not increase total profits. If one option has a higher potential average profit rate than a second, it is assumed that option has a greater proportion of its distribution of profit rates that will exceed the marginal profit rate than the second option. Therefore, this option will receive a higher share, but unlike a simple optimization model it will not get all of the land in the node.
 

@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `solver.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -34,7 +35,7 @@ Solver Algorithms
 
 #### Description
 
-The bisection solver is a multidimensional generalization of 
+The bisection solver is a multidimensional generalization of
 one-dimensional bisection methods. The one-dimensional methods work by
 first establishing a bracket, identified by a change of sign in
 $$f(x)$$, around the solution. At each iteration $$f(x)$$ is evaluated
@@ -73,16 +74,16 @@ another technique.
 be increased or decreased when attempting to bracket the
 solution. This is a multiplicative factor, so a bracket interval of
 $$f$$ means that we will increase prices by multiplying by $$1+f$$ and
-decrease them by dividing by $$1+f$$.  
+decrease them by dividing by $$1+f$$.
 * **max-bracket-iterations**: The
 maximum number of steps the solver will take when attempting to
-bracket the solution.  
+bracket the solution.
 * **max-iterations** : The maximum number of
-bisection iterations the solver will perform before giving up.  
+bisection iterations the solver will perform before giving up.
 * **solution-info-filter** : A
 [solution info filter](#Solution-info-filter_Predicates) predicate
 that will be used to determine which markets the solver will attempt
-to solve.  
+to solve.
 
 ### Broyden's Method Solver
 
@@ -93,9 +94,9 @@ based on the one in *Numerical Recipes*, section
 9.7<sup>[1](#NR)</sup>. In each iteration we solve the
 equation
 
-$$  
-B(\vec x) \cdot \delta \vec x = -\vec F(\vec x) \;\;\;\;\;\;\;\;\;\; (1) 
-$$  
+$$
+B(\vec x) \cdot \delta \vec x = -\vec F(\vec x) \;\;\;\;\;\;\;\;\;\; (1)
+$$
 
 for a correction step $$\delta \vec x$$, where $$B$$ is a secant
 approximation to the Jacobian matrix of first derivatives of $$\vec
@@ -159,7 +160,7 @@ them until their prices come into the normal price domain.
 
 * **ftol**: Convergence criterion for the solver. The solver is
   considered converged when the magnitude of the largest component of $$
-  \vec F$$  is less than ftol.  
+  \vec F$$  is less than ftol.
 * **max-iterations**: Maximum number of iterations of the main loop to
   execute before giving up. This is only loosely related to the number
   of evaluations used as a criterion in the
@@ -170,11 +171,11 @@ them until their prices come into the normal price domain.
   algorithm may beforced to compute a finite-difference Jacobian,
   which will count for approximately $$N/10$$ evaluations, where $$N$$
   is the total number of markets and constraints being solved (usually
-  a few hundred). 
+  a few hundred).
 * **solution-info-filter** : A
   [solution info filter](#Solution-info-filter-Predicates) predicate
   that will be used to determine which markets the solver will attempt
-  to solve.  
+  to solve.
 
 ### Newton-Raphson (NR) Solver
 
@@ -192,29 +193,29 @@ that we know about the GCAM system, such as the fact that most
 resource supply curves have a turn-on price, below which none of the
 resource will be produced.  Therefore, including the Preconditioner in
 the solver configuration can often prevent solution failures and cause
-periods to solve in fewer iterations.  
+periods to solve in fewer iterations.
 
 #### Parameters
 
 * **max-iterations**: The preconditioner can make either one or two
   passes over the system.  The heuristics used on the second pass are
   slightly different than those used on the first pass.  It is not
-  useful to perform more than two passes   
+  useful to perform more than two passes
 * **ftol**: Increment by which an initial guess is set inside the
   allowable range of an input price, when the original guess was
-  outside the allowable range.  
+  outside the allowable range.
 * **solution-info-filter** : A
   [solution info filter](#Solution-info-filter-Predicates) predicate
   that will be used to determine which markets will be
   preconditioned.
-  
+
 In addition to these, the parser also recognizes the tokens
   **price-increase-fac**, **price-decrease-fac**, and
-  **large-price-thresh**; however, none of these are currently used.  
+  **large-price-thresh**; however, none of these are currently used.
 
 <a name="Solver-Configuration-File"></a>
 
-Solver Configuration File 
+Solver Configuration File
 -------------------------
 
 The solver configuration, including the choice of solver or solvers to
@@ -228,7 +229,7 @@ file using a line of the form:
 
 The solver configuration file comprises a series of blocks that
 specify the configuration of the solver to use in each period of the
-model run. For example:  
+model run. For example:
 
 ```
  <user-configurable-solver year="2005">
@@ -256,7 +257,7 @@ components that will be used.
 
 Following the general parameters are one or more blocks that specify
 solver components, which direct the solver to run particular solution
-algorithms. For example:  
+algorithms. For example:
 
 ```
        <broyden-solver-component>
@@ -290,17 +291,17 @@ has been exceeded.
   successful.
 * **max-model-calcs**: The maximum number of times the full model will
   be evaluated in the course of the solution. If the solver has not
-  found a valid solution by that time, it exits and issues a warning.  
+  found a valid solution by that time, it exits and issues a warning.
 * **solution-tolerance**: The relative excess demand threshold, below
   which the model is considered solved. Loosely speaking, this is the
   accuracy to which we wish to solve the model.  It should be set
   greater than or equal to the `ftol` parameter in the Broyden solver
   component, so that any candidate solution returned by the Broyden
-  algorithm will be guaranteed to pass this test as well.  
+  algorithm will be guaranteed to pass this test as well.
 * **solution-floor**: The absolute excess demand threshold, below
   which the model is considered solved. This parameter covers the
   cases where a low demand value makes achieving a relative excess
-  demand threshold unfeasible.  
+  demand threshold unfeasible.
 
 <a name="Solution-info-filter-Predicates"></a>
 
@@ -308,13 +309,13 @@ has been exceeded.
 
 The predicates available to filter markets are:
 
-* **all**: True for any market.  
+* **all**: True for any market.
 * **market-name**: True if the name of the market matches the name
-  given in the filter.  
+  given in the filter.
 * **market-type**: True if the type of the market matches the type
   given in the filter. The available market types are Normal,
   Calibration, Inverse-Calibration, Tax, RES, Subsidy,
-  [Trial-Value, Demand, and Price](Cycle-breaking-in-GCAM.md).  
+  [Trial-Value, Demand, and Price](Cycle-breaking-in-GCAM.md).
 * **solvable**: True for markets that should be solved. "Solvable" in
   this context refers to intent, not capability. A market is
   "solvable" if its price is an independent variable (*i.e.*, not
@@ -326,12 +327,12 @@ The predicates available to filter markets are:
   markets these criteria are that the price and supply are
   nonzero. (Exception: trial-value markets are exempt from the nonzero
   price and supply requirements.)
-* **unsolved**: True for markets that are not yet solved.  
+* **unsolved**: True for markets that are not yet solved.
 
 Predicates can be combined with the logical operators **and** (&&)
 (*NB:* Since the & character is reserved in XML, it must be written as
 `&amp;amp;`), **or** (||), and **not** (!) to form compound
-predicates. These conjunctions can be grouped with parentheses. 
+predicates. These conjunctions can be grouped with parentheses.
 
 For example:
 
@@ -339,8 +340,8 @@ For example:
 
 or
 
-` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; `  
-`      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`  
+` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; `
+`      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
 
 The first of these would accept all solvable-nr markets and all
 solvable tax markets (even if they don't meet the NR
@@ -422,7 +423,7 @@ export MKL_DOMAIN_NUM_THREADS="BLAS=NN"
 
 
 
-### Model abstraction layer 
+### Model abstraction layer
 
 For newer solver algorithms, the GCAM solver is decoupled from the
 rest of the GCAM model by an abstraction layer that presents the model

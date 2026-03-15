@@ -1,21 +1,36 @@
-# Running GCAM (Quickstart + Advanced)
+# Running GCAM (CLI First)
 
-Skill-bundled baseline operational summary for running GCAM scenarios.
+Skill-bundled operational summary for running GCAM scenarios without relying on GUI steps.
 
-Use this file after version routing. `v8.2` is the bundled full-topic baseline. Older versions may use different workspace layouts, different packaging, or earlier database workflows.
+Use this file after version routing. `v8.2` is the bundled full-topic baseline. Older versions may use different workspace layouts, packaging, or database conventions, so keep the exact version route in scope.
+
+## Default Execution Pattern
+For agent use, prefer one of these command-line paths:
+
+1. Direct executable invocation for scripted runs:
+   - `gcam.exe -C configuration_ref.xml`
+   - or the equivalent platform executable with `-C <config>`
+2. Release-package wrapper scripts from a shell:
+   - `run-gcam`
+   - `run-gcam.bat`
+   - `run-gcam.command`
+
+Treat double-click instructions in upstream user guides as historical packaging notes, not as the recommended workflow.
 
 ## Quickstart (Reference Scenario)
-1. Ensure the GCAM executable workspace contains a valid `configuration.xml`.
-2. Start from `configuration_ref.xml` for a reference run or `configuration_policy.xml` for a policy run.
-3. Launch the platform run script or the executable directly.
+1. Ensure the executable workspace contains the required support files such as `log_conf.xml`.
+2. Pick the correct configuration file:
+   - `configuration_ref.xml` for a reference run
+   - `configuration_policy.xml` for policy or target-finder workflows
+3. Run GCAM from the command line.
 4. Inspect `exe/logs/main_log.txt` while the run proceeds.
-5. Treat the run as successful only when you see both of these terminal states:
+5. Treat the run as successful only when the log reaches both:
    - `Starting output to XML Database.`
    - `Model run completed.`
 
 Resource note:
 - Reference scenarios can require many GB of RAM and multi-GB output storage.
-- Target-finder and large batch workflows increase both wall-clock time and output volume materially.
+- Target-finder and large batch workflows materially increase wall-clock time and output volume.
 
 ## Configuration File Structure
 The configuration file is the operational control surface for a run.
@@ -30,16 +45,16 @@ Key sections:
 ## ScenarioComponents Rules
 - Do not edit canonical reference XML files in place if you want reproducible comparisons.
 - Create add-on XML files and append them late in `ScenarioComponents` so they override base assumptions.
-- When debugging scenario behavior, inspect component order first. Many apparent model issues are actually override-order mistakes.
+- When debugging scenario behavior, inspect component order first. Many apparent model issues are override-order mistakes.
 
 ## Batch Mode
 Batch mode runs multiple file combinations from one configuration.
 
 Typical pattern:
 - Set `BatchMode=1`.
-- Point `<BatchFileName>` to a batch XML.
+- Point the batch-file setting at a batch XML.
 - Define `FileSet` permutations that append or swap XML components per scenario.
-- Keep scenario names explicit so output DB contents remain traceable.
+- Keep scenario names explicit so output database contents remain traceable.
 
 ## Target Finder
 Target finder solves for a price path that reaches a climate target.
@@ -56,19 +71,37 @@ Common target styles:
 - temperature
 - cumulative emissions
 
-## ModelInterface and Querying
-ModelInterface remains the standard interactive query tool for BaseX outputs.
+## Query Results Without GUI
+For agent workflows, prefer headless extraction.
 
-Typical flow:
-1. Open the BaseX database directory in `output/`.
-2. Select scenario and query XML.
-3. Run interactive or batch queries.
+### Path 1: Post-run automatic batch queries
+Use the `XMLDBDriver` properties file in `exe/` to run queries immediately after a scenario completes.
 
-Useful modes:
-- interactive browsing of scenario/query combinations
-- batch query execution to files
-- Java command-line automation for headless extraction
-- exporting data for R or Python workflows
+Relevant keys from the bundled v8.2 user guide:
+- `in-memory`
+- `open-db-wait`
+- `filter-script`
+- `batch-queries`
+- `batch-logfile`
+
+This path is useful when you want CSV outputs and do not want to keep the full XML database permanently.
+
+### Path 2: Headless ModelInterface batch mode
+When the query XML already exists, invoke ModelInterface without a UI:
+
+```bash
+java -cp "$CLASSPATH" ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
+```
+
+Use this as a batch-query engine, not as an interactive GUI walkthrough.
+
+### Path 3: Extraction libraries
+If the task is post-processing rather than raw query authoring, prefer:
+- `gcamreader` for Python-first CSV/DataFrame workflows
+- `rgcam` for R project-data extraction
+- `gcamextractor` for standardized extracted tables and aggregations
+
+Open `tools.md` for tool selection and examples.
 
 ## Controlling XML DB Output
 GCAM can reduce or reshape XML DB output volume.
@@ -77,7 +110,7 @@ Typical controls include:
 - in-memory DB mode for speed
 - output filters to limit stored results
 - post-run batch queries
-- exported XML plus later import through XMLDBDriver
+- writing `debug_db.xml` or other intermediate artifacts for later processing
 
 If the user complains about output size or I/O time, inspect XML DB output settings before changing the model itself.
 
@@ -87,8 +120,9 @@ If the user complains about output size or I/O time, inspect XML DB output setti
 - Failure after parsing but before solution usually indicates configuration inconsistency or missing linked inputs.
 - Solver failure during periods points to market or calibration issues; inspect `solver.md`.
 - Java/BaseX output errors often come from runtime Java configuration rather than core model logic.
+- On Windows, `run-gcam.bat` issues often reduce to incorrect `JAVA_HOME`, missing `jvm.dll`, or wrong Java bitness.
 
 ## Historical Caution
 - `v3.2` and early `v4.x` use older run packaging and different documentation terminology.
 - `v5.4+` aligns more closely with the skill-bundled baseline operating pattern.
-- When the user asks about an exact historical release package, trust the version route file first and use this page only as a modernized operational scaffold.
+- Exact historical page bundles may still describe ModelInterface GUI usage. Translate those into CLI/config equivalents unless the user explicitly asks for the historical UI path.

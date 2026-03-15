@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `marketplace.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -36,9 +37,9 @@ Load this page when the user needs version-specific detail from this exact page 
 
 GCAM operates by determining a set of prices that ensure supply is equal to demand for all time steps. The marketplace collects the supplies and demands and uses [solver algorithms](solver.md) to determine those prices.
 
-## Policy options 
+## Policy options
 
-This section summarizes some of the marketplace policy options available in GCAM. 
+This section summarizes some of the marketplace policy options available in GCAM.
 
 ### Carbon or GHG prices
 

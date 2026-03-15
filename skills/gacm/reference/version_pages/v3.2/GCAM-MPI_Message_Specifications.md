@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `GCAM-MPI_Message_Specifications.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -16,10 +17,10 @@ These are the messages currently exchanged within GCAM-MPI and documentation of 
 Control Messages
 ----------------
 
-**QUIT**  
+**QUIT**
 Normal Exit. Proceed to cleanup. A `QUIT` message should be empty.
 
-**RUN**  
+**RUN**
 Run a portion of the scenario with whatever parameters are currently set
 
 |              |       |                                                                                                                  |
@@ -30,7 +31,7 @@ Run a portion of the scenario with whatever parameters are currently set
 Input Messages
 --------------
 
-**CLRLVL**  
+**CLRLVL**
 Clear any tax levels (i.e., levels set for quadrature points, *not*
 tax policies set with `TAXFN`) in a worker process. This behavior
 differs from a `RESET` message (q.v.), which will also clear any
@@ -38,12 +39,12 @@ policies that have been set. After receiving this message a process
 will run only the primary run until further notice. A `CLRLVL` message
 is empty.
 
-**CSTMTD**  
+**CSTMTD**
 Specify the cost calculation method. Message consists of a single
 integer, which should be converted from the `ParEmissCalc::costmethod`
 enum type.
 
-**DATAREQ**  
+**DATAREQ**
 Specify the return data requested of a GCAM worker by a
 supervisor. The `DATAREQ` message should be sent only to a worker
 process. Supervisors do not use `DATAREQ` messages to communicate with
@@ -61,7 +62,7 @@ to return is unnecessary.
 | $$N_e$$         | emission GHG     | (char\[`GHGNAMEMAX`\])  | String indicating the GHG for which to report emissions. Pad with NUL characters as necessary. |
 
 
-**LINMIN**  
+**LINMIN**
 Perform a line minimization starting along the line containing the
 input point and parallel to the input direction vector. The initial
 point and the direction vector must have the same length. In many runs
@@ -76,13 +77,13 @@ be provided.
 | P   | (int\[N\]) | coordinates of the initial point |
 | v   | (int\[N\]) | direction vector                 |
 
-**RESET**  
+**RESET**
 Clear all run configuration in a worker process. This should return
 the worker to the state read in from XML at the code's start-up. There
 is no defined meaning for sending this to a supervisor process. A
 RESET message is empty.
 
-**TAXFN**  
+**TAXFN**
 Specify a tax function, along with initialization parameters. Some
 subroutines may treat receiving a TAXFN message as implying a break
 with previous calculations, possibly requiring a reset to the
@@ -110,7 +111,7 @@ the parameters of an existing tax function. Use TAXPARAMS for that.
 | immutable parameters      | (double\[$$N_i$$\]) | The values of the immutable parameters. Once set, these can only be changed by issuing a new `TAXFN` message (essentially creating a whole new function). |
 | regular parameters        | (double\[$$N_p$$\]) | The values of the regular parameters. These may be modified using a TAXPARAMS message.                                                                                                   |
 
-**TAXPARAMS**  
+**TAXPARAMS**
 Set new parameters to a previously initialized tax function.
 
 |  Variable | Type                   | Explanation   |
@@ -119,7 +120,7 @@ Set new parameters to a previously initialized tax function.
 | $$N_p$$   | (int)                  | Number of regular parameters. This value must match the value used to initialized the function.   |
 | params    | (double\[$$N_p$$\])    | Values of the parameters.    |
 
-`TAXLVL`  
+`TAXLVL`
 Specify a tax level to evaluate as a variation from a previously set
 policy. Typically this would be used to evaluate a single point on the
 abatement curve for the policy in question.
@@ -132,7 +133,7 @@ abatement curve for the policy in question.
 Output Messages
 ---------------
 
-`RSLT`  
+`RSLT`
 Return data from a worker task.
 
 | Repeat          |  Variable            |   Type                    | Explanation     |
@@ -148,7 +149,7 @@ Return data from a worker task.
 | $$N_t $$        | Target Period        | (int)                     | The period at which the target was evaluated. This might be fixed, or might be determined from the data (e.g., the maximum value taken on by the target)  |
 | $$N_t $$        | Target value          | (double)                  | The value of the target in Target Period  |
 
-`RTN`  
+`RTN`
 Miscellaneous returned data that does not conform to the standard set
 forth under RSLT. This message is a freeform response, the meaning of
 which is established by convention between supervisor processes. For

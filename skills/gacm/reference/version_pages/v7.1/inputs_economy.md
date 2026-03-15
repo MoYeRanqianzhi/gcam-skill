@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `inputs_economy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -48,10 +49,10 @@ Future population is provided in [SSP_database_v9.csv](https://github.com/JGCRI/
 #### GDP and national accounts
 Historical GDP is provided in [USDA_GDP_MER.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/USDA_GDP_MER.csv) (used through 2015).
 
-Near-term GDP growth rates are provided in [IMF_GDP_growth.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/IMF_GDP_growth.csv). 
+Near-term GDP growth rates are provided in [IMF_GDP_growth.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/IMF_GDP_growth.csv).
 
-Future GDP is provided in [SSP_database_v9.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv). 
+Future GDP is provided in [SSP_database_v9.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv).
 
-Historical national accounts from Penn World Table are provided in [pwt91.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91.csv) and [pwt91_na.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91_na.csv). 
+Historical national accounts from Penn World Table are provided in [pwt91.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91.csv) and [pwt91_na.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/pwt91_na.csv).
 
 GTAP data (proprietary) is aggregated, processed (into value shares) and stored in [PREBUILT_DATA](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/data/PREBUILT_DATA.red.csv).

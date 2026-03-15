@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Minimum_system_requirements_for_GCAM.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -21,7 +22,7 @@ requirements have increased with the release of
 Hardware Requirements
 ---------------------
 
--   At least 4 GB of RAM 
+-   At least 4 GB of RAM
 -   5GB of free disk space (model output databases can quickly become large files)
 
 
@@ -38,8 +39,8 @@ Software Requirements
 Additionally, Windows users will need to download the Visual Studio
 2010 Redistributable Package (x64) available
 at:&nbsp;[<http://www.microsoft.com/download/en/details.aspx?id=14632>](http://www.microsoft.com/download/en/details.aspx?id=14632). An
-error saying 
-`the program can't start because MSVCR100.dll is missing from your computer` 
+error saying
+`the program can't start because MSVCR100.dll is missing from your computer`
 is indicative of this software not being installed.
 
 
@@ -64,7 +65,7 @@ generate a table as a CSV. The ModelInterface (included with the GCAM
 distribution) can convert a CSV to an XML file, and the original CSV
 files are included in the "input" directory of the GCAM
 `Main_User_Workspace` folder. GCAM developers typically use Microsoft
-Excel, although other alternatives do exist. 
+Excel, although other alternatives do exist.
 
 ### C++ Editor
 

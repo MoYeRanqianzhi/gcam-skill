@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `gcam-doc-options.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -24,7 +25,7 @@ work you have to put into deciding how the product should look.
 ## Free hosting
 
 All of the options in this section are hosted free of charge.
-  
+
 * **GitHub Pages**:  This is a more elaborate option provided by
   GitHub.  It uses the Jekyll content management system.  As a result,
   it provides support for themes, fancy layouts, and periodically
@@ -33,7 +34,7 @@ All of the options in this section are hosted free of charge.
   also has some tools to help with selecting a theme and layout.  If
   we're happy with one of the standard options, we could probably be
   up and running rather quickly.
-  
+
 * **readthedocs.org**: This is a site that specializes in hosting
   documentation for open-source projects.  The primary advantage of
   this option is that it has the ability to pull documentation
@@ -45,7 +46,7 @@ All of the options in this section are hosted free of charge.
   other systems described above.  Also, it's based off of a
   documentation system built for python, so supporting other languages
   probably won't be completely seamless.
-  
+
 * **Miraheze**:  Free hosting service for MediaWiki (the same system
   we use for the UMD wiki).  Their service is free of charge,
   add-free, and offers the option to us a customized domain (sadly,

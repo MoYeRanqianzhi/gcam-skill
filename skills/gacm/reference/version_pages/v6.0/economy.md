@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Source root: `gcam-doc/v6.0`
 - Source path: `economy.md`
 - Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
@@ -33,7 +34,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 The socioeconomic component of GCAM sets the scale of economic activity and associated demands for model simulations. Assumptions about population and per capita GDP growth for each of the 32 geo-political regions together determine the Gross Domestic Product (GDP). GDP and population both can drive the demands for a range of different demands within GCAM. Population and economic activity are used in GCAM through a one-way transfer of information to other GCAM components. For example, neither the price nor quantity of energy nor the quantity of energy services provided to the economy affect the calculation of the principle model output of the GCAM macro-economic system, GDP.
 
-## Equations 
+## Equations
 The equations that determine economic variables are described here.
 
 #### GDP
@@ -44,7 +45,7 @@ $$
 Equation 1: GDP_{r,t+1} = POP_{r,t+1} * LF_{r,t+1} * *( 1+GRO_{r,t+1})^{tStep}( \frac{GDP_{r,t}}{POP_{r,t}LF_{r,t}} ) * (\frac{P_{r,t+1}}{P_{r,t}})^\alpha
 $$
 
-Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step, $$GDP_{r,t}$$=population in region $$r$$ in period $$t$$, $$POP_{r,t}$$=population in region $$r$$ in period $$t$$, $$LF_{r,t}$$=labor force participation in region $$r$$ in period $$t$$ and $$GRO_{r,t}$$=labor productivity growth rate in region $$r$$ in period $$t$$. The last term is an energy-price feedback, where $$P_{r,t}$$ is the price of energy services and $$\alpha$$ is a feedback elasticity (e.g., the percentage change in GDP for a percentage change in price). Note that $$\alpha$$ is set to zero in GCAM, effectively removing this term from the calculation of GDP.  
+Where $$r$$=region, $$t$$=the period, $$tStep$$=number of years in the time step, $$GDP_{r,t}$$=population in region $$r$$ in period $$t$$, $$POP_{r,t}$$=population in region $$r$$ in period $$t$$, $$LF_{r,t}$$=labor force participation in region $$r$$ in period $$t$$ and $$GRO_{r,t}$$=labor productivity growth rate in region $$r$$ in period $$t$$. The last term is an energy-price feedback, where $$P_{r,t}$$ is the price of energy services and $$\alpha$$ is a feedback elasticity (e.g., the percentage change in GDP for a percentage change in price). Note that $$\alpha$$ is set to zero in GCAM, effectively removing this term from the calculation of GDP.
 
 See `initialGDPcalc` and `adjustGDP` in [gdp.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/containers/source/gdp.cpp).
 

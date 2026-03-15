@@ -55,3 +55,5 @@
 - Added `validate_conceptual_docs_contract.py` and wired it into `validate_all.py` so the main conceptual shared docs cannot silently drift away from version-routing-aware bundled-baseline guidance or historical caveats.
 - Rewrote `reference/solver.md` into an agent-usable solver configuration and diagnostics guide centered on logs, active solver XML, one-change-at-a-time tuning, and historical-vs-modern solver semantics.
 - Added `validate_solver_contract.py` and wired it into `validate_all.py` so shared solver guidance cannot silently drift away from CLI/config/log-first behavior, the `v8.2` baseline rule, or the `v3.2` historical Newton-Raphson caveat.
+- Added `validate_maintenance_memory_contract.py` and wired it into `validate_all.py` so `docs/DEVELOPMENT.md` and `docs/CHANGELOG.md` remain durable shared maintainer memory instead of drifting into undocumented process.
+- Added `validate_semantic_contract_coverage.py` and wired it into `validate_all.py` so every root shared runtime doc, persistent `docs/*.md` file, and `SKILL.md` must belong to an explicit semantic contract owner rather than relying only on inventory or link validation.

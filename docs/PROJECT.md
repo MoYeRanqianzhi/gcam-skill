@@ -51,3 +51,5 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Added a version-route validator so the version catalog, route docs, page directories, and `v8.2` root-baseline declarations can be checked together.
 - 2026-03-16: Added authoring-source preflight validation so bundled page regeneration fails fast when the `gcam-doc` authoring tree or version maps drift.
 - 2026-03-16: Strengthened version-route validation so generated version route docs cannot silently drift behind the current shared topic inventory.
+- 2026-03-16: Added conceptual-doc and solver-doc contracts so shorter shared summaries remain version-aware, headless, and agent-usable.
+- 2026-03-16: Added maintenance-memory and semantic-coverage validators so top-level docs cannot exist without an explicit behavior-level contract owner.

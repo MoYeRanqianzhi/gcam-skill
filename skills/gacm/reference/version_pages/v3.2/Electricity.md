@@ -179,8 +179,6 @@ As a second option for maintaining grid reliability, for each central station so
 
 The third and final component of the cost of renewable technologies is resource costs, calculated from exogenous supply curves. These are used for technologies with marginal costs that are assumed to increase with deployment, such as long-distance transmission line costs that would be required to produce power from remote wind resources. Only wind and rooftop PV are assigned resource supply curves; central station solar technologies are assumed to have constant marginal costs regardless of deployment levels.
 
- [omitted image: Wind.png "Wind] [omitted image: RooftopPV.png "RooftopPV]
-
 ###### Figure 2. Wind and rooftop solar costs with reference and advanced technology assumptions. These supply curves include technology and resource costs, but exclude any ancillary costs.
 
 For wind power, the U.S. supply curve is based on NREL (2008), and the omitted figure used it as the reference shape. The plotted supply curve also included technology non-energy costs, but not ancillary costs. The same supply-curve shape is assumed for non-U.S. regions, but with maximum resource amounts scaled to estimates from GIS-based analysis, also informed by IEAGHG (2000). Assumed maximum resources for all GCAM regions are shown in Table 7. The rooftop PV supply curve for the U.S. is from NREL (P. Denholm and R. Margolis, pers. comm.), and the omitted figure used it as the corresponding reference for rooftop solar. The assumed limit in non-U.S. regions, shown in Table 7, is based on a GIS analysis of solar irradiance by region.

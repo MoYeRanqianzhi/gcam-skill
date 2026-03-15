@@ -23,7 +23,7 @@ The trade of agricultural products were mostly modeled using the Heckscher-Ohlin
 ## Armington Style Trade
 For the agricultural and livestock commodities in GCAM (except fodder crops and fish & other meats), we use an Armington style distinction between domestic and imported goods. The Armington approach assumes products are differentiated by source and consumers view goods produced in different countries as imperfect substitutes (Armington, 1969). The theoretical background and the derivation of the logit-based Armington approach is documented in Zhao et al. (2020). In this approach, the competition between imports and domestic is governed by a logit. Imports are from a single global pool that draws from all regions and is also governed by a logit. The logit-based Armington approach requires a segmented regional market, as oppose to the integrated world market in the Heckscher-Ohlin approach. Thus, it allows differentiating regional prices and tracing gross trade flows.
 
-The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 1 with an example of corn trade.
+The omitted figure summarized the structural implementations of a "global-market" versus a "regional-market" representation using a representative crop-trade example.
 
 Figure 1: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
 
@@ -31,7 +31,7 @@ In the global-market representation, each region's production is output to a glo
 
 In the regional-market representation, one additional sector per crop is added to each region for representing domestic supplies; consistent with GCAM terminology elsewhere, these sectors are named, e.g., "regional corn". The total domestic supply of any crop and region is equal to production minus exports plus imports. The production sector's prices are region-specific, as are the "regional crop" prices seen by the demand sectors. Therefore, a shock to the producer prices of an agricultural commodity in some region has a direct impact on the consumption sectors within that region.
 
-Furthermore, the two market structures are also compared in Figure 2 with an example of a global wheat market equilibrium with demand and supply flows in 2010.
+An omitted comparison figure also contrasted the two market structures using a 2010 global wheat market-equilibrium example with demand and supply flows.
 
 Figure 2: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in Fig. 2a and 10 MT in Fig. 2b.
 

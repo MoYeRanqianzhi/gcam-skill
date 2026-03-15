@@ -37,8 +37,7 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - Add more deterministic helper scripts if repeated manual authoring or validation steps appear.
 - Continue auditing lower-frequency human-oriented residue in inherited historical page bundles so CLI-first adaptation remains comprehensive beyond the already-normalized `user-guide.md`, `gcam-build.md`, `hector.md`, `index.md`, and repeated data-system passages.
 - Continue auditing historical developer-workflow pages beyond the newly adapted `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` so internal-platform context is preserved without drifting back into browser-only instructions.
-- Continue reducing the remaining lower-frequency figure-dependent prose, which is now concentrated mostly in older `v3.2` figure-heavy pages; preserve the factual text, but keep translating repeated visual-navigation patterns into explicit text routes where safe.
-- Continue reducing the remaining lower-frequency historical figure residue, which is now mostly limited to `v3.2` figure captions and any still-unadapted long-tail pages rather than the main explanatory sentences.
+- Continue reducing the remaining lower-frequency historical figure residue, which is now mostly limited to figure-caption lines plus preserved equation/example lead-ins rather than raw omitted-image markers or repeated `shown in Figure N` prose.
 - Preserve equation/example lead-ins such as `The equation is shown below` or `An example setup is shown below` when the equation or example still immediately follows in text, even if broad residue scans still report them.
 
 ## Decision Log
@@ -80,3 +79,6 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Preserved semantic same-page anchors by converting upstream `span id/name` wrappers into named anchors during bundle generation, fixing historical `gcam-usa.md` citation and figure-note fragments without leaving raw span markup in the published text layer.
 - 2026-03-16: Expanded historical developer-workflow adaptation so `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` now explain internal CI/review concepts in CLI/API and metadata terms rather than browser-button or GUI-first terms.
 - 2026-03-16: Confirmed again in the durable reference layer that `v8.2` is the bundled current full baseline and maps to the root `gcam-doc` tree, with that rule explicitly present in `reference/version_families.md`.
+- 2026-03-16: Removed the last raw `[omitted image: ...]` residue from generated page bundles, turning descriptive inline alt text into prose notes and dropping placeholder-only image lines where captions or surrounding text already carry the meaning.
+- 2026-03-16: Added another text-only adaptation pass for repeated `Figure N` prose in `trade.md`, `details_trade.md`, `aglu.md`, older `v4.x energy.md`, and `v3.2/Economic_land_sharing.md`, so those pages no longer depend on missing figures for their main explanatory sentences.
+- 2026-03-16: Confirmed with a fresh residue scan that the remaining high-frequency `shown below` hits are primarily equation/example lead-ins and figure-caption text rather than dead figure-navigation prose.

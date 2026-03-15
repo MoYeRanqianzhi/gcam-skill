@@ -43,6 +43,7 @@ ESCAPED_WIKI_REF_RE = re.compile(r"&lt;ref\b|&lt;/ref&gt;|%3C/ref%3E", re.IGNORE
 ESCAPED_WIKI_REFERENCES_RE = re.compile(r"&lt;references\b", re.IGNORECASE)
 LEGACY_IMAGE_RE = re.compile(r"Image reference:")
 PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
+OMITTED_IMAGE_RESIDUE_RE = re.compile(r"\[omitted image:", re.IGNORECASE)
 WINDOWS_ABS_RE = re.compile(r"\b[A-Za-z]:[\\/]")
 POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+/")
 URI_RE = re.compile(r"\b(?:file|vscode)://", re.IGNORECASE)
@@ -150,6 +151,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
         if PLACEHOLDER_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> unresolved image placeholder remains")
+        if OMITTED_IMAGE_RESIDUE_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> omitted-image residue remains")
         if RAW_GUI_PATH_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> residual GUI/menu-path phrasing remains")
         if WRAPPED_CITATION_LINK_RE.search(text):

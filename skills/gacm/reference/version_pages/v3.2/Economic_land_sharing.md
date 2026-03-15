@@ -17,7 +17,7 @@ Economic [land use](Agriculture_Land-Use_and_Bioenergy.md) decisions in GCAM are
 Example Competition
 -------------------
 
-Figure 1 below shows a competition between two options with distributions of profits. In this example, option 2 will get a higher share than 1 due to its higher potential average profit. Sharing will be done between option 1 and option 2 in order to allocate all land to one of the two options so that the marginal profit rates of option 1 and option 2 are equal to each other. At this point, there are no potential gains from changing the shares. Also from Figure 1, this point at which marginal profits are equal must also be equal to the marginal value or price of land. Only those instances of option 1 and option 2 which have profit rates higher than or equal to the land price at the margin will be implemented.
+An omitted figure illustrated two competing land-use options with profit distributions. In that example, the option with the higher potential average profit receives the larger share, while land is allocated until the marginal profit rates of the competing options and the land price at the margin are equal.
 
 ###### Figure 1: Example competition between two options with distributions of potential profit
 
@@ -37,11 +37,11 @@ Land Nesting Equations
 
 In GCAM, competing uses of land are nested within land nodes. Within each land node, it is generally assumed to be easier to substitute products, so logit exponents are higher to indicate tighter competition. Examples include switching food crops from one to another and converting forests from unmanaged categories to logging forests. Substitution across land nodes is also allowed but is assumed to be more difficult than within land nodes. We implement this philosophy by setting lower logit exponents via input data. For example, the expansion of cropland into pasture is more difficult than expansion of wheat land into corn land.
 
-The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, is shown here.     [omitted image: Share.png "Share]
+The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, was embedded as an inline source image and is omitted in this text bundle. It defines each option's land share from relative profitability at that nest level.
 
-where [omitted image: Prod.png "Prod] is the profit rate of option i and p is the logit exponent.
+In that omitted equation, the corresponding symbol denotes the profit rate of option i and `p` is the logit exponent.
 
-The average profit rate for a node resulting from the share competition in each nest is given by [omitted image: Average profit.png "Average profit]
+The average profit rate for a node resulting from the share competition in each nest was also given by an inline equation image in the upstream source; the surrounding text below explains how to interpret that average-profit term.
 
  These formulas apply at each level of competition in a nest, up to the top node. Note again the difference in interpretation between the average profit rates used in the logit equation from marginal profits. These average profit rates, as will be clarified in the discussion of calibration, are the potential average profit rates across the entire distribution of profit rates per penetration rates for each option. These average profits are unrealized but instead inferred from the calibration and the base year shares. Although relative average profit rates are used in the logit sharing equations, the theory behind the math is that land shares are determined so the land is allocated across uses up until the point at which the marginal profit rates are equal to each other. Therefore, the land values at the margin are also equal. As a result, all land uses within a nesting structure have equal value at the margin and further substitution will not increase total profits. If one option has a higher potential average profit rate than a second, it is assumed that option has a greater proportion of its distribution of profit rates that will exceed the marginal profit rate than the second option. Therefore, this option will receive a higher share, but unlike a simple optimization model it will not get all of the land in the node.
 

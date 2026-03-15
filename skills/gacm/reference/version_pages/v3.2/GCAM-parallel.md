@@ -164,7 +164,8 @@ Implementation Details
 
 ### The GCAM Data Flow Graph
 
-[omitted image: Flow graph for the energy portion of the USA region. There are additional independent tasks in the USA region, and each region is currently independent of all the others.] Parallel analysis of GCAM begins with the construction of a flow
+Omitted figure summary: Flow graph for the energy portion of the USA region. There are additional independent tasks in the USA region, and each region is currently independent of all the others.
+Parallel analysis of GCAM begins with the construction of a flow
 graph, which describes all of the computational tasks required for a
 single GCAM evaluation and the dependencies between them. Most of the
 work required to produce this graph, *including* breaking cyclic
@@ -190,7 +191,8 @@ between these two competing factors.
 
 ### Graph Analysis
 
-[omitted image: Hierarchical breakdown of the full GCAM USA region (a superset of the graph in the previous figure).] Parsing
+Omitted figure summary: Hierarchical breakdown of the full GCAM USA region (a superset of the graph in the previous figure).
+Parsing
 a flow graph into grains begins with a hierarchical breakdown of the
 graph into a tree of aggregations called "clans." Each clan is an
 aggregation of nodes from the original flow graph, such that a node
@@ -212,7 +214,8 @@ which is linear. This scenario represents five distinct linear paths
 through the graph, all of which can be run concurrently, but which
 must maintain their internal ordering.
 
-[omitted image: Grain flow graph of the GCAM USA region with a target grain size of 20 tasks per grain. Note that some grains end up being significantly larger or smaller than the target size] Once we have assembled the tree of clans, we can walk
+Omitted figure summary: Grain flow graph of the GCAM USA region with a target grain size of 20 tasks per grain. Note that some grains end up being significantly larger or smaller than the target size.
+Once we have assembled the tree of clans, we can walk
 down the tree until we find clans that are close in size to our
 desired grain size. We make grains out of those clans, and we use the
 information in the original flow graph to create dependence edges

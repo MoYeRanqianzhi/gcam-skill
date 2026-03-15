@@ -176,7 +176,7 @@ Although GCAM is not structured as an optimization model, the allocation of prod
 ### Regional Agricultural Markets and Trade
 Version 5.2 and greater of GCAM include the capability to represent regional agricultural markets, with explicitly modeled gross imports and exports of selected crop types. In contrast to the purely global approach, wherein crop prices are only tracked at the global level, the regional markets approach also has region-specific crop prices and markets. Note that bilateral trade is not modeled; for each crop, a region's gross imports come from, and exports go to, a single global market for the given crop.
 
-The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 2.
+The omitted figure summarized the structural implementations of a "global-market" versus a "regional-market" representation using a representative crop-trade example.
 
 Figure 2: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
 

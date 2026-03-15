@@ -161,11 +161,17 @@ SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
 IMAGE_PLACEHOLDER_RE = re.compile(r"\[\[IMAGE_OMITTED:([^\]]+)\]\]")
 OMITTED_IMAGE_LINK_LABEL_RE = re.compile(r"\[omitted image:\s*(?P<label>.+?)\]", re.IGNORECASE)
+OMITTED_IMAGE_RE = re.compile(r"\[omitted image:\s*(?P<label>[^\]]+)\]", re.IGNORECASE)
+OMITTED_IMAGE_LINE_RE = re.compile(
+    r"^\s*(?P<images>(?:\[omitted image:\s*[^\]]+\]\s*)+)(?P<rest>\S.*)?$",
+    re.IGNORECASE,
+)
 LINKED_IMAGE_LABEL_PLACEHOLDER_RE = re.compile(
     r"\[\[(?:IMAGE_OMITTED:|omitted image:\s*)(?P<label>[^\]]+)\]\]\((?P<target>[^)]+)\)",
     re.IGNORECASE,
 )
 FIGURE_ARTIFACT_RE = re.compile(r"(?i)(?:<br\s*/?>|&lt;br&gt;|&nbsp;|\{:\s*\.fig\s*\})")
+FIGURE_CAPTION_LINE_RE = re.compile(r"^\s*(?:#+\s*)?Figure\s+\d+(?:[:.]|\b)", re.IGNORECASE)
 WINDOWS_JAVA_INCLUDE_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]include\b"
 )
@@ -437,38 +443,38 @@ ELECTRIC_THIRD_NEST_FIGURE_RE = re.compile(
     re.MULTILINE,
 )
 REFINING_STRUCTURE_FIGURE_RE = re.compile(
-    r"The structure of refining in the broader energy system is shown in the following figure, with example input-output coefficients\."
+    r"The structure of refining in the broader energy system is shown in (?:the following figure|Figure \d+), with example input-output coefficients\."
 )
 OIL_REFINING_GRAPHIC_RE = re.compile(
-    r"In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity\. This is depicted graphically below, with typical input-output coefficients shown\."
+    r"In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity\. This is depicted (?:graphically below|in Figure \d+), with typical input-output coefficients shown\."
 )
 OIL_REFINING_COMPETITION_FIGURE_RE = re.compile(
-    r"as indicated in the figure above, this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector\."
+    r"as indicated in (?:the figure above|Figure \d+), this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector\."
 )
 FOSSIL_RESOURCE_CURVES_RE = re.compile(r"Resource curves for fossil fuels are shown below\.")
 GAS_STRUCTURE_FIGURE_RE = re.compile(
-    r"^The structure of the natural gas supply and distribution in GCAM is shown below:\s*$",
+    r"^The structure of the natural gas supply and distribution in GCAM is shown (?:below|in Figure \d+):\s*$",
     re.MULTILINE,
 )
-UPSTREAM_GAS_NETWORK_FIGURE_RE = re.compile(r"network shown in the figure above", re.MULTILINE)
+UPSTREAM_GAS_NETWORK_FIGURE_RE = re.compile(r"network shown in (?:the figure above|Figure \d+)", re.MULTILINE)
 DISTRICT_HEAT_OPTIONS_RE = re.compile(
-    r"(?:However, in several regions|In regions) where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below\."
+    r"(?:However, in several regions|In regions) where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown (?:below|in Figure \d+)\."
 )
 DISTRICT_HEAT_AS_SHOWN_RE = re.compile(
-    r'As shown, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors\.'
+    r'As shown(?: in Figure \d+)?, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors\.'
 )
 DISTRICT_HEAT_GRAPHIC_RE = re.compile(
-    r"This is illustrated further in the graphic below\."
+    r"This is illustrated further in (?:the graphic below|Figure \d+)\."
 )
 HYDROGEN_TRANSPORT_STRUCTURE_RE = re.compile(
     r"^Structure of hydrogen transmission, distribution and end use, with illustrative input-output coefficients \(GJ of energy input per GJ of hydrogen\) showing the approximate energy requirements of each stage of hydrogen compression, refrigeration, transportation, and storage, is shown in the figure below\.?\s*$",
     re.MULTILINE,
 )
 HYDROGEN_H2A_STRUCTURE_RE = re.compile(
-    r"The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U\.S\. Department of Energy's Hydrogen Analysis \(H2A\) models (?P<cite>\[[^\]]+\]\([^)]+\)), and is shown in the figure below\."
+    r"The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U\.S\. Department of Energy's Hydrogen Analysis \(H2A\) models (?P<cite>\[[^\]]+\]\([^)]+\)), and is shown in (?:the figure below|Figure \d+)\."
 )
 HYDROGEN_PRIMARY_SOURCES_RE = re.compile(
-    r"; as shown in the figure above, hydrogen can be produced from up to 7 primary energy sources\.",
+    r"; as shown in (?:the figure above|Figure \d+), hydrogen can be produced from up to 7 primary energy sources\.",
     re.MULTILINE,
 )
 FOSSIL_FUEL_TRADE_FIGURE_RE = re.compile(
@@ -527,6 +533,12 @@ ECONOMY_MACRO_FIGURE_RE = re.compile(
 INPUTS_SUPPLY_FAO_MAPPING_FIGURES_RE = re.compile(
     r"The commodity mapping is provided in \[(?P<label>Mapping_SUA_PrimaryEquivalent\.csv)\]\((?P<target>[^)]+)\) and shown in Figures 1 \(crop harvested area\) and 2 \(food\)\."
 )
+TRADE_MARKET_STRUCTURE_FIGURE_RE = re.compile(
+    r'The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure \d+(?: with an example of corn trade)?\.'
+)
+TRADE_MARKET_COMPARISON_FIGURE_RE = re.compile(
+    r"Furthermore, the two market structures are also compared in Figure \d+ with an example of a global wheat market equilibrium with demand and supply flows in 2010\."
+)
 V32_TRANSPORTATION_STRUCTURE_RE = re.compile(
     r"GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping \(see Figure 1\)\."
 )
@@ -574,6 +586,21 @@ V32_REFINING_FIGURE_RE = re.compile(
 )
 V32_UNCONVENTIONAL_REFINING_FIGURE_RE = re.compile(
     r"note the electricity and gas inputs to the “unconventional oil production” sector in Figure 1 and Table 1"
+)
+V32_ECONOMIC_LAND_COMPETITION_FIGURE_RE = re.compile(
+    r"Figure 1 below shows a competition between two options with distributions of profits\. In this example, option 2 will get a higher share than 1 due to its higher potential average profit\. Sharing will be done between option 1 and option 2 in order to allocate all land to one of the two options so that the marginal profit rates of option 1 and option 2 are equal to each other\. At this point, there are no potential gains from changing the shares\. Also from Figure 1, this point at which marginal profits are equal must also be equal to the marginal value or price of land\. Only those instances of option 1 and option 2 which have profit rates higher than or equal to the land price at the margin will be implemented\."
+)
+V32_ECONOMIC_LAND_SHARE_EQUATION_RE = re.compile(
+    r"The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, is shown here\.\s+\[omitted image:[^\]]+\]",
+    re.IGNORECASE,
+)
+V32_ECONOMIC_LAND_PROFIT_SYMBOL_RE = re.compile(
+    r"where\s+\[omitted image:[^\]]+\]\s+is the profit rate of option i and p is the logit exponent\.",
+    re.IGNORECASE,
+)
+V32_ECONOMIC_LAND_AVG_PROFIT_EQUATION_RE = re.compile(
+    r"The average profit rate for a node resulting from the share competition in each nest is given by\s+\[omitted image:[^\]]+\]",
+    re.IGNORECASE,
 )
 POLICIES_FIGURE_EXAMPLE_RE = re.compile(
     r"For example in the figure below, the cost of moving from a reference path without a carbon tax \(blue\) to the emissions path with a carbon tax \(green\) in period T can be calculated simply\.",
@@ -797,6 +824,66 @@ def strip_image_artifacts(text: str) -> str:
     return "\n".join(lines)
 
 
+def normalize_omitted_image_label(label: str) -> str:
+    raw = label.strip()
+    quoted_parts = [part.strip() for part in raw.split('"') if part.strip()]
+    if len(quoted_parts) >= 2:
+        raw = quoted_parts[-1]
+    else:
+        raw = quoted_parts[0] if quoted_parts else raw
+    raw = raw.rsplit("/", 1)[-1].rsplit("\\", 1)[-1]
+    raw = re.sub(r"\.(?:png|gif|jpe?g|svg|webp)\b", "", raw, flags=re.IGNORECASE)
+    raw = re.sub(r"(?<=[a-z])(?=[A-Z])", " ", raw)
+    cleaned = normalize_image_label(raw.replace("_", " ").replace("-", " "))
+    return cleaned or "figure"
+
+
+def parse_omitted_image_labels(images: str) -> list[str]:
+    labels: list[str] = []
+    for match in OMITTED_IMAGE_RE.finditer(images):
+        labels.append(normalize_omitted_image_label(match.group("label")))
+    return labels
+
+
+def format_omitted_image_labels(labels: list[str]) -> str:
+    if not labels:
+        return "omitted figure"
+    if len(labels) == 1:
+        return labels[0].rstrip(".")
+    return "; ".join(label.rstrip(".") for label in labels)
+
+
+def is_descriptive_omitted_image_label(label: str) -> bool:
+    return len(label) >= 30 or any(char in label for char in ".,:;()")
+
+
+def normalize_omitted_image_lines(text: str) -> str:
+    source_lines = text.splitlines()
+    lines: list[str] = []
+    for index, raw_line in enumerate(source_lines):
+        match = OMITTED_IMAGE_LINE_RE.match(raw_line)
+        if not match:
+            lines.append(raw_line)
+            continue
+        labels = parse_omitted_image_labels(match.group("images"))
+        rest = (match.group("rest") or "").strip()
+        next_nonempty = ""
+        for future in source_lines[index + 1 :]:
+            if future.strip():
+                next_nonempty = future.strip()
+                break
+        if rest:
+            if any(is_descriptive_omitted_image_label(label) for label in labels):
+                lines.append(f"Omitted figure summary: {format_omitted_image_labels(labels)}.")
+            lines.append(rest)
+            continue
+        if any(is_descriptive_omitted_image_label(label) for label in labels) and not FIGURE_CAPTION_LINE_RE.match(
+            next_nonempty
+        ):
+            lines.append(f"Omitted figure summary: {format_omitted_image_labels(labels)}.")
+    return "\n".join(lines)
+
+
 def sanitize_absolute_paths(text: str) -> str:
     text = WINDOWS_JAVA_INCLUDE_RE.sub(r"<JAVA_HOME>\\include", text)
     text = WINDOWS_JAVA_LIB_RE.sub(r"<JAVA_HOME>\\lib", text)
@@ -978,6 +1065,14 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         ),
     )
     replace(
+        TRADE_MARKET_STRUCTURE_FIGURE_RE,
+        'The omitted figure summarized the structural implementations of a "global-market" versus a "regional-market" representation using a representative crop-trade example.',
+    )
+    replace(
+        TRADE_MARKET_COMPARISON_FIGURE_RE,
+        "An omitted comparison figure also contrasted the two market structures using a 2010 global wheat market-equilibrium example with demand and supply flows.",
+    )
+    replace(
         V32_TRANSPORTATION_STRUCTURE_RE,
         "GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping. The omitted figure summarized that top-level transportation structure.",
     )
@@ -1040,6 +1135,22 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     replace(
         V32_UNCONVENTIONAL_REFINING_FIGURE_RE,
         "note the electricity and gas inputs to the “unconventional oil production” sector in the omitted schematic and Table 1",
+    )
+    replace(
+        V32_ECONOMIC_LAND_COMPETITION_FIGURE_RE,
+        "An omitted figure illustrated two competing land-use options with profit distributions. In that example, the option with the higher potential average profit receives the larger share, while land is allocated until the marginal profit rates of the competing options and the land price at the margin are equal.",
+    )
+    replace(
+        V32_ECONOMIC_LAND_SHARE_EQUATION_RE,
+        "The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, was embedded as an inline source image and is omitted in this text bundle. It defines each option's land share from relative profitability at that nest level.",
+    )
+    replace(
+        V32_ECONOMIC_LAND_PROFIT_SYMBOL_RE,
+        "In that omitted equation, the corresponding symbol denotes the profit rate of option i and `p` is the logit exponent.",
+    )
+    replace(
+        V32_ECONOMIC_LAND_AVG_PROFIT_EQUATION_RE,
+        "The average profit rate for a node resulting from the share competition in each nest was also given by an inline equation image in the upstream source; the surrounding text below explains how to interpret that average-profit term.",
     )
     replace(
         POLICIES_FIGURE_EXAMPLE_RE,
@@ -1783,6 +1894,7 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
         ),
     )
     text = strip_image_artifacts(text)
+    text = normalize_omitted_image_lines(text)
     text = sanitize_absolute_paths(text)
     text = apply_agent_text_adaptations(text, rel_source)
     text = re.sub(r"\n{3,}", "\n\n", text)

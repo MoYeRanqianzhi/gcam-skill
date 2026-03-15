@@ -12,6 +12,8 @@ Checks:
 
 from __future__ import annotations
 
+import re
+
 from version_catalog import VERSION_PAGES_ROOT, ordered_versions
 
 
@@ -142,6 +144,45 @@ FIGURE_DEPENDENT_FORBIDDEN = (
     "For example in the figure below, the cost of moving",
     "shown in red below",
 )
+FIGURE_DEPENDENT_REGEXES = (
+    re.compile(
+        r'The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure \d+(?: with an example of corn trade)?\.'
+    ),
+    re.compile(
+        r"Furthermore, the two market structures are also compared in Figure \d+ with an example of a global wheat market equilibrium with demand and supply flows in 2010\."
+    ),
+    re.compile(
+        r"The structure of refining in the broader energy system is shown in Figure \d+, with example input-output coefficients\."
+    ),
+    re.compile(
+        r"This is depicted in Figure \d+, with typical input-output coefficients shown\."
+    ),
+    re.compile(
+        r"network shown in Figure \d+"
+    ),
+    re.compile(
+        r"with four competing technology options, shown in Figure \d+\."
+    ),
+    re.compile(
+        r'As shown in Figure \d+, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies'
+    ),
+    re.compile(
+        r"This is illustrated further in Figure \d+\."
+    ),
+    re.compile(
+        r"^The structure of the natural gas supply and distribution in GCAM is shown in Figure \d+:\s*$",
+        re.MULTILINE,
+    ),
+    re.compile(
+        r"The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U\.S\. Department of Energy's Hydrogen Analysis \(H2A\) models \[[^\]]+\]\([^)]+\), and is shown in Figure \d+\."
+    ),
+    re.compile(
+        r"; as shown in Figure \d+, hydrogen can be produced from up to 7 primary energy sources\."
+    ),
+    re.compile(
+        r"Figure 1 below shows a competition between two options with distributions of profits\."
+    ),
+)
 
 TEST_FRAMEWORK_REQUIRED = (
     "This adapted testing-framework page preserves historical internal CI topology but rewrites pull-request/button/UI phrasing into repository events, webhook payloads, and status API concepts.",
@@ -270,6 +311,11 @@ def validate_figure_dependent_residue(errors: list[str]) -> None:
             if snippet in text:
                 errors.append(
                     f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden figure-dependent residue: {snippet}"
+                )
+        for pattern in FIGURE_DEPENDENT_REGEXES:
+            if pattern.search(text):
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still matches forbidden figure-dependent pattern: {pattern.pattern}"
                 )
 
 

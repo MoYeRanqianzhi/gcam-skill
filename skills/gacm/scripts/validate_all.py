@@ -19,6 +19,7 @@ VALIDATION_STEPS = (
     "validate_doc_search.py",
     "validate_page_bundle_content_parity.py",
     "validate_bundled_pages.py",
+    "validate_filesystem_hygiene.py",
     "validate_page_bundle_contract.py",
     "validate_conceptual_docs_contract.py",
     "validate_maintenance_memory_contract.py",

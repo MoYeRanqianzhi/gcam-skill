@@ -74,6 +74,16 @@ SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
 IMAGE_PLACEHOLDER_RE = re.compile(r"\[\[IMAGE_OMITTED:([^\]]+)\]\]")
 FIGURE_ARTIFACT_RE = re.compile(r"(?i)(?:<br\s*/?>|&lt;br&gt;|&nbsp;|\{:\s*\.fig\s*\})")
+WINDOWS_JAVA_INCLUDE_RE = re.compile(
+    r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]include\b"
+)
+WINDOWS_JAVA_LIB_RE = re.compile(
+    r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]lib\b"
+)
+WINDOWS_JAVA_HOME_RE = re.compile(
+    r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+\b"
+)
+POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+")
 
 WIKILINK_ALIAS_MAP = {
     "v3.2": {
@@ -233,6 +243,14 @@ def strip_image_artifacts(text: str) -> str:
     return "\n".join(lines)
 
 
+def sanitize_absolute_paths(text: str) -> str:
+    text = WINDOWS_JAVA_INCLUDE_RE.sub(r"<JAVA_HOME>\\include", text)
+    text = WINDOWS_JAVA_LIB_RE.sub(r"<JAVA_HOME>\\lib", text)
+    text = WINDOWS_JAVA_HOME_RE.sub("<JAVA_HOME>", text)
+    text = POSIX_USER_HOME_RE.sub("<USER_HOME>", text)
+    return text
+
+
 def split_target_and_title(raw: str) -> tuple[str, str]:
     value = raw.strip()
     if not value:
@@ -324,6 +342,7 @@ def sanitize_body(text: str, version: str) -> str:
     text = rewrite_images(text)
     text = apply_outside_code_fences(text, lambda chunk: rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version))
     text = strip_image_artifacts(text)
+    text = sanitize_absolute_paths(text)
     return text.strip() + "\n"
 
 

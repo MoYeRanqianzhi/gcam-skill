@@ -80,7 +80,7 @@ The most likely case is that the `run-gcam.bat` script was unable to detect the 
 REM Users may set the following location to the appropriate Java Runtime installation location
 REM instead of trying to detect the appropriate location.  This may be necessary if the default
 REM Java version is the 32-bit runtime.
-REM SET JAVA_HOME=C:\Program Files\Java\jre1.8.0_101
+REM SET JAVA_HOME=<JAVA_HOME>
 ```
 
 Another common problem on Windows is GCAM also relies on the [Microsoft Visual Studio 2015 Redistributable](https://www.microsoft.com/en-us/download/details.aspx?id=48145) 64-bit package be installed as well.  Although the error message in this situation tends to be more reliable and descriptive.

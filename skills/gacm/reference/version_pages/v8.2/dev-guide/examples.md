@@ -761,7 +761,7 @@ A generic templated factory that which utilizes the [SubClassFamilyVector](#defi
 - `Factory::canCreateType`: Will take an XML node name as an argument and return `true` if any of the classes in `SubClassFamilyVector`'s `getXMLNameStatic()` matches and false otherwise.  Note, the class must also be construct-able (i.e. not abstract) to return `true`.
 - `Factory::createType`: Will take an XML node name as an argument and return a new instance of the class in `SubClassFamilyVector` whos `getXMLNameStatic()` matches.  If no class matches `0` is returned and a warning will be generated.  One major caveat is this method assumes that each class can be constructed with an constructor which takes no arguments.  If the class does require arguments to the constructor you will get a compile time error such as:
 ```
-In file included from /Users/pralitp/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
+In file included from <USER_HOME>/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
 ../../util/base/include/factory.h:119:25: error: no matching constructor for initialization of 'typename boost::remove_pointer<decltype(aType)>::type' (aka 'LinearControl')
                     new typename boost::remove_pointer<decltype( aType )>::type : aCurrResult;
 ```

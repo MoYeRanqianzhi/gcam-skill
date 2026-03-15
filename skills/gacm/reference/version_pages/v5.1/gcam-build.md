@@ -159,8 +159,8 @@ libs/java/lib/jvm.lib
 Which can be placed there by copying or symlinking:
 
 ```
-C:\Program Files\Java\jdk1.8.0_102\include
-C:\Program Files\Java\jdk1.8.0_102\lib
+<JAVA_HOME>\include
+<JAVA_HOME>\lib
 ```
 
 In addtion the PATH variable may need to be updated so that GCAM can find the `jvm.dll`.  Note that this is the purpose of the `<GCAM Workspace>/exe/run-gcam.bat` wrapper.  Users can take a look at this file to understand how GCAM detects the JAVA_HOME and updates the PATH accordingly.

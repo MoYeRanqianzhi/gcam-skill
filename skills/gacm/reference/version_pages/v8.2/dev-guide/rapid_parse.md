@@ -591,7 +591,7 @@ To facilitate creating new instances of GCAM "CONTAINER" classes we utilize the 
 
 If your new GCAM CONTAINER class requires an argument in the constructor you will get a compile time error such as:
 ```
-In file included from /Users/pralitp/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
+In file included from <USER_HOME>/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
 ../../util/base/include/factory.h:119:25: error: no matching constructor for initialization of 'typename boost::remove_pointer<decltype(aType)>::type' (aka 'LinearControl')
                     new typename boost::remove_pointer<decltype( aType )>::type : aCurrResult;
 ```

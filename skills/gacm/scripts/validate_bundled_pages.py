@@ -21,6 +21,10 @@ RAW_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 RAW_HTML_IMG_RE = re.compile(r"<img\b", re.IGNORECASE)
 LEGACY_IMAGE_RE = re.compile(r"Image reference:")
 PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
+WINDOWS_ABS_RE = re.compile(r"\b[A-Za-z]:[\\/]")
+POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+/")
+URI_RE = re.compile(r"\b(?:file|vscode)://", re.IGNORECASE)
+GENERIC_WINDOWS_PLACEHOLDER_RE = re.compile(r"(?i)\b[A-Za-z]:[\\/]path(?:[\\/]|$)")
 
 
 def strip_code_fences(text: str) -> str:
@@ -48,6 +52,13 @@ def normalize_target(base: Path, target: str) -> Path:
     return (base.parent / target_path).resolve()
 
 
+def normalize_portability_line(line: str) -> str:
+    normalized = GENERIC_WINDOWS_PLACEHOLDER_RE.sub("", line)
+    normalized = normalized.replace("<JAVA_HOME>", "")
+    normalized = normalized.replace("<USER_HOME>", "")
+    return normalized
+
+
 def main() -> int:
     errors: list[str] = []
     roots = sorted(VERSION_PAGES_ROOT.rglob("*.md"))
@@ -71,6 +82,19 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
         if PLACEHOLDER_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> unresolved image placeholder remains")
+        for line_no, line in enumerate(text.splitlines(), start=1):
+            normalized_line = normalize_portability_line(line)
+            if (
+                WINDOWS_ABS_RE.search(normalized_line)
+                or POSIX_USER_HOME_RE.search(normalized_line)
+                or URI_RE.search(normalized_line)
+            ):
+                snippet = line.strip()
+                if len(snippet) > 160:
+                    snippet = snippet[:157] + "..."
+                errors.append(
+                    f"{page.relative_to(VERSION_PAGES_ROOT.parent)}:{line_no} -> non-portable absolute path or file URI remains: {snippet}"
+                )
     if errors:
         for item in errors[:200]:
             print(item)

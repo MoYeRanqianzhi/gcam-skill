@@ -45,6 +45,7 @@ High-value shared docs to maintain:
 - Re-run `validate_authoring_sources.py` before `generate_bundled_pages.py` so missing `gcam-doc` inputs or version-map drift fail fast instead of silently producing incomplete bundles.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
 - Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable and image markup stays stripped.
+- `validate_bundled_pages.py` also enforces portability inside `reference/version_pages/**/*.md`: real machine-specific absolute paths and file URIs must be sanitized out of bundled page content, while generic placeholders such as `/path/to`, `<GCAM Workspace>`, `<JAVA_HOME>`, and `<USER_HOME>` remain allowed.
 - Treat `reference/version_pages/README.md` and `reference/version_pages/*/INDEX.md` as generated artifacts from `generate_bundled_pages.py`; do not hand-edit them unless you also intend to update the generator.
 - Treat `reference/version_pages/**/*.md` as generated artifacts from `generate_bundled_pages.py`; if a page bundle must change, prefer changing the generator or authoring source and then regenerating.
 - Re-run `validate_shared_references.py` after editing shared docs, routing docs, or `SKILL.md` so template placeholders, real local references, and topic listings stay consistent.
@@ -64,6 +65,7 @@ High-value shared docs to maintain:
 - When a page links to a non-bundled local CMP PDF, generate a clearly labeled `cmp trace page` instead of pretending the binary asset is bundled.
 - Historical site-root links such as `../toc.html` must route to bundled `v8.2/toc.md`, not to a non-existent synthetic root file.
 - Bundled pages must stay text-only: strip raw image markup and avoid bundling binary figure assets.
+- Bundled pages must also stay machine-agnostic: sanitize concrete user-home and installed-tool absolute paths into generic placeholders during generation instead of preserving upstream machine-local examples verbatim.
 - Shared topic docs should translate upstream GUI instructions into agent-usable CLI and configuration workflows whenever possible.
 - Shared topic docs are the authoritative agent layer; keep them phrased in terms of headless execution, XML/config editing, and batch extraction, while leaving historical UI prose inside `reference/version_pages/` only as traceable evidence.
 - If you add a new root shared runtime doc under `skills/gacm/reference/`, also add it to `version_catalog.COMMON_TOPICS` and regenerate the version references, or the inventory-parity validator will fail.

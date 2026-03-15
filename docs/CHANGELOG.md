@@ -41,3 +41,5 @@
 - Tightened `validate_shared_references.py` so `SKILL.md`, root shared docs, and `docs/*.md` fail if image markup is embedded, preserving the agent-facing layer as pure text.
 - Hardened `validate_all.py` so it first verifies its `VALIDATION_STEPS` list exactly covers the on-disk `validate_*.py` scripts, preventing new validators from being added but silently omitted from the main suite.
 - Added `validate_skill_contract.py` and wired it into `validate_all.py` so `skills/gacm/SKILL.md` cannot silently drift away from the canonical `gacm` name, `v8.2` default-baseline contract, exact-version routing, and progressive-disclosure workflow.
+- Sanitized page-bundle generation so concrete machine-specific paths inside historical pages, such as fixed Java install directories and user-home stack-trace paths, are rewritten to generic placeholders like `<JAVA_HOME>` and `<USER_HOME>` instead of being preserved verbatim.
+- Tightened `validate_bundled_pages.py` so `reference/version_pages/**/*.md` now also fails on lingering machine-specific absolute paths or file URIs while still allowing generic placeholders such as `/path/to` and `<GCAM Workspace>`.

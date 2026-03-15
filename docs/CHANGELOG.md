@@ -32,4 +32,4 @@
 - Tightened `doc_search.py` so invalid `--version` values fail cleanly across all scopes and `--root` cannot escape the bundled `reference/` tree.
 - Added `validate_all.py` as a one-shot entry point for the bundled validation suite.
 - Added `validate_doc_search.py` and wired it into `validate_all.py` so representative search commands, invalid-version handling, and `--root` restrictions are automatically checked.
-- Added `validate_page_bundle_indexes.py` and generator reuse hooks so `version_pages/README.md` plus every version `INDEX.md` are checked against `generate_bundled_pages.py`.
+- Added `validate_page_bundle_content_parity.py` and wired it into `validate_all.py` so the full bundled `reference/version_pages/**/*.md` tree is checked against fresh generator output.

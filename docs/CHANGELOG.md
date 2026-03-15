@@ -36,3 +36,4 @@
 - Normalized path separators inside `validate_doc_search.py` so the search-behavior validator is not tied to Windows-style output paths.
 - Added `validate_portability.py` and wired it into `validate_all.py` so runtime docs/scripts/shared references fail fast if machine-specific absolute paths or file URIs reappear.
 - Refined `validate_portability.py` so generic placeholder examples like `E:\...` or `/Users/...` in policy text do not trigger false positives.
+- Expanded `validate_shared_references.py` to also scan `docs/*.md` and repo-root `skills/gacm/...` references, so long-term memory docs cannot silently drift from actual local files.

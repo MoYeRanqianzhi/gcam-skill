@@ -6,7 +6,7 @@ Checks:
 - all shared topic docs listed in version_catalog exist
 - version_inventory shared topic bullets match version_catalog COMMON_TOPICS
 - navigation covers the shared topic docs
-- real local `.md` / `.py` references in SKILL.md and shared docs resolve
+- real local `.md` / `.py` references in SKILL.md, shared docs, and project docs resolve
 
 Notes:
 - ignore template placeholders such as `<version>`
@@ -26,13 +26,15 @@ REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 SKILL_FILE = REPO_ROOT / "skills" / "gacm" / "SKILL.md"
 VERSION_INVENTORY = REFERENCE_ROOT / "version_inventory.md"
 NAVIGATION = REFERENCE_ROOT / "navigation.md"
+DOCS_ROOT = REPO_ROOT / "docs"
 SHARED_DOCS = {path.name for path in REFERENCE_ROOT.glob("*.md")}
 SCRIPT_DOCS = {path.name for path in (REPO_ROOT / "skills" / "gacm" / "scripts").glob("*.py")}
+PROJECT_DOCS = {path.name for path in DOCS_ROOT.glob("*.md")}
 
 HEADER_RE = re.compile(r"^##\s+(.+?)\s*$", re.MULTILINE)
 BULLET_CODE_RE = re.compile(r"^\s*-\s+`([^`]+)`", re.MULTILINE)
 CODE_FILE_RE = re.compile(
-    r"`((?:reference/|version_pages/|versions/|scripts/|docs/)?[^`\n]*\.(?:md|py)(?:[#?][^`\n]+)?)`"
+    r"`((?:skills/gacm/|reference/|version_pages/|versions/|scripts/|docs/)?[^`\n]*\.(?:md|py)(?:[#?][^`\n]+)?)`"
 )
 
 
@@ -66,11 +68,15 @@ def resolve_doc_reference(base: Path, ref: str) -> Path | None:
         return REPO_ROOT / "skills" / "gacm" / normalized
     if normalized.startswith("docs/"):
         return REPO_ROOT / normalized
+    if normalized.startswith("skills/gacm/"):
+        return REPO_ROOT / normalized
     if candidate.name == normalized:
         if base.parent == REFERENCE_ROOT and normalized in SHARED_DOCS:
             return REFERENCE_ROOT / normalized
         if base.parent == (REPO_ROOT / "skills" / "gacm" / "scripts") and normalized in SCRIPT_DOCS:
             return REPO_ROOT / "skills" / "gacm" / "scripts" / normalized
+        if base.parent == DOCS_ROOT and normalized in PROJECT_DOCS:
+            return DOCS_ROOT / normalized
         return None
     resolved = (base.parent / candidate).resolve()
     if resolved.exists():
@@ -108,7 +114,7 @@ def validate_navigation(errors: list[str]) -> None:
 
 
 def validate_local_refs(errors: list[str]) -> None:
-    docs = [SKILL_FILE, *sorted(REFERENCE_ROOT.glob("*.md"))]
+    docs = [SKILL_FILE, *sorted(REFERENCE_ROOT.glob("*.md")), *sorted(DOCS_ROOT.glob("*.md"))]
     for doc in docs:
         text = doc.read_text(encoding="utf-8")
         for ref in CODE_FILE_RE.findall(text):

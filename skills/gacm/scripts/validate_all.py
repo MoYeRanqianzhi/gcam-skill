@@ -21,6 +21,7 @@ VALIDATION_STEPS = (
     "validate_bundled_pages.py",
     "validate_filesystem_hygiene.py",
     "validate_page_bundle_contract.py",
+    "validate_page_bundle_agent_adaptation.py",
     "validate_conceptual_docs_contract.py",
     "validate_maintenance_memory_contract.py",
     "validate_semantic_contract_coverage.py",

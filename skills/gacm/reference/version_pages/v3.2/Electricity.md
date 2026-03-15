@@ -12,8 +12,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-&lt;span class="Apple-style-span" style="font-size: 11px; "&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/span&gt;
-
 &lt;span class="Apple-style-span" style="font-size: 11px; "&gt;[GCAM Revision History](GCAM_Revision_History.md)&lt;/span&gt;Electricity generation in the [GCAM](toc.md) is represented at a relatively aggregate level, as historically development has focused on introducing new electricity generation technologies or improving the representation of existing technologies within the model. Accordingly, the electricity market in each model region is constructed as a single annual market for an average-priced electricity.&nbsp;In the US, additional detail has been added that splits the load curve among four generation segments: baseload, intermediate, peak, and subpeak&lt;ref&gt;Luckow P, MA Wise, and JJ Dooley. 2011. Deployment of CCS Technologies across the Load Curve for a Competitive fckLRElectricity Market as a Function of CO2 Emissions Permit Prices. In 10th International Conference on Greenhouse Gas fckLRControl Technologies, September 19-23, 2010, Amsterdam, The Netherlands. Energy Procedia, vol. 4, ed. J Gale, C fckLRHendriks, W Turkenberg, pp. 5762-5769. Elsevier, London, United Kingdom. <doi:10.1016/j.egypro.2011.02.572%3C/ref%3E>. Electricity pricing is based on the average total cost of new generation in each of these segments.
 
 The technology characteristics detailed here apply to both the detailed US electricity market as well as the aggregrate electricity markets in other regions.
@@ -87,7 +85,6 @@ Three groups of nuclear power technologies can be modeled: currently operational
 ###### Table 3: Nuclear power plant non-energy costs (2004 cents / kWh) in the reference and advanced technology scenarios&lt;br&gt;
 
 Assumptions on the availability of natural uranium vary widely. In the GCAM reference scenario, we use a supply curve for natural uranium based on a generalized simple crustal model of the relationship between uranium abundance and concentration fitted to the resource estimates and costs from the IAEA Redbook. This uranium supply curve, displayed in Figure 1, provides the global availability of uranium in million metric tons (MTU) as a function of price ($/kgU). We refer to this supply curve as the PPM-Cost Model (PPM). The availability of uranium at a given price from the PPM supply curve falls within the range of estimates derived by the Gen IV Fuel Cycle Crosscut Group (FCCG) and Deffeyes and MacGregor. It is worth noting that the natural uranium supply curve is assumed to be continuous and that significant amounts of natural uranium are available beyond those estimates in the Redbook data in lesser concentrations but at higher costs. Any estimates of the future cost of undiscovered mineral resources, whether conventional or not, are speculative and the judicious selection of a particular model depends on how it will be used. Estimates of cost and of the practicality of recovery vary widely, however. In our study, we assume that uranium resources are available if prices rise sufficiently high.
-
 
 ###### Figure 1:&nbsp;Uranium Supply Curve&lt;br&gt;&lt;br&gt;
 
@@ -218,7 +215,6 @@ Geothermal&lt;br&gt;
 Like solar and wind, geothermal energy currently accounts for less than one percent of global electricity generation, but the potential resource may be large. For instance, a recent study assessed the feasibility of using enhanced geothermal systems (EGS) to install 100 GW (3 EJ baseload) of geothermal capacity in the U.S. alone (MIT 2006). Due to the high R&amp;D costs that would be necessary to bring EGS to commercial deployment, however, this technology is only allowed to compete economically in advanced technology scenarios. The reference scenarios are constrained to conventional (hydrothermal) geothermal technology, which has a much smaller resource base.&lt;br&gt;
 
 &lt;br&gt;Geothermal costs in GCAM are input as exogenous supply curves. Supply curves assumed for hydrothermal and EGS resources for the U.S. are based on Petty and Porro (2007) and are shown in Figure 3. Supply curves in non-U.S. regions are assumed to have the same shape as those used in the U.S., but with different amounts of maximum resources. Estimates of maximum hydrothermal (conventional geothermal) resources are based on Glitnir (2007), and EGS resources in all regions are based on data provided by R. Bertani (pers. comm..; see Table 7)
-
 
 ###### Figure 3. Geothermal supply curves in 2050 for the U.S. region. The EGS technology is only included in advanced technology scenarios.
 

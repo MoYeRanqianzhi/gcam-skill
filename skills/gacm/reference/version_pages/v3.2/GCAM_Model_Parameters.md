@@ -12,8 +12,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
-
 Overview
 --------
 

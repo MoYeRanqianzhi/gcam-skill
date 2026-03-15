@@ -57,3 +57,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Renamed generated page-bundle directory indexes to `BUNDLE_INDEX.md` so Windows case-insensitive filesystems do not clobber bundled upstream source pages such as `index.md`.
 - 2026-03-16: Added Git-index casing validation after finding a Windows-hidden case-only rename residue in `reference/version_pages/v3.2/index.md`.
 - 2026-03-16: Reordered `doc_search.py` to prioritize version-route and page-entry docs so progressive-disclosure search results stay agent-safe under `--max-matches`.
+- 2026-03-16: Rewrote repeated bundled `user-guide.md` GUI walkthrough blocks into headless-agent notes and stripped obsolete v3.2 previous-version click-through boilerplate from page bundles.

@@ -12,8 +12,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
-
 GCAM&nbsp;distinguishes between two different types of resources:&nbsp;depletable and renewable. Depletable resources include fossil fuels and uranium; renewable resources include wind, geothermal energy, municipal and industrial waste (for waste-to-energy), and rooftop area for solar photovoltaic. All resources are characterized by upward-sloping supply curves:&nbsp;that is, the marginal cost of resource utilization increases with deployment.
 
 Depletable Resources&lt;br&gt;
@@ -23,15 +21,11 @@ Depletable resource supply curves are input for each region as the amount of eac
 
 &lt;br&gt;
 
-
 ###### Figure 1. Natural gas resource supply curves
-
 
 ###### Figure 2. Crude oil resource supply curves
 
-
 ###### Figure 3. Unconventional oil resource supply curves
-
 
 ###### Figure 4. Coal resource supply curves
 
@@ -46,7 +40,6 @@ Wind supply curves in each region include all costs of producing electricity exc
 
 &lt;br&gt;
 
-
 ###### Figure 5. Wind resource supply curves, in EJ/yr of electricity output.
 
 &lt;br&gt;
@@ -56,7 +49,6 @@ Wind supply curves in each region include all costs of producing electricity exc
 The costs of producing central electricity from solar power are input at the level of the technology; costs vary by GCAM region, based on the population-weighted average insolation received, but there is no supply curve used because marginal costs are assumed to not increase with deployment. However, for rooftop PV, GCAM does use supply curves, based on Denholm and Margolis's (2008)&lt;ref&gt;Denholm, P., and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. NREL/TP-6A0-44073, National Renewable Energy Laboratory. <http://www.nrel.gov/docs/fy09osti/44073.pdf%3C/ref%3E> supply curves for rooftop PV in the residential and commercial sectors in the USA. In other regions, the supply curves are assigned similar shape as the USA supply curve, with the available resource quantities adjusted by regional population, used as a proxy of available rooftop space, and by insolation. Rooftop PV supply curves are shown in Figure 6; note that as with wind, this supply curve only accounts for the portion of the costs that increase with deployment. Note also that the costs shown are for the 2005 model time period, and are typically assumed to decline substantially in future periods.&lt;br&gt;
 
 &lt;br&gt;
-
 
 ###### Figure 6. Rooftop PV resource supply curves, in EJ/yr of electricity output.
 
@@ -79,7 +71,6 @@ Geothermal modeling in GCAM&nbsp;is documented in Hannam et al. (2009).&lt;ref&g
 The waste biomass supply curves in each region include several forms of waste that are not explicitly tracked elsewhere in the model. Forms of biomass elsewhere accounted include agricultural residue biomass, logging residues, and milling residues, as well as the purpose-grown bioenergy crops. The remainder consists mostly of municipal solid waste and combustible industrial waste. The supplies used in GCAM&nbsp;are documented in Gregg (2010).&lt;ref&gt;Gregg, J.S. 2010. National and regional generation of municipal residue biomass and the future potential for waste-to-energy implementation. Biomass and Bioenergy 34: 379-388.&lt;/ref&gt; Figure 8 shows the supply curves used in each region; supplies are generally based on the amount and composition of municipal waste produced in each GCAM&nbsp;region.&lt;br&gt;
 
 &lt;br&gt;
-
 
 ###### Figure 8. Waste biomass supply curves, in EJ/yr of combustible energy.
 

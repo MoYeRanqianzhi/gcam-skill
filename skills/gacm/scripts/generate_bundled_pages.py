@@ -84,6 +84,26 @@ WINDOWS_JAVA_HOME_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+\b"
 )
 POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+")
+LEGACY_PREVIOUS_VERSION_RE = re.compile(
+    r"^.*Click here for info on how to view a previous version\..*(?:\n|$)",
+    re.MULTILINE,
+)
+USER_GUIDE_OPEN_DB_RE = re.compile(
+    r"^Select `Open` from the Model Interface File menu.*(?:\n|$)",
+    re.MULTILINE,
+)
+USER_GUIDE_RUN_QUERY_RE = re.compile(
+    r'^To view data select one or more scenarios.*(?:\n|$)',
+    re.MULTILINE,
+)
+USER_GUIDE_SCREENSHOT_RE = re.compile(
+    r"^Figure UG-[12]:\s+Screenshot of GCAM ModelInterface.*(?:\n|$)",
+    re.MULTILINE,
+)
+USER_GUIDE_COPY_DATA_RE = re.compile(
+    r"^\*Copying Data\*:.*(?:\n|$)",
+    re.MULTILINE,
+)
 
 WIKILINK_ALIAS_MAP = {
     "v3.2": {
@@ -268,6 +288,49 @@ def sanitize_absolute_paths(text: str) -> str:
     return text
 
 
+def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
+    changed = False
+    updated = LEGACY_PREVIOUS_VERSION_RE.sub("", text)
+    if updated != text:
+        text = updated
+        changed = True
+
+    if rel_source.name == "user-guide.md":
+        updated = USER_GUIDE_OPEN_DB_RE.sub(
+            "Agent adaptation: the upstream source described interactive ModelInterface browsing here. "
+            "For agent use, prefer headless query automation via `ModelInterface/InterfaceMain -b <batch.xml>`, "
+            "post-run `XMLDBDriver.properties` batch queries, or the shared `reference/query_automation.md` guide.\n",
+            text,
+        )
+        if updated != text:
+            text = updated
+            changed = True
+        updated = USER_GUIDE_RUN_QUERY_RE.sub(
+            "Agent adaptation: interactive scenario/region/query selection is omitted in this text-only bundle. "
+            "Treat scenario, region, and query names as identifiers for headless batch execution instead.\n",
+            text,
+        )
+        if updated != text:
+            text = updated
+            changed = True
+        updated = USER_GUIDE_SCREENSHOT_RE.sub("", text)
+        if updated != text:
+            text = updated
+            changed = True
+        updated = USER_GUIDE_COPY_DATA_RE.sub(
+            "*Agent adaptation*: Prefer CSV/XLS export through headless batch queries or extraction libraries "
+            "instead of manual copy/paste from the ModelInterface UI.\n",
+            text,
+        )
+        if updated != text:
+            text = updated
+            changed = True
+
+    if changed:
+        text = re.sub(r"\n{3,}", "\n\n", text)
+    return text
+
+
 def split_target_and_title(raw: str) -> tuple[str, str]:
     value = raw.strip()
     if not value:
@@ -355,11 +418,12 @@ def apply_outside_code_fences(text: str, transform) -> str:
     return "".join(parts)
 
 
-def sanitize_body(text: str, version: str) -> str:
+def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = rewrite_images(text)
     text = apply_outside_code_fences(text, lambda chunk: rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version))
     text = strip_image_artifacts(text)
     text = sanitize_absolute_paths(text)
+    text = apply_agent_text_adaptations(text, rel_source)
     return text.strip() + "\n"
 
 
@@ -416,7 +480,7 @@ def render_source_page(
     rel_source = relative_source_path(source_version, source_path)
     title = parse_title(front_matter, body, source_path.stem)
     body = strip_duplicate_heading(body, title)
-    body = sanitize_body(body, bundle_version)
+    body = sanitize_body(body, bundle_version, rel_source)
     lines = [
         f"# {title}",
         "",
@@ -428,6 +492,10 @@ def render_source_page(
         "- Bundle mode: `text-only page bundle; images omitted`",
         f"- Version page index: `version_pages/{bundle_version}/{BUNDLE_INDEX_NAME}`",
     ]
+    if rel_source.name == "user-guide.md":
+        lines.append(
+            "- Note: This adapted user-guide page rewrites interactive ModelInterface browsing into headless-agent guidance and omits screenshot-dependent UI steps."
+        )
     if source_version != bundle_version:
         lines.append(f"- Source provenance: inherited from `{source_version}` because `{bundle_version}` links to this page but its authoring tree does not contain a version-local copy")
     for note in note_lines:

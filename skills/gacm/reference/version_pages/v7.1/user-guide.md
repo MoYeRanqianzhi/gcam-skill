@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/BUNDLE_INDEX.md`
+- Note: This adapted user-guide page rewrites interactive ModelInterface browsing into headless-agent guidance and omits screenshot-dependent UI steps.
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -104,21 +105,17 @@ Comprehensive model output from each scenario is stored in an XML database. (Not
 
 To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine.
 
-Select `Open` from the Model Interface File menu and then select `DB Open` from the sub-menu. The default setting is that the XML database is located in the `Output` subdirectory and is called `database_basexdb`. Select `database_basexdb` and you should see the following on your screen.
+Agent adaptation: the upstream source described interactive ModelInterface browsing here. For agent use, prefer headless query automation via `ModelInterface/InterfaceMain -b <batch.xml>`, post-run `XMLDBDriver.properties` batch queries, or the shared `reference/query_automation.md` guide.
 
 Note as of GCAM 4.4 the ModelInterface package on the Mac may prompt you to select your query file if it can not locate it.  This file is typically located in `<GCAM Workspace>/output/queries/Main_queries.xml`.
 
-Figure UG-1:  Screenshot of GCAM ModelInterface after an XML database has been opened, but before any queries have been run.
-
-To view data select one or more scenarios, one or more regions, and one or more queries. The "Run Query" button will become available once one of each of these elements has been selected. Press this button and model output will appear as shown below:
-
-Figure UG-2:  Screenshot of GCAM ModelInterface after a query has been run.
+Agent adaptation: interactive scenario/region/query selection is omitted in this text-only bundle. Treat scenario, region, and query names as identifiers for headless batch execution instead.
 
 A tabular data display will appear on the left and a simple graphical output will appear on the right. If multiple queries were selected, these will open in different tabs.
 
 *Sorting*: You can sort results in the Model Interface tables by clicking on the table heading. You can add secondary sorting by holding ctrl while click another column heading.
 
-*Copying Data*: You can copy the table to Excel by selecting copy from the file menu and pasting it to a worksheet. Column labels will not copy. An output table can also be directly dragged to an Excel worksheet by clicking on the output tab and dragging to an open Excel worksheet. Graphs will not be copied, only data.
+*Agent adaptation*: Prefer CSV/XLS export through headless batch queries or extraction libraries instead of manual copy/paste from the ModelInterface UI.
 
 ## 3. <a name="gcam-users-guide"> GCAM User's Guide </a>
 
@@ -457,7 +454,6 @@ for importing GCAM data is currently in beta testing.  Although not
 yet as complete as the R package, the python package supports basic
 functionality including importing individual or batched queries as
 pandas data frames for analysis or use in other python programs.
-
 
 ### 3.5 <a name="controlling-the-level-of-xml-db-output"> Controlling the level of XML DB Output </a>
 

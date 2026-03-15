@@ -12,8 +12,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.1 r4503. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
-
 In GCAM, the energy system represents processes of energy resource extraction, transformation, and delivery, ultimately producing services demanded by end users. Resources are classified as either depletable or renewable; in either case, the extraction costs of a given resource are generally assumed to increase as lower grade resources are employed, but are also subject to technological progress which can lower extraction costs for a given resource grade. Extraction costs can also rise with time as a consequence of incremental non-climate environmental requirements. In each time period, the market prices of all goods and services, including primary energy resources, land, agricultural goods and other products are determined within the general market system equilibrium.&lt;br&gt;
 
 &lt;br&gt;Fossil fuel energy is produced from a graded, regionally disaggregated depletable resource base. Uranium is similarly assumed to be a depletable resource. Renewable energy forms are also disaggregated by region, and resource grade; however, by their nature the resource is not consumed by use. Primary energy forms can be transformed into six final energy products:&lt;br&gt;
@@ -62,7 +60,6 @@ Coal-to-liquids, gas-to-liquids and biomass liquids are modeled such that the re
 The GCAM models two distinct liquid fuel technologies for conversion of cellulosic crop, ethanol and a Fischer-Tropsch process.&nbsp;In addition to cellulosic fermentation and the Fischer-Tropsch process, in GCAM 3.0 we have added conventional technologies linking food crops to the energy system, of particular importance for near term modeling of bioenergy production.&nbsp;The GCAM calibrates to existing, first-generation biofuels production, including corn ethanol and soybean biodiesel in the United States, as well as ethanol from sugarcane and sugar beets in Latin America and Western Europe, respectively.&nbsp;Inputs and costs to these first-generation technologies are summarized in Table 1, and compared to the advanced alternatives.&nbsp;Costs do not include feedstock cost, sources include (Perrin et al. 2009)&lt;ref name="perrin09"&gt;Perrin, R. K., N. F. Fretes and J. P. Sesmero (2009). "Efficiency in Midwest US corn ethanol plants: A plant survey." Energy Policy, Volume 37(4): 1309-1316,ISSN 0301-4215&lt;/ref&gt; for corn ethanol, (Shapouri et al. 2006; Outlaw et al. 2007)&lt;ref name="shapouri06"&gt;Shapouri, H., M. Salassi and J. Nelson (2006). "The Economic Feasibility of Ethanol Production From Sugar in the United States." USDA&lt;/ref&gt;&lt;ref name="outlaw07"&gt;Outlaw, J. L., L. A. Ribera, J. W. Richardson, J. da Silva, H. L. Bryant and S. L. Klose (2007). "Economics of Sugar-Based Ethanol Production and Related Policy Issues." Journal of Agricultural and Applied Economics, Volume 39(02)&lt;/ref&gt; for sugar ethanol, (Pimentel and Patzek 2005; van Kasteren and Nisworo 2007)&lt;ref name="pimentel05"&gt;Pimentel, D. and T. W. Patzek (2005). "Ethanol Production Using Corn, Switchgrass, and Wood; Biodiesel Production Using Soybean and Sunflower." Natural Resources Research, Volume 14(1): 65-76,ISSN 1520-7439, <DOI:10.1007/s11053-005-4679-8%3C/ref%3E%3Cref> name="vanKasteren07"&gt;van Kasteren, J. M. N. and A. P. Nisworo (2007). "A process model to estimate the cost of industrial scale biodiesel production from waste cooking oil by supercritical transesterification." Resources, Conservation and Recycling, Volume 50(4): 442-458,ISSN 0921-3449&lt;/ref&gt; for soybean, (Aden 2008)&lt;ref name="aden08"&gt;Aden, A. (2008). "Biochemical Production of Ethanol from Corn Stover: 2007 State of Technology Model."&lt;/ref&gt; for cellulosic ethanol, and (van Vliet et al. 2009)&lt;ref name="vanvliet09"&gt;van Vliet, O. P. R., A. P. C. Faaij and W. C. Turkenburg (2009). "Fischer-Tropsch diesel production in a well-to-wheel perspective: A carbon, energy flow and cost analysis." Energy Conversion and Management, Volume 50(4): 855-876,ISSN 0196-8904&lt;/ref&gt; for Fischer-Tropsch.
 
 ###### **Figure 1: Technology options in liquid fuel refining.**
-
 
 &lt;br&gt;
 
@@ -123,9 +120,7 @@ Hydrogen is a component of present end-use fuel consumption. However, like renew
 
 ###### Table 2. Hydrogen production efficiencies by technology in reference and advanced scenarios.&lt;br&gt;
 
-
 ###### Table 3. Hydrogen non-energy costs by technology in reference and advanced scenarios (2004$ / GJ).&lt;br&gt;
-
 
 &lt;br&gt;
 
@@ -154,7 +149,6 @@ The second portion of the CCS cost pertains to the transport and storage of CO&l
 
 ###### Table 4. Carbon capture costs, in terms of additional energy requirements, and additional costs, by technology. &lt;br&gt;
 
-
 Sources: Refining: Dooley and Dahowski (2008)&lt;ref name="dooley08"&gt;Dooley, J.J., and R.T. Dahowski (2008). Large Scale U.S. Unconventional Fuels Production and the Role of Carbon Dioxide Capture and Storage Technologies in Reducing Their Greenhouse Gas Emissions. Presented at the 9th International Conference on Greenhouse Gas Control Technologies, November 2008, Washington, D.C.&lt;/ref&gt;; Electricity: David and Herzog (2000)&lt;ref name="herzog00"&gt;David J and H Herzog. 2000. The Cost of Carbon Capture. Presented at the Fifth International Conference on Greenhouse Gas Control Technologies, Cairns, Australia, August 13 - August 16.&lt;/ref&gt;; Hydrogen: H2A model (DOE 2008)&lt;ref name="defriesDOE08"&gt;DeFries R, M Hansen, JRG Townshend, AC Janetos, and TR Loveland. 2000. A New Global 1km Data Set of Percent Tree Cover Derived from Remote Sensing. Global Change Biology 6:247-254. DOE (2008). DOE Hydrogen Program: H2A Analysis. U.S. Department of Energy, Hydrogen Program. Accessed at <http://www.hydrogen.energy.gov/h2a_analysis.html>.&lt;/ref&gt;; Cement: Mahasenan et al. (2005)&lt;ref name="mahasenan05"&gt;Mahasenan, N., R.T. Dahowski, and C.L. Davidson (2005). The Role of Carbon Dioxide Capture and Storage in Reducing Emissions from Cement Plants in North America. In Greenhouse Gas Control Technologies, Volume I, eds. E.S. Rubin, D.W. Keith, and C.F. Gilbor, Elsevier Science.&lt;/ref&gt;.
 
 &lt;br&gt;The third portion of the costs of technologies with CCS is associated with the CO&lt;sub&gt;2&lt;/sub&gt; that is vented to the atmosphere, either because it is uneconomic or technically infeasible to capture. Even CCS-equipped facilities do emit some CO&lt;sub&gt;2&lt;/sub&gt;, and these emissions are priced in the same way as any other carbon emissions in the energy system. The capture rates for CCS technologies are shown in Table 5 for all CCS technologies in the model.&lt;br&gt;
@@ -162,7 +156,6 @@ Sources: Refining: Dooley and Dahowski (2008)&lt;ref name="dooley08"&gt;Dooley, 
 &lt;br&gt;
 
 ###### Table 5. Carbon capture rates, by technology. The remaining CO&lt;sub&gt;2&lt;/sub&gt; is vented to the atmosphere, and is subject to any applicable carbon prices. &lt;br&gt;
-
 
 CO&lt;sub&gt;2&lt;/sub&gt; storage can also be treated as a finite geographically distributed resource in GCAM as described in Edmonds, et al. (2007)&lt;ref name="edmonds07"&gt;Edmonds, J., J. Dooley, S. Kim, S. Friedman, and M. Wise. 2007. “Technology in an Integrated Assessment Model: The Potential Regional Deployment of Carbon Capture and Storage in the Context of Global CO2 Stabilization,” Human-Induced Climate Change: An Interdisciplinary Perspective, (eds. Michael Schlesinger, Francisco C. de la Chesnaye, Haroon Kheshgi, Charles D. Kolstad, John Reilly, Joel B. Smith and Tom Wilson), Cambridge University Press. pp.181-197.&lt;/ref&gt;. In this mode GCAM distinguishes five candidate geologic storage reservoirs types:&lt;br&gt;
 

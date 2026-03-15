@@ -12,8 +12,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
-
 GCAM is a multi‐regional dynamic-recursive model which couples a simple economic growth model with detailed energy system, agriculture system-land-use-terrestrial-carbon-cycle model and a simple atmosphere-ocean-climate model, MAGICC.
 
 Geographic Coverage and Regions&lt;br&gt;
@@ -53,7 +51,6 @@ GCAM is a global model. &nbsp;The economy and energy system are&nbsp;disaggregat
 
 &lt;br&gt;
 
-
 ###### Figure 1:&nbsp;GCAM&nbsp;Region Definitions&lt;br&gt;
 
 &lt;br&gt;
@@ -65,9 +62,7 @@ Socioeconomics&lt;br&gt;
 
 GCAM computes the potential GDP of each region using exogenous assumptions about population, labor participation, and labor productivity growth. &nbsp;In some formulations of the model, GDP is adjusted to reflect the effect of changing energy prices on economic growth. &nbsp;However, the default assumption does not include this feedback. Population and GDP in the current baseline scenario are shown in Figures 2 and 3.&lt;br&gt;&lt;br&gt;
 
-
 ###### Figure 2:&nbsp;Population&lt;br&gt;
-
 
 ###### Figure 3:&nbsp;GDP&lt;br&gt;
 

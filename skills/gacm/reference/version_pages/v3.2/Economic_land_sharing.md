@@ -12,8 +12,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
-
 Economic [land use](Agriculture_Land-Use_and_Bioenergy.md) decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The interpretation of this sharing system is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
 
 Example Competition
@@ -22,7 +20,6 @@ Example Competition
 Figure 1 below shows a competition between two options with distributions of profits. In this example, option 2 will get a higher share than 1 due to its higher potential average profit. Sharing will be done between option 1 and option 2 in order to allocate all land to one of the two options so that the marginal profit rates of option 1 and option 2 are equal to each other. At this point, there are no potential gains from changing the shares. Also from Figure 1, this point at which marginal profits are equal must also be equal to the marginal value or price of land. Only those instances of option 1 and option 2 which have profit rates higher than or equal to the land price at the margin will be implemented.
 
 &lt;br&gt;
-
 
 ###### Figure 1: Example competition between two options with distributions of potential profit
 

@@ -35,3 +35,4 @@
 - Added `validate_page_bundle_content_parity.py` and wired it into `validate_all.py` so the full bundled `reference/version_pages/**/*.md` tree is checked against fresh generator output.
 - Normalized path separators inside `validate_doc_search.py` so the search-behavior validator is not tied to Windows-style output paths.
 - Added `validate_portability.py` and wired it into `validate_all.py` so runtime docs/scripts/shared references fail fast if machine-specific absolute paths or file URIs reappear.
+- Refined `validate_portability.py` so generic placeholder examples like `E:\...` or `/Users/...` in policy text do not trigger false positives.

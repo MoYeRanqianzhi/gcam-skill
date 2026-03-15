@@ -23,6 +23,10 @@ SKIP_DIRS = {
 WINDOWS_ABS_RE = re.compile(r"\b[A-Za-z]:[\\/]")
 POSIX_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/")
 URI_RE = re.compile(r"\b(?:file|vscode)://", re.IGNORECASE)
+GENERIC_PLACEHOLDER_RE = re.compile(
+    r"(?:\b[A-Za-z]:[\\/]\.\.\.|/(?:Users|home)/\.\.\.|(?:file|vscode)://)",
+    re.IGNORECASE,
+)
 
 
 def should_scan(path: Path) -> bool:
@@ -47,7 +51,8 @@ def main() -> int:
     for path in iter_scan_files():
         text = path.read_text(encoding="utf-8", errors="ignore")
         for line_no, line in enumerate(text.splitlines(), start=1):
-            if WINDOWS_ABS_RE.search(line) or POSIX_HOME_RE.search(line) or URI_RE.search(line):
+            normalized_line = GENERIC_PLACEHOLDER_RE.sub("", line)
+            if WINDOWS_ABS_RE.search(normalized_line) or POSIX_HOME_RE.search(normalized_line) or URI_RE.search(normalized_line):
                 rel_path = path.relative_to(REPO_ROOT)
                 snippet = line.strip()
                 if len(snippet) > 160:

@@ -23,6 +23,7 @@ VALIDATION_STEPS = (
     "validate_shared_references.py",
     "validate_navigation_contract.py",
     "validate_skill_contract.py",
+    "validate_source_provenance_contract.py",
     "validate_version_catalog.py",
     "validate_version_routes.py",
 )

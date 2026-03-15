@@ -6,7 +6,7 @@ Checks:
 - `version_inventory.md` table order matches `version_catalog.py`
 - every catalog version has a route doc in `reference/versions/`
 - every catalog version has a page bundle directory in `reference/version_pages/`
-- every page bundle directory has `INDEX.md`
+- every page bundle directory has `BUNDLE_INDEX.md`
 - every `delta-only` bundle also has `release_note.md` and `cmp_index.md`
 - key route docs continue to state the `v8.2` bundled baseline explicitly
 """
@@ -67,7 +67,7 @@ def validate_route_docs(errors: list[str]) -> None:
         heading_match = HEADING_RE.search(text)
         if not heading_match or heading_match.group(1) != info.version:
             errors.append(f"{path.relative_to(REFERENCE_ROOT)} -> missing or incorrect heading")
-        index_ref = f"`version_pages/{info.version}/INDEX.md`"
+        index_ref = f"`version_pages/{info.version}/BUNDLE_INDEX.md`"
         if index_ref not in text:
             errors.append(f"{path.relative_to(REFERENCE_ROOT)} -> missing page bundle index reference")
         expected_text = render_version_file(info)
@@ -94,8 +94,8 @@ def validate_page_bundle_dirs(errors: list[str]) -> None:
         bundle_dir = VERSION_PAGES_ROOT / info.version
         if not bundle_dir.exists():
             continue
-        if not (bundle_dir / "INDEX.md").exists():
-            errors.append(f"version_pages/{info.version} -> missing INDEX.md")
+        if not (bundle_dir / "BUNDLE_INDEX.md").exists():
+            errors.append(f"version_pages/{info.version} -> missing BUNDLE_INDEX.md")
         if info.coverage_mode == "delta-only":
             if not (bundle_dir / "release_note.md").exists():
                 errors.append(f"version_pages/{info.version} -> missing release_note.md")

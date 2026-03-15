@@ -43,7 +43,7 @@ Open `reference/version_inventory.md` first to identify the correct documentatio
 - For any historical version or release-note-only version, open `reference/versions/<version>.md`.
 
 ### Level 3: Version Page Index
-- For page-level version detail, open `reference/version_pages/<version>/INDEX.md`.
+- For page-level version detail, open `reference/version_pages/<version>/BUNDLE_INDEX.md`.
 - For `delta-only` versions, start with `reference/version_pages/<version>/release_note.md`.
 
 ### Level 4: Exact Sources

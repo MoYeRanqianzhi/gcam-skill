@@ -6,7 +6,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source path: `dev-guide/git.md`
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
-- Version page index: `version_pages/v5.4/INDEX.md`
+- Version page index: `version_pages/v5.4/BUNDLE_INDEX.md`
 - Source provenance: inherited from `v5.3` because `v5.4` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v5.4` as `dev-guide/git.md`.
 

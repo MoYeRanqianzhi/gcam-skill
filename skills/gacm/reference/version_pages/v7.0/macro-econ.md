@@ -6,7 +6,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source path: `macro-econ.md`
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
-- Version page index: `version_pages/v7.0/INDEX.md`
+- Version page index: `version_pages/v7.0/BUNDLE_INDEX.md`
 - Source provenance: inherited from `v5.3` because `v7.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v7.0` as `macro-econ.md`.
 

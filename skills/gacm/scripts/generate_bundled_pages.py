@@ -97,6 +97,7 @@ ALT_SOURCE_RELATIONS = {
 }
 
 VERSION_INDEX = {version: index for index, version in enumerate(FULL_TREE_VERSIONS)}
+BUNDLE_INDEX_NAME = "BUNDLE_INDEX.md"
 
 
 def validate_authoring_sources() -> list[str]:
@@ -409,7 +410,7 @@ def render_source_page(
         f"- Source path: `{rel_source.as_posix()}`",
         f"- Coverage mode: `{coverage_mode}`",
         "- Bundle mode: `text-only page bundle; images omitted`",
-        f"- Version page index: `version_pages/{bundle_version}/INDEX.md`",
+        f"- Version page index: `version_pages/{bundle_version}/{BUNDLE_INDEX_NAME}`",
     ]
     if source_version != bundle_version:
         lines.append(f"- Source provenance: inherited from `{source_version}` because `{bundle_version}` links to this page but its authoring tree does not contain a version-local copy")
@@ -561,7 +562,7 @@ def render_cmp_trace_page(version: str, rel_path: Path) -> str:
         "- Coverage mode: `cmp trace page`",
         f"- Source root: `{source_root_label(version)}`",
         f"- Original linked asset: `{pdf_path}`",
-        f"- Version page index: `version_pages/{version}/INDEX.md`",
+        f"- Version page index: `version_pages/{version}/{BUNDLE_INDEX_NAME}`",
         "",
         "This bundle stores a trace page instead of the original binary PDF asset.",
         "",
@@ -582,7 +583,7 @@ def render_unresolved_trace_page(version: str, rel_path: Path) -> str:
         "- Coverage mode: `unresolved trace page`",
         f"- Source root: `{source_root_label(version)}`",
         f"- Missing linked page: `{rel_path.as_posix()}`",
-        f"- Version page index: `version_pages/{version}/INDEX.md`",
+        f"- Version page index: `version_pages/{version}/{BUNDLE_INDEX_NAME}`",
         "",
         "The bundled authoring sources referenced this page, but no version-local or traceable inherited source file was found in the available repository snapshot.",
         "",
@@ -714,9 +715,9 @@ def build_full_tree_version(version: str) -> None:
     page_paths = sorted(
         path.relative_to(version_root)
         for path in version_root.rglob("*.md")
-        if path.name != "INDEX.md"
+        if path.name != BUNDLE_INDEX_NAME
     )
-    write_file(version_root / "INDEX.md", render_full_tree_index(version, page_paths))
+    write_file(version_root / BUNDLE_INDEX_NAME, render_full_tree_index(version, page_paths))
 
 
 def build_delta_version(version: str) -> None:
@@ -725,7 +726,7 @@ def build_delta_version(version: str) -> None:
         shutil.rmtree(version_root)
     write_file(version_root / "release_note.md", render_delta_release_note(version))
     write_file(version_root / "cmp_index.md", render_delta_cmp_index(version))
-    write_file(version_root / "INDEX.md", render_delta_index(version))
+    write_file(version_root / BUNDLE_INDEX_NAME, render_delta_index(version))
 
 
 def write_root_readme() -> None:
@@ -740,7 +741,7 @@ def render_root_readme() -> str:
         "",
         "Rules:",
         "- Open the exact version route file first.",
-        "- Then open `version_pages/<version>/INDEX.md` only when page-level detail is needed.",
+        f"- Then open `version_pages/<version>/{BUNDLE_INDEX_NAME}` only when page-level detail is needed.",
         "- For full-tree versions, page files are adapted from the authoring markdown sources.",
         "- For `delta-only` versions, page files capture the release delta and source trace rather than pretending a full standalone tree exists.",
         "- When a version links to a page that is absent from its own authoring tree, the bundle may include a clearly labeled inherited or trace page instead of silently dropping the route.",

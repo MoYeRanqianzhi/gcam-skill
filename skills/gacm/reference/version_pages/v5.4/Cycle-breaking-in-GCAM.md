@@ -6,7 +6,7 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source path: `Cycle-breaking_in_GCAM.md`
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
-- Version page index: `version_pages/v5.4/INDEX.md`
+- Version page index: `version_pages/v5.4/BUNDLE_INDEX.md`
 - Source provenance: inherited from `v3.2` because `v5.4` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v5.4` as `Cycle-breaking-in-GCAM.md`.
 

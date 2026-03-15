@@ -46,7 +46,7 @@ REQUIRED_SECTION_SNIPPETS = {
     "Progressive Disclosure": (
         "Open `reference/version_inventory.md` first",
         "open `reference/versions/<version>.md`.",
-        "open `reference/version_pages/<version>/INDEX.md`.",
+        "open `reference/version_pages/<version>/BUNDLE_INDEX.md`.",
         "Use `reference/navigation.md` to choose the smallest topic set that answers the request.",
     ),
     "Task Triage": (

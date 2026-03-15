@@ -1,102 +1,75 @@
-# v7.0 Detailed Page Bundle
+# Global Change Analysis Model (GCAM)
 
-This directory is the page-level bundled reference set for GCAM `v7.0`.
+Bundled adapted source page for GCAM `v7.0`.
 
-- Family: `modern-comprehensive`
-- Coverage mode: `version-summary`
 - Source root: `gcam-doc/v7.0`
-- Page count: `81`
+- Source path: `index.md`
+- Coverage mode: `full-tree page bundle`
+- Bundle mode: `text-only page bundle; images omitted`
+- Version page index: `version_pages/v7.0/BUNDLE_INDEX.md`
 
-Progressive-disclosure rule:
-- Start from the version route file.
-- Open this index only when the user needs page-level detail for this version.
-- Then open only the specific page file relevant to the task.
+Load this page when the user needs version-specific detail from this exact page family.
 
-## Bundled Pages
+---
 
-### cmp
-- `cmp/254-Add_Air_Pollutant_Emissions_to_GCAM-USA.md`
-- `cmp/312-Livestock_Trade_with_Regional_Markets.md`
-- `cmp/325-gcamdata_chunk_re-name.md`
-- `cmp/332-GCAM_Macro_Economic_Module_KLEM.md`
-- `cmp/338-Regional_Forest_Crop_Trade_Updates.md`
-- `cmp/350-Detailed_Natural_Trade.md`
-- `cmp/359-Hydrogen_and_transportation.md`
-- `cmp/360_AgLU_data_and_methods.md`
-- `cmp/365-Add_Land_Use_History_Output.md`
-- `cmp/366-Fix_Extrapolation_in_Residue_Biomass.md`
-- `cmp/367-GCAM_v6.0_transportation_bugfix.md`
-- `cmp/368-Adding_fugitive_CO2_emissions.md`
-- `cmp/371-Miscellaneous_Bug_Fixes.md`
-- `cmp/373-Add_Exogenous_Shutdown_Decider.md`
-- `cmp/374-Global_Iron_and_Steel_Trade.md`
-- `cmp/375-Miscellaneous_Bugfixes.md`
-- `cmp/379-GCAM-USA_nonco2_industrial_urban_proc.md`
-- `cmp/384-Update_to_Hector_v3.md`
-- `cmp/388-Natural_Gas_Final_Grade_Cost.md`
-- `cmp/CMP_360-AgLU_data_method_updates.md`
+This documentation describes GCAM v7.0 ([DOI](https://doi.org/10.5281/zenodo.8010145)
+)
 
-### dev-guide
-- `dev-guide/additional_info.md`
-- `dev-guide/analysis.md`
-- `dev-guide/debug.md`
-- `dev-guide/examples.md`
-- `dev-guide/getting_started.md`
-- `dev-guide/git.md`
-- `dev-guide/rapid_parse.md`
-- `dev-guide/review.md`
-- `dev-guide/style.md`
-- `dev-guide/test_framework.md`
 
-### root
-- `aglu.md`
-- `choice.md`
-- `common_assumptions.md`
-- `community-guide.md`
-- `Cycle-breaking-in-GCAM.md`
-- `data-system.md`
-- `demand_energy.md`
-- `demand_land.md`
-- `demand_water.md`
-- `details_emissions.md`
-- `details_energy.md`
-- `details_inputs.md`
-- `details_land.md`
-- `details_trade.md`
-- `details_water.md`
-- `dev-guide.md`
-- `economy.md`
-- `emissions.md`
-- `en_technologies.md`
-- `energy.md`
-- `fusion.md`
-- `gcam-build.md`
-- `gcam-usa.md`
-- `hector.md`
-- `index.md`
-- `inputs_demand.md`
-- `inputs_economy.md`
-- `inputs_land.md`
-- `inputs_supply.md`
-- `land.md`
-- `macro-econ.md`
-- `marketplace.md`
-- `outputs_emissions.md`
-- `outputs_land.md`
-- `outputs_prices.md`
-- `outputs_quantity.md`
-- `outputs_trade.md`
-- `overview.md`
-- `policies.md`
-- `policies_examples.md`
-- `references.md`
-- `solver.md`
-- `ssp.md`
-- `supply_energy.md`
-- `supply_land.md`
-- `supply_water.md`
-- `toc.md`
-- `trade.md`
-- `updates.md`
-- `user-guide.md`
-- `water.md`
+**GCAM diagram. Click on each box for a more detailed description of that element.**
+<table>
+<tr>
+<td rowspan="4"> <b>Inputs</b> <br> <a href="inputs_supply.md"> [omitted image: input supply]</a> <br> <a href="inputs_land.md"> [omitted image: input land]</a> <br> <a href="inputs_economy.md"> [omitted image: input economy]</a> <br> <a href="inputs_demand.md"> [omitted image: input demand]</a></td>
+<td>  </td>
+<td> <b>Supply</b> <br> <a href="supply_energy.md"> [omitted image: supply energy]</a>  <a href="supply_water.md"> [omitted image: supply water]</a>  <a href="supply_land.md"> [omitted image: supply land]</a> </td>
+<td> </td>
+<td rowspan="4"> <b>Outputs</b> <br> <a href="outputs_quantity.md"> [omitted image: output quantity]</a> <br> <a href="outputs_prices.md"> [omitted image: output price]</a> <br> <a href="outputs_trade.md"> [omitted image: output trade]</a> <br> <a href="outputs_land.md"> [omitted image: output land]</a> <br> <a href="outputs_emissions.md"> [omitted image: output emissions]</a> </td>
+</tr>
+<tr>
+<td> <a href="land.md"> [omitted image: land]</a>  </td>
+<td style="text-align: center; vertical-align: middle;" rowspan="2"> <a href="marketplace.md"> [omitted image: marketplace]</a> </td>
+<td rowspan="2"> <a href="emissions.md"> [omitted image: emissions]</a>  </td>
+</tr>
+<tr>
+<td>  <a href="economy.md"> [omitted image: economy]</a> </td>
+</tr>
+<tr>
+<td>  </td>
+<td>  <b>Demand</b> <br> <a href="demand_energy.md"> [omitted image: demand energy]</a>  <a href="demand_water.md"> [omitted image: demand water]</a>  <a href="demand_land.md"> [omitted image: demand land]</a>  </td>
+<td>   </td>
+</tr>
+</table>
+
+<br/>
+A general overview of GCAM is also provided [here](overview.md).
+
+### Earth System
+[Hector](hector.md)
+
+### Alternative regional configurations of GCAM
+
+[GCAM-USA](gcam-usa.md)
+
+### Running and modifying GCAM
+
+Material on how to get started and use GCAM can be found on the following pages.
+
+* [How to Get Started Running GCAM](user-guide.md)
+* [How to Set Up and Build ](gcam-build.md)
+* [GCAM Fusion Usage Guide](fusion.md)
+* [GCAM Developer's Guide](dev-guide.md)
+* [Modifying GCAM scenarios through policies](policies.md)
+* [Examples](policies_examples.md)
+
+GCAM is under continuing development. Information on how this version of GCAM differs from previous versions, along documentation for previous versions can be found on the following pages.
+
+* [Updates from the Previous Release](updates.md)
+* [GCAM-3](../v3.2/toc.md)
+* [GCAM-4.2](../v4.2/toc.md)
+* [GCAM-4.3](../v4.3/toc.md)
+* [GCAM-4.4](../v4.4/toc.md)
+* [GCAM-5.1](../v5.1/toc.md)
+* [GCAM-5.2](../v5.2/toc.md)
+* [GCAM-5.3](../v5.3/toc.md)
+* [GCAM-5.4](../v5.4/toc.md)
+* [GCAM-6.0](../v6.0/toc.md)

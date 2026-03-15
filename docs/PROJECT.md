@@ -24,7 +24,7 @@ The source material used to author the skill is documented in `skills/gacm/refer
 1. Use the `gacm` skill when the user asks about GCAM concepts, scenarios, policies, outputs, or post-processing.
 2. Route to the correct version before answering. Default to bundled `v8.2` only when the user does not specify a version.
 3. For conceptual questions, use shared bundled topic docs.
-4. For exact version-page detail, open `reference/version_pages/<version>/INDEX.md` and then the minimum necessary page files.
+4. For exact version-page detail, open `reference/version_pages/<version>/BUNDLE_INDEX.md` and then the minimum necessary page files.
 5. Use `scripts/doc_search.py --version <version>` or `--scope pages` to find authoritative bundled references quickly.
 6. For `v8.2`, treat the root `gcam-doc` tree as the bundled current full-topic baseline.
 7. For `delta-only` releases, answer using the exact release delta plus the minimum necessary bundled baseline topic docs.
@@ -54,3 +54,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Added conceptual-doc and solver-doc contracts so shorter shared summaries remain version-aware, headless, and agent-usable.
 - 2026-03-16: Added maintenance-memory and semantic-coverage validators so top-level docs cannot exist without an explicit behavior-level contract owner.
 - 2026-03-16: Added a page-bundle contract validator so generated `version_pages` navigation and delta trace docs remain semantically correct even if the generator changes.
+- 2026-03-16: Renamed generated page-bundle directory indexes to `BUNDLE_INDEX.md` so Windows case-insensitive filesystems do not clobber bundled upstream source pages such as `index.md`.

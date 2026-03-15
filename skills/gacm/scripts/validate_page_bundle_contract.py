@@ -5,6 +5,7 @@ Validate bundled GCAM page-bundle contract invariants.
 Checks:
 - `reference/version_pages/README.md` keeps the progressive-disclosure and non-pretend rules
 - full-tree bundle indexes keep family/coverage/source/page-count metadata
+- full-tree bundles preserve the upstream `index.md` source page without clobbering it
 - delta-only bundle indexes keep release-note/CMP-first routing semantics
 - delta-only release-note and CMP index pages keep their required structure
 """
@@ -19,6 +20,7 @@ from version_catalog import VERSION_PAGES_ROOT, ordered_versions
 
 
 README = VERSION_PAGES_ROOT / "README.md"
+BUNDLE_INDEX_NAME = "BUNDLE_INDEX.md"
 PAGE_COUNT_RE = re.compile(r"^- Page count: `(\d+)`$", re.MULTILINE)
 CMP_COUNT_RE = re.compile(r"^- CMP reference count: `(\d+)`$", re.MULTILINE)
 
@@ -37,7 +39,7 @@ def validate_root_readme(errors: list[str]) -> None:
         "# Version Page Bundles",
         "This directory contains the page-level bundled reference trees for all GCAM versions represented by the `gacm` skill.",
         "- Open the exact version route file first.",
-        "- Then open `version_pages/<version>/INDEX.md` only when page-level detail is needed.",
+        f"- Then open `version_pages/<version>/{BUNDLE_INDEX_NAME}` only when page-level detail is needed.",
         "- For full-tree versions, page files are adapted from the authoring markdown sources.",
         "- For `delta-only` versions, page files capture the release delta and source trace rather than pretending a full standalone tree exists.",
         "- When a version links to a page that is absent from its own authoring tree, the bundle may include a clearly labeled inherited or trace page instead of silently dropping the route.",
@@ -63,13 +65,23 @@ def validate_full_tree_index(version: str, path: Path, family: str, coverage_mod
     )
     for snippet in required:
         if snippet not in text:
-            errors.append(f"version_pages/{version}/INDEX.md drifted; missing snippet: {snippet}")
+            errors.append(f"version_pages/{version}/{BUNDLE_INDEX_NAME} drifted; missing snippet: {snippet}")
 
     match = PAGE_COUNT_RE.search(text)
     if not match:
-        errors.append(f"version_pages/{version}/INDEX.md drifted; missing page-count metadata")
+        errors.append(f"version_pages/{version}/{BUNDLE_INDEX_NAME} drifted; missing page-count metadata")
     elif int(match.group(1)) <= 0:
-        errors.append(f"version_pages/{version}/INDEX.md has non-positive page count")
+        errors.append(f"version_pages/{version}/{BUNDLE_INDEX_NAME} has non-positive page count")
+
+    source_index = VERSION_PAGES_ROOT / version / "index.md"
+    if not source_index.exists():
+        errors.append(f"version_pages/{version}/index.md missing; source page should not be clobbered by bundle index")
+    else:
+        source_text = source_index.read_text(encoding="utf-8")
+        if "Bundled adapted source page for GCAM" not in source_text or "- Source path: `index.md`" not in source_text:
+            errors.append(
+                f"version_pages/{version}/index.md drifted; expected adapted source-page metadata for upstream index.md"
+            )
 
 
 def validate_delta_index(version: str, path: Path, family: str, coverage_mode: str, errors: list[str]) -> None:
@@ -90,15 +102,15 @@ def validate_delta_index(version: str, path: Path, family: str, coverage_mode: s
     )
     for snippet in required:
         if snippet not in text:
-            errors.append(f"version_pages/{version}/INDEX.md drifted; missing snippet: {snippet}")
+            errors.append(f"version_pages/{version}/{BUNDLE_INDEX_NAME} drifted; missing snippet: {snippet}")
 
     match = CMP_COUNT_RE.search(text)
     expected_count = len(DELTA_SOURCE_MAP.get(version, ()))
     if not match:
-        errors.append(f"version_pages/{version}/INDEX.md drifted; missing CMP-count metadata")
+        errors.append(f"version_pages/{version}/{BUNDLE_INDEX_NAME} drifted; missing CMP-count metadata")
     elif int(match.group(1)) != expected_count:
         errors.append(
-            f"version_pages/{version}/INDEX.md CMP reference count drifted; expected {expected_count}"
+            f"version_pages/{version}/{BUNDLE_INDEX_NAME} CMP reference count drifted; expected {expected_count}"
         )
 
 
@@ -159,7 +171,7 @@ def main() -> int:
     validate_root_readme(errors)
 
     for info in ordered_versions():
-        index_path = VERSION_PAGES_ROOT / info.version / "INDEX.md"
+        index_path = VERSION_PAGES_ROOT / info.version / BUNDLE_INDEX_NAME
         if info.coverage_mode == "delta-only":
             validate_delta_index(info.version, index_path, info.family, info.coverage_mode, errors)
             validate_delta_release_note(info.version, errors)

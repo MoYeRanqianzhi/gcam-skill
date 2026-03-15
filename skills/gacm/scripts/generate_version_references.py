@@ -12,6 +12,7 @@ from version_catalog import bundled_topic_docs, family_notes, ordered_versions
 
 REFERENCE_DIR = Path(__file__).resolve().parent.parent / "reference"
 VERSIONS_DIR = REFERENCE_DIR / "versions"
+BUNDLE_INDEX_NAME = "BUNDLE_INDEX.md"
 
 
 def render_inventory() -> str:
@@ -37,7 +38,7 @@ def render_inventory() -> str:
         [
             "",
             "## Detailed Version Page Bundles",
-            "For page-level detail, open `version_pages/<version>/INDEX.md` after routing to the exact version.",
+            f"For page-level detail, open `version_pages/<version>/{BUNDLE_INDEX_NAME}` after routing to the exact version.",
             "",
             "## Shared Topic Docs",
             "These bundled topic docs are the main progressive-disclosure entry points after version routing.",
@@ -95,7 +96,7 @@ def render_version_file(info) -> str:
         [
             "",
             "## Detailed Bundled Page Directory",
-            f"- `version_pages/{info.version}/INDEX.md`",
+            f"- `version_pages/{info.version}/{BUNDLE_INDEX_NAME}`",
             "",
             "## Shared Topic Docs To Load On Demand",
         ]

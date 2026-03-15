@@ -73,8 +73,23 @@ def main() -> int:
         errors,
     )
     assert_ok(
+        ["--version", "root", "--scope", "versions", "--pattern", "Current bundled baseline for this skill|root `gcam-doc` documentation tree"],
+        ("reference/versions/v8.2.md",),
+        errors,
+    )
+    assert_ok(
         ["--root", "version_pages/v8.2", "--pattern", "run-gcam|ModelInterface.jar"],
         ("reference/version_pages/v8.2/",),
+        errors,
+    )
+    assert_ok(
+        ["--version", "v7.2", "--scope", "pages", "--pattern", "SSP database updated to v3.0 / 2024 inputs|gcam-doc/updates.md"],
+        ("reference/version_pages/v7.2/release_note.md",),
+        errors,
+    )
+    assert_ok(
+        ["--root", "version_pages/v8.2/BUNDLE_INDEX.md", "--pattern", "Page count|Bundled Pages"],
+        ("reference/version_pages/v8.2/BUNDLE_INDEX.md",),
         errors,
     )
 

@@ -41,7 +41,7 @@ PROJECT_SECTION_SNIPPETS = {
     ),
     "Usage Summary": (
         "Route to the correct version before answering. Default to bundled `v8.2` only when the user does not specify a version.",
-        "For exact version-page detail, open `reference/version_pages/<version>/INDEX.md` and then the minimum necessary page files.",
+        "For exact version-page detail, open `reference/version_pages/<version>/BUNDLE_INDEX.md` and then the minimum necessary page files.",
         "For `v8.2`, treat the root `gcam-doc` tree as the bundled current full-topic baseline.",
         "For `delta-only` releases, answer using the exact release delta plus the minimum necessary bundled baseline topic docs.",
         "When a page routes to a CMP PDF, use the bundled CMP trace page for provenance unless the user provides the original binary asset separately.",
@@ -55,6 +55,7 @@ PROJECT_SECTION_SNIPPETS = {
         "Explicitly standardized `v8.2 = root gcam-doc full documentation tree` across routing, navigation, and family docs.",
         "Added page-level bundled version trees under `reference/version_pages/` for full-tree versions and delta-specific page bundles for release-only versions.",
         "Reoriented the skill around agent-facing CLI, XML/configuration editing, and headless extraction instead of GUI-first workflows.",
+        "Renamed generated page-bundle directory indexes to `BUNDLE_INDEX.md` so Windows case-insensitive filesystems do not clobber bundled upstream source pages such as `index.md`.",
     ),
 }
 

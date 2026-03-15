@@ -22,9 +22,11 @@ DEVELOPMENT_REQUIRED_SNIPPETS = (
     "Commit after each meaningful part; tag at key milestones.",
     "Use `python skills/gacm/scripts/validate_all.py` as the default one-shot validation suite before commit",
     "Re-run `validate_conceptual_docs_contract.py` after editing conceptual shared docs",
+    "Re-run `validate_page_bundle_contract.py` after changing `generate_bundled_pages.py` or the generated page-bundle layer",
     "Re-run `validate_solver_contract.py` after editing `reference/solver.md`",
     "Treat `version_inventory.md` and `reference/versions/*.md` as generated artifacts from `generate_version_references.py`",
     "Shared topic docs are the authoritative agent layer; keep them phrased in terms of headless execution, XML/config editing, and batch extraction",
+    "Keep the generated directory index name as `BUNDLE_INDEX.md`",
     "Re-run `validate_portability.py` when editing runtime docs, scripts, or shared references",
 )
 
@@ -37,6 +39,8 @@ CHANGELOG_REQUIRED_SNIPPETS = (
     "Added `validate_all.py` as a one-shot entry point for the bundled validation suite.",
     "Added `validate_conceptual_docs_contract.py` and wired it into `validate_all.py`",
     "Added `validate_solver_contract.py` and wired it into `validate_all.py`",
+    "Added `validate_page_bundle_contract.py` and wired it into `validate_all.py`",
+    "Renamed generated page-bundle directory indexes from `INDEX.md` to `BUNDLE_INDEX.md`",
 )
 
 

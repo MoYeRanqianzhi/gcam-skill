@@ -6,7 +6,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source path: `Agriculture_Land-Use_and_Bioenergy.md`
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
-- Version page index: `version_pages/v3.2/INDEX.md`
+- Version page index: `version_pages/v3.2/BUNDLE_INDEX.md`
 - Note: Referenced from `v3.2` as `Agriculture,_Land-Use,_and_Bioenergy.md`.
 
 Load this page when the user needs version-specific detail from this exact page family.

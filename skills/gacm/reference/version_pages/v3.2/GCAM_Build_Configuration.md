@@ -6,7 +6,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source path: `GCAM_Build_Configuration.md`
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
-- Version page index: `version_pages/v3.2/INDEX.md`
+- Version page index: `version_pages/v3.2/BUNDLE_INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 

@@ -34,7 +34,7 @@ REQUIRED_SECTION_SNIPPETS = {
     ),
     "Second Decision: Detail Level": (
         "For cross-version conceptual answers, use the shared topic docs below.",
-        "For exact version page detail, open `version_pages/<version>/INDEX.md` and then only the needed page file.",
+        "For exact version page detail, open `version_pages/<version>/BUNDLE_INDEX.md` and then only the needed page file.",
         "For `delta-only` versions, open `version_pages/<version>/release_note.md` first and `cmp_index.md` when provenance matters.",
     ),
     "Third Decision: Topic": (

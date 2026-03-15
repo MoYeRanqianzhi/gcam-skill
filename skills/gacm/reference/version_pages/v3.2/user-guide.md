@@ -6,7 +6,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source path: `user-guide.md`
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
-- Version page index: `version_pages/v3.2/INDEX.md`
+- Version page index: `version_pages/v3.2/BUNDLE_INDEX.md`
 - Source provenance: inherited from `v4.2` because `v3.2` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v3.2` as `user-guide.md`.
 

@@ -96,6 +96,7 @@ HTML_EMPHASIS_RE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 HTML_PARAGRAPH_RE = re.compile(r"</?p\b[^>]*>", re.IGNORECASE)
+HTML_COMMENT_RE = re.compile(r"<!--(?P<content>.*?)-->", re.DOTALL)
 HTML_HREF_ANCHOR_RE = re.compile(
     r'<a\b[^>]*href="(?P<target>[^"]+)"[^>]*>(?P<label>.*?)</a>',
     re.IGNORECASE | re.DOTALL,
@@ -123,6 +124,11 @@ ESCAPED_HTML_SPAN_RE = re.compile(
 )
 ESCAPED_HTML_FONT_RE = re.compile(r"&lt;/?font\b.*?&gt;", re.IGNORECASE)
 ESCAPED_HTML_DIV_RE = re.compile(r"&lt;/?div\b.*?&gt;", re.IGNORECASE)
+ESCAPED_HTML_COMMENT_RE = re.compile(r"&lt;!--(?P<content>.*?)--&gt;", re.IGNORECASE | re.DOTALL)
+ESCAPED_MSO_EXPORT_BLOCK_RE = re.compile(
+    r"&lt;!--\[if gte mso \d+\]&gt;&lt;xml&gt;.*?&lt;!--StartFragment--&gt;\s*",
+    re.IGNORECASE | re.DOTALL,
+)
 ESCAPED_WIKI_REF_SELF_CLOSING_RE = re.compile(
     r"&lt;ref\b[^&]*?/\s*&gt;",
     re.IGNORECASE,
@@ -404,6 +410,20 @@ DEV_GUIDE_TEST_FRAMEWORK_BUTTON_RE = re.compile(
     r'"JGCRI-gcam-pic" tag with the meta data:\s*$',
     re.MULTILINE,
 )
+DEV_GUIDE_TEST_FRAMEWORK_LAUNCH_BUTTON_RE = re.compile(
+    r'^We have configured a Pull Request Notifier "Button" labeled "Launch Validation Runs" and contains the check box form options:\s*$',
+    re.MULTILINE,
+)
+DEV_GUIDE_TEST_FRAMEWORK_BUTTON_FORM_RE = re.compile(
+    r"^This defaults to the set of scenario we currently require users to run: Ref, Ref \+ 2\.6; SSPs,\s+SSPs \+ SPA 2\.6\.  "
+    r"However all of the SPA climate target levels in the committed `batch_SSP_SPA\*\.xml` are available\.  "
+    r"Note this button form was generated manually but the actual scenarios available are generated from the batch files committed in the gcam-core repo\.\s*$",
+    re.MULTILINE,
+)
+DEV_GUIDE_TEST_FRAMEWORK_HISTORICAL_BUTTON_RE = re.compile(
+    r'^Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins with the "JGCRI-gcam-pic" tag and the following metadata payload:\s*$',
+    re.MULTILINE,
+)
 DEV_GUIDE_GETTING_STARTED_PR_STEP_RE = re.compile(
     r"^6\.\s+When your development is complete, open a pull request\.\s*$",
     re.MULTILINE,
@@ -609,6 +629,14 @@ POLICIES_FIGURE_EXAMPLE_RE = re.compile(
 POLICIES_TAX_REVENUE_RE = re.compile(
     r"The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below\.",
     re.MULTILINE,
+)
+USER_GUIDE_OPEN_DB_WAIT_BUTTON_RE = re.compile(
+    r"a user has pressed any button it will attempt to open the DB once more and if that\s+fails again then the results will be lost\.",
+    re.IGNORECASE,
+)
+GCAM_REV_HISTORY_CLICK_RE = re.compile(
+    r"Should the note on the page your are viewing indicate that it was revised for a version of GCAM later than what you are interested in click on the [“\"]history[”\"] tab at the top of that page:",
+    re.IGNORECASE,
 )
 DEV_GUIDE_GIT_INTERNAL_SERVER_RE = re.compile(
     r"PNNL staff should use the internal server\.\s+Your project lead will be\s+able to get you write access "
@@ -1266,6 +1294,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "shell, setting output paths and scenario names in XML rather than interactive dialogs.\n",
         )
         replace(
+            USER_GUIDE_OPEN_DB_WAIT_BUTTON_RE,
+            "once the wait condition ends it will attempt to open the DB once more, and if that second attempt still fails then the results will be lost.",
+        )
+        replace(
             USER_GUIDE_GUI_REGION_RE,
             "which can be any of the region names available in the database or query context",
         )
@@ -1388,6 +1420,11 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "Source author note: insert a citation to the then-current GCAM model documentation release when "
             "preparing a paper-specific bibliography.\n",
         )
+    if rel_source.name == "GCAM_Revision_History.md":
+        replace(
+            GCAM_REV_HISTORY_CLICK_RE,
+            "If the version note on a page indicates that it was revised for a later GCAM version than the one you need, inspect that page's revision history and select the last revision that predates the later-version update:",
+        )
 
     if rel_source.parts[-2:] == ("dev-guide", "git.md"):
         replace(
@@ -1441,6 +1478,14 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "they would need to update include:\n",
         )
         replace(
+            DEV_GUIDE_TEST_FRAMEWORK_LAUNCH_BUTTON_RE,
+            "Historical workflow note: the internal validation system exposed a `Launch Validation Runs` action that collected the following user-selectable options:\n",
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_BUTTON_FORM_RE,
+            "By default this validation action ran the scenario set currently required by the team: Ref, Ref + 2.6, SSPs, and SSPs + SPA 2.6. All of the SPA climate target levels in the committed `batch_SSP_SPA*.xml` files were also available. The UI form definition was maintained manually, but the actual runnable scenarios were generated from the batch files committed in the `gcam-core` repository.",
+        )
+        replace(
             DEV_GUIDE_TEST_FRAMEWORK_OPEN_PR_RE,
             lambda match: (
                 "After pushing the testing-framework branch and the updated submodule pointer, submit the "
@@ -1469,6 +1514,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             DEV_GUIDE_TEST_FRAMEWORK_BUTTON_RE,
             'Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins with the '
             '"JGCRI-gcam-pic" tag and the following metadata payload:\n',
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_HISTORICAL_BUTTON_RE,
+            "Historical workflow note: invoking that validation action called Jenkins with the `JGCRI-gcam-pic` tag and the following metadata payload:\n",
         )
 
     if rel_source.parts[-2:] == ("dev-guide", "getting_started.md"):
@@ -1573,6 +1622,16 @@ def normalize_inline_html(segment: str) -> str:
         cleaned = re.sub(r"</?(?:ul|ol)\b[^>]*>", " ", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r"\s+", " ", cleaned).strip()
         return cleaned
+
+    def render_comment(content: str) -> str:
+        normalized = content.replace("&nbsp;", " ")
+        normalized = re.sub(r"\s+", " ", normalized).strip(" -")
+        lowered = normalized.lower()
+        if not normalized:
+            return ""
+        if "if gte mso" in lowered or "startfragment" in lowered or "[endif]" in lowered:
+            return ""
+        return f"Comment: {normalized}\n"
 
     def render_html_list(body: str, ordered: bool) -> str:
         items = [clean_fragment(match.group("item")) for match in HTML_LIST_ITEM_RE.finditer(body)]
@@ -1726,6 +1785,7 @@ def normalize_inline_html(segment: str) -> str:
 
     segment = HTML_STYLE_BLOCK_RE.sub("", segment)
     segment = HTML_COL_TAG_RE.sub("", segment)
+    segment = HTML_COMMENT_RE.sub(lambda match: render_comment(match.group("content")), segment)
     segment = HTML_BR_RE.sub("\n", segment)
     segment = normalize_html_definition_lists(segment)
     segment = normalize_html_lists(segment)
@@ -1767,9 +1827,24 @@ def normalize_escaped_inline_html(segment: str) -> str:
     def unwrap_span(match: re.Match[str]) -> str:
         return match.group("content")
 
+    def render_comment(content: str) -> str:
+        normalized = content.replace("&nbsp;", " ")
+        normalized = re.sub(r"\s+", " ", normalized).strip(" -")
+        lowered = normalized.lower()
+        if not normalized:
+            return ""
+        if "if gte mso" in lowered or "startfragment" in lowered or "[endif]" in lowered:
+            return ""
+        return f"Comment: {normalized}\n"
+
+    segment = ESCAPED_MSO_EXPORT_BLOCK_RE.sub("", segment)
     segment = ESCAPED_HTML_STYLE_BLOCK_RE.sub("", segment)
     segment = ESCAPED_HTML_BR_RE.sub("\n", segment)
     segment = ESCAPED_HTML_BUTTON_RE.sub(unwrap_button, segment)
+    segment = ESCAPED_HTML_COMMENT_RE.sub(
+        lambda match: render_comment(match.group("content")),
+        segment,
+    )
     for _ in range(8):
         updated = ESCAPED_HTML_SPAN_RE.sub(unwrap_span, segment)
         if updated == segment:

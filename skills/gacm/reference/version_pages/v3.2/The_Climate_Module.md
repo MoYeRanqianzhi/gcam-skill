@@ -123,8 +123,10 @@ R.A. 1996. in _Sea-Level Rise and Coastal Subsidence: Causes, Consequences and S
 Academic Publishers, Dordrecht, The Netherlands,
 pp. 11–45.
 
-<!-- This is the closest match I could find to the SJ Smith, et. al, -->
-<!-- in preparation, paper cited in the original text.  -rpl -->
+Comment: This is the closest match I could find to the SJ Smith, et. al,
+
+Comment: in preparation, paper cited in the original text. -rpl
+
 <a name="ref4"></a>[4] SJ Smith, A Mizrahi, "Near-term climate mitigation by short-lived forcers"
     _Proceedings of the National Academy of Sciences_, 2013
 

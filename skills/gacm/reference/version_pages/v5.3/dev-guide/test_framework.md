@@ -167,15 +167,14 @@ Then to build and run we will need to perform the following steps:
   * At the moment this only entails deleting the `database_basexdb` which would otherwise accumulate across all tests over time
 
 #### Launch PIC Runs
-We have configured a Pull Request Notifier "Button" labeled "Launch Validation Runs" and contains the check box form options:
+Historical workflow note: the internal validation system exposed a `Launch Validation Runs` action that collected the following user-selectable options:
 
 ##### Delete existing DBs
 If we should exist delete any previously existing output database **per scenario**.  The default is true so that if a user needs to continually re-run they do not accumulate large databases unnecessarily.  It may be useful to uncheck this option however if you made some update to your pull request but need to compare results from the last time it was run to compare behavior.
 
 ##### Select which scenarios to run:
-This defaults to the set of scenario we currently require users to run: Ref, Ref + 2.6; SSPs,  SSPs + SPA 2.6.  However all of the SPA climate target levels in the committed `batch_SSP_SPA*.xml` are available.  Note this button form was generated manually but the actual scenarios available are generated from the batch files committed in the gcam-core repo.
-
-Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins with the "JGCRI-gcam-pic" tag and the following metadata payload:
+By default this validation action ran the scenario set currently required by the team: Ref, Ref + 2.6, SSPs, and SSPs + SPA 2.6. All of the SPA climate target levels in the committed `batch_SSP_SPA*.xml` files were also available. The UI form definition was maintained manually, but the actual runnable scenarios were generated from the batch files committed in the `gcam-core` repository.
+Historical workflow note: invoking that validation action called Jenkins with the `JGCRI-gcam-pic` tag and the following metadata payload:
 
 * `PULL_REQUEST_FROM_BRANCH`
 * `PULL_REQUEST_ID`

@@ -33,6 +33,7 @@ RAW_HTML_LIST_RE = re.compile(r"</?(?:dl|dt|dd|ul|ol|li)\b", re.IGNORECASE)
 RAW_HTML_SPAN_RE = re.compile(r"</?span\b", re.IGNORECASE)
 RAW_HTML_STYLED_SPAN_RE = re.compile(r"<span\b[^>]*style=", re.IGNORECASE)
 RAW_HTML_BREAK_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
+RAW_HTML_COMMENT_RE = re.compile(r"<!--", re.IGNORECASE)
 RAW_HTML_INLINE_FORMATTING_RE = re.compile(r"</?(?:cite|i|em)\b", re.IGNORECASE)
 RAW_PRESENTATIONAL_ATTR_RE = re.compile(
     r"(?:\bstyle\s*=|\balign\s*=|\bvalign\s*=|\browspan\s*=|\bcolspan\s*=|\bwidth\s*=|\bheight\s*=)",
@@ -41,6 +42,7 @@ RAW_PRESENTATIONAL_ATTR_RE = re.compile(
 RAW_MD_ATTR_LINE_RE = re.compile(r"(?m)^[ \t]*\{:\s*[^}\n]+\}[ \t]*$")
 ESCAPED_WIKI_REF_RE = re.compile(r"&lt;ref\b|&lt;/ref&gt;|%3C/ref%3E", re.IGNORECASE)
 ESCAPED_WIKI_REFERENCES_RE = re.compile(r"&lt;references\b", re.IGNORECASE)
+ESCAPED_HTML_COMMENT_RE = re.compile(r"&lt;!--", re.IGNORECASE)
 LEGACY_IMAGE_RE = re.compile(r"Image reference:")
 PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
 OMITTED_IMAGE_RESIDUE_RE = re.compile(r"\[omitted image:", re.IGNORECASE)
@@ -137,6 +139,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw styled span markup remains")
         if RAW_HTML_BREAK_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html line-break tag remains")
+        if RAW_HTML_COMMENT_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html/xml comment markup remains")
         if RAW_HTML_INLINE_FORMATTING_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw inline html formatting tag remains")
         if RAW_PRESENTATIONAL_ATTR_RE.search(text):
@@ -147,6 +151,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped legacy wiki ref markup remains")
         if ESCAPED_WIKI_REFERENCES_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped legacy wiki references marker remains")
+        if ESCAPED_HTML_COMMENT_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped html/xml comment markup remains")
         if LEGACY_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
         if PLACEHOLDER_IMAGE_RE.search(text):

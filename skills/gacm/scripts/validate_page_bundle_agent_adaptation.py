@@ -42,6 +42,7 @@ USER_GUIDE_FORBIDDEN = (
     'Press this button and model output will appear as shown below',
     "*Copying Data*:",
     "section of the GUI",
+    "pressed any button it will attempt to open the DB once more",
 )
 
 GCAM_BUILD_REQUIRED = (
@@ -88,6 +89,7 @@ HECTOR_FORBIDDEN = (
 GLOBAL_FORBIDDEN = (
     "Click here for info on how to view a previous version",
     "point and click",
+    "click on the “history” tab at the top of that page",
 )
 
 FIGURE_DEPENDENT_FORBIDDEN = (
@@ -195,6 +197,9 @@ TEST_FRAMEWORK_FORBIDDEN = (
     "add a new menu option with in the pull request",
     'When the "button" is clicked and a user confirms',
     "watch the progress / look at logs or build artifacts after the fact",
+    'Pull Request Notifier "Button" labeled "Launch Validation Runs"',
+    "button form was generated manually",
+    'Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins',
 )
 
 GETTING_STARTED_REQUIRED = (

@@ -357,8 +357,7 @@ The GCAM XML database output is verbose and can consume a lot of disk space.  Us
 <entry key="in-memory">false</entry>
 <!-- A timeout, in seconds, to wait in case a user tries to write to an already open DB.
      A negative value indicates to wait indefinately.  Once the timeout has expired or
-     a user has pressed any button it will attempt to open the DB once more and if that
-     fails again then the results will be lost.
+     once the wait condition ends it will attempt to open the DB once more, and if that second attempt still fails then the results will be lost.
 -->
 <entry key="open-db-wait">-1</entry>
 <!-- The path to an STX style script to filter GCAM results before writing them to the

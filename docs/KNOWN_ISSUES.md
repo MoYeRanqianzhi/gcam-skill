@@ -17,4 +17,5 @@
 - Inherited page bundles are explicitly labeled, but they still reflect the nearest traceable source file rather than a guaranteed version-local restatement when the upstream version tree omitted that page.
 - Some exact page bundles still preserve historical GUI prose for traceability; shared topic docs are the authoritative agent-first headless CLI/config guidance.
 - Some exact page bundles still retain figure-caption text and equation/example lead-ins where the upstream source depended on diagrams or inline equation images; the raw omitted-image markers are now removed, but the text bundle still preserves those traces when they carry factual context.
+- Some exact page bundles still contain XML comments inside fenced configuration examples. These are retained intentionally because they document config parameters; they are not treated as stray webpage markup.
 - Semantic HTML anchors such as `<a name="..."></a>` may still appear where same-page citation targets must remain stable across historical pages; these are retained deliberately as link targets rather than as UI residue.

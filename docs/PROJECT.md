@@ -39,6 +39,7 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - Continue auditing historical developer-workflow pages beyond the newly adapted `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` so internal-platform context is preserved without drifting back into browser-only instructions.
 - Continue reducing the remaining lower-frequency historical figure residue, which is now mostly limited to figure-caption lines plus preserved equation/example lead-ins rather than raw omitted-image markers or repeated `shown in Figure N` prose.
 - Preserve equation/example lead-ins such as `The equation is shown below` or `An example setup is shown below` when the equation or example still immediately follows in text, even if broad residue scans still report them.
+- Continue auditing long-tail historical prose for editor-export or workflow-UI residue, but treat fenced XML comment lines in configuration examples as intentional documentation rather than as web-shell noise.
 
 ## Decision Log
 - 2026-03-15: Rebuilt the skill to remove machine-specific absolute paths.
@@ -82,3 +83,5 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Removed the last raw `[omitted image: ...]` residue from generated page bundles, turning descriptive inline alt text into prose notes and dropping placeholder-only image lines where captions or surrounding text already carry the meaning.
 - 2026-03-16: Added another text-only adaptation pass for repeated `Figure N` prose in `trade.md`, `details_trade.md`, `aglu.md`, older `v4.x energy.md`, and `v3.2/Economic_land_sharing.md`, so those pages no longer depend on missing figures for their main explanatory sentences.
 - 2026-03-16: Confirmed with a fresh residue scan that the remaining high-frequency `shown below` hits are primarily equation/example lead-ins and figure-caption text rather than dead figure-navigation prose.
+- 2026-03-16: Added generator cleanup for escaped Office/Word export blocks and removed the historical `mso` / `WordDocument` paste artifact from `v3.2/GCAM_Revision_History.md`.
+- 2026-03-16: Further rewrote historical button/click phrasing in `user-guide.md`, `GCAM_Revision_History.md`, and `dev-guide/test_framework.md` into action-oriented workflow language while keeping the underlying historical CI/process facts traceable.

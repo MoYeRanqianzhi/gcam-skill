@@ -419,6 +419,9 @@ LAND_NESTING_DIAGRAM_RE = re.compile(
 LAND_SIMPLIFIED_NESTING_RE = re.compile(
     r"Figure 1 shows a simplified nesting diagram of land with a subregion\. Note that crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer\."
 )
+HISTORICAL_AGLU_SIMPLIFIED_STRUCTURE_RE = re.compile(
+    r"A\s+representative, simplified n?nesting structure is depicted in Figure 1\."
+)
 OVERVIEW_RESOLUTION_FIGURE_RE = re.compile(
     r"it is constructed with different levels of resolution for each of these different systems \(see Figure 2\)\."
 )
@@ -523,6 +526,54 @@ ECONOMY_MACRO_FIGURE_RE = re.compile(
 )
 INPUTS_SUPPLY_FAO_MAPPING_FIGURES_RE = re.compile(
     r"The commodity mapping is provided in \[(?P<label>Mapping_SUA_PrimaryEquivalent\.csv)\]\((?P<target>[^)]+)\) and shown in Figures 1 \(crop harvested area\) and 2 \(food\)\."
+)
+V32_TRANSPORTATION_STRUCTURE_RE = re.compile(
+    r"GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping \(see Figure 1\)\."
+)
+V32_INDUSTRY_AGGREGATE_FIGURE_RE = re.compile(
+    r"In all non-US regions, the industrial sector is represented as a consumer of generic energy services and feedstocks, as shown in Figure 1\."
+)
+V32_INDUSTRY_US_FIGURES_RE = re.compile(
+    r"Each manufacturing industry group consumes energy to produce a range of intermediate industrial services, such as steam and machine drive \(see Figure 2\)\."
+)
+V32_INDUSTRY_US_ENERGY_REQUIREMENTS_RE = re.compile(
+    r"Figure 3 shows the eleven GCAM industries and their energy requirements, by service, in 2005\."
+)
+V32_SOCIOECONOMIC_FIGURES_RE = re.compile(
+    r"Population and GDP in the current baseline scenario are shown in Figures 2 and 3\."
+)
+V32_DEPLETABLE_RESOURCE_FIGURES_RE = re.compile(
+    r"Resource supply curves for natural gas, crude oil, unconventional oil, and coal are shown for each of the 14 GCAM regions in Figures 1-4 below\."
+)
+V32_UNCONVENTIONAL_OIL_SHOWN_BELOW_RE = re.compile(
+    r"note that for unconventional oil, the supply curves shown below do not include the cost of the energy used in extraction, and as such the actual supply curves in each region will have higher costs at all quantities\."
+)
+V32_GLOBAL_RESOURCE_DOTTED_LINES_RE = re.compile(
+    r"These global resource supply curves, derived by adding up each region's available resource at each price point, are shown in the figures as dotted lines\."
+)
+V32_WIND_REGION_ORDER_FIGURE_RE = re.compile(
+    r"Supply curves by GCAM region are shown in Figure 5; the region order from greatest to least is as follows:"
+)
+V32_ROOFTOP_PV_FIGURE_RE = re.compile(
+    r"Rooftop PV supply curves are shown in Figure 6; note that as with wind, this supply curve only accounts for the portion of the costs that increase with deployment\."
+)
+V32_GEOTHERMAL_SUPPLY_FIGURE_RE = re.compile(
+    r"Supply curves for the hydrothermal and EGS resources in all regions are shown in Figure 7\."
+)
+V32_WASTE_BIOMASS_FIGURE_RE = re.compile(
+    r"Figure 8 shows the supply curves used in each region; supplies are generally based on the amount and composition of municipal waste produced in each GCAM region\."
+)
+V32_ELECTRICITY_WIND_PV_FIGURES_RE = re.compile(
+    r"For wind power, the supply curve for the U\.S\. region is based on NREL \(2008\), and is shown in Figure 2\. The supply curve shown also includes technology non-energy costs, but not ancillary costs\. The same supply curve is assumed for non-U\.S\. regions, but with maximum resource amounts scaled to estimates from GIS-based analysis, also informed by IEAGHG \(2000\)\. Assumed maximum resources for all GCAM regions are shown in Table 7\. The supply curve for rooftop PV in the U\.S\. is from NREL \(P\. Denholm and R\. Margolis, pers\. comm\.\), and is also shown in Figure 3\. The assumed limit in non-U\.S\. regions, shown in Table 7, is based on a GIS analysis of solar irradiance by region\."
+)
+V32_ELECTRICITY_GEOTHERMAL_FIGURE_RE = re.compile(
+    r"Geothermal costs in GCAM are input as exogenous supply curves\. Supply curves assumed for hydrothermal and EGS resources for the U\.S\. are based on Petty and Porro \(2007\) and are shown in Figure 3\."
+)
+V32_REFINING_FIGURE_RE = re.compile(
+    r"These different technology options for refining are shown in Figure 1; the non-energy costs and input/output coefficients are shown in Table 1\."
+)
+V32_UNCONVENTIONAL_REFINING_FIGURE_RE = re.compile(
+    r"note the electricity and gas inputs to the “unconventional oil production” sector in Figure 1 and Table 1"
 )
 POLICIES_FIGURE_EXAMPLE_RE = re.compile(
     r"For example in the figure below, the cost of moving from a reference path without a carbon tax \(blue\) to the emissions path with a carbon tax \(green\) in period T can be calculated simply\.",
@@ -789,6 +840,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         "The omitted figure summarized a simplified land nesting diagram for a subregion. Crops are further divided beyond that simplified sketch, including irrigated/rainfed and hi/lo fertilizer branches.",
     )
     replace(
+        HISTORICAL_AGLU_SIMPLIFIED_STRUCTURE_RE,
+        "The omitted figure summarized one representative simplified land-nesting structure.",
+    )
+    replace(
         OVERVIEW_RESOLUTION_FIGURE_RE,
         "it is constructed with different levels of resolution for each of these different systems.",
     )
@@ -921,6 +976,70 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             f"The commodity mapping is provided in [{match.group('label')}]({match.group('target')}). "
             "The omitted figures illustrated representative harvested-area and food mappings."
         ),
+    )
+    replace(
+        V32_TRANSPORTATION_STRUCTURE_RE,
+        "GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping. The omitted figure summarized that top-level transportation structure.",
+    )
+    replace(
+        V32_INDUSTRY_AGGREGATE_FIGURE_RE,
+        "In all non-US regions, the industrial sector is represented as a consumer of generic energy services and feedstocks. The omitted figure summarized that aggregate-sector structure.",
+    )
+    replace(
+        V32_INDUSTRY_US_FIGURES_RE,
+        "Each manufacturing industry group consumes energy to produce a range of intermediate industrial services, such as steam and machine drive. The omitted figure summarized one representative U.S. industry structure.",
+    )
+    replace(
+        V32_INDUSTRY_US_ENERGY_REQUIREMENTS_RE,
+        "The omitted figure summarized the eleven GCAM industries and their 2005 energy requirements by service.",
+    )
+    replace(
+        V32_SOCIOECONOMIC_FIGURES_RE,
+        "The omitted figures summarized population and GDP in the current baseline scenario.",
+    )
+    replace(
+        V32_DEPLETABLE_RESOURCE_FIGURES_RE,
+        "The omitted regional resource-curve examples covered natural gas, crude oil, unconventional oil, and coal.",
+    )
+    replace(
+        V32_UNCONVENTIONAL_OIL_SHOWN_BELOW_RE,
+        "note that for unconventional oil, the omitted plotted supply curves did not include the cost of the energy used in extraction, and as such the actual supply curves in each region would have higher costs at all quantities.",
+    )
+    replace(
+        V32_GLOBAL_RESOURCE_DOTTED_LINES_RE,
+        "The omitted figures also overlaid dotted global resource supply curves derived by summing each region's available resource at each price point.",
+    )
+    replace(
+        V32_WIND_REGION_ORDER_FIGURE_RE,
+        "The omitted Figure 5 ranked GCAM regions by wind resource magnitude in the following order:",
+    )
+    replace(
+        V32_ROOFTOP_PV_FIGURE_RE,
+        "The omitted Figure 6 provided representative rooftop PV supply curves; as with wind, this supply curve only accounts for the portion of the costs that increase with deployment.",
+    )
+    replace(
+        V32_GEOTHERMAL_SUPPLY_FIGURE_RE,
+        "The omitted Figure 7 summarized the hydrothermal and EGS resource supply curves across regions.",
+    )
+    replace(
+        V32_WASTE_BIOMASS_FIGURE_RE,
+        "The omitted Figure 8 summarized regional waste-biomass supply curves; supplies are generally based on the amount and composition of municipal waste produced in each GCAM region.",
+    )
+    replace(
+        V32_ELECTRICITY_WIND_PV_FIGURES_RE,
+        "For wind power, the U.S. supply curve is based on NREL (2008), and the omitted figure used it as the reference shape. The plotted supply curve also included technology non-energy costs, but not ancillary costs. The same supply-curve shape is assumed for non-U.S. regions, but with maximum resource amounts scaled to estimates from GIS-based analysis, also informed by IEAGHG (2000). Assumed maximum resources for all GCAM regions are shown in Table 7. The rooftop PV supply curve for the U.S. is from NREL (P. Denholm and R. Margolis, pers. comm.), and the omitted figure used it as the corresponding reference for rooftop solar. The assumed limit in non-U.S. regions, shown in Table 7, is based on a GIS analysis of solar irradiance by region.",
+    )
+    replace(
+        V32_ELECTRICITY_GEOTHERMAL_FIGURE_RE,
+        "Geothermal costs in GCAM are input as exogenous supply curves. Supply curves assumed for hydrothermal and EGS resources for the U.S. are based on Petty and Porro (2007), and the omitted figure summarized those reference curves.",
+    )
+    replace(
+        V32_REFINING_FIGURE_RE,
+        "The omitted Figure 1 summarized the refining technology options, while Table 1 reports the non-energy costs and input/output coefficients.",
+    )
+    replace(
+        V32_UNCONVENTIONAL_REFINING_FIGURE_RE,
+        "note the electricity and gas inputs to the “unconventional oil production” sector in the omitted schematic and Table 1",
     )
     replace(
         POLICIES_FIGURE_EXAMPLE_RE,

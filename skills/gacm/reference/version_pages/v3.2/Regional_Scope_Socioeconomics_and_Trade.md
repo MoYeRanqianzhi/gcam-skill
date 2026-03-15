@@ -58,7 +58,7 @@ Socioeconomics
 
 ------------------------
 
-GCAM computes the potential GDP of each region using exogenous assumptions about population, labor participation, and labor productivity growth.  In some formulations of the model, GDP is adjusted to reflect the effect of changing energy prices on economic growth.  However, the default assumption does not include this feedback. Population and GDP in the current baseline scenario are shown in Figures 2 and 3.
+GCAM computes the potential GDP of each region using exogenous assumptions about population, labor participation, and labor productivity growth.  In some formulations of the model, GDP is adjusted to reflect the effect of changing energy prices on economic growth.  However, the default assumption does not include this feedback. The omitted figures summarized population and GDP in the current baseline scenario.
 
 ###### Figure 2: Population
 

@@ -74,8 +74,7 @@ result in higher rental rates and expansion into unmanaged ecosystems
 and vice versa.
 
 Competition between alternative land uses in the GCAM is modeled using
-a [nested logit architecture](Nested_logit_architecture.md). A
-representative, simplified nnesting structure is depicted in Figure 1.
+a [nested logit architecture](Nested_logit_architecture.md). The omitted figure summarized one representative simplified land-nesting structure.
 
 ###### Figure 1. Competition for Land in GCAM
 

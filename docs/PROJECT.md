@@ -13,6 +13,7 @@ This skill is intended to help an agent:
 6. Route correctly across historical families and the `v8.2` root-doc baseline without inventing missing source trees.
 7. Open exact bundled version pages when the user needs page-level detail from a specific release.
 8. Prefer pure text, CLI, and configuration editing over GUI walkthroughs.
+9. Recognize workspace layout, configuration editing, and headless query workflows without relying on UI-oriented upstream prose.
 
 ## Primary Sources (Local, Traceable)
 The runtime skill uses only bundled references under `skills/gacm/reference/`.
@@ -43,3 +44,5 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-15: Added page-level bundled version trees under `reference/version_pages/` for full-tree versions and delta-specific page bundles for release-only versions.
 - 2026-03-15: Added inherited page bundles and CMP trace pages so all known version-linked routes remain portable and locally traceable without hardcoded external paths.
 - 2026-03-15: Reoriented the skill around agent-facing CLI, XML/configuration editing, and headless extraction instead of GUI-first workflows.
+- 2026-03-16: Added dedicated references for configuration workflows, query automation, workspace layout recognition, and version-specific operational differences.
+- 2026-03-16: Fixed bundled document search output so historical-version searches do not crash on the current Windows console encoding.

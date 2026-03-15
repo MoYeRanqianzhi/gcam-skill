@@ -49,7 +49,11 @@ These bundled topic docs are the main progressive-disclosure entry points after 
 - `economy.md`
 - `emissions_climate.md`
 - `running_gcam.md`
+- `configuration_workflows.md`
+- `query_automation.md`
 - `building_gcam.md`
+- `workspace_layouts.md`
+- `version_operation_notes.md`
 - `solver.md`
 - `policies_scenarios.md`
 - `inputs_outputs.md`

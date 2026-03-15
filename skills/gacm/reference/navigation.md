@@ -33,7 +33,11 @@ After version routing, open only the topic docs needed for the task:
 - `economy.md`: GDP, macro module, KLEM, SAM consistency, and economic interpretation
 - `emissions_climate.md`: CO2 and non-CO2 emissions, MACs, Hector coupling, and climate constraints
 - `running_gcam.md`: reference runs, configuration, batch mode, target finder, XML DB controls, and headless query flow
+- `configuration_workflows.md`: safe editing patterns for configuration files, scenario components, batch mode, and target finder
+- `query_automation.md`: headless query execution, XML DB driver workflows, and extraction-tool selection
 - `building_gcam.md`: command-line compilation and runtime prerequisites
+- `workspace_layouts.md`: how to detect release workspaces, source checkouts, and legacy layout differences
+- `version_operation_notes.md`: family-level command, path, compiler, and query differences across versions
 - `solver.md`: solver algorithms and configuration logic
 - `policies_scenarios.md`: policy types, scenario components, targeting
 - `inputs_outputs.md`: input classes, output classes, and query/extraction patterns

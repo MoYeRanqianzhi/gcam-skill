@@ -23,6 +23,12 @@
 7. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
 8. Commit and tag.
 
+High-value shared docs to maintain:
+- `configuration_workflows.md`
+- `query_automation.md`
+- `workspace_layouts.md`
+- `version_operation_notes.md`
+
 ## Testing Notes
 - No automated tests included yet.
 - Validate workflows by running `scripts/doc_search.py --list-versions`.
@@ -31,6 +37,7 @@
 - Re-run generation after changing `version_catalog.py` so `version_inventory.md` and `versions/*.md` stay in sync with the topic set.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
 - Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable and image markup stays stripped.
+- Re-run representative `doc_search.py --version ... --scope pages --pattern ...` commands on Windows after search-tool changes to catch console encoding regressions.
 
 ## Page Bundle Rules
 - Treat the root `gcam-doc` tree as bundled `v8.2`.

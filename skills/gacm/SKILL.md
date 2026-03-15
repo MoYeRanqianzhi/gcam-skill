@@ -53,6 +53,12 @@ Open only the specific bundled docs needed for the user's question.
 - For `delta-only` versions, combine the release note and CMP trace page with the minimum necessary bundled topic docs.
 - Use `reference/navigation.md` to choose the smallest topic set that answers the request.
 
+Common topic routes:
+- scenario/config editing: `reference/configuration_workflows.md`
+- headless query/export work: `reference/query_automation.md`
+- locating files in a provided workspace: `reference/workspace_layouts.md`
+- family-level command/path differences: `reference/version_operation_notes.md`
+
 ## Default Response Structure
 Keep answers traceable:
 1. **Version**: state which GCAM version or release route you used.
@@ -66,6 +72,12 @@ Always do version routing first:
 - **Historical version or release-note-only version**: `reference/versions/<version>.md`
 
 Then load the bundled topic docs from `reference/navigation.md`.
+
+Fast route hints:
+- config or XML override task: `reference/configuration_workflows.md`
+- batch query or CSV export task: `reference/query_automation.md`
+- user gave a path and wants you to infer workspace structure: `reference/workspace_layouts.md`
+- user asks “does this differ by version?”: `reference/version_operation_notes.md`
 
 ## Common Workflows
 

@@ -18,7 +18,10 @@ Purpose:
 - `economy.md`, `inputs_economy.md` -> `economy.md`
 - `emissions.md`, `details_emissions.md`, `hector.md` -> `emissions_climate.md`
 - `user-guide.md` -> `running_gcam.md`, `tools.md`
+- `user-guide.md` configuration, batch, and target-finder sections -> `configuration_workflows.md`
+- `user-guide.md` batch query, batch command, and XML DB control sections -> `query_automation.md`
 - `gcam-build.md` -> `building_gcam.md`
+- `user-guide.md`, `gcam-build.md`, `Compiling_GCAM.md` -> `workspace_layouts.md`
 - `solver.md` -> `solver.md`
 - `policies.md`, `policies_examples.md` -> `policies_scenarios.md`
 - `inputs_demand.md`, `inputs_supply.md`, `inputs_land.md`, `outputs_quantity.md`, `outputs_prices.md`, `outputs_emissions.md`, `outputs_land.md`, `outputs_trade.md` -> `inputs_outputs.md`
@@ -27,6 +30,7 @@ Purpose:
 - `fusion.md`, `dev-guide.md`, `dev-guide/*` -> `developer_workflows.md`
 - `data-system.md` -> `data_system.md`
 - `updates.md`, release-note/CMP material -> `updates.md` plus `versions/*.md`
+- `versions/*.md`, `version_families.md`, selected build/user-guide pages -> `version_operation_notes.md`
 
 ## Page-Level Version Bundles
 - `reference/version_pages/v8.2/*` contains adapted page-level bundled copies of the `gcam-doc` root and `dev-guide` markdown sources.

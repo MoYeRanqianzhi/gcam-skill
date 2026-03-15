@@ -18,3 +18,8 @@
 - Added `validate_bundled_pages.py` and brought bundled page markdown link validation to a clean pass.
 - Rewrote the runtime skill and top-level reference docs to be CLI-first, text-only, and agent-oriented rather than GUI-first.
 - Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.
+
+## 2026-03-16
+- Added dedicated shared reference docs for configuration workflows, query automation, workspace layout recognition, and version-specific operational differences.
+- Wired those docs into `SKILL.md`, navigation, coverage mapping, and bundled topic listings for better progressive disclosure.
+- Fixed `doc_search.py` so historical-page searches no longer fail on the current Windows console encoding.

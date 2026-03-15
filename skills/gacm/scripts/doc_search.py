@@ -20,6 +20,11 @@ from typing import Iterable, List, Tuple
 from version_catalog import REFERENCE_ROOT, VERSION_PAGES_ROOT, get_version_info, ordered_versions
 
 
+def safe_print(text: str) -> None:
+    encoding = sys.stdout.encoding or "utf-8"
+    sys.stdout.buffer.write((text + "\n").encode(encoding, errors="backslashreplace"))
+
+
 def iter_files(root: Path, exts: Tuple[str, ...]) -> Iterable[Path]:
     if root.is_file():
         if root.suffix.lower() in exts:
@@ -86,7 +91,7 @@ def main() -> int:
 
     if args.list_versions:
         for info in ordered_versions():
-            print(f"{info.version}\t{info.family}\t{info.coverage_mode}")
+            safe_print(f"{info.version}\t{info.family}\t{info.coverage_mode}")
         return 0
 
     if not args.pattern:
@@ -127,13 +132,13 @@ def main() -> int:
         if not matches:
             continue
         for line_no, text in matches:
-            print(f"{path.relative_to(REFERENCE_ROOT.parent)}:{line_no}: {text}")
+            safe_print(f"{path.relative_to(REFERENCE_ROOT.parent)}:{line_no}: {text}")
             total += 1
             if total >= args.max_matches:
                 return 0
 
     if total == 0:
-        print("No matches found.")
+        safe_print("No matches found.")
     return 0
 
 

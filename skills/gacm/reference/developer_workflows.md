@@ -11,7 +11,7 @@ Open this file for:
 - GCAM Fusion coupling questions
 - broader ecosystem and workflow-tool selection
 
-Open `building_gcam.md` for compiler and dependency setup. Open `tools.md` for focused `gcamreader`, `rgcam`, and `gcamextractor` usage.
+Open `building_gcam.md` for compiler and dependency setup. Open `tools.md` for focused `gcamreader`, `rgcam`, and `gcamextractor` usage. Open `workspace_layouts.md` when you need to map these workflows onto a real repository or release package.
 
 ## Agent Bias
 For this skill, prefer tools that support:

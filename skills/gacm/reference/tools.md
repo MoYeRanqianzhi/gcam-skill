@@ -2,6 +2,8 @@
 
 Bundled summary of GCAM ecosystem tools that fit agent-oriented text and command-line workflows.
 
+Open `query_automation.md` when the task is about end-to-end query/export wiring rather than tool selection alone.
+
 ## Selection Rule
 Choose the smallest tool that matches the task:
 - raw query XML to CSV or DataFrame: `gcamreader`

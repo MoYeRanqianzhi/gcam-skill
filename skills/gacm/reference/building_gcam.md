@@ -4,6 +4,8 @@ Bundled build summary for GCAM, rewritten for agent-oriented CLI workflows.
 
 Use this file after version routing. Compiler and dependency details evolve across versions, but the command-line build pattern remains the safest default.
 
+Open `workspace_layouts.md` when you need to decide whether the user has a source checkout, a release workspace, or a legacy nested package layout.
+
 ## Default Build Policy
 - Prefer command-line builds.
 - Treat IDE-specific Xcode and Visual Studio pages as historical evidence, not as the skill's default workflow.

@@ -5,14 +5,15 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Economic_land_sharing.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/small&gt;
+&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
 
-Economic [land use](Agriculture,_Land-Use,_and_Bioenergy "wikilink") decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The interpretation of this sharing system is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
+Economic [land use](Agriculture_Land-Use_and_Bioenergy.md) decisions in GCAM are based on a logit model of sharing based on relative inherent profitability of using land for competing purposes. The interpretation of this sharing system is that there is a distribution of profit behind each competing land use within a region, rather than a single point value. Each competing land use option has a potential average profit over its entire distribution. The share of land allocated to any given use is based on the probability that that use has a highest profit among the competing uses. The relative potential average profits are used in the logit formulation, where an option with a higher average profit will get a higher share than one with a lower average profit. However, at the margin, the profits of competing options are equal. In essence, the sharing can therefore be considered optimal, but the assumption of a distribution of profits makes it very different from a constrained linear optimization approach.
 
 Example Competition
 -------------------
@@ -32,7 +33,7 @@ Also note that, since land value, price, or rent is equivalent to the profit tha
 Land Competition Compared to Energy System Competition
 ------------------------------------------------------
 
-This logit competition appears similar to our modeling of relative-cost based sharing of technologies in the [GCAM energy system](The_Energy_System "wikilink"), but it differs in two very important ways. First, here it is based on profit, so exponents are positive, and second, the average profit equations developed by John Clarke and Jae Edmonds &lt;ref&gt;Clarke, J. F. and J. Edmonds (1993). "Modeling Energy Technologies in a Competitive Market." Energy Economics 15(2): 123-129.&lt;/ref&gt;&nbsp;are used rather than a straight weighted average of profits. With the Clarke/Edmonds approach, we avoid the situation where the weighted average profit is not monotonic in the individual profits. For example, if a simple weighted average is used to compute profit, then if the profit of the least profitable technology is increased, while all other profits are kept constant, the weighted average profit can decrease. This phenomenon is because the share of the least profitable technology will increase as its profit increases, dragging the average profit downward.
+This logit competition appears similar to our modeling of relative-cost based sharing of technologies in the [GCAM energy system](The_Energy_System.md), but it differs in two very important ways. First, here it is based on profit, so exponents are positive, and second, the average profit equations developed by John Clarke and Jae Edmonds &lt;ref&gt;Clarke, J. F. and J. Edmonds (1993). "Modeling Energy Technologies in a Competitive Market." Energy Economics 15(2): 123-129.&lt;/ref&gt;&nbsp;are used rather than a straight weighted average of profits. With the Clarke/Edmonds approach, we avoid the situation where the weighted average profit is not monotonic in the individual profits. For example, if a simple weighted average is used to compute profit, then if the profit of the least profitable technology is increased, while all other profits are kept constant, the weighted average profit can decrease. This phenomenon is because the share of the least profitable technology will increase as its profit increases, dragging the average profit downward.
 
 &lt;br&gt;
 

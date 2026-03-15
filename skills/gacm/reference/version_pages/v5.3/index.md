@@ -5,7 +5,7 @@ This directory is the page-level bundled reference set for GCAM `v5.3`.
 - Family: `modern-transitional`
 - Coverage mode: `version-summary`
 - Source root: `gcam-doc/v5.3`
-- Page count: `32`
+- Page count: `34`
 
 Progressive-disclosure rule:
 - Start from the version route file.
@@ -28,6 +28,7 @@ Progressive-disclosure rule:
 ### root
 - `aglu.md`
 - `choice.md`
+- `Cycle-breaking-in-GCAM.md`
 - `data-system.md`
 - `dev-guide.md`
 - `emissions.md`
@@ -49,3 +50,4 @@ Progressive-disclosure rule:
 - `trade.md`
 - `updates.md`
 - `user-guide.md`
+- `water.md`

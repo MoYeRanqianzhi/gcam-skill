@@ -19,7 +19,6 @@ from version_catalog import VERSION_PAGES_ROOT, get_version_info, ordered_versio
 
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent.parent
 AUTHORING_ROOT = REPO_ROOT / "gcam-doc"
-UPDATES_SOURCE = AUTHORING_ROOT / "updates.md"
 
 FULL_TREE_VERSIONS = (
     "v3.2",
@@ -54,18 +53,35 @@ DELTA_SOURCE_MAP = {
 }
 
 FRONT_MATTER_RE = re.compile(r"\A---\n(.*?)\n---\n*", re.DOTALL)
+LINKED_IMAGE_RE = re.compile(r"\[!\[([^\]]*)\]\(([^)]+)\)\]\(([^)]+)\)")
 MD_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
 HTML_IMG_RE = re.compile(r"<img\b[^>]*src=\"([^\"]+)\"[^>]*\/?>", re.IGNORECASE)
-MARKDOWN_HTML_LINK_RE = re.compile(r"\((?!https?://|mailto:|#)([^)]+?)\.html(#[^)]+)?\)")
-HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?!https?://|mailto:|#)(?P<path>[^"]+?)\.html(?P<frag>#[^"]+)?(?P<suffix>")')
+MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
+HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
+CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
+SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
+CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
+
+WIKILINK_ALIAS_MAP = {
+    "v3.2": {
+        "Main_Page": "toc.md",
+    },
+}
+
+ALT_SOURCE_RELATIONS = {
+    "Agriculture,_Land-Use,_and_Bioenergy.md": ("Agriculture_Land-Use_and_Bioenergy.md",),
+    "Cycle-breaking-in-GCAM.md": ("Cycle-breaking_in_GCAM.md",),
+}
+
+VERSION_INDEX = {version: index for index, version in enumerate(FULL_TREE_VERSIONS)}
 
 
 def strip_front_matter(text: str) -> tuple[str, str]:
     match = FRONT_MATTER_RE.match(text)
     if not match:
         return "", text
-    return match.group(1), text[match.end():]
+    return match.group(1), text[match.end() :]
 
 
 def parse_title(front_matter: str, body: str, fallback: str) -> str:
@@ -98,23 +114,105 @@ def strip_duplicate_heading(body: str, title: str) -> str:
 
 
 def rewrite_images(text: str) -> str:
+    text = LINKED_IMAGE_RE.sub(
+        lambda m: f"{m.group(1) or 'Linked image'} link: {m.group(3)} (image: {m.group(2)})",
+        text,
+    )
     text = MD_IMAGE_RE.sub(lambda m: f"Image reference: {m.group(1) or 'untitled image'} ({m.group(2)})", text)
     text = HTML_IMG_RE.sub(lambda m: f"Image reference: html-image ({m.group(1)})", text)
     return text
 
 
-def rewrite_internal_html_links(text: str) -> str:
-    text = MARKDOWN_HTML_LINK_RE.sub(lambda m: f"({m.group(1)}.md{m.group(2) or ''})", text)
-    text = HTML_HREF_RE.sub(
-        lambda m: f'{m.group("prefix")}{m.group("path")}.md{m.group("frag") or ""}{m.group("suffix")}',
-        text,
-    )
-    return text
+def split_target_and_title(raw: str) -> tuple[str, str]:
+    value = raw.strip()
+    if not value:
+        return "", ""
+    parts = value.rsplit(" ", 1)
+    if len(parts) == 2:
+        title = parts[1].strip()
+        if len(title) >= 2 and title[0] == title[-1] and title[0] in {'"', "'"}:
+            return parts[0].strip(), title[1:-1]
+    return value, ""
 
 
-def sanitize_body(text: str) -> str:
+def split_fragment(target: str) -> tuple[str, str]:
+    if ".html$" in target:
+        path, fragment = target.split(".html$", 1)
+        return f"{path}.html", f"#{fragment}"
+    if "#" in target:
+        path, fragment = target.split("#", 1)
+        return path, f"#{fragment}"
+    return target, ""
+
+
+def normalize_wikilink_path(version: str, target: str) -> str:
+    alias_map = WIKILINK_ALIAS_MAP.get(version, {})
+    if target in alias_map:
+        return alias_map[target]
+    cleaned = target.replace(",_", "_").replace(",", "_").replace(" ", "_")
+    cleaned = re.sub(r"_+", "_", cleaned)
+    if "." not in Path(cleaned).name:
+        cleaned = f"{cleaned}.md"
+    return cleaned
+
+
+def normalize_path_target(version: str, target: str, title: str) -> str:
+    cleaned = target.strip()
+    if cleaned.startswith("<") and cleaned.endswith(">"):
+        cleaned = cleaned[1:-1]
+    if not cleaned or cleaned.startswith("#") or SCHEME_RE.match(cleaned):
+        return cleaned
+
+    path_part, fragment = split_fragment(cleaned)
+    if title == "wikilink":
+        path_part = normalize_wikilink_path(version, path_part)
+    elif path_part.endswith(".html"):
+        path_part = f"{path_part[:-5]}.md"
+    elif path_part.endswith(".pdf"):
+        path_part = f"{path_part[:-4]}.md"
+    elif "." not in Path(path_part).name and not path_part.endswith("/"):
+        path_part = f"{path_part}.md"
+
+    if path_part == "../toc.md" and version != "v8.2":
+        path_part = "../v8.2/toc.md"
+    if CROSS_VERSION_TOC_RE.match(path_part):
+        path_part = f"../{path_part}"
+    return f"{path_part}{fragment}"
+
+
+def rewrite_markdown_links(segment: str, version: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        label = match.group(1)
+        target_raw = match.group(2)
+        target, title = split_target_and_title(target_raw)
+        normalized = normalize_path_target(version, target, title)
+        return f"[{label}]({normalized})"
+
+    return MARKDOWN_LINK_RE.sub(repl, segment)
+
+
+def rewrite_html_hrefs(segment: str, version: str) -> str:
+    def repl(match: re.Match[str]) -> str:
+        normalized = normalize_path_target(version, match.group("target"), "")
+        return f'{match.group("prefix")}{normalized}{match.group("suffix")}'
+
+    return HTML_HREF_RE.sub(repl, segment)
+
+
+def apply_outside_code_fences(text: str, transform) -> str:
+    parts: list[str] = []
+    last = 0
+    for match in CODE_FENCE_RE.finditer(text):
+        parts.append(transform(text[last : match.start()]))
+        parts.append(match.group(0))
+        last = match.end()
+    parts.append(transform(text[last:]))
+    return "".join(parts)
+
+
+def sanitize_body(text: str, version: str) -> str:
     text = rewrite_images(text)
-    text = rewrite_internal_html_links(text)
+    text = apply_outside_code_fences(text, lambda chunk: rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version))
     return text.strip() + "\n"
 
 
@@ -139,10 +237,14 @@ def iter_full_tree_source_files(version: str) -> Iterable[Path]:
             yield path
 
 
-def relative_source_path(version: str, path: Path) -> Path:
+def authoring_root_for(version: str) -> Path:
     if version == "v8.2":
-        return path.relative_to(AUTHORING_ROOT)
-    return path.relative_to(AUTHORING_ROOT / version)
+        return AUTHORING_ROOT
+    return AUTHORING_ROOT / version
+
+
+def relative_source_path(version: str, path: Path) -> Path:
+    return path.relative_to(authoring_root_for(version))
 
 
 def source_root_label(version: str) -> str:
@@ -151,29 +253,48 @@ def source_root_label(version: str) -> str:
     return f"gcam-doc/{version}"
 
 
-def render_full_tree_page(version: str, source_path: Path) -> str:
+def source_path_for(version: str, rel_path: Path) -> Path:
+    return authoring_root_for(version) / rel_path
+
+
+def render_source_page(
+    bundle_version: str,
+    source_version: str,
+    source_path: Path,
+    coverage_mode: str,
+    note_lines: Iterable[str] = (),
+) -> str:
     raw = source_path.read_text(encoding="utf-8", errors="ignore")
     front_matter, body = strip_front_matter(raw)
-    rel_source = relative_source_path(version, source_path)
+    rel_source = relative_source_path(source_version, source_path)
     title = parse_title(front_matter, body, source_path.stem)
     body = strip_duplicate_heading(body, title)
-    body = sanitize_body(body)
+    body = sanitize_body(body, bundle_version)
     lines = [
         f"# {title}",
         "",
-        f"Bundled adapted source page for GCAM `{version}`.",
+        f"Bundled adapted source page for GCAM `{bundle_version}`.",
         "",
-        f"- Source root: `{source_root_label(version)}`",
+        f"- Source root: `{source_root_label(source_version)}`",
         f"- Source path: `{rel_source.as_posix()}`",
-        "- Coverage mode: `full-tree page bundle`",
-        "",
-        "Load this page when the user needs version-specific detail from this exact page family.",
-        "",
-        "---",
-        "",
-        body.rstrip(),
-        "",
+        f"- Coverage mode: `{coverage_mode}`",
+        f"- Version page index: `version_pages/{bundle_version}/INDEX.md`",
     ]
+    if source_version != bundle_version:
+        lines.append(f"- Source provenance: inherited from `{source_version}` because `{bundle_version}` links to this page but its authoring tree does not contain a version-local copy")
+    for note in note_lines:
+        lines.append(f"- Note: {note}")
+    lines.extend(
+        [
+            "",
+            "Load this page when the user needs version-specific detail from this exact page family.",
+            "",
+            "---",
+            "",
+            body.rstrip(),
+            "",
+        ]
+    )
     return "\n".join(lines)
 
 
@@ -225,13 +346,9 @@ def render_delta_release_note(version: str) -> str:
         "- Coverage mode: `delta-only`",
         "- Source root: `gcam-doc root updates stream`",
         "- Source path: `updates.md`",
+        "",
+        "## Release Summary",
     ]
-    lines.extend(
-        [
-            "",
-            "## Release Summary",
-        ]
-    )
     for bullet in info.deltas or ("No delta summary recorded.",):
         lines.append(f"- {bullet}")
     if info.notes:
@@ -243,9 +360,9 @@ def render_delta_release_note(version: str) -> str:
             "",
             "## Source Trace",
             "- `gcam-doc/updates.md`",
+            "",
         ]
     )
-    lines.append("")
     return "\n".join(lines)
 
 
@@ -302,26 +419,177 @@ def render_delta_index(version: str) -> str:
     return "\n".join(lines)
 
 
+def render_cmp_trace_page(version: str, rel_path: Path) -> str:
+    title = rel_path.stem.replace("_", " ")
+    pdf_path = rel_path.with_suffix(".pdf").as_posix()
+    lines = [
+        f"# {title}",
+        "",
+        f"Bundled CMP trace page for GCAM `{version}`.",
+        "",
+        "- Coverage mode: `cmp trace page`",
+        f"- Source root: `{source_root_label(version)}`",
+        f"- Original linked asset: `{pdf_path}`",
+        f"- Version page index: `version_pages/{version}/INDEX.md`",
+        "",
+        "This bundle stores a trace page instead of the original binary PDF asset.",
+        "",
+        "## Source Trace",
+        f"- `{pdf_path}`",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def render_unresolved_trace_page(version: str, rel_path: Path) -> str:
+    title = rel_path.stem.replace("_", " ")
+    lines = [
+        f"# {title}",
+        "",
+        f"Bundled unresolved trace page for GCAM `{version}`.",
+        "",
+        "- Coverage mode: `unresolved trace page`",
+        f"- Source root: `{source_root_label(version)}`",
+        f"- Missing linked page: `{rel_path.as_posix()}`",
+        f"- Version page index: `version_pages/{version}/INDEX.md`",
+        "",
+        "The bundled authoring sources referenced this page, but no version-local or traceable inherited source file was found in the available repository snapshot.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def write_file(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
 
 
+def version_page_root(version: str) -> Path:
+    return VERSION_PAGES_ROOT / version
+
+
+def find_target_source(version: str, rel_path: Path) -> tuple[str, Path] | None:
+    candidate_rels = [rel_path]
+    candidate_rels.extend(Path(item) for item in ALT_SOURCE_RELATIONS.get(rel_path.as_posix(), ()))
+
+    current_index = VERSION_INDEX[version]
+    earlier_versions = [FULL_TREE_VERSIONS[index] for index in range(current_index, -1, -1)]
+    later_versions = [FULL_TREE_VERSIONS[index] for index in range(current_index + 1, len(FULL_TREE_VERSIONS))]
+    search_versions = earlier_versions + later_versions
+
+    for source_version in search_versions:
+        for candidate_rel in candidate_rels:
+            candidate_path = source_path_for(source_version, candidate_rel)
+            if candidate_path.exists():
+                return source_version, candidate_path
+    return None
+
+
+def extract_local_targets(text: str) -> list[str]:
+    stripped = CODE_FENCE_RE.sub("", text)
+    targets = [match.group(2).strip() for match in MARKDOWN_LINK_RE.finditer(stripped)]
+    targets.extend(match.group("target").strip() for match in HTML_HREF_RE.finditer(stripped))
+    return targets
+
+
+def is_local_target(target: str) -> bool:
+    return bool(target) and not target.startswith("#") and not SCHEME_RE.match(target)
+
+
+def collect_missing_local_pages(version: str) -> list[Path]:
+    root = version_page_root(version)
+    missing: set[Path] = set()
+    for page in sorted(root.rglob("*.md")):
+        text = page.read_text(encoding="utf-8", errors="ignore")
+        for raw_target in extract_local_targets(text):
+            target, _title = split_target_and_title(raw_target)
+            if not is_local_target(target):
+                continue
+            target_path = target.split("#", 1)[0]
+            if not target_path:
+                continue
+            resolved = (page.parent / target_path).resolve()
+            try:
+                rel = resolved.relative_to(root.resolve())
+            except ValueError:
+                continue
+            if rel.suffix == ".md" and not resolved.exists():
+                missing.add(rel)
+    return sorted(missing)
+
+
+def materialize_missing_target(version: str, rel_path: Path) -> bool:
+    root = version_page_root(version)
+    target = root / rel_path
+    if target.exists():
+        return False
+
+    if "cmp" in rel_path.parts:
+        write_file(target, render_cmp_trace_page(version, rel_path))
+        return True
+
+    inherited = find_target_source(version, rel_path)
+    if inherited:
+        source_version, source_path = inherited
+        note = f"Referenced from `{version}` as `{rel_path.as_posix()}`."
+        write_file(
+            target,
+            render_source_page(
+                bundle_version=version,
+                source_version=source_version,
+                source_path=source_path,
+                coverage_mode="inherited page bundle",
+                note_lines=(note,),
+            ),
+        )
+        return True
+
+    write_file(target, render_unresolved_trace_page(version, rel_path))
+    return True
+
+
+def ensure_missing_targets(version: str) -> None:
+    while True:
+        missing = collect_missing_local_pages(version)
+        if not missing:
+            return
+        wrote_any = False
+        for rel_path in missing:
+            wrote_any = materialize_missing_target(version, rel_path) or wrote_any
+        if not wrote_any:
+            return
+
+
 def build_full_tree_version(version: str) -> None:
-    version_root = VERSION_PAGES_ROOT / version
+    version_root = version_page_root(version)
     if version_root.exists():
         shutil.rmtree(version_root)
-    written_paths: list[Path] = []
+
     for source_path in iter_full_tree_source_files(version):
         rel = relative_source_path(version, source_path)
         target = version_root / rel
-        write_file(target, render_full_tree_page(version, source_path))
-        written_paths.append(rel)
-    write_file(version_root / "INDEX.md", render_full_tree_index(version, written_paths))
+        write_file(
+            target,
+            render_source_page(
+                bundle_version=version,
+                source_version=version,
+                source_path=source_path,
+                coverage_mode="full-tree page bundle",
+            ),
+        )
+
+    ensure_missing_targets(version)
+
+    page_paths = sorted(
+        path.relative_to(version_root)
+        for path in version_root.rglob("*.md")
+        if path.name != "INDEX.md"
+    )
+    write_file(version_root / "INDEX.md", render_full_tree_index(version, page_paths))
 
 
 def build_delta_version(version: str) -> None:
-    version_root = VERSION_PAGES_ROOT / version
+    version_root = version_page_root(version)
     if version_root.exists():
         shutil.rmtree(version_root)
     write_file(version_root / "release_note.md", render_delta_release_note(version))
@@ -340,6 +608,7 @@ def write_root_readme() -> None:
         "- Then open `version_pages/<version>/INDEX.md` only when page-level detail is needed.",
         "- For full-tree versions, page files are adapted from the authoring markdown sources.",
         "- For `delta-only` versions, page files capture the release delta and source trace rather than pretending a full standalone tree exists.",
+        "- When a version links to a page that is absent from its own authoring tree, the bundle may include a clearly labeled inherited or trace page instead of silently dropping the route.",
         "",
     ]
     write_file(VERSION_PAGES_ROOT / "README.md", "\n".join(lines))

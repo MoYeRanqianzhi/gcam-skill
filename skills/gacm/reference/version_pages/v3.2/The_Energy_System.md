@@ -5,12 +5,13 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `The_Energy_System.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.1 r4503. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/small&gt;
+&lt;small&gt;[*This page is valid for GCAM 3.1 r4503. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
 
 In GCAM, the energy system represents processes of energy resource extraction, transformation, and delivery, ultimately producing services demanded by end users. Resources are classified as either depletable or renewable; in either case, the extraction costs of a given resource are generally assumed to increase as lower grade resources are employed, but are also subject to technological progress which can lower extraction costs for a given resource grade. Extraction costs can also rise with time as a consequence of incremental non-climate environmental requirements. In each time period, the market prices of all goods and services, including primary energy resources, land, agricultural goods and other products are determined within the general market system equilibrium.&lt;br&gt;
 
@@ -40,7 +41,7 @@ Primary energy forms include:&lt;br&gt;
 -   Hydro
 -   Geothermal&lt;br&gt;
 
-Production of oil, natural gas, coal, uranium, and bioenergy are assumed to be available to the global market. Coal, gas, and oil are produced from graded [Resource Supply Curves](Resource_Supply_Curves "wikilink"). &nbsp;[Bioenergy Production](Agriculture,_Land-Use,_and_Bioenergy#Bioenergy_Production "wikilink")&nbsp;comes from purpose grown crops, crop residues, and municipal solid waste.&lt;br&gt;
+Production of oil, natural gas, coal, uranium, and bioenergy are assumed to be available to the global market. Coal, gas, and oil are produced from graded [Resource Supply Curves](Resource_Supply_Curves.md). &nbsp;[Bioenergy Production](Agriculture_Land-Use_and_Bioenergy.md#Bioenergy_Production)&nbsp;comes from purpose grown crops, crop residues, and municipal solid waste.&lt;br&gt;
 
 Secondary Energy Carriers and Energy Conversion&lt;br&gt;
 ---------------------------------------------------------
@@ -110,7 +111,7 @@ Electricity in GCAM can be produced from nine fuel types, each of which may have
 
 &lt;br&gt;
 
-More information on GCAM's representation can be found at&nbsp;[Electricity](Electricity "wikilink").
+More information on GCAM's representation can be found at&nbsp;[Electricity](Electricity.md).
 
 ### Hydrogen
 
@@ -118,7 +119,7 @@ Hydrogen is a component of present end-use fuel consumption. However, like renew
 
 &lt;br&gt;Hydrogen supply is modeled in GCAM in similar fashion to electricity: hydrogen may be produced in central stations or in distributed “forecourts.” Central stations benefit from economies of scale, but incur transmission and distribution costs. There are more technology options for central station hydrogen production than for forecourt production. Although forecourt production can produce hydrogen only from natural gas or electricity, central stations can use natural gas, coal, or biomass, all with or without CCS, as well as direct conversion from nuclear, solar, and wind energy. In this application, wind and solar generation do not pay any intermittency-related costs. &lt;br&gt;
 
-&lt;br&gt;Reference and advanced technology assumptions for hydrogen production are derived from the H2A production models (DOE 2008)&lt;ref name="defriesDOE08"&gt;DeFries R, M Hansen, JRG Townshend, AC Janetos, and TR Loveland. 2000. A New Global 1km Data Set of Percent Tree Cover Derived from Remote Sensing. Global Change Biology 6:247-254. DOE (2008). DOE Hydrogen Program: H2A Analysis. U.S. Department of Energy, Hydrogen Program. Accessed at <http://www.hydrogen.energy.gov/h2a_analysis.html>.&lt;/ref&gt;. Non-energy costs were calculated from these models by subtracting the feedstock fuel cost from the required break-even hydrogen price for each technology analyzed. Hydrogen production efficiencies by technology are shown in Table 2, and non-energy costs are shown in Table 3. Because the future role of hydrogen in the energy system is also highly dependent on the demand technologies, scenarios with advanced hydrogen supply technologies also have advanced fuel cell vehicles discussed in&nbsp;[Transportation](Transportation "wikilink").
+&lt;br&gt;Reference and advanced technology assumptions for hydrogen production are derived from the H2A production models (DOE 2008)&lt;ref name="defriesDOE08"&gt;DeFries R, M Hansen, JRG Townshend, AC Janetos, and TR Loveland. 2000. A New Global 1km Data Set of Percent Tree Cover Derived from Remote Sensing. Global Change Biology 6:247-254. DOE (2008). DOE Hydrogen Program: H2A Analysis. U.S. Department of Energy, Hydrogen Program. Accessed at <http://www.hydrogen.energy.gov/h2a_analysis.html>.&lt;/ref&gt;. Non-energy costs were calculated from these models by subtracting the feedstock fuel cost from the required break-even hydrogen price for each technology analyzed. Hydrogen production efficiencies by technology are shown in Table 2, and non-energy costs are shown in Table 3. Because the future role of hydrogen in the energy system is also highly dependent on the demand technologies, scenarios with advanced hydrogen supply technologies also have advanced fuel cell vehicles discussed in&nbsp;[Transportation](Transportation.md).
 
 ###### Table 2. Hydrogen production efficiencies by technology in reference and advanced scenarios.&lt;br&gt;
 
@@ -213,7 +214,7 @@ GCAM now also has a Low and High CCS storage scenario included, in addition to t
 End-Use Sectors&lt;br&gt;
 -------------------------
 
-End-use consumers determine the total amount of energy that is consumed along with the mix of secondary fuels that supply this energy. In GCAM, there are three end-use sectors in each of the model’s fourteen regions: [Buildings](Buildings "wikilink"), [Industry](Industry "wikilink"), and [Transportation](Transportation "wikilink"). All end-use sectors are represented in detail in the U.S., as discussed below. In all other regions, detailed, service-based representations are used for the transportation sector and for the cement industry; all remaining industries and the buildings sector are represented in aggregate form. The detailed U.S. sectors were used as the basis for determination of key model parameters in the non-U.S. aggregate sectors. The detailed U.S. end use representations are discussed below.
+End-use consumers determine the total amount of energy that is consumed along with the mix of secondary fuels that supply this energy. In GCAM, there are three end-use sectors in each of the model’s fourteen regions: [Buildings](Buildings.md), [Industry](Industry.md), and [Transportation](Transportation.md). All end-use sectors are represented in detail in the U.S., as discussed below. In all other regions, detailed, service-based representations are used for the transportation sector and for the cement industry; all remaining industries and the buildings sector are represented in aggregate form. The detailed U.S. sectors were used as the basis for determination of key model parameters in the non-U.S. aggregate sectors. The detailed U.S. end use representations are discussed below.
 
 &lt;br&gt;It is important to distinguish between the two factors that drive the demand for energy: the demand for energy services and the technologies that consume fuels to provide these services. Examples of service demands include the demand for vehicle miles, the demand for process heat in industry, and the demands for space heating and cooling for residential buildings. In GCAM, the aggregate sectors determine the total quantity of aggregate service consumed according to a sector-based demand function, which grows in response to economic and population growth and responds to changes in the prices by which these services are delivered.
 
@@ -232,6 +233,6 @@ References
 
 &lt;references /&gt;&lt;br&gt;
 
-A complete set of references is available at&nbsp;[**References.**](References "wikilink")
+A complete set of references is available at&nbsp;[**References.**](References.md)
 
 &lt;br&gt; &lt;br&gt;

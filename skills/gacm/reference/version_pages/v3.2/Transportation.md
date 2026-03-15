@@ -5,12 +5,13 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Transportation.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/small&gt;
+&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
 
 GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping (see Figure 1). The overall approach is described in Kim et al. (2006)&lt;ref&gt;Kim, S.H., J.A. Edmonds, J. Lurz, S.J. Smith, and M. Wise (2006). “The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation.” Energy Journal 27: 63-91.&lt;/ref&gt;; a brief summary follows. Passenger services are represented in terms of passenger-kilometers, and freight and international shipping are represented in tonne-kilometers. Service intensities are represented in kilojoules per passenger- or tonne-kilometer, and are derived from exogenous vehicle intensities (i.e., kJ per passenger- or tonne-km) divided by exogenous load factors (i.e., persons or tonnes per vehicle). Costs are in dollars per passenger- or tonne-kilometer.&nbsp; Demands for passenger and freight transport services are determined by a constant elasticity function with endogenously determined transport service prices, income or income per capita, population, and price and income elasticities.&lt;br&gt;
 

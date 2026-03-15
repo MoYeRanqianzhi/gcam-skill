@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.3`.
 - Source root: `gcam-doc/v4.3`
 - Source path: `toc.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v4.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -27,5 +28,5 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Documentation for Older Versions of GCAM
 
-* [GCAM-3](v3.2/toc.md)
-* [GCAM-4.2](v4.2/toc.md)
+* [GCAM-3](../v3.2/toc.md)
+* [GCAM-4.2](../v4.2/toc.md)

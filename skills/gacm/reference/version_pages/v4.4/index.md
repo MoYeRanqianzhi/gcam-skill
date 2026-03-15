@@ -5,7 +5,7 @@ This directory is the page-level bundled reference set for GCAM `v4.4`.
 - Family: `compact-modern`
 - Coverage mode: `version-summary`
 - Source root: `gcam-doc/v4.4`
-- Page count: `16`
+- Page count: `17`
 
 Progressive-disclosure rule:
 - Start from the version route file.
@@ -17,6 +17,7 @@ Progressive-disclosure rule:
 ### root
 - `aglu.md`
 - `choice.md`
+- `Cycle-breaking-in-GCAM.md`
 - `data-system.md`
 - `en_technologies.md`
 - `energy.md`

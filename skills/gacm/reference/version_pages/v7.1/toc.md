@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `toc.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -62,13 +63,13 @@ Load this page when the user needs version-specific detail from this exact page 
 * [Community guidelines for peer-reviewed journal articles using GCAM](community-guide.md)
 * [References](references.md)
 * [Updates from the Previous Release](updates.md)
-* [GCAM-3](v3.2/toc.md)
-* [GCAM-4.2](v4.2/toc.md)
-* [GCAM-4.3](v4.3/toc.md)
-* [GCAM-4.4](v4.4/toc.md)
-* [GCAM-5.1](v5.1/toc.md)
-* [GCAM-5.2](v5.2/toc.md)
-* [GCAM-5.3](v5.3/toc.md)
-* [GCAM-5.4](v5.4/toc.md)
-* [GCAM-6.0](v6.0/toc.md)
-* [GCAM-7.0](v7.0/toc.md)
+* [GCAM-3](../v3.2/toc.md)
+* [GCAM-4.2](../v4.2/toc.md)
+* [GCAM-4.3](../v4.3/toc.md)
+* [GCAM-4.4](../v4.4/toc.md)
+* [GCAM-5.1](../v5.1/toc.md)
+* [GCAM-5.2](../v5.2/toc.md)
+* [GCAM-5.3](../v5.3/toc.md)
+* [GCAM-5.4](../v5.4/toc.md)
+* [GCAM-6.0](../v6.0/toc.md)
+* [GCAM-7.0](../v7.0/toc.md)

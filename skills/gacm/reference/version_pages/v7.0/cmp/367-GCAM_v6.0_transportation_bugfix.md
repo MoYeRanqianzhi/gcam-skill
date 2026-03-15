@@ -1,0 +1,13 @@
+# 367-GCAM v6.0 transportation bugfix
+
+Bundled CMP trace page for GCAM `v7.0`.
+
+- Coverage mode: `cmp trace page`
+- Source root: `gcam-doc/v7.0`
+- Original linked asset: `cmp/367-GCAM_v6.0_transportation_bugfix.pdf`
+- Version page index: `version_pages/v7.0/INDEX.md`
+
+This bundle stores a trace page instead of the original binary PDF asset.
+
+## Source Trace
+- `cmp/367-GCAM_v6.0_transportation_bugfix.pdf`

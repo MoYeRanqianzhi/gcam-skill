@@ -5,14 +5,15 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Electricity.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;span class="Apple-style-span" style="font-size: 11px; "&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/span&gt;
+&lt;span class="Apple-style-span" style="font-size: 11px; "&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/span&gt;
 
-&lt;span class="Apple-style-span" style="font-size: 11px; "&gt;[GCAM Revision History](GCAM_Revision_History "wikilink")&lt;/span&gt;Electricity generation in the [GCAM](Main_Page "wikilink") is represented at a relatively aggregate level, as historically development has focused on introducing new electricity generation technologies or improving the representation of existing technologies within the model. Accordingly, the electricity market in each model region is constructed as a single annual market for an average-priced electricity.&nbsp;In the US, additional detail has been added that splits the load curve among four generation segments: baseload, intermediate, peak, and subpeak&lt;ref&gt;Luckow P, MA Wise, and JJ Dooley. 2011. Deployment of CCS Technologies across the Load Curve for a Competitive fckLRElectricity Market as a Function of CO2 Emissions Permit Prices. In 10th International Conference on Greenhouse Gas fckLRControl Technologies, September 19-23, 2010, Amsterdam, The Netherlands. Energy Procedia, vol. 4, ed. J Gale, C fckLRHendriks, W Turkenberg, pp. 5762-5769. Elsevier, London, United Kingdom. <doi:10.1016/j.egypro.2011.02.572%3C/ref%3E>. Electricity pricing is based on the average total cost of new generation in each of these segments.
+&lt;span class="Apple-style-span" style="font-size: 11px; "&gt;[GCAM Revision History](GCAM_Revision_History.md)&lt;/span&gt;Electricity generation in the [GCAM](toc.md) is represented at a relatively aggregate level, as historically development has focused on introducing new electricity generation technologies or improving the representation of existing technologies within the model. Accordingly, the electricity market in each model region is constructed as a single annual market for an average-priced electricity.&nbsp;In the US, additional detail has been added that splits the load curve among four generation segments: baseload, intermediate, peak, and subpeak&lt;ref&gt;Luckow P, MA Wise, and JJ Dooley. 2011. Deployment of CCS Technologies across the Load Curve for a Competitive fckLRElectricity Market as a Function of CO2 Emissions Permit Prices. In 10th International Conference on Greenhouse Gas fckLRControl Technologies, September 19-23, 2010, Amsterdam, The Netherlands. Energy Procedia, vol. 4, ed. J Gale, C fckLRHendriks, W Turkenberg, pp. 5762-5769. Elsevier, London, United Kingdom. <doi:10.1016/j.egypro.2011.02.572%3C/ref%3E>. Electricity pricing is based on the average total cost of new generation in each of these segments.
 
 The technology characteristics detailed here apply to both the detailed US electricity market as well as the aggregrate electricity markets in other regions.
 

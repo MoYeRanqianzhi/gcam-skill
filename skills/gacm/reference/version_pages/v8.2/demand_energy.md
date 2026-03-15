@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `demand_energy.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -75,7 +76,7 @@ Residential floorspace, building service and energy demand, and direct GHG and a
 
 After testing alternative functional forms, the Gompertz-type function resulted to be the best alternative to fit the cross-regional observed data for all regions with different incomes and population densities. Additional details and parameters on the function are below. Note that total region-level residential floorspace is calculated by adding up the floorspace across different socioeconomic groups. Floorspace for each group is the product between per capita floorspace and subregional population. 
 
-**Commercial floorspace** depends on population, income, and exogenously specified satiation levels. It is estimated using the “satiation demand” function, described in [Eom et al. 2013]( https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
+**Commercial floorspace** depends on population, income, and exogenously specified satiation levels. It is estimated using the “satiation demand” function, described in [Eom et al. 2013](https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
 
 Finally, note that GCAM also includes the option to specify [floorspace exogenously](details_energy.md#optional-exogenous-floorspace).
 
@@ -175,14 +176,14 @@ Image reference: html-image (gcam-figs/Nfertilizer.png)<br/>
 
 The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.md#doe2015).
 
-More details can be found in [CMP #389](cmp/389-Ammonia_Trade.pdf).
+More details can be found in [CMP #389](cmp/389-Ammonia_Trade.md).
 
 #### Food processing
  The food processing sector is highly heterogeneous, generating outputs ranging from dairy products and canned fruits to baked goods and prepared meals using a wide range of processes. Most energy use in the sector is for low temperature heat, primarily process heating and drying. Though energy consumption per dollar value of product tends to be low, food processing is a large source of manufacturing energy demand in some regions. More importantly, the food processing sector plays a unique role in bridging the energy and agri-food sectors. It transforms raw or primary agricultural materials into processed consumer-ready products, thus augmenting the value of the agri-food supply chain and constituting a significant proportion of the total food cost.  
 
 The food processing sector is disaggregated from the "other industry" to allow a more sophisticated representation of the sector. This sector includes all of the technology and fuel options for heat production. Thus, the overall food processing sector then takes in both process heat food processing and a direct input of electricity, with the latter representing all non-heating uses of electricity. Also, the sector is linked to the food demand module, such that calorie consumption sets the demand for food processing energy use, with regionally varying coefficients of energy demand per calorie consumed.
 
-More details can be found in [CMP #377](cmp/377-FoodProcessing.pdf).
+More details can be found in [CMP #377](cmp/377-FoodProcessing.md).
 
 Image reference: html-image (gcam-figs/FoodProc.png)<br/>
 **Structure of the food processing sector, including technologies and fuels used for process heat generation, inputs to the overall food processing sector, and the link to food demand.  The left side of the diagram indicates the division of energy demands into process heating and electricity; the right side shows the sources of process heat represented in the model. Combined heat and power technologies, also known as cogeneration technologies, are abbreviated as cogen in this figure.**

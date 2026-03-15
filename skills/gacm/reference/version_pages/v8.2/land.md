@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `land.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -95,7 +96,7 @@ The `q3_value` is the default for GCAM since it is the most representative of th
 
 Note that the user can also change the data source for carbon densities itself to use the Houghton (1999) carbon densities by changing the parameter `aglu.CARBON_DATA_SOURCE` to "houghton" in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L368).  
 
-Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described in the [moirai Github repo]( https://github.com/JGCRI/moirai/tree/master/ancillary).
+Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described in the [moirai Github repo](https://github.com/JGCRI/moirai/tree/master/ancillary).
 
 ## Equations 
 
@@ -228,7 +229,7 @@ In a policy regime, we can choose to put a price on land-use change CO<sub>2</su
 
 An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).  
 
-Since GCAM `v7.1`, the method for implementing land carbon policy has been updated to allow setting a minimum threshold for carbon density. This ensures that only land with carbon density higher than the threshold is credited. The default assumption is to set the threshold for soil carbon density in a region-basin to the carbon density value of the cropland in the same region-basin. In particular, the option of `Min_Soil_C_at_Cropland = TRUE` to the function of `add_carbon_info` in gcamdata. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
+Since GCAM `v7.1`, the method for implementing land carbon policy has been updated to allow setting a minimum threshold for carbon density. This ensures that only land with carbon density higher than the threshold is credited. The default assumption is to set the threshold for soil carbon density in a region-basin to the carbon density value of the cropland in the same region-basin. In particular, the option of `Min_Soil_C_at_Cropland = TRUE` to the function of `add_carbon_info` in gcamdata. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.md).
 
 ### Bioenergy Constraints
 

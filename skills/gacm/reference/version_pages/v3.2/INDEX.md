@@ -5,7 +5,7 @@ This directory is the page-level bundled reference set for GCAM `v3.2`.
 - Family: `legacy-wiki`
 - Coverage mode: `version-summary`
 - Source root: `gcam-doc/v3.2`
-- Page count: `24`
+- Page count: `29`
 
 Progressive-disclosure rule:
 - Start from the version route file.
@@ -15,12 +15,14 @@ Progressive-disclosure rule:
 ## Bundled Pages
 
 ### root
+- `Agriculture,_Land-Use,_and_Bioenergy.md`
 - `Agriculture_Land-Use_and_Bioenergy.md`
 - `Buildings.md`
 - `Compiling_GCAM.md`
 - `Cycle-breaking_in_GCAM.md`
 - `Economic_land_sharing.md`
 - `Electricity.md`
+- `gcam-build.md`
 - `gcam-doc-options.md`
 - `GCAM-MPI_Message_Specifications.md`
 - `GCAM-parallel.md`
@@ -29,6 +31,8 @@ Progressive-disclosure rule:
 - `GCAM_Revision_History.md`
 - `GCAM_Solver.md`
 - `Getting_Started_with_GCAM.md`
+- `hector.md`
+- `index.md`
 - `Industry.md`
 - `Minimum_system_requirements_for_GCAM.md`
 - `Nested_logit_architecture.md`
@@ -39,3 +43,4 @@ Progressive-disclosure rule:
 - `The_Energy_System.md`
 - `toc.md`
 - `Transportation.md`
+- `user-guide.md`

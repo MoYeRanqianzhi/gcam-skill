@@ -5,12 +5,13 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Regional_Scope_Socioeconomics_and_Trade.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/small&gt;
+&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
 
 GCAM is a multi‐regional dynamic-recursive model which couples a simple economic growth model with detailed energy system, agriculture system-land-use-terrestrial-carbon-cycle model and a simple atmosphere-ocean-climate model, MAGICC.
 
@@ -57,7 +58,7 @@ Image reference: untitled image (images/GCAMRegions.png "GCAMRegions.png")
 
 &lt;br&gt;
 
-The agriculture and land-use system are divided into 151 subregions based on the GTAP-AEZs.&lt;ref name="Monfreda"&gt;Monfreda, Chad, Navin Ramankutty and Thomas Hertel (2007). "Global Agricultural Land Use Data for Climate Change Analysis" in Economic Analysis of Land Use in Global Climate Change Policy (eds: Tom Hertel, Steven Rose, Richard Tol).&lt;/ref&gt; &nbsp;These regions are discussed further in the [Agriculture, Land-Use, and Bioenergy](Agriculture,_Land-Use,_and_Bioenergy "wikilink") documentation.
+The agriculture and land-use system are divided into 151 subregions based on the GTAP-AEZs.&lt;ref name="Monfreda"&gt;Monfreda, Chad, Navin Ramankutty and Thomas Hertel (2007). "Global Agricultural Land Use Data for Climate Change Analysis" in Economic Analysis of Land Use in Global Climate Change Policy (eds: Tom Hertel, Steven Rose, Richard Tol).&lt;/ref&gt; &nbsp;These regions are discussed further in the [Agriculture, Land-Use, and Bioenergy](Agriculture_Land-Use_and_Bioenergy.md) documentation.
 
 Socioeconomics&lt;br&gt;
 ------------------------

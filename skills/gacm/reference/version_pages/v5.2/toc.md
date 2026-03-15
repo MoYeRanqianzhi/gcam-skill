@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.2`.
 - Source root: `gcam-doc/v5.2`
 - Source path: `toc.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v5.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -33,8 +34,8 @@ Load this page when the user needs version-specific detail from this exact page 
 * [GCAM Developer's Guide](dev-guide.md)
 * [GCAM Fusion Usage Guide](fusion.md)
 * [Updates from the Previous Release](updates.md)
-* [GCAM-3](v3.2/toc.md)
-* [GCAM-4.2](v4.2/toc.md)
-* [GCAM-4.3](v4.3/toc.md)
-* [GCAM-4.4](v4.4/toc.md)
-* [GCAM-5.1](v5.1/toc.md)
+* [GCAM-3](../v3.2/toc.md)
+* [GCAM-4.2](../v4.2/toc.md)
+* [GCAM-4.3](../v4.3/toc.md)
+* [GCAM-4.4](../v4.4/toc.md)
+* [GCAM-5.1](../v5.1/toc.md)

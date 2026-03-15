@@ -5,12 +5,13 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Buildings.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r4438. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/small&gt;
+&lt;small&gt;[*This page is valid for GCAM 3.0 r4438. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
 
 The buildings final demand in each region is represented by two type: commercial and residential, each with three services: heating, cooling, and other. The service-based model for represents the change in building energy consumption as the expansion of building floorspace and of various energy services delivered to the floorspace. We have established the capability to relate changing climate to heating and cooling energy consumption in the sector.
 

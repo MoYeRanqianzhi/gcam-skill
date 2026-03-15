@@ -5,12 +5,13 @@ Bundled adapted source page for GCAM `v5.4`.
 - Source root: `gcam-doc/v5.4`
 - Source path: `updates.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v5.4/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-GCAM v5.4: [Image reference: DOI (https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)](https://doi.org/10.5281/zenodo.5093192)
+GCAM v5.4: DOI link: https://doi.org/10.5281/zenodo.5093192 (image: https://zenodo.org/badge/DOI/10.5281/zenodo.5093192.svg)
 
 Several changes have been made to GCAM since the last release version (v5.3). The key updates are:
  1. Updated technology costs for electricity and transportation technologies

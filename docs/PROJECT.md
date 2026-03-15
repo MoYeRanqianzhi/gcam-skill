@@ -26,6 +26,8 @@ The source material used to author the skill is documented in `skills/gacm/refer
 5. Use `scripts/doc_search.py --version <version>` or `--scope pages` to find authoritative bundled references quickly.
 6. For `v8.2`, treat the root `gcam-doc` tree as the bundled current full-topic baseline.
 7. For `delta-only` releases, answer using the exact release delta plus the minimum necessary bundled baseline topic docs.
+8. When a historical version links to a page absent from its own authoring subtree, use the bundled inherited page if present and cite its provenance note.
+9. When a page routes to a CMP PDF, use the bundled CMP trace page for provenance unless the user provides the original binary asset separately.
 
 ## Open Tasks
 - Keep the bundled version catalog aligned with upstream GCAM releases.
@@ -38,3 +40,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-15: Explicitly standardized `v8.2 = root gcam-doc full documentation tree` across routing, navigation, and family docs.
 - 2026-03-15: Expanded the reference layer into topic-specific bundled docs to improve progressive disclosure.
 - 2026-03-15: Added page-level bundled version trees under `reference/version_pages/` for full-tree versions and delta-specific page bundles for release-only versions.
+- 2026-03-15: Added inherited page bundles and CMP trace pages so all known version-linked routes remain portable and locally traceable without hardcoded external paths.

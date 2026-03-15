@@ -17,10 +17,11 @@
 1. Review changes in upstream GCAM sources and ecosystem tools.
 2. Update version metadata and regenerate `skills/gacm/reference/version_inventory.md` plus `skills/gacm/reference/versions/`.
 3. Regenerate page-level bundled version trees with `skills/gacm/scripts/generate_bundled_pages.py`.
-4. Update bundled topic docs in `skills/gacm/reference/`, keeping `v8.2` root coverage explicit and traceable.
-5. Update SOP steps in `skills/gacm/SKILL.md` as needed.
-6. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
-7. Commit and tag.
+4. Validate bundled page links with `skills/gacm/scripts/validate_bundled_pages.py`.
+5. Update bundled topic docs in `skills/gacm/reference/`, keeping `v8.2` root coverage explicit and traceable.
+6. Update SOP steps in `skills/gacm/SKILL.md` as needed.
+7. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
+8. Commit and tag.
 
 ## Testing Notes
 - No automated tests included yet.
@@ -29,3 +30,11 @@
 - Validate page-bundle lookups by running `scripts/doc_search.py --version <version> --scope pages --pattern <term>`.
 - Re-run generation after changing `version_catalog.py` so `version_inventory.md` and `versions/*.md` stay in sync with the topic set.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
+- Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable.
+
+## Page Bundle Rules
+- Treat the root `gcam-doc` tree as bundled `v8.2`.
+- Preserve progressive disclosure: route through `versions/<version>.md`, then `version_pages/<version>/INDEX.md`, then exact page files.
+- When a version tree links to a page that is missing from that version's authoring snapshot, generate a clearly labeled `inherited page bundle` from the nearest traceable source rather than dropping the route.
+- When a page links to a non-bundled local CMP PDF, generate a clearly labeled `cmp trace page` instead of pretending the binary asset is bundled.
+- Historical site-root links such as `../toc.html` must route to bundled `v8.2/toc.md`, not to a non-existent synthetic root file.

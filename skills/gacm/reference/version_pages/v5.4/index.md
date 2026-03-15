@@ -5,7 +5,7 @@ This directory is the page-level bundled reference set for GCAM `v5.4`.
 - Family: `modern-comprehensive`
 - Coverage mode: `version-summary`
 - Source root: `gcam-doc/v5.4`
-- Page count: `44`
+- Page count: `59`
 
 Progressive-disclosure rule:
 - Start from the version route file.
@@ -14,9 +14,22 @@ Progressive-disclosure rule:
 
 ## Bundled Pages
 
+### dev-guide
+- `dev-guide/additional_info.md`
+- `dev-guide/analysis.md`
+- `dev-guide/debug.md`
+- `dev-guide/examples.md`
+- `dev-guide/getting_started.md`
+- `dev-guide/git.md`
+- `dev-guide/review.md`
+- `dev-guide/style.md`
+- `dev-guide/test_framework.md`
+
 ### root
+- `aglu.md`
 - `choice.md`
 - `common_assumptions.md`
+- `Cycle-breaking-in-GCAM.md`
 - `data-system.md`
 - `demand_energy.md`
 - `demand_land.md`
@@ -31,6 +44,7 @@ Progressive-disclosure rule:
 - `economy.md`
 - `emissions.md`
 - `en_technologies.md`
+- `energy.md`
 - `fusion.md`
 - `gcam-build.md`
 - `gcam-usa.md`
@@ -41,6 +55,7 @@ Progressive-disclosure rule:
 - `inputs_land.md`
 - `inputs_supply.md`
 - `land.md`
+- `macro-econ.md`
 - `marketplace.md`
 - `outputs_emissions.md`
 - `outputs_land.md`
@@ -57,5 +72,7 @@ Progressive-disclosure rule:
 - `supply_land.md`
 - `supply_water.md`
 - `toc.md`
+- `trade.md`
 - `updates.md`
 - `user-guide.md`
+- `water.md`

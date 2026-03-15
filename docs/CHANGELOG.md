@@ -12,3 +12,7 @@
 - Expanded the bundled reference layer with dedicated topic docs for assumptions, choice/marketplace, energy, land, water, economy, emissions/climate, developer workflows, and coverage mapping.
 - Added page-level bundled version trees for all full-tree versions and delta-specific page bundles for release-only versions.
 - Added `generate_bundled_pages.py` and page-bundle-aware search paths in `doc_search.py`.
+- Reworked page-bundle generation so historical wiki links, `.html` links, cross-version TOC links, and old anchor patterns are normalized into portable bundled markdown links.
+- Added automatic inherited page bundles for version-linked pages missing from a version's authoring snapshot, with explicit provenance notes instead of silent omission.
+- Added automatic CMP trace pages so local CMP PDF references remain traceable without pretending the binary assets are bundled.
+- Added `validate_bundled_pages.py` and brought bundled page markdown link validation to a clean pass.

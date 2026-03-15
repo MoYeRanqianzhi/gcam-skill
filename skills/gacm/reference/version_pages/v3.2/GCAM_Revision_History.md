@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `GCAM_Revision_History.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -13,7 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 Version History
 ---------------
 
-GCAM developers use a version control system to manage revisions to the model.&nbsp;Since the transition from MiniCAM to [GCAM](Main_Page "wikilink"), there have been three major releases of the model, as well as hundreds of minor revisions.&lt;br&gt;
+GCAM developers use a version control system to manage revisions to the model.&nbsp;Since the transition from MiniCAM to [GCAM](toc.md), there have been three major releases of the model, as well as hundreds of minor revisions.&lt;br&gt;
 
 ### GCAM 1.0
 

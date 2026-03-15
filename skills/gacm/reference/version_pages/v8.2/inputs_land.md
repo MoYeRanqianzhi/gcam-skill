@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Source root: `gcam-doc root tree`
 - Source path: `inputs_land.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v8.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -58,7 +59,7 @@ The soil time scale is provided in [A_soil_time_scale_R.csv](https://github.com/
 
 #### Value of Unmanaged Land
 
-The unmanaged land value is directly computed based on GCAM data since it is more consistent and avoids potential aggregation uncertainties in processing the dated SAGE-GTAP data. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
+The unmanaged land value is directly computed based on GCAM data since it is more consistent and avoids potential aggregation uncertainties in processing the dated SAGE-GTAP data. See additional details in [CMP #393](cmp/393-AgLU_Parameters_Update.md).
 
 #### Share Parameters
 The logit exponents used in the land allocation module are provide in [A_LandNode_logit.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_LandNode_logit.csv) and [A_LandNode_logit_irr.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/A_LandNode_logit_irr.csv).

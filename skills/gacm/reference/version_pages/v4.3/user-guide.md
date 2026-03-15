@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v4.3`.
 - Source root: `gcam-doc/v4.3`
 - Source path: `user-guide.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v4.3/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 

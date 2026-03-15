@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Source root: `gcam-doc/v7.0`
 - Source path: `land.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v7.0/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -95,7 +96,7 @@ The `q3_value` is the default for GCAM since it is the most representative of th
 
 Note that the user can also change the data source for carbon densities itself to use the Houghton (1999) carbon densities by changing the parameter `aglu.CARBON_DATA_SOURCE` to "houghton" in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L368).  
 
-Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described in the [moirai Github repo]( https://github.com/JGCRI/moirai/tree/master/ancillary).
+Users interested in the `moirai` processing of the input data can refer to the detailed harmonization process described in the [moirai Github repo](https://github.com/JGCRI/moirai/tree/master/ancillary).
 
 ## Equations 
 

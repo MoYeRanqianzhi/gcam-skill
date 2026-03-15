@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Source root: `gcam-doc/v7.1`
 - Source path: `supply_energy.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v7.1/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -72,7 +73,7 @@ Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropow
 ##### Biomass
 
 While most of the effort in modeling biomass supply is in the [agriculture and land use component](land.md), there is a renewable resource represented in the energy system, that generally refers to municipal and industrial wastes that can be used for energy purposes. The supply curves use the same functional form as described in the Wind section above, and the specific quantities are documented in [Gregg and Smith (2010)](supply_energy.md#gregg2010). Unlike other resources, the waste biomass supply curve is assumed to grow with GDP, as prescribed by the exogenous supply elasticity of GDP, or "gdpSupplyElast". 
-The supply curve of the residual biomass is updated (in GCAM `v7.1`) based on information in [Hanssen et al. (2020)](https://doi.org/10.1007/s10584-019-02539-x), see [CMP #393](cmp/393-AgLU_Parameters_Update.pdf).
+The supply curve of the residual biomass is updated (in GCAM `v7.1`) based on information in [Hanssen et al. (2020)](https://doi.org/10.1007/s10584-019-02539-x), see [CMP #393](cmp/393-AgLU_Parameters_Update.md).
 
 ##### Traditional biomass
 

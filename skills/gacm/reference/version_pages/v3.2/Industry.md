@@ -5,12 +5,13 @@ Bundled adapted source page for GCAM `v3.2`.
 - Source root: `gcam-doc/v3.2`
 - Source path: `Industry.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v3.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 
 ---
 
-&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History "wikilink")&lt;/small&gt;
+&lt;small&gt;[*This page is valid for GCAM 3.0 r3371. Click here for info on how to view a previous version.*](GCAM_Revision_History.md)&lt;/small&gt;
 
 The industrial sector in GCAM&nbsp;includes the following:&nbsp;manufacturing industries, energy use by the agriculture, construction, and mining industries (including energy used in primary energy production), as well as any energy consumed for energy transformation other than electricity generation and fuel refining (e.g. charcoal plants, coke ovens). Fossil fuels used as feedstocks (i.e., not combusted) are tracked separately from energy use.&lt;br&gt;
 

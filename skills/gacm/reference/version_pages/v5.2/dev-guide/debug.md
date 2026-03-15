@@ -5,6 +5,7 @@ Bundled adapted source page for GCAM `v5.2`.
 - Source root: `gcam-doc/v5.2`
 - Source path: `dev-guide/debug.md`
 - Coverage mode: `full-tree page bundle`
+- Version page index: `version_pages/v5.2/INDEX.md`
 
 Load this page when the user needs version-specific detail from this exact page family.
 

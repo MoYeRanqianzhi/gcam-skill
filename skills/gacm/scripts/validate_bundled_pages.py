@@ -18,6 +18,8 @@ from version_catalog import VERSION_PAGES_ROOT
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
+NBSP_CHAR_RE = re.compile("\u00a0")
+ZERO_WIDTH_CHAR_RE = re.compile(r"[\u200b\u200c\u200d\ufeff]")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 RAW_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 RAW_HTML_IMG_RE = re.compile(r"<img\b", re.IGNORECASE)
@@ -113,7 +115,8 @@ def main() -> int:
                 "Case-insensitive bundled page path collision remains: " + " | ".join(items)
             )
     for page in roots:
-        text = strip_code_fences(page.read_text(encoding="utf-8", errors="ignore"))
+        raw_text = page.read_text(encoding="utf-8", errors="ignore")
+        text = strip_code_fences(raw_text)
         text_without_inline = strip_inline_code(text)
         for match in LINK_RE.finditer(text):
             raw_target = match.group(1).strip()
@@ -183,6 +186,10 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> broken double-bracket reference link markup remains")
         if RAW_TEXT_ENTITY_RE.search(text_without_inline):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> html entity residue remains outside inline code")
+        if NBSP_CHAR_RE.search(raw_text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> non-breaking space character remains")
+        if ZERO_WIDTH_CHAR_RE.search(raw_text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> zero-width unicode character remains")
         for line_no, line in enumerate(text.splitlines(), start=1):
             normalized_line = normalize_portability_line(line)
             if (

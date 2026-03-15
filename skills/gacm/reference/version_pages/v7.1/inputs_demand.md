@@ -233,5 +233,3 @@ Parameters needed for the food demand module are determined by a separate model,
 <a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577–1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
 
 <a name="vassolo2005"></a>[Vassolo and Döll 2005] Vassolo, S., and Döll, P. 2005. Global-scale gridded estimates of thermoelectric power and manufacturing water use. *Water Resources Research* 41, W04010. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)
-
-​

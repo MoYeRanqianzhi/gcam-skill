@@ -171,6 +171,7 @@ HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
 MISATTACHED_CODE_FENCE_RE = re.compile(r"(?<![\r\n])```")
+ZERO_WIDTH_CHAR_RE = re.compile(r"[\u200b\u200c\u200d\ufeff]")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
 IMAGE_PLACEHOLDER_RE = re.compile(r"\[\[IMAGE_OMITTED:([^\]]+)\]\]")
@@ -925,6 +926,12 @@ def sanitize_absolute_paths(text: str) -> str:
     text = WINDOWS_JAVA_LIB_RE.sub(r"<JAVA_HOME>\\lib", text)
     text = WINDOWS_JAVA_HOME_RE.sub("<JAVA_HOME>", text)
     text = POSIX_USER_HOME_RE.sub("<USER_HOME>", text)
+    return text
+
+
+def normalize_problem_unicode_whitespace(text: str) -> str:
+    text = text.replace("\u00a0", " ")
+    text = ZERO_WIDTH_CHAR_RE.sub("", text)
     return text
 
 
@@ -2043,6 +2050,7 @@ def apply_outside_code_fences(text: str, transform) -> str:
 
 
 def sanitize_body(text: str, version: str, rel_source: Path) -> str:
+    text = normalize_problem_unicode_whitespace(text)
     text = rewrite_images(text)
     text = MISATTACHED_CODE_FENCE_RE.sub("\n```", text)
     text = apply_outside_code_fences(

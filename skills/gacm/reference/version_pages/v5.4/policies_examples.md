@@ -88,22 +88,22 @@ Linked policies are used to tie the price of one policy to another. In the examp
 
 ```
 <scenario>
-   <world>
-      <region name="USA">
-         <linked-ghg-policy name="CO2">
-            <price-adjust fillout="1" year="1975">1</price-adjust>
-            <demand-adjust fillout="1" year="1975">3.667</demand-adjust>
-            <market>global</market>
-            <linked-policy>GHG</linked-policy>
-            <price-unit>1990$/tC</price-unit>
-            <output-unit>MtC</output-unit>
-         </linked-ghg-policy>
-         <linked-ghg-policy name="CH4">
-            <price-adjust fillout="1" year="1975">5.7272</price-adjust>
-            <demand-adjust fillout="1" year="1975">21</demand-adjust>
-            <market>global</market>
-            <linked-policy>GHG</linked-policy>
-            <price-unit>1990$/GgCH4</price-unit>
+   <world>
+      <region name="USA">
+         <linked-ghg-policy name="CO2">
+            <price-adjust fillout="1" year="1975">1</price-adjust>
+            <demand-adjust fillout="1" year="1975">3.667</demand-adjust>
+            <market>global</market>
+            <linked-policy>GHG</linked-policy>
+            <price-unit>1990$/tC</price-unit>
+            <output-unit>MtC</output-unit>
+         </linked-ghg-policy>
+         <linked-ghg-policy name="CH4">
+            <price-adjust fillout="1" year="1975">5.7272</price-adjust>
+            <demand-adjust fillout="1" year="1975">21</demand-adjust>
+            <market>global</market>
+            <linked-policy>GHG</linked-policy>
+            <price-unit>1990$/GgCH4</price-unit>
 	...
 ```
 

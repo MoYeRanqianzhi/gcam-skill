@@ -39,13 +39,13 @@ DBXML libraries:
 1. In building dbxml, I got a compile error that says:
 
 ```
-   In file included from ../src/framework/ReferenceCounted.cpp:24:0:
-   ../include/xqilla/framework/XPath2MemoryManager.hpp:90:11: error: ‘ptrdiff_t’ does not name a type
+   In file included from ../src/framework/ReferenceCounted.cpp:24:0:
+   ../include/xqilla/framework/XPath2MemoryManager.hpp:90:11: error: ‘ptrdiff_t’ does not name a type
 
 ```
 
    I found a fix, which worked for me. Just insert:
-   `#include <cstddef>` before the line of `#include <algorithm>` in
+   `#include <cstddef>` before the line of `#include <algorithm>` in
    `../include/xqilla/framework/XPath2MemoryManager.hpp`
 
 2. Building with --enable-java resulting in a java failure during
@@ -53,7 +53,7 @@ DBXML libraries:
    memory:
 
 ```bash
-   export _JAVA_OPTIONS="-Xmx256M"
+   export _JAVA_OPTIONS="-Xmx256M"
 
 ```
 
@@ -63,9 +63,9 @@ required third party libraries (the following commands may need to be
 adjusted depending on your shell):
 
 ```bash
-export DBXML_LIB=<DBXML directory>/dbxml-2.5.16/install/lib
-export DBXML_INCLUDE=<DBXML directory>/dbxml-2.5.16/install/include`
-export BOOST_INCLUDE=<GCAM directory>/Main_User_Workspace/libs/boost-lib
+export DBXML_LIB=<DBXML directory>/dbxml-2.5.16/install/lib
+export DBXML_INCLUDE=<DBXML directory>/dbxml-2.5.16/install/include`
+export BOOST_INCLUDE=<GCAM directory>/Main_User_Workspace/libs/boost-lib
 ```
 
 The makefile is located under: `<GCAM directory>/Main_User_Workspace/cvs/objects/build/linux`

@@ -237,6 +237,6 @@ Agriculture and Land Use
 | uncontrolled-emiss-coef                                                                         | /supplysector/subsector/technology/generic-ghg/                                                                  | Emissions coefficient with no emissions controls applied                                          | kg gas / GJ driver\*                                                                       | 0                                                                                             |                                                                                             |
 |                                                                                                 |
 
-`*Hi-GWP gases (HFCs, PFCs, and SF6) are indicated in Gg, not Tg; coefs are accordingly in g gas / GJ driver  `
+`*Hi-GWP gases (HFCs, PFCs, and SF6) are indicated in Gg, not Tg; coefs are accordingly in g gas / GJ driver  `
 
-`**These parameters are also found in /depresource/subresource/  `
+`**These parameters are also found in /depresource/subresource/  `

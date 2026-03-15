@@ -68,7 +68,7 @@ GCAM-parallel adds one additional parameter, `parallel-grain-size`, to
 the GCAM configuration file. It is set in the "ints" section of the
 main configuration file:
 ```
-<Value name="parallel-grain-size">5</Value>
+<Value name="parallel-grain-size">5</Value>
 ```
 
 This parameter controls the target grain size in the parallel
@@ -128,21 +128,21 @@ system does not attempt to run more than one GCAM instance per
 node. The best way to do this is to put the following in your batch
 script:
 <code>
-#PBS -l nodes=1
+#PBS -l nodes=1
 
-#PBS -l walltime=10:00
+#PBS -l walltime=10:00
 
-#PBS -l pmem=40gb
+#PBS -l pmem=40gb
 
-#PBS -A gcam
+#PBS -A gcam
 
-set bindir=/lustre/data/rpl/gcam-parallel/exe
+set bindir=/lustre/data/rpl/gcam-parallel/exe
 
-set wdir=$bindir
+set wdir=$bindir
 
-cd $wdir
+cd $wdir
 
-time gcam.exe -Cconfig-g500.xml -Llconf-g500.xml
+time gcam.exe -Cconfig-g500.xml -Llconf-g500.xml
 
 </code>
 By reserving 40GB of memory for each GCAM-parallel process, you will
@@ -228,12 +228,12 @@ A parallel model evaluation is invoked by calling `World::calc()` with
 a second argument that is a pointer to a TBB flow graph. The prototype
 for this call is:
 
-`   void World::calc(int period, GcamFlowGraph *work_graph);`
+`   void World::calc(int period, GcamFlowGraph *work_graph);`
 
 The World class stores a pointer to the global flow graph, so full
 model evaluations can be run by calling:
 
-`   world->calc(aPeriod, world->getGlobalFlowGraph());`
+`   world->calc(aPeriod, world->getGlobalFlowGraph());`
 
 In principle, partial model evaluations (such as those that occur when
 computing partial derivatives) could be accomplished by creating a
@@ -243,8 +243,8 @@ functions currently do not generate any partial flow graphs. Partial
 evaluations can be performed serially by calling the standard version
 of `World::calc()`:
 
-`   const std::vector<IActivity*>& affectedNodes = mkts[partj].getDependencies();`
-`   world->calc(period, affectedNodes);`
+`   const std::vector<IActivity*>& affectedNodes = mkts[partj].getDependencies();`
+`   world->calc(period, affectedNodes);`
 
 There is also a mechanism for passing a mask that allows you to run
 the global flow graph while skipping undesired nodes.

@@ -28,7 +28,7 @@ various sectors and activities that it models.  This is convenient for setting
 up the abstractions and relationships with in the model; however it does not
 make it easy or convenient to get data in and out of the model.  We generally
 set inputs data once at the start of the model by parsing the XML input
-files.  We retrieve data mostly through the use of custom visitors at the end of
+files.  We retrieve data mostly through the use of custom visitors at the end of
 a scenario, or after the run has completed via an XML database.
 
 These limitations have been a hinderance for modelers who would like to
@@ -337,9 +337,9 @@ into your .cpp file:
 #include "util/base/include/gcam_data_containers.h"
 ```
 
-Be aware that including GCAMFusion essentially includes the *entire* model.  This
+Be aware that including GCAMFusion essentially includes the *entire* model.  This
 is because it needs to be able to search and traverse potentially any object in
-the model.  This will lead to a long compile time for any source file that
+the model.  This will lead to a long compile time for any source file that
 includes it.  Therefore, you should try to isolate code that uses these
 capabilities in a small number of fusion-aware translation units.
 
@@ -378,15 +378,15 @@ struct GatherEmiss {
 ```
 
 We now have everything we need to use the GCAM Fusion interface.
-The `GCAMFusion` object takes four template parameters:
+The `GCAMFusion` object takes four template parameters:
 
 -   The handler object that we just defined.
 -   A boolean flag to indicate whether the handler will process the start of each
-    step taken into a `CONTAINER` object (default is `false`).
+    step taken into a `CONTAINER` object (default is `false`).
 -   A boolean flag to indicate whether the handler will process stepping out of
-    a `CONTAINER` object (default is false).
+    a `CONTAINER` object (default is false).
 -   A boolean flag to indicate whether the handler will process the data being found
-    (default is `true`).
+    (default is `true`).
 
 The last flag (the one that defaults to `true`) is the most common use case, and
 it's the only one we will use in this example.
@@ -431,7 +431,7 @@ syntax _similar_ (but not precisely identical) to XPath. Each
 value.
 
 As mentioned above, when GCAMFusion finds a result that matches the search it
-will call `processData` and the user can get or set the value as appropriate for
+will call `processData` and the user can get or set the value as appropriate for
 their needs:
 
 ```cpp
@@ -445,9 +445,9 @@ void GatherEmiss::processData<Value>( Value& aData ) {
 }
 ```
 GCAMFusion cannot know what the type of the result of the search is going to be
-ahead of time.  Searches are made at runtime while the code to handle the
-results are generated at compile time.  This is the reason the processData
-method must be templated.  Therefore, we create a template specialization for
+ahead of time.  Searches are made at runtime while the code to handle the
+results are generated at compile time.  This is the reason the processData
+method must be templated.  Therefore, we create a template specialization for
 the type we are expecting to be returned from our search (i.e., based on our
 prior knowledge of the model structure).  In this case we expect the appropriate
 type to be a `Value` class, so we provide a specialization for that type.  If
@@ -664,25 +664,25 @@ Some Documentation for Filter Steps
 ### FilterStep objects
 
 A FilterStep is the object that GCAMFusion uses to search a single GCAM
-container's data vector.  It can optionally specify a data name to match which
-is compared against the `Data::mDataName`.  If the data name in the FilterStep
+container's data vector.  It can optionally specify a data name to match which
+is compared against the `Data::mDataName`.  If the data name in the FilterStep
 is empty it is assumed to match *any* data name.
 
 The other optional parameter is a [Filter](#filter-objects).  Filter objects are
 valid for search targets that are containers for other objects.  Such containers
 are indicated with the `ARRAY` or `CONTAINER` flag.  If specified, a filter can
-be used to select any single element of the matched container.  If no filter is
+be used to select any single element of the matched container.  If no filter is
 specified, it is assumed to be `NoFilter`, which selects the entire
-container.  Note that if a Filter other than `NoFilter` is set, and the matched
+container.  Note that if a Filter other than `NoFilter` is set, and the matched
 object is not a container (i.e., has the `SIMPLE` flag, then the match will be
 rejected even if the data name matches.
 
 In addition if no data name and no filter is set then not only does this
 FilterStep match all data but it also enables special "descendant step"
 traversal behavior in GCAMFusion where the next FilterStep can be matched zero
-or more containers down.  This is analogous to the `//` operator in XPath
+or more containers down.  This is analogous to the `//` operator in XPath
 queries.  For example, if a 'sector' object has 'subsector' children, which in
-turn have 'technology' children of their own, then `sector//share-weight` will
+turn have 'technology' children of their own, then `sector//share-weight` will
 find data named 'share-weight' at both the subector and technology levels.  It
 would also find a share-weight object contained in the sector itself if there
 were any, but in this example there are no such matches; share weights are only
@@ -789,7 +789,7 @@ class Sector {
 ```
 
 In addition to the names, we need to be able to loop over the data members so
-that we could search for some particular member variable.  We need to tie each
+that we could search for some particular member variable.  We need to tie each
 of these varaibles together so we can know which variables to loop over:
 
 ```cpp
@@ -806,8 +806,8 @@ class Sector {
 ```
 
 We also need to be able to know that "subsector" is actually a container of data
-itself and not just some simple data object.  Thus these containers are
-identified by name or year, such as `/subsector[@name='coal']`.  In fact it
+itself and not just some simple data object.  Thus these containers are
+identified by name or year, such as `/subsector[@name='coal']`.  In fact it
 might be useful to note that the prices too can be filtered too even though it
 is not a container, such as `/price[@year=2010]`:
 
@@ -842,7 +842,7 @@ class PassThroughSector: public Sector {
 
 In order to treat these subclasses properly, GCAM Fusion will have to splice the
 lists of data from all the classes in the hierarchy together at run
-time.  Therefore, we need additional tags to provide the information it needs to
+time.  Therefore, we need additional tags to provide the information it needs to
 do that.
 
 ```cpp
@@ -882,8 +882,8 @@ To be clear, all of the code in this block is generated automatically from the
 input in the previous block; developers never have to handle it directly;
 they'll be using the constructs from the last section.
 
-You will notice that we use such classes as `Data<string, SIMPLE>` and
-`Data<Subsector*, CONTAINER>`.  These are just helper structs to let us tie
+You will notice that we use such classes as `Data<string, SIMPLE>` and
+`Data<Subsector*, CONTAINER>`.  These are just helper structs to let us tie
 together user facing names as well as potentially other meta data with a
 reference to the actual data being contained (such as string or Subsector\*).
 Here is how they are defined:
@@ -946,7 +946,7 @@ struct Data {
 };
 ```
 
-Then the type `DataVectorType` is a special kind of vector, one that can hold
+Then the type `DataVectorType` is a special kind of vector, one that can hold
 data of varying types, which can be looped over to process data in bulk.  These
 special types of vectors are provided by the
 [Boost Fusion library](http://www.boost.org/doc/libs/1_65_1/libs/fusion/doc/html/),
@@ -955,10 +955,10 @@ for mixed-type data, these "fusion" vectors allow us to perform algorithms at bo
 time and run time.
 
 Note that an instance of the DataVectorType is only created if the
-`generateDatatVector()` method is called (which should typically only be called
+`generateDatatVector()` method is called (which should typically only be called
 through GCAM Fusion via [ExpandDataVector](#expanddatavector)) thus there is no
 runtime overhead penalty imposed on GCAM except when calling GCAMFusion to
-search for data.  In addition this implies that all of the changes required to
+search for data.  In addition this implies that all of the changes required to
 allow for GCAM Fusion need only to be made in the header files by declaring
 variables as described above.
 
@@ -966,11 +966,11 @@ What to know when writing or updating a GCAM class
 --------------------------------------------------
 
 As mentioned earlier GCAM Fusion changes the way we declare member variables for
-GCAM classes.  Some of these changes are simply to associate meta information
+GCAM classes.  Some of these changes are simply to associate meta information
 that the GCAM Fusion tools can utilize to search and traverse the GCAM
-objects.  Other changes are actually just to ensure we have a uniform approach
+objects.  Other changes are actually just to ensure we have a uniform approach
 so that we may generate as much boiler plate code as possible without the need
-to special case.  Note while it is possible to not follow or utilize and of the
+to special case.  Note while it is possible to not follow or utilize and of the
 GCAM Fusion tools and coding standards and still create valid and usable GCAM
 objects it is *highly discouraged*. Although GCAM Fusion was originally
 developed to facilitate model coupling and feedbacks, we can (and, in
@@ -981,24 +981,24 @@ computation.
 
 ### Make all DATA definitions protected:
 
-All member variable definitions should be protected instead of private.  It may
+All member variable definitions should be protected instead of private.  It may
 be the case that PassThroughSector should not have access to change the mPrice
-of the Sector base class.   Unfortunately if we want to generically join the
+of the Sector base class.   Unfortunately if we want to generically join the
 Sector and PassThroughSector data vectors for introspection via GCAM Fusion the
 PassThroughSector needs access to the entire Sector data vector.
 
 ### Using the DEFINE\_DATA macros:
 
 We provide a utility header `#include
-"util/base/include/data_definition_util.h"` that defines the all of the tools
-for defining data members.  Generally these will be instantiated by using the
+"util/base/include/data_definition_util.h"` that defines the all of the tools
+for defining data members.  Generally these will be instantiated by using the
 following Macros:
 
 #### DEFINE\_DATA( ... ) and DEFINE\_DATA\_WITH\_PARENT( ... )
 
-These calls are used to wrap all of the class data member definitions.  A user
+These calls are used to wrap all of the class data member definitions.  A user
 must use the `DEFINE_DATA_WITH_PARENT` for any class that is derived from a
-base class.  Even if that base class is abstract with no data members.  The very
+base class.  Even if that base class is abstract with no data members.  The very
 first argument to the `DEFINE_DATA_WITH_PARENT` is the name of the direct
 parent of this subclass for instance:
 
@@ -1023,8 +1023,8 @@ class TranTechnology : public Technology {
 ```
 
 A user then would use `DEFINE_DATA` in the base class even if it is not going to
-define and data members.  The first argument to `DEFINE_DATA` must be a list of
-the name of the class then all possible subclasses of the class.  Note that
+define and data members.  The first argument to `DEFINE_DATA` must be a list of
+the name of the class then all possible subclasses of the class.  Note that
 classes that do not have any classes derive from them will still use this method
 and the subclass list will only contain itself.
 
@@ -1057,8 +1057,8 @@ class ITechnology: public IParsedComponent, private boost::noncopyable {
 ```
 
 Within the `DEFINE_DATA*` sections after the declarations related to the
-subclass tree navigation are the actual data member definitions.  They are
-listed one after the other separated by commas.  Each definition will use one of
+subclass tree navigation are the actual data member definitions.  They are
+listed one after the other separated by commas.  Each definition will use one of
 the following Macros depending on the nature of that data definition:
 
 ```cpp
@@ -1090,42 +1090,42 @@ class Sector {
 #### DEFINE\_VARIABLE with flag SIMPLE
 
 This is used to define a member variable that is just a piece of data such as
-ints, double, string, Value, etc.  More directly, you would want to use this
+ints, double, string, Value, etc.  More directly, you would want to use this
 definition tag if the member variable does not contain more data
-(i.e. `/price/logit-exponent` isn't valid) or can't be filtered
-(i.e. `/name[@year=2020]` isn't valid).
+(i.e. `/price/logit-exponent` isn't valid) or can't be filtered
+(i.e. `/name[@year=2020]` isn't valid).
 
 #### DEFINE\_VARIABLE with flag ARRAY
 
 This is used to define a member variable that is an array of simple data such as
-PeriodVector<Value> or vector<int>, etc.  More directly, you want to
+PeriodVector<Value> or vector<int>, etc.  More directly, you want to
 use this definition tag if the member variable does not contain more data
-(i.e. `/price/logit-exponent` isn't valid) but can be filtered
-(i.e. `/price[@year=2020]` is valid).
+(i.e. `/price/logit-exponent` isn't valid) but can be filtered
+(i.e. `/price[@year=2020]` is valid).
 
 #### DEFINE\_VARIABLE with flag CONTAINER
 
 This is used to define a member variable that is a container of more data such
-as Region, Sector, etc (i.e. `/discrete-choice-function/logit-exponent` is
-valid).  Note that the variable definition may be a vector, such as with
-subsector or just a single object such as with discrete-choice-function.  We
-just use the CONTAINER tag to handle both cases.  The reason is for container
+as Region, Sector, etc (i.e. `/discrete-choice-function/logit-exponent` is
+valid).  Note that the variable definition may be a vector, such as with
+subsector or just a single object such as with discrete-choice-function.  We
+just use the CONTAINER tag to handle both cases.  The reason is for container
 thery may be filtered by [NamedFilter](#filter-objects) or
-[YearFilter](#filter-objects).  If the data being held is
+[YearFilter](#filter-objects).  If the data being held is
 vector<Subsector\*> for instance this allows us to search only the one
-that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
+that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
 isn't a vector and just a single object it may still make sense to filter by
 name, such an example would be the climate model
 `/climate-model[@name='hector']`.
 
 #### DEFINE\_VARIABLE with flag SIMPLE | STATE or ARRAY | STATE
 
-The data flags can be combined with the vertical bar operator `|` if associating
-more tags may be useful.  Note Data **must** be tagged with one
-of `SIMPLE`, `ARRAY`, or `CONTAINER`.  Currently there is only one other flag
-defined to combine with those other flags: `STATE`.  In fact it only makes sense
-to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any Data
-definition who's data will get set during a call to `World::calc`, as described
+The data flags can be combined with the vertical bar operator `|` if associating
+more tags may be useful.  Note Data **must** be tagged with one
+of `SIMPLE`, `ARRAY`, or `CONTAINER`.  Currently there is only one other flag
+defined to combine with those other flags: `STATE`.  In fact it only makes sense
+to use `STATE` with `SIMPLE` or `ARRAY`.  You should add this flag to any Data
+definition who's data will get set during a call to `World::calc`, as described
 in [Centrally Managed State Variables](#centrally-managed-state-variables).
 
 ### Some side effects from the way we have done the data definitions
@@ -1133,10 +1133,10 @@ in [Centrally Managed State Variables](#centrally-managed-state-variables).
 No more use of smart pointers as data members
 
 These were dropped because it made detecting what the actual data was much more
-difficult (i.e. the type I need to know is `IDiscreteChoice*` not
-`std::auto_ptr<IDiscreteChoice*>`).  I could try harder if we want to put these
+difficult (i.e. the type I need to know is `IDiscreteChoice*` not
+`std::auto_ptr<IDiscreteChoice*>`).  I could try harder if we want to put these
 back in, it will result in a lot more template specialization and work
-arounds.  Also note `std::auto_ptr` is deprecated in favor of
+arounds.  Also note `std::auto_ptr` is deprecated in favor of
 `std::unique_ptr`.
 
 Centrally Managed State Variables
@@ -1144,60 +1144,60 @@ Centrally Managed State Variables
 
 A new feature that is enabled by GCAM Fusion, although otherwise unrelated, is
 tagging and collecting "state" variables into a central location where they can
-be managed for the purposes of partial derivative calculations.  By "state"
+be managed for the purposes of partial derivative calculations.  By "state"
 variables we refer to any variable whose value gets set during a call
-to `World::calc`.  Such an example would be `mPrice` of the `Sector` class as the
+to `World::calc`.  Such an example would be `mPrice` of the `Sector` class as the
 price of intermediate sectors are dynamically calculated as the share weighted
 cost of it's competing inputs.
 
 State variables are of interest since during partial derivative calculations we
 start from some "base" state, change just one price, re-run the model by
-calling `World::calc` with the new price, and record the change in all of the
+calling `World::calc` with the new price, and record the change in all of the
 supplies/demands.  Then we need to revert back to the base state before we can
 proceed with the next partial derivative.  This state includes more than just
 the input prices; it also includes all of the intermediate calculations such as
 demands and market shares.
 
-A naive approach would be to just call `World::calc` using the original prices
-from the "base" state.  However such a strategy would essentially double the
-number of computation required to calculate partial derivatives.  Instead GCAM
+A naive approach would be to just call `World::calc` using the original prices
+from the "base" state.  However such a strategy would essentially double the
+number of computation required to calculate partial derivatives.  Instead GCAM
 has code to track and manage state to be able to quickly reset the "base" state
-when calculating partial derivatives.  However prior to GCAM Fusion this code
+when calculating partial derivatives.  However prior to GCAM Fusion this code
 was strewn throughout the code in many places:
 
 -   Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them.
 -   Any GCAM object that needed to addToSupply/Demand would have to keep an
     additional "state" member variables to make the call to the market
-    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );`
+    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );`
 -   Any other state would get lazily recalculated by marking at the Activity
-    level a "stale" flag.  If a Demand Activity was still marked as stale when
+    level a "stale" flag.  If a Demand Activity was still marked as stale when
     it needed to recalculate a partial derivative then it would be forced to
-    recalculate it's Price Activity.  A strategy which creates extra work and
+    recalculate it's Price Activity.  A strategy which creates extra work and
     potentially easy to break/get wrong.
 
 With the changes to central manage state that come along with GCAM Fusion we simplify this to:
 
 -   The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory.
 -   Any GCAM object that needed to addToSupply/Demand must do so with a
-    `Value` member variable marked as
-	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
+    `Value` member variable marked as
+	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
 
 The new approach is simpler, and it's easier to guarantee we didn't miss
 something by using
-[DEBUG_STATE](#ensuring-that-no-state-variable-is-missed).  In addition when
+[DEBUG_STATE](#ensuring-that-no-state-variable-is-missed).  In addition when
 running with GCAM Parallel enabled we can allocate a "scratch" space for every
 thread allowing for each of the ~470 partial derivative calculations to be
-calculated completely independently and in parallel from each other.  This gives
+calculated completely independently and in parallel from each other.  This gives
 us far greater parallelism than we had previously.
 
 To make this work, developers must tag the Data definitions in classes they are
-writing with the `STATE`
+writing with the `STATE`
 [flag](#definevariable-with-flag-simple--state-or-array--state) to indicate
-which member variables are part of the model state.  The type of these variables
+which member variables are part of the model state.  The type of these variables
 could in principle be any simple type or array of simple type; however, for
 simplicity and to provide an object that gives us an opportunity for indirection
 to swap out the actual location of the underlying data from a central location
-we have limited state variables to use the `Value` class:
+we have limited state variables to use the `Value` class:
 
 `DEFINE_VARIABLE( SIMPLE | STATE, "price", mPrice, Value )`
 
@@ -1205,31 +1205,31 @@ or
 
 `DEFINE_VARIABLE( ARRAY | STATE, "emissions", mEmissions, objects::PeriodVector<Value> )`
 
-By adding the `STATE` tag it allows us to search, using GCAM Fusion, for all of
-the objects with that tag.  A new class `ManageStateVaraibles` is responsible
+By adding the `STATE` tag it allows us to search, using GCAM Fusion, for all of
+the objects with that tag.  A new class `ManageStateVaraibles` is responsible
 doing the search as well as all of the other state maintenance as discussed
-below.  Note that state data is collected each period so as to keep the number
-of values to store and copy remains reasonable.  To do this we:
+below.  Note that state data is collected each period so as to keep the number
+of values to store and copy remains reasonable.  To do this we:
 
--   Skip data that is in a Technology that is not operating or a Market not of the current year
+-   Skip data that is in a Technology that is not operating or a Market not of the current year
 -   Data in a period vector are only collected for the current period.
 -   Data in a year vector (such as LUC emissions) for only the years in the current timestep.
 
 Once we know how many state data there are in a period we can allocate space to
-store the centrally managed data in a two dimensional array.  The first
-dimension is an entry for each state variable.  The second dimension is for the
+store the centrally managed data in a two dimensional array.  The first
+dimension is an entry for each state variable.  The second dimension is for the
 states, where the first is the "base" state and the rest are "scratch".  Without
 parallel enabled there is just 1 scratch state.  However, when parallel
 calculations are enabled there is one scratch space for each thread.
 
 Since we need to be able to quickly copy over scratch state we need to store the
-data contigiously.  Thus in order to keep several copies of state and quickly
+data contigiously.  Thus in order to keep several copies of state and quickly
 replace it is important we keep that total number of state variables to a
-reasonable amount.  Currently we observe 300,000 to 700,000 double values
+reasonable amount.  Currently we observe 300,000 to 700,000 double values
 depending on the model period which is ~ 2 - 5 MB worth of memory per scratch
 space.
 
-After the central state memory is allocated we loop over each state Value and set a flag to indicate that it is active state and assign it an offset into the centrally managed state.  We also set static variable `Value::sCentralValue` to point to the centrally managed "base" state.  Thus the Value class will lookup the actual data using:
+After the central state memory is allocated we loop over each state Value and set a flag to indicate that it is active state and assign it an offset into the centrally managed state.  We also set static variable `Value::sCentralValue` to point to the centrally managed "base" state.  Thus the Value class will lookup the actual data using:
 
 ```cpp
 /*!
@@ -1249,7 +1249,7 @@ inline double& Value::getInternal() {
 }
 ```
 
-When it comes time to calculate partial derivatives `Value::sCentralValue` is reset to the "scratch" space (thus the reason to make it static so it may be quickly switched in all Values).  Before each partial is calculated the "scratch" array is copied over with the "base" array using the highly optimized function `memcpy`:
+When it comes time to calculate partial derivatives `Value::sCentralValue` is reset to the "scratch" space (thus the reason to make it static so it may be quickly switched in all Values).  Before each partial is calculated the "scratch" array is copied over with the "base" array using the highly optimized function `memcpy`:
 
 ```cpp
 /*!
@@ -1268,14 +1268,14 @@ void ManageStateVariables::copyState() {
 }
 ```
 
-Note that with GCAM parallel `Value::sCentralValue` is a thread local variable thus each variable can be indpendently set by each thread that is accessing that code.  What this means in practical terms is for instance that the electricity technology Gas CC could have calculated different costs at the same exact time depending on which computation thread is asking.
+Note that with GCAM parallel `Value::sCentralValue` is a thread local variable thus each variable can be indpendently set by each thread that is accessing that code.  What this means in practical terms is for instance that the electricity technology Gas CC could have calculated different costs at the same exact time depending on which computation thread is asking.
 
-Once we are done solving the period the `ManageStateVariables` will loop back over each state Value and reset the `mIsStateCopy` flag and copy back the "base" state value for long term storage.  Also releasing the memory for the centrally managed state's arrays.
+Once we are done solving the period the `ManageStateVariables` will loop back over each state Value and reset the `mIsStateCopy` flag and copy back the "base" state value for long term storage.  Also releasing the memory for the centrally managed state's arrays.
 
 #### Ensuring that no state variable is missed
 
 We can check to make sure that not Data definitions were missed being tagged as
-"state" by enabling the preprocessor flag `DEBUG_STATE` which will enable checks
+"state" by enabling the preprocessor flag `DEBUG_STATE` which will enable checks
 to flag Values that are changed during a call to `World::calc` as well as other
 checks to ensure Values get collected / reset properly.
 
@@ -1285,9 +1285,9 @@ Other GCAM Fusion related utilities
 ### ExpandDataVector
 
 Generally developers will not need to call this method directly.  Instead, it is
-used indirectly through searches via GCAM Fusion.  It is a utility for ensuring
-that we get the complete data vector from a data container taking into account
-the data vectors inherited from any base classes.  Expanding the full data
+used indirectly through searches via GCAM Fusion.  It is a utility for ensuring
+that we get the complete data vector from a data container taking into account
+the data vectors inherited from any base classes.  Expanding the full data
 vector is more tricky than it would first appear since we need to be able to
 determine which SubClass we are dealing with at runtime as we only ever store
 instances with the Base class pointer (this is typically accomplished with
@@ -1301,9 +1301,9 @@ combinations.
 ### Factory
 
 A generic templated factory that can create any member of a
-[SubClassFamilyVector](#definedata---and-definedatawithparent--) given the XML
-name.  This class is currently not used however could be employed to replace all
-of the various Factory singleton classes that currently exist in GCAM.  It would
+[SubClassFamilyVector](#definedata---and-definedatawithparent--) given the XML
+name.  This class is currently not used however could be employed to replace all
+of the various Factory singleton classes that currently exist in GCAM.  It would
 really be useful when/if we generate all XML Parsing code by the compiler.
 
 C++11/14 Features:
@@ -1318,7 +1318,7 @@ doesn't change any language expressions that may be confusing to C++ coders.
 
 ### auto
 
-You may see variables declared as the `auto` type. It is however not a type;
+You may see variables declared as the `auto` type. It is however not a type;
 instead, it allows the developer to elide the variable type and allow the
 compiler to set the appropriate type at compile time. If the compiler can't
 figure it out unambigously then it will raise an error. This is particularly
@@ -1356,7 +1356,7 @@ necessary to specify, or even know, the exact type of the container:
 
 ### Using decltype in the return
 
-For the same reason it is useful to take advantage of `decltype` you may want to
+For the same reason it is useful to take advantage of `decltype` you may want to
 take advantage in declaring a function return type based off of the argument
 passed in. To do this you need to use some slightly alternative syntax:
 
@@ -1409,9 +1409,9 @@ bool isNameCoal = boost::fusion::any(vec,
 );
 ```
 
-The values in the `[ ]` names the variables from the local scope to be made
-available in the closure.  Including an `&` in front of the variable indicates
-to pass by reference.  Simply providing the `&` indicates make available all
+The values in the `[ ]` names the variables from the local scope to be made
+available in the closure.  Including an `&` in front of the variable indicates
+to pass by reference.  Simply providing the `&` indicates make available all
 local variables by reference.
 
 ### Foreach in C++

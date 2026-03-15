@@ -105,3 +105,5 @@
 - Added generator-side semantic-text normalization for code-fence-external HTML sub/sup and broken superscript reference markup, so bundled pages now convert chemistry notation like `CO<sub>2</sub>` to `CO2`, unit exponents like `m<sup>3</sup>` to `m^3`, and malformed historical footnote residue such as `[[1]](#ref1)` into normal markdown links.
 - Kept that semantic normalization out of inline code and fenced code blocks so literal XML examples, including escaped solver-filter syntax, remain exact when the agent needs to preserve or type them verbatim.
 - Expanded `validate_bundled_pages.py` so raw/escaped sub/sup tags, broken double-bracket reference links, and prose-side HTML entity residue outside inline code now fail fast.
+- Added global bundled-page cleanup for actual Unicode non-breaking spaces and zero-width characters, so copied HTML/wiki whitespace no longer leaks into prose, inline code, or fenced examples across historical versions.
+- Expanded `validate_bundled_pages.py` so literal `NBSP` and zero-width Unicode characters now fail anywhere in generated page bundles, preventing regression from copy/paste artifacts.

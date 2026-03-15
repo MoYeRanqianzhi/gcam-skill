@@ -28,7 +28,7 @@ various sectors and activities that it models.  This is convenient for setting
 up the abstractions and relationships with in the model; however it does not
 make it easy or convenient to get data in and out of the model.  We generally
 set inputs data once at the start of the model by parsing the XML input
-files.  We retrieve data mostly through the use of custom visitors at the end of
+files.  We retrieve data mostly through the use of custom visitors at the end of
 a scenario, or after the run has completed via an XML database.
 
 These limitations have been a hinderance for modelers who would like to
@@ -337,9 +337,9 @@ into your .cpp file:
 #include "util/base/include/gcam_data_containers.h"
 ```
 
-Be aware that including GCAMFusion essentially includes the *entire* model.  This
+Be aware that including GCAMFusion essentially includes the *entire* model.  This
 is because it needs to be able to search and traverse potentially any object in
-the model.  This will lead to a long compile time for any source file that
+the model.  This will lead to a long compile time for any source file that
 includes it.  Therefore, you should try to isolate code that uses these
 capabilities in a small number of fusion-aware translation units.
 
@@ -378,15 +378,15 @@ struct GatherEmiss {
 ```
 
 We now have everything we need to use the GCAM Fusion interface.
-The `GCAMFusion` object takes four template parameters:
+The `GCAMFusion` object takes four template parameters:
 
 -   The handler object that we just defined.
 -   A boolean flag to indicate whether the handler will process the start of each
-    step taken into a `CONTAINER` object (default is `false`).
+    step taken into a `CONTAINER` object (default is `false`).
 -   A boolean flag to indicate whether the handler will process stepping out of
-    a `CONTAINER` object (default is false).
+    a `CONTAINER` object (default is false).
 -   A boolean flag to indicate whether the handler will process the data being found
-    (default is `true`).
+    (default is `true`).
 
 The last flag (the one that defaults to `true`) is the most common use case, and
 it's the only one we will use in this example.
@@ -431,7 +431,7 @@ syntax _similar_ (but not precisely identical) to XPath. Each
 value.
 
 As mentioned above, when GCAMFusion finds a result that matches the search it
-will call `processData` and the user can get or set the value as appropriate for
+will call `processData` and the user can get or set the value as appropriate for
 their needs:
 
 ```cpp
@@ -445,9 +445,9 @@ void GatherEmiss::processData<Value>( Value& aData ) {
 }
 ```
 GCAMFusion cannot know what the type of the result of the search is going to be
-ahead of time.  Searches are made at runtime while the code to handle the
-results are generated at compile time.  This is the reason the processData
-method must be templated.  Therefore, we create a template specialization for
+ahead of time.  Searches are made at runtime while the code to handle the
+results are generated at compile time.  This is the reason the processData
+method must be templated.  Therefore, we create a template specialization for
 the type we are expecting to be returned from our search (i.e., based on our
 prior knowledge of the model structure).  In this case we expect the appropriate
 type to be a `Value` class, so we provide a specialization for that type.  If

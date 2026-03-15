@@ -223,7 +223,7 @@ use and settable solver parameters, is selected in the solver
 configuration file. This file is specified in the input Configuration
 file using a line of the form:
 
-`<Value name="solver_config">../input/solution/cal_solver_config.xml</Value>`
+`<Value name="solver_config">../input/solution/cal_solver_config.xml</Value>`
 
 ### Syntax
 
@@ -232,14 +232,14 @@ specify the configuration of the solver to use in each period of the
 model run. For example:
 
 ```
- <user-configurable-solver year="2005">
-       <solution-tolerance>0.001</solution-tolerance>
-       <solution-floor>0.0001</solution-floor>
-       <calibration-tolerance>0.01</calibration-tolerance>
-       <max-model-calcs>2500</max-model-calcs>
-        .
-        .
-        .
+ <user-configurable-solver year="2005">
+       <solution-tolerance>0.001</solution-tolerance>
+       <solution-floor>0.0001</solution-floor>
+       <calibration-tolerance>0.01</calibration-tolerance>
+       <max-model-calcs>2500</max-model-calcs>
+        .
+        .
+        .
 </user-configurable-solver>
 ```
 
@@ -247,7 +247,7 @@ The first line indicates that this is the configuration to be used
 in 2005. If the same solver configuration is to be used for all
 subsequent years, we can add the "fillout" parameter:
 
-`<user-configurable-solver year="2010" fillout="1">`
+`<user-configurable-solver year="2010" fillout="1">`
 
 The first few lines of the configuration specify
 [General Solver Parameters](#General-Solver-Parameters), which apply
@@ -260,11 +260,11 @@ solver components, which direct the solver to run particular solution
 algorithms. For example:
 
 ```
-       <broyden-solver-component>
-           <max-iterations>25</max-iterations>
-           <ftol>1.0e-3</ftol>
-           <solution-info-filter>solvable-nr || (market-type="Tax" &amp;&amp; solvable)</solution-info-filter>
-       </broyden-solver-component>
+       <broyden-solver-component>
+           <max-iterations>25</max-iterations>
+           <ftol>1.0e-3</ftol>
+           <solution-info-filter>solvable-nr || (market-type="Tax" &amp;&amp; solvable)</solution-info-filter>
+       </broyden-solver-component>
 ```
 
 The first few lines specify parameters that are specific to this
@@ -336,12 +336,12 @@ predicates. These conjunctions can be grouped with parentheses.
 
 For example:
 
-` <solution-info-filter>solvable-nr || (market-type="Tax" &amp;amp;&amp;amp; solvable)</solution-info-filter>`
+` <solution-info-filter>solvable-nr || (market-type="Tax" &amp;amp;&amp;amp; solvable)</solution-info-filter>`
 
 or
 
-` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; `
-`      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
+` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; `
+`      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
 
 The first of these would accept all solvable-nr markets and all
 solvable tax markets (even if they don't meet the NR

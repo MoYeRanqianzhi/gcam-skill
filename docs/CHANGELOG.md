@@ -57,3 +57,4 @@
 - Added `validate_solver_contract.py` and wired it into `validate_all.py` so shared solver guidance cannot silently drift away from CLI/config/log-first behavior, the `v8.2` baseline rule, or the `v3.2` historical Newton-Raphson caveat.
 - Added `validate_maintenance_memory_contract.py` and wired it into `validate_all.py` so `docs/DEVELOPMENT.md` and `docs/CHANGELOG.md` remain durable shared maintainer memory instead of drifting into undocumented process.
 - Added `validate_semantic_contract_coverage.py` and wired it into `validate_all.py` so every root shared runtime doc, persistent `docs/*.md` file, and `SKILL.md` must belong to an explicit semantic contract owner rather than relying only on inventory or link validation.
+- Added `validate_page_bundle_contract.py` and wired it into `validate_all.py` so generated page-bundle navigation files keep their progressive-disclosure, full-tree-vs-delta, and non-pretend semantics instead of relying only on generator parity.

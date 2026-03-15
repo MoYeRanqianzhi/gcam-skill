@@ -41,6 +41,7 @@ High-value shared docs to maintain:
 - Validate page-bundle lookups by running `scripts/doc_search.py --version <version> --scope pages --pattern <term>`.
 - Re-run `validate_doc_search.py` when changing `doc_search.py` or version-routing behavior so CLI semantics, invalid-version handling, and root-path restrictions stay stable.
 - Re-run `validate_page_bundle_content_parity.py` when changing `generate_bundled_pages.py` or bundled page content so the full `reference/version_pages/**/*.md` tree stays byte-for-byte aligned with generator output.
+- Re-run `validate_page_bundle_contract.py` after changing `generate_bundled_pages.py` or the generated page-bundle layer so `reference/version_pages/README.md`, per-version `INDEX.md`, and delta `release_note.md` / `cmp_index.md` files cannot silently drift away from progressive-disclosure and non-pretend rules.
 - Re-run generation after changing `version_catalog.py` so `version_inventory.md` and `versions/*.md` stay in sync with the topic set.
 - Re-run `validate_authoring_sources.py` before `generate_bundled_pages.py` so missing `gcam-doc` inputs or version-map drift fail fast instead of silently producing incomplete bundles.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
@@ -52,6 +53,7 @@ High-value shared docs to maintain:
 - Re-run `validate_solver_contract.py` after editing `reference/solver.md` so solver guidance cannot silently drift away from version-routing-aware, CLI/config/log-first behavior or lose its modern-vs-historical solver caveats.
 - Treat `reference/version_pages/README.md` and `reference/version_pages/*/INDEX.md` as generated artifacts from `generate_bundled_pages.py`; do not hand-edit them unless you also intend to update the generator.
 - Treat `reference/version_pages/**/*.md` as generated artifacts from `generate_bundled_pages.py`; if a page bundle must change, prefer changing the generator or authoring source and then regenerating.
+- `validate_page_bundle_contract.py` is the semantic guardrail for generated page-bundle navigation and delta trace docs; parity alone is not enough if generator behavior drifts in the wrong direction.
 - Re-run `validate_coverage_map_contract.py` after editing `reference/coverage_map.md` or expanding `gcam-doc` root coverage so the v8.2 root source pages remain fully accounted for and the source-to-bundled-doc traceability map does not silently drift.
 - Re-run `validate_operational_docs_contract.py` after editing high-impact shared operational docs such as `running_gcam.md`, `configuration_workflows.md`, `query_automation.md`, `workspace_layouts.md`, `version_operation_notes.md`, `building_gcam.md`, or `tools.md` so the agent-facing layer cannot silently drift away from CLI/headless/config-first guidance.
 - Re-run `validate_project_memory_contract.py` after editing `docs/PROJECT.md` or `docs/KNOWN_ISSUES.md` so the shared long-term memory docs cannot silently drift away from the canonical `gacm` identity, `v8.2` root-baseline framing, runtime honesty boundaries, and current coverage caveats.

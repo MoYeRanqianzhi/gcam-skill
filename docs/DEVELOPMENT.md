@@ -45,6 +45,7 @@ High-value shared docs to maintain:
 - Re-run `validate_version_routes.py` after changing `version_catalog.py`, regenerating `versions/*.md`, or modifying key route docs so version inventory, route docs, page directories, and `v8.2` baseline declarations stay aligned.
 - Treat `version_inventory.md` and `reference/versions/*.md` as generated artifacts from `generate_version_references.py`; do not hand-edit them unless you also intend to update the generator.
 - Re-run representative `doc_search.py --version ... --scope pages --pattern ...` commands on Windows after search-tool changes to catch console encoding regressions.
+- `doc_search.py` should fail cleanly for unknown versions and should keep `--root` constrained to `skills/gacm/reference/`; treat silent version fallback or root-path escape as regressions.
 
 ## Page Bundle Rules
 - Treat the root `gcam-doc` tree as bundled `v8.2`.

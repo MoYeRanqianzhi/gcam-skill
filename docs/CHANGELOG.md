@@ -29,3 +29,4 @@
 - Added `validate_authoring_sources.py` and fail-fast preflight checks in `generate_bundled_pages.py` so missing `gcam-doc` inputs or catalog drift do not silently generate incomplete bundles.
 - Removed an invalid `v8.2` entry from the delta-only CMP source map in the page-bundle generator.
 - Strengthened `validate_version_routes.py` to compare route docs against `generate_version_references.py` output and regenerated all `reference/versions/*.md` files so they include the current shared topic set.
+- Tightened `doc_search.py` so invalid `--version` values fail cleanly across all scopes and `--root` cannot escape the bundled `reference/` tree.

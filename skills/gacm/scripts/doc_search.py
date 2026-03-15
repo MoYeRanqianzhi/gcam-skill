@@ -60,6 +60,14 @@ def collect_search_paths(version: str | None, scope: str) -> List[Path]:
     return paths
 
 
+def ensure_under_reference_tree(path: Path) -> bool:
+    try:
+        path.resolve().relative_to(REFERENCE_ROOT.resolve())
+        return True
+    except ValueError:
+        return False
+
+
 def search_file(path: Path, pattern: re.Pattern, max_per_file: int) -> List[Tuple[int, str]]:
     matches: List[Tuple[int, str]] = []
     try:
@@ -104,6 +112,14 @@ def main() -> int:
         print("--pattern is required unless --list-versions is used.", file=sys.stderr)
         return 2
 
+    canonical_version: str | None = None
+    if args.version:
+        try:
+            canonical_version = get_version_info(args.version).version
+        except KeyError as exc:
+            print(exc.args[0], file=sys.stderr)
+            return 2
+
     exts = tuple(part.strip().lower() for part in args.ext.split(",") if part.strip())
     if not exts:
         print("No file extensions provided.", file=sys.stderr)
@@ -119,7 +135,12 @@ def main() -> int:
     if args.root:
         root = Path(args.root)
         if not root.is_absolute():
-            root = REFERENCE_ROOT / root
+            root = (REFERENCE_ROOT / root).resolve()
+        else:
+            root = root.resolve()
+        if not ensure_under_reference_tree(root):
+            print(f"Custom root must stay under bundled reference directory: {root}", file=sys.stderr)
+            return 2
         if not root.exists():
             print(f"Custom root does not exist: {root}", file=sys.stderr)
             return 2
@@ -127,7 +148,7 @@ def main() -> int:
     else:
         search_paths = []
         seen = set()
-        for path in collect_search_paths(args.version, args.scope):
+        for path in collect_search_paths(canonical_version, args.scope):
             if path.exists() and path not in seen:
                 search_paths.append(path)
                 seen.add(path)

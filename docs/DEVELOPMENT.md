@@ -51,6 +51,7 @@ High-value shared docs to maintain:
 - `validate_shared_references.py` also enforces root shared-doc inventory parity: every `skills/gacm/reference/*.md` runtime doc must either be declared in `version_catalog.COMMON_TOPICS` or be the generated `version_inventory.md`.
 - `validate_shared_references.py` also fails if `SKILL.md`, root shared docs, or `docs/*.md` embed markdown/HTML image markup; the agent-facing layer must stay pure text.
 - `validate_shared_references.py` also covers `docs/*.md`; treat broken local references in project-memory docs as regressions, not just shared runtime-doc drift.
+- Re-run `validate_skill_contract.py` after editing `skills/gacm/SKILL.md` so the canonical `gacm` name, `v8.2` default-baseline wording, version-routing instructions, and progressive-disclosure contract do not drift.
 - Re-run `validate_version_routes.py` after changing `version_catalog.py`, regenerating `versions/*.md`, or modifying key route docs so version inventory, route docs, page directories, and `v8.2` baseline declarations stay aligned.
 - Treat `version_inventory.md` and `reference/versions/*.md` as generated artifacts from `generate_version_references.py`; do not hand-edit them unless you also intend to update the generator.
 - Re-run representative `doc_search.py --version ... --scope pages --pattern ...` commands on Windows after search-tool changes to catch console encoding regressions.

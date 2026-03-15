@@ -20,6 +20,7 @@ VALIDATION_STEPS = (
     "validate_page_bundle_content_parity.py",
     "validate_bundled_pages.py",
     "validate_shared_references.py",
+    "validate_skill_contract.py",
     "validate_version_routes.py",
 )
 

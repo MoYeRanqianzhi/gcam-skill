@@ -40,3 +40,4 @@
 - Tightened `validate_shared_references.py` so the root `skills/gacm/reference/*.md` inventory must exactly match `version_catalog.COMMON_TOPICS` plus generated `version_inventory.md`, preventing undisclosed shared docs from bypassing progressive disclosure.
 - Tightened `validate_shared_references.py` so `SKILL.md`, root shared docs, and `docs/*.md` fail if image markup is embedded, preserving the agent-facing layer as pure text.
 - Hardened `validate_all.py` so it first verifies its `VALIDATION_STEPS` list exactly covers the on-disk `validate_*.py` scripts, preventing new validators from being added but silently omitted from the main suite.
+- Added `validate_skill_contract.py` and wired it into `validate_all.py` so `skills/gacm/SKILL.md` cannot silently drift away from the canonical `gacm` name, `v8.2` default-baseline contract, exact-version routing, and progressive-disclosure workflow.

@@ -26,73 +26,45 @@ of data is available in [PNNL Technical Report 21025](http://www.pnl.gov/main/pu
 
 GCAM's inputs include information on production, consumption, prices, land, carbon, and other emissions in the historical period in order to calibrate model parameters and functions that are used for modeling future periods. GCAM requires globally consistent data sets for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. The GCAM data system can produce such data sets annually beginning in 1971. Currently, GCAM uses data from 1990, 2005, 2010, and 2015 to initialize the model, but could be initialized to any year beginning in 1971.
 
-<dl>
-<dt>Historical Production</dt> <dd>Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.</dd>
+- **Historical Production**: Inputs include historical production of all crops and forestry products for each of the AgLU regions for the model base years. We currently rely on a blend of FAO and GTAP data for these inputs. FAO includes country-level data over the entire historical period, while GCAM has sub-national information for a single year in time.
 
-<dt>Historical Consumption</dt> <dd>Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions for the historical base years. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs. Feed inputs also include secondary outputs of DDGS (dried distillers grains and solubles) from ethanol production, and feedcakes from biodiesel production.</dd>
+- **Historical Consumption**: Inputs include food, non-food, bioenergy, and feed consumption of all crop and forestry products for each of the 32 geopolitical regions for the historical base years. We currently rely on IMAGE for animal feed and FAO data for all remaining inputs. Feed inputs also include secondary outputs of DDGS (dried distillers grains and solubles) from ethanol production, and feedcakes from biodiesel production.
 
-<dt>Historical Prices</dt> <dd>Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices from FAO for these inputs.</dd>
+- **Historical Prices**: Inputs include the price of all food, feed, and forestry commodities for our historical base years. We currently use producer prices from FAO for these inputs.
 
-<dt>Historical Land Cover and Use</dt> <dd>Inputs include land cover and land use for each of the GCAM land types and AgLU regions. We use information beginning in 1700 in order to spin-up the carbon cycle within GCAM. Currently, we use a blend of the Hurtt-Hyde land cover product from CMIP5, the SAGE potential vegetation map, and FAO/GTAP cropland area.</dd>
+- **Historical Land Cover and Use**: Inputs include land cover and land use for each of the GCAM land types and AgLU regions. We use information beginning in 1700 in order to spin-up the carbon cycle within GCAM. Currently, we use a blend of the Hurtt-Hyde land cover product from CMIP5, the SAGE potential vegetation map, and FAO/GTAP cropland area.
 
-<dt>Terrestrial Carbon Densities</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).</dd>
+- **Terrestrial Carbon Densities**: Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).
 
-<dt>Other Historical Emissions</dt> <dd>Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).</dd>
+- **Other Historical Emissions**: Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).
 
-<dt>Future Crop Yield Improvements</dt> <dd>Assumed rates of annual yield improvements for each of the crops and crop management options in each region.</dd>
+- **Future Crop Yield Improvements**: Assumed rates of annual yield improvements for each of the crops and crop management options in each region.
 
-<dt>Other Variable Costs</dt> <dd>Per unit crop production cost of inputs that are not modeled explicitly in GCAM. Specifically, capital, operating, and labor costs other than land, water, and fertilizer</dd>
+- **Other Variable Costs**: Per unit crop production cost of inputs that are not modeled explicitly in GCAM. Specifically, capital, operating, and labor costs other than land, water, and fertilizer
 
-<dt>Price and Income Elasticities of Food</dt> <dd>Elasticity parameters that influence the response of food to demand to future changes in prices and income levels.</dd>
-</dl>
+- **Price and Income Elasticities of Food**: Elasticity parameters that influence the response of food to demand to future changes in prices and income levels.
 
 ### Outputs
 
 GCAM's outputs include variables related to production, consumption, prices, land, fertilizer, carbon, and other emissions.
 
-<dl>
-<dt>Production</dt> <dd>Outputs include production of all crops and
-forestry products; this information is calculated annually for each of
-the 300+ AgLU regions. GCAM also calculates production of livestock at
-the 32 region level.</dd>
+- **Production**: Outputs include production of all crops and forestry products; this information is calculated annually for each of the 300+ AgLU regions. GCAM also calculates production of livestock at the 32 region level.
 
-<dt>Consumption</dt> <dd>Outputs include food, non-food, bioenergy,
-and feed consumption of all crop, forestry, livestock, and bioenergy
-products; this information is calculated annually for each of the 32
-geopolitical regions.</dd>
+- **Consumption**: Outputs include food, non-food, bioenergy, and feed consumption of all crop, forestry, livestock, and bioenergy products; this information is calculated annually for each of the 32 geopolitical regions.
 
-<dt>Prices</dt> <dd>Outputs include the price of all food, feed,
-forestry, bioenergy and livestock commodities. This information is
-calculated annually, typically at a regional (i.e., 32-region)
-level.</dd>
+- **Prices**: Outputs include the price of all food, feed, forestry, bioenergy and livestock commodities. This information is calculated annually, typically at a regional (i.e., 32-region) level.
 
-<dt>Land</dt> <dd>Outputs include land use and land cover for each of
-the land types included in GCAM (see Figure 1). This information is
-calculated annually for each of the AgLU subregions.</dd>
+- **Land**: Outputs include land use and land cover for each of the land types included in GCAM (see Figure 1). This information is calculated annually for each of the AgLU subregions.
 
-<dt>Fertilizer</dt> <dd>Outputs include fertilizer use for each crop and management practice included in GCAM (see Figure 1). This information is
-calculated annually for each of the AgLU subregions.</dd>
+- **Fertilizer**: Outputs include fertilizer use for each crop and management practice included in GCAM (see Figure 1). This information is calculated annually for each of the AgLU subregions.
 
-<dt>Water Withdrawals</dt> <dd>Outputs include water withdrawals by crop and management practice. This information is
-calculated annually for each of the AgLU subregions.</dd>
+- **Water Withdrawals**: Outputs include water withdrawals by crop and management practice. This information is calculated annually for each of the AgLU subregions.
 
-<dt>Water Consumption</dt> <dd>Outputs include water consumption (both blue and green) by crop and management practice. This information is
-calculated annually for each of the AgLU subregions.</dd>
+- **Water Consumption**: Outputs include water consumption (both blue and green) by crop and management practice. This information is calculated annually for each of the AgLU subregions.
 
-<dt>Carbon</dt> <dd>Outputs include carbon stock and land-use change
-emissions of CO<sub>2</sub>. This information is calculated annually
-for each of the 300+ AgLU regions.</dd>
+- **Carbon**: Outputs include carbon stock and land-use change emissions of CO<sub>2</sub>. This information is calculated annually for each of the 300+ AgLU regions.
 
-<dt>Other emissions</dt> <dd>Outputs include emissions of
-CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO,
-BC, OC, and NO<sub>x</sub>. Greenhouse gas emissions are produced from
-livestock, rice, and fertilizer application; these emissions can be
-reduced with the application of a carbon price. Pollutant emissions
-are produced from agricultural waste burning, forest fires,
-deforestation, and savannah burning. Livestock emissions are
-calculated annually at the 32 region level. All other emissions are
-calculated annually at the 300+ region level.</dd>
-</dl>
+- **Other emissions**: Outputs include emissions of CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO, BC, OC, and NO<sub>x</sub>. Greenhouse gas emissions are produced from livestock, rice, and fertilizer application; these emissions can be reduced with the application of a carbon price. Pollutant emissions are produced from agricultural waste burning, forest fires, deforestation, and savannah burning. Livestock emissions are calculated annually at the 32 region level. All other emissions are calculated annually at the 300+ region level.
 
 ## Economic Modeling Approach
 

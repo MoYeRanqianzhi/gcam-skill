@@ -57,33 +57,26 @@ Land carbon pools change as a result of NPP, RH and land-use change fluxes, whos
 
 ## Hector Outputs
 At every time step Hector calculates and outputs key climate variables.
-<dl>
-<dt>Atmosphere</dt>
-<dd><ul>
-	<li>Global mean temperature change</li>
-	<li>Radiative forcing of all emissions</li>
-	<li>Atmospheric CO<sub>2</sub> concentrations.</li>
-	</ul>
-</dd>
-<dt>Land</dt>
-<dd><ul>
-	<li>Air-land carbon fluxes</li>
-	<li>NPP - net primary production</li>
-	<li>RH - heterotrophic respiration</li>
-	<li>Carbon pools (vegetation, detritus, soil)</li>
-	</ul>
-</dd>
-<dt>Ocean</dt>
-<dd><ul>
-	<li>Air-sea carbon fluxes</li>
-	<li>Carbon pools (high and low latitude surface, intermediate and deep)</li>
-	<li>Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite
-	saturations)</li>
-	<li>surface ocean temperature</li>
-	<li>oceanic heat flux</li>
-	</ul>
-</dd>
-</dl>
+**Atmosphere**
+
+- Global mean temperature change
+- Radiative forcing of all emissions
+- Atmospheric CO<sub>2</sub> concentrations.
+
+**Land**
+
+- Air-land carbon fluxes
+- NPP - net primary production
+- RH - heterotrophic respiration
+- Carbon pools (vegetation, detritus, soil)
+
+**Ocean**
+
+- Air-sea carbon fluxes
+- Carbon pools (high and low latitude surface, intermediate and deep)
+- Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite saturations)
+- surface ocean temperature
+- oceanic heat flux
 
 ## Getting and Installing Hector for Use with GCAM
 For users who are running GCAM with the [Mac](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/mac_binaries.tar.gz) or [Windows](https://github.com/JGCRI/gcam-core/releases/download/gcam-v4.3/windows_binaries.tar.gz) binary Release add-ons, Hector support is already compiled in.  For users compiling for source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.md#getting-hector).

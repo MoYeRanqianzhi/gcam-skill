@@ -39,6 +39,7 @@ USER_GUIDE_FORBIDDEN = (
     "Screenshot of GCAM ModelInterface",
     'Press this button and model output will appear as shown below',
     "*Copying Data*:",
+    "section of the GUI",
 )
 
 GCAM_BUILD_REQUIRED = (
@@ -84,6 +85,7 @@ HECTOR_FORBIDDEN = (
 
 GLOBAL_FORBIDDEN = (
     "Click here for info on how to view a previous version",
+    "point and click",
 )
 
 

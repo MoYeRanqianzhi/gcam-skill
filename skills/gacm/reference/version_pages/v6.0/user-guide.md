@@ -252,7 +252,7 @@ Agent adaptation: query XML is plain text. Copy it between files, repositories, 
 
 When doing scenario analysis on GCAM results it is often very useful to predefine the set of queries you would like to look at and automatically save the results to CSV or XLS format for plotting or making tables, etc.  Setting up the Model Interface to do this is done in one or two steps depending on the level of automation you would like.
 
-First you must set up a "batch query" file.  An example of such a file can be found in `output/gcam_diagnostics/batch_queries/Model_verification_queries.xml`.  The idea of such a file is you list the queries you would like to run one after the other and for each query you include the regions (which can be any of the ones listed in the `Regions` section of the GUI) you would like to query.
+First you must set up a "batch query" file.  An example of such a file can be found in `output/gcam_diagnostics/batch_queries/Model_verification_queries.xml`.  The idea of such a file is you list the queries you would like to run one after the other and for each query you include the regions (which can be any of the region names available in the database or query context) you would like to query.
 
 ```
 <queries>

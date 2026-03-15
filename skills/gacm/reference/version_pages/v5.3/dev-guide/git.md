@@ -29,10 +29,7 @@ getting started with Git:
 * [Git training videos](https://www.youtube.com/playlist?list=PL0lo9MOBetEHhfG9vJzVCTiDYcbhAiEqL)
   from GitHub.
 
-Git can be used entirely through text commands, but there are also
-graphical clients available, which provide a point and click
-interface, along with some visualization capabilities to help you
-understand how various branches relate to each other.
+Git can be used entirely through text commands. Agent adaptation: prefer shell-based Git for GCAM workflows. Historical graphical clients are listed below only as ecosystem context for users who need them.
 
 * [Atlassian SourceTree](https://www.sourcetreeapp.com)
 * [GitHub Desktop](https://desktop.github.com)

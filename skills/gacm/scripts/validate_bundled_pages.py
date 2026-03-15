@@ -29,6 +29,7 @@ RAW_HTML_CLASS_ATTR_RE = re.compile(
 )
 RAW_HTML_HREF_RE = re.compile(r"<a\b[^>]*href\s*=", re.IGNORECASE)
 RAW_HTML_TABLE_RE = re.compile(r"</?(?:table|tr|td|th)\b", re.IGNORECASE)
+RAW_HTML_LIST_RE = re.compile(r"</?(?:dl|dt|dd|ul|ol|li)\b", re.IGNORECASE)
 RAW_HTML_STYLED_SPAN_RE = re.compile(r"<span\b[^>]*style=", re.IGNORECASE)
 RAW_HTML_BREAK_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 RAW_HTML_INLINE_FORMATTING_RE = re.compile(r"</?(?:cite|i|em)\b", re.IGNORECASE)
@@ -124,6 +125,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html href anchor remains")
         if RAW_HTML_TABLE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html table markup remains")
+        if RAW_HTML_LIST_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html list/definition-list markup remains")
         if RAW_HTML_STYLED_SPAN_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw styled span markup remains")
         if RAW_HTML_BREAK_RE.search(text):

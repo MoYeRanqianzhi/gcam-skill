@@ -20,6 +20,10 @@
 - Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.
 
 ## 2026-03-16
+- Normalized raw HTML definition-list and list markup such as `<dl>/<dt>/<dd>/<ul>/<li>` into markdown list structures during page-bundle generation, removing another layer of Jekyll-era presentation residue from historical exact-page bundles.
+- Rewrote the repeated ModelInterface batch-query sentence that depended on the `Regions` GUI pane into database/query-context wording so batch-query guidance stays headless even when sourced from historical user-guide pages.
+- Rewrote the repeated `dev-guide/git.md` “point and click” explanation into a shell-first note that keeps GUI Git clients as optional ecosystem context rather than as the default recommendation path.
+- Expanded bundled-page validation so raw HTML list/definition-list markup now fails fast, and expanded page-bundle agent-adaptation validation so residual `section of the GUI` / `point and click` phrasing cannot silently re-enter generated bundles.
 - Stripped standalone markdown attribute-list residue such as `{: .tbl}` and `{:toc}` from generated page bundles so Kramdown/Jekyll rendering hints no longer leak into the published agent-facing text layer.
 - Normalized residual inline HTML formatting tags such as `<cite>...</cite>` and `<i>...</i>` into markdown emphasis during page-bundle generation, preserving meaning while removing presentation-only HTML from exact historical pages.
 - Adapted the historical `community-guide.md` authoring placeholder `\<cite latest version of model documentation\>` into an explicit source-author note so the published bundle does not surface raw editorial placeholders as if they were usable runtime content.

@@ -72,6 +72,13 @@ HTML_BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 HTML_BUTTON_RE = re.compile(r"<button\b[^>]*>(?P<label>.*?)</button>", re.IGNORECASE | re.DOTALL)
 HTML_SPAN_RE = re.compile(r"<span\b[^>]*>(?P<content>.*?)</span>", re.IGNORECASE | re.DOTALL)
 HTML_FONT_RE = re.compile(r"</?font\b[^>]*>", re.IGNORECASE)
+HTML_LIST_RE = re.compile(r"<(?P<tag>ul|ol)\b[^>]*>(?P<body>.*?)</(?P=tag)>", re.IGNORECASE | re.DOTALL)
+HTML_LIST_ITEM_RE = re.compile(r"<li\b[^>]*>(?P<item>.*?)</li>", re.IGNORECASE | re.DOTALL)
+HTML_DL_RE = re.compile(r"<dl\b[^>]*>(?P<body>.*?)</dl>", re.IGNORECASE | re.DOTALL)
+HTML_DT_DD_RE = re.compile(
+    r"<dt\b[^>]*>(?P<term>.*?)</dt>\s*<dd\b[^>]*>(?P<desc>.*?)</dd>",
+    re.IGNORECASE | re.DOTALL,
+)
 HTML_PRESENTATIONAL_ATTR_RE = re.compile(
     r'(?P<prefix><[A-Za-z][^>]*?)\s(?:class|style|align|valign|rowspan|colspan|width|height)\s*=\s*(?:"[^"]*"|\'[^\']*\')',
     re.IGNORECASE,
@@ -253,6 +260,10 @@ USER_GUIDE_BATCH_FILE_INTERACTIVE_RE = re.compile(
     r"to save the results \(\.csv saves as CSV and \.xls saves to excel\) and which scenarios to run\.\s*$",
     re.MULTILINE,
 )
+USER_GUIDE_GUI_REGION_RE = re.compile(
+    r"which can be any of the ones listed in the `Regions` section of the GUI",
+    re.IGNORECASE,
+)
 
 GCAM_BUILD_PARALLEL_XCODE_RE = re.compile(
     r"^\* Xcode edit Build Settings -> Preprocessor Macros -> add `GCAM_PARALLEL_ENABLED=0`\s*$",
@@ -333,6 +344,12 @@ HECTOR_VISUAL_UI_BLOCK_RE = re.compile(
 COMMUNITY_GUIDE_LATEST_DOC_PLACEHOLDER_RE = re.compile(
     r"^\\<cite latest version of model documentation\\>\s*$",
     re.MULTILINE | re.IGNORECASE,
+)
+DEV_GUIDE_GIT_POINT_AND_CLICK_RE = re.compile(
+    r"Git can be used entirely through text commands, but there are also\s+graphical clients available, which "
+    r"provide a point and click\s+interface, along with some visualization capabilities to help you\s+understand "
+    r"how various branches relate to each other\.\s*",
+    re.IGNORECASE | re.DOTALL,
 )
 
 WIKILINK_ALIAS_MAP = {
@@ -636,6 +653,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "reference the batch query file from a ModelInterface batch command file and execute it from the "
             "shell, setting output paths and scenario names in XML rather than interactive dialogs.\n",
         )
+        replace(
+            USER_GUIDE_GUI_REGION_RE,
+            "which can be any of the region names available in the database or query context",
+        )
 
     if rel_source.name == "index.md":
         replace(
@@ -756,6 +777,14 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "preparing a paper-specific bibliography.\n",
         )
 
+    if rel_source.parts[-2:] == ("dev-guide", "git.md"):
+        replace(
+            DEV_GUIDE_GIT_POINT_AND_CLICK_RE,
+            "Git can be used entirely through text commands. Agent adaptation: prefer shell-based Git for GCAM "
+            "workflows. Historical graphical clients are listed below only as ecosystem context for users who "
+            "need them.\n\n",
+        )
+
     if changed:
         text = re.sub(r"\n{3,}", "\n\n", text)
     return text
@@ -838,6 +867,56 @@ def rewrite_html_hrefs(segment: str, version: str) -> str:
 
 
 def normalize_inline_html(segment: str) -> str:
+    def clean_fragment(raw: str) -> str:
+        cleaned = HTML_PARAGRAPH_RE.sub(" ", raw)
+        cleaned = re.sub(r"</?(?:ul|ol)\b[^>]*>", " ", cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r"\s+", " ", cleaned).strip()
+        return cleaned
+
+    def render_html_list(body: str, ordered: bool) -> str:
+        items = [clean_fragment(match.group("item")) for match in HTML_LIST_ITEM_RE.finditer(body)]
+        items = [item for item in items if item]
+        if not items:
+            return ""
+        if ordered:
+            return "\n".join(f"{index}. {item}" for index, item in enumerate(items, start=1))
+        return "\n".join(f"- {item}" for item in items)
+
+    def normalize_html_definition_lists(text: str) -> str:
+        def repl(match: re.Match[str]) -> str:
+            blocks: list[str] = []
+            for pair in HTML_DT_DD_RE.finditer(match.group("body")):
+                term = clean_fragment(pair.group("term"))
+                desc_raw = pair.group("desc")
+                rendered_list = render_html_list(desc_raw, ordered=False)
+                if rendered_list:
+                    if term:
+                        blocks.append(f"**{term}**\n\n{rendered_list}")
+                    else:
+                        blocks.append(rendered_list)
+                    continue
+                desc = clean_fragment(desc_raw)
+                if term and desc:
+                    blocks.append(f"- **{term}**: {desc}")
+                elif term:
+                    blocks.append(f"- **{term}**")
+                elif desc:
+                    blocks.append(f"- {desc}")
+            if not blocks:
+                return match.group(0)
+            return "\n\n".join(blocks) + "\n"
+
+        return HTML_DL_RE.sub(repl, text)
+
+    def normalize_html_lists(text: str) -> str:
+        def repl(match: re.Match[str]) -> str:
+            rendered = render_html_list(match.group("body"), ordered=match.group("tag").lower() == "ol")
+            if not rendered:
+                return match.group(0)
+            return rendered + "\n"
+
+        return HTML_LIST_RE.sub(repl, text)
+
     def unwrap_button(match: re.Match[str]) -> str:
         label = match.group("label")
         label = re.sub(r"\s+", " ", label).strip()
@@ -937,6 +1016,8 @@ def normalize_inline_html(segment: str) -> str:
     segment = HTML_STYLE_BLOCK_RE.sub("", segment)
     segment = HTML_COL_TAG_RE.sub("", segment)
     segment = HTML_BR_RE.sub("\n", segment)
+    segment = normalize_html_definition_lists(segment)
+    segment = normalize_html_lists(segment)
     segment = HTML_BUTTON_RE.sub(unwrap_button, segment)
     for _ in range(8):
         updated = HTML_SPAN_RE.sub(unwrap_span, segment)

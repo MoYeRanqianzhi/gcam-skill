@@ -68,7 +68,7 @@ Trade
 
 ---------------
 
-In principle international trade is possible for any commodity in the GCAM. As a practical matter, however, products such as electricity or CO&lt;sub&gt;2&lt;/sub&gt; storage services are assumed to be produced and consumed within a given region. Many products are traded globally, including fossil fuels (coal, gas, oil), bioenergy, and all agricultural products.  We assume that these products are supplied to a global pool and any region can consume from this pool.
+In principle international trade is possible for any commodity in the GCAM. As a practical matter, however, products such as electricity or CO2 storage services are assumed to be produced and consumed within a given region. Many products are traded globally, including fossil fuels (coal, gas, oil), bioenergy, and all agricultural products.  We assume that these products are supplied to a global pool and any region can consume from this pool.
 
 Climate Policy Analysis
 -----------------------

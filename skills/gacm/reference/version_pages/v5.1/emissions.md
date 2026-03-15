@@ -16,30 +16,30 @@ Load this page when the user needs version-specific detail from this exact page 
 
 GCAM projects emissions of a suite of greenhouse gases (GHGs) and air pollutants:
 
-CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<sub>6</sub>, SF<sub>6</sub>, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC143a, HFC152a, HFC227ea, HFC236fa, HFC245fa, HFC365mfc, SO<sub>2</sub>, BC, OC, CO, VOCs, NO<sub>x</sub>, NH<sub>3</sub>
+CO2, CH4, N2O, CF4, C2F6, SF6, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC143a, HFC152a, HFC227ea, HFC236fa, HFC245fa, HFC365mfc, SO2, BC, OC, CO, VOCs, NOx, NH3
 
 Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population) and technology mix. How this is represented in GCAM varies by emission type.
 
 Table Of Contents
 
-* [CO<sub>2</sub> Emissions](#co2-emissions)
-* [CO<sub>2</sub> Emissions From Land-Use/Land-Use Change (LULUC)](#co2-luc-emissions)
-* [Non-CO<sub>2</sub> Emissions Overview](#non-co2-overview)
-* [Non-CO<sub>2</sub> GHG Emissions](#non-co2-ghg-emissions)
+* [CO2 Emissions](#co2-emissions)
+* [CO2 Emissions From Land-Use/Land-Use Change (LULUC)](#co2-luc-emissions)
+* [Non-CO2 Emissions Overview](#non-co2-overview)
+* [Non-CO2 GHG Emissions](#non-co2-ghg-emissions)
 * [Air Pollutant Emissions](#air-pollutant-emissions)
-* [Advanced Non-CO<sub>2</sub> User Options](#user-options)
+* [Advanced Non-CO2 User Options](#user-options)
 
-## <a name="co2-emissions"></a>CO<sub>2</sub> Emissions
+## <a name="co2-emissions"></a>CO2 Emissions
 
-GCAM endogenously estimates CO<sub>2</sub> fossil-fuel related emissions based on fossil fuel consumption and global emission factors by fuel (oil, unconventional oil, natural gas, and coal). These emission factors are consistent with global emissions by fuel from the CDIAC global inventory ([CDIAC 2017](#cdiac2017)).
+GCAM endogenously estimates CO2 fossil-fuel related emissions based on fossil fuel consumption and global emission factors by fuel (oil, unconventional oil, natural gas, and coal). These emission factors are consistent with global emissions by fuel from the CDIAC global inventory ([CDIAC 2017](#cdiac2017)).
 
-GCAM can be considered as a process model for CO<sub>2</sub> emissions and reductions. CO<sub>2</sub> emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO<sub>2</sub> as a carbon-price is applied within the model.
+GCAM can be considered as a process model for CO2 emissions and reductions. CO2 emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO2 as a carbon-price is applied within the model.
 
-CO<sub>2</sub> emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region’s IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO<sub>2</sub> from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
+CO2 emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region’s IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO2 from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
 
-CO<sub>2</sub> emissions from gas flaring are not currently included in GCAM.
+CO2 emissions from gas flaring are not currently included in GCAM.
 
-### <a name="co2-luc-emissions"></a>CO<sub>2</sub> Emissions From Land-Use/Land-Use Change (LULUC)
+### <a name="co2-luc-emissions"></a>CO2 Emissions From Land-Use/Land-Use Change (LULUC)
 
 Land-Use Change emissions are tracked separately. In general, emissions are estimated as:
 
@@ -55,16 +55,16 @@ Figure 1: Timescales for forest regrowth in GCAM.
 
 Changes in the carbon content of soils due to land-use change also exponentially approach an equilibrium value using a region-dependent timescale. This represents the timescales for carbon pool changes in soils.
 
-## <a name="non-co2-overview"></a>Non-CO<sub>2</sub> Emissions Overview
+## <a name="non-co2-overview"></a>Non-CO2 Emissions Overview
 
-We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM
+We summarize here some general points common to non-CO2 emissions in GCAM
 
-Non-CO<sub>2</sub> emissions, both GHGs & air pollutants, originate from many sources and can be controlled using multiple abatement technologies.
-Modeling non-CO<sub>2</sub> abatement at the process level would require too much detail for the scales at which GCAM operates. We, therefore, use parameterized functions for future emissions controls (for air pollutants) and Marginal Abatement Cost (MAC) curves (for GHGs) to change emission factors over time. The emissions controls, which reduce emissions factors as a function of per-capita GDP in each region and time period, are based on the general understanding that pollutant control technologies are deployed as incomes rise (e.g., [Smith et al. 2005](#smith2005), although the functional form used in GCAM 5 is different than that in this reference). The MAC curves for GHGs are mapped directly to GCAM's technologies from the EPA's 2013 report on non-CO<sub>2</sub> greenhouse gas mitigation ([EPA 2013](#epa2013)).
+Non-CO2 emissions, both GHGs & air pollutants, originate from many sources and can be controlled using multiple abatement technologies.
+Modeling non-CO2 abatement at the process level would require too much detail for the scales at which GCAM operates. We, therefore, use parameterized functions for future emissions controls (for air pollutants) and Marginal Abatement Cost (MAC) curves (for GHGs) to change emission factors over time. The emissions controls, which reduce emissions factors as a function of per-capita GDP in each region and time period, are based on the general understanding that pollutant control technologies are deployed as incomes rise (e.g., [Smith et al. 2005](#smith2005), although the functional form used in GCAM 5 is different than that in this reference). The MAC curves for GHGs are mapped directly to GCAM's technologies from the EPA's 2013 report on non-CO2 greenhouse gas mitigation ([EPA 2013](#epa2013)).
 
 Note that technology shifts still play a role, since emission factors can differ between technologies.
 
-Most base-year non-CO<sub>2</sub> emissions are calibrated to the EDGAR 4.2 emissions inventories ([EDGAR 2011](#edgar2011)), with USA fuel-level emissions detail from the US EPA's National Emissions Inventory ([EPA 2011](#epa2011)) used to disaggregate sectoral totals to specific fuel types. Black carbon (BC) and organic carbon (OC) emissions are calibrated using the RCP (CMIP5) inventories ([Lamarque et al. 2010](#lamarque2010)). Additional information on fluorinated gases is from Guus Velders.
+Most base-year non-CO2 emissions are calibrated to the EDGAR 4.2 emissions inventories ([EDGAR 2011](#edgar2011)), with USA fuel-level emissions detail from the US EPA's National Emissions Inventory ([EPA 2011](#epa2011)) used to disaggregate sectoral totals to specific fuel types. Black carbon (BC) and organic carbon (OC) emissions are calibrated using the RCP (CMIP5) inventories ([Lamarque et al. 2010](#lamarque2010)). Additional information on fluorinated gases is from Guus Velders.
 
 ####  Energy System Drivers
 * Emissions in the energy system can be driven by input (e.g., fuel consumed by a particular technology) or output (e.g., fuel or service produced by a particular technology).
@@ -79,11 +79,11 @@ Most base-year non-CO<sub>2</sub> emissions are calibrated to the EDGAR 4.2 emis
 There are some naming conventions for a few emission species/sectors within GCAM that are useful to note.
 
 * Emissions from most agricultural activities are suffixed with "\_AGR", except for burning of agricultural waste on fields (AWB), which are suffixed with "\_AWB". (This allows us to separate emissions from these distinct processes from the same technology.) These are in addition to emissions named without a suffix. So to obtain total emissions, the three variants of a given species should be added (e.g., CH4 emissions is the sum of CH4, CH4"\_AGR", and CH4"\_AWB".)
-* Sulfur dioxide (SO<sub>2</sub>) emissions are currently differentiated by four metaregions (SO2\_1,SO2\_2,SO2\_3,SO2\_4). These are kept separate for purposes of feeding the emissions information to the climate model; for emissions estimation, these different categories should be added to obtain global totals.
+* Sulfur dioxide (SO2) emissions are currently differentiated by four metaregions (SO2\_1,SO2\_2,SO2\_3,SO2\_4). These are kept separate for purposes of feeding the emissions information to the climate model; for emissions estimation, these different categories should be added to obtain global totals.
 
-## <a name="non-co2-ghg-emissions"></a>Non-CO<sub>2</sub> GHG Emissions
+## <a name="non-co2-ghg-emissions"></a>Non-CO2 GHG Emissions
 
-The non-CO<sub>2</sub> greenhouse gases include methane (CH<sub>4</sub>), nitrous oxide (N<sub>2</sub>O) and fluorinated gases. These emissions, *E*, are modeled for any given technology in time period *t* as:
+The non-CO2 greenhouse gases include methane (CH4), nitrous oxide (N2O) and fluorinated gases. These emissions, *E*, are modeled for any given technology in time period *t* as:
 
 $$
 E_{t}=A_{t}*F_{t0}*(1-MAC(Cprice_{t})))
@@ -98,9 +98,9 @@ where:
 | MAC | Marginal Abatement Cost Curve |
 | Eprice | Emissions Price |
 
-Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2013](#epa2013). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
+Non-CO2 GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2013](#epa2013). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
-The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO<sub>2</sub> GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
+The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO2 GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
 Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero carbon price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the no-zero-cost-reductions option to 1 within a MAC curve.)
 
@@ -110,11 +110,11 @@ Note that a species-specific emissions market can also be specified using advanc
 
 Most fluorinated gas emissions are linked either to the industrial sector as a whole (e.g., semiconductor-related F-gas emissions are driven by growth in the "industry" sector), or population and GDP (e.g., fire extinguishers). As those drivers change, emissions will change. Additionally, we include abatement options based on EPA MAC curves.
 
-SF<sub>6</sub> emissions from electric transformers scale with electricity consumption.  HFC134a from cooling (e.g., air conditioners) scale with air conditioner electricity consumption. For these emissions we also make additional exogenous adjustments to emissions factors in future periods in developing regions to reflect their continued transition from CFCs to HFCs.
+SF6 emissions from electric transformers scale with electricity consumption.  HFC134a from cooling (e.g., air conditioners) scale with air conditioner electricity consumption. For these emissions we also make additional exogenous adjustments to emissions factors in future periods in developing regions to reflect their continued transition from CFCs to HFCs.
 
 ## <a name="air-pollutant-emissions"></a>Air Pollutant Emissions
 
-Air pollutant emissions such as sulfur dioxide (SO<sub>s</sub>) and nitrogen oxides (NO<sub>x</sub>) are modeled as:
+Air pollutant emissions such as sulfur dioxide (SOs) and nitrogen oxides (NOx) are modeled as:
 
 $$
 E_{t}=A_{t}*EF_{t0}*(1-EmCtrl(pcGDP_{t}))
@@ -130,13 +130,13 @@ where *pcGDP* stands for the per-capita GDP, and *steepness* is an exogenous con
 
 Note that the GCAM implementation of the SSP scenarios used a different approach, incorporating region-, sector-, and fuel-specific pollutant emission factor pathways ([Calvin et al. 2017](#calvin2017), [Rao et al. 2017](#rao2017)).
 
-## <a name="user-options"></a>Advanced Non-CO<sub>2</sub> User Options
+## <a name="user-options"></a>Advanced Non-CO2 User Options
 
 ### Markets
 
-For information on using markets for non-CO2 emissions see the [markets For non-CO<sub>2</sub>](./policies.md#non-co2-markets) section of the polices page.
+For information on using markets for non-CO2 emissions see the [markets For non-CO2](./policies.md#non-co2-markets) section of the polices page.
 
-### Additional Non-CO<sub>2</sub> Emission Options
+### Additional Non-CO2 Emission Options
 
 Emission objects can be added/changed via user input in any time period. New parameters (such as emission factors) overwrite any previous values. Note that emission control objects will be copied forward. For vintaged technologies (e.g. electric generation, road transport), any new emission object will be applied to new vintages. Old vintages will retain the previously read-in emission characteristics.
 
@@ -161,7 +161,7 @@ allow-ef-increase | (optional) Allow emission factors to increase from their sta
 
 <a name="epa2011"></a>[EPA 2011] US EPA, 2011, *2011 National Emissions Inventory (NEI) Data*. United States Environmental Protection Agency, Office of Air Quality Planning and Standards. [Link](https://www.epa.gov/air-emissions-inventories/2011-national-emissions-inventory-nei-data)
 
-<a name="epa2013"></a>[EPA 2013] US EPA, 2013, *Global Mitigation of Non-CO<sub>2</sub> Greenhouse Gases: 2010-2030*. EPA-430-R-13-011, United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/sites/production/files/2016-06/documents/mac_report_2013.pdf)
+<a name="epa2013"></a>[EPA 2013] US EPA, 2013, *Global Mitigation of Non-CO2 Greenhouse Gases: 2010-2030*. EPA-430-R-13-011, United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/sites/production/files/2016-06/documents/mac_report_2013.pdf)
 
 <a name="lamarque2010"></a>[Lamarque et al. 2010] Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 

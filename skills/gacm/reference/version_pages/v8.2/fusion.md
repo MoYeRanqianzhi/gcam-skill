@@ -328,7 +328,7 @@ The add-on file would contain the following XML:
 </scenario>
 ```
 
-Next we will add in some calls to GCAM Fusion to query for the global CO<sub>2</sub>
+Next we will add in some calls to GCAM Fusion to query for the global CO2
 emissions from the model.  You will need to include the following header files
 into your .cpp file:
 
@@ -473,7 +473,7 @@ just received.
 
 Finally we can query for the appropriate GCAM paramaters again but this time
 changing the value.  You will notice that really everything works the same as
-when we were collecting the CO<sub>2</sub> emissions.  The data passed to `processData` is
+when we were collecting the CO2 emissions.  The data passed to `processData` is
 passed by reference to the actual parameter that lives in the GCAM objects and
 is not const so we are free to change it as we please.  These are the queries
 for building heating and cooling services:

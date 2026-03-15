@@ -15,9 +15,9 @@ Load this page when the user needs version-specific detail from this exact page 
 
 This section describes the carbon-cycle climate module - Hector - that is available for use in GCAM. Hector v3.2.0 is the default climate model (Hartin et al. 2015 and Dorheim et al. in press) within GCAM.
 
-Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, three-pool land, and 4-pool ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. Hector’s flexibility, open-source nature, and modular design facilitate a broad range of research.
+Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, three-pool land, and 4-pool ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO2], radiative forcing, and surface temperatures. Hector’s flexibility, open-source nature, and modular design facilitate a broad range of research.
 
-Figure 1: Conceptual diagram of the CO<sub>2</sub> fluxes (numbered thick gray arrows) between Hector’s four major carbon cycle boxes: a well-mixed atmosphere (Atmosphere), terrestrial carbon cycle (Land), ocean carbon cycle (Ocean), and fossil fuels (Earth). The thinner arrows within the land and ocean boxes denote Hector's more complex submodule carbon cycle dynamics, which are not discussed in detail here. The solid lines indicate that CO<sub>2</sub> fluxes are calculated within Hector, whereas the dashed lines indicate that the fluxes are externally defined inputs read into the model. The fluxes are labeled: (1) CO<sub>2</sub> emissions from fossil fuels and industry and uptake carbon capture technologies; (2) CO<sub>2</sub> emissions and uptake from land use change (e.g., afforestation, deforestation, etc.); (3) vegetation uptake from the atmosphere (4) the aggregate CO<sub>2</sub> from respiration from the terrestrial biosphere; and ocean carbon (5) uptake and (6) outgassing. The model’s permafrost implementation (Woodard et al. 2021) emits both CO<sub>2</sub> and CH4 into the atmosphere.
+Figure 1: Conceptual diagram of the CO2 fluxes (numbered thick gray arrows) between Hector’s four major carbon cycle boxes: a well-mixed atmosphere (Atmosphere), terrestrial carbon cycle (Land), ocean carbon cycle (Ocean), and fossil fuels (Earth). The thinner arrows within the land and ocean boxes denote Hector's more complex submodule carbon cycle dynamics, which are not discussed in detail here. The solid lines indicate that CO2 fluxes are calculated within Hector, whereas the dashed lines indicate that the fluxes are externally defined inputs read into the model. The fluxes are labeled: (1) CO2 emissions from fossil fuels and industry and uptake carbon capture technologies; (2) CO2 emissions and uptake from land use change (e.g., afforestation, deforestation, etc.); (3) vegetation uptake from the atmosphere (4) the aggregate CO2 from respiration from the terrestrial biosphere; and ocean carbon (5) uptake and (6) outgassing. The model’s permafrost implementation (Woodard et al. 2021) emits both CO2 and CH4 into the atmosphere.
 
 ## GCAM-Hector interactions
 Currently the GCAM sectors interact with Hector via emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system and earth system (e.g., temperature, carbon-fluxes, etc.). Hector's climate information can be used as a climate constraint for in a [GCAM policy run](policies.md).
@@ -26,19 +26,19 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ---|:----| :------ |
-| CO<sub>2</sub><sup>*</sup>| [AgLU](aglu.md), [Energy](energy.md)  | |
-| CH<sub>4</sub> | AgLU, Energy, Industrial Processes    | |
-| N<sub>2</sub>O | AgLU, Energy    | |
-| NH<sub>3</sub> | AgLU, Energy  |  |
-| SO<sub>2</sub> | AgLU, Energy, Industrial Processes    | |
+| CO2^*| [AgLU](aglu.md), [Energy](energy.md)  | |
+| CH4 | AgLU, Energy, Industrial Processes    | |
+| N2O | AgLU, Energy    | |
+| NH3 | AgLU, Energy  |  |
+| SO2 | AgLU, Energy, Industrial Processes    | |
 | CO | AgLU, Energy, Industrial Processes    |         |
 | BC | AgLU, Energy    | |
 | OC | AgLU, Energy    ||
-| NO<sub>x</sub>  | AgLU, Energy, Industrial Processes    | |
+| NOx  | AgLU, Energy, Industrial Processes    | |
 | NMVOC | Energy, Industrial Processes | |
-| C<sub>2</sub>F<sub>6</sub>| Energy, Industrial Processes | |
-| CF<sub>4</sub> |Industrial Processes, Urban Processes | |
-| SF<sub>6</sub> |Energy, Industrial Processes | |
+| C2F6| Energy, Industrial Processes | |
+| CF4 |Industrial Processes, Urban Processes | |
+| SF6 |Energy, Industrial Processes | |
 | HFC134a| Energy| |
 | HFC32| Energy| |
 | HFC125| Urban Processes | |
@@ -49,9 +49,9 @@ Table 1: Emissions and sources from each sector passed to Hector.
 | HFC245fa| Industrial Processes | |
 | HFC365mfc| Industrial Processes | |
 
-<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheric-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes.
+^* CO2 emissions from the AgLU sector are separate from CO2 emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (FA), land-use change emissions (FLC), and the atmospheric-ocean (FO) and atmosphere-land (FL) carbon fluxes.
 
-dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)
+dCatm/dt = FA(t) + FLC(t) - FO(t) - FL(t)
 
 Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partitioned among the carbon pools (Hartin et al., 2015).
 
@@ -62,7 +62,7 @@ At every time step Hector calculates and outputs key climate variables.
 
 * Global mean air temperature (two time series are available, one with values original Hector output and one relative to 1850-1900)
 * Global mean surface temperature (two time series are available, one with values original Hector output and one relative to 1850-1900)
-* Atmospheric concentrations for CO<sub>2</sub> & other species
+* Atmospheric concentrations for CO2 & other species
 * Total radiative forcing & radiative forcing of individual emissions
 
 **Land**
@@ -76,7 +76,7 @@ At every time step Hector calculates and outputs key climate variables.
 
 * Ocean carbon uptake
 * Carbon pools (high and low latitude surface, intermediate and deep)
-* Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite
+* Carbonate system (DIC, pCO2, CO3^2-, pH, aragonite and calcite
 	saturations)
 * Sea surface temperature
 * Ocean to atmosphere heat flux

@@ -22,7 +22,7 @@ Load this page when the user needs version-specific detail from this exact page 
 - [References](#references)
 
 ## Inputs to the Model
-**Table 1: Inputs required by the supply module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the supply module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |

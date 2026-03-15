@@ -24,7 +24,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Inputs to the Module
 
-**Table 1: Inputs required by the demand module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the demand module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -137,13 +137,13 @@ GCAM's representation of Agricultural energy use sector.
 
 #### Cement
 
-GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
+GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO2. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
 
 Cement is treated as a final demand in GCAM; demands are driven by population and income, and the commodity is not an input to any further modeled processes.
 
-Note that there is a CO<sub>2</sub> capture and storage technology for cement production, wherein the CO<sub>2</sub> from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](demand_energy.md#mahasenan2005).
+Note that there is a CO2 capture and storage technology for cement production, wherein the CO2 from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](demand_energy.md#mahasenan2005).
 
 #### Ammonia and N fertilizer
 
@@ -155,7 +155,7 @@ Fuel and feedstock sources and input-output coefficients are calibrated based on
 
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of NH3 on the energy inputs to ammonia, the unitlass mass ratio of NH3 to N in going to N fertilizer, and unitless mass of N per mass of crop for the N fertilizer inputs to crop production). Note that only one example production technology for ammonia is shown, when several are represented.**
 
-The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.md#doe2015).
+The hydrogen production stage of ammonia production emits a relatively pure stream of CO2 that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.md#doe2015).
 
 More details can be found in [CMP #389](cmp/389-Ammonia_Trade.md).
 
@@ -321,13 +321,13 @@ See `calcCost` in [tran_technology.cpp](https://github.com/JGCRI/gcam-core/blob/
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
-GCAM has the capability to model three technologies which consume thermal and/or electrical energy for the sole purpose of removing carbon dioxide from the atmosphere, broadly referred to as direct air capture with carbon storage (DACCS). The first is an aqueous hydroxide solvent process requiring water, high-temperature thermal energy from natural gas for solvent regeneration, and electricity to run ancillary equipment.  The second archetype relies on the same aqueous hydroxide solvent process but uses electricity to generate the high temperatures (>900 ˚C) required for regeneration. The third uses solid adsorbents, with the lower-temperature heat required for sorbent regeneration generated by an electric heat pump. These technologies remove CO<sub>2</sub> from the atmosphere and send it to geologic storage, along with any captured combustion emissions from process heat.  The techno-economic assessment for the input parameters of DACCS was based on the work of [Keith et. al. 2018](https://www.sciencedirect.com/science/article/pii/S2542435118302253), [Mazzotti et. al. 2013](https://link.springer.com/article/10.1007/s10584-012-0679-y), [Beuttler et. al. 2019](https://www.frontiersin.org/articles/10.3389/fclim.2019.00010/full), and [Fasihi et. al. 2019](https://www.sciencedirect.com/science/article/pii/S0959652619307772).
+GCAM has the capability to model three technologies which consume thermal and/or electrical energy for the sole purpose of removing carbon dioxide from the atmosphere, broadly referred to as direct air capture with carbon storage (DACCS). The first is an aqueous hydroxide solvent process requiring water, high-temperature thermal energy from natural gas for solvent regeneration, and electricity to run ancillary equipment.  The second archetype relies on the same aqueous hydroxide solvent process but uses electricity to generate the high temperatures (>900 ˚C) required for regeneration. The third uses solid adsorbents, with the lower-temperature heat required for sorbent regeneration generated by an electric heat pump. These technologies remove CO2 from the atmosphere and send it to geologic storage, along with any captured combustion emissions from process heat.  The techno-economic assessment for the input parameters of DACCS was based on the work of [Keith et. al. 2018](https://www.sciencedirect.com/science/article/pii/S2542435118302253), [Mazzotti et. al. 2013](https://link.springer.com/article/10.1007/s10584-012-0679-y), [Beuttler et. al. 2019](https://www.frontiersin.org/articles/10.3389/fclim.2019.00010/full), and [Fasihi et. al. 2019](https://www.sciencedirect.com/science/article/pii/S0959652619307772).
 
 [Fuhrman et. al. 2020 (a)](https://www.nature.com/articles/s41558-020-0876-z), and [Fuhrman et al 2020 (b)](https://academic.oup.com/oocc/article/1/1/kgab004/6284217) used GCAM to study the global and regional potential of DACCS processes using natural gas for high temperature heat as well as the implications of their deployment for the food-energy-water systems. The Methods and Supplementary Information of these studies document the general approach to modeling DACCS in GCAM, which is summarized in more detail below.
 
-In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and (b) other carbon removal technologies such as BECCS and afforestation based on its cost and the subsidy paid for CO<sub>2</sub> removal (i.e., the carbon emissions price). This competition is created by defining an additional "no-DAC" technology which does not capture carbon and has zero cost.
+In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and (b) other carbon removal technologies such as BECCS and afforestation based on its cost and the subsidy paid for CO2 removal (i.e., the carbon emissions price). This competition is created by defining an additional "no-DAC" technology which does not capture carbon and has zero cost.
 
-**Schematic of DACCS technology competition in GCAM's CO<sub>2</sub> Removal (CDR) Sector**
+**Schematic of DACCS technology competition in GCAM's CO2 Removal (CDR) Sector**
 
 ## Equations
 The equations that determine energy demand are described here.
@@ -400,7 +400,7 @@ $$β$$ = the logit coefficient, which determines how large a cost difference is 
 
 Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in the first model future period, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price).
 
-In each region, the base year service demand for the CO<sub>2</sub> removal sector (currently, the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO<sub>2</sub> per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO<sub>2</sub> removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
+In each region, the base year service demand for the CO2 removal sector (currently, the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO2 per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO2 removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
 
 ## Policy options
 
@@ -470,7 +470,7 @@ Residential and commercial
 
 <a name="bts2015"></a>[BTS 2015] Bureau of Transportation Statistics, 2015, *Table 3-21: Average Freight Revenue Per Ton-mile (Current cents)*, U.S. Department of Transportation, Office of the Assistant Secretary for Research and Technology. [Link](http://www.rita.dot.gov/bts/sites/rita.dot.gov.bts/files/publications/national_transportation_statistics/html/table_03_21.html)
 
-<a name="beuttler2019"></a>[Beuttler et al. 2019] Beuttler, C., Charles, L., and Wurzbacher, J. “The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions” *Frontiers in Climate* 1, (2019)[Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
+<a name="beuttler2019"></a>[Beuttler et al. 2019] Beuttler, C., Charles, L., and Wurzbacher, J. “The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions” *Frontiers in Climate* 1, (2019) [Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
 
 <a name="CDIAC2017"></a>[CDIAC 2017] Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
@@ -484,7 +484,7 @@ Residential and commercial
 
 <a name="fuhrman2020b"></a>[Fuhrman et al. 2020b] Fuhrman J Clarens A F, McJeon H, Patel P, Ou Y, Doney S C, Shobe W M and Pradhan S 2021. The role of negative emissions in meeting China’s 2060 carbon neutrality goal Oxford Open Clim. Chang. 1 1–15 [Link](https://academic.oup.com/oocc/article/1/1/kgab004/6284217)
 
-<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
+<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO2 Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
 <a name="iea2021"></a>[IEA 2021] International Energy Agency, 2007, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
 

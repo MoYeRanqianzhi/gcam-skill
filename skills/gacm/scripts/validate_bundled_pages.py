@@ -17,6 +17,7 @@ from version_catalog import VERSION_PAGES_ROOT
 
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
+INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 RAW_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 RAW_HTML_IMG_RE = re.compile(r"<img\b", re.IGNORECASE)
@@ -35,6 +36,7 @@ RAW_HTML_STYLED_SPAN_RE = re.compile(r"<span\b[^>]*style=", re.IGNORECASE)
 RAW_HTML_BREAK_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 RAW_HTML_COMMENT_RE = re.compile(r"<!--", re.IGNORECASE)
 RAW_HTML_INLINE_FORMATTING_RE = re.compile(r"</?(?:cite|i|em)\b", re.IGNORECASE)
+RAW_HTML_SUBSUP_RE = re.compile(r"</?(?:sub|sup)\b", re.IGNORECASE)
 RAW_PRESENTATIONAL_ATTR_RE = re.compile(
     r"(?:\bstyle\s*=|\balign\s*=|\bvalign\s*=|\browspan\s*=|\bcolspan\s*=|\bwidth\s*=|\bheight\s*=)",
     re.IGNORECASE,
@@ -43,6 +45,7 @@ RAW_MD_ATTR_LINE_RE = re.compile(r"(?m)^[ \t]*\{:\s*[^}\n]+\}[ \t]*$")
 ESCAPED_WIKI_REF_RE = re.compile(r"&lt;ref\b|&lt;/ref&gt;|%3C/ref%3E", re.IGNORECASE)
 ESCAPED_WIKI_REFERENCES_RE = re.compile(r"&lt;references\b", re.IGNORECASE)
 ESCAPED_HTML_COMMENT_RE = re.compile(r"&lt;!--", re.IGNORECASE)
+ESCAPED_HTML_SUBSUP_RE = re.compile(r"&lt;/?(?:sub|sup)&gt;", re.IGNORECASE)
 LEGACY_IMAGE_RE = re.compile(r"Image reference:")
 PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
 OMITTED_IMAGE_RESIDUE_RE = re.compile(r"\[omitted image:", re.IGNORECASE)
@@ -53,10 +56,16 @@ GENERIC_WINDOWS_PLACEHOLDER_RE = re.compile(r"(?i)\b[A-Za-z]:[\\/]path(?:[\\/]|$
 RAW_GUI_PATH_RE = re.compile(r"`File -> (?:Manage DB|Export)`|Click on each box for a more detailed description", re.IGNORECASE)
 WRAPPED_CITATION_LINK_RE = re.compile(r"\[\([^][]*[A-Za-z][^][]*?\d{4}[^][]*\)\]\([^)]+\)")
 BROKEN_ANCHOR_CITATION_LINK_RE = re.compile(r"\[[^\]]*?\(\d{4}\]\(#[^)]+\)\)")
+BROKEN_DOUBLE_BRACKET_REF_RE = re.compile(r"\[\[[^\]]+\]\]\([^)]+\)|\[\[[^\]]+\]\([^)]+\)\]")
+RAW_TEXT_ENTITY_RE = re.compile(r"&amp;|&quot;|&#(?:160|xA0|xa0);", re.IGNORECASE)
 
 
 def strip_code_fences(text: str) -> str:
     return CODE_FENCE_RE.sub("", text)
+
+
+def strip_inline_code(text: str) -> str:
+    return INLINE_CODE_RE.sub("", text)
 
 
 def split_target(raw: str) -> str:
@@ -105,6 +114,7 @@ def main() -> int:
             )
     for page in roots:
         text = strip_code_fences(page.read_text(encoding="utf-8", errors="ignore"))
+        text_without_inline = strip_inline_code(text)
         for match in LINK_RE.finditer(text):
             raw_target = match.group(1).strip()
             target = split_target(raw_target)
@@ -143,6 +153,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html/xml comment markup remains")
         if RAW_HTML_INLINE_FORMATTING_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw inline html formatting tag remains")
+        if RAW_HTML_SUBSUP_RE.search(text_without_inline):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html sub/sup semantic tag remains")
         if RAW_PRESENTATIONAL_ATTR_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> presentational table/html attributes remain")
         if RAW_MD_ATTR_LINE_RE.search(text):
@@ -153,6 +165,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped legacy wiki references marker remains")
         if ESCAPED_HTML_COMMENT_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped html/xml comment markup remains")
+        if ESCAPED_HTML_SUBSUP_RE.search(text_without_inline):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped html sub/sup semantic tag remains")
         if LEGACY_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
         if PLACEHOLDER_IMAGE_RE.search(text):
@@ -165,6 +179,10 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> wrapped citation link label remains")
         if BROKEN_ANCHOR_CITATION_LINK_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> broken same-page citation anchor label remains")
+        if BROKEN_DOUBLE_BRACKET_REF_RE.search(text_without_inline):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> broken double-bracket reference link markup remains")
+        if RAW_TEXT_ENTITY_RE.search(text_without_inline):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> html entity residue remains outside inline code")
         for line_no, line in enumerate(text.splitlines(), start=1):
             normalized_line = normalize_portability_line(line)
             if (

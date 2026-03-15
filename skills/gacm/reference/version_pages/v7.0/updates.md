@@ -67,4 +67,4 @@ Several changes have been made to GCAM since the last release version (v5.3). Th
  11. Optional features (not turned on by default):
 	- Direct Air Capture
 	- Ability to specify exogenous floorspace pathways
-	- Ability to scale CH<sub>4</sub> and N<sub>2</sub>O emissions to EPA inventories
+	- Ability to scale CH4 and N2O emissions to EPA inventories

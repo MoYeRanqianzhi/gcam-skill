@@ -130,9 +130,9 @@ The structure of the hydrogen production and distribution sectors and technologi
 
 **Hydrogen structure, with example input-output coefficients shown.**
 
-As in the H2A model [IHA 2000](details_energy.md#iha2000), the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
+As in the H2A model [IHA 2000](details_energy.md#iha2000), the production of hydrogen takes place in two distinct sectors: H2 Forecourt Production (i.e., on-site generation) and H2 Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
 
-The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; in this structure, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
+The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; in this structure, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO2 emissions.
 
 The wind and solar technologies are electrolysis technologies, but are specifically disaggregated because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](supply_energy.md#electricity)). In contrast, the nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
 
@@ -158,14 +158,14 @@ The historical water flow volumes for several of the sectors and processes are e
 | Sector | Process | Historical data source | Energy deducted from | Future demand driver |
 | :--- | :--- | :--- | :--- | :--- |
 | Desalinated water | Treatment | FAO Aquastat | Industry Sector; Commercial and Public Services | Municipal water demand; manufacturing water demand |
-| Irrigation water | Abstraction | [Irrigation water withdrawals](demand_water.md), plus upstream distribution losses <sup>[1](#table2_footnote1)</sup> | Agriculture; Commercial and Public Services | Irrigation water demand |
-| Industry | Abstraction | [Industrial water withdrawals](demand_water.md), minus desalinated water use <sup>[2](#table2_footnote2)</sup> | Industry Sector | Industrial Output |
-| Industry | Treatment | [Industrial water withdrawals](demand_water.md), minus desalinated water use <sup>[2](#table2_footnote2)</sup> | Industry Sector | Industrial Output |
-| Industry | Wastewater Treatment | [Industrial water withdrawals](demand_water.md), times wastewater treatment share <sup>[3](#table2_footnote3)</sup> | Industry Sector | Industrial Output |
-| Municipal | Abstraction | [Municipal water withdrawals](demand_water.md), minus desalinated water use <sup>[2](#table2_footnote2)</sup> | Commercial and Public Services | Municipal water demand |
-| Municipal | Treatment | [Municipal water withdrawals](demand_water.md), minus desalinated water use <sup>[2](#table2_footnote2)</sup> | Commercial and Public Services | Municipal water demand |
+| Irrigation water | Abstraction | [Irrigation water withdrawals](demand_water.md), plus upstream distribution losses  [1](#table2_footnote1) | Agriculture; Commercial and Public Services | Irrigation water demand |
+| Industry | Abstraction | [Industrial water withdrawals](demand_water.md), minus desalinated water use  [2](#table2_footnote2) | Industry Sector | Industrial Output |
+| Industry | Treatment | [Industrial water withdrawals](demand_water.md), minus desalinated water use  [2](#table2_footnote2) | Industry Sector | Industrial Output |
+| Industry | Wastewater Treatment | [Industrial water withdrawals](demand_water.md), times wastewater treatment share  [3](#table2_footnote3) | Industry Sector | Industrial Output |
+| Municipal | Abstraction | [Municipal water withdrawals](demand_water.md), minus desalinated water use  [2](#table2_footnote2) | Commercial and Public Services | Municipal water demand |
+| Municipal | Treatment | [Municipal water withdrawals](demand_water.md), minus desalinated water use  [2](#table2_footnote2) | Commercial and Public Services | Municipal water demand |
 | Municipal | Distribution | [Municipal water withdrawals](demand_water.md) | Commercial and Public Services | Municipal water demand |
-| Municipal | Wastewater Treatment | [Municipal water withdrawals](demand_water.md), times wastewater treatment share <sup>[3](#table2_footnote3)</sup> | Commercial and Public Services | Municipal water demand |
+| Municipal | Wastewater Treatment | [Municipal water withdrawals](demand_water.md), times wastewater treatment share  [3](#table2_footnote3) | Commercial and Public Services | Municipal water demand |
 
 <a name="table2_footnote1"></a>1: Upstream conveyance losses are from the nation-level estimates of [Rohwer et al. 2007](details_energy.md#rohwer2007).
 
@@ -199,7 +199,7 @@ Electricity used for non-renewable groundwater pumping is represented in future 
 
 ## Optional Exogenous Floorspace
 
-If the base assumptions are not desired, user-specified residential or commercial building floorspace values (in billion m<sup>2</sup>) can be added in a `.csv` file that is outside that datasystem. An XML can be generated from this `.csv` through Model Interface using the following header:
+If the base assumptions are not desired, user-specified residential or commercial building floorspace values (in billion m^2) can be added in a `.csv` file that is outside that datasystem. An XML can be generated from this `.csv` through Model Interface using the following header:
 
 ```
 Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input,
@@ -215,7 +215,7 @@ The following XML is an example of user-specified residential floorspace values 
 
 <a name="eurek2017"></a>[Eurek et al. 2017] Eurek, K., P. Sullivan, M. Gleason, D. Hettinger, D. Heimiller, A. Lopez (2017). An improved global wind resource estimate for integrated assessment models. Energy Economics, 64.
 
-<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
+<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO2 Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
 <a name="iha2000"></a>[IHA 2000] International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 

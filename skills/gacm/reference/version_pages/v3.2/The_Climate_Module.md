@@ -13,7 +13,7 @@ Load this page when the user needs version-specific detail from this exact page 
 ---
 
 The GCAM employs the MAGICC model version 5. MAGICC is documented in
-several papers<sup>[[1]](#ref1)[[2]](#ref2)[[3]](#ref3)</sup>. In the current version of GCAM, the MAGICC
+several papers [1](#ref1) [2](#ref2) [3](#ref3). In the current version of GCAM, the MAGICC
 code has been re-implemented in C++. MAGICC consists of a coupled set
 of simple models for the entire chain from emissions to concentrations
 to global radiative forcing to global changes in temperature and
@@ -59,7 +59,7 @@ Direct and indirect forcing from aerosols is included. Direct forcing
 from sulfur dioxide, black carbon, and organic carbon are taken to be
 proportional to SO2, BC, and OC emissions, respectively. The GCAM
 version of MAGICC has been updated to include a direct representation
-of BC and OC emissions provided by GCAM.<sup>[[4]](#ref4)</sup>
+of BC and OC emissions provided by GCAM. [4](#ref4)
 In the distribution version of MAGICC, BC
 and OC forcing is, in contrast, inferred from proxy measures such as
 land-use change and SO2 or CO emissions. Indirect cloud forcing in
@@ -78,28 +78,28 @@ land glaciers and (optionally) large arctic and antarctic ice sheets
 are also included.
 
 MAGICC has been shown to be able to emulate the global-mean results
-from most complex general circulation models<sup>[[5]](#ref5)</sup>. A range of
+from most complex general circulation models [5](#ref5). A range of
 user-specified parameters, including climate sensitivity,
-carbon-cycle<sup>[[6]](#ref6)</sup>, and aerosol forcing strength, are available that
+carbon-cycle [6](#ref6), and aerosol forcing strength, are available that
 enable a GCAM user to produce a wide range of climate
 scenarios.
 
 |   | GCAM |
 | --- | --- |
-| CO<sub>2</sub> fuel combustion | Endogenous by technology and fuel |
-| CO<sub>2</sub> from other industry | Endogenous by technology and fuel |
-| CO<sub>2</sub> from land use change | Endogenous by technology and land use |
-| CH<sub>4</sub> | Endogenous, mitigation with MAC |
-| N<sub>2</sub>O | Endogenous, mitigation with MAC |
+| CO2 fuel combustion | Endogenous by technology and fuel |
+| CO2 from other industry | Endogenous by technology and fuel |
+| CO2 from land use change | Endogenous by technology and land use |
+| CH4 | Endogenous, mitigation with MAC |
+| N2O | Endogenous, mitigation with MAC |
 | CFCs | Exogenous |
 | HFCs | Endogenous, mitigation with MAC |
 | PFCs | Endogenous, mitigation with MAC |
-| SF<sub>y</sub> | Endogenous, mitigation with MAC |
+| SFy | Endogenous, mitigation with MAC |
 | Other Montreal gases | Exogenous |
 | CO | Endogenous |
-| NO<sub>x</sub> | Endogenous |
+| NOx | Endogenous |
 | VOC | Endogenous |
-| SO<sub>2</sub> | Endogenous |
+| SO2 | Endogenous |
 | BC from fossil fuel burning | Endogenous |
 | OC from fossil fuel burning | Endogenous |
 | BC from biomass burning | Endogenous |

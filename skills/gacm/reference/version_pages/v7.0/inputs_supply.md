@@ -26,12 +26,12 @@ GCAM's supply inputs include information on production, prices, technology cost 
 
 #### Description
 
-**Table 1: External inputs used for supply of energy<sup>[1](#table_footnote1)</sup>**
+**Table 1: External inputs used for supply of energy [1](#table_footnote1)**
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical supply of energy | Supply of energy in the historical period; used for initialization/calibration of GCAM | External data | [IEA](#iea2019) | Specified by fuel, transformation sector, country, and year |  ktoe and GWh |
-| CO<sub>2</sub> capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
+| CO2 capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
 | Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by subsector and technology | N/A |
@@ -44,9 +44,9 @@ GCAM's supply inputs include information on production, prices, technology cost 
 | Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year | GJ per GJ |
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  GJ per GJ |
 | Resource supply curves | Mapping between cost and resource extraction. Resource extraction is cumulative for deplatable resources and annual for renewable resources | External data | Various | Specified by resource and year |  EJ for extraction, 1975$/GJ for cost |
-| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
-| CO<sub>2</sub> emissions coefficients | Default carbon content of fuels | External data | [CDIAC](#cdiac2017) and [IEA](#iea2019)  | Specified by fuel | kgC / GJ |
-| Historical CO<sub>2</sub> emissions | Historical emissions of CO<sub>2</sub> | External data | [CDIAC](#cdiac2017) | Specified by nation and year | ktC per year |
+| Historical non-CO2 emissions | Historical emissions of non-CO2 | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
+| CO2 emissions coefficients | Default carbon content of fuels | External data | [CDIAC](#cdiac2017) and [IEA](#iea2019)  | Specified by fuel | kgC / GJ |
+| Historical CO2 emissions | Historical emissions of CO2 | External data | [CDIAC](#cdiac2017) | Specified by nation and year | ktC per year |
 
 <a name="table_footnote1"></a>1: Note that this table differs from the one provided on the [Energy Supply Modeling Page](supply_energy.md#inputs-to-the-module) in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
@@ -60,9 +60,9 @@ Throughout GCAM, the number in the name of assumption file indicates to which se
 
 GCAM uses IEA energy balances as a source for historical energy supply and demand. IEA data are proprietary and thus are not provided in the GCAM data repository. Instead, we provide all of the `R` code used to process the IEA data so that the user can replicate the processing _if_ they purchase the IEA data. In addition, we provide aggregated data after it has undergone processing so that GCAM input files can be created and used by the user community.
 
-##### CO<sub>2</sub> capture rates
+##### CO2 capture rates
 
-CO<sub>2</sub> capture rates for refining are specified in [A22.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A22.globaltech_co2capture.csv). Capture rates for electricity generation are specified in [A23.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_co2capture.csv); capture rates for hydrogen production are specified in [A25.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A25.globaltech_co2capture.csv).
+CO2 capture rates for refining are specified in [A22.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A22.globaltech_co2capture.csv). Capture rates for electricity generation are specified in [A23.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_co2capture.csv); capture rates for hydrogen production are specified in [A25.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A25.globaltech_co2capture.csv).
 
 ##### Retirement rules
 
@@ -111,15 +111,15 @@ Resource supply curves are specified for [fossil fuels](https://github.com/JGCRI
 
 ##### Emissions
 
-Default carbon contents of fuels are specified in [A_PrimaryFuelCCoef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/A_PrimaryFuelCCoef.csv). Historical CO<sub>2</sub> emissions are provided in [CDIAC_CO2_by_nation.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CDIAC_CO2_by_nation.csv).
+Default carbon contents of fuels are specified in [A_PrimaryFuelCCoef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/A_PrimaryFuelCCoef.csv). Historical CO2 emissions are provided in [CDIAC_CO2_by_nation.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CDIAC_CO2_by_nation.csv).
 
-Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+Historical non-CO2 emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
 ### Water
 
 #### Description
 
-**Table 2: External inputs used for supply of water <sup>[2](#table_footnote2)</sup>**
+**Table 2: External inputs used for supply of water  [2](#table_footnote2)**
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -150,7 +150,7 @@ The costs of desalinated water reflects electrical energy input and capital and 
 
 #### Description
 
-**Table 3: External inputs used for supply of food, feed, and forestry <sup>[3](#table_footnote3)</sup>**
+**Table 3: External inputs used for supply of food, feed, and forestry  [3](#table_footnote3)**
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -164,7 +164,7 @@ The costs of desalinated water reflects electrical energy input and capital and 
 | Historical prices | Historical prices of agriculture and livestock commodities; used for initialization/calibration of GCAM | External data | FAO, [gcamdata-faostat](#gcamdata-faostat) | Specified by country, commodity, and year |  |
 | Agriculture productivity growth | Projected yields through 2050 for agricultural commodities | External data | FAO | Specified by country, commodity, and year |  |
 | Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
-| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
+| Historical non-CO2 emissions | Historical emissions of non-CO2 | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
 
 <a name="table_footnote3"></a>3: Note that this table differs from the one provided on the [Land Supply Modeling Page](supply_land.md#inputs-to-the-module) in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
@@ -194,7 +194,7 @@ The costs associated with land, irrigation, and fertilizer are endogenously dete
 
 ##### Emissions
 
-Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+Historical non-CO2 emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
 #### gcamdata-faostat
 

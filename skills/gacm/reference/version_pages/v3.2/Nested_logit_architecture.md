@@ -51,7 +51,7 @@ positive logit exponents and allow economics to dictate the land
 allocation within a region.
 
 As a point of reference, we have compared the logit approach used in
-AgLU with the approach used in FASOM<sup>[[1]](#ref1)</sup>,
+AgLU with the approach used in FASOM [1](#ref1),
 an optimization model of agriculture and forest in the United
 States. FASOM uses a mix of substitution strategies very different
 from our approach. FASOM divides the U.S. into a number of small

@@ -694,8 +694,8 @@ A Filter object allows GCAMFusion to select a subset of a data object that is a
 container for other objects. The available Filters are:
 
 * NoFilter: matches all elements
-* NamedFilter: Calls the -&gt;getName() method on the container to compare in it's predicate. `SIMPLE` and `ARRAY` will never match.
-* YearFilter: Calls the -&gt;getYear() method if the data is `CONTAINER` or uses the `Modeltime` to convert period index to year if the data is `ARRAY` and compares that year in it's predicate. `SIMPLE` data will never match.
+* NamedFilter: Calls the ->getName() method on the container to compare in it's predicate. `SIMPLE` and `ARRAY` will never match.
+* YearFilter: Calls the ->getYear() method if the data is `CONTAINER` or uses the `Modeltime` to convert period index to year if the data is `ARRAY` and compares that year in it's predicate. `SIMPLE` data will never match.
 * IndexFilter: Computes the index offset of each element in an `ARRAY` or `CONTAINER` Data for comparison in it's predicate. `SIMPLE` Data will never match.
 
 ### Predicates
@@ -1098,7 +1098,7 @@ definition tag if the member variable does not contain more data
 #### DEFINE\_VARIABLE with flag ARRAY
 
 This is used to define a member variable that is an array of simple data such as
-PeriodVector&lt;Value&gt; or vector&lt;int&gt;, etc.  More directly, you want to
+PeriodVector<Value> or vector<int>, etc.  More directly, you want to
 use this definition tag if the member variable does not contain more data
 (i.e. `/price/logit-exponent` isn't valid) but can be filtered
 (i.e. `/price[@year=2020]` is valid).
@@ -1112,7 +1112,7 @@ subsector or just a single object such as with discrete-choice-function.  We
 just use the CONTAINER tag to handle both cases.  The reason is for container
 thery may be filtered by [NamedFilter](#filter-objects) or
 [YearFilter](#filter-objects).  If the data being held is
-vector&lt;Subsector\*&gt; for instance this allows us to search only the one
+vector<Subsector\*> for instance this allows us to search only the one
 that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
 isn't a vector and just a single object it may still make sense to filter by
 name, such an example would be the climate model

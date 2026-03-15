@@ -24,7 +24,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Inputs to the Module
 
-**Table 1: Inputs required by the demand module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the demand module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -58,7 +58,7 @@ More documentation of the approach to modeling agricultural water demand in GCAM
 
 GCAM represents up to five cooling options for each thermo-electric power generation technology: once-through, recirculating, cooling pond, dry cooling, and once-through with seawater. These specific cooling technologies, described in [NETL 2008](#netl2008), differ significantly in both water withdrawal and water consumption requirements. The specific water demand coefficients assigned to each power generation and cooling technology are from [Macknick et al. 2011](#macknick2011). Note that not all five cooling system options are available for each power plant technology in each region; for example, cooling ponds were often excluded from underlying inventory estimates, and as such are excluded from some regions and generation technologies. Similarly, at present there is no "dry cooling" option represented for the current generation of thermal nuclear power plants.
 
-Cooling system options compete in a calibrated logit nest, similar to the competition between fuels within this sector. The capital costs are from [NETL 2008](#netl2008) and vary across cooling options. Electric generation efficiencies of dry-cooled power plants are lower than the other cooling options that utilize water. The competition between cooling system options is endogenous and cost-based.<sup>[2](#elec_footnote)</sup>
+Cooling system options compete in a calibrated logit nest, similar to the competition between fuels within this sector. The capital costs are from [NETL 2008](#netl2008) and vary across cooling options. Electric generation efficiencies of dry-cooled power plants are lower than the other cooling options that utilize water. The competition between cooling system options is endogenous and cost-based. [2](#elec_footnote)
 
 More documentation of the approach to modeling agricultural water demand in GCAM is available in [Davies et al. 2013](#davies2013), and [Kyle et al. 2013](#kyle2013).
 

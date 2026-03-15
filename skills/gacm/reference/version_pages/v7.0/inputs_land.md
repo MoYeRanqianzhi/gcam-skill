@@ -18,7 +18,7 @@ GCAM's external land inputs include information on land, carbon, other emissions
 
 ### Description
 
-Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
+Table 1: External inputs used by the land model  [1](#table_footnote)
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |

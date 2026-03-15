@@ -61,7 +61,7 @@ model in use.
 ### The Logit
 
 The first of the two discrete choice models used by GCAM is the Logit
-model<sup>[[1](#ref1)][[2](#ref2)]</sup>.  In the Logit model the
+model [1](#ref1) [2](#ref2).  In the Logit model the
 share $$s_i$$ of choice alternative $$i$$ (with cost $$p_i$$) is given
 by
 
@@ -84,7 +84,7 @@ gradually increasing them to a neutral value in later years.
 
 The $$\beta$$ parameter is called the *logit coefficient*.  It
 determines how large a cost difference is needed to produce a given
-difference in market share<sup>[[3](#note3)]</sup>.  We can show this
+difference in market share [3](#note3).  We can show this
 by writing the expression for the ratio of market shares for two
 options $$i$$ and $$j$$:
 
@@ -100,7 +100,7 @@ difference has to be to produce a significant effect.
 ### The Modified Logit
 
 The second discrete choice model supported by GCAM is the Modified
-Logit model<sup>[[4](#ref4)]</sup>.  In this model the share $$s_i$$
+Logit model [4](#ref4).  In this model the share $$s_i$$
 is given by
 
 $$
@@ -108,7 +108,7 @@ s_i = \frac{\alpha_i p_i^\gamma}{\sum_{j=1}^{N} \alpha_j p_j^\gamma}
 $$
 
 As in the Logit model, the $$\alpha_i$$ are the share weights.  The
-$$\gamma$$ parameter is the *logit exponent*<sup>[[5](#note5)]</sup>.  The
+$$\gamma$$ parameter is the *logit exponent* [5](#note5).  The
 logit exponent performs an analogous role to the logit coefficient in
 the Logit model.  The share ratio for this choice function is
 
@@ -124,7 +124,7 @@ ratio must be to produce a significant difference in market share.
 One consequence of this behavior is that the Modified Logit becomes
 poorly behaved when one or more of the choice indicators approaches
 zero.  GCAM handles this situation by putting a floor under the choice
-indicator values<sup>[[6](#note6)]</sup>.  Any alternative with $$p_i
+indicator values [6](#note6).  Any alternative with $$p_i
 < 0.001$$, has its share calculated as if $$p_i = 0.001$$.  This floor
 ensures that we can always calculate a valid share value, but at the
 cost of suppressing any response to differences in choice indicators
@@ -137,7 +137,7 @@ models is that the former computes shares on the basis of differences
 in the choice indicator, while the latter uses ratios.  As a result,
 for indicators in the typical range for GCAM, the Modified Logit is
 much less sensitive to incremental differences in the choice
-indicator<sup>[[7](#note7)]</sup>. In the energy system this has the
+indicator [7](#note7). In the energy system this has the
 effect of allowing high-cost technologies to retain more market share
 than they would in the Logit case.  For a gradually increasing cost
 adder, such as a greenhouse gas tax, it can take a long time to push
@@ -190,7 +190,7 @@ what is used here.  The Logit and Modified Logit choice functions are
 referred to as "Absolute-cost Logit" and "Relative-cost Logit",
 respectively.  Additionally, the logit coefficient for the Logit model
 is not specified directly.  Instead, a logit exponent for an
-_equivalent_<sup>[[8](#note8)]</sup> Modified Logit model is
+_equivalent_ [8](#note8) Modified Logit model is
 specified, and GCAM calculates the corresponding logit coefficient.
 This allows users to switch easily from Logit to Modified Logit or
 vice versa without

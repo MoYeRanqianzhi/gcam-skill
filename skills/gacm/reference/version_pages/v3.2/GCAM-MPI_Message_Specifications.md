@@ -56,7 +56,7 @@ to return is unnecessary.
 |-----------------|-----------------------|---------------------------|-----------------------------|
 |     1            | $$N_t$$ | (int)       | Number of targets to report.  |
 | $$N_t$$         | target type      | (int)                     | Enum constant giving the type of target (concentration, forcing, etc.)|
-| $$N_t$$         |target period     | (int)                     | Period in which the target should be evaluated. If &lt; 0, then evaluate at whatever year the target is at its maximum for the scenario.   |
+| $$N_t$$         |target period     | (int)                     | Period in which the target should be evaluated. If < 0, then evaluate at whatever year the target is at its maximum for the scenario.   |
 | $$N_t$$         | target GHG       | (char\[`GHGNAMEMAX`\])      | String indicating the greenhouse gas the target applies to. Pad with NUL characters if the name is shorter than GHGNAMEMAX. This field will be ignored if the target is not specific to a single GHG (e.g., forcing); however, it must still be present. |
 |      1            | $$N_e$$              | (int)     | Number of GHG emissions to report. |
 | $$N_e$$         | emission GHG     | (char\[`GHGNAMEMAX`\])  | String indicating the GHG for which to report emissions. Pad with NUL characters as necessary. |

@@ -26,10 +26,10 @@ Load this page when the user needs version-specific detail from this exact page 
 | :--- | :--- | :--- | :--- |
 | Supply of all energy commodities | Region and year  | EJ/yr | [Energy Supply Module](supply_energy.md) |
 | Demand for all energy commodities | Region and year  | EJ/yr | [Energy Demand Module](demand_energy.md) |
-| Supply of all agriculture and land-based commodities | Region and year  | Various (e.g., Mt/yr, billion m<sup>3</sup>/yr) | [Land Supply Module](supply_land.md) |
-| Demand for all agriculture and land-based commodities | Region and year  | Various (e.g., Mt/yr, billion m<sup>3</sup>/yr) | [Land Demand Module](demand_land.md) |
-| Supply of all water types | Basin and year  | km<sup>3</sup> | [Water Supply Module](supply_water.md) |
-| Demand for water withdrawals and consumption | Basin and year  | km<sup>3</sup> | [Water Demand Module](demand_water.md) |
+| Supply of all agriculture and land-based commodities | Region and year  | Various (e.g., Mt/yr, billion m^3/yr) | [Land Supply Module](supply_land.md) |
+| Demand for all agriculture and land-based commodities | Region and year  | Various (e.g., Mt/yr, billion m^3/yr) | [Land Demand Module](demand_land.md) |
+| Supply of all water types | Basin and year  | km^3 | [Water Supply Module](supply_water.md) |
+| Demand for water withdrawals and consumption | Basin and year  | km^3 | [Water Demand Module](demand_water.md) |
 
 ## Description
 

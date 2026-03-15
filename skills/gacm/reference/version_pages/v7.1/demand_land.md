@@ -24,14 +24,14 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Inputs to the Module
 
-**Table 1: Inputs required by the demand module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the demand module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
 | Historical demand for agriculture (used for calibration) | By region, demand, commodity, and year | Mt/yr | [Exogenous](inputs_demand.md) |
 | Historical demand for livestock (used for calibration) | By region, demand, commodity, and year | Mt/yr | [Exogenous](inputs_demand.md) |
-| Historical demand for forest (used for calibration) | By region and year | billion km<sup>3</sup>/yr | [Exogenous](inputs_demand.md) |
-| Commodity prices | By region, commodity, and year | 1975$/kg or 1975$/m<sup>3</sup> | [Marketplace](marketplace.md) |
+| Historical demand for forest (used for calibration) | By region and year | billion km^3/yr | [Exogenous](inputs_demand.md) |
+| Commodity prices | By region, commodity, and year | 1975$/kg or 1975$/m^3 | [Marketplace](marketplace.md) |
 | Income and price elasticity (for non-food, non-feed) | By region, demand, and year | unitless | [Exogenous](inputs_demand.md) |
 | Scale parameter, self-price elasticity, cross-price elasticity, income elasticity, regional bias, price scaling parameters (for food demand) | By region | unitless | [Exogenous](inputs_demand.md) |
 | Logit exponents | By region and sector or subsector | unitless |  [Exogenous](inputs_demand.md) |

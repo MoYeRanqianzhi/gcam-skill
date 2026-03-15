@@ -24,7 +24,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Inputs to the Module
 
-**Table 1: Inputs required by the demand module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the demand module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -138,13 +138,13 @@ GCAM's representation of Agricultural energy use sector.
 
 #### Cement
 
-GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
+GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO2. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
 
 Cement is treated as a final demand in GCAM; demands are driven by population and income, and the commodity is not an input to any further modeled processes.
 
-Note that there is a CO<sub>2</sub> capture and storage technology for cement production, wherein the CO<sub>2</sub> from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](demand_energy.md#mahasenan2005).
+Note that there is a CO2 capture and storage technology for cement production, wherein the CO2 from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](demand_energy.md#mahasenan2005).
 
 #### Ammonia and N fertilizer
 
@@ -156,7 +156,7 @@ Fuel and feedstock sources and input-output coefficients are calibrated based on
 
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of NH3 on the energy inputs to ammonia, the unitlass mass ratio of NH3 to N in going to N fertilizer, and unitless mass of N per mass of crop for the N fertilizer inputs to crop production). Note that only one example production technology for ammonia is shown, when several are represented.**
 
-The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.md#doe2015).
+The hydrogen production stage of ammonia production emits a relatively pure stream of CO2 that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](demand_energy.md#doe2015).
 
 #### Food processing
  The food processing sector is highly heterogeneous, generating outputs ranging from dairy products and canned fruits to baked goods and prepared meals using a wide range of processes. Most energy use in the sector is for low temperature heat, primarily process heating and drying. Though energy consumption per dollar value of product tends to be low, food processing is a large source of manufacturing energy demand in some regions. More importantly, the food processing sector plays a unique role in bridging the energy and agri-food sectors. It transforms raw or primary agricultural materials into processed consumer-ready products, thus augmenting the value of the agri-food supply chain and constituting a significant proportion of the total food cost.
@@ -469,7 +469,7 @@ Residential and commercial
 
 <a name="bts2015"></a>[BTS 2015] Bureau of Transportation Statistics, 2015, *Table 3-21: Average Freight Revenue Per Ton-mile (Current cents)*, U.S. Department of Transportation, Office of the Assistant Secretary for Research and Technology. [Link](http://www.rita.dot.gov/bts/sites/rita.dot.gov.bts/files/publications/national_transportation_statistics/html/table_03_21.html)
 
-<a name="beuttler2019"></a>[Beuttler et al. 2019] Beuttler, C., Charles, L., and Wurzbacher, J. “The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions” *Frontiers in Climate* 1, (2019)[Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
+<a name="beuttler2019"></a>[Beuttler et al. 2019] Beuttler, C., Charles, L., and Wurzbacher, J. “The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions” *Frontiers in Climate* 1, (2019) [Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
 
 <a name="CDIAC2017"></a>[CDIAC 2017] Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
@@ -483,7 +483,7 @@ Residential and commercial
 
 <a name="fuhrman2020b"></a>[Fuhrman et al. 2020b] Fuhrman J Clarens A F, McJeon H, Patel P, Ou Y, Doney S C, Shobe W M and Pradhan S 2021. The role of negative emissions in meeting China’s 2060 carbon neutrality goal Oxford Open Clim. Chang. 1 1–15 [Link](https://academic.oup.com/oocc/article/1/1/kgab004/6284217)
 
-<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
+<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO2 Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
 <a name="iea2021"></a>[IEA 2021] International Energy Agency, 2007, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
 

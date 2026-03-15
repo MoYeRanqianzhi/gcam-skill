@@ -18,7 +18,7 @@ GCAM's economic inputs include information on population and income. These input
 
 ### Description
 
-Table 1: External inputs used for economics<sup>[1](#table_footnote1)</sup>
+Table 1: External inputs used for economics [1](#table_footnote1)
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |

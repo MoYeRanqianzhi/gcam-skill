@@ -36,7 +36,7 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 
 - **Terrestrial Carbon Densities**: Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).
 
-- **Other Historical Emissions**: Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).
+- **Other Historical Emissions**: Inputs include emissions of all non-CO2 gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).
 
 - **Future Crop Yield Improvements**: Assumed rates of annual yield improvements for each of the crops and crop management options in each region.
 
@@ -62,9 +62,9 @@ GCAM's outputs include variables related to production, consumption, prices, lan
 
 - **Water Consumption**: Outputs include water consumption (both blue and green) by crop and management practice. This information is calculated annually for each of the AgLU subregions.
 
-- **Carbon**: Outputs include carbon stock and land-use change emissions of CO<sub>2</sub>. This information is calculated annually for each of the 300+ AgLU regions.
+- **Carbon**: Outputs include carbon stock and land-use change emissions of CO2. This information is calculated annually for each of the 300+ AgLU regions.
 
-- **Other emissions**: Outputs include emissions of CH<sub>4</sub>, N<sub>2</sub>O, NH<sub>3</sub>, SO<sub>2</sub>, CO, BC, OC, and NO<sub>x</sub>. Greenhouse gas emissions are produced from livestock, rice, and fertilizer application; these emissions can be reduced with the application of a carbon price. Pollutant emissions are produced from agricultural waste burning, forest fires, deforestation, and savannah burning. Livestock emissions are calculated annually at the 32 region level. All other emissions are calculated annually at the 300+ region level.
+- **Other emissions**: Outputs include emissions of CH4, N2O, NH3, SO2, CO, BC, OC, and NOx. Greenhouse gas emissions are produced from livestock, rice, and fertilizer application; these emissions can be reduced with the application of a carbon price. Pollutant emissions are produced from agricultural waste burning, forest fires, deforestation, and savannah burning. Livestock emissions are calculated annually at the 32 region level. All other emissions are calculated annually at the 300+ region level.
 
 ## Economic Modeling Approach
 
@@ -191,7 +191,7 @@ For each crop, this structure introduces two new nests with [calibrated logit ch
 
 ## Terrestrial Carbon Approach
 
-Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.
+Land-use change CO2 emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.
 
 ### Vegetation Carbon
 
@@ -215,7 +215,7 @@ With this policy, we can set aside some land, removing it from economic competit
 
 ### Valuing Carbon in Land
 
-In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
+In a policy regime, we can choose to put a price on land-use change CO2 emissions that is related to the price on fossil fuel and industrial CO2 emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
 
 ### Bioenergy Constraints
 

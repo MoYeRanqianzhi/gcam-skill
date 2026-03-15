@@ -21,7 +21,7 @@ Load this page when the user needs version-specific detail from this exact page 
 - [IAMC Reference Card](#iamc-reference-card)
 
 ## Inputs to the Module
-**Table 1: Inputs required by the economic module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the economic module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |

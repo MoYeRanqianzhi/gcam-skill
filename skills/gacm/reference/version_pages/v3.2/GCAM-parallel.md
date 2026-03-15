@@ -77,7 +77,7 @@ target, depending on the details of the flow graph structure, so the
 value supplied for this parameter is only a rough approximation to the
 actual grain size that emerges from the decomposition. However, there
 is a general correlation between the value of
-&lt;tt&gt;parallel-grain-size&lt;/tt&gt; and the amount of parallelism
+<tt>parallel-grain-size</tt> and the amount of parallelism
 and overhead at run time. Larger values will produce less parallelism,
 but also less overhead, while smaller values will produce more
 parallelism and overhead. Although we have not yet determined what
@@ -198,7 +198,7 @@ graph into a tree of aggregations called "clans." Each clan is an
 aggregation of nodes from the original flow graph, such that a node
 outside the clan that is an ancestor of any member is an ancestor of
 all members, and a node outside the clan that is a descendant of any
-member is a descendant of all members.<sup>[1](#footnote1)</sup> The
+member is a descendant of all members. [1](#footnote1) The
 practical effect of these conditions is that the preconditions for
 running tasks in a grain are uniform across the grain. Thus, as soon
 as the first task in a grain is ready to run, we can run the entire
@@ -264,7 +264,7 @@ The principal source of potential race conditions in GCAM is updates
 to market supplies and demands. Generally, each market has several
 sectors that independently add to these quantities, and there is no
 guarantee that their tasks will be executed in the same grain (which
-would force them to be serialized)<sup>[2](#footnote2)</sup> In this
+would force them to be serialized) [2](#footnote2) In this
 case, we avoid having a critical section by replacing the market
 member variables representing supply and demand with
 `tbb::combinable`. The combinable class allows each thread to create a

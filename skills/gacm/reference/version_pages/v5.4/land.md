@@ -23,7 +23,7 @@ Load this page when the user needs version-specific detail from this exact page 
 - [References](#references)
 
 ## Inputs to the Module
-**Table 1: Inputs required by the land allocation module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the land allocation module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -67,7 +67,7 @@ In its determination of the economic allocation of crop production and land use 
 
 ### Terrestrial Carbon Approach
 
-Land-use change CO<sub>2</sub> emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.
+Land-use change CO2 emissions are calculated in GCAM using a simple accounting approach, similar to that of Houghton (1999). That is, GCAM determines the change in above and below ground carbon stock for a given land use change and allocates that change in carbon stock over time.
 
 #### Vegetation Carbon
 
@@ -191,7 +191,7 @@ With this policy, we can set aside some land, removing it from economic competit
 
 ### Valuing Carbon in Land
 
-In a policy regime, we can choose to put a price on land-use change CO<sub>2</sub> emissions that is related to the price on fossil fuel and industrial CO<sub>2</sub> emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
+In a policy regime, we can choose to put a price on land-use change CO2 emissions that is related to the price on fossil fuel and industrial CO2 emissions. The land carbon price can be any multiplier of the fossil fuel carbon price. This factor is applied at the geopolitical region level, and can be differentiated across regions. We model this policy as a subsidy to land-owners for the holding carbon stocks, as opposed to a tax/subsidy on the change in carbon in land. Specifically, the subsidy is equal to the carbon price x the carbon density x a discount factor to account for the amount of time it takes carbon to accumulate x a discount factor to annualize the subsidy.
 
 An example file is included to implement this policy is included in GCAM; see [global_uct.xml](https://github.com/JGCRI/gcam-core/blob/master/input/policy/global_uct.xml).
 

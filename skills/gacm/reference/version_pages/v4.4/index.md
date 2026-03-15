@@ -38,9 +38,9 @@ with a Monte Carlo uncertainty analysis was published in Reilly et al. (1987).
 Throughout its lifetime GCAM has evolved to address an expanding set of science and assessment questions. The
 original question to which the model was applied was the
 magnitude of mid-21st-century global emissions of fossil fuel
-CO<sub>2</sub>. Over time GCAM has expanded its scope to include a wider set of
+CO2. Over time GCAM has expanded its scope to include a wider set of
 energy producing, transforming, and using technologies; emissions of
-non-CO<sub>2</sub> greenhouse and air pollutant gases; agriculture and land use; water supplies and demands; and physical Earth systems. It is increasingly being used in
+non-CO2 greenhouse and air pollutant gases; agriculture and land use; water supplies and demands; and physical Earth systems. It is increasingly being used in
 multi-model, multi-scale analysis, in which it is coupled to other models with different foci and often greater
 resolution in key sectors. For example, it has been coupled to a state
 of the art Earth system model (Collins, et al., 2015). GCAM has been
@@ -102,7 +102,7 @@ century-scale, cost-benefit analysis (examples include DICE, FUND, and
 PAGE). GCAM does not contain the components necessary to conduct cost-benefit analysis.
 
 ### GCAM version 4.4
-The major updates in GCAM version 4.4 are BECCS supply & demand updates and new flexibility for non-CO<sub>2</sub> emissions and markets. A number of other updates and bug fixes are included. These are detailed in a [presentaion from the 2017 GCAM community meeting](http://www.globalchange.umd.edu/data/annual-meetings/2017/KCalvin_GCAM_release_updates.pdf).
+The major updates in GCAM version 4.4 are BECCS supply & demand updates and new flexibility for non-CO2 emissions and markets. A number of other updates and bug fixes are included. These are detailed in a [presentaion from the 2017 GCAM community meeting](http://www.globalchange.umd.edu/data/annual-meetings/2017/KCalvin_GCAM_release_updates.pdf).
 
 ## User Guides and Tutorials
 

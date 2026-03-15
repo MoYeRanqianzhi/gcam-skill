@@ -8,6 +8,7 @@ versioned page bundles under `skills/gacm/reference/version_pages/`.
 
 from __future__ import annotations
 
+import html
 import re
 import shutil
 from collections import defaultdict
@@ -158,10 +159,17 @@ PAREN_WRAPPED_CITATION_LINK_RE = re.compile(
 BROKEN_ANCHOR_CITATION_LINK_RE = re.compile(
     r"\[(?P<label>[^][]*?\(\d{4})\]\((?P<target>#[^)]+)\)\)"
 )
+BROKEN_DOUBLE_BRACKET_LINK_RE = re.compile(
+    r"\[\[(?P<label>[^\]]+)\]\((?P<target>[^)]+)\)\]"
+)
+BROKEN_DOUBLE_BRACKET_LABEL_LINK_RE = re.compile(
+    r"\[\[(?P<label>[^\]]+)\]\]\((?P<target>[^)]+)\)"
+)
 HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
 MARKDOWN_ATTR_LINE_RE = re.compile(r"^[ \t]*\{:\s*[^}\n]+\}[ \t]*$", re.MULTILINE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
+INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
 MISATTACHED_CODE_FENCE_RE = re.compile(r"(?<![\r\n])```")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
@@ -1938,6 +1946,91 @@ def normalize_citation_markup(segment: str) -> str:
     return segment
 
 
+def apply_outside_inline_code(text: str, transform) -> str:
+    parts: list[str] = []
+    last = 0
+    for match in INLINE_CODE_RE.finditer(text):
+        parts.append(transform(text[last : match.start()]))
+        parts.append(match.group(0))
+        last = match.end()
+    parts.append(transform(text[last:]))
+    return "".join(parts)
+
+
+def normalize_semantic_text(segment: str) -> str:
+    def normalize_entities(text: str) -> str:
+        text = text.replace("&nbsp;", " ")
+        text = text.replace("&#160;", " ")
+        text = text.replace("&#xa0;", " ")
+        text = text.replace("&#xA0;", " ")
+        previous = None
+        while text != previous:
+            previous = text
+            text = text.replace("&amp;", "&")
+        text = html.unescape(text)
+        return text
+
+    def normalize_reference_links(text: str) -> str:
+        text = BROKEN_DOUBLE_BRACKET_LINK_RE.sub(
+            lambda match: f"[{match.group('label').strip()}]({match.group('target').strip()})",
+            text,
+        )
+        text = BROKEN_DOUBLE_BRACKET_LABEL_LINK_RE.sub(
+            lambda match: f"[{match.group('label').strip()}]({match.group('target').strip()})",
+            text,
+        )
+        return re.sub(r"(?<=\))(?=\[)", " ", text)
+
+    def render_subscript(content: str) -> str:
+        normalized = normalize_entities(content)
+        normalized = re.sub(r"\s+", "", normalized)
+        return normalized
+
+    def render_superscript(content: str) -> str:
+        normalized = normalize_reference_links(normalize_entities(content))
+        normalized = re.sub(r"\s+", " ", normalized).strip()
+        if not normalized:
+            return ""
+        if normalized.startswith("[") or "](" in normalized:
+            return f" {normalized}"
+        return f"^{normalized}"
+
+    def transform(text: str) -> str:
+        text = normalize_inline_html(normalize_entities(text))
+        for _ in range(4):
+            updated = re.sub(
+                r"&lt;sub&gt;(?P<content>.*?)&lt;/sub&gt;",
+                lambda match: f"<sub>{match.group('content')}</sub>",
+                text,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+            updated = re.sub(
+                r"&lt;sup&gt;(?P<content>.*?)&lt;/sup&gt;",
+                lambda match: f"<sup>{match.group('content')}</sup>",
+                updated,
+                flags=re.IGNORECASE | re.DOTALL,
+            )
+            if updated == text:
+                break
+            text = updated
+        text = re.sub(
+            r"<sub>(?P<content>.*?)</sub>",
+            lambda match: render_subscript(match.group("content")),
+            text,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        text = re.sub(
+            r"<sup>(?P<content>.*?)</sup>",
+            lambda match: render_superscript(match.group("content")),
+            text,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        text = normalize_reference_links(text)
+        return text
+
+    return apply_outside_inline_code(segment, transform)
+
+
 def apply_outside_code_fences(text: str, transform) -> str:
     parts: list[str] = []
     last = 0
@@ -1954,13 +2047,15 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = MISATTACHED_CODE_FENCE_RE.sub("\n```", text)
     text = apply_outside_code_fences(
         text,
-        lambda chunk: normalize_citation_markup(
-            normalize_escaped_wiki_refs(
-                normalize_escaped_inline_html(
-                    normalize_markdown_attribute_residue(
-                        normalize_markdown_table_residue(
-                            normalize_inline_html(
-                                rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+        lambda chunk: normalize_semantic_text(
+            normalize_citation_markup(
+                normalize_escaped_wiki_refs(
+                    normalize_escaped_inline_html(
+                        normalize_markdown_attribute_residue(
+                            normalize_markdown_table_residue(
+                                normalize_inline_html(
+                                    rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+                                )
                             )
                         )
                     )

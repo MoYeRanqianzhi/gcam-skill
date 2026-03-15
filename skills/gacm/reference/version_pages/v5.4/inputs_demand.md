@@ -26,7 +26,7 @@ GCAM's demand inputs include information on consumption and prices in the histor
 
 #### Description
 
-Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</sup>
+Table 1: External inputs used for demand of energy [1](#table_footnote1)
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -36,7 +36,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Cost | Cost of production | Assumption | | Specified by technology and year |  1975$/kg or 1975$/GJ |
 | Default input-output coefficients | Default amount of input required per unit of output produced; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
 | Default efficiencies | Default amount of output produced per unit of input; can be overwritten by region-specific information derived from historical data | Assumption | | Specified by technology and year |  Various (e.g., GJ per kg, GJ per GJ) |
-| CO<sub>2</sub> capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
+| CO2 capture rates | Fraction of CO2 captured in CCS technologies. | Assumption |  | Specified by technology and year | unitless |
 | Retirement rules | For vintaged technologies, GCAM requires the user to specify the lifetime, and the parameters required for phased and profit-based shutdown. | Assumption |  | Specified by technology and year | Years (for lifetime), unitless for others |
 | Logit exponents | GCAM requires the user to specify the logit exponents that determine the substitutability between technologies. | Assumption |  | Specified by sector and subsector | N/A |
 | Share weight interpolation rules | These rules dictate how share weights (GCAM's calibration parameter) are specified in future years. | Assumption |  | Specified by sector and subsector | N/A |
@@ -47,7 +47,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Desalinated water production | Water produced through desalination, used to estimate energy-for-water | External data | FAO Aquastat | By nation | $$km^3$$ per year |
 | Shares of wastewater treated | Shares of wastewater treated, used to estimate energy-for-water | External data | [Liu et al. 2016](#liu2016) |  By nation | Unitless |
 | Non-renewable groundwater supply curves - electricity inputs | Electricity inputs to groundwater production | External data | [Superwell](https://github.com/JGCRI/superwell) | 20 grades per geopolitical region and GLU | GJ per $$m^3$$ |
-| Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
+| Historical non-CO2 emissions | Historical emissions of non-CO2 | External data | [CEDS](https://github.com/JGCRI/CEDS) `v_2021_04_21` | Specified by country, technology, gas, and year | Various |
 
 <a name="table_footnote1"></a>1: Note that this table differs from the one provided on the [Energy Demand Modeling Page](demand_energy.md#inputs-to-the-module) in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
@@ -78,9 +78,9 @@ Efficiencies are specified in [A32.globaltech_eff.csv](https://github.com/JGCRI/
 Coefficients are specified in [A32.globaltech_coef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A32.globaltech_coef.csv), [A321.globaltech_coef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_coef.csv),
 [A322.globaltech_coef.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_coef.csv)
 
-##### CO<sub>2</sub> capture rates
+##### CO2 capture rates
 
-CO<sub>2</sub> capture rates for cement are specified in [A321.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_co2capture.csv). Capture rates for fertilizer are specified in [A322.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_co2capture.csv)
+CO2 capture rates for cement are specified in [A321.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A321.globaltech_co2capture.csv). Capture rates for fertilizer are specified in [A322.globaltech_co2capture.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A322.globaltech_co2capture.csv)
 
 ##### Retirement rules
 
@@ -108,13 +108,13 @@ Satiation levels are specified in [A44.satiation_flsp](https://github.com/JGCRI/
 
 ##### Emissions
 
-Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
+Historical non-CO2 emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
 
 ### Water
 
 #### Description
 
-Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</sup>
+Table 2: External inputs used for demand of water  [2](#table_footnote2)
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -145,13 +145,13 @@ The data specifying manufacturing water coefficients is specified in [Vassolo_mf
 
 #### Description
 
-Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#table_footnote3)</sup>
+Table 3: External inputs used for demand of food, feed, and forestry  [3](#table_footnote3)
 
 | Name | Description | Type | Source | Resolution | Unit |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | Historical demand for crops | Demand for agricultural commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
 | Historical demand for livestock | Demand for livestock commodities in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by crop, use, country, and year | tons |
-| Historical demand for forest | Demand for forest products in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by country and year | m<sup>3</sup> |
+| Historical demand for forest | Demand for forest products in the historical period; used for initialization/calibration of GCAM | External data | FAO | Specified by country and year | m^3 |
 | Income and price elasticity | Income and price elasticity of demand (for non-food, non-feed demand) | Assumption |  | Specified by demand | unitless |
 | Food demand parameters | Set of 11 parameters required for the food demand model | External data | [Ambrosia](https://github.com/jgcri/ambrosia) | | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |

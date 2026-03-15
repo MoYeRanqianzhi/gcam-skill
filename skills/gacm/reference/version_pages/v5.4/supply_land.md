@@ -23,7 +23,7 @@ Load this page when the user needs version-specific detail from this exact page 
 - [References](#references)
 
 ## Inputs to the Module
-**Table 1: Inputs required by the supply module <sup>[1](#table_footnote)</sup>**
+**Table 1: Inputs required by the supply module  [1](#table_footnote)**
 
 | Name | Resolution | Unit | Source |
 | :--- | :--- | :--- | :--- |
@@ -70,7 +70,7 @@ $$
 profitRate = 1e9*( price + subsidy - varCost - inputCosts + secondaryValue ) * yield + impliedSubsidy
 $$
 
-where $$price$$ is the commodity price, $$subsidy$$ is any exogenously-specified subsidy, $$varCost$$ is the non-land variable cost, $$inputCosts$$ are the costs of inputs (e.g., fertilizer, water), $$yield$$ is the yield for the technology, and $$impliedSubsidy$$ is an implicit subsidy calculated in the calibration periods to ensure profits are above a specified threshold. Note that the subsidy is multiplied by $$1e9$$, as the land allocator expects profit rates in 1975$/billion m<sup>2</sup>.
+where $$price$$ is the commodity price, $$subsidy$$ is any exogenously-specified subsidy, $$varCost$$ is the non-land variable cost, $$inputCosts$$ are the costs of inputs (e.g., fertilizer, water), $$yield$$ is the yield for the technology, and $$impliedSubsidy$$ is an implicit subsidy calculated in the calibration periods to ensure profits are above a specified threshold. Note that the subsidy is multiplied by $$1e9$$, as the land allocator expects profit rates in 1975$/billion m^2.
 
 See `calcProfitRate` in [ag_production_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/ag_production_technology.cpp).
 

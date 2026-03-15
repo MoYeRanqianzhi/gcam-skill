@@ -17,7 +17,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 This section describes the new climate module - Hector - that is available for use in GCAM. MAGICC5.3 (Wiglley, 2008) has traditionally been the only climate module available in GCAM.  In GCAM's recent release, there is now the option to run Hector (Hartin et al., 2015).  Both Hector and MAGICC are reduced-form climate carbon-cycle models.
 
-Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, land, and ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO<sub>2</sub>], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas.
+Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, land, and ocean. The model’s terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air– sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO2], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector’s flexibility, open-source nature, and modular design facilitates a broad range of research in various areas.
 
 Figure 1: Representation of Hector’s carbon cycle, land, atmosphere, and ocean. The atmosphere consists of one well-mixed box. The ocean consists of four boxes, with advection and water mass exchange simulating thermohaline circulation. At steady state, the high-latitude surface ocean takes up carbon from the atmosphere, while the low-latitude surface ocean off-gases carbon to the atmosphere. The land consists of a user-defined number of biomes or regions for vegetation, detritus and soil. At steady state the vegetation takes up carbon from the atmosphere while the detritus and soil release carbon back into the atmosphere. The earth pool is continually debited with each time step to act as a mass balance check on the carbon system.
 
@@ -28,19 +28,19 @@ Table 1: Emissions and sources from each sector passed to Hector.
 
 | Emission| Sector  | Notes |
 | ------- |:-------| :------ |
-| CO<sub>2</sub><sup>*</sup>     | [AgLU](https://github.com/JGCRI/gcam-doc/blob/climate_documentation/aglu.md), Energy  | |
-| CH<sub>4</sub>     | AgLU, Energy, Industrial Processes    | |
-| N<sub>2</sub>O 	  | AgLU, Energy    | |
-| NH<sub>3</sub>     | AgLU, Energy  |  |
-| SO<sub>2</sub>    | AgLU, Energy, Industrial Processes    | |
+| CO2^*     | [AgLU](https://github.com/JGCRI/gcam-doc/blob/climate_documentation/aglu.md), Energy  | |
+| CH4     | AgLU, Energy, Industrial Processes    | |
+| N2O 	  | AgLU, Energy    | |
+| NH3     | AgLU, Energy  |  |
+| SO2    | AgLU, Energy, Industrial Processes    | |
 | CO 	  | AgLU, Energy, Industrial Processes    |         |
 | BC      | AgLU, Energy    | |
 | OC      | AgLU, Energy    ||
-| NO<sub>x</sub> | AgLU, Energy, Industrial Processes    | |
+| NOx | AgLU, Energy, Industrial Processes    | |
 | NMVOC | Energy, Industrial Processes | |
-| C<sub>2</sub>F<sub>6</sub>| Energy, Industrial Processes | |
-| CF<sub>4</sub>|Industrial Processes, Urban Processes | |
-| SF<sub>6</sub>|Energy, Industrial Processes | |
+| C2F6| Energy, Industrial Processes | |
+| CF4|Industrial Processes, Urban Processes | |
+| SF6|Energy, Industrial Processes | |
 | HFC134a| Energy| |
 | HFC32| Energy| |
 | HFC125| Urban Processes | |
@@ -51,9 +51,9 @@ Table 1: Emissions and sources from each sector passed to Hector.
 | HFC245fa| Industrial Processes | |
 | HFC365mfc| Industrial Processes | not included in Hector |
 
-<sup>*</sup> CO<sub>2</sub> emissions from the AgLU sector are separate from CO<sub>2</sub> emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (F<sub>A</sub>), land-use change emissions (F<sub>LC</sub>), and the atmospheri-ocean (F<sub>O</sub>) and atmosphere-land (F<sub>L</sub>) carbon fluxes.
+^* CO2 emissions from the AgLU sector are separate from CO2 emissions from the Energy sector. Any change in atmospheric carbon, occurs as a function of anthropogenic fossil fuel and industrial emissions (FA), land-use change emissions (FLC), and the atmospheri-ocean (FO) and atmosphere-land (FL) carbon fluxes.
 
-dC<sub>atm</sub>/dt = F<sub>A</sub>(t) + F<sub>LC</sub>(t) - F<sub>O</sub>(t) - F<sub>L</sub>(t)
+dCatm/dt = FA(t) + FLC(t) - FO(t) - FL(t)
 
 Land carbon pools change as a result of NPP, RH and land-use change fluxes, whose effects are partiioned among the carbon pools (Hartin et al., 2015).
 
@@ -63,7 +63,7 @@ At every time step Hector calculates and outputs key climate variables.
 
 - Global mean temperature change
 - Radiative forcing of all emissions
-- Atmospheric CO<sub>2</sub> concentrations.
+- Atmospheric CO2 concentrations.
 
 **Land**
 
@@ -76,7 +76,7 @@ At every time step Hector calculates and outputs key climate variables.
 
 - Air-sea carbon fluxes
 - Carbon pools (high and low latitude surface, intermediate and deep)
-- Carbonate system (DIC, pCO<sub>2 </sub>, CO<sub>3</sub><sup>2-</sup>, pH, aragonite and calcite saturations)
+- Carbonate system (DIC, pCO2, CO3^2-, pH, aragonite and calcite saturations)
 - surface ocean temperature
 - oceanic heat flux
 

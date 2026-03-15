@@ -215,7 +215,7 @@ Agriculture and Land Use
 | unManagedLandValue                                                                              | /LandAllocatorRoot/                                                                                          | Value of unmanaged land                                                                           | 1975$ / thous km2                                                                          | 0                                                                                             | Currently read in at the level of LandNodes                                                          |
 |                                                                                                 |
 
- NonCO&lt;sub&gt;2&lt;/sub&gt; (Secondary) Gases
+ NonCO2 (Secondary) Gases
 
 -------------------------------------------------------------------------
 

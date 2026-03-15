@@ -118,7 +118,7 @@ The oil refining subsector accounts for the vast majority of the historical outp
 
 **Oil refining production technology, with example coefficients.**
 
-The coefficients of the oil refining production technology reflect whole-process inputs and liquid fuel outputs; there is no explicit tracking of the production and on-site use of intermediate products such as refinery gas (still gas). Electricity produced at refineries (both the fuel inputs and electricity outputs) is modeled in the electricity and/or industrial energy use sectors, as the IEA Energy Balances ([IEA 2012](energy.md#iea2012)) do not disaggregate autoproducer electric power plants at refineries from elsewhere. There is no oil refining technology option with CO<sub>2</sub> capture and storage (CCS) considered.
+The coefficients of the oil refining production technology reflect whole-process inputs and liquid fuel outputs; there is no explicit tracking of the production and on-site use of intermediate products such as refinery gas (still gas). Electricity produced at refineries (both the fuel inputs and electricity outputs) is modeled in the electricity and/or industrial energy use sectors, as the IEA Energy Balances ([IEA 2012](energy.md#iea2012)) do not disaggregate autoproducer electric power plants at refineries from elsewhere. There is no oil refining technology option with CO2 capture and storage (CCS) considered.
 
 ## Biomass Liquids
 
@@ -140,15 +140,15 @@ The biomass liquids subsector includes up to eight technologies in each region, 
 | FT biofuels CCS level 1      | biomass |
 | FT biofuels CCS level 2      | biomass |
 
-The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [AgLU module](aglu.md)). The model tracks secondary feed outputs of biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO<sub>2</sub> removal fraction.
+The biomass liquids technologies include up to four "first-generation" biofuels in each region, defined as biofuels produced agricultural crops that are also used as food, animal feed, or other modeled uses (described in the [AgLU module](aglu.md)). The model tracks secondary feed outputs of biofuel production, as DDGS (dried distillers grains and solubles) from ethanol production, and as feedcakes from biodiesel production. Second-generation technologies consume the "biomass" or "biomassOil" commodities, which include purpose-grown bioenergy crops, as well as residues from forestry and agriculture, and municipal and industrial wastes.  Starting in 2020, second-generation biofuels (cellulosic ethanol and Fischer-Tropsch syn-fuels) are introduced, each with three levels of CCS: none, level 1, and level 2. The first CCS level generally consists of relatively pure and high-concentration CO2 sources (e.g., from gasifiers or fermenters), which have relatively low capture and compression costs. The second CCS level includes a broader set of sources (e.g., post-combustion emissions), and incurs higher costs but has a higher CO2 removal fraction.
 
 ## Coal to Liquids
 
-The majority of the world's coal to liquids production is in South Africa ([IEA 2012](energy.md#iea2012)), but the technology is available to all regions in GCAM starting in the first future time period. Note that the CO<sub>2</sub> emissions intensity is substantially higher than all other liquid fuel production technologies, due to high process energy intensities, and high primary fuel carbon contents. Where crude oil refining emits about 5.5 kg of CO<sub>2</sub> per GJ of fuels produced, coal to liquids emits over 130 kg of CO<sub>2</sub> per GJ of fuel produced. The upstream emissions from fuel production by this pathway are substantially higher than the "tailpipe" emissions from combustion of the fuels produced (about 70 kg CO<sub>2</sub> per GJ). As with biomass liquids, two different production technologies with CCS are represented, with costs and CO<sub>2</sub> removal fractions based on [Dooley and Dahowski (2009)](energy.md#dooley2009).
+The majority of the world's coal to liquids production is in South Africa ([IEA 2012](energy.md#iea2012)), but the technology is available to all regions in GCAM starting in the first future time period. Note that the CO2 emissions intensity is substantially higher than all other liquid fuel production technologies, due to high process energy intensities, and high primary fuel carbon contents. Where crude oil refining emits about 5.5 kg of CO2 per GJ of fuels produced, coal to liquids emits over 130 kg of CO2 per GJ of fuel produced. The upstream emissions from fuel production by this pathway are substantially higher than the "tailpipe" emissions from combustion of the fuels produced (about 70 kg CO2 per GJ). As with biomass liquids, two different production technologies with CCS are represented, with costs and CO2 removal fractions based on [Dooley and Dahowski (2009)](energy.md#dooley2009).
 
 ## Gas to Liquids
 
-While a minor contributor to liquid fuels production globally (about 0.1%; [IEA 2012](energy.md#iea2012)), gas to liquids has received increased attention in recent years, with several large-scale plants completed in the last decade ([Glebova 2013](energy.md#glebova2013)), and others in various stages of planning  and construction ([Enerdata 2014](energy.md#enerdata2014)). Because of the relatively low carbon content of natural gas, and whole-process energy efficiency ratings typically about 60%, the net CO<sub>2</sub> emissions from the process are about 20 kg CO<sub>2</sub> per GJ of fuel, significantly lower than coal to liquids. There is only one production technology represented in GCAM, with no CCS option available.
+While a minor contributor to liquid fuels production globally (about 0.1%; [IEA 2012](energy.md#iea2012)), gas to liquids has received increased attention in recent years, with several large-scale plants completed in the last decade ([Glebova 2013](energy.md#glebova2013)), and others in various stages of planning  and construction ([Enerdata 2014](energy.md#enerdata2014)). Because of the relatively low carbon content of natural gas, and whole-process energy efficiency ratings typically about 60%, the net CO2 emissions from the process are about 20 kg CO2 per GJ of fuel, significantly lower than coal to liquids. There is only one production technology represented in GCAM, with no CCS option available.
 
 ### Gas processing
 
@@ -199,9 +199,9 @@ The representation of hydrogen in GCAM includes 10 production technologies in tw
 
 ### Hydrogen Production
 
-As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
+As in the H2A model, the production of hydrogen takes place in two distinct sectors: H2 Forecourt Production (i.e., on-site generation) and H2 Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
 
-The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; in this structure, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
+The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; in this structure, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO2 emissions.
 
 The wind and solar technologies are electrolysis technologies, but are specifically disaggregated because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](energy.md#electricity)). In contrast, the nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
 
@@ -218,7 +218,7 @@ The approach used in the buildings sector is documented in [Clarke et al. 2018](
 The demand for per-capita floorspace, *f*, in future time period *t* is shown below. In this and subsequent equations, "satiation" indicates the level of service demand at which increases in income do not lead to further demands for services.
 
 $$
-f_{t}=(s-a)[1-exp(-\frac{ln(2)}{\mu}I_{t}(\frac{P_{t}}{P_{t0}})^\beta)]+a
+f_{t}=(s-a) [1-exp(-\frac{ln(2)}{\mu}I_{t}(\frac{P_{t}}{P_{t0}})^\beta)]+a
 $$
 
 where *s* is the exogenous satiation level of per-capita floorspace, *μ* is the per-capita GDP at 50% of the satiation level, $$\beta$$ is the price elasticity of floorspace demand, *a* is an exogenous tuning parameter, *P* is the total levelized cost of the modeled energy services per unit floorspace, and *I* is per capita GDP.
@@ -232,11 +232,11 @@ $$
 where *s* is the level of demand satiation, *k* is a calibration parameter, and the other parameters are the same as the equation above, with the exception that here *P* refers to the price of the service. Space heating (*h*) and cooling (*c*) services use a similar approach with some additional considerations, shown below:
 
 $$
-h_{t}=k*(HDD_{t}*\eta_{t}*R_{t}-\lambda_{h}*IG_{t})[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
+h_{t}=k*(HDD_{t}*\eta_{t}*R_{t}-\lambda_{h}*IG_{t}) [1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
 $$
 
 $$
-c_{t}=k*(CDD_{t}*\eta_{t}*R_{t}+\lambda_{c}*IG_{t})[1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
+c_{t}=k*(CDD_{t}*\eta_{t}*R_{t}+\lambda_{c}*IG_{t}) [1-exp(-\frac{ln(2)}{\mu}\frac{I_{t}}{P_{t}})]
 $$
 
 where *HDD* and *CDD* refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services.
@@ -249,13 +249,13 @@ With the exception of cement and fertilizer, which are explicitly modeled in GCA
 
 #### Cement
 
-GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
+GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO2. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
 
 Cement is treated as a final demand in GCAM; demands are driven by population and income, and the commodity is not an input to any further modeled processes.
 
-Note that there is a CO<sub>2</sub> capture and storage technology for cement production, wherein the CO<sub>2</sub> from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](energy.md#mahasenan2005).
+Note that there is a CO2 capture and storage technology for cement production, wherein the CO2 from limestone calcination is captured. The costs of the capture technology are parameterized around [Mahasenan et al. 2005](energy.md#mahasenan2005).
 
 #### N Fertilizer
 
@@ -265,7 +265,7 @@ Fuel and feedstock sources and input-output coefficients are calibrated based on
 
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of N fertilizer on the energy inputs, and unitless for the N fertilizer inputs to crop production). Note that the fuel/feedstock sources are competing technologies, not fixed inputs to a production function.**
 
-The hydrogen production stage of ammonia production emits a relatively pure stream of CO<sub>2</sub> that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](energy.md#doe2015).
+The hydrogen production stage of ammonia production emits a relatively pure stream of CO2 that is often captured for commercial purposes. Technologies with CCS are modeled in GCAM; additional capture and compression costs and energy inputs are based on H2A [DOE 2015](energy.md#doe2015).
 
 ### Transportation
 
@@ -623,7 +623,7 @@ Exceptions to one-to-one mapping from the categories in the IEA Energy Balances 
 
 <a name="hannam2009"></a>[Hannam et al. 2009] Hannam, P., Kyle, P., and Smith, S.J. 2009. *Global Deployment of Geothermal Energy Using a New Characterization in GCAM 1.0*, PNNL-19231, Pacific Northwest National Laboratory. [Link](http://www.pnl.gov/main/publications/external/technical_reports/PNNL-19231.pdf)
 
-<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO<sub>2</sub> Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
+<a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO2 Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
 <a name="iea2011"></a>[IEA 2011] International Energy Agency, 2011, *Energy Balances of OECD Countries: Documentation for Beyond 2020 Files*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf)
 

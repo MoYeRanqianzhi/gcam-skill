@@ -13,6 +13,7 @@ from pathlib import Path
 SCRIPT_DIR = Path(__file__).resolve().parent
 
 VALIDATION_STEPS = (
+    "validate_portability.py",
     "validate_authoring_sources.py",
     "validate_doc_search.py",
     "validate_page_bundle_content_parity.py",

@@ -27,6 +27,7 @@ VALIDATION_STEPS = (
     "validate_skill_contract.py",
     "validate_source_provenance_contract.py",
     "validate_version_catalog.py",
+    "validate_version_guidance_contract.py",
     "validate_version_routes.py",
 )
 

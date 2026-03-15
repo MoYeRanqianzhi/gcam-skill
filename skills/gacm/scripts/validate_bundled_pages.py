@@ -48,6 +48,8 @@ POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+/"
 URI_RE = re.compile(r"\b(?:file|vscode)://", re.IGNORECASE)
 GENERIC_WINDOWS_PLACEHOLDER_RE = re.compile(r"(?i)\b[A-Za-z]:[\\/]path(?:[\\/]|$)")
 RAW_GUI_PATH_RE = re.compile(r"`File -> (?:Manage DB|Export)`|Click on each box for a more detailed description", re.IGNORECASE)
+WRAPPED_CITATION_LINK_RE = re.compile(r"\[\([^][]*[A-Za-z][^][]*?\d{4}[^][]*\)\]\([^)]+\)")
+BROKEN_ANCHOR_CITATION_LINK_RE = re.compile(r"\[[^\]]*?\(\d{4}\]\(#[^)]+\)\)")
 
 
 def strip_code_fences(text: str) -> str:
@@ -150,6 +152,10 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> unresolved image placeholder remains")
         if RAW_GUI_PATH_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> residual GUI/menu-path phrasing remains")
+        if WRAPPED_CITATION_LINK_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> wrapped citation link label remains")
+        if BROKEN_ANCHOR_CITATION_LINK_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> broken same-page citation anchor label remains")
         for line_no, line in enumerate(text.splitlines(), start=1):
             normalized_line = normalize_portability_line(line)
             if (

@@ -66,7 +66,7 @@ Modeling of geothermal energy in GCAM is documented in [Hannam et al. (2009)](su
 
 ##### Hydropower
 
-Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropower produced in each region and year is exogenous, prescribed as a "fixedOutput". Hydropower costs are not estimated, and the technology does not contribute to the modeled electricity price in each region. The quantities in future years are generally consistent with the long-term "economic" potential identified by the International Hydropower Association [(IHA 2000)](supply_energy.md#iha2000).
+Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropower produced in each region and year is exogenous, prescribed as a "fixedOutput". Hydropower costs are not estimated, and the technology does not contribute to the modeled electricity price in each region. The quantities in future years are generally consistent with the long-term "economic" potential identified by the International Hydropower Association [IHA 2000](supply_energy.md#iha2000).
 
 ##### Biomass
 

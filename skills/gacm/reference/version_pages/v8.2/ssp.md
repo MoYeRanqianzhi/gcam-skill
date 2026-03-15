@@ -14,7 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## Overview of the SSPs
 
-The GCAM model was one of six models used in the quantification of the Shared Socioeconomic Pathways (SSP; Riahi et al., 2017). The SSPs are new reference scenarios for climate change modeling and research (Moss et al. 2010, van Vuuren et al., 2014). That is the five SSPs assume no additional policies and measures explicitly designed to reduce greenhouse gas emissions.  However, each of the five reference scenarios can be paired with a set of emissions mitigation assumptions.  Thus, when paired with a limit of 2.6, 4.5, or 6.0, the resulting scenario can be used in combination with the corresponding climate model experiments in the CMIP data base. The five SSPs are defined along two different axes: challenges to mitigation and challenges to adaptation (see Figure below).
+The GCAM model was one of six models used in the quantification of the Shared Socioeconomic Pathways (SSP; Riahi et al., 2017). The SSPs are new reference scenarios for climate change modeling and research (Moss et al. 2010, van Vuuren et al., 2014). That is the five SSPs assume no additional policies and measures explicitly designed to reduce greenhouse gas emissions.  However, each of the five reference scenarios can be paired with a set of emissions mitigation assumptions.  Thus, when paired with a limit of 2.6, 4.5, or 6.0, the resulting scenario can be used in combination with the corresponding climate model experiments in the CMIP data base. The five SSPs are defined along two different axes: challenges to mitigation and challenges to adaptation.
 
 Figure 1: Definitions of SSPs in terms of Challenges to Mitigation and Challenges to Adaptation
 

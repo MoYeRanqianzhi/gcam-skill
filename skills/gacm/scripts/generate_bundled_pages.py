@@ -146,6 +146,12 @@ TABLE_ATTR_ONLY_CELL_RE = re.compile(
     re.IGNORECASE,
 )
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
+PAREN_WRAPPED_CITATION_LINK_RE = re.compile(
+    r"\[\((?P<label>[^][]*[A-Za-z][^][]*?\d{4}[^][]*)\)\]\((?P<target>[^)]+)\)"
+)
+BROKEN_ANCHOR_CITATION_LINK_RE = re.compile(
+    r"\[(?P<label>[^][]*?\(\d{4})\]\((?P<target>#[^)]+)\)\)"
+)
 HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
 MARKDOWN_ATTR_LINE_RE = re.compile(r"^[ \t]*\{:\s*[^}\n]+\}[ \t]*$", re.MULTILINE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
@@ -400,6 +406,89 @@ DEV_GUIDE_ANALYSIS_GUI_RE = re.compile(
     r"software developers wanting to write new tools like graphical user interfaces for working with GCAM",
     re.IGNORECASE,
 )
+SEE_FIGURE_BELOW_PAREN_RE = re.compile(r"\s*\(see Figure below\)")
+ENERGY_SYSTEM_SCHEMATIC_RE = re.compile(
+    r"^In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources \(colored red\) and the final demands \(colored light blue\)\.\s*$",
+    re.MULTILINE,
+)
+ELECTRIC_NESTING_FIGURE_RE = re.compile(
+    r"The nesting structure of the electric sector is shown in the figure below, with a focus on one repesentative technology\."
+)
+ELECTRIC_THIRD_NEST_FIGURE_RE = re.compile(
+    r", in a third nest, as shown in the figure above\. That is, within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types;",
+    re.MULTILINE,
+)
+REFINING_STRUCTURE_FIGURE_RE = re.compile(
+    r"The structure of refining in the broader energy system is shown in the following figure, with example input-output coefficients\."
+)
+OIL_REFINING_GRAPHIC_RE = re.compile(
+    r"In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity\. This is depicted graphically below, with typical input-output coefficients shown\."
+)
+GAS_STRUCTURE_FIGURE_RE = re.compile(
+    r"^The structure of the natural gas supply and distribution in GCAM is shown below:\s*$",
+    re.MULTILINE,
+)
+UPSTREAM_GAS_NETWORK_FIGURE_RE = re.compile(r"network shown in the figure above", re.MULTILINE)
+DISTRICT_HEAT_OPTIONS_RE = re.compile(
+    r"In regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below\."
+)
+DISTRICT_HEAT_AS_SHOWN_RE = re.compile(
+    r'As shown, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors\.'
+)
+DISTRICT_HEAT_GRAPHIC_RE = re.compile(
+    r"This is illustrated further in the graphic below\."
+)
+HYDROGEN_TRANSPORT_STRUCTURE_RE = re.compile(
+    r"^Structure of hydrogen transmission, distribution and end use, with illustrative input-output coefficients \(GJ of energy input per GJ of hydrogen\) showing the approximate energy requirements of each stage of hydrogen compression, refrigeration, transportation, and storage, is shown in the figure below\.?\s*$",
+    re.MULTILINE,
+)
+HYDROGEN_H2A_STRUCTURE_RE = re.compile(
+    r"The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U\.S\. Department of Energy's Hydrogen Analysis \(H2A\) models (?P<cite>\[[^\]]+\]\([^)]+\)), and is shown in the figure below\."
+)
+HYDROGEN_PRIMARY_SOURCES_RE = re.compile(
+    r"; as shown in the figure above, hydrogen can be produced from up to 7 primary energy sources\.",
+    re.MULTILINE,
+)
+FOSSIL_FUEL_TRADE_FIGURE_RE = re.compile(
+    r"^\s*The figure below depicts the fossil fuel trade structures \(using coal as an example\)\.\s*",
+    re.MULTILINE,
+)
+FLOORSPACE_XML_FIGURE_RE = re.compile(
+    r"^\s*The figure below is an example XML of user-specified residential floorspace values for Maine\.\s*$",
+    re.MULTILINE,
+)
+CEMENT_SCHEMATIC_RE = re.compile(
+    r'A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process\.',
+    re.MULTILINE,
+)
+AMMONIA_N_FERTILIZER_SCHEMATIC_RE = re.compile(
+    r"^Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4\.15 of \[IEA 2007\]\((?P<target>[^)]+)\)\. The schematic below shows how ammonia and N fertilizer commodities are situated between the energy and agricultural systems of GCAM\.\s*$",
+    re.MULTILINE,
+)
+N_FERTILIZER_SCHEMATIC_RE = re.compile(
+    r"^Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4\.15 of \[IEA 2007\]\((?P<target>[^)]+)\)\. The schematic below shows how N fertilizer is situated between the energy and agricultural systems of GCAM\.\s*$",
+    re.MULTILINE,
+)
+PASSENGER_TYPICAL_REGION_RE = re.compile(
+    r"^The structure of the passenger sector differs by region, but a typical region is depicted below\.\s*$",
+    re.MULTILINE,
+)
+PASSENGER_AS_SHOWN_RE = re.compile(
+    r"^As shown, the passenger sector consists of up to five nesting levels,",
+    re.MULTILINE,
+)
+LAND_GROWTH_FIGURE_RE = re.compile(
+    r"^When land is converted to forests, the vegetation carbon content of that new forest land gradually approaches an exogenously-specified, region- and land-type-dependent value\. The rate at which this value is reached depends on the mature age of forests\. Mature age is specified by region, GLU, and land type\. In the figure below, the rate of growth as a function of time since planting is shown for four different mature ages\. In this figure, the y-axis indicates the percentage of the exogenously-specified, region- and land-type-dependent value accumulated\.\s*$",
+    re.MULTILINE,
+)
+POLICIES_FIGURE_EXAMPLE_RE = re.compile(
+    r"For example in the figure below, the cost of moving from a reference path without a carbon tax \(blue\) to the emissions path with a carbon tax \(green\) in period T can be calculated simply\.",
+    re.MULTILINE,
+)
+POLICIES_TAX_REVENUE_RE = re.compile(
+    r"The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below\.",
+    re.MULTILINE,
+)
 DEV_GUIDE_GIT_INTERNAL_SERVER_RE = re.compile(
     r"PNNL staff should use the internal server\.\s+Your project lead will be\s+able to get you write access "
     r"to the repository, and after that you can\s+push your branch \(q\.v\. \[creating branches\]\(#Creating-"
@@ -638,6 +727,110 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     if updated != text:
         text = updated
         changed = True
+
+    replace(SEE_FIGURE_BELOW_PAREN_RE, "")
+    replace(
+        ENERGY_SYSTEM_SCHEMATIC_RE,
+        "In GCAM's energy-system structure, the energy transformation and distribution sectors include all sectors except the resources and the final demands.\n",
+    )
+    replace(
+        ELECTRIC_NESTING_FIGURE_RE,
+        "The electric sector uses a nested structure, described here with one representative technology as the reference pattern.\n",
+    )
+    replace(
+        ELECTRIC_THIRD_NEST_FIGURE_RE,
+        " in a third nest. Within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types;",
+    )
+    replace(
+        REFINING_STRUCTURE_FIGURE_RE,
+        "The structure of refining in the broader energy system is summarized here with example input-output coefficients.\n",
+    )
+    replace(
+        OIL_REFINING_GRAPHIC_RE,
+        "In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity. The omitted schematic and caption summarize typical input-output coefficients.\n",
+    )
+    replace(
+        GAS_STRUCTURE_FIGURE_RE,
+        "The natural gas supply and distribution structure in GCAM is summarized below:\n",
+    )
+    replace(UPSTREAM_GAS_NETWORK_FIGURE_RE, "network described above")
+    replace(
+        DISTRICT_HEAT_OPTIONS_RE,
+        "In regions where purchased heat accounts for a large share of the final energy use, GCAM includes a representation of district heat production with four competing technology options.\n",
+    )
+    replace(
+        DISTRICT_HEAT_AS_SHOWN_RE,
+        'In this representation, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors.\n',
+    )
+    replace(
+        DISTRICT_HEAT_GRAPHIC_RE,
+        "The omitted pulp-and-paper example caption below provides additional context for this accounting boundary.\n",
+    )
+    replace(
+        HYDROGEN_TRANSPORT_STRUCTURE_RE,
+        "The hydrogen transmission, distribution, and end-use structure is summarized here with illustrative input-output coefficients (GJ of energy input per GJ of hydrogen) for the approximate energy requirements of compression, refrigeration, transportation, and storage.\n",
+    )
+    replace(
+        HYDROGEN_H2A_STRUCTURE_RE,
+        lambda match: (
+            "The structure of the hydrogen production and distribution sectors and technologies in GCAM generally follows the U.S. Department of Energy's Hydrogen Analysis (H2A) models "
+            f"{match.group('cite')}.\n"
+        ),
+    )
+    replace(HYDROGEN_PRIMARY_SOURCES_RE, "; in this structure, hydrogen can be produced from up to 7 primary energy sources.")
+    replace(
+        FOSSIL_FUEL_TRADE_FIGURE_RE,
+        "The fossil fuel trade structures in GCAM, using coal as an example, are summarized as follows. ",
+    )
+    replace(
+        FLOORSPACE_XML_FIGURE_RE,
+        "The following XML is an example of user-specified residential floorspace values for Maine.\n",
+    )
+    replace(
+        CEMENT_SCHEMATIC_RE,
+        'The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.',
+    )
+    replace(
+        AMMONIA_N_FERTILIZER_SCHEMATIC_RE,
+        lambda match: (
+            "Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of "
+            f"[IEA 2007]({match.group('target')}). Ammonia and N fertilizer commodities sit between the energy and agricultural systems of GCAM.\n"
+        ),
+    )
+    replace(
+        N_FERTILIZER_SCHEMATIC_RE,
+        lambda match: (
+            "Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of "
+            f"[IEA 2007]({match.group('target')}). N fertilizer sits between the energy and agricultural systems of GCAM.\n"
+        ),
+    )
+    replace(
+        PASSENGER_TYPICAL_REGION_RE,
+        "The structure of the passenger sector differs by region; the omitted schematic summarized one typical regional structure.\n",
+    )
+    replace(
+        PASSENGER_AS_SHOWN_RE,
+        "In a typical regional structure, the passenger sector consists of up to five nesting levels,",
+    )
+    replace(
+        LAND_GROWTH_FIGURE_RE,
+        "When land is converted to forests, the vegetation carbon content of that new forest land gradually approaches an exogenously-specified, region- and land-type-dependent value. The rate at which this value is reached depends on the mature age of forests. Mature age is specified by region, GLU, and land type. Growth trajectories as a function of time since planting differ across four representative mature ages, and the omitted figure's y-axis represented the percentage of the exogenously-specified, region- and land-type-dependent value accumulated.\n",
+    )
+    replace(
+        POLICIES_FIGURE_EXAMPLE_RE,
+        "For example, in period T, compare a reference path without a carbon tax to the emissions path with a carbon tax; the cost of moving between them can be calculated directly.",
+    )
+    replace(
+        POLICIES_TAX_REVENUE_RE,
+        "The tax revenue can be calculated as the tax rate times the remaining emissions.",
+    )
+    replace(
+        re.compile(
+            r"The depiction of the grid-region-specific graded CO<sub>2</sub> transport storage cost curves reflect"
+        ),
+        "The grid-region-specific graded CO<sub>2</sub> transport storage cost curves reflect",
+    )
+    replace(re.compile(r"The costs shown in the figure include"), "The reported costs include")
 
     if rel_source.name == "user-guide.md":
         replace(
@@ -1318,6 +1511,22 @@ def normalize_markdown_attribute_residue(segment: str) -> str:
     return MARKDOWN_ATTR_LINE_RE.sub("", segment)
 
 
+def normalize_citation_markup(segment: str) -> str:
+    def replace_wrapped(match: re.Match[str]) -> str:
+        label = match.group("label").strip()
+        label = re.sub(r",\s{2,}", ", ", label)
+        label = re.sub(r"\s{2,}", " ", label)
+        return f"[{label}]({match.group('target')})"
+
+    def replace_broken(match: re.Match[str]) -> str:
+        label = re.sub(r"\s{2,}", " ", match.group("label").strip())
+        return f"[{label})]({match.group('target')})"
+
+    segment = PAREN_WRAPPED_CITATION_LINK_RE.sub(replace_wrapped, segment)
+    segment = BROKEN_ANCHOR_CITATION_LINK_RE.sub(replace_broken, segment)
+    return segment
+
+
 def apply_outside_code_fences(text: str, transform) -> str:
     parts: list[str] = []
     last = 0
@@ -1334,12 +1543,14 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = MISATTACHED_CODE_FENCE_RE.sub("\n```", text)
     text = apply_outside_code_fences(
         text,
-        lambda chunk: normalize_escaped_wiki_refs(
-            normalize_escaped_inline_html(
-                normalize_markdown_attribute_residue(
-                    normalize_markdown_table_residue(
-                        normalize_inline_html(
-                            rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+        lambda chunk: normalize_citation_markup(
+            normalize_escaped_wiki_refs(
+                normalize_escaped_inline_html(
+                    normalize_markdown_attribute_residue(
+                        normalize_markdown_table_residue(
+                            normalize_inline_html(
+                                rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+                            )
                         )
                     )
                 )

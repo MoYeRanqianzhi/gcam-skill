@@ -92,11 +92,11 @@ One of the main policy options is the usage of the food preference elasticity fo
 
 ### A food demand model that is responsive to changes in incomes and prices
 
-Future food demand is determined dynamically by changes in income and prices. This also dictates changes in demand for land since preferences of food dictates the amount of land that is dedicated to crop production. [(Edmonds et al. 2017)](https://www.worldscientific.com/doi/abs/10.1142/S2010007817500129)
+Future food demand is determined dynamically by changes in income and prices. This also dictates changes in demand for land since preferences of food dictates the amount of land that is dedicated to crop production. [Edmonds et al. 2017](https://www.worldscientific.com/doi/abs/10.1142/S2010007817500129)
 
 ### Land conservation effectively limits the supply of productive land, while biofuel consumption increases the demand and competition for that land
 
-This paper looked at demand pathways across sectors under different land scarcity scenarios. [(Dolan et al. 2022)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002466)
+This paper looked at demand pathways across sectors under different land scarcity scenarios. [Dolan et al. 2022](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002466)
 
 ## IAMC Reference Card
 

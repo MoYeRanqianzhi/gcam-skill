@@ -88,6 +88,24 @@ GLOBAL_FORBIDDEN = (
     "point and click",
 )
 
+FIGURE_DEPENDENT_FORBIDDEN = (
+    "(see Figure below)",
+    "the energy system depicted below",
+    "The nesting structure of the electric sector is shown in the figure below",
+    "shown in the following figure",
+    "depicted graphically below",
+    "network shown in the figure above",
+    "This is illustrated further in the graphic below.",
+    "shown in the figure above, hydrogen can be produced from up to 7 primary energy sources",
+    "The figure below depicts the fossil fuel trade structures",
+    "The figure below is an example XML of user-specified residential floorspace values for Maine.",
+    "The schematic below shows how N fertilizer is situated between the energy and agricultural systems of GCAM.",
+    "The schematic below shows how ammonia and N fertilizer commodities are situated between the energy and agricultural systems of GCAM.",
+    "In the figure below, the rate of growth as a function of time since planting is shown",
+    "For example in the figure below, the cost of moving",
+    "shown in red below",
+)
+
 TEST_FRAMEWORK_REQUIRED = (
     "This adapted testing-framework page preserves historical internal CI topology but rewrites pull-request/button/UI phrasing into repository events, webhook payloads, and status API concepts.",
     "Agent adaptation: this page documents historical internal CI wiring. Treat pull-request pages, buttons, and Jenkins/Bitbucket UI labels as names for repository events, webhook payloads, and status APIs, not mandatory GUI steps.",
@@ -208,6 +226,16 @@ def validate_global_residue(errors: list[str]) -> None:
                 )
 
 
+def validate_figure_dependent_residue(errors: list[str]) -> None:
+    for path in sorted(VERSION_PAGES_ROOT.rglob("*.md")):
+        text = path.read_text(encoding="utf-8", errors="ignore")
+        for snippet in FIGURE_DEPENDENT_FORBIDDEN:
+            if snippet in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden figure-dependent residue: {snippet}"
+                )
+
+
 def validate_devguide_test_framework_pages(errors: list[str]) -> None:
     for info in ordered_versions():
         if info.coverage_mode == "delta-only":
@@ -298,6 +326,7 @@ def main() -> int:
     validate_devguide_analysis_pages(errors)
     validate_devguide_git_pages(errors)
     validate_global_residue(errors)
+    validate_figure_dependent_residue(errors)
 
     if errors:
         for item in errors[:200]:

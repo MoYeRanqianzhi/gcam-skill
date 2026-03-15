@@ -106,7 +106,7 @@ An additional XML file with Enhanced Geothermal Resources (EGS) is included with
 
 ## Hydropower
 
-Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropower produced in each region and year is exogenous, prescribed as a "fixedOutput". Hydropower costs are not estimated, and the technology does not contribute to the modeled electricity price in each region. The quantities in future years are generally consistent with the long-term "economic" potential identified by the International Hydropower Association [(IHA 2000)](energy.md#iha2000).
+Hydropower is the simplest of all energy forms in GCAM; the quantity of hydropower produced in each region and year is exogenous, prescribed as a "fixedOutput". Hydropower costs are not estimated, and the technology does not contribute to the modeled electricity price in each region. The quantities in future years are generally consistent with the long-term "economic" potential identified by the International Hydropower Association [IHA 2000](energy.md#iha2000).
 
 ## Biomass
 
@@ -122,7 +122,7 @@ Broadly, the energy transformation sectors in GCAM consist of all supplysectors 
 
 In energy transformation sectors, the output unit and input unit are EJ (per year), the price unit is 1975$ per GJ of output, and the subsector nest is used for competition between different fuels (or feedstocks). The competition between subsectors takes place according to a calibrated logit sharing function, detailed in [choice function](choice.md). Within the subsectors, there may be multiple competing technologies, where technologies typically represent either different efficiency levels, and/or the application of carbon dioxide capture and storage (CCS). The parameters relevant for technologies in GCAM are identified and explained in [energy technologies](en_technologies.md).
 
-In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
+In GCAM's energy-system structure, the energy transformation and distribution sectors include all sectors except the resources and the final demands.
 
 Figure 3: Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.
 
@@ -258,7 +258,7 @@ The structure of the passenger sector differs by region, but a typical region is
 
 Figure 11: Schematic of passenger sector in a typical GCAM region.
 
-As shown, the passenger sector consists of up to five nesting levels, corresponding to different modes (e.g., road, rail), sub-modes (e.g., bus, light duty vehicle), size classes, and drivetrain technologies. The passenger sector also includes non-motorized modes (walking and cycling, not shown), which are not represented as energy consumers. Their market share in future periods largely depends on the time value of transportation, described below.
+In a typical regional structure, the passenger sector consists of up to five nesting levels, corresponding to different modes (e.g., road, rail), sub-modes (e.g., bus, light duty vehicle), size classes, and drivetrain technologies. The passenger sector also includes non-motorized modes (walking and cycling, not shown), which are not represented as energy consumers. Their market share in future periods largely depends on the time value of transportation, described below.
 
 ## Functional Forms
 
@@ -363,7 +363,7 @@ Note that the size classes shown are tailored to each region, depending on the d
 
 ## Mapping the IEA Energy Balances
 
-The IEA Energy Balances [(IEA 2012)](energy.md#iea2012) are a comprehensive set of country-level statistics of energy production, transformation, and use that is the primary source of most calibration information in GCAM. However, the data product itself is somewhat complex, and the mappings from the IEA's categories to GCAM's sectors and fuels are not obvious. This section is intended to provide an overview description of the data processing with some detailed tables. It does not define the categories within the IEA data; interested readers are instead referred to the documentation [(IEA 2011)](energy.md#iea2011).
+The IEA Energy Balances [IEA 2012](energy.md#iea2012) are a comprehensive set of country-level statistics of energy production, transformation, and use that is the primary source of most calibration information in GCAM. However, the data product itself is somewhat complex, and the mappings from the IEA's categories to GCAM's sectors and fuels are not obvious. This section is intended to provide an overview description of the data processing with some detailed tables. It does not define the categories within the IEA data; interested readers are instead referred to the documentation [IEA 2011](energy.md#iea2011).
 
 ## Processing the IEA Data
 

@@ -57,27 +57,27 @@ An additional XML file with Enhanced Geothermal Resources (EGS) is included with
 
 In energy transformation sectors, the output unit and input unit are EJ (per year), the price unit is 1975$ per GJ of output, and the subsector nest is used for competition between different fuels (or feedstocks). The competition between subsectors takes place according to a calibrated logit sharing function, detailed in [choice function](choice.md). Within the subsectors, there may be multiple competing technologies, where technologies typically represent either different efficiency levels, and/or the application of carbon dioxide capture and storage (CCS). The parameters relevant for technologies in GCAM are identified and explained in [energy technologies](en_technologies.md).
 
-In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
+In GCAM's energy-system structure, the energy transformation and distribution sectors include all sectors except the resources and the final demands.
 
 **Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.**
 
 ### Electricity
 
-The nesting structure of the electric sector is shown in the figure below, with a focus on one repesentative technology.
+The electric sector uses a nested structure, described here with one representative technology as the reference pattern.
 
 **Schematic showing the nesting structure of the electric sector, with levels for choices between fuels, technologies, and cooling systems. Note that this is a simplification of the actual structure used, which includes "pass-through" sectors.**
 
-Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) are documented in [Inputs for Modeling Supply](inputs_supply.md#energy). GCAM also includes the water inputs to electricity generation, in a third nest, as shown in the figure above. That is, within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types; this is documented in the [water demand section](demand_water.md).
+Details on the assumptions used in GCAM (e.g., cost, efficiency, capacity factors, etc.) are documented in [Inputs for Modeling Supply](inputs_supply.md#energy). GCAM also includes the water inputs to electricity generation in a third nest. Within any thermo-electric generation technology, there is modeled competition between up to five different cooling system types; this is documented in the [water demand section](demand_water.md).
 
 ### Refining
 
-The structure of refining in the broader energy system is shown in the following figure, with example input-output coefficients.
+The structure of refining in the broader energy system is summarized here with example input-output coefficients.
 
 **Structure of refining sector and associated products within the energy system, with sample input-output coefficients shown. Electricity and natural gas inputs to oil refining not shown for simplicity.**
 
 #### Oil Refining
 
-In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity. This is depicted graphically below, with typical input-output coefficients shown.
+In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity. The omitted schematic and caption summarize typical input-output coefficients.
 
 **Oil refining production technology, with example coefficients.**
 
@@ -103,21 +103,22 @@ The biomass liquids subsector includes up to eight technologies in each region, 
 
 ### Gas Processing
 
-The structure of the natural gas supply and distribution in GCAM is shown below:
+The natural gas supply and distribution structure in GCAM is summarized below:
 
 **Gas processing and distribution, with example coefficients.**
 
 Note that in this structure, biogas and coal gas compete for market share of the "gas processing" market, which is upstream of the gas pipeline and distribution sectors. This structure is intended to allow for substitution away from natural gas as the feedstock for the gaseous fuels used by the energy transformation and consumption sectors, as determined by the relative economics.
 
-Note however that the following sectors consume natural gas upstream of the network shown in the figure above: unconventional oil production, gas-to-liquids refineries, and central hydrogen production. The gas used by these three processes is not assigned the cost mark-ups or upstream pipeline losses assumed in other industrial or energy sector consumers, and there is no capacity for the model to supply the gas used for these purposes with coal- or biomass-derived gas.
+Note however that the following sectors consume natural gas upstream of the network described above: unconventional oil production, gas-to-liquids refineries, and central hydrogen production. The gas used by these three processes is not assigned the cost mark-ups or upstream pipeline losses assumed in other industrial or energy sector consumers, and there is no capacity for the model to supply the gas used for these purposes with coal- or biomass-derived gas.
 
 ### District Services
 
-In regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below.
+In regions where purchased heat accounts for a large share of the final energy use, GCAM includes a representation of district heat production with four competing technology options.
 
 **District heating structure, with example input-output coefficients shown.**
 
-As shown, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors. This simplistic representation reflects the lack of data on district heating globally, and that the delineation of what constitutes a "third party sale" as opposed to on-site use is often unclear. This is illustrated further in the graphic below.
+In this representation, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors.
+ This simplistic representation reflects the lack of data on district heating globally, and that the delineation of what constitutes a "third party sale" as opposed to on-site use is often unclear. The omitted pulp-and-paper example caption below provides additional context for this accounting boundary.
 
 **Energy flows in the pulp and paper industries, illustrating the delineation between energy producers and energy consumers. These components may or may not be located on the same property, or owned by the same entity, and the physical flows themselves often include backflows of combustible wastes from the "consumers" to the "producers". This complicates the accounting of what constitutes a "third party" sale of heat. Source: [IEA (2007)](energy.md#iea2007)**
 
@@ -125,21 +126,20 @@ Another accounting issue that pertains to district heating is that the regions w
 
 ### Hydrogen
 
-The structure of the hydrogen production and distribution sectors and technologies in GCAM generally uses the structure of the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](details_energy.md#doe2015), and is shown in the figure below.
+The structure of the hydrogen production and distribution sectors and technologies in GCAM generally follows the U.S. Department of Energy's Hydrogen Analysis (H2A) models [DOE 2015](details_energy.md#doe2015).
 
 **Hydrogen structure, with example input-output coefficients shown.**
 
 As in the H2A model [IHA 2000](details_energy.md#iha2000), the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
 
-The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; as shown in the figure above, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
+The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](details_energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; in this structure, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
 
 The wind and solar technologies are electrolysis technologies, but are specifically disaggregated because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](supply_energy.md#electricity)). In contrast, the nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
 
 ## Trade
 
 ### Fossil fuel trade
-
- The figure below depicts the fossil fuel trade structures (using coal as an example). In previous versions of GCAM, every region produced and consumed from a single global market. All crude oil, coal, and natural gas production was sent to a shared market, from which, every region consumed. Only net trade could be tracked and supply was affected by global rather than regional demand. The current structure maintains a global market (e.g. traded coal), but distinguishes between direct consumption of domestic resources and consumption of imported fossil fuels.
+The fossil fuel trade structures in GCAM, using coal as an example, are summarized as follows. In previous versions of GCAM, every region produced and consumed from a single global market. All crude oil, coal, and natural gas production was sent to a shared market, from which, every region consumed. Only net trade could be tracked and supply was affected by global rather than regional demand. The current structure maintains a global market (e.g. traded coal), but distinguishes between direct consumption of domestic resources and consumption of imported fossil fuels.
 
 **Schematics of the structures for the flows of the "Coal" commodity in GCAM, with only 3 regions shown for simplicity.**
 
@@ -205,8 +205,7 @@ If the base assumptions are not desired, user-specified residential or commercia
 Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input,
 building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world
 ```
-
-The figure below is an example XML of user-specified residential floorspace values for Maine.
+The following XML is an example of user-specified residential floorspace values for Maine.
 
 ## References
 

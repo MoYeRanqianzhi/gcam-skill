@@ -55,7 +55,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ### Buildings
 
-GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Residential floorspace depends on population, income, population density, and exogenously estimated parameters. Commercial floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.md#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.md#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.md).
+GCAM disaggregates the building sector into residential and commercial sectors and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy. The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers. Residential floorspace depends on population, income, population density, and exogenously estimated parameters. Commercial floorspace depends on population, income, the average price of energy services, and exogenously specified satiation levels. Note that GCAM also includes the option to specify [floorspace exogenously](details_energy.md#optional-exogenous-floorspace). The level of building service demands per unit of floorspace depend on climate, building shell conductivity, affordability, and satiation levels. The approach used in the buildings sector is documented in [Clarke et al. 2018](demand_energy.md#clarke2018), which has a focus on heating and cooling service and energy demands. Within building services, the structures and functional forms are similar to any other GCAM sector, described in [Energy Technologies](en_technologies.md).
 
 ### Industry
 
@@ -102,7 +102,7 @@ GCAM's representation of Agricultural energy use sector.
 
 #### Cement
 
-GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
+GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
 
@@ -114,7 +114,7 @@ Note that there is a CO<sub>2</sub> capture and storage technology for cement pr
 
 The representation of nitrogenous fertilizers ("N fertilizer"), indicated in Mt of fixed N in synthetic fertilizers, includes both the specific production technologies for transforming various feedstocks into N fertilizer, as well as the demands for the commodity in the agricultural sectors. Nitrogenous fertilizers manufactured for non-agricultural purposes are excluded from the commodity modeled in GCAM.
 
-Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.md#iea2007). The schematic below shows how N fertilizer is situated between the energy and agricultural systems of GCAM.
+Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.md#iea2007). N fertilizer sits between the energy and agricultural systems of GCAM.
 
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of N fertilizer on the energy inputs, and unitless for the N fertilizer inputs to crop production). Note that the fuel/feedstock sources are competing technologies, not fixed inputs to a production function.**
 
@@ -360,11 +360,11 @@ There are a number of policy available to the user when it comes to energy deman
 
 ### Effects of climate on energy demand
 
-Changes in climate will affect residential energy demand [(Zhou et al. 2013)](https://link.springer.com/article/10.1007/s10584-013-0772-x) and building energy expenditures [(Clarke et al., 2018)](https://www.sciencedirect.com/science/article/pii/S0140988318300112), differently across world regions.
+Changes in climate will affect residential energy demand [Zhou et al. 2013](https://link.springer.com/article/10.1007/s10584-013-0772-x) and building energy expenditures [Clarke et al., 2018](https://www.sciencedirect.com/science/article/pii/S0140988318300112), differently across world regions.
 
 ### Future changes in energy demand
 
-Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [(Eom et al.,  2013)](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
+Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [Eom et al., 2013](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
 
 ### Modeling Energy-for-water in GCAM
 

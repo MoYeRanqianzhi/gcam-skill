@@ -16,7 +16,7 @@ This page provides more detailed explanations of the descriptions provided in th
 
 ## Mapping the IEA Energy Balances
 
-The IEA Energy Balances [(IEA 2019)](details_inputs.md#iea2019) are a comprehensive set of country-level statistics of energy production, transformation, and use that is the primary source of most calibration information in GCAM. However, the data product itself is somewhat complex, and the mappings from the IEA's categories to GCAM's sectors and fuels are not obvious. This section is intended to provide an overview description of the data processing with some detailed tables. It does not define the categories within the IEA data; interested readers are instead referred to the documentation [(IEA 2011)](details_inputs.md#iea2011).
+The IEA Energy Balances [IEA 2019](details_inputs.md#iea2019) are a comprehensive set of country-level statistics of energy production, transformation, and use that is the primary source of most calibration information in GCAM. However, the data product itself is somewhat complex, and the mappings from the IEA's categories to GCAM's sectors and fuels are not obvious. This section is intended to provide an overview description of the data processing with some detailed tables. It does not define the categories within the IEA data; interested readers are instead referred to the documentation [IEA 2011](details_inputs.md#iea2011).
 
 ## Processing the IEA Data
 

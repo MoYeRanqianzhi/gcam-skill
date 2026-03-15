@@ -80,7 +80,7 @@ Finally, note that GCAM also includes the option to specify [floorspace exogenou
 
 #### Building energy demand
 
-The future evolution of building energy use within each region, socioeconomic group, type of building, and service is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers, which are driven by fuel and non-fuel cost, shareweights and logit parameters ([(Clarke et al.,  2018)](https://www.sciencedirect.com/science/article/pii/S0140988318300112), [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df)).
+The future evolution of building energy use within each region, socioeconomic group, type of building, and service is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers, which are driven by fuel and non-fuel cost, shareweights and logit parameters ([Clarke et al., 2018](https://www.sciencedirect.com/science/article/pii/S0140988318300112), [Sampedro et al., 2022](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df)).
 Focusing on service demand, the model disaggregates three energy services for each building type: heating, cooling, and “other” services. Heating and cooling are considered thermal services, while “other” is categorized as generic. GCAM has a flexible structure, so it is possible to implement a more detailed service disaggregation if data is available. For example, given the large amount of data available, GCAM-USA models 14 residential services, namely cooling, heating, cooking, lighting, water heating, clothes dryer, clothes washer, computers, dishwashers, freezers, furnace fans, refrigerators, televisions, and other energy services.
 
 In addition, the model distinguishes between “modern” versus “traditional” services. Traditional services include services provided by coal and traditional biomass. Modern services are the main energy source in developed economies, and it is set that their demand will increase as income raises, until a satiation level is achieved. Therefore, the demand for modern energy services depends on historical trends, satiation levels, service affordability (income/ServicePrice), and the thermal load, which includes a range of parameters:
@@ -137,7 +137,7 @@ GCAM's representation of Agricultural energy use sector.
 
 #### Cement
 
-GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). A simple schematic with example input-outout coefficients is shown below; note that in the structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
+GCAM includes a physical representation of the manufacture of cement, that tracks both the fuel- and limestone-derived emissions of CO<sub>2</sub>. Production volumes are indicated in Mt of cement; input-output coefficients of heat and electricity are indicated in GJ per kg of cement, and the input-output coefficient of limestone is unitless. The energy input-output coefficients are specific to each region, based on [Worrell et al. (2001)](demand_energy.md#worrell2001) and Tables 6.9 and 6.10 in [IEA (2007)](demand_energy.md#iea2007). The limestone input-output coefficient is calculated to return the region's cement-related emissions reported by [CDIAC 2017](demand_energy.md#CDIAC2017). Each region's calibrated fuel shares in this industry are from Table 6.6 in [IEA 2007](demand_energy.md#iea2007). The example structure uses illustrative input-output coefficients; note that in this structure, "process heat cement" is treated as a specific energy commodity, so as to avoid allowing electricity to compete for market share of this input to the cement production process.
 
 Structure of GCAM's representation of cement production, with example input-output coefficients shown (GJ/kg of energy, and unitless for limestone)
 
@@ -151,7 +151,7 @@ The representation of nitrogenous fertilizers ("N fertilizer") is represented wi
 
 Ammonia trade is calibrated based on net trade flows, using generally similar trade structure to fossil fuel trade described in [details_energy](details_energy.md), and the Armington Style trade described in [details_trade](details_trade.md). However, ammonia trade is calibrated according to net rather than gross trade flows due to data unavailability.
 
-Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.md#iea2007). The schematic below shows how ammonia and N fertilizer commodities are situated between the energy and agricultural systems of GCAM.
+Fuel and feedstock sources and input-output coefficients are calibrated based on Table 4.15 of [IEA 2007](demand_energy.md#iea2007). Ammonia and N fertilizer commodities sit between the energy and agricultural systems of GCAM.
 
 **Structure of GCAM's representation of N fertilizer supply and demand, with example input-output coefficients shown (GJ/kg of NH3 on the energy inputs to ammonia, the unitlass mass ratio of NH3 to N in going to N fertilizer, and unitless mass of N per mass of crop for the N fertilizer inputs to crop production). Note that only one example production technology for ammonia is shown, when several are represented.**
 
@@ -364,7 +364,7 @@ $$
 
 Where $$EFW$$ is energy-for-water, $$s$$ is sector, $$p$$ is process, $$W$$ is water flow volume, and $$EI$$ is energy intensity. The energy intensity values for each process and sector were shown in the table above, and the water flow volumes are generally determined in [GCAM water demand](demand_water.md).
 
-Non-renewable groundwater pumping energy intensity is estimated in Superwell [(Niazi et al., 2025)](demand_energy.md#niazi2025) for any well *i* according to the following equations, reproduced from [superwell.R](https://github.com/JGCRI/superwell/blob/master/R/superwell.R):
+Non-renewable groundwater pumping energy intensity is estimated in Superwell [Niazi et al., 2025](demand_energy.md#niazi2025) for any well *i* according to the following equations, reproduced from [superwell.R](https://github.com/JGCRI/superwell/blob/master/R/superwell.R):
 
 $$
 Power_{i}=\frac{SpecificWeight*TotalHead_{i}*WellYield_{i}}{PumpEfficiency*WattsPerKW}
@@ -410,13 +410,13 @@ There are a number of policy available to the user when it comes to energy deman
 
 ### Effects of climate on energy demand
 
-Changes in climate will affect residential energy demand [(Zhou et al. 2013)](https://link.springer.com/article/10.1007/s10584-013-0772-x) and building energy expenditures [(Clarke et al., 2018)](https://www.sciencedirect.com/science/article/pii/S0140988318300112), differently across world regions.
+Changes in climate will affect residential energy demand [Zhou et al. 2013](https://link.springer.com/article/10.1007/s10584-013-0772-x) and building energy expenditures [Clarke et al., 2018](https://www.sciencedirect.com/science/article/pii/S0140988318300112), differently across world regions.
 
 ### Future changes in energy demand
 
-Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [(Eom et al.,  2013)](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
+Residential energy will increase by the end of the century given the projected increase in population and GDP. The implementation of a climate policy promotes the electrification of the sector [Eom et al., 2013](https://www.sciencedirect.com/science/article/pii/S0360544212006214).
 
-Alternative income distribution pathways will impact residential energy demand, emissions, and power sector investments [(Sampedro et al., 2022)](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df).
+Alternative income distribution pathways will impact residential energy demand, emissions, and power sector investments [Sampedro et al., 2022](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df).
 
 ### Modeling Energy-for-water in GCAM
 

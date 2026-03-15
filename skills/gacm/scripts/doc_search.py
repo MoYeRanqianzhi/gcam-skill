@@ -19,6 +19,8 @@ from typing import Iterable, List, Tuple
 
 from version_catalog import REFERENCE_ROOT, VERSION_PAGES_ROOT, get_version_info, ordered_versions
 
+BUNDLE_INDEX_NAME = "BUNDLE_INDEX.md"
+
 
 def safe_print(text: str) -> None:
     text = text.replace("\u00a0", " ")
@@ -41,22 +43,76 @@ def iter_files(root: Path, exts: Tuple[str, ...]) -> Iterable[Path]:
             yield path
 
 
+def append_unique(paths: List[Path], seen: set[Path], path: Path) -> None:
+    if path.exists() and path not in seen:
+        paths.append(path)
+        seen.add(path)
+
+
+def bundle_route_paths(version: str) -> List[Path]:
+    info = get_version_info(version)
+    bundle_root = VERSION_PAGES_ROOT / info.version
+    if not bundle_root.exists():
+        return []
+
+    preferred = (
+        ("release_note.md", "cmp_index.md", BUNDLE_INDEX_NAME)
+        if info.coverage_mode == "delta-only"
+        else (BUNDLE_INDEX_NAME, "index.md")
+    )
+    paths: List[Path] = []
+    seen: set[Path] = set()
+    for name in preferred:
+        append_unique(paths, seen, bundle_root / name)
+    return paths
+
+
+def bundle_content_paths(version: str, exts: Tuple[str, ...]) -> List[Path]:
+    info = get_version_info(version)
+    bundle_root = VERSION_PAGES_ROOT / info.version
+    if not bundle_root.exists():
+        return []
+
+    route_paths = set(bundle_route_paths(info.version))
+    return [path for path in iter_files(bundle_root, exts) if path not in route_paths]
+
+
 def collect_search_paths(version: str | None, scope: str) -> List[Path]:
     paths: List[Path] = []
-    if scope in {"all", "topics"}:
-        paths.extend(path for path in REFERENCE_ROOT.glob("*.md"))
-    if scope in {"all", "pages"} and version:
-        bundle_root = VERSION_PAGES_ROOT / get_version_info(version).version
-        if bundle_root.exists():
-            paths.extend(iter_files(bundle_root, (".md",)))
-    if scope == "pages" and not version:
-        paths.extend(sorted((VERSION_PAGES_ROOT).rglob("*.md")))
-    if scope in {"all", "versions"} and version:
+    seen: set[Path] = set()
+
+    if version:
         info = get_version_info(version)
-        paths.append(REFERENCE_ROOT / "versions" / f"{info.version}.md")
-    if scope in {"all", "versions"} and not version:
-        paths.append(REFERENCE_ROOT / "version_inventory.md")
-        paths.extend(sorted((REFERENCE_ROOT / "versions").glob("*.md")))
+        if scope in {"all", "versions"}:
+            append_unique(paths, seen, REFERENCE_ROOT / "versions" / f"{info.version}.md")
+        if scope in {"all", "pages"}:
+            for path in bundle_route_paths(info.version):
+                append_unique(paths, seen, path)
+        if scope in {"all", "topics"}:
+            for path in sorted(REFERENCE_ROOT.glob("*.md")):
+                append_unique(paths, seen, path)
+        if scope in {"all", "pages"}:
+            for path in bundle_content_paths(info.version, (".md",)):
+                append_unique(paths, seen, path)
+        return paths
+
+    if scope in {"all", "versions"}:
+        append_unique(paths, seen, REFERENCE_ROOT / "version_inventory.md")
+        for info in ordered_versions():
+            append_unique(paths, seen, REFERENCE_ROOT / "versions" / f"{info.version}.md")
+
+    if scope in {"all", "topics"}:
+        for path in sorted(REFERENCE_ROOT.glob("*.md")):
+            append_unique(paths, seen, path)
+
+    if scope == "pages":
+        append_unique(paths, seen, VERSION_PAGES_ROOT / "README.md")
+        for info in ordered_versions():
+            for path in bundle_route_paths(info.version):
+                append_unique(paths, seen, path)
+            for path in bundle_content_paths(info.version, (".md",)):
+                append_unique(paths, seen, path)
+
     return paths
 
 

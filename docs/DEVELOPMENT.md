@@ -41,6 +41,7 @@ High-value shared docs to maintain:
 - Validate workflows by running `scripts/doc_search.py --list-versions`.
 - Validate versioned lookups by running `scripts/doc_search.py --version <version> --pattern <term>`.
 - Validate page-bundle lookups by running `scripts/doc_search.py --version <version> --scope pages --pattern <term>`.
+- `doc_search.py` should keep progressive-disclosure priority in its output order: version route docs first, then page-entry docs such as `BUNDLE_INDEX.md` or `release_note.md`, then broader shared topics, then deep bundled pages.
 - Re-run `validate_doc_search.py` when changing `doc_search.py` or version-routing behavior so CLI semantics, invalid-version handling, and root-path restrictions stay stable.
 - Re-run `validate_page_bundle_content_parity.py` when changing `generate_bundled_pages.py` or bundled page content so the full `reference/version_pages/**/*.md` tree stays byte-for-byte aligned with generator output.
 - Re-run `validate_page_bundle_contract.py` after changing `generate_bundled_pages.py` or the generated page-bundle layer so `reference/version_pages/README.md`, per-version `BUNDLE_INDEX.md`, and delta `release_note.md` / `cmp_index.md` files cannot silently drift away from progressive-disclosure and non-pretend rules.

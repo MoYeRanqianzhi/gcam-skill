@@ -30,6 +30,11 @@ def normalize_output(text: str) -> str:
     return text.replace("\\", "/").replace("\r\n", "\n")
 
 
+def output_lines(completed: subprocess.CompletedProcess[str]) -> list[str]:
+    combined = normalize_output(completed.stdout + completed.stderr)
+    return [line for line in combined.splitlines() if line.strip()]
+
+
 def assert_ok(args: list[str], required: tuple[str, ...], errors: list[str]) -> None:
     completed = run(args)
     if completed.returncode != 0:
@@ -41,6 +46,28 @@ def assert_ok(args: list[str], required: tuple[str, ...], errors: list[str]) -> 
     for token in required:
         if token not in combined:
             errors.append(f"{' '.join(args)} -> missing expected output token: {token}")
+
+
+def assert_order(args: list[str], prefixes: tuple[str, ...], errors: list[str]) -> None:
+    completed = run(args)
+    if completed.returncode != 0:
+        errors.append(
+            f"{' '.join(args)} -> expected success, got exit {completed.returncode}: {completed.stderr.strip()}"
+        )
+        return
+
+    lines = output_lines(completed)
+    cursor = -1
+    for prefix in prefixes:
+        found = None
+        for idx in range(cursor + 1, len(lines)):
+            if lines[idx].startswith(prefix):
+                found = idx
+                break
+        if found is None:
+            errors.append(f"{' '.join(args)} -> missing ordered output prefix: {prefix}")
+            return
+        cursor = found
 
 
 def assert_fail(args: list[str], required: tuple[str, ...], errors: list[str]) -> None:
@@ -90,6 +117,24 @@ def main() -> int:
     assert_ok(
         ["--root", "version_pages/v8.2/BUNDLE_INDEX.md", "--pattern", "Page count|Bundled Pages"],
         ("reference/version_pages/v8.2/BUNDLE_INDEX.md",),
+        errors,
+    )
+    assert_order(
+        ["--pattern", "bundled current baseline", "--max-matches", "5"],
+        ("reference/version_inventory.md:",),
+        errors,
+    )
+    assert_order(
+        ["--version", "v8.2", "--scope", "all", "--pattern", "v8.2", "--max-matches", "5"],
+        (
+            "reference/versions/v8.2.md:",
+            "reference/version_pages/v8.2/BUNDLE_INDEX.md:",
+        ),
+        errors,
+    )
+    assert_order(
+        ["--version", "v7.2", "--scope", "pages", "--pattern", "Release Note|Release Summary", "--max-matches", "5"],
+        ("reference/version_pages/v7.2/release_note.md:",),
         errors,
     )
 

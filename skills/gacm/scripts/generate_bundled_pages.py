@@ -144,6 +144,22 @@ def validate_authoring_sources() -> list[str]:
         if not any(source_root.rglob("*.md")):
             errors.append(f"No markdown source files found in: gcam-doc/{version}")
 
+    for version in FULL_TREE_VERSIONS:
+        rel_buckets: dict[str, list[str]] = defaultdict(list)
+        for source_path in iter_full_tree_source_files(version):
+            rel = relative_source_path(version, source_path).as_posix()
+            rel_buckets[rel.lower()].append(rel)
+        for lowered, items in sorted(rel_buckets.items()):
+            if len(items) > 1:
+                errors.append(
+                    f"{version} -> authoring tree has case-insensitive path collision: "
+                    + " | ".join(items)
+                )
+            if lowered == BUNDLE_INDEX_NAME.lower():
+                errors.append(
+                    f"{version} -> authoring tree uses reserved generated bundle index name: {items[0]}"
+                )
+
     for version, refs in DELTA_SOURCE_MAP.items():
         for rel_path, _confidence in refs:
             candidate = AUTHORING_ROOT / rel_path

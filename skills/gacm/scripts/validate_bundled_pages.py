@@ -9,6 +9,7 @@ targets that do not resolve to a bundled file.
 from __future__ import annotations
 
 import re
+from collections import defaultdict
 from pathlib import Path
 
 from version_catalog import VERSION_PAGES_ROOT
@@ -62,6 +63,19 @@ def normalize_portability_line(line: str) -> str:
 def main() -> int:
     errors: list[str] = []
     roots = sorted(VERSION_PAGES_ROOT.rglob("*.md"))
+    lowered_paths: dict[str, list[str]] = defaultdict(list)
+    for page in roots:
+        rel = page.relative_to(VERSION_PAGES_ROOT).as_posix()
+        lowered_paths[rel.lower()].append(rel)
+        if page.name == "INDEX.md":
+            errors.append(
+                f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy INDEX.md remains; use BUNDLE_INDEX.md for generated directory indexes"
+            )
+    for lowered, items in sorted(lowered_paths.items()):
+        if len(items) > 1:
+            errors.append(
+                "Case-insensitive bundled page path collision remains: " + " | ".join(items)
+            )
     for page in roots:
         text = strip_code_fences(page.read_text(encoding="utf-8", errors="ignore"))
         for match in LINK_RE.finditer(text):

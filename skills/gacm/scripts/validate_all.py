@@ -11,6 +11,7 @@ from pathlib import Path
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
+SELF_NAME = Path(__file__).name
 
 VALIDATION_STEPS = (
     "validate_portability.py",
@@ -23,6 +24,42 @@ VALIDATION_STEPS = (
 )
 
 
+def validate_step_inventory() -> list[str]:
+    errors: list[str] = []
+    discovered = {
+        path.name
+        for path in SCRIPT_DIR.glob("validate_*.py")
+        if path.name != SELF_NAME
+    }
+    configured = set(VALIDATION_STEPS)
+
+    duplicates = sorted(
+        step
+        for index, step in enumerate(VALIDATION_STEPS)
+        if step in VALIDATION_STEPS[:index]
+    )
+    missing = sorted(discovered - configured)
+    unexpected = sorted(configured - discovered)
+
+    if duplicates:
+        errors.append(
+            "Duplicate validation steps configured in validate_all.py: "
+            + ", ".join(duplicates)
+        )
+    if missing:
+        errors.append(
+            "Validation scripts exist but are not included in VALIDATION_STEPS: "
+            + ", ".join(missing)
+        )
+    if unexpected:
+        errors.append(
+            "VALIDATION_STEPS references missing validation scripts: "
+            + ", ".join(unexpected)
+        )
+
+    return errors
+
+
 def run_step(step: str) -> int:
     command = [sys.executable, str(SCRIPT_DIR / step)]
     print(f">>> {step}", flush=True)
@@ -31,6 +68,13 @@ def run_step(step: str) -> int:
 
 
 def main() -> int:
+    inventory_errors = validate_step_inventory()
+    if inventory_errors:
+        print("Validation suite configuration failed:")
+        for item in inventory_errors:
+            print(f"- {item}")
+        return 1
+
     failures: list[str] = []
     for step in VALIDATION_STEPS:
         code = run_step(step)

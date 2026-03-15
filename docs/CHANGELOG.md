@@ -39,3 +39,4 @@
 - Expanded `validate_shared_references.py` to also scan `docs/*.md` and repo-root `skills/gacm/...` references, so long-term memory docs cannot silently drift from actual local files.
 - Tightened `validate_shared_references.py` so the root `skills/gacm/reference/*.md` inventory must exactly match `version_catalog.COMMON_TOPICS` plus generated `version_inventory.md`, preventing undisclosed shared docs from bypassing progressive disclosure.
 - Tightened `validate_shared_references.py` so `SKILL.md`, root shared docs, and `docs/*.md` fail if image markup is embedded, preserving the agent-facing layer as pure text.
+- Hardened `validate_all.py` so it first verifies its `VALIDATION_STEPS` list exactly covers the on-disk `validate_*.py` scripts, preventing new validators from being added but silently omitted from the main suite.

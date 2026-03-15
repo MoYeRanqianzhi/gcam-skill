@@ -46,3 +46,5 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-15: Reoriented the skill around agent-facing CLI, XML/configuration editing, and headless extraction instead of GUI-first workflows.
 - 2026-03-16: Added dedicated references for configuration workflows, query automation, workspace layout recognition, and version-specific operational differences.
 - 2026-03-16: Fixed bundled document search output so historical-version searches do not crash on the current Windows console encoding.
+- 2026-03-16: Added a shared-reference validator so `SKILL.md`, shared topic docs, and version routing docs can be checked without false positives from `<version>` templates or upstream source-topic examples.
+- 2026-03-16: Further tightened the shared reference layer so agent-facing guidance stays explicitly headless, CLI-first, and configuration-driven.

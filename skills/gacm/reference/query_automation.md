@@ -1,6 +1,6 @@
 # Query Automation
 
-Agent-first guide to extracting GCAM results without relying on an interactive UI.
+Agent-first guide to extracting GCAM results through query XML, batch commands, and headless tooling.
 
 Open this file when the task is about:
 - running query XML headlessly
@@ -31,7 +31,7 @@ The exact upstream no-UI pattern is:
 java -cp "$CLASSPATH" ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
 ```
 
-This is the most direct way to reuse GCAM query XML without opening a GUI.
+This is the most direct way to reuse GCAM query XML from the command line.
 
 ### Minimal Batch Command Structure
 The bundled v4.3 and v8.2 user guides document a `ModelInterfaceBatch` file containing:

@@ -23,3 +23,5 @@
 - Added dedicated shared reference docs for configuration workflows, query automation, workspace layout recognition, and version-specific operational differences.
 - Wired those docs into `SKILL.md`, navigation, coverage mapping, and bundled topic listings for better progressive disclosure.
 - Fixed `doc_search.py` so historical-page searches no longer fail on the current Windows console encoding.
+- Added `validate_shared_references.py` to verify shared-doc topic coverage, navigation references, and real local bundled references without misflagging `<version>` templates or upstream source-topic examples.
+- Tightened shared operational docs so the agent-facing layer stays headless/CLI-first while historical UI wording remains confined to page-bundle evidence.

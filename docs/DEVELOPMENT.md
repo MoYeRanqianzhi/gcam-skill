@@ -18,10 +18,11 @@
 2. Update version metadata and regenerate `skills/gacm/reference/version_inventory.md` plus `skills/gacm/reference/versions/`.
 3. Regenerate page-level bundled version trees with `skills/gacm/scripts/generate_bundled_pages.py`.
 4. Validate bundled page links and text-only adaptation rules with `skills/gacm/scripts/validate_bundled_pages.py`.
-5. Update bundled topic docs in `skills/gacm/reference/`, keeping `v8.2` root coverage explicit, traceable, and CLI-first.
-6. Update SOP steps in `skills/gacm/SKILL.md` as needed.
-7. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
-8. Commit and tag.
+5. Validate shared topic-doc references, version routing references, and navigation coverage with `skills/gacm/scripts/validate_shared_references.py`.
+6. Update bundled topic docs in `skills/gacm/reference/`, keeping `v8.2` root coverage explicit, traceable, and CLI-first.
+7. Update SOP steps in `skills/gacm/SKILL.md` as needed.
+8. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
+9. Commit and tag.
 
 High-value shared docs to maintain:
 - `configuration_workflows.md`
@@ -37,6 +38,7 @@ High-value shared docs to maintain:
 - Re-run generation after changing `version_catalog.py` so `version_inventory.md` and `versions/*.md` stay in sync with the topic set.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
 - Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable and image markup stays stripped.
+- Re-run `validate_shared_references.py` after editing shared docs, routing docs, or `SKILL.md` so template placeholders, real local references, and topic listings stay consistent.
 - Re-run representative `doc_search.py --version ... --scope pages --pattern ...` commands on Windows after search-tool changes to catch console encoding regressions.
 
 ## Page Bundle Rules
@@ -47,3 +49,4 @@ High-value shared docs to maintain:
 - Historical site-root links such as `../toc.html` must route to bundled `v8.2/toc.md`, not to a non-existent synthetic root file.
 - Bundled pages must stay text-only: strip raw image markup and avoid bundling binary figure assets.
 - Shared topic docs should translate upstream GUI instructions into agent-usable CLI and configuration workflows whenever possible.
+- Shared topic docs are the authoritative agent layer; keep them phrased in terms of headless execution, XML/config editing, and batch extraction, while leaving historical UI prose inside `reference/version_pages/` only as traceable evidence.

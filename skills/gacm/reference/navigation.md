@@ -3,10 +3,10 @@
 This file is the main bundled routing map for the open-source `gacm` skill.
 
 ## Agent Mode
-This skill is optimized for agent use, not GUI walkthroughs.
+This skill is optimized for agent use and headless CLI/config workflows.
 
 - Default to command-line execution, XML/configuration editing, and headless extraction.
-- Use page-level GUI material only when the user explicitly asks for historical ModelInterface or IDE behavior.
+- Use page-level historical UI material only when the user explicitly asks for ModelInterface or IDE behavior from a specific release.
 - Prefer shared topic docs for operational guidance and page bundles for traceable evidence.
 
 ## First Decision: Version

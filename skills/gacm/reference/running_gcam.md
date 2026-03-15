@@ -1,6 +1,6 @@
-# Running GCAM (CLI First)
+# Running GCAM (Headless CLI First)
 
-Skill-bundled operational summary for running GCAM scenarios without relying on GUI steps.
+Skill-bundled operational summary for running GCAM scenarios through shell commands, configuration files, and headless tooling.
 
 Use this file after version routing. `v8.2` is the bundled full-topic baseline. Older versions may use different workspace layouts, packaging, or database conventions, so keep the exact version route in scope.
 
@@ -17,7 +17,7 @@ For agent use, prefer one of these command-line paths:
    - `run-gcam.bat`
    - `run-gcam.command`
 
-Treat double-click instructions in upstream user guides as historical packaging notes, not as the recommended workflow.
+Treat double-click instructions in upstream user guides as historical packaging notes, not as the default workflow.
 
 ## Quickstart (Reference Scenario)
 1. Ensure the executable workspace contains the required support files such as `log_conf.xml`.
@@ -73,8 +73,8 @@ Common target styles:
 - temperature
 - cumulative emissions
 
-## Query Results Without GUI
-For agent workflows, prefer headless extraction.
+## Headless Query Results
+For agent workflows, prefer headless extraction paths.
 
 ### Path 1: Post-run automatic batch queries
 Use the `XMLDBDriver` properties file in `exe/` to run queries immediately after a scenario completes.
@@ -89,13 +89,13 @@ Relevant keys from the bundled v8.2 user guide:
 This path is useful when you want CSV outputs and do not want to keep the full XML database permanently.
 
 ### Path 2: Headless ModelInterface batch mode
-When the query XML already exists, invoke ModelInterface without a UI:
+When the query XML already exists, invoke ModelInterface in batch mode:
 
 ```bash
 java -cp "$CLASSPATH" ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
 ```
 
-Use this as a batch-query engine, not as an interactive GUI walkthrough.
+Use this as a batch-query engine driven by XML and CLI.
 
 ### Path 3: Extraction libraries
 If the task is post-processing rather than raw query authoring, prefer:
@@ -127,4 +127,4 @@ If the user complains about output size or I/O time, inspect XML DB output setti
 ## Historical Caution
 - `v3.2` and early `v4.x` use older run packaging and different documentation terminology.
 - `v5.4+` aligns more closely with the skill-bundled baseline operating pattern.
-- Exact historical page bundles may still describe ModelInterface GUI usage. Translate those into CLI/config equivalents unless the user explicitly asks for the historical UI path.
+- Exact historical page bundles may still describe interactive ModelInterface usage. Translate those into CLI/config equivalents unless the user explicitly asks for the historical UI path.

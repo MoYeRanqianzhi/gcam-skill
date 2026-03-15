@@ -11,7 +11,7 @@ Choose the smallest tool that matches the task:
 - standardized parameter/class extraction tables: `gcamextractor`
 - multi-run orchestration and automation around GCAM: see `developer_workflows.md` for `pygcam`
 
-Do not default to ModelInterface GUI instructions when one of these tools can solve the task headlessly.
+Prefer dedicated headless tools over interactive ModelInterface workflows when they solve the task.
 
 ## gcamreader (Python)
 Purpose: run GCAM query XML against a BaseX database and return Pandas DataFrames or CSV output.
@@ -94,7 +94,7 @@ dataGCAM <- gcamextractor::readgcam(
 `gcamextractor` can read or write `.Proj` files for cached extraction workflows.
 
 ## Headless Query Engine Fallback
-If the user already has GCAM query XML and wants exact upstream query behavior without an interactive GUI, use ModelInterface batch mode from the command line:
+If the user already has GCAM query XML and wants exact upstream query behavior, use ModelInterface batch mode from the command line:
 
 ```bash
 java -cp "$CLASSPATH" ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml

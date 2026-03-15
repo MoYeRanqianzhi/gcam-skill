@@ -21,8 +21,14 @@ from version_catalog import REFERENCE_ROOT, VERSION_PAGES_ROOT, get_version_info
 
 
 def safe_print(text: str) -> None:
+    text = text.replace("\u00a0", " ")
     encoding = sys.stdout.encoding or "utf-8"
-    sys.stdout.buffer.write((text + "\n").encode(encoding, errors="backslashreplace"))
+    payload = (text + "\n").encode(encoding, errors="backslashreplace")
+    buffer = getattr(sys.stdout, "buffer", None)
+    if buffer is not None:
+        buffer.write(payload)
+        return
+    sys.stdout.write(payload.decode(encoding, errors="backslashreplace"))
 
 
 def iter_files(root: Path, exts: Tuple[str, ...]) -> Iterable[Path]:

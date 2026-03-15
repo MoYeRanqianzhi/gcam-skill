@@ -82,7 +82,7 @@ If you need to compile without Java:
 
 If Java is disabled, GCAM can still emit `debug_db.xml` by enabling `DEBUG_XML_DB` in `cvs/objects/reporting/source/xml_db_outputter.cpp`.
 
-For agent workflows, prefer later headless processing of that output rather than manual GUI import steps.
+For agent workflows, prefer later headless processing of that output rather than manual interactive database import steps.
 
 ## Recompiling Java Components
 The modern bundled docs include command-line rebuild flows for:
@@ -115,4 +115,4 @@ After a successful build:
 
 ## Historical Caution
 - Exact page bundles still preserve older Xcode and Visual Studio instructions for traceability.
-- The skill should summarize those pages into CLI actions instead of reproducing menus, screenshots, or click paths unless the user explicitly requests them.
+- The skill should summarize those pages into CLI build actions instead of reproducing IDE click paths unless the user explicitly requests them.

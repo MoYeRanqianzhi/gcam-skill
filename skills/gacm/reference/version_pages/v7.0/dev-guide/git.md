@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v7.0`.
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.0/BUNDLE_INDEX.md`
+- Note: This adapted git page preserves historical forge examples but rewrites browser-specific actions into CLI/API-friendly repository workflow terms.
 - Source provenance: inherited from `v5.3` because `v7.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v7.0` as `dev-guide/git.md`.
 
@@ -57,19 +58,9 @@ been tested and approved for distribution, while the internal
 repository also has candidate releases and experimental features that
 have not been as thoroughly tested.
 
-PNNL staff should use the internal server.  Your project lead will be
-able to get you write access to the repository, and after that you can
-push your branch (q.v. [creating branches](#Creating-branches)) to the
-server and open a pull request
-(q.v. [opening pull requests](#Opening-pull-requests)).
+PNNL staff should use the internal server when it is available. Agent adaptation: treat the historical Bitbucket host as one forge endpoint among many; the essential workflow is to push your branch (q.v. [creating branches](#Creating-branches)) to a writable remote and create the corresponding review request through the forge's CLI or API.
 
-Outside users should use the GitHub repository.  You will have read
-access to this repository, but you won't be able to write to it.
-Instead, if you want to do development, use the
-[fork](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
-button on GitHub to create your own copy of the repository.  You will
-be able to create branches in your copy, and you will be able to open
-pull requests from your copy back to the main repository.
+Outside users should use the GitHub repository. You will normally have read access to this repository but not direct write access. If you want to do development, create your own fork or other writable mirror, create branches there, and submit a pull request or equivalent review request back to the main repository.
 
 ### GCAM Git workflow
 
@@ -107,28 +98,9 @@ this fairly frequently, so don't make it too long.
 
 #### Opening pull requests
 
-Once you've made some progress on your development, you will want to
-open a
-[pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-Notionally, a pull request is a proposal to merge changes from your
-branch into another branch (usually the `master` branch).  However,
-opening a pull request also provides other developers with an
-opportunity to review your code and give feedback, so you don't have
-to wait until your code is ready to go before you open one.  Open a
-pull request as soon you have some progress to share.  On GitHub, pull
-requests can be marked as drafts, indicating that they are not yet
-ready to merge.  Bitbucket doesn't have an equivalent feature, so if a
-pull request is not ready to merge, it's a good idea to add the tag
-WIP ("work in progress") to the description when you create it.
-Otherwise the process is similar between the two platforms.
+Once you've made some progress on your development, you will want to open a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) or the equivalent review request on your forge. Notionally, this is a proposal to merge changes from your branch into another branch (usually the `master` branch), but it also creates the review thread where other developers can examine the code and give feedback. Open that review request as soon as you have progress worth sharing. If your forge supports draft or work-in-progress review states, use them; otherwise mark unfinished work clearly in the title or description.
 
-Once you have opened the pull request, you will probably get some
-feedback from other developers.  Push additional commits to your
-branch addressing the feedback or continuing the development, and they
-will automatically be added to the pull request.  Eventually, when
-your development is complete, you should mark your pull request as
-ready to merge.  Before the branch can be merged, you will have to
-write a change proposal (q.v. [GCAM Review Process](review.md)).
+Once the review request exists, expect feedback from other developers. Push additional commits to your branch to address that feedback or continue development; those commits should remain attached to the same review record automatically. When development is complete, update the review state to ready for merge. Before the branch can be merged, you will have to write a change proposal (q.v. [GCAM Review Process](review.md)).
 
 ### Other tips
 

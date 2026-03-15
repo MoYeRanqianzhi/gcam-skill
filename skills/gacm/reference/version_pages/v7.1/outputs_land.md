@@ -16,12 +16,12 @@ Load this page when the user needs version-specific detail from this exact page 
 
 | Name | Resolution | Unit | Query | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
-| Land use and land cover | By GLU, land leaf, and year | thousand $$km^2$$ | detailed land allocation or aggregated land allocation<sup>[1](#table_footnote)</sup>| `land-allocation` |
-| Land use change emissions | By GLU and land leaf | MtC / year | LUC emissions by region | `land-use-change-emission` |
+| Land use and land cover | By GLU, land leaf, and year | thousand $$km^2$$ | <a name="detailed land allocation"></a>detailed land allocation or <a name="aggregated land allocation"></a>aggregated land allocation<sup>[1](#table_footnote)</sup>| `land-allocation` |
+| Land use change emissions | By GLU and land leaf | MtC / year | <a name="LUC emissions by region"></a>LUC emissions by region | `land-use-change-emission` |
 | Change in above ground carbon | By GLU and land leaf | MtC / year |  | `above-land-use-change-emission`|
 | Change in below ground carbon | By GLU and land leaf | MtC / year |  | `below-land-use-change-emission`|
-| Above ground carbon stock | By GLU and land leaf | MtC | vegetative carbon stock by region | `above-ground-carbon-stock` |
-| Profit rate | By GLU and land leaf | 1975$/thous km<sup>2</sup> | profit rate | `profit-rate` |
+| Above ground carbon stock | By GLU and land leaf | MtC | <a name="vegetative carbon stock by region"></a>vegetative carbon stock by region | `above-ground-carbon-stock` |
+| Profit rate | By GLU and land leaf | 1975$/thous km<sup>2</sup> | <a name="profit rate"></a>profit rate | `profit-rate` |
 
 Outputs are specified in the `startVisitLandLeaf` and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 

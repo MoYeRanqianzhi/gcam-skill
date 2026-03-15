@@ -16,8 +16,8 @@ Load this page when the user needs version-specific detail from this exact page 
 
 | Name | Resolution | Unit | Query | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
-| Price<sup>[1](#table_footnote1)</sup> | Market<sup>[2](#table_footnote2)</sup> and Year  | Various<sup>[3](#table_footnote3)</sup> | prices of all markets | `price` |
-| Food demand prices | Region, Type and Year  | 2005$/Mcal/day | food demand prices | `price-paid` |
+| Price<sup>[1](#table_footnote1)</sup> | Market<sup>[2](#table_footnote2)</sup> and Year  | Various<sup>[3](#table_footnote3)</sup> | <a name="prices of all markets"></a>prices of all markets | `price` |
+| Food demand prices | Region, Type and Year  | 2005$/Mcal/day | <a name="food demand prices"></a>food demand prices | `price-paid` |
 
 Outputs are specified in the `startVisitMarket` method of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 

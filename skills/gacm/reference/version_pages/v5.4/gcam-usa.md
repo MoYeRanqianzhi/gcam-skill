@@ -136,7 +136,7 @@ Electricity Trade
 
 For electricity trade between states we group states roughly into the 15 "grid regions" consistent with the North American Electric Reliability Corporation regions. Whereby states within the same sub-region can trade freely within that sub-region, trade between regions may be limited.
 
-<span id="_Ref277591668"></span>Modeled electricity markets based on NEMS.
+<a name="_Ref277591668"></a>Modeled electricity markets based on NEMS.
 
 Refining sector
 ===============
@@ -163,7 +163,7 @@ The region-specific CO<sub>2</sub> transport and storage cost curves for the U.S
 
 In keeping with the US electricity-specific CCS modeling presented in [Wise et al. 2007](gcam-usa.md#wise2007), the CO<sub>2</sub> transport and storage cost curves represented in this analysis have been adjusted to account for the fact that the cost of CO<sub>2</sub> capture can vary by an order of magnitude for the different CO<sub>2</sub> sources modeled to generate the raw region specific CO<sub>2</sub> transport and storage cost (i.e., a natural gas processing plant generates a virtually pure stream of CO<sub>2</sub> that can be captured - already dehydrated and compressed - for a cost of less than $10/tonCO<sub>2</sub>, while an older and relatively small pulverized coal plant could see capture costs well above $50/tonCO<sub>2</sub>) and which kinds of CO<sub>2</sub> point sources get to access what kinds of geologic storage reservoirs is influenced strongly by the capture costs. Therefore, without the sort of adjustments performed, the raw region-specific CO<sub>2</sub> transport and storage curves would present an unrealistically low representation of the net cost of CO<sub>2</sub> transport and storage likely to be experienced by large stationary CO<sub>2</sub> point sources like coal, natural gas, and biomass fired power plants and refineries, which are the anthropogenic CO<sub>2</sub> sources that are modeled specifically in GCAM-USA.
 
-<span id="_Ref277591731"></span>Carbon storage potential by electricity market.
+<a name="_Ref277591731"></a>Carbon storage potential by electricity market.
 
 Water
 ===========================================

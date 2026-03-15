@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v5.2`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.2/BUNDLE_INDEX.md`
+- Note: This adapted analysis page prefers automation-oriented descriptions over GUI-centric wording where the original text listed tool categories.
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -46,7 +47,7 @@ _Repository_:  https://github.com/JGCRI/gcamrpt
 
 #### `pygcam`
 
-The `pygcam` package comprises a set of Python modules and a main driver script designed to facilitate a more efficient workflow using GCAM.  The tools are intended to meet the needs of different types of users, from basic users who just want to run the model, to “power” users interested in writing custom scripts, to software developers wanting to write new tools like graphical user interfaces for working with GCAM.
+The `pygcam` package comprises a set of Python modules and a main driver script designed to facilitate a more efficient workflow using GCAM.  The tools are intended to meet the needs of different types of users, from basic users who just want to run the model, to “power” users interested in writing custom scripts, to software developers wanting to write new automation front ends or other higher-level tools for working with GCAM.
 
 _Repository_:  https://github.com/JGCRI/pygcam
 _Read the Docs_:  https://pygcam.readthedocs.io/en/latest/intro.html

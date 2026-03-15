@@ -88,6 +88,49 @@ GLOBAL_FORBIDDEN = (
     "point and click",
 )
 
+TEST_FRAMEWORK_REQUIRED = (
+    "This adapted testing-framework page preserves historical internal CI topology but rewrites pull-request/button/UI phrasing into repository events, webhook payloads, and status API concepts.",
+    "Agent adaptation: this page documents historical internal CI wiring. Treat pull-request pages, buttons, and Jenkins/Bitbucket UI labels as names for repository events, webhook payloads, and status APIs, not mandatory GUI steps.",
+)
+
+TEST_FRAMEWORK_FORBIDDEN = (
+    "pull request interface",
+    "open your pull request",
+    "add a new menu option with in the pull request",
+    'When the "button" is clicked and a user confirms',
+    "watch the progress / look at logs or build artifacts after the fact",
+)
+
+GETTING_STARTED_REQUIRED = (
+    "This adapted getting-started page rewrites final submission steps as host-agnostic review-request workflow instead of browser-only pull-request actions.",
+    "Agent adaptation: use the forge CLI or API when available instead of assuming a browser-only pull request action.",
+)
+
+GETTING_STARTED_FORBIDDEN = (
+    "When your development is complete, open a pull request.",
+)
+
+ANALYSIS_REQUIRED = (
+    "This adapted analysis page prefers automation-oriented descriptions over GUI-centric wording where the original text listed tool categories.",
+)
+
+ANALYSIS_FORBIDDEN = (
+    "graphical user interfaces for working with GCAM",
+)
+
+GIT_REQUIRED = (
+    "This adapted git page preserves historical forge examples but rewrites browser-specific actions into CLI/API-friendly repository workflow terms.",
+    "Once the review request exists, expect feedback from other developers.",
+)
+
+GIT_FORBIDDEN = (
+    "server and open a pull request",
+    "fork button on GitHub",
+    "Open a pull request as soon you have some progress to share.",
+    "Once you have opened the pull request,",
+    "mark your pull request as",
+)
+
 
 def validate_user_guides(errors: list[str]) -> None:
     for info in ordered_versions():
@@ -165,11 +208,95 @@ def validate_global_residue(errors: list[str]) -> None:
                 )
 
 
+def validate_devguide_test_framework_pages(errors: list[str]) -> None:
+    for info in ordered_versions():
+        if info.coverage_mode == "delta-only":
+            continue
+        path = VERSION_PAGES_ROOT / info.version / "dev-guide" / "test_framework.md"
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in TEST_FRAMEWORK_REQUIRED:
+            if snippet not in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} missing required test-framework adaptation snippet: {snippet}"
+                )
+        for snippet in TEST_FRAMEWORK_FORBIDDEN:
+            if snippet in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden test-framework UI residue: {snippet}"
+                )
+
+
+def validate_devguide_getting_started_pages(errors: list[str]) -> None:
+    for info in ordered_versions():
+        if info.coverage_mode == "delta-only":
+            continue
+        path = VERSION_PAGES_ROOT / info.version / "dev-guide" / "getting_started.md"
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in GETTING_STARTED_REQUIRED:
+            if snippet not in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} missing required getting-started adaptation snippet: {snippet}"
+                )
+        for snippet in GETTING_STARTED_FORBIDDEN:
+            if snippet in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden getting-started GUI residue: {snippet}"
+                )
+
+
+def validate_devguide_analysis_pages(errors: list[str]) -> None:
+    for info in ordered_versions():
+        if info.coverage_mode == "delta-only":
+            continue
+        path = VERSION_PAGES_ROOT / info.version / "dev-guide" / "analysis.md"
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in ANALYSIS_REQUIRED:
+            if snippet not in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} missing required analysis adaptation snippet: {snippet}"
+                )
+        for snippet in ANALYSIS_FORBIDDEN:
+            if snippet in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden analysis GUI residue: {snippet}"
+                )
+
+
+def validate_devguide_git_pages(errors: list[str]) -> None:
+    for info in ordered_versions():
+        if info.coverage_mode == "delta-only":
+            continue
+        path = VERSION_PAGES_ROOT / info.version / "dev-guide" / "git.md"
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in GIT_REQUIRED:
+            if snippet not in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} missing required git adaptation snippet: {snippet}"
+                )
+        for snippet in GIT_FORBIDDEN:
+            if snippet in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden git GUI residue: {snippet}"
+                )
+
+
 def main() -> int:
     errors: list[str] = []
     validate_user_guides(errors)
     validate_gcam_build_pages(errors)
     validate_hector_pages(errors)
+    validate_devguide_test_framework_pages(errors)
+    validate_devguide_getting_started_pages(errors)
+    validate_devguide_analysis_pages(errors)
+    validate_devguide_git_pages(errors)
     validate_global_residue(errors)
 
     if errors:

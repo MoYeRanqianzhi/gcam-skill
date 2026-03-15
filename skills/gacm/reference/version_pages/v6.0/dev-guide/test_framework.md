@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/BUNDLE_INDEX.md`
+- Note: This adapted testing-framework page preserves historical internal CI topology but rewrites pull-request/button/UI phrasing into repository events, webhook payloads, and status API concepts.
 - Source provenance: inherited from `v5.3` because `v6.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v6.0` as `dev-guide/test_framework.md`.
 
@@ -18,7 +19,10 @@ Load this page when the user needs version-specific detail from this exact page 
 This page is here to serve as guidance for GCAM developers who may need to update or extend the GCAM Testing Framework.  Note the GCAM testing framework is meant to automate many of the steps developers must do to verify their changes do not break GCAM on any of the platforms GCAM is known to run on.  The services we use to do this are provided internal to PNNL, as noted below, therefore they cannot be used outside of the network.
 
 ### Notes on initializing and updating the testing framework
-Most users will interact with the testing framework only through the pull request interface and will not need to worry about updating the testing framework.  Some instances of when they would need to update include:
+Agent adaptation: this page documents historical internal CI wiring. Treat pull-request pages, buttons, and Jenkins/Bitbucket UI labels as names for repository events, webhook payloads, and status APIs, not mandatory GUI steps.
+
+Most users will interact with the testing framework through repository review events or CI-trigger metadata and will not need to worry about updating the testing framework. Some instances of when they would need to update include:
+
 * Updating any of the third party library dependencies (excluding gcamdata as that is self contained in the `DESCRIPTION` file)
 * They need to extend or add tests
 * A change that affects the way we run Core scenarios such as how we run a policy
@@ -50,7 +54,7 @@ However where it differs is we now need to update the submodule "pointer" in the
 > git push
 ```
 
-At this point you can open your pull request and the automated tests will use your updated testing framework automatically.  In addition no other pull requests will yet be affected!  At this point you should also open a pull request in the [gcam-testing-framework repository](https://stash.pnnl.gov/scm/jgcri/gcam-testing-framework.git) and link to it from your GCAM pull request so all changes can be considered together.
+After pushing the testing-framework branch and the updated submodule pointer, submit the repository review request that should trigger CI for your host platform. Historical upstream docs described this as opening a pull request. If both GCAM core and the testing-framework repository changed, keep the two linked review records together. Historical testing-framework repository URL: https://stash.pnnl.gov/scm/jgcri/gcam-testing-framework.git.
 
 ### Background
 The following software / serices may be useful to review and describe their purpose given users may not be familiar with them.  Note we are relying on these services being provided by PNNL's Dev Central which is currently being provided free of charge code.  It does of course imply these tests can only be launched from inside the PNNL network.
@@ -71,14 +75,15 @@ You can browse the files at: https://artifactory.pnnl.gov and specific locations
 Not as essential to the testing framework but it will come up so we will describe it.  Docker is a set of tools which aims to allow users to package everything required to run their software, including the operating system, inside a minimal client.  A user can subsequently "pull" this software container and run it with a docker client on their local operating system, whatever it may be, and can make certain local resource, such as a folder containing GCAM, available inside the docker container.  Finally Docker provides a "Docker hub" website as a means to publish your containers, not only for other users to run but also extend to make new containers.
 
 #### Pull Request Notifier Plugin for Bitbucket
-This is a plugin to Bitbucket which allows us to signal Jenkins when to kick off tests.  This plug can trigger on any Bitbucket action, such as pull request opened or updated.  It makes available a number of useful meta data about what happened and will send it off to some arbitrary URL.  In addition it allows us to add a new menu option with in the pull request and even configure arbitrary forms to collect user input to send along too.  The full documentation of what is possible is on it's Github page: https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket
+This historical Bitbucket plugin acted as the event-to-webhook adapter for CI. For agent use, treat it as the component that maps repository review events, updates, and optional form payloads into structured metadata sent to Jenkins. Full upstream plugin documentation: https://github.com/tomasbjerre/pull-request-notifier-for-bitbucket
 
 #### Generic Webhook Plugin for Jenkins
 This is the counterpart for the "Pull Request Notifier for Bitbucket".  It will listen for notifications, unpack the metadata, and launch the configured test based off of the metadata.
 Documentation, again on it's Github page: https://github.com/jenkinsci/generic-webhook-trigger-plugin
 
 #### Notify Bitbucket Instance Plugin for Jenkins
-A plugin to update the build status (In Progress, Failure, Success) in Bitbucket.  The Jenkins plugin takes care of all of the details for us automatically filling in the name of the test, build number, and link back to Jenkins so a user can watch the progress / look at logs or build artifacts after the fact.
+This historical Jenkins plugin reported build state back to Bitbucket. For agent use, treat it as a commit-status API updater that publishes `IN_PROGRESS`, `FAILURE`, or `SUCCESS` plus a build URL for logs and artifacts.
+
 The plugin makes use of [Bitbucket Build Status API](https://developer.atlassian.com/server/bitbucket/how-tos/updating-build-status-for-commits/) which actually need to call directly to add / update the builds status of the jobs submitted on PIC.
 
 ### Testing Framework Scripts
@@ -172,7 +177,8 @@ If we should exist delete any previously existing output database **per scenario
 ##### Select which scenarios to run:
 This defaults to the set of scenario we currently require users to run: Ref, Ref + 2.6; SSPs,  SSPs + SPA 2.6.  However all of the SPA climate target levels in the committed `batch_SSP_SPA*.xml` are available.  Note this button form was generated manually but the actual scenarios available are generated from the batch files committed in the gcam-core repo.
 
-When the "button" is clicked and a user confirms, It will notify Jenkins with the "JGCRI-gcam-pic" tag with the meta data:
+Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins with the "JGCRI-gcam-pic" tag and the following metadata payload:
+
 * `PULL_REQUEST_FROM_BRANCH`
 * `PULL_REQUEST_ID`
 * `PULL_REQUEST_USER_DISPLAY_NAME`

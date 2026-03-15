@@ -36,6 +36,7 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - Continue expanding bundled topic coverage where the skill still compresses very specialized upstream material.
 - Add more deterministic helper scripts if repeated manual authoring or validation steps appear.
 - Continue auditing lower-frequency human-oriented residue in inherited historical page bundles so CLI-first adaptation remains comprehensive beyond the already-normalized `user-guide.md`, `gcam-build.md`, `hector.md`, `index.md`, and repeated data-system passages.
+- Continue auditing historical developer-workflow pages beyond the newly adapted `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` so internal-platform context is preserved without drifting back into browser-only instructions.
 - Continue reducing figure-dependent prose where upstream pages still say “see Figure” or rely on omitted diagrams for intuition; preserve the factual text, but keep translating repeated visual-navigation patterns into explicit text routes where safe.
 
 ## Decision Log
@@ -69,3 +70,6 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Rewrote the historical `community-guide.md` placeholder `\<cite latest version of model documentation\>` into an explicit source-author note so exact bundles preserve provenance without surfacing raw editorial placeholders.
 - 2026-03-16: Normalized raw HTML definition-list/list structures such as `<dl>/<dt>/<dd>/<ul>/<li>` into markdown in historical exact-page bundles, including inherited `aglu.md` pages that remain part of the `v8.2` route graph.
 - 2026-03-16: Rewrote repeated human-UI phrasing in bundled historical pages where the source text still depended on GUI framing, including the `Regions` GUI-pane reference in ModelInterface batch-query setup and the `point and click` sentence in `dev-guide/git.md`.
+- 2026-03-16: Preserved semantic same-page anchors by converting upstream `span id/name` wrappers into named anchors during bundle generation, fixing historical `gcam-usa.md` citation and figure-note fragments without leaving raw span markup in the published text layer.
+- 2026-03-16: Expanded historical developer-workflow adaptation so `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` now explain internal CI/review concepts in CLI/API and metadata terms rather than browser-button or GUI-first terms.
+- 2026-03-16: Confirmed again in the durable reference layer that `v8.2` is the bundled current full baseline and maps to the root `gcam-doc` tree, with that rule explicitly present in `reference/version_families.md`.

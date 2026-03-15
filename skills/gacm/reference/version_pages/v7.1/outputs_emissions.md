@@ -16,14 +16,14 @@ Load this page when the user needs version-specific detail from this exact page 
 
 | Name | Resolution | Unit | Query | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
-|Emissions (CO<sub>2</sub>)|Technology, Region<sup>[3](#table_footnote)</sup>, and Year|MtC/year|CO2 emissions by tech (excluding resource production)|`emissions`|
-| Emissions (non-CO<sub>2</sub>)<sup>[1,2](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | Various<sup>[4](#table_footnote)</sup>  | nonCO2 emissions by tech (excluding resource production) | `emissions` |
-|Resource production emissions (CO<sub>2</sub>)|Subresource, Region, and Year|MtC/year|CO2 emissions by resource production|`emissions`|
-|Resource production emissions (non-CO<sub>2</sub>)|Subresource, Region, and Year|MtC/year|nonCO2 emissions by resource production|`emissions`|
-| Land use change emissions | By GLU and land type | MtC / year | LUC emissions by region | `land-use-change-emission` |
+|Emissions (CO<sub>2</sub>)|Technology, Region<sup>[3](#table_footnote)</sup>, and Year|MtC/year|<a name="CO2 emissions by tech (excluding resource production)"></a>CO2 emissions by tech (excluding resource production)|`emissions`|
+| Emissions (non-CO<sub>2</sub>)<sup>[1,2](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | Various<sup>[4](#table_footnote)</sup>  | <a name="nonCO2 emissions by tech (excluding resource production)"></a>nonCO2 emissions by tech (excluding resource production) | `emissions` |
+|Resource production emissions (CO<sub>2</sub>)|Subresource, Region, and Year|MtC/year|<a name="CO2 emissions by resource production"></a>CO2 emissions by resource production|`emissions`|
+|Resource production emissions (non-CO<sub>2</sub>)|Subresource, Region, and Year|MtC/year|<a name="CO2 emissions by resource production"></a>nonCO2 emissions by resource production|`emissions`|
+| Land use change emissions | By GLU and land type | MtC / year | <a name="LUC emissions by region"></a>LUC emissions by region | `land-use-change-emission` |
 | Change in above ground carbon | By GLU and land type | MtC / year |  | `above-land-use-change-emission`|
 | Change in below ground carbon | By GLU and land type | MtC / year |  | `below-land-use-change-emission`|
-| CO<sub>2</sub> Sequestration<sup>[6](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | MtC / year  | CO2 sequestration by tech | `emissions-sequestered` |
+| CO<sub>2</sub> Sequestration<sup>[6](#table_footnote)</sup> |  Technology, Region<sup>[3](#table_footnote)</sup>, and Year | MtC / year  | <a name="CO2 sequestration by tech"></a>CO2 sequestration by tech | `emissions-sequestered` |
 
 Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and `startVisitCarbonCalc` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 

@@ -70,7 +70,14 @@ HTML_STYLE_BLOCK_RE = re.compile(r"<style\b[^>]*>.*?</style>", re.IGNORECASE | r
 HTML_COL_TAG_RE = re.compile(r"</?col(?:group)?\b[^>]*\/?>", re.IGNORECASE)
 HTML_BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 HTML_BUTTON_RE = re.compile(r"<button\b[^>]*>(?P<label>.*?)</button>", re.IGNORECASE | re.DOTALL)
-HTML_SPAN_RE = re.compile(r"<span\b[^>]*>(?P<content>.*?)</span>", re.IGNORECASE | re.DOTALL)
+HTML_SPAN_RE = re.compile(
+    r"<span\b(?P<attrs>[^>]*)>(?P<content>.*?)</span>",
+    re.IGNORECASE | re.DOTALL,
+)
+HTML_ID_OR_NAME_ATTR_RE = re.compile(
+    r"""\b(?:id|name)\s*=\s*(?:"(?P<double>[^"]+)"|'(?P<single>[^']+)')""",
+    re.IGNORECASE,
+)
 HTML_FONT_RE = re.compile(r"</?font\b[^>]*>", re.IGNORECASE)
 HTML_LIST_RE = re.compile(r"<(?P<tag>ul|ol)\b[^>]*>(?P<body>.*?)</(?P=tag)>", re.IGNORECASE | re.DOTALL)
 HTML_LIST_ITEM_RE = re.compile(r"<li\b[^>]*>(?P<item>.*?)</li>", re.IGNORECASE | re.DOTALL)
@@ -350,6 +357,82 @@ DEV_GUIDE_GIT_POINT_AND_CLICK_RE = re.compile(
     r"provide a point and click\s+interface, along with some visualization capabilities to help you\s+understand "
     r"how various branches relate to each other\.\s*",
     re.IGNORECASE | re.DOTALL,
+)
+DEV_GUIDE_TEST_FRAMEWORK_INTRO_RE = re.compile(
+    r"^Most users will interact with the testing framework only through the pull request interface and will not "
+    r"need to worry about updating the testing framework\.\s+Some instances of when they would need to update "
+    r"include:\s*$",
+    re.MULTILINE,
+)
+DEV_GUIDE_TEST_FRAMEWORK_OPEN_PR_RE = re.compile(
+    r"^At this point you can open your pull request and the automated tests will use your updated testing "
+    r"framework automatically\.\s+In addition no other pull requests will yet be affected!\s+At this point you "
+    r"should also open a pull request in the \[gcam-testing-framework repository\]\((?P<repo>[^)]+)\) and link "
+    r"to it from your GCAM pull request so all changes can be considered together\.\s*$",
+    re.MULTILINE,
+)
+DEV_GUIDE_TEST_FRAMEWORK_PR_NOTIFIER_RE = re.compile(
+    r"^This is a plugin to Bitbucket which allows us to signal Jenkins when to kick off tests\.\s+This plug can "
+    r"trigger on any Bitbucket action, such as pull request opened or updated\.\s+It makes available a number "
+    r"of useful meta data about what happened and will send it off to some arbitrary URL\.\s+In addition it "
+    r"allows us to add a new menu option with in the pull request and even configure arbitrary forms to collect "
+    r"user input to send along too\.\s+The full documentation of what is possible is on it'?s Github page:\s*"
+    r"(?P<url>https://github\.com/tomasbjerre/pull-request-notifier-for-bitbucket)\s*$",
+    re.MULTILINE,
+)
+DEV_GUIDE_TEST_FRAMEWORK_NOTIFY_STATUS_RE = re.compile(
+    r"^A plugin to update the build status \(In Progress, Failure, Success\) in Bitbucket\.\s+The Jenkins "
+    r"plugin takes care of all of the details for us automatically filling in the name of the test, build "
+    r"number, and link back to Jenkins so a user can watch the progress / look at logs or build artifacts after "
+    r"the fact\.\s*$",
+    re.MULTILINE,
+)
+DEV_GUIDE_TEST_FRAMEWORK_BUTTON_RE = re.compile(
+    r'^When the "button" is clicked and a user confirms,\s+It will notify Jenkins with the '
+    r'"JGCRI-gcam-pic" tag with the meta data:\s*$',
+    re.MULTILINE,
+)
+DEV_GUIDE_GETTING_STARTED_PR_STEP_RE = re.compile(
+    r"^6\.\s+When your development is complete, open a pull request\.\s*$",
+    re.MULTILINE,
+)
+DEV_GUIDE_ANALYSIS_GUI_RE = re.compile(
+    r"software developers wanting to write new tools like graphical user interfaces for working with GCAM",
+    re.IGNORECASE,
+)
+DEV_GUIDE_GIT_INTERNAL_SERVER_RE = re.compile(
+    r"PNNL staff should use the internal server\.\s+Your project lead will be\s+able to get you write access "
+    r"to the repository, and after that you can\s+push your branch \(q\.v\. \[creating branches\]\(#Creating-"
+    r"branches\)\) to the\s+server and open a pull request\s+\(q\.v\. \[opening pull requests\]\(#Opening-pull-"
+    r"requests\)\)\.\s*",
+    re.DOTALL,
+)
+DEV_GUIDE_GIT_OUTSIDE_USERS_RE = re.compile(
+    r"Outside users should use the GitHub repository\.\s+You will have read\s+access to this repository, but "
+    r"you won't be able to write to it\.\s+Instead, if you want to do development, use the\s+\[fork\]\([^)]+\)"
+    r"\s+button on GitHub to create your own copy of the repository\.\s+You will\s+be able to create branches "
+    r"in your copy, and you will be able to open\s+pull requests from your copy back to the main repository\.\s*",
+    re.DOTALL,
+)
+DEV_GUIDE_GIT_OPEN_PR_RE = re.compile(
+    r"Once you've made some progress on your development, you will want to\s+open a\s+\[pull request\]\([^)]+\)"
+    r"\.\s+Notionally, a pull request is a proposal to merge changes from your\s+branch into another branch "
+    r"\(usually the `master` branch\)\.\s+However,\s+opening a pull request also provides other developers with "
+    r"an\s+opportunity to review your code and give feedback, so you don't have\s+to wait until your code is "
+    r"ready to go before you open one\.\s+Open a\s+pull request as soon you have some progress to share\.\s+On "
+    r"GitHub, pull\s+requests can be marked as drafts, indicating that they are not yet\s+ready to merge\.\s+"
+    r"Bitbucket doesn't have an equivalent feature, so if a\s+pull request is not ready to merge, it's a good "
+    r"idea to add the tag\s+WIP \(\"work in progress\"\) to the description when you create it\.\s+Otherwise "
+    r"the process is similar between the two platforms\.\s*",
+    re.DOTALL,
+)
+DEV_GUIDE_GIT_PR_FOLLOWUP_RE = re.compile(
+    r"Once you have opened the pull request, you will probably get some\s+feedback from other developers\.\s+"
+    r"Push additional commits to your\s+branch addressing the feedback or continuing the development, and they\s+"
+    r"will automatically be added to the pull request\.\s+Eventually, when\s+your development is complete, you "
+    r"should mark your pull request as\s+ready to merge\.\s+Before the branch can be merged, you will have to\s+"
+    r"write a change proposal \(q\.v\. \[GCAM Review Process\]\(review\.md\)\)\.\s*",
+    re.DOTALL,
 )
 
 WIKILINK_ALIAS_MAP = {
@@ -784,6 +867,95 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "workflows. Historical graphical clients are listed below only as ecosystem context for users who "
             "need them.\n\n",
         )
+        replace(
+            DEV_GUIDE_GIT_INTERNAL_SERVER_RE,
+            "PNNL staff should use the internal server when it is available. Agent adaptation: treat the "
+            "historical Bitbucket host as one forge endpoint among many; the essential workflow is to push your "
+            "branch (q.v. [creating branches](#Creating-branches)) to a writable remote and create the "
+            "corresponding review request through the forge's CLI or API.\n\n",
+        )
+        replace(
+            DEV_GUIDE_GIT_OUTSIDE_USERS_RE,
+            "Outside users should use the GitHub repository. You will normally have read access to this "
+            "repository but not direct write access. If you want to do development, create your own fork or "
+            "other writable mirror, create branches there, and submit a pull request or equivalent review "
+            "request back to the main repository.\n\n",
+        )
+        replace(
+            DEV_GUIDE_GIT_OPEN_PR_RE,
+            "Once you've made some progress on your development, you will want to open a "
+            "[pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/"
+            "about-pull-requests) or the equivalent review request on your forge. Notionally, this is a "
+            "proposal to merge changes from your branch into another branch (usually the `master` branch), but "
+            "it also creates the review thread where other developers can examine the code and give feedback. "
+            "Open that review request as soon as you have progress worth sharing. If your forge supports draft "
+            "or work-in-progress review states, use them; otherwise mark unfinished work clearly in the title or "
+            "description.\n\n",
+        )
+        replace(
+            DEV_GUIDE_GIT_PR_FOLLOWUP_RE,
+            "Once the review request exists, expect feedback from other developers. Push additional commits to "
+            "your branch to address that feedback or continue development; those commits should remain attached "
+            "to the same review record automatically. When development is complete, update the review state to "
+            "ready for merge. Before the branch can be merged, you will have to write a change proposal (q.v. "
+            "[GCAM Review Process](review.md)).\n\n",
+        )
+
+    if rel_source.parts[-2:] == ("dev-guide", "test_framework.md"):
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_INTRO_RE,
+            "Agent adaptation: this page documents historical internal CI wiring. Treat pull-request pages, "
+            "buttons, and Jenkins/Bitbucket UI labels as names for repository events, webhook payloads, and "
+            "status APIs, not mandatory GUI steps.\n\n"
+            "Most users will interact with the testing framework through repository review events or CI-trigger "
+            "metadata and will not need to worry about updating the testing framework. Some instances of when "
+            "they would need to update include:\n",
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_OPEN_PR_RE,
+            lambda match: (
+                "After pushing the testing-framework branch and the updated submodule pointer, submit the "
+                "repository review request that should trigger CI for your host platform. Historical upstream "
+                "docs described this as opening a pull request. If both GCAM core and the testing-framework "
+                "repository changed, keep the two linked review records together. Historical testing-framework "
+                f"repository URL: {match.group('repo')}.\n"
+            ),
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_PR_NOTIFIER_RE,
+            lambda match: (
+                "This historical Bitbucket plugin acted as the event-to-webhook adapter for CI. For agent use, "
+                "treat it as the component that maps repository review events, updates, and optional form "
+                "payloads into structured metadata sent to Jenkins. Full upstream plugin documentation: "
+                f"{match.group('url')}\n"
+            ),
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_NOTIFY_STATUS_RE,
+            "This historical Jenkins plugin reported build state back to Bitbucket. For agent use, treat it as "
+            "a commit-status API updater that publishes `IN_PROGRESS`, `FAILURE`, or `SUCCESS` plus a build URL "
+            "for logs and artifacts.\n",
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_BUTTON_RE,
+            'Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins with the '
+            '"JGCRI-gcam-pic" tag and the following metadata payload:\n',
+        )
+
+    if rel_source.parts[-2:] == ("dev-guide", "getting_started.md"):
+        replace(
+            DEV_GUIDE_GETTING_STARTED_PR_STEP_RE,
+            "6. When your development is complete, submit the host platform's review request for the branch. "
+            "Agent adaptation: use the forge CLI or API when available instead of assuming a browser-only pull "
+            "request action.\n",
+        )
+
+    if rel_source.parts[-2:] == ("dev-guide", "analysis.md"):
+        replace(
+            DEV_GUIDE_ANALYSIS_GUI_RE,
+            "software developers wanting to write new automation front ends or other higher-level tools for "
+            "working with GCAM",
+        )
 
     if changed:
         text = re.sub(r"\n{3,}", "\n\n", text)
@@ -923,7 +1095,17 @@ def normalize_inline_html(segment: str) -> str:
         return label
 
     def unwrap_span(match: re.Match[str]) -> str:
+        attrs = match.group("attrs") or ""
         content = match.group("content")
+        anchor_match = HTML_ID_OR_NAME_ATTR_RE.search(attrs)
+        anchor_name = ""
+        if anchor_match:
+            anchor_name = (anchor_match.group("double") or anchor_match.group("single") or "").strip()
+        if anchor_name:
+            anchor = f'<a name="{anchor_name}"></a>'
+            if content.strip():
+                return f"{anchor}{content}"
+            return anchor
         if content.strip():
             return content
         return match.group(0)
@@ -1247,6 +1429,22 @@ def render_source_page(
     if rel_source.name == "hector.md":
         lines.append(
             "- Note: This adapted Hector page rewrites IDE integration click paths into agent-readable dependency and build-setting summaries."
+        )
+    if rel_source.parts[-2:] == ("dev-guide", "test_framework.md"):
+        lines.append(
+            "- Note: This adapted testing-framework page preserves historical internal CI topology but rewrites pull-request/button/UI phrasing into repository events, webhook payloads, and status API concepts."
+        )
+    if rel_source.parts[-2:] == ("dev-guide", "git.md"):
+        lines.append(
+            "- Note: This adapted git page preserves historical forge examples but rewrites browser-specific actions into CLI/API-friendly repository workflow terms."
+        )
+    if rel_source.parts[-2:] == ("dev-guide", "getting_started.md"):
+        lines.append(
+            "- Note: This adapted getting-started page rewrites final submission steps as host-agnostic review-request workflow instead of browser-only pull-request actions."
+        )
+    if rel_source.parts[-2:] == ("dev-guide", "analysis.md"):
+        lines.append(
+            "- Note: This adapted analysis page prefers automation-oriented descriptions over GUI-centric wording where the original text listed tool categories."
         )
     if source_version != bundle_version:
         lines.append(f"- Source provenance: inherited from `{source_version}` because `{bundle_version}` links to this page but its authoring tree does not contain a version-local copy")

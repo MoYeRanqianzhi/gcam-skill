@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v6.0`.
 - Coverage mode: `inherited page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v6.0/BUNDLE_INDEX.md`
+- Note: This adapted getting-started page rewrites final submission steps as host-agnostic review-request workflow instead of browser-only pull-request actions.
 - Source provenance: inherited from `v5.3` because `v6.0` links to this page but its authoring tree does not contain a version-local copy
 - Note: Referenced from `v6.0` as `dev-guide/getting_started.md`.
 
@@ -25,7 +26,7 @@ This guide provides information on how to develop GCAM, including the process fo
 3. Make your changes
 4. Commit your changes (see the advice below for commits)
 5. Push your changes (see the advice below for how often to push)
-6. When your development is complete, open a pull request.
+6. When your development is complete, submit the host platform's review request for the branch. Agent adaptation: use the forge CLI or API when available instead of assuming a browser-only pull request action.
 
 ### Branch naming guide
 

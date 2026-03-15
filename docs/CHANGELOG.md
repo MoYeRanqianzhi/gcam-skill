@@ -20,6 +20,12 @@
 - Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.
 
 ## 2026-03-16
+- Preserved semantic same-page anchors during page-bundle generation by converting `span id/name` wrappers into `<a name="..."></a>` anchors instead of leaving raw span markup or silently dropping the target; this fixes historical `gcam-usa.md` citation and figure-note fragments across full-tree versions, including the root-backed `v8.2` bundle.
+- Expanded agent-oriented page adaptation into historical developer workflow pages: bundled `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` now carry explicit host-agnostic CLI/API guidance instead of browser-only pull-request, button, or GUI-centric wording.
+- Added new page-header adaptation notes for the developer workflow bundles above so agents can immediately tell when a page preserves historical infrastructure context versus current agent-usable workflow guidance.
+- Tightened `validate_bundled_pages.py` so any remaining raw HTML `<span>` markup in bundled pages now fails fast.
+- Tightened `validate_page_bundle_agent_adaptation.py` so it now explicitly guards the adapted `dev-guide/test_framework.md`, `dev-guide/git.md`, `dev-guide/getting_started.md`, and `dev-guide/analysis.md` pages against regression to pull-request-interface, browser-button, or GUI-centric phrasing.
+- Caught and fixed an intermediate regression where a new git-page adaptation paragraph introduced `review.html` after link normalization had already standardized bundled local links to `.md`; the bundled-page link validator detected this immediately during the same pass.
 - Normalized raw HTML definition-list and list markup such as `<dl>/<dt>/<dd>/<ul>/<li>` into markdown list structures during page-bundle generation, removing another layer of Jekyll-era presentation residue from historical exact-page bundles.
 - Rewrote the repeated ModelInterface batch-query sentence that depended on the `Regions` GUI pane into database/query-context wording so batch-query guidance stays headless even when sourced from historical user-guide pages.
 - Rewrote the repeated `dev-guide/git.md` “point and click” explanation into a shell-first note that keeps GUI Git clients as optional ecosystem context rather than as the default recommendation path.

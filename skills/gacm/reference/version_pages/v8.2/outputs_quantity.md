@@ -16,11 +16,11 @@ Load this page when the user needs version-specific detail from this exact page 
 
 | Name | Resolution | Unit | Query | XML Tag |
 | :--- | :--- | :--- | :--- | :--- |
-| Physical Output<sup>[1](#table_footnote)</sup> | Technology, Region<sup>[2](#table_footnote)</sup>, Vintage, and Year  | Various<sup>[3](#table_footnote)</sup> | outputs by tech | `physical-output` |
-| Resource Production | Region, Resource and Year   | Various<sup>[3](#table_footnote)</sup> | resource production | `output` |
-| Inputs<sup>[1](#table_footnote)</sup> | Technology, Input, Region<sup>[2](#table_footnote)</sup>, Vintage, and Year    | Various<sup>[3](#table_footnote)</sup> | inputs by tech | `demand-physical` |
-| Supply | Market<sup>[4](#table_footnote)</sup> and Year   | Various<sup>[3](#table_footnote)</sup> | supply of all markets | `supply` |
-| Demand | Market<sup>[4](#table_footnote)</sup> and Year   | Various<sup>[3](#table_footnote)</sup> | demand of all markets | `demand` |
+| Physical Output<sup>[1](#table_footnote)</sup> | Technology, Region<sup>[2](#table_footnote)</sup>, Vintage, and Year  | Various<sup>[3](#table_footnote)</sup> | <a name="outputs by tech"></a>outputs by tech | `physical-output` |
+| Resource Production | Region, Resource and Year   | Various<sup>[3](#table_footnote)</sup> | <a name="resource production"></a>resource production | `output` |
+| Inputs<sup>[1](#table_footnote)</sup> | Technology, Input, Region<sup>[2](#table_footnote)</sup>, Vintage, and Year    | Various<sup>[3](#table_footnote)</sup> | <a name="inputs by tech"></a>inputs by tech | `demand-physical` |
+| Supply | Market<sup>[4](#table_footnote)</sup> and Year   | Various<sup>[3](#table_footnote)</sup> | <a name="supply of all markets"></a>supply of all markets | `supply` |
+| Demand | Market<sup>[4](#table_footnote)</sup> and Year   | Various<sup>[3](#table_footnote)</sup> | <a name="demand of all markets"></a>demand of all markets | `demand` |
 
 Outputs are specified in the `startVisitOutput`, `startVisitResource`, `startVisitInput`, and `startVisitMarket` methods of [xml_db_outputter.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/reporting/source/xml_db_outputter.cpp).
 

@@ -21,7 +21,6 @@ Figure 1: Definitions of SSPs in terms of Challenges to Mitigation and Challenge
 Each of the six IAMs produced results for between three and five of the SSPs, with one model identified as the "marker" for each SSP and the others providing estimates of uncertainty. GCAM was the marker model for the SSP4. Marker models, and models providing uncertainty estimates, for all SSPs are listed in the Table below.
 
 **Table 1**: Overview of the SSPs
-{: .tbl}
 
 | Identifier   | Descriptor           | Marker Model (Institution)   | Also computed by        |
 |:-------------|:---------------------|:-----------------------------|:------------------------|
@@ -42,7 +41,6 @@ The GCAM data for the SSP4 and the GCAM representation of all other SSPs (Calvin
 To implement the SSPs within GCAM, we use the demographic and economic assumptions developed by Lutz et al. (2015) and Dellink et al. (2015) in combination with technology and policy assumptions derived from the SSP narratives (O’Neill et al. 2015). Table 2 provides a qualitative summary of these parameters; quantitative details are provided in subsequent tables. In general, we have altered parameters related to energy supply (e.g., the capital cost of new power plants, technical change on extraction costs), energy demand (e.g., preferences for traditional bioenergy), agriculture (e.g., agricultural productivity growth), and policy (e.g., start years for carbon policies). To implement the SSP storylines within GCAM, we quantified “high”, “medium”, and “low” for each of the variables listed in Table 2. Those quantifications are provided in Table 3 through Table 8.
 
 **Table 2**: Qualitative Assumptions across SSPs
-{: .tbl}
 
 | Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 |
 | :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|
@@ -75,7 +73,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 Table 3 maps technology & SSP to either core, advanced (less expensive), or low (more expensive). Costs are assumed to be equal across regions; however, resource bases for renewable energy technologies differ across regions, leading to differences in deployment in the future.
 
 **Table 3**: Capital Costs for Electric Power Plants across SSPs
-{: .tbl}
 
 | **Plant Type** | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 | --- | --- | --- | --- | --- | --- |
@@ -94,7 +91,6 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 Table 4 details assumptions made for fossil fuel supply. Similar to renewables, we do not vary the resource bases across SSPs, but instead vary cost of extraction and use. In particular, we adjust the technical change coefficient on future extraction costs to reflect differences in technological conditions across SSPs. To reflect differences in social acceptance, we use a cost adder that adjusts the cost to downstream users. The cost adder for 2100 is shown in Table 3; adders are linearly interpolated from $0 in the final historical year to the 2100 value. The 2100 value is defined in relation to the carbon content of the resource; thus, a “medium” social acceptance will result in a different cost adder for different fuels.
 
 **Table 4a**: Fossil Fuel Assumptions across SSPs: Technical Change on Extraction Cost (% per year)
-{: .tbl}
 
 | Fuel | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 |:---------- |:----------|:----------|:----------|:----------|:----------|
@@ -104,7 +100,6 @@ Table 4 details assumptions made for fossil fuel supply. Similar to renewables, 
 | Unconventional Oil | 0% |  0.5% | 0.5% | 2% |
 
 **Table 4b**: Fossil Fuel Assumptions across SSPs: Cost Adder in 2100 ($/GJ)
-{: .tbl}
 
 | Fuel | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 |:---------- |:----------|:----------|:----------|:----------|:----------|
@@ -118,7 +113,6 @@ Table 4 details assumptions made for fossil fuel supply. Similar to renewables, 
 Table 5 includes information on implementation of the SSPs for building energy demand. In particular we adjust the rate at which traditional bioenergy is phased out across SSPs. This is done in GCAM by adjusting the fuel preference elasticity, a parameter that links preferences (i.e., the share weight of the logit function) to per capita income. More negative fuel preference elasticities result in faster phase outs. This parameter is used to capture differences in intraregional inequality between SSP3 and SSP4; namely, we assume a faster phase out for the same income level in SSP3 than in SSP4.
 
 **Table 5**: Building energy demand Assumptions
-{: .tbl}
 
 |  | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 | --- | --- | --- | --- | --- | --- |
@@ -129,7 +123,6 @@ Table 5 includes information on implementation of the SSPs for building energy d
 Table 6 includes information on implementation of the SSPs for the agriculture and land-use sector. For agricultural productivity growth, we relate the parameters used in each SSP to the GCAM default assumptions. These assumptions are based on FAO projections through 2050, then held constant at 0.25%/yr post-2050. The projections in the near-term vary by crop, region, management practice (irrigated vs. rainfed), and year. As a result, there are literally thousands of parameters in a single scenario. For ease of presentation, we describe our assumptions for the individual SSPs with respect to the GCAM default. For food demand, all SSPs assume that growth in food demand is linked to income, using historical income-calorie relationships. To capture differences in food preferences and food waste, we adjust meat consumption and preferences in different SSPs. Finally, trade restrictions on agriculture and bioenergy are imposed in the SSP3 and SSP4.
 
 **Table 6**: Agriculture and Land Use Assumptions across SSPs
-{: .tbl}
 
 | Variable  | SSP1 |  SSP2 | SSP3 | SSP4 (High / Med / Low Income )| SSP5 |
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
@@ -141,7 +134,6 @@ Table 6 includes information on implementation of the SSPs for the agriculture a
 To move from baseline scenarios to the RCP replications, we implemented the Shared Policy Assumptions (Kriegler et al., 2014) in GCAM. These assumptions are described in Table 7. For land policy, the relevant policy is phased in over several decades once the globally harmonized carbon price is imposed. For CO<sub>2</sub> prices prior to global cooperation, we impose the carbon price required to reach a region’s Copenhagen pledge in an SSP2 world in all SSPs. That is, the same carbon price in 2020 is used regardless of SSP. Note that these policy assumptions are not unique and alternative assumptions could be derived that are also consistent with the SSP storylines. Note that the land carbon price described in the table is absent any transaction costs; we further reduce carbon prices on land by 50% to capture these effects.
 
 **Table 7a**: Policy Assumptions across SSPs: First model time period with global cooperation (i.e., harmonized global carbon price)
-{: .tbl}
 
 | Income Group | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
@@ -150,7 +142,6 @@ To move from baseline scenarios to the RCP replications, we implemented the Shar
 | Low Income | 2025 | 2040 | 2050 | 2025 | 2040 |
 
 **Table 7b**: Policy Assumptions across SSPs: Land Policy
-{: .tbl}
 
 | Income Group | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|

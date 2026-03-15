@@ -131,7 +131,6 @@ The coefficients of the oil refining production technology reflect whole-process
 The biomass liquids subsector includes up to eight technologies in each region, with a global total of 11, listed in Table 1.
 
 **Table 1: Biomass liquids production technologies in GCAM**
-{: .tbl}
 
 | Technology        | Inputs           |
 | :------------- |:-------------|
@@ -322,7 +321,6 @@ The non-fuel costs are estimated for some technologies (e.g., light-duty vehicle
 The specific values and sources of the input data assumptions to the transportation module of GCAM are documented in [Mishra et al. 2013](energy.md#mishra2013); this section identifies what variables are collected, for each country or region analyzed in detail in constructing GCAM's transportation input files. The identifying information for each transportation technology is provided in Table 2.
 
 **Table 2: Example transportation input data categories for a sample region (from GCAM 5.1.2)**.
-{: .tbl}
 
 | Service   | Mode               | Size class          | Technology     | Fuel        |
 |:----------|:-------------------|:--------------------|:---------------|:------------|
@@ -422,7 +420,6 @@ The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and
 
 **Table 3<a name="table3"></a>:** Mapping from IEA flows to GCAM sectors
   (and subsectors where appropriate)
-{: .tbl}
 
 | flow_code | flow_name                                     | sector                                                  |
 |:-----------|:-----------------------------------------------|:---------------------------------------------------------|
@@ -524,7 +521,6 @@ The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and
 
 **Table 4<a name="table4"></a>:** Mapping from the IEA fuels to GCAM
   fuels
-{: .tbl}
 
 | product                                                | fuel            |
 |:--------------------------------------------------------|:-----------------|

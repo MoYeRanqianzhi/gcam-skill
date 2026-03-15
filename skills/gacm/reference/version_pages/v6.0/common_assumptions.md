@@ -62,7 +62,6 @@ Table: Mapping from GCAM region to country
 We have represented the water at the scale of major river basins. Currently 235 global river basins are represented in GCAM. The full list of major river basins included in GCAM is shown in Table 1. Each of the GCAM regions contains the river basins within its border. In many instances, river basins may overlap across multiple GCAM regions where water resources are shared. A few remote basins without water demand representations, such as Antarctica, are not actively modeled.
 
 **Table 1. Major Water Basins in GCAM**
-{: .tbl}
 
 |id|name|id|name|id|name|id|name|id|name|
 |:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|:--|

@@ -23,6 +23,6 @@ Outputs are specified in the `startVisitMarket` method of [xml_db_outputter.cpp]
 
 <a name="table_footnote1"></a>1: There is a long list of standard queries that report price results. The price query above will report prices for all markets, while other queries filter those results. For example, the "ag commodity prices" query reports prices for agriculture and forestry commodities only.
 
-<a name="table_footnote2"></a>2: Prices are reported by market. The market name contains both region and commodity information. For example, <i>globalcrude oil</i> is the price of the globally traded crude oil market and <i>USACorn</i> is the price of Corn in the USA. Some markets will have both a global and a regional price.
+<a name="table_footnote2"></a>2: Prices are reported by market. The market name contains both region and commodity information. For example, *globalcrude oil* is the price of the globally traded crude oil market and *USACorn* is the price of Corn in the USA. Some markets will have both a global and a regional price.
 
 <a name="table_footnote3"></a>3: Units vary by market. In general, energy-related prices are reported in $1975/GJ, agricultural prices are in $1975/kg, forestry prices are in $1975/m<sup>3</sup>, and carbon prices are in $1990/tC.

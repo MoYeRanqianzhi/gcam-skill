@@ -245,12 +245,10 @@ chapter.
 
 ## Notes and References
 
-<a name="ref1"></a>[1] Train, K. (2003), <cite>Discrete Choice Methods
-with Simulation</cite>.
+<a name="ref1"></a>[1] Train, K. (2003), *Discrete Choice Methods with Simulation*.
 
 <a name="ref2"></a>[2] McFadden, D. (1973), "Conditional Logit
-Analysis of Qualitative Choice Behavior", in <cite>Frontiers in
-Econometrics</cite>.
+Analysis of Qualitative Choice Behavior", in *Frontiers in Econometrics*.
 
 <a name="note3"></a>[3] The logit coefficient $$\beta$$ may be either
 positive or negative, depending on the interpretation of the choice
@@ -261,8 +259,7 @@ profit rate, and we use $$\beta > 0$$ in these choice functions to
 favor higher profit rates.
 
 <a name="ref4"></a>[4] Clarke, J. F. and Edmonds, J. (1993), "Modeling
-energy technologies in a competitive market", <cite>Energy
-Economics</cite> 15 (2), 123 - 129.
+energy technologies in a competitive market", *Energy Economics* 15 (2), 123 - 129.
 
 <a name="note5"></a>[5] As with the $$\beta$$ coefficient in the Logit
 model, the sign of $$\gamma$$ depends on the interpretation of the

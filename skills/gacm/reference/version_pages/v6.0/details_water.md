@@ -14,8 +14,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 This page provides more detailed explanations of the descriptions provided in the [Water Supply](supply_water.md) and [Water Demand](demand_water.md) modeling pages.
 
-{:toc}
-
 ### Basin-To-Region and Basin-To-Sector Mapping
 
 For irrigated agriculture, land units have been previously revised to be consistent with major river basins and thus, irrigated water use draws water directly from the basin in which the crop is grown. No additional mapping of irrigated water demand to basins is necessary to capture the agricultural use of water by basins.

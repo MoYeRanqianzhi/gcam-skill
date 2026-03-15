@@ -34,7 +34,7 @@ Community users of GCAM might also undertake their own model developments and/or
 ### References
 JGCRI, 2023. GCAM Documentation (Version 7.0). https://github.com/JGCRI/gcam-doc. Joint Global Change Research Institute. https://zenodo.org/doi/10.5281/zenodo.11377813.
 
-\<cite latest version of model documentation\>
+Source author note: insert a citation to the then-current GCAM model documentation release when preparing a paper-specific bibliography.
 
 ### GCAM core model committee
 * Matthew Binsted (matthew.binsted@pnnl.gov)

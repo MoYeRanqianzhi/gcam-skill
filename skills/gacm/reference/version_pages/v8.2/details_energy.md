@@ -86,7 +86,6 @@ In a typical region, the oil refining technology consumes three energy inputs: c
 The biomass liquids subsector includes up to eight technologies in each region, with a global total of 11, listed in Table 1.
 
 **Table 1: Biomass liquids production technologies in GCAM**
-{: .tbl}
 
 | Technology        | Inputs           |
 | :------------- |:-------------|

@@ -77,6 +77,10 @@ HTML_PRESENTATIONAL_ATTR_RE = re.compile(
     re.IGNORECASE,
 )
 HTML_BOLD_RE = re.compile(r"<(?P<tag>b|strong)\b[^>]*>(?P<content>.*?)</(?P=tag)>", re.IGNORECASE | re.DOTALL)
+HTML_EMPHASIS_RE = re.compile(
+    r"<(?P<tag>cite|i|em)\b[^>]*>(?P<content>.*?)</(?P=tag)>",
+    re.IGNORECASE | re.DOTALL,
+)
 HTML_PARAGRAPH_RE = re.compile(r"</?p\b[^>]*>", re.IGNORECASE)
 HTML_HREF_ANCHOR_RE = re.compile(
     r'<a\b[^>]*href="(?P<target>[^"]+)"[^>]*>(?P<label>.*?)</a>',
@@ -129,6 +133,7 @@ TABLE_ATTR_ONLY_CELL_RE = re.compile(
 )
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
 HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
+MARKDOWN_ATTR_LINE_RE = re.compile(r"^[ \t]*\{:\s*[^}\n]+\}[ \t]*$", re.MULTILINE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 MISATTACHED_CODE_FENCE_RE = re.compile(r"(?<![\r\n])```")
@@ -324,6 +329,10 @@ HECTOR_XCODE_UI_BLOCK_RE = re.compile(
 HECTOR_VISUAL_UI_BLOCK_RE = re.compile(
     r"^3\. Open the GCAM project in Visual Studio\..*?^## References\s*$",
     re.MULTILINE | re.DOTALL,
+)
+COMMUNITY_GUIDE_LATEST_DOC_PLACEHOLDER_RE = re.compile(
+    r"^\\<cite latest version of model documentation\\>\s*$",
+    re.MULTILINE | re.IGNORECASE,
 )
 
 WIKILINK_ALIAS_MAP = {
@@ -740,6 +749,13 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             ),
         )
 
+    if rel_source.name == "community-guide.md":
+        replace(
+            COMMUNITY_GUIDE_LATEST_DOC_PLACEHOLDER_RE,
+            "Source author note: insert a citation to the then-current GCAM model documentation release when "
+            "preparing a paper-specific bibliography.\n",
+        )
+
     if changed:
         text = re.sub(r"\n{3,}", "\n\n", text)
     return text
@@ -842,6 +858,12 @@ def normalize_inline_html(segment: str) -> str:
             return ""
         return f"**{content}**"
 
+    def render_emphasis(match: re.Match[str]) -> str:
+        content = re.sub(r"\s+", " ", match.group("content")).strip()
+        if not content:
+            return ""
+        return f"*{content}*"
+
     def normalize_anchor_label(label: str) -> str:
         cleaned = HTML_PARAGRAPH_RE.sub(" ", label)
         cleaned = re.sub(r"\s+", " ", cleaned).strip()
@@ -928,6 +950,11 @@ def normalize_inline_html(segment: str) -> str:
             break
         segment = updated
     segment = HTML_BOLD_RE.sub(render_bold, segment)
+    for _ in range(4):
+        updated = HTML_EMPHASIS_RE.sub(render_emphasis, segment)
+        if updated == segment:
+            break
+        segment = updated
     segment = HTML_HREF_ANCHOR_RE.sub(render_href_anchor, segment)
     segment = HTML_SELF_CLOSING_NAMED_ANCHOR_RE.sub(
         lambda match: f'<a name="{match.group("name").strip()}"></a>',
@@ -1024,6 +1051,10 @@ def normalize_markdown_table_residue(segment: str) -> str:
     return normalized
 
 
+def normalize_markdown_attribute_residue(segment: str) -> str:
+    return MARKDOWN_ATTR_LINE_RE.sub("", segment)
+
+
 def apply_outside_code_fences(text: str, transform) -> str:
     parts: list[str] = []
     last = 0
@@ -1042,9 +1073,11 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
         text,
         lambda chunk: normalize_escaped_wiki_refs(
             normalize_escaped_inline_html(
-                normalize_markdown_table_residue(
-                    normalize_inline_html(
-                        rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+                normalize_markdown_attribute_residue(
+                    normalize_markdown_table_residue(
+                        normalize_inline_html(
+                            rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+                        )
                     )
                 )
             )

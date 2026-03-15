@@ -263,8 +263,7 @@ Monfreda, C., N. Ramankutty and T. W. Hertel (2007). Global Agricultural Land Us
 
 Raper, S. C. B. and U. Cubasch (1996) Emulation of the results from a coupled general circulation model using a simple climate model GEOPHYSICAL RESEARCH LETTERS, VOL. 23, NO. 10, PP. 1107-1110 doi:10.1029/96GL01065
 
-Ricardo, D. (1817). <cite>On the Principles of Political Economy and
-Taxation</cite>, London.
+Ricardo, D. (1817). *On the Principles of Political Economy and Taxation*, London.
 
 Samuelson, Paul A.; William D Nordhaus (2004), Economics, McGraw-Hill, ISBN 0-07-287205-5
 

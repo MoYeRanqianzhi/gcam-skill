@@ -26,12 +26,12 @@ Outputs are specified in the `startVisitGHG`<sup>[5](#table_footnote)</sup> and 
 
 <a name="table_footnote"></a>1: While the query is called "nonCO2 emissions", it also includes CO<sub>2</sub> emissions. A full list of gases included in GCAM is provided on the [emissions page](emissions.md#iamc-reference-card).
 
-<a name="table_footnote"></a>2: There is a long list of standard queries that report emissions outputs. The "nonCO2 emissions by tech" query listed above will report all emissions except for land use change CO<sub>2</sub> at the technology level. The other queries filter or aggregate those outputs. For example, the "CO2 emissions by region" query aggregates <i>emissions</i> to the region level for fossil fuel and industrial CO<sub>2</sub> only.
+<a name="table_footnote"></a>2: There is a long list of standard queries that report emissions outputs. The "nonCO2 emissions by tech" query listed above will report all emissions except for land use change CO<sub>2</sub> at the technology level. The other queries filter or aggregate those outputs. For example, the "CO2 emissions by region" query aggregates *emissions* to the region level for fossil fuel and industrial CO<sub>2</sub> only.
 
 <a name="table_footnote"></a>3: Emissions are reported at the regional resolution of the sector. See [Regional Resolution](common_assumptions.md#regional-resolution)
 
 <a name="table_footnote"></a>4: Units vary. CO<sub>2</sub> emissions are reported in MtC/yr. Fluorinated gas emissions are reported in Gg of the specific gas per year. All other emissions are reported in Tg of the specific gas per year (e.g., CH<sub>4</sub> emissions are reported in TgCH<sub>4</sub> / yr).
 
-<a name="table_footnote"></a>5: While the method is called <i>startVisitGHG</i>, it includes non-GHG emissions. However, land use change CO<sub>2</sub> emissions are not included in this method.
+<a name="table_footnote"></a>5: While the method is called *startVisitGHG*, it includes non-GHG emissions. However, land use change CO<sub>2</sub> emissions are not included in this method.
 
 <a name="table_footnote"></a>6: There are two emissions sequestration queries. The "CO2 sequestration by tech" query listed above will return CO<sub>2</sub> sequestration by technology, while "CO2 sequestration by sector" aggregates this to the sector level.

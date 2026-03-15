@@ -20,6 +20,9 @@
 - Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.
 
 ## 2026-03-16
+- Stripped standalone markdown attribute-list residue such as `{: .tbl}` and `{:toc}` from generated page bundles so Kramdown/Jekyll rendering hints no longer leak into the published agent-facing text layer.
+- Normalized residual inline HTML formatting tags such as `<cite>...</cite>` and `<i>...</i>` into markdown emphasis during page-bundle generation, preserving meaning while removing presentation-only HTML from exact historical pages.
+- Adapted the historical `community-guide.md` authoring placeholder `\<cite latest version of model documentation\>` into an explicit source-author note so the published bundle does not surface raw editorial placeholders as if they were usable runtime content.
 - Normalized residual HTML presentation inside bundled page output so raw `<a href>...</a>` links, HTML navigation tables, and bold-only container markup are rewritten into markdown text structures during generation.
 - Reworked diagram-driven `index.md` landing pages into text-first navigation tables so version entry pages remain useful without images or clickable UI diagrams.
 - Replaced remaining interactive `File -> Manage DB` and `File -> Export` instructions in repeated build/data-system passages with headless or source-tool-neutral guidance.

@@ -48,3 +48,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Fixed bundled document search output so historical-version searches do not crash on the current Windows console encoding.
 - 2026-03-16: Added a shared-reference validator so `SKILL.md`, shared topic docs, and version routing docs can be checked without false positives from `<version>` templates or upstream source-topic examples.
 - 2026-03-16: Further tightened the shared reference layer so agent-facing guidance stays explicitly headless, CLI-first, and configuration-driven.
+- 2026-03-16: Added a version-route validator so the version catalog, route docs, page directories, and `v8.2` root-baseline declarations can be checked together.

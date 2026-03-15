@@ -15,14 +15,15 @@
 
 ## Suggested Process for Updates
 1. Review changes in upstream GCAM sources and ecosystem tools.
-2. Update version metadata and regenerate `skills/gacm/reference/version_inventory.md` plus `skills/gacm/reference/versions/`.
+2. Update version metadata and regenerate `skills/gacm/reference/version_inventory.md` plus `skills/gacm/reference/versions/` with `skills/gacm/scripts/generate_version_references.py`.
 3. Regenerate page-level bundled version trees with `skills/gacm/scripts/generate_bundled_pages.py`.
 4. Validate bundled page links and text-only adaptation rules with `skills/gacm/scripts/validate_bundled_pages.py`.
 5. Validate shared topic-doc references, version routing references, and navigation coverage with `skills/gacm/scripts/validate_shared_references.py`.
-6. Update bundled topic docs in `skills/gacm/reference/`, keeping `v8.2` root coverage explicit, traceable, and CLI-first.
-7. Update SOP steps in `skills/gacm/SKILL.md` as needed.
-8. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
-9. Commit and tag.
+6. Validate version routing completeness with `skills/gacm/scripts/validate_version_routes.py`.
+7. Update bundled topic docs in `skills/gacm/reference/`, keeping `v8.2` root coverage explicit, traceable, and CLI-first.
+8. Update SOP steps in `skills/gacm/SKILL.md` as needed.
+9. Update `docs/CHANGELOG.md`, `docs/KNOWN_ISSUES.md`, and any coverage or provenance notes.
+10. Commit and tag.
 
 High-value shared docs to maintain:
 - `configuration_workflows.md`
@@ -39,6 +40,7 @@ High-value shared docs to maintain:
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
 - Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable and image markup stays stripped.
 - Re-run `validate_shared_references.py` after editing shared docs, routing docs, or `SKILL.md` so template placeholders, real local references, and topic listings stay consistent.
+- Re-run `validate_version_routes.py` after changing `version_catalog.py`, regenerating `versions/*.md`, or modifying key route docs so version inventory, route docs, page directories, and `v8.2` baseline declarations stay aligned.
 - Re-run representative `doc_search.py --version ... --scope pages --pattern ...` commands on Windows after search-tool changes to catch console encoding regressions.
 
 ## Page Bundle Rules

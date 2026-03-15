@@ -55,3 +55,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Added maintenance-memory and semantic-coverage validators so top-level docs cannot exist without an explicit behavior-level contract owner.
 - 2026-03-16: Added a page-bundle contract validator so generated `version_pages` navigation and delta trace docs remain semantically correct even if the generator changes.
 - 2026-03-16: Renamed generated page-bundle directory indexes to `BUNDLE_INDEX.md` so Windows case-insensitive filesystems do not clobber bundled upstream source pages such as `index.md`.
+- 2026-03-16: Added Git-index casing validation after finding a Windows-hidden case-only rename residue in `reference/version_pages/v3.2/index.md`.

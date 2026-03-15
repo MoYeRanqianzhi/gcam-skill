@@ -61,3 +61,4 @@
 - Renamed generated page-bundle directory indexes from `INDEX.md` to `BUNDLE_INDEX.md` so Windows case-insensitive filesystems no longer clobber upstream source pages such as `index.md` inside full-tree bundles.
 - Hardened page-bundle preflight and validation so case-insensitive authoring-path collisions, reserved `BUNDLE_INDEX.md` source names, and legacy generated `INDEX.md` bundle indexes now fail explicitly instead of slipping through regeneration.
 - Added `validate_filesystem_hygiene.py` and wired it into `validate_all.py` so cross-platform path hazards such as reserved Windows names, invalid filename characters, case-insensitive collisions, and portability-risk path lengths fail before release.
+- Extended `validate_filesystem_hygiene.py` to compare Git index path casing against actual filesystem casing, closing a Windows blind spot where a case-only rename such as `INDEX.md -> index.md` could look fixed locally while remaining wrong in repository metadata.

@@ -37,6 +37,7 @@ High-value shared docs to maintain:
 - Use `python skills/gacm/scripts/validate_all.py` as the default one-shot validation suite before commit; run individual validators when narrowing down a failure.
 - `validate_all.py` also self-checks its own `VALIDATION_STEPS` inventory against the actual `skills/gacm/scripts/validate_*.py` files, so new validators cannot be added without being wired into the main suite.
 - Re-run `validate_filesystem_hygiene.py` when adding files, renaming bundled pages, or importing upstream trees so Windows device names, invalid filename characters, case-insensitive collisions, and portability-risk path lengths fail fast before release.
+- `validate_filesystem_hygiene.py` also compares `git ls-files` path casing against real filesystem casing, because Windows `core.ignorecase=true` can hide case-only renames that would break on case-sensitive clones.
 - Validate workflows by running `scripts/doc_search.py --list-versions`.
 - Validate versioned lookups by running `scripts/doc_search.py --version <version> --pattern <term>`.
 - Validate page-bundle lookups by running `scripts/doc_search.py --version <version> --scope pages --pattern <term>`.
@@ -91,3 +92,4 @@ High-value shared docs to maintain:
 - Runtime docs and scripts must stay portable: never hardcode local machine paths such as `E:\...`, `C:\...`, `/Users/...`, `/home/...`, `file://`, or `vscode://`.
 - Re-run `validate_portability.py` when editing runtime docs, scripts, or shared references so machine-specific absolute paths and file-URI references do not re-enter the open-source skill.
 - Keep repo paths cross-platform safe: avoid Windows reserved filenames, case-only path distinctions, trailing dots/spaces, and path inflation that would make downstream checkouts fragile.
+- When correcting a case-only path rename on Windows, use an explicit temporary rename so Git's index casing actually changes; otherwise the repository can silently keep the old tracked path even when the working tree looks correct.

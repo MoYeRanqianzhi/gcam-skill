@@ -49,7 +49,7 @@ $$
 
 Where E indicates carbon emissions, S indicates carbon stocks, A indicates land area, and C indicates the average carbon density of the land area, across all land use types.
 
-When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow, as shown in the figure below.
+When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow. The omitted figure illustrated the implied regrowth timescales.
 
 Figure 1: Timescales for forest regrowth in GCAM.
 

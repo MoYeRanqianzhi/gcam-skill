@@ -204,7 +204,7 @@ There has been a significant data method update for the GCAM AgLU (Agriculture a
 2. The new update incorporates the compilation of FAO FBS (food balance sheet) and SUA (supply-utilization accounting) data. This integration enables the tracing of flows from land-based primary production to end uses, both in terms of food and non-food purposes. It provides a comprehensive understanding of the agricultural supply and demand.
 3. New methods have been developed to generate "primary equivalent," which serves as a bridge between primary agricultural supply and final consumption. This calculation helps to bridge the gap between the production of agricultural commodities and their ultimate utilization in various forms.
 
-The aggregation of agricultural data from FAO countries and commodities to GCAM regions and commodities are included in gcamdata. The commodity mapping is provided in [Mapping_SUA_PrimaryEquivalent.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/Mapping_SUA_PrimaryEquivalent.csv) and shown in Figures 1 (crop harvested area) and 2 (food).
+The aggregation of agricultural data from FAO countries and commodities to GCAM regions and commodities are included in gcamdata. The commodity mapping is provided in [Mapping_SUA_PrimaryEquivalent.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/Mapping_SUA_PrimaryEquivalent.csv). The omitted figures illustrated representative harvested-area and food mappings.
 
 Figure 1: Mapping between FAO and GCAM primary (land-based) commodities (A) and count of FAO commodities per GCAM commodity (B)
 

@@ -113,7 +113,7 @@ Note however that the following sectors consume natural gas upstream of the netw
 
 ### District Services
 
-In regions where purchased heat accounts for a large share of the final energy use, GCAM includes a representation of district heat production with four competing technology options.
+In regions where purchased heat accounts for a large share of final energy use, GCAM includes a representation of district heat production with four competing technology options.
 
 **District heating structure, with example input-output coefficients shown.**
 

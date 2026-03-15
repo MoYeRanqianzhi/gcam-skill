@@ -50,7 +50,7 @@ Economic land use decisions in GCAM are based on a logit model of sharing based 
 
 #### Land Nesting Strategy
 
-The way land types are nested in GCAM, in combination with the logit exponents used, determines the substitutability of different land types in the model in future periods. Figure 1 shows a simplified nesting diagram of land with a subregion. Note that crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer. For more information, see the detailed description of the [land nesting strategy](details_land.md#land-nesting-strategy).
+The way land types are nested in GCAM, in combination with the logit exponents used, determines the substitutability of different land types in the model in future periods. The omitted figure summarized a simplified land nesting diagram for a subregion. Crops are further divided beyond that simplified sketch, including irrigated/rainfed and hi/lo fertilizer branches. For more information, see the detailed description of the [land nesting strategy](details_land.md#land-nesting-strategy).
 
 Figure 1: AgLU Land Nest
 

@@ -407,6 +407,21 @@ DEV_GUIDE_ANALYSIS_GUI_RE = re.compile(
     re.IGNORECASE,
 )
 SEE_FIGURE_BELOW_PAREN_RE = re.compile(r"\s*\(see Figure below\)")
+AGLU_LAND_OUTPUTS_FIGURE_RE = re.compile(
+    r"Outputs include land use and land cover for each of the land types included in GCAM \(see Figure 1\)\."
+)
+AGLU_FERTILIZER_OUTPUTS_FIGURE_RE = re.compile(
+    r"Outputs include fertilizer use for each crop and management practice included in GCAM \(see Figure 1\)\."
+)
+LAND_NESTING_DIAGRAM_RE = re.compile(
+    r"Figure 1 shows the nesting diagram of land with (?:an AEZ|a) subregion\."
+)
+LAND_SIMPLIFIED_NESTING_RE = re.compile(
+    r"Figure 1 shows a simplified nesting diagram of land with a subregion\. Note that crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer\."
+)
+OVERVIEW_RESOLUTION_FIGURE_RE = re.compile(
+    r"it is constructed with different levels of resolution for each of these different systems \(see Figure 2\)\."
+)
 ENERGY_SYSTEM_SCHEMATIC_RE = re.compile(
     r"^In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources \(colored red\) and the final demands \(colored light blue\)\.\s*$",
     re.MULTILINE,
@@ -424,13 +439,17 @@ REFINING_STRUCTURE_FIGURE_RE = re.compile(
 OIL_REFINING_GRAPHIC_RE = re.compile(
     r"In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity\. This is depicted graphically below, with typical input-output coefficients shown\."
 )
+OIL_REFINING_COMPETITION_FIGURE_RE = re.compile(
+    r"as indicated in the figure above, this technology does not differentiate between conventional and unconventional oil, whose competition is explicitly modeled upstream of the refining sector\."
+)
+FOSSIL_RESOURCE_CURVES_RE = re.compile(r"Resource curves for fossil fuels are shown below\.")
 GAS_STRUCTURE_FIGURE_RE = re.compile(
     r"^The structure of the natural gas supply and distribution in GCAM is shown below:\s*$",
     re.MULTILINE,
 )
 UPSTREAM_GAS_NETWORK_FIGURE_RE = re.compile(r"network shown in the figure above", re.MULTILINE)
 DISTRICT_HEAT_OPTIONS_RE = re.compile(
-    r"In regions where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below\."
+    r"(?:However, in several regions|In regions) where purchased heat accounts for a large share of the final energy use, GCAM does include a representation of district heat production, with four competing technology options, shown below\."
 )
 DISTRICT_HEAT_AS_SHOWN_RE = re.compile(
     r'As shown, all energy losses and cost mark-ups incurred in transforming primary energy into delivered district heat are accounted in the "district heat" technologies; there are no explicit cost adders and efficiency losses for heat distribution, or different prices for the heat consumed by buildings and industry sectors\.'
@@ -480,6 +499,30 @@ PASSENGER_AS_SHOWN_RE = re.compile(
 LAND_GROWTH_FIGURE_RE = re.compile(
     r"^When land is converted to forests, the vegetation carbon content of that new forest land gradually approaches an exogenously-specified, region- and land-type-dependent value\. The rate at which this value is reached depends on the mature age of forests\. Mature age is specified by region, GLU, and land type\. In the figure below, the rate of growth as a function of time since planting is shown for four different mature ages\. In this figure, the y-axis indicates the percentage of the exogenously-specified, region- and land-type-dependent value accumulated\.\s*$",
     re.MULTILINE,
+)
+HISTORICAL_FOREST_REGROWTH_FIGURE_RE = re.compile(
+    r"When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow, as shown in the figure below\."
+)
+DETAILS_LAND_CROP_SUBDIVISION_FIGURE_RE = re.compile(
+    r"Crop areas are further subdivided into irrigated/rainfed and high/low management categories \(see Figure 2 for more details\)\. This specification allows for adjusting the level of substitution across categories by varying the logit parameters\. Figure 2 also indicates the corresponding files in the `gcamdata` system that process the inputs for each land type\."
+)
+DETAILS_LAND_FILE_MAP_FIGURE_RE = re.compile(
+    r"The figure also indicates which file in the `gcamdata` system processes the inputs for each type of land"
+)
+DACCS_ATTRACTIVENESS_FIGURE_RE = re.compile(
+    r"The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness to deploy DACCS in a given state within GCAM \(see figure below\)\."
+)
+LNG_TRADE_NETWORK_FIGURES_RE = re.compile(
+    r"\s*Natural gas has been further disaggregated into traded pipeline gas and traded liquefied natural gas \(LNG\)\. LNG is traded at the global market level, while pipeline gas is traded in 6 regional markets: North America, Latin America, Europe, Russia\+, Africa and Middle East, and Asia-Pacific \(see figures\)\."
+)
+DETAILS_EMISSIONS_COMPARISON_FIGURES_RE = re.compile(
+    r"Figures 1 and 2 compare historical emissions from CEDS with the emissions from GCAM after initialization \. Figure 1 compares global emissions by species and Figure 2 presents a scatter plot comparing emissions by species and year for each region\.  As seen in the figures, emissions translate mostly correctly for all species of gases\."
+)
+ECONOMY_MACRO_FIGURE_RE = re.compile(
+    r"Figure 1 shows the new elements in relation to existing GCAM elements\."
+)
+INPUTS_SUPPLY_FAO_MAPPING_FIGURES_RE = re.compile(
+    r"The commodity mapping is provided in \[(?P<label>Mapping_SUA_PrimaryEquivalent\.csv)\]\((?P<target>[^)]+)\) and shown in Figures 1 \(crop harvested area\) and 2 \(food\)\."
 )
 POLICIES_FIGURE_EXAMPLE_RE = re.compile(
     r"For example in the figure below, the cost of moving from a reference path without a carbon tax \(blue\) to the emissions path with a carbon tax \(green\) in period T can be calculated simply\.",
@@ -730,6 +773,26 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
 
     replace(SEE_FIGURE_BELOW_PAREN_RE, "")
     replace(
+        AGLU_LAND_OUTPUTS_FIGURE_RE,
+        "Outputs include land use and land cover for each of the land types included in GCAM. The omitted figure summarized the relevant land-type hierarchy.",
+    )
+    replace(
+        AGLU_FERTILIZER_OUTPUTS_FIGURE_RE,
+        "Outputs include fertilizer use for each crop and management practice included in GCAM. The omitted figure summarized the crop and management hierarchy used for these outputs.",
+    )
+    replace(
+        LAND_NESTING_DIAGRAM_RE,
+        "The omitted figure summarized the land nesting diagram within a subregion.",
+    )
+    replace(
+        LAND_SIMPLIFIED_NESTING_RE,
+        "The omitted figure summarized a simplified land nesting diagram for a subregion. Crops are further divided beyond that simplified sketch, including irrigated/rainfed and hi/lo fertilizer branches.",
+    )
+    replace(
+        OVERVIEW_RESOLUTION_FIGURE_RE,
+        "it is constructed with different levels of resolution for each of these different systems.",
+    )
+    replace(
         ENERGY_SYSTEM_SCHEMATIC_RE,
         "In GCAM's energy-system structure, the energy transformation and distribution sectors include all sectors except the resources and the final demands.\n",
     )
@@ -746,8 +809,16 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         "The structure of refining in the broader energy system is summarized here with example input-output coefficients.\n",
     )
     replace(
+        OIL_REFINING_COMPETITION_FIGURE_RE,
+        "this technology does not differentiate between conventional and unconventional oil; that competition is explicitly modeled upstream of the refining sector.",
+    )
+    replace(
         OIL_REFINING_GRAPHIC_RE,
         "In a typical region, the oil refining technology consumes three energy inputs: crude oil, natural gas, and electricity. The omitted schematic and caption summarize typical input-output coefficients.\n",
+    )
+    replace(
+        FOSSIL_RESOURCE_CURVES_RE,
+        "The omitted figures provided representative fossil-fuel resource-curve examples.",
     )
     replace(
         GAS_STRUCTURE_FIGURE_RE,
@@ -756,7 +827,7 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     replace(UPSTREAM_GAS_NETWORK_FIGURE_RE, "network described above")
     replace(
         DISTRICT_HEAT_OPTIONS_RE,
-        "In regions where purchased heat accounts for a large share of the final energy use, GCAM includes a representation of district heat production with four competing technology options.\n",
+        "In regions where purchased heat accounts for a large share of final energy use, GCAM includes a representation of district heat production with four competing technology options.",
     )
     replace(
         DISTRICT_HEAT_AS_SHOWN_RE,
@@ -815,6 +886,41 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     replace(
         LAND_GROWTH_FIGURE_RE,
         "When land is converted to forests, the vegetation carbon content of that new forest land gradually approaches an exogenously-specified, region- and land-type-dependent value. The rate at which this value is reached depends on the mature age of forests. Mature age is specified by region, GLU, and land type. Growth trajectories as a function of time since planting differ across four representative mature ages, and the omitted figure's y-axis represented the percentage of the exogenously-specified, region- and land-type-dependent value accumulated.\n",
+    )
+    replace(
+        HISTORICAL_FOREST_REGROWTH_FIGURE_RE,
+        "When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow. The omitted figure illustrated the implied regrowth timescales.",
+    )
+    replace(
+        DETAILS_LAND_CROP_SUBDIVISION_FIGURE_RE,
+        "Crop areas are further subdivided into irrigated/rainfed and high/low management categories. This specification allows for adjusting the level of substitution across categories by varying the logit parameters. The omitted figure also mapped those categories to the corresponding `gcamdata` processing files for each land type.",
+    )
+    replace(
+        DETAILS_LAND_FILE_MAP_FIGURE_RE,
+        "The omitted figure also indicated which `gcamdata` file processes the inputs for each type of land",
+    )
+    replace(
+        DACCS_ATTRACTIVENESS_FIGURE_RE,
+        "The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness of DACCS deployment in each state within GCAM.",
+    )
+    replace(
+        LNG_TRADE_NETWORK_FIGURES_RE,
+        "Natural gas has been further disaggregated into traded pipeline gas and traded liquefied natural gas (LNG). LNG is traded at the global market level, while pipeline gas is traded in 6 regional markets: North America, Latin America, Europe, Russia+, Africa and Middle East, and Asia-Pacific.",
+    )
+    replace(
+        DETAILS_EMISSIONS_COMPARISON_FIGURES_RE,
+        "Two omitted figures compare historical emissions from CEDS with GCAM emissions after initialization: one at the global-by-species level and one as a region-by-species-by-year scatter comparison. Those comparisons indicate that emissions translate mostly correctly for all species of gases.",
+    )
+    replace(
+        ECONOMY_MACRO_FIGURE_RE,
+        "The omitted figure summarized the new macroeconomic elements in relation to the existing GCAM elements.",
+    )
+    replace(
+        INPUTS_SUPPLY_FAO_MAPPING_FIGURES_RE,
+        lambda match: (
+            f"The commodity mapping is provided in [{match.group('label')}]({match.group('target')}). "
+            "The omitted figures illustrated representative harvested-area and food mappings."
+        ),
     )
     replace(
         POLICIES_FIGURE_EXAMPLE_RE,

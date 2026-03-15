@@ -64,7 +64,7 @@ We have partitioned the energy system documentation as follows:
 
 ### Depletable Resources
 
-GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. As cumulative extraction of these resources increases, the cost of extraction rises; however, technical change can be applied to reduce the extraction cost in future years. Resource curves for fossil fuels are shown below.
+GCAM models depletable resources (oil, unconventional oil, natural gas, coal, and uranium) using graded resource supply curves. As cumulative extraction of these resources increases, the cost of extraction rises; however, technical change can be applied to reduce the extraction cost in future years. The omitted figures provided representative fossil-fuel resource-curve examples.
 
 #### Oil and unconventional oil
 

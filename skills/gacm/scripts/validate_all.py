@@ -15,6 +15,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 VALIDATION_STEPS = (
     "validate_authoring_sources.py",
     "validate_doc_search.py",
+    "validate_page_bundle_indexes.py",
     "validate_bundled_pages.py",
     "validate_shared_references.py",
     "validate_version_routes.py",

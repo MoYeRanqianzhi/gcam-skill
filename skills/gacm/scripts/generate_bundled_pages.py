@@ -710,6 +710,10 @@ def build_delta_version(version: str) -> None:
 
 
 def write_root_readme() -> None:
+    write_file(VERSION_PAGES_ROOT / "README.md", render_root_readme())
+
+
+def render_root_readme() -> str:
     lines = [
         "# Version Page Bundles",
         "",
@@ -723,7 +727,7 @@ def write_root_readme() -> None:
         "- When a version links to a page that is absent from its own authoring tree, the bundle may include a clearly labeled inherited or trace page instead of silently dropping the route.",
         "",
     ]
-    write_file(VERSION_PAGES_ROOT / "README.md", "\n".join(lines))
+    return "\n".join(lines)
 
 
 def main() -> int:

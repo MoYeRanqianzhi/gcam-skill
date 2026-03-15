@@ -209,56 +209,56 @@ Note that at this time the specification of Non-CO2 greenhouse gases in GCAM-USA
 References
 ===============
 
-<a name="calvin2014">[Calvin et al. 2014]</a> Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds. 2014. "Trade-offs of different land and bioenergy policies on the path to achieving climate targets." Climatic Change 123(3-4):691-704. doi:10.1007/s10584-013-0897-y
+<a name="calvin2014"></a>[Calvin et al. 2014] Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds. 2014. "Trade-offs of different land and bioenergy policies on the path to achieving climate targets." Climatic Change 123(3-4):691-704. doi:10.1007/s10584-013-0897-y
 
-<a name="calvin2019">[Calvin et al. 2019]</a> Calvin, K., Patel, P., Clarke, L., Asrar, G., Bond-Lamberty, B., Cui, R. Y., Di Vittorio, A., Dorheim, K., Edmonds, J., Hartin, C., Hejazi, M., Horowitz, R., Iyer, G., Kyle, P., Kim, S., Link, R., McJeon, H., Smith, S. J., Snyder, A., Waldhoff, S., and Wise, M.: GCAM v5.1: representing the linkages between energy, water, land, climate, and economic systems, Geosci. Model Dev., 12, 677–698, <https://doi.org/10.5194/gmd-12-677-2019>, 2019.
+<a name="calvin2019"></a>[Calvin et al. 2019] Calvin, K., Patel, P., Clarke, L., Asrar, G., Bond-Lamberty, B., Cui, R. Y., Di Vittorio, A., Dorheim, K., Edmonds, J., Hartin, C., Hejazi, M., Horowitz, R., Iyer, G., Kyle, P., Kim, S., Link, R., McJeon, H., Smith, S. J., Snyder, A., Waldhoff, S., and Wise, M.: GCAM v5.1: representing the linkages between energy, water, land, climate, and economic systems, Geosci. Model Dev., 12, 677–698, <https://doi.org/10.5194/gmd-12-677-2019>, 2019.
 
-<a name="dahowski2005">[Dahowski et al. 2005]</a> Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO<sub>2</sub> Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
+<a name="dahowski2005"></a>[Dahowski et al. 2005] Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO<sub>2</sub> Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
 
-<a name="dahowski2011">[Dahowski et al. 2011]</a> Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO<sub>2</sub> transport & storage cost curves. Energy Procedia 4, 2732-2739.
+<a name="dahowski2011"></a>[Dahowski et al. 2011] Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO<sub>2</sub> transport & storage cost curves. Energy Procedia 4, 2732-2739.
 
-<a name="dahowski2010">[Dahowski et al. 2010]</a> Dahowski, R.T., Davidson, C.L., Li, X.C., Wei, N., 2012. A $70/tCO<sub>2</sub> greenhouse gas mitigation backstop for China's industrial and electric power sectors: Insights from a comprehensive CCS cost curve. International Journal of Greenhouse Gas Control 11, 73-85.
+<a name="dahowski2010"></a>[Dahowski et al. 2010] Dahowski, R.T., Davidson, C.L., Li, X.C., Wei, N., 2012. A $70/tCO<sub>2</sub> greenhouse gas mitigation backstop for China's industrial and electric power sectors: Insights from a comprehensive CCS cost curve. International Journal of Greenhouse Gas Control 11, 73-85.
 
-<a name="denholm2008">[Denholm and Margolis 2008]</a> Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
+<a name="denholm2008"></a>[Denholm and Margolis 2008] Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
-<a name="eurek2016">[Eurek et al. 2016]</a> Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
+<a name="eurek2016"></a>[Eurek et al. 2016] Eurek, K, W Cole, D Bielen, N Blair, S Cohen, B Frew, J Ho, V Krishnan, T Mai, B Sigrin, D Steinberg. 2016. Regional Energy Deployment System (ReEDS) Model Documentation: Version 2016. <https://www.nrel.gov/docs/fy17osti/67067.pdf>
 
-<a name="huang2018">[Huang et al. 2018]</a> Huang, Z., Hejazi, M., Li, X., Tang, Q., Leng, G., Liu, Y., Döll, P., Eisner, S., Gerten, D., Hanasaki, N. and Wada, Y., 2018. Reconstruction of global gridded monthly sectoral water withdrawals for 1971-2010 and analysis of their spatiotemporal patterns. Hydrology and Earth System Sciences Discussions, 22, pp.2117-2133.
+<a name="huang2018"></a>[Huang et al. 2018] Huang, Z., Hejazi, M., Li, X., Tang, Q., Leng, G., Liu, Y., Döll, P., Eisner, S., Gerten, D., Hanasaki, N. and Wada, Y., 2018. Reconstruction of global gridded monthly sectoral water withdrawals for 1971-2010 and analysis of their spatiotemporal patterns. Hydrology and Earth System Sciences Discussions, 22, pp.2117-2133.
 
-<a name="iyer2017">[Iyer et al. 2017]</a> Iyer GC, LE Clarke, JA Edmonds, GP Kyle, CM Ledna, HC McJeon, and MA Wise. 2017. "GCAM-USA Analysis of U.S. Electric Power Sector Transitions." Pacific Northwest National Laboratory.
+<a name="iyer2017"></a>[Iyer et al. 2017] Iyer GC, LE Clarke, JA Edmonds, GP Kyle, CM Ledna, HC McJeon, and MA Wise. 2017. "GCAM-USA Analysis of U.S. Electric Power Sector Transitions." Pacific Northwest National Laboratory.
 
-<a name="jiang2018">[Jiang et al. 2018]</a> Jiang L., H Zoraghein, B O'Neill. 2018. "Population projections for US states under the Shared Socioeconomic Pathways based on global gridded population projections." NCAR Technical Note NCAR/TN-542+STR, 49 pp, doi:10.5065/D6930RXZ.
+<a name="jiang2018"></a>[Jiang et al. 2018] Jiang L., H Zoraghein, B O'Neill. 2018. "Population projections for US states under the Shared Socioeconomic Pathways based on global gridded population projections." NCAR Technical Note NCAR/TN-542+STR, 49 pp, doi:10.5065/D6930RXZ.
 
-<a name="jones2016">[Jones and O'Neill 2016]</a> Jones B., BC O'Neill. 2016. "Spatially explicit global population scenarios consistent with the Shared Socioeconomic Pathways." Environmental Research Letters 11. 084003.
+<a name="jones2016"></a>[Jones and O'Neill 2016] Jones B., BC O'Neill. 2016. "Spatially explicit global population scenarios consistent with the Shared Socioeconomic Pathways." Environmental Research Letters 11. 084003.
 
-<a name="iea2009">[IEA 2009]</a> International Energy Agency (IEA). 2009. Chemical and Petrochemical Sector - Potential of best practice technology and other measures for improving energy efficiency. <https://www.iea.org/publications/freepublications/publication/chemical_petrochemical_sector.pdf>
+<a name="iea2009"></a>[IEA 2009] International Energy Agency (IEA). 2009. Chemical and Petrochemical Sector - Potential of best practice technology and other measures for improving energy efficiency. <https://www.iea.org/publications/freepublications/publication/chemical_petrochemical_sector.pdf>
 
-<a name="lopez2012">[Lopez et al. 2012]</a> Lopez A, B Roberts, D Heimiller (2012). U.S. Renewable Energy Technical Potentials: A GIS-Based Analysis. National Renewable Energy Laboratory, Technical Report NREL/TP-6A20-51946, July 2012
+<a name="lopez2012"></a>[Lopez et al. 2012] Lopez A, B Roberts, D Heimiller (2012). U.S. Renewable Energy Technical Potentials: A GIS-Based Analysis. National Renewable Energy Laboratory, Technical Report NREL/TP-6A20-51946, July 2012
 
-<a name="doe2017">[EIA 2014]</a> U.S. Department of Energy (DOE). 2017. Energy CO2 Emissions Impacts of Clean Energy Technology Innovation and Policy. <https://www.energy.gov/sites/prod/files/2017/01/f34/Energy%20CO2%20Emissions%20Impacts%20of%20Clean%20Energy%20Technology%20Innovation%20and%20Policy.pdf>
+<a name="doe2017"></a>[EIA 2014] U.S. Department of Energy (DOE). 2017. Energy CO2 Emissions Impacts of Clean Energy Technology Innovation and Policy. <https://www.energy.gov/sites/prod/files/2017/01/f34/Energy%20CO2%20Emissions%20Impacts%20of%20Clean%20Energy%20Technology%20Innovation%20and%20Policy.pdf>
 
-<a name="eia2014">[EIA 2014]</a> U.S. Energy Information Agency (EIA). 2014. Table 4. Biodiesel producers and production capacity by state in March 2014. <http://www.eia.gov/biofuels/biodiesel/production/table4.pdf>
+<a name="eia2014"></a>[EIA 2014] U.S. Energy Information Agency (EIA). 2014. Table 4. Biodiesel producers and production capacity by state in March 2014. <http://www.eia.gov/biofuels/biodiesel/production/table4.pdf>
 
-<a name="eia2017a">[EIA 2017a]</a> U.S. Energy Information Agency (EIA 2017a) State Energy Data System.  All consumption estimates in Btu, 1960-2017. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
+<a name="eia2017a"></a>[EIA 2017a] U.S. Energy Information Agency (EIA 2017a) State Energy Data System.  All consumption estimates in Btu, 1960-2017. <https://www.eia.gov/state/seds/sep_use/total/csv/use_all_btu.csv>.
 
-<a name="eia2017b">[EIA 2017b]</a> U.S. Energy Information Agency (EIA 2017b) Table E1. Primary Energy, Electricity, and Total Energy Price Estimates, 2017. <https://www.eia.gov/state/seds/data.php?incfile=/state/seds/sep_sum/html/sum_pr_tot.html&sid=US>
+<a name="eia2017b"></a>[EIA 2017b] U.S. Energy Information Agency (EIA 2017b) Table E1. Primary Energy, Electricity, and Total Energy Price Estimates, 2017. <https://www.eia.gov/state/seds/data.php?incfile=/state/seds/sep_sum/html/sum_pr_tot.html&sid=US>
 
-<a name="eia2018a">[EIA 2018a]</a> U.S. Energy Information Agency (EIA 2018a) Electricity Data Browser. <https://www.eia.gov/electricity/data/browser/> (2018).
+<a name="eia2018a"></a>[EIA 2018a] U.S. Energy Information Agency (EIA 2018a) Electricity Data Browser. <https://www.eia.gov/electricity/data/browser/> (2018).
 
-<a name="eia2018b">[EIA 2018b]</a> U.S. Energy Information Agency (EIA 2018b) Annual Energy Outlook 2018 with projections to 2050. <https://www.eia.gov/outlooks/archive/aeo18/> (2018).
+<a name="eia2018b"></a>[EIA 2018b] U.S. Energy Information Agency (EIA 2018b) Annual Energy Outlook 2018 with projections to 2050. <https://www.eia.gov/outlooks/archive/aeo18/> (2018).
 
-<a name="eia2018c">[EIA 2018c]</a> U.S. Energy Information Agency (EIA 2018c) State Electricity Profiles 2018 (<https://www.eia.gov/electricity/state/>).
+<a name="eia2018c"></a>[EIA 2018c] U.S. Energy Information Agency (EIA 2018c) State Electricity Profiles 2018 (<https://www.eia.gov/electricity/state/>).
 
-<a name="eia2019">[EIA 2019]</a> U.S. Energy Information Agency (EIA 2019) Annual Energy Outlook 2019 with projections to 2050. <https://www.eia.gov/outlooks/archive/aeo19/> (2019).
+<a name="eia2019"></a>[EIA 2019] U.S. Energy Information Agency (EIA 2019) Annual Energy Outlook 2019 with projections to 2050. <https://www.eia.gov/outlooks/archive/aeo19/> (2019).
 
-<a name="eia2020">[EIA 2020]</a> U.S. Energy Information Agency (EIA 2020) Annual Energy Outlook 2020 with projections to 2050. <https://www.eia.gov/outlooks/aeo/> (2020).
+<a name="eia2020"></a>[EIA 2020] U.S. Energy Information Agency (EIA 2020) Annual Energy Outlook 2020 with projections to 2050. <https://www.eia.gov/outlooks/aeo/> (2020).
 
-<a name="epa2015">[EPA 2015]</a> U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf (Accessed 16 December 2016).
+<a name="epa2015"></a>[EPA 2015] U.S. Environmental Protection Agency. 2015. Standards of Performance for Greenhouse Gas Emissions from New, Modified, and Reconstructed Stationary Sources: Electric Utility Generating Units, 80 Federal Register 205 (23 October 2015) (40 CFR parts 60, 70, 71, and 98): 64513, 64546-64547, https://www.gpo.gov/fdsys/pkg/FR-2015-10-23/pdf/2015-22837.pdf (Accessed 16 December 2016).
 
-<a name="wise2007">[Wise et al. 2007]</a> Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
+<a name="wise2007"></a>[Wise et al. 2007] Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
 
-<a name="wise2014">[Wise et al. 2014]</a> Wise MA, JJ Dooley, P Luckow, KV Calvin, and GP Kyle. 2014. "[Agriculture, Land Use, Energy and Carbon Emission Impacts of Global Biofuel Mandates to Mid-Century](http://dx.doi.org/10.1016/j.apenergy.2013.08.042)." Applied Energy 114:763-773. doi:10.1016/j.apenergy.2013.08.042
+<a name="wise2014"></a>[Wise et al. 2014] Wise MA, JJ Dooley, P Luckow, KV Calvin, and GP Kyle. 2014. "[Agriculture, Land Use, Energy and Carbon Emission Impacts of Global Biofuel Mandates to Mid-Century](http://dx.doi.org/10.1016/j.apenergy.2013.08.042)." Applied Energy 114:763-773. doi:10.1016/j.apenergy.2013.08.042
 
-<a name="zhou2013">[Zhou et al. 2013]</a> Zhou Y, J Eom, and LE Clarke. 2013. "The effect of climate change, population distribution, and climate mitigation on building energy use in the U.S. and China." Climatic Change 119(3-4):979-992. doi:10.1007/s10584-013-0772-x
+<a name="zhou2013"></a>[Zhou et al. 2013] Zhou Y, J Eom, and LE Clarke. 2013. "The effect of climate change, population distribution, and climate mitigation on building energy use in the U.S. and China." Climatic Change 119(3-4):979-992. doi:10.1007/s10584-013-0772-x
 
-<a name="zhou2014">[Zhou et al. 2014]</a> Zhou Y, LE Clarke, J Eom, GP Kyle, PL Patel, SH Kim, JA Dirks, EA Jensen, Y Liu, JS Rice, LC Schmidt, and TE Seiple. 2014. "Modeling the effect of climate change on U.S. state-level buildings energy demands in an integrated assessment framework." Applied Energy 113:1077-1088. doi:10.1016/j.apenergy.2013.08.034
+<a name="zhou2014"></a>[Zhou et al. 2014] Zhou Y, LE Clarke, J Eom, GP Kyle, PL Patel, SH Kim, JA Dirks, EA Jensen, Y Liu, JS Rice, LC Schmidt, and TE Seiple. 2014. "Modeling the effect of climate change on U.S. state-level buildings energy demands in an integrated assessment framework." Applied Energy 113:1077-1088. doi:10.1016/j.apenergy.2013.08.034

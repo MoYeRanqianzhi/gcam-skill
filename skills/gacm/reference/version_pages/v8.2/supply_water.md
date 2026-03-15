@@ -31,7 +31,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Desalination cost | Water basin and year | $$km^3$$ | [Exogenous](inputs_supply.md) |
 | Water prices | By basin and year | 1975$/m3 | [Marketplace](marketplace.md)  |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#description) in that it lists all inputs to the water supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote"></a>1: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#description) in that it lists all inputs to the water supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## Description
 
@@ -80,44 +80,44 @@ Co-linkages
 
 ## References
 
-<a name="beck2013">[Beck et al. 2013]</a> Beck, H.E., Van Dijk, A.I., Miralles, D.G., De Jeu, R.A., Bruijnzeel, L.A., McVicar, T.R. and Schellekens, J., 2013. Global patterns in base flow index and recession based on streamflow observations from 3394 catchments. Water Resources Research, 49(12), pp.7843-7863. [Link](https://doi.org/10.1002/2013WR013918)
+<a name="beck2013"></a>[Beck et al. 2013] Beck, H.E., Van Dijk, A.I., Miralles, D.G., De Jeu, R.A., Bruijnzeel, L.A., McVicar, T.R. and Schellekens, J., 2013. Global patterns in base flow index and recession based on streamflow observations from 3394 catchments. Water Resources Research, 49(12), pp.7843-7863. [Link](https://doi.org/10.1002/2013WR013918)
 
-<a name="cui2018">[Cui et al. 2018]</a> Cui, Ryna Yiyun, Katherine Calvin, Leon Clarke, Mohamad Hejazi, Son Kim, Page Kyle, Pralit Patel, Sean Turner and Marshall Wise (2018). *Regional responses to future, demand-driven water scarcity*. Environmental Research Letters, 13, 9. [Link](https://doi.org/10.1088/1748-9326/aad8f7)
+<a name="cui2018"></a>[Cui et al. 2018] Cui, Ryna Yiyun, Katherine Calvin, Leon Clarke, Mohamad Hejazi, Son Kim, Page Kyle, Pralit Patel, Sean Turner and Marshall Wise (2018). *Regional responses to future, demand-driven water scarcity*. Environmental Research Letters, 13, 9. [Link](https://doi.org/10.1088/1748-9326/aad8f7)
 
-<a name="degraaf2015">[DeGraaf et al. 2015]</a> De Graaf, I.E.M., Van Beek, L.P.H., Wada, Y. and Bierkens, M.F.P., 2014. Dynamic attribution of global water demand to surface water and groundwater resources: Effects of abstractions and return flows on river discharges. Advances in water resources, 64, pp.21-33. [Link](https://doi.org/10.1016/j.advwatres.2013.12.002)
+<a name="degraaf2015"></a>[DeGraaf et al. 2015] De Graaf, I.E.M., Van Beek, L.P.H., Wada, Y. and Bierkens, M.F.P., 2014. Dynamic attribution of global water demand to surface water and groundwater resources: Effects of abstractions and return flows on river discharges. Advances in water resources, 64, pp.21-33. [Link](https://doi.org/10.1016/j.advwatres.2013.12.002)
 
-<a name="fan2013">[Fan et al. 2013]</a> Fan, Y., Li, H. and Miguez-Macho, G., 2013. Global patterns of groundwater table depth. Science, 339(6122), pp.940-943. [Link](https:://doi.org/10.1126/science.1229881)
+<a name="fan2013"></a>[Fan et al. 2013] Fan, Y., Li, H. and Miguez-Macho, G., 2013. Global patterns of groundwater table depth. Science, 339(6122), pp.940-943. [Link](https:://doi.org/10.1126/science.1229881)
 
-<a name="fao">[FAO Aquastat]</a> FAO. 2016. AQUASTAT Main Database, Food and Agriculture Organization of the United Nations (FAO) [Link](https://www.fao.org/faostat/en/#home)
+<a name="fao"></a>[FAO Aquastat] FAO. 2016. AQUASTAT Main Database, Food and Agriculture Organization of the United Nations (FAO) [Link](https://www.fao.org/faostat/en/#home)
 
-<a name="gleeson2014">[Gleeson et al. 2014]</a> Gleeson, T., Moosdorf, N., Hartmann, J. and Van Beek, L.P.H., 2014. A glimpse beneath earth's surface: GLobal HYdrogeology MaPS (GLHYMPS) of permeability and porosity. Geophysical Research Letters, 41(11), pp.3891-3898. [Link](https::/doi.org/10.1002/2014GL059856)
+<a name="gleeson2014"></a>[Gleeson et al. 2014] Gleeson, T., Moosdorf, N., Hartmann, J. and Van Beek, L.P.H., 2014. A glimpse beneath earth's surface: GLobal HYdrogeology MaPS (GLHYMPS) of permeability and porosity. Geophysical Research Letters, 41(11), pp.3891-3898. [Link](https::/doi.org/10.1002/2014GL059856)
 
-<a name="graham2018">[Graham et al. 2018]</a> Graham, N., E. Davies, M. I. Hejazi, K. Calvin, S. H. Kim, L. Helinksi, F.R. Miralles-Wilhelm, L Clarke, G.P. Kyle, P Patel, M.A. Wise, and C.R. Vernon (2018). *Water sector assumptions for the Shared Socioeconomic Pathways in an integrated modeling framework*. Water Resources Research, 54, [Link](https://doi.org/10.1029/2018WR023452)
+<a name="graham2018"></a>[Graham et al. 2018] Graham, N., E. Davies, M. I. Hejazi, K. Calvin, S. H. Kim, L. Helinksi, F.R. Miralles-Wilhelm, L Clarke, G.P. Kyle, P Patel, M.A. Wise, and C.R. Vernon (2018). *Water sector assumptions for the Shared Socioeconomic Pathways in an integrated modeling framework*. Water Resources Research, 54, [Link](https://doi.org/10.1029/2018WR023452)
 
-<a name="jones2019">[Jones et al. 2019]</a> Jones, E., Qadir, M., van Vliet, M. T., Smakhtin, V., & Kang, S. M. (2019). The state of desalination and brine production: A global outlook. Science of the Total Environment, 657, 1343-1356. [Link](https://doi.org/10.1016/j.scitotenv.2018.12.076)
+<a name="jones2019"></a>[Jones et al. 2019] Jones, E., Qadir, M., van Vliet, M. T., Smakhtin, V., & Kang, S. M. (2019). The state of desalination and brine production: A global outlook. Science of the Total Environment, 657, 1343-1356. [Link](https://doi.org/10.1016/j.scitotenv.2018.12.076)
 
-<a name="kim2016">[Kim et al. 2016]</a> Kim SK, Hejazi M, et al. (2016). *Balancing global water availability and use at basin scale in an integrated assessment model*. Climatic Change 136:217-231. [Link](http://link.springer.com/article/10.1007/s10584-016-1604-6/fulltext.html)
+<a name="kim2016"></a>[Kim et al. 2016] Kim SK, Hejazi M, et al. (2016). *Balancing global water availability and use at basin scale in an integrated assessment model*. Climatic Change 136:217-231. [Link](http://link.springer.com/article/10.1007/s10584-016-1604-6/fulltext.html)
 
-<a name="kyle2021">[Kyle et al. 2021]</a> Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., & Liu, Y. (2021). Assessing the future of global energy-for-water. Environmental Research Letters, 16(2), 024031.
+<a name="kyle2021"></a>[Kyle et al. 2021] Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., & Liu, Y. (2021). Assessing the future of global energy-for-water. Environmental Research Letters, 16(2), 024031.
 
-<a name="lehner2011">[Lehner et al. 2011]</a> Lehner, B., Liermann, C.R., Revenga, C., Vörösmarty, C., Fekete, B., Crouzet, P., Döll, P., Endejan, M., Frenken, K., Magome, J. and Nilsson, C., 2011. Global reservoir and dam (grand) database. Technical Documentation, Version, 1, pp.1-14. [Link](https://sedac.ciesin.columbia.edu/downloads/docs/grand-v1/grand_technical_documentation_v1_1.pdf)
+<a name="lehner2011"></a>[Lehner et al. 2011] Lehner, B., Liermann, C.R., Revenga, C., Vörösmarty, C., Fekete, B., Crouzet, P., Döll, P., Endejan, M., Frenken, K., Magome, J. and Nilsson, C., 2011. Global reservoir and dam (grand) database. Technical Documentation, Version, 1, pp.1-14. [Link](https://sedac.ciesin.columbia.edu/downloads/docs/grand-v1/grand_technical_documentation_v1_1.pdf)
 
-<a name="liu2018">[Liu et al. 2018]</a> Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
+<a name="liu2018"></a>[Liu et al. 2018] Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
 
-<a name="niazi2024">[Niazi et al. 2024]</a> Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
 
-<a name="niazi2025">[Niazi et al. 2025]</a> Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
+<a name="niazi2025"></a>[Niazi et al. 2025] Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
-<a name="oecd2009">[OECD 2009]</a>. *Managing Water for All: An OECD Perspective on Pricing and Financing*, OECD, Paris. [Link](https://www.oecd.org/env/42350563.pdf)
+<a name="oecd2009"></a>[OECD 2009]. *Managing Water for All: An OECD Perspective on Pricing and Financing*, OECD, Paris. [Link](https://www.oecd.org/env/42350563.pdf)
 
-<a name="richts2011">[Richts et al. 2011]</a>. Richts, A., Struckmeier, W. & Zaepke, M. (2011): WHYMAP and the Groundwater Resources of the World 1:25,000,000. In: Jones J. (Eds.): Sustaining Groundwater Resources. International Year of Planet Earth; Springer. [Link](https:://doi.org/10.1007/978-90-481-3426-7_10)
+<a name="richts2011"></a>[Richts et al. 2011]. Richts, A., Struckmeier, W. & Zaepke, M. (2011): WHYMAP and the Groundwater Resources of the World 1:25,000,000. In: Jones J. (Eds.): Sustaining Groundwater Resources. International Year of Planet Earth; Springer. [Link](https:://doi.org/10.1007/978-90-481-3426-7_10)
 
-<a name="rohwer2007">[Rowher et al. 2007]</a> Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling* PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik-potsdam.de/research/publications/pikreports/.files/pr104.pdf)
+<a name="rohwer2007"></a>[Rowher et al. 2007] Rohwer, J., Gerten, D., and Lucht, W. 2007. *Development of Functional Irrigation Types for Improved Global Crop Modelling* PIK Report No. 104, Potsdam Institute for Climate Impact Research. [Link](https://www.pik-potsdam.de/research/publications/pikreports/.files/pr104.pdf)
 
-<a name="turner2019a">[Turner et al. 2019a]</a> Turner S.W.D., M. Hejazi, C. Yonkofski, S. Kim, P. Kyle (2019a). *Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the 21st century*. Earth's Future (2019), 10.1029/2018EF001105  [Link](https://doi.org/10.1029/2018EF001105)
+<a name="turner2019a"></a>[Turner et al. 2019a] Turner S.W.D., M. Hejazi, C. Yonkofski, S. Kim, P. Kyle (2019a). *Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the 21st century*. Earth's Future (2019), 10.1029/2018EF001105  [Link](https://doi.org/10.1029/2018EF001105)
 
-<a name="turner2019b">[Turner et al. 2019b]</a> Turner, Sean, Mohamad Hejazi, Katherine Calvin, Page Kyle, Sonny Kim (2019b). *A pathway of global food supply adaptation in a world with increasingly constrained groundwater*. Science of The Total Environment, 673, 165-176, [Link](https://doi.org/10.1016/j.scitotenv.2019.04.070).
+<a name="turner2019b"></a>[Turner et al. 2019b] Turner, Sean, Mohamad Hejazi, Katherine Calvin, Page Kyle, Sonny Kim (2019b). *A pathway of global food supply adaptation in a world with increasingly constrained groundwater*. Science of The Total Environment, 673, 165-176, [Link](https://doi.org/10.1016/j.scitotenv.2019.04.070).
 
-<a name="vernon2019">[Vernon 2019]</a> Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
+<a name="vernon2019"></a>[Vernon 2019] Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
 
-<a name="zhao2024">[Zhao et al. 2024]</a> Zhao, M., Wild, T. B., Graham, N. T., Kim, S. H., Binsted, M., Chowdhury, A. F. M. K., Msangi, S., Patel, P. L., Vernon, C. R., Niazi, H., Li, H. Y., & Abeshu, G. W. 2024. GCAM–GLORY v1.0: Representing global reservoir water storage in a multi-sector human–Earth system model. Geoscientific Model Development, 17(14), pp. 5587-5617. [Link](https://doi.org/10.5194/gmd-17-5587-2024)
+<a name="zhao2024"></a>[Zhao et al. 2024] Zhao, M., Wild, T. B., Graham, N. T., Kim, S. H., Binsted, M., Chowdhury, A. F. M. K., Msangi, S., Patel, P. L., Vernon, C. R., Niazi, H., Li, H. Y., & Abeshu, G. W. 2024. GCAM–GLORY v1.0: Representing global reservoir water storage in a multi-sector human–Earth system model. Geoscientific Model Development, 17(14), pp. 5587-5617. [Link](https://doi.org/10.5194/gmd-17-5587-2024)

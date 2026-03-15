@@ -52,7 +52,7 @@ GCAM is a global model.  The economy and energy system are disaggregated into 14
 
 ###### Figure 1: GCAM Region Definitions
 
-The agriculture and land-use system are divided into 151 subregions based on the GTAP-AEZs.&lt;ref name="Monfreda"&gt;Monfreda, Chad, Navin Ramankutty and Thomas Hertel (2007). "Global Agricultural Land Use Data for Climate Change Analysis" in Economic Analysis of Land Use in Global Climate Change Policy (eds: Tom Hertel, Steven Rose, Richard Tol).&lt;/ref&gt;  These regions are discussed further in the [Agriculture, Land-Use, and Bioenergy](Agriculture_Land-Use_and_Bioenergy.md) documentation.
+The agriculture and land-use system are divided into 151 subregions based on the GTAP-AEZs. [Source: Monfreda, Chad, Navin Ramankutty and Thomas Hertel (2007). "Global Agricultural Land Use Data for Climate Change Analysis" in Economic Analysis of Land Use in Global Climate Change Policy (eds: Tom Hertel, Steven Rose, Richard Tol).]  These regions are discussed further in the [Agriculture, Land-Use, and Bioenergy](Agriculture_Land-Use_and_Bioenergy.md) documentation.
 
 Socioeconomics
 
@@ -77,5 +77,3 @@ The GCAM can be run with any combination of climate and non-climate policies. Po
 
 References
 ----------
-
-&lt;references /&gt;

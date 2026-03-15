@@ -14,40 +14,13 @@ Load this page when the user needs version-specific detail from this exact page 
 
 This documentation describes GCAM v8.2 ([DOI](https://doi.org/10.5281/zenodo.15581183))
 
-**GCAM diagram. Click on each box for a more detailed description of that element.**
-<table>
-<tr>
-<td rowspan="4"> <b>Inputs</b>
- <a href="inputs_supply.md"> [omitted image: input supply]</a>
- <a href="inputs_land.md"> [omitted image: input land]</a>
- <a href="inputs_economy.md"> [omitted image: input economy]</a>
- <a href="inputs_demand.md"> [omitted image: input demand]</a></td>
-<td>  </td>
-<td> <b>Supply</b>
- <a href="supply_energy.md"> [omitted image: supply energy]</a>  <a href="supply_water.md"> [omitted image: supply water]</a>  <a href="supply_land.md"> [omitted image: supply land]</a> </td>
-<td> </td>
-<td rowspan="4"> <b>Outputs</b>
- <a href="outputs_quantity.md"> [omitted image: output quantity]</a>
- <a href="outputs_prices.md"> [omitted image: output price]</a>
- <a href="outputs_trade.md"> [omitted image: output trade]</a>
- <a href="outputs_land.md"> [omitted image: output land]</a>
- <a href="outputs_emissions.md"> [omitted image: output emissions]</a> </td>
-</tr>
-<tr>
-<td> <a href="land.md"> [omitted image: land]</a>  </td>
-<td style="text-align: center; vertical-align: middle;" rowspan="2"> <a href="marketplace.md"> [omitted image: marketplace]</a> </td>
-<td rowspan="2"> <a href="emissions.md"> [omitted image: emissions]</a>  </td>
-</tr>
-<tr>
-<td>  <a href="economy.md"> [omitted image: economy]</a> </td>
-</tr>
-<tr>
-<td>  </td>
-<td>  <b>Demand</b>
- <a href="demand_energy.md"> [omitted image: demand energy]</a>  <a href="demand_water.md"> [omitted image: demand water]</a>  <a href="demand_land.md"> [omitted image: demand land]</a>  </td>
-<td>   </td>
-</tr>
-</table>
+Agent adaptation: the upstream diagram navigation is rewritten below as text links grouped by topic.
+
+| **Inputs** [input supply](inputs_supply.md) [input land](inputs_land.md) [input economy](inputs_economy.md) [input demand](inputs_demand.md) |  | **Supply** [supply energy](supply_energy.md) [supply water](supply_water.md) [supply land](supply_land.md) | **Outputs** [output quantity](outputs_quantity.md) [output price](outputs_prices.md) [output trade](outputs_trade.md) [output land](outputs_land.md) [output emissions](outputs_emissions.md) |
+| --- | --- | --- | --- |
+| [land](land.md) | [marketplace](marketplace.md) | [emissions](emissions.md) |  |
+| [economy](economy.md) |  |  |  |
+|  | **Demand** [demand energy](demand_energy.md) [demand water](demand_water.md) [demand land](demand_land.md) |  |  |
 
 A general overview of GCAM is also provided [here](overview.md).
 

@@ -52,7 +52,7 @@ This section documents the processing of data from the IEA Energy Balances to GC
 ### Detailed mappings of products and flows
 The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and from the IEA's "products" to GCAM's fuels. Exceptions to simple one-to-one mappings are noted below the tables.
 
-**Table 3<a name="table3"/>:** Mapping from IEA flows to GCAM sectors
+**Table 3<a name="table3"></a>:** Mapping from IEA flows to GCAM sectors
   (and subsectors where appropriate)
 {: .tbl}
 
@@ -154,7 +154,7 @@ The tables below show the mappings from the IEA's "flows" to GCAM's sectors, and
 | HEMAINH   | Heat Output-main activity producer heat plant |                                                         |
 | HEAUTOH   | Heat Output-autoproducer heat plants          | |
 
-**Table 4<a name="table4"/>:** Mapping from the IEA fuels to GCAM
+**Table 4<a name="table4"></a>:** Mapping from the IEA fuels to GCAM
   fuels
 {: .tbl}
 
@@ -242,8 +242,8 @@ Exceptions to one-to-one mapping from the categories in the IEA Energy Balances 
 
 ## References
 
-<a name="iea2011">[IEA 2011]</a> International Energy Agency, 2011, *Energy Balances of OECD Countries: Documentation for Beyond 2020 Files*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf)
+<a name="iea2011"></a>[IEA 2011] International Energy Agency, 2011, *Energy Balances of OECD Countries: Documentation for Beyond 2020 Files*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf)
 
-<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France.
+<a name="iea2019"></a>[IEA 2019] International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France.
 
-<a name="iea2023">[IEA 2023]</a> International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France.
+<a name="iea2023"></a>[IEA 2023] International Energy Agency, 2023, *Energy Balances of OECD Countries 1960-2022 and Energy Balances of Non-OECD Countries 1971-2022*, International Energy Agency, Paris, France.

@@ -27,14 +27,23 @@ RAW_HTML_CLASS_ATTR_RE = re.compile(
     r"<[A-Za-z][^>]*\sclass\s*=\s*(?:\"[^\"]*\"|'[^']*')",
     re.IGNORECASE,
 )
+RAW_HTML_HREF_RE = re.compile(r"<a\b[^>]*href\s*=", re.IGNORECASE)
+RAW_HTML_TABLE_RE = re.compile(r"</?(?:table|tr|td|th)\b", re.IGNORECASE)
 RAW_HTML_STYLED_SPAN_RE = re.compile(r"<span\b[^>]*style=", re.IGNORECASE)
 RAW_HTML_BREAK_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
+RAW_PRESENTATIONAL_ATTR_RE = re.compile(
+    r"(?:\bstyle\s*=|\balign\s*=|\bvalign\s*=|\browspan\s*=|\bcolspan\s*=|\bwidth\s*=|\bheight\s*=)",
+    re.IGNORECASE,
+)
+ESCAPED_WIKI_REF_RE = re.compile(r"&lt;ref\b|&lt;/ref&gt;|%3C/ref%3E", re.IGNORECASE)
+ESCAPED_WIKI_REFERENCES_RE = re.compile(r"&lt;references\b", re.IGNORECASE)
 LEGACY_IMAGE_RE = re.compile(r"Image reference:")
 PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
 WINDOWS_ABS_RE = re.compile(r"\b[A-Za-z]:[\\/]")
 POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+/")
 URI_RE = re.compile(r"\b(?:file|vscode)://", re.IGNORECASE)
 GENERIC_WINDOWS_PLACEHOLDER_RE = re.compile(r"(?i)\b[A-Za-z]:[\\/]path(?:[\\/]|$)")
+RAW_GUI_PATH_RE = re.compile(r"`File -> (?:Manage DB|Export)`|Click on each box for a more detailed description", re.IGNORECASE)
 
 
 def strip_code_fences(text: str) -> str:
@@ -109,14 +118,26 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html style block remains")
         if RAW_HTML_CLASS_ATTR_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html class attribute remains")
+        if RAW_HTML_HREF_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html href anchor remains")
+        if RAW_HTML_TABLE_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html table markup remains")
         if RAW_HTML_STYLED_SPAN_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw styled span markup remains")
         if RAW_HTML_BREAK_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html line-break tag remains")
+        if RAW_PRESENTATIONAL_ATTR_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> presentational table/html attributes remain")
+        if ESCAPED_WIKI_REF_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped legacy wiki ref markup remains")
+        if ESCAPED_WIKI_REFERENCES_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> escaped legacy wiki references marker remains")
         if LEGACY_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
         if PLACEHOLDER_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> unresolved image placeholder remains")
+        if RAW_GUI_PATH_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> residual GUI/menu-path phrasing remains")
         for line_no, line in enumerate(text.splitlines(), start=1):
             normalized_line = normalize_portability_line(line)
             if (

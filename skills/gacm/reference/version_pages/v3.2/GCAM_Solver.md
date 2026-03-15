@@ -21,7 +21,7 @@ several adjustable parameters that are user configurable. These
 configuration options are specified in the
 [solver configuration file](#Solver_Configuration_File).
 
-<a name="Solver_algorithms">Solver Algorithms</a>
+<a name="Solver_algorithms"></a>Solver Algorithms
 -----------------
 
 ### Bisection Solver
@@ -227,7 +227,7 @@ has been exceeded.
   cases where a low demand value makes achieving a relative excess
   demand threshold unfeasible.
 
-### <a name="Solution-info-filter_Predicates">Solution-info-filter Predicates</a>
+### <a name="Solution-info-filter_Predicates"></a>Solution-info-filter Predicates
 
 The predicates available to filter markets are:
 
@@ -312,4 +312,4 @@ abstraction layer.
 References
 ----------
 
-<a name="NR">Press, W., et al (1992), *Numerical Recipes in C, Second ed.*, Cambridge University Press, ISBN 0521431085</a>
+<a name="NR"></a>Press, W., et al (1992), *Numerical Recipes in C, Second ed.*, Cambridge University Press, ISBN 0521431085

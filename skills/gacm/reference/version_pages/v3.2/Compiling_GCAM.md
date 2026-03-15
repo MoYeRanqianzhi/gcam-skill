@@ -38,10 +38,11 @@ DBXML libraries:
 
 1. In building dbxml, I got a compile error that says:
 
-   ```
+```
    In file included from ../src/framework/ReferenceCounted.cpp:24:0:
    ../include/xqilla/framework/XPath2MemoryManager.hpp:90:11: error: ‘ptrdiff_t’ does not name a type
-   ```
+
+```
 
    I found a fix, which worked for me. Just insert:
    `#include <cstddef>` before the line of `#include <algorithm>` in
@@ -51,9 +52,10 @@ DBXML libraries:
    configuration that was resolved by setting an option to increase
    memory:
 
-   ```bash
+```bash
    export _JAVA_OPTIONS="-Xmx256M"
-   ```
+
+```
 
 Once the third party libraries are built we can build GCAM. The GCAM
 Makefile will check the following environment variables to find

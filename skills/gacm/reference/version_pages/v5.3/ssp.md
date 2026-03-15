@@ -77,101 +77,17 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 **Table 3**: Capital Costs for Electric Power Plants across SSPs
 {: .tbl}
 
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<tbody>
-<tr>
-<td><p><strong>Plant Type</strong></p></td>
-<td><p><strong>SSP1</strong></p></td>
-<td><p><strong>SSP2</strong></p></td>
-<td><p><strong>SSP3</strong></p></td>
-<td><p><strong>SSP4</strong></p></td>
-<td><p><strong>SSP5</strong></p></td>
-</tr>
-<tr>
-<td><p>Nuclear</p></td>
-<td><p>LOW</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>Geothermal</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>PV</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>PV with storage</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td>CORE
-<p>
-
-</p></td>
-</tr>
-<tr>
-<td><p>Rooftop PV</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>CSP</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>CSP with storage</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>Wind</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>Wind with storage</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-</tbody>
-</table>
+| **Plant Type** | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+| --- | --- | --- | --- | --- | --- |
+| Nuclear | LOW | CORE | LOW | ADV | CORE |
+| Geothermal | ADV | CORE | LOW | ADV | CORE |
+| PV | ADV | CORE | LOW | ADV | CORE |
+| PV with storage | ADV | CORE | LOW | ADV | CORE |
+| Rooftop PV | ADV | CORE | LOW | ADV | CORE |
+| CSP | ADV | CORE | LOW | ADV | CORE |
+| CSP with storage | ADV | CORE | LOW | ADV | CORE |
+| Wind | ADV | CORE | LOW | ADV | CORE |
+| Wind with storage | ADV | CORE | LOW | ADV | CORE |
 
 ### Fossil Fuel Assumptions
 
@@ -204,28 +120,9 @@ Table 5 includes information on implementation of the SSPs for building energy d
 **Table 5**: Building energy demand Assumptions
 {: .tbl}
 
-<table>
-<tbody>
-<tr>
-<td><p>
-
-</p></td>
-<td><p><strong>SSP1</strong></p></td>
-<td><p><strong>SSP2</strong></p></td>
-<td><p><strong>SSP3</strong></p></td>
-<td><p><strong>SSP4</strong></p></td>
-<td><p><strong>SSP5</strong></p></td>
-</tr>
-<tr>
-<td><p>Fuel Preference Elasticity for Traditional Bioenergy</p></td>
-<td><p>-2.5</p></td>
-<td><p>-2</p></td>
-<td><p>-1</p></td>
-<td><p>-0.75</p></td>
-<td><p>-2.5</p></td>
-</tr>
-</tbody>
-</table>
+|  | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+| --- | --- | --- | --- | --- | --- |
+| Fuel Preference Elasticity for Traditional Bioenergy | -2.5 | -2 | -1 | -0.75 | -2.5 |
 
 ### Agriculture and Land Use Assumptions
 

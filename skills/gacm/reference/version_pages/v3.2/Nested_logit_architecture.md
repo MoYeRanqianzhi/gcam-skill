@@ -51,7 +51,7 @@ positive logit exponents and allow economics to dictate the land
 allocation within a region.
 
 As a point of reference, we have compared the logit approach used in
-AgLU with the approach used in FASOM<sup><a href="#ref1">[1]</a></sup>,
+AgLU with the approach used in FASOM<sup>[[1]](#ref1)</sup>,
 an optimization model of agriculture and forest in the United
 States. FASOM uses a mix of substitution strategies very different
 from our approach. FASOM divides the U.S. into a number of small
@@ -105,7 +105,7 @@ matter in which node we placed new crop options like biomass.
 References
 ----------
 
-<a name="ref1">[1]</a> Beach, R.H., & McCarl, B.A. (Jan
+<a name="ref1"></a>[1] Beach, R.H., & McCarl, B.A. (Jan
   2010). U.S. agricultural and forestry impacts of the Energy
   Independence and Security Act: FASOM results and model
   description. Final Report. Research Triangle Park, NC: RTI

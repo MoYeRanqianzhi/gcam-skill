@@ -60,7 +60,7 @@ FLOW (as "short names", or ID codes)
 PRODUCT (as names)
 ```
 
-The reason why `FLOW` should be displayed as `ID codes` is that in several cases, different flows with different ID codes are assigned the same name (e.g., "EREFINER" and "TREFINER" are differentiated flows, but both are named "Petroleum Refineries"). Once the full dataset is displayed, users can select `File -> Export`, and select "CSV". The exported files should be named `en_OECD.csv` for the OECD countries' energy balances, and `en_nonOECD.csv` for the non-OECD balances, and placed in the `<GCAM Workspace>/input/gcam-data-system/energy-data/level0` folder. Once the CSV files are created, several further adjustments are required:
+The reason why `FLOW` should be displayed as `ID codes` is that in several cases, different flows with different ID codes are assigned the same name (e.g., "EREFINER" and "TREFINER" are differentiated flows, but both are named "Petroleum Refineries"). Once the full dataset is displayed, export it as CSV from the source tool. The exported files should be named `en_OECD.csv` for the OECD countries' energy balances, and `en_nonOECD.csv` for the non-OECD balances, and placed in the `<GCAM Workspace>/input/gcam-data-system/energy-data/level0` folder. Once the CSV files are created, several further adjustments are required:
 
 1. All special characters should be removed (e.g., Côte d’Ivoire is renamed Cote dIvoire)
 2. Text in the data columns (e.g., letters for redacted data on the nuclear industry in various countries) should be removed, and replaced with 0.

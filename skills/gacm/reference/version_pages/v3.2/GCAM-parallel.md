@@ -291,7 +291,7 @@ commenting out) for production GCAM builds.
 Footnotes and References
 ------------------------
 
-<a name="footnote1">1</a>: In practice, we make
+<a name="footnote1"></a>1: In practice, we make
 a pass through the graph using both of these conditions, and then if
 necessary make a second pass in which we reparse subgraphs that could
 not be further decomposed ("primitive" subgraphs) with the second
@@ -299,6 +299,6 @@ requirement relaxed for the source nodes of the subgraph. We are able
 to do this because adding extraneous dependencies does not cause the
 code to generate incorrect answers.
 
-<a name="footnote2">2</a>: This is not a concern for the
+<a name="footnote2"></a>2: This is not a concern for the
 price member variable, which is updated entirely from a single
 computational task.

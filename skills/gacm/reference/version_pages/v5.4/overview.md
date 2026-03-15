@@ -54,33 +54,13 @@ Supplied with input information from the GCAM Data System, the GCAM Core is the 
 
 The exact structure of the model explored in the GCAM core - for example, the number of regions and technologies - is data driven. In all cases, the GCAM core represents the entire world, but it is constructed with different levels of resolution for each of these different systems (see Figure 2). In the current release version of GCAM, the energy-economy system operates at 32 regions globally (see tables below), land is divided into >300 subregions, and water is tracked for 233 basins worldwide. The Earth system module operates at a global scale.
 
-<table>
-  <caption>Spatial scale of systems in the release version of GCAM</caption>
-  <tr>
-    <th>GCAM Component</th>
-    <th>Geospatial Resolution</th>
-  </tr>
-  <tr>
-    <td>Macro-Economy</td>
-    <td>32 Geopolitical Regions</td>
-  </tr>
-    <tr>
-    <td>Energy System</td>
-    <td>32 Geopolitical Regions</td>
-  </tr>
-    <tr>
-    <td>Land System</td>
-    <td>384 subregions</td>
-  </tr>
-    <tr>
-    <td>Water Supplies</td>
-    <td>235 Hydrologic Basins</td>
-  </tr>
-    <tr>
-    <td>Physical Earth System</td>
-    <td>Global</td>
-  </tr>
-</table>
+| GCAM Component | Geospatial Resolution |
+| --- | --- |
+| Macro-Economy | 32 Geopolitical Regions |
+| Energy System | 32 Geopolitical Regions |
+| Land System | 384 subregions |
+| Water Supplies | 235 Hydrologic Basins |
+| Physical Earth System | Global |
 
 Figure 2: GCAM regional mapping
 

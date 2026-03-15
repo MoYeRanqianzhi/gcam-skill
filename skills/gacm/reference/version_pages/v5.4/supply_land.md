@@ -38,7 +38,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Fertilizer prices | By region, commodity, and year | 1975$/kg | [Marketplace](marketplace.md)  |
 | Water prices | By basin and year | 1975$/m3 | [Marketplace](marketplace.md)  |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#food-feed-and-forestry) in that it lists all inputs to the land supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote"></a>1: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#food-feed-and-forestry) in that it lists all inputs to the land supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## Description
 

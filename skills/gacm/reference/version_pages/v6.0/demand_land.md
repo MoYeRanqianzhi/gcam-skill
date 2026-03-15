@@ -38,7 +38,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.md) |
 | Population | By region and year | thousand | [Economy module](economy.md) |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.md#food-feed-and-forestry">Demand Inputs Page</a> in that it lists all inputs to the land demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote"></a>1: Note that this table differs from the one provided on the [Demand Inputs Page](inputs_demand.md#food-feed-and-forestry) in that it lists all inputs to the land demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## Description
 
@@ -118,4 +118,4 @@ Agriculture and forestry demands
 
 ## References
 
-<a name="edmonds2017">[Edmonds et al. (2017)]</a> EDMONDS, J. A., R. LINK, S. T. WALDHOFF, and R. CUI, 2017: A GLOBAL FOOD DEMAND MODEL FOR THE ASSESSMENT OF COMPLEX HUMAN-EARTH SYSTEMS. Clim. Chang. Econ., 08, 1750012, https://doi.org/10.1142/S2010007817500129.
+<a name="edmonds2017"></a>[Edmonds et al. (2017)] EDMONDS, J. A., R. LINK, S. T. WALDHOFF, and R. CUI, 2017: A GLOBAL FOOD DEMAND MODEL FOR THE ASSESSMENT OF COMPLEX HUMAN-EARTH SYSTEMS. Clim. Chang. Econ., 08, 1750012, https://doi.org/10.1142/S2010007817500129.

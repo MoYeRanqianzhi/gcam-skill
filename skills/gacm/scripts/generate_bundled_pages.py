@@ -67,14 +67,32 @@ HTML_IMG_RE = re.compile(r"<img\b[^>]*\/?>", re.IGNORECASE)
 HTML_IMG_SRC_RE = re.compile(r'src="([^"]+)"', re.IGNORECASE)
 HTML_IMG_ALT_RE = re.compile(r'alt="([^"]+)"', re.IGNORECASE)
 HTML_STYLE_BLOCK_RE = re.compile(r"<style\b[^>]*>.*?</style>", re.IGNORECASE | re.DOTALL)
+HTML_COL_TAG_RE = re.compile(r"</?col(?:group)?\b[^>]*\/?>", re.IGNORECASE)
 HTML_BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 HTML_BUTTON_RE = re.compile(r"<button\b[^>]*>(?P<label>.*?)</button>", re.IGNORECASE | re.DOTALL)
 HTML_SPAN_RE = re.compile(r"<span\b[^>]*>(?P<content>.*?)</span>", re.IGNORECASE | re.DOTALL)
 HTML_FONT_RE = re.compile(r"</?font\b[^>]*>", re.IGNORECASE)
-HTML_CLASS_ATTR_RE = re.compile(
-    r'(?P<prefix><[A-Za-z][^>]*?)\sclass\s*=\s*(?:"[^"]*"|\'[^\']*\')',
+HTML_PRESENTATIONAL_ATTR_RE = re.compile(
+    r'(?P<prefix><[A-Za-z][^>]*?)\s(?:class|style|align|valign|rowspan|colspan|width|height)\s*=\s*(?:"[^"]*"|\'[^\']*\')',
     re.IGNORECASE,
 )
+HTML_BOLD_RE = re.compile(r"<(?P<tag>b|strong)\b[^>]*>(?P<content>.*?)</(?P=tag)>", re.IGNORECASE | re.DOTALL)
+HTML_PARAGRAPH_RE = re.compile(r"</?p\b[^>]*>", re.IGNORECASE)
+HTML_HREF_ANCHOR_RE = re.compile(
+    r'<a\b[^>]*href="(?P<target>[^"]+)"[^>]*>(?P<label>.*?)</a>',
+    re.IGNORECASE | re.DOTALL,
+)
+HTML_SELF_CLOSING_NAMED_ANCHOR_RE = re.compile(
+    r'<a\b[^>]*name="(?P<name>[^"]+)"[^>]*/>',
+    re.IGNORECASE,
+)
+HTML_NAMED_ANCHOR_RE = re.compile(
+    r'<a\b[^>]*name="(?P<name>[^"]+)"[^>]*?(?<!/)>(?P<label>.*?)</a>',
+    re.IGNORECASE | re.DOTALL,
+)
+HTML_TABLE_RE = re.compile(r"<table\b[^>]*>(?P<body>.*?)</table>", re.IGNORECASE | re.DOTALL)
+HTML_TABLE_ROW_RE = re.compile(r"<tr\b[^>]*>(?P<body>.*?)</tr>", re.IGNORECASE | re.DOTALL)
+HTML_TABLE_CELL_RE = re.compile(r"<t[dh]\b[^>]*>(?P<body>.*?)</t[dh]>", re.IGNORECASE | re.DOTALL)
 ESCAPED_HTML_STYLE_BLOCK_RE = re.compile(r"&lt;style\b.*?&gt;.*?&lt;/style&gt;", re.IGNORECASE | re.DOTALL)
 ESCAPED_HTML_BR_RE = re.compile(r"&lt;br\s*/?&gt;", re.IGNORECASE)
 ESCAPED_HTML_BUTTON_RE = re.compile(
@@ -87,13 +105,41 @@ ESCAPED_HTML_SPAN_RE = re.compile(
 )
 ESCAPED_HTML_FONT_RE = re.compile(r"&lt;/?font\b.*?&gt;", re.IGNORECASE)
 ESCAPED_HTML_DIV_RE = re.compile(r"&lt;/?div\b.*?&gt;", re.IGNORECASE)
+ESCAPED_WIKI_REF_SELF_CLOSING_RE = re.compile(
+    r"&lt;ref\b[^&]*?/\s*&gt;",
+    re.IGNORECASE,
+)
+ESCAPED_WIKI_REF_WITH_ENCODED_CLOSE_RE = re.compile(
+    r"&lt;ref\b[^&]*?&gt;(?P<content>(?:(?!&lt;/ref&gt;).)*?%3C/ref%3E>)",
+    re.IGNORECASE | re.DOTALL,
+)
+ESCAPED_WIKI_REF_RE = re.compile(
+    r"&lt;ref\b[^&]*?&gt;(?P<content>.*?)&lt;/ref&gt;",
+    re.IGNORECASE | re.DOTALL,
+)
+ESCAPED_WIKI_REF_UNCLOSED_RE = re.compile(
+    r"&lt;ref\b[^&]*?&gt;(?P<content>.+)\Z",
+    re.IGNORECASE | re.DOTALL,
+)
+ESCAPED_WIKI_REFERENCES_RE = re.compile(r"&lt;references\b[^&]*?/\s*&gt;", re.IGNORECASE)
+TABLE_ATTR_ONLY_CELL_RE = re.compile(
+    r'^(?:(?:style|align|valign|rowspan|colspan|width|height)\s*=\s*(?:"[^"]*"|\'[^\']*\'))'
+    r'(?:\s+(?:(?:style|align|valign|rowspan|colspan|width|height)\s*=\s*(?:"[^"]*"|\'[^\']*\')))*$',
+    re.IGNORECASE,
+)
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
 HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
 CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
+MISATTACHED_CODE_FENCE_RE = re.compile(r"(?<![\r\n])```")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
 IMAGE_PLACEHOLDER_RE = re.compile(r"\[\[IMAGE_OMITTED:([^\]]+)\]\]")
+OMITTED_IMAGE_LINK_LABEL_RE = re.compile(r"\[omitted image:\s*(?P<label>.+?)\]", re.IGNORECASE)
+LINKED_IMAGE_LABEL_PLACEHOLDER_RE = re.compile(
+    r"\[\[(?:IMAGE_OMITTED:|omitted image:\s*)(?P<label>[^\]]+)\]\]\((?P<target>[^)]+)\)",
+    re.IGNORECASE,
+)
 FIGURE_ARTIFACT_RE = re.compile(r"(?i)(?:<br\s*/?>|&lt;br&gt;|&nbsp;|\{:\s*\.fig\s*\})")
 WINDOWS_JAVA_INCLUDE_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]include\b"
@@ -247,6 +293,27 @@ GCAM_BUILD_VS_TOOLSET_RE = re.compile(
 GCAM_BUILD_VS_FINAL_RE = re.compile(
     r"^Finally select menu option `Build -> Build Solution` to build GCAM\.\s+Once complete an executable will be "
     r"copied to `(?P<output>[^`]+)` and you can still use `(?P<wrapper>[^`]+)` to run it\.\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_DEBUG_DB_IMPORT_RE = re.compile(
+    r"^Which can subsequently be loaded into an XML database by using the \[Model Interface\]\(user-guide\.md#modelinterface\) "
+    r"by opening a database, choosing `File -> Manage DB`, then Click `Add`, finally select the `debug_db\.xml` "
+    r"document to add to the database\.\s+Note a _new_ database can be created by simply selecting an empty folder "
+    r"to open as a database \(you will see a warning message about potentially deleting files \*\*and you should "
+    r"pay attention to it\*\*\)\.\s*$",
+    re.MULTILINE,
+)
+DATA_SYSTEM_IEA_EXPORT_RE = re.compile(
+    r"The reason why `FLOW` should be displayed as `ID codes` is that in several cases, different flows with "
+    r"different ID codes are assigned the same name \(e\.g\., \"EREFINER\" and \"TREFINER\" are differentiated "
+    r"flows, but both are named \"Petroleum Refineries\"\)\. Once the full dataset is displayed, users can "
+    r"select `File -> Export`, and select \"CSV\"\. The exported files should be named `(?P<oecd>[^`]+)` for "
+    r"the OECD countries' energy balances, and `(?P<non>[^`]+)` for the non-OECD balances, and placed in the "
+    r"`(?P<path>[^`]+)` folder\.",
+    re.MULTILINE,
+)
+INDEX_DIAGRAM_CLICK_RE = re.compile(
+    r"^\*\*GCAM diagram\. Click on each box for a more detailed description of that element\.\*\*\s*$",
     re.MULTILINE,
 )
 
@@ -430,6 +497,10 @@ def strip_image_artifacts(text: str) -> str:
         if is_standalone_image_placeholder(raw_line):
             continue
         line = IMAGE_PLACEHOLDER_RE.sub(lambda m: f"[omitted image: {m.group(1)}]", raw_line)
+        line = LINKED_IMAGE_LABEL_PLACEHOLDER_RE.sub(
+            lambda m: f"[{m.group('label').strip()}]({m.group('target')})",
+            line,
+        )
         lines.append(line.rstrip())
     return "\n".join(lines)
 
@@ -557,6 +628,12 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "shell, setting output paths and scenario names in XML rather than interactive dialogs.\n",
         )
 
+    if rel_source.name == "index.md":
+        replace(
+            INDEX_DIAGRAM_CLICK_RE,
+            "Agent adaptation: the upstream diagram navigation is rewritten below as text links grouped by topic.\n",
+        )
+
     if rel_source.name == "gcam-build.md":
         replace(
             GCAM_BUILD_PARALLEL_XCODE_RE,
@@ -612,6 +689,13 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
                 f"`{match.group('output')}` and can still be launched with `{match.group('wrapper')}`.\n"
             ),
         )
+        replace(
+            GCAM_BUILD_DEBUG_DB_IMPORT_RE,
+            "Agent adaptation: `debug_db.xml` is a text XML dump of the results that would have been written to "
+            "the XML database. Prefer importing it with scripted BaseX/XML tooling or headless ModelInterface "
+            "batch workflows rather than interactive `Manage DB` steps. If you create a fresh database directory "
+            "for that import, use a dedicated empty folder because initialization may remove existing contents.\n",
+        )
 
     if rel_source.name == "hector.md":
         replace(
@@ -641,6 +725,19 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
             "- Ensure `objects-main` references `hector-lib` so GCAM and Hector rebuild and link together as needed.\n"
             "- After those settings are in place, building the solution should rebuild and link Hector as needed.\n\n"
             "## References\n",
+        )
+
+    if rel_source.name == "data-system.md":
+        replace(
+            DATA_SYSTEM_IEA_EXPORT_RE,
+            lambda match: (
+                'The reason why `FLOW` should be displayed as `ID codes` is that in several cases, different '
+                'flows with different ID codes are assigned the same name (e.g., "EREFINER" and "TREFINER" are '
+                'differentiated flows, but both are named "Petroleum Refineries"). Once the full dataset is '
+                "displayed, export it as CSV from the source tool. The exported files should be named "
+                f"`{match.group('oecd')}` for the OECD countries' energy balances, and `{match.group('non')}` "
+                f"for the non-OECD balances, and placed in the `{match.group('path')}` folder."
+            ),
         )
 
     if changed:
@@ -736,10 +833,87 @@ def normalize_inline_html(segment: str) -> str:
             return content
         return match.group(0)
 
-    def strip_class_attr(match: re.Match[str]) -> str:
+    def strip_presentational_attr(match: re.Match[str]) -> str:
         return match.group("prefix")
 
+    def render_bold(match: re.Match[str]) -> str:
+        content = re.sub(r"\s+", " ", match.group("content")).strip()
+        if not content:
+            return ""
+        return f"**{content}**"
+
+    def normalize_anchor_label(label: str) -> str:
+        cleaned = HTML_PARAGRAPH_RE.sub(" ", label)
+        cleaned = re.sub(r"\s+", " ", cleaned).strip()
+        placeholder_match = IMAGE_PLACEHOLDER_RE.fullmatch(cleaned)
+        if placeholder_match:
+            cleaned = placeholder_match.group(1).strip()
+        omitted_match = OMITTED_IMAGE_LINK_LABEL_RE.fullmatch(cleaned)
+        if omitted_match:
+            cleaned = omitted_match.group("label").strip()
+        return cleaned
+
+    def render_href_anchor(match: re.Match[str]) -> str:
+        label = normalize_anchor_label(match.group("label"))
+        if not label:
+            return match.group("target").strip()
+        return f"[{label}]({match.group('target').strip()})"
+
+    def render_named_anchor(match: re.Match[str]) -> str:
+        name = match.group("name").strip()
+        label = normalize_anchor_label(match.group("label"))
+        anchor = f'<a name="{name}"></a>'
+        if not label:
+            return anchor
+        return f"{anchor}{label}"
+
+    def render_markdown_table(rows: list[list[str]]) -> str:
+        def format_row(row: list[str]) -> str:
+            escaped = [cell.replace("|", r"\|") for cell in row]
+            return "| " + " | ".join(escaped) + " |"
+
+        if not rows:
+            return ""
+        lines = [
+            format_row(rows[0]),
+            format_row(["---"] * len(rows[0])),
+        ]
+        for row in rows[1:]:
+            lines.append(format_row(row))
+        return "\n".join(lines)
+
+    def normalize_html_tables(text: str) -> str:
+        def clean_cell(raw: str) -> str:
+            cleaned = HTML_PARAGRAPH_RE.sub(" ", raw)
+            cleaned = re.sub(r"\s+", " ", cleaned).strip()
+            return cleaned
+
+        def repl(match: re.Match[str]) -> str:
+            rows: list[list[str]] = []
+            for row_match in HTML_TABLE_ROW_RE.finditer(match.group("body")):
+                cells = [
+                    clean_cell(cell_match.group("body"))
+                    for cell_match in HTML_TABLE_CELL_RE.finditer(row_match.group("body"))
+                ]
+                if cells:
+                    rows.append(cells)
+            if not rows:
+                return ""
+            width = max(len(row) for row in rows)
+            padded = [row + [""] * (width - len(row)) for row in rows]
+            keep_indexes = [
+                index for index in range(width) if any(row[index].strip() for row in padded)
+            ]
+            compact = [[row[index] for index in keep_indexes] for row in padded]
+            compact = [row for row in compact if any(cell.strip() for cell in row)]
+            if not compact:
+                return ""
+            return render_markdown_table(compact) + "\n"
+
+        return HTML_TABLE_RE.sub(repl, text)
+
     segment = HTML_STYLE_BLOCK_RE.sub("", segment)
+    segment = HTML_COL_TAG_RE.sub("", segment)
     segment = HTML_BR_RE.sub("\n", segment)
     segment = HTML_BUTTON_RE.sub(unwrap_button, segment)
     for _ in range(8):
@@ -749,10 +923,18 @@ def normalize_inline_html(segment: str) -> str:
         segment = updated
     segment = HTML_FONT_RE.sub("", segment)
     for _ in range(4):
-        updated = HTML_CLASS_ATTR_RE.sub(strip_class_attr, segment)
+        updated = HTML_PRESENTATIONAL_ATTR_RE.sub(strip_presentational_attr, segment)
         if updated == segment:
             break
         segment = updated
+    segment = HTML_BOLD_RE.sub(render_bold, segment)
+    segment = HTML_HREF_ANCHOR_RE.sub(render_href_anchor, segment)
+    segment = HTML_SELF_CLOSING_NAMED_ANCHOR_RE.sub(
+        lambda match: f'<a name="{match.group("name").strip()}"></a>',
+        segment,
+    )
+    segment = HTML_NAMED_ANCHOR_RE.sub(render_named_anchor, segment)
+    segment = normalize_html_tables(segment)
     segment = segment.replace("&nbsp;", " ")
     return segment
 
@@ -779,6 +961,69 @@ def normalize_escaped_inline_html(segment: str) -> str:
     return segment
 
 
+def normalize_escaped_wiki_refs(segment: str) -> str:
+    def render_ref(content: str) -> str:
+        normalized = content.replace("%3C/ref%3E", "")
+        normalized = normalized.replace("%3c/ref%3e", "")
+        normalized = normalized.replace("&lt;/ref&gt;", "")
+        normalized = re.sub(r"&lt;ref\b[^&]*?&gt;", "", normalized, flags=re.IGNORECASE)
+        normalized = normalized.replace("&nbsp;", " ")
+        normalized = re.sub(r"\s+", " ", normalized).strip(" ,;:")
+        if not normalized:
+            return ""
+        return f" [Source: {normalized}]"
+
+    def rewrite_block(block: str) -> str:
+        block = ESCAPED_WIKI_REF_SELF_CLOSING_RE.sub("", block)
+        block = ESCAPED_WIKI_REF_WITH_ENCODED_CLOSE_RE.sub(
+            lambda match: render_ref(match.group("content")),
+            block,
+        )
+        block = ESCAPED_WIKI_REF_RE.sub(
+            lambda match: render_ref(match.group("content")),
+            block,
+        )
+        block = ESCAPED_WIKI_REF_UNCLOSED_RE.sub(
+            lambda match: render_ref(match.group("content")),
+            block,
+        )
+        block = ESCAPED_WIKI_REFERENCES_RE.sub("", block)
+        return block
+
+    parts = re.split(r"(\n{2,})", segment)
+    return "".join(
+        part if index % 2 else rewrite_block(part)
+        for index, part in enumerate(parts)
+    )
+
+
+def normalize_markdown_table_residue(segment: str) -> str:
+    trailing_newline = segment.endswith("\n")
+    normalized_lines: list[str] = []
+    for line in segment.splitlines():
+        stripped = line.lstrip()
+        if not stripped.startswith("|"):
+            normalized_lines.append(line)
+            continue
+        cells = line.split("|")
+        if len(cells) < 3:
+            normalized_lines.append(line)
+            continue
+        filtered = [cells[0]]
+        removed = False
+        for cell in cells[1:-1]:
+            if TABLE_ATTR_ONLY_CELL_RE.fullmatch(cell.strip()):
+                removed = True
+                continue
+            filtered.append(cell)
+        filtered.append(cells[-1])
+        normalized_lines.append("|".join(filtered) if removed else line)
+    normalized = "\n".join(normalized_lines)
+    if trailing_newline:
+        normalized += "\n"
+    return normalized
+
+
 def apply_outside_code_fences(text: str, transform) -> str:
     parts: list[str] = []
     last = 0
@@ -792,11 +1037,16 @@ def apply_outside_code_fences(text: str, transform) -> str:
 
 def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = rewrite_images(text)
+    text = MISATTACHED_CODE_FENCE_RE.sub("\n```", text)
     text = apply_outside_code_fences(
         text,
-        lambda chunk: normalize_escaped_inline_html(
-            normalize_inline_html(
-                rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+        lambda chunk: normalize_escaped_wiki_refs(
+            normalize_escaped_inline_html(
+                normalize_markdown_table_residue(
+                    normalize_inline_html(
+                        rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+                    )
+                )
             )
         ),
     )

@@ -244,14 +244,14 @@ described further in the [land section](details_land.md#landsharingapproach).
 
 ## Notes and References
 
-<a name="ref1">[1]</a> Train, K. (2003), <cite>Discrete Choice Methods
+<a name="ref1"></a>[1] Train, K. (2003), <cite>Discrete Choice Methods
 with Simulation</cite>.
 
-<a name="ref2">[2]</a> McFadden, D. (1973), "Conditional Logit
+<a name="ref2"></a>[2] McFadden, D. (1973), "Conditional Logit
 Analysis of Qualitative Choice Behavior", in <cite>Frontiers in
 Econometrics</cite>.
 
-<a name="note3">[3]</a> The logit coefficient $$\beta$$ may be either
+<a name="note3"></a>[3] The logit coefficient $$\beta$$ may be either
 positive or negative, depending on the interpretation of the choice
 indicator $$p$$.  Having $$\beta < 0$$ favors lower values of $$p$$
 and is therefore appropriate when $$p$$ represents cost (the usual
@@ -259,26 +259,26 @@ case in GCAM).  In the land system the choice indicator represents
 profit rate, and we use $$\beta > 0$$ in these choice functions to
 favor higher profit rates.
 
-<a name="ref4">[4]</a> Clarke, J. F. and Edmonds, J. (1993), "Modeling
+<a name="ref4"></a>[4] Clarke, J. F. and Edmonds, J. (1993), "Modeling
 energy technologies in a competitive market", <cite>Energy
 Economics</cite> 15 (2), 123 - 129.
 
-<a name="note5">[5]</a> As with the $$\beta$$ coefficient in the Logit
+<a name="note5"></a>[5] As with the $$\beta$$ coefficient in the Logit
 model, the sign of $$\gamma$$ depends on the interpretation of the
 choice indicator, with negative values favoring smaller $$p$$ and
 positive values favoring larger $$p$$.
 
-<a name="note6">[6]</a> This statement is actually only true in the
+<a name="note6"></a>[6] This statement is actually only true in the
 energy system.  In the land system (where the choice indicator is the
 profit rate), shares are calculated normally for all $$p>0$$.  For
 $$p\leq0$$ the share is automatically set to zero.
 
-<a name="note7">[7]</a> This is not universally true.  For $$p \ll 1$$
+<a name="note7"></a>[7] This is not universally true.  For $$p \ll 1$$
 tiny increments in $$p$$ can produce huge share differences.  For most
 of GCAM, where $$p$$ represents cost, values in this range are
 uncommon, but they do occur in a few sectors.
 
-<a name="note8">[8]</a> By suitable choice of parameters, one can
+<a name="note8"></a>[8] By suitable choice of parameters, one can
 arrange for the Logit and Modified Logit to have similar behavior in
 some neighborhood of input values.  However, this equivalence is
 approximate, and the two choice functions diverge increasingly, the

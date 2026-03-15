@@ -97,7 +97,7 @@ Note that even if you turn off Java support you can still have GCAM generate the
 #define DEBUG_XML_DB 1
 ```
 
-Which can subsequently be loaded into an XML database by using the [Model Interface](user-guide.md#modelinterface) by opening a database, choosing `File -> Manage DB`, then Click `Add`, finally select the `debug_db.xml` document to add to the database.  Note a _new_ database can be created by simply selecting an empty folder to open as a database (you will see a warning message about potentially deleting files **and you should pay attention to it**).
+Agent adaptation: `debug_db.xml` is a text XML dump of the results that would have been written to the XML database. Prefer importing it with scripted BaseX/XML tooling or headless ModelInterface batch workflows rather than interactive `Manage DB` steps. If you create a fresh database directory for that import, use a dedicated empty folder because initialization may remove existing contents.
 
 #### 2.3.2 Java On Windows
 On Windows users can get by with just installing the Standard Runtime Environment (JRE) for running GCAM however when building the Java Development Kit (JDK) is reccommended.  GCAM will expect the following header and lib files within `<Release Package>/Main_User_Workspace/libs`:

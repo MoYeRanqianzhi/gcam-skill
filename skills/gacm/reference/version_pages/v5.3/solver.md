@@ -463,5 +463,4 @@ abstraction layer.
 References
 ----------
 
-<a name="NR">Press, W., et al (1992), *Numerical Recipes in C, Second
-ed.*, Cambridge University Press, ISBN 0521431085</a>
+<a name="NR"></a>Press, W., et al (1992), *Numerical Recipes in C, Second ed.*, Cambridge University Press, ISBN 0521431085

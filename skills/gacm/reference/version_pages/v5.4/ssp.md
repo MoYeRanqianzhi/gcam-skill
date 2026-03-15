@@ -46,25 +46,25 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 
 | Category | Variable | SSP1 | SSP2 | SSP3 | SSP4 (High / Medium / Low Income ) | SSP5 | Link to Inputs |
 | :------------- |:------------- |:------------- |:------------- |:------------- |:------------- |:-------------|:-------------|
-| Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv">Socioeconomics</a> |
-|  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv">Socioeconomics</a> |
-|Fossil Resources (Technological Change/Acceptance) | Coal | Med/Low | Med/Med | High/High | Med/Low / Med/Med / Med/High | High/High | <a href="#table4">Table 4</a> |
-| | Conventional Gas & Oil | Med/Med | Med/Med | Med/Med | High/Low / High/Low / High/Low | High/High | <a href="#table4">Table 4</a> |
-| | Unconventional Oil | Low/Med | Med/Med | Med/Med | Med/Low / Med/Low / Med/Low | High/High | <a href="#table4">Table 4</a> |
-| Electricity (Technology Cost) | Nuclear | High | Med | High | Low /Low / Low | Med |<a href="#table3">Table 3</a> |
-| | Renewables | Low | Med | High | Low / Low / Low | Med | <a href="#table3">Table 3</a> |
-| | CCS | High | Med | Med | Low / Low / Low | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L261.Cstorage.R">CCS extraction costs</a> |
-| Fuel Preference | Renewables | High| Med | Med | High / High / High | Med | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/extra/renewable_shareweights_ssp1_32.xml">SSP1</a> |
-| | Traditional Biomass | Low | Low | High | Low / Low / High | Low | <a href="#table5">Table 5</a> |
+| Socioeconomics | Population in 2100 | 6.9 billion | 9 billion | 12.7 billion | 0.9 billion / 2.0 billion / 6.4 billion | 7.4 billion | [Socioeconomics](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv) |
+|  | GDP per capita in 2100 | $46,306  | $33,307 | $12,092 | $123,244 / $30,937 / $7,388 | $83,496 | [Socioeconomics](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/socioeconomics/SSP_database_v9.csv) |
+|Fossil Resources (Technological Change/Acceptance) | Coal | Med/Low | Med/Med | High/High | Med/Low / Med/Med / Med/High | High/High | [Table 4](#table4) |
+| | Conventional Gas & Oil | Med/Med | Med/Med | Med/Med | High/Low / High/Low / High/Low | High/High | [Table 4](#table4) |
+| | Unconventional Oil | Low/Med | Med/Med | Med/Med | Med/Low / Med/Low / Med/Low | High/High | [Table 4](#table4) |
+| Electricity (Technology Cost) | Nuclear | High | Med | High | Low /Low / Low | Med |[Table 3](#table3) |
+| | Renewables | Low | Med | High | Low / Low / Low | Med | [Table 3](#table3) |
+| | CCS | High | Med | Med | Low / Low / Low | Low | [CCS extraction costs](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L261.Cstorage.R) |
+| Fuel Preference | Renewables | High| Med | Med | High / High / High | Med | [SSP1](https://github.com/JGCRI/gcam-core/blob/master/input/extra/renewable_shareweights_ssp1_32.xml) |
+| | Traditional Biomass | Low | Low | High | Low / Low / High | Low | [Table 5](#table5) |
 | Energy Demand (Service Demands) | Buildings | Low | Med | Low | High / Med / Low | High | Linked to income |
-| | Transportation | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP1.csv">Low</a> and <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_ssp1_revised.csv">Low</a>| <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP2.csv">Med</a> | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv">Low</a> |  <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv">High / Med / Low</a> | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP5.csv">High</a> | Links are specific to SSP |
-| | Industry | Low | Med | Low | High / Med / Low | High | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L232.industry.R">Industry</a> and <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2321.cement.R">Cement </a> |
+| | Transportation | [Low](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP1.csv) and [Low](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A54.tranSubsector_VOTT_ssp1_revised.csv)| [Med](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP2.csv) | [Low](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv) |  [High / Med / Low](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP3.csv) | [High](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/UCD_trn_data_SSP5.csv) | Links are specific to SSP |
+| | Industry | Low | Med | Low | High / Med / Low | High | [Industry](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L232.industry.R) and [Cement](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L2321.cement.R) |
 | Agriculture & Land Use | Food Demand | High | Med | Low | High / Med / Low | High | Linked to income |
-| | Meat Demand | Low | Med | High | Med / Med / Med | High | <a href="#table6">Table 6</a> |
-| | Productivity Growth | High | Med | Low | High / Med / Low | High | <a href="#table6">Table 6</a> |
-| | Trade | Global | Global | Global | Regional / Regional / Local | Global | <a href="#table6">Table 6</a> |
-| |  SPA\* Policy |  Afforestation | Limited afforestation | No land policy | Afforestation / Limited afforestation / No land policy | Afforestation | <a href="#table7">Table 7</a> |
-| Pollutant Emissions | Emissions Factors | Low | Med | High | High / High / High | Low | <a href="https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L251.en_ssp_nonco2.R">Emissions</a>|
+| | Meat Demand | Low | Med | High | Med / Med / Med | High | [Table 6](#table6) |
+| | Productivity Growth | High | Med | Low | High / Med / Low | High | [Table 6](#table6) |
+| | Trade | Global | Global | Global | Regional / Regional / Local | Global | [Table 6](#table6) |
+| |  SPA\* Policy |  Afforestation | Limited afforestation | No land policy | Afforestation / Limited afforestation / No land policy | Afforestation | [Table 7](#table7) |
+| Pollutant Emissions | Emissions Factors | Low | Med | High | High / High / High | Low | [Emissions](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_L251.en_ssp_nonco2.R)|
 | Marker | Model | IMAGE | MESSAGE-GLOBIOM | AIM | GCAM | REMIND-MAGPIE | |
 |           | Reference  | Van Vuuren et al. (2016) | Riahi et al. (2016) | Fujimori et al. (2016) | Calvin et al. (2016) | Kriegler et al. (2016) | |
 | Challenges | Challenges to Mitigation | Low | Medium | High | Low | High | |
@@ -77,101 +77,17 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 **Table 3**: Capital Costs for Electric Power Plants across SSPs
 {: .tbl}
 
-<table style="width:100%;">
-<colgroup>
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-<col style="width: 16%" />
-</colgroup>
-<tbody>
-<tr>
-<td><p><strong>Plant Type</strong></p></td>
-<td><p><strong>SSP1</strong></p></td>
-<td><p><strong>SSP2</strong></p></td>
-<td><p><strong>SSP3</strong></p></td>
-<td><p><strong>SSP4</strong></p></td>
-<td><p><strong>SSP5</strong></p></td>
-</tr>
-<tr>
-<td><p>Nuclear</p></td>
-<td><p>LOW</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>Geothermal</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>PV</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>PV with storage</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td>CORE
-<p>
-
-</p></td>
-</tr>
-<tr>
-<td><p>Rooftop PV</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>CSP</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>CSP with storage</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>Wind</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-<tr>
-<td><p>Wind with storage</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-<td><p>LOW</p></td>
-<td><p>ADV</p></td>
-<td><p>CORE</p></td>
-</tr>
-</tbody>
-</table>
+| **Plant Type** | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+| --- | --- | --- | --- | --- | --- |
+| Nuclear | LOW | CORE | LOW | ADV | CORE |
+| Geothermal | ADV | CORE | LOW | ADV | CORE |
+| PV | ADV | CORE | LOW | ADV | CORE |
+| PV with storage | ADV | CORE | LOW | ADV | CORE |
+| Rooftop PV | ADV | CORE | LOW | ADV | CORE |
+| CSP | ADV | CORE | LOW | ADV | CORE |
+| CSP with storage | ADV | CORE | LOW | ADV | CORE |
+| Wind | ADV | CORE | LOW | ADV | CORE |
+| Wind with storage | ADV | CORE | LOW | ADV | CORE |
 
 ### Fossil Fuel Assumptions
 
@@ -204,28 +120,9 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 **Table 5**: Building energy demand Assumptions
 {: .tbl}
 
-<table>
-<tbody>
-<tr>
-<td><p>
-
-</p></td>
-<td><p><strong>SSP1</strong></p></td>
-<td><p><strong>SSP2</strong></p></td>
-<td><p><strong>SSP3</strong></p></td>
-<td><p><strong>SSP4</strong></p></td>
-<td><p><strong>SSP5</strong></p></td>
-</tr>
-<tr>
-<td><p>Fuel Preference Elasticity for Traditional Bioenergy</p></td>
-<td><p>-2.5</p></td>
-<td><p>-2</p></td>
-<td><p>-1</p></td>
-<td><p>-0.75</p></td>
-<td><p>-2.5</p></td>
-</tr>
-</tbody>
-</table>
+|  | **SSP1** | **SSP2** | **SSP3** | **SSP4** | **SSP5** |
+| --- | --- | --- | --- | --- | --- |
+| Fuel Preference Elasticity for Traditional Bioenergy | -2.5 | -2 | -1 | -0.75 | -2.5 |
 
 ### Agriculture and Land Use Assumptions
 

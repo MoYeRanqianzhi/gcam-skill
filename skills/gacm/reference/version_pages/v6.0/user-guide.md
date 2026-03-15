@@ -26,7 +26,7 @@ Load this page when the user needs version-specific detail from this exact page 
 * [ModelInterface](#modelinterface)
 * [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
 
-## <a name="gcam-intro"> 1.Introduction </a>
+## <a name="gcam-intro"></a>1.Introduction
 This document provides information on acquiring and running the GCAM model. Agent adaptation: the upstream source referenced website navigation for release downloads; in this skill, resolve the target release from repository contents, version route docs, or release archives instead of relying on page layout. There will typically be separate platform release packages plus a source archive for rebuild workflows.
 
 * gcam-v5.1-Mac-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Mac OS X platform.  **Note for most Mac users this is typically the only package required.**
@@ -39,7 +39,7 @@ To start users should download and unpack the Release Package appropriate for th
 
 The rest of this user's guide is divided into two parts. First a [GCAM "quickstart"](#gcam-quickstart) guide with basic instructions on running GCAM and viewing results, followed by a more detailed [GCAM User's Guide](#gcam-users-guide).
 
-## 2. <a name="gcam-quickstart">GCAM Quickstart</a>
+## 2. <a name="gcam-quickstart"></a>GCAM Quickstart
 
 This section provides a brief introduction on how to use the GCAM Model and view model data using the GCAM model interface. The instructions in this Quickstart guide should work with a GCAM distribution release that has been downloaded and uncompressed to your local machine.
 
@@ -115,7 +115,7 @@ If there are multiple `ComponentSet` blocks, then all permutations of `FileSets`
 
 Note that there is also a [batch functionality](#modelinterface-batch-modes) within the `ModelInterface`, which has a different format.
 
-### 3.3 <a name="target-finder"> Target finder </a>
+### 3.3 <a name="target-finder"></a>Target finder
 
 Enabling this mode for running GCAM involves specifying a [policy target file](#312-files-input-options) and enabling [find-path](#314-bools-input-options).  When running the target finder, as is the case when running any policy, users should start from the `configuration_policy.xml` to ensure the market structures are properly set up.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to provide a good `initial-price-guess` as documented below.  Example policy target files are supplied in `input/policy` and are self documented:
 
@@ -215,7 +215,7 @@ Note that target finder runs can also be configured in [Batch mode](#gcam-batch-
 </BatchRunner>
 ```
 
-### 3.4 <a name="modelinterface"> ModelInterface </a>
+### 3.4 <a name="modelinterface"></a>ModelInterface
 
 The model interface is the historical GCAM tool for querying [BaseX](http://basex.org) XML databases and converting CSV files to XML.
 
@@ -227,7 +227,7 @@ Agent adaptation: older macOS packaging notes about `ModelInterface.app` bundle 
 
 If you have problems with the model interface, the log file may provide useful information. The default setup, for example run-model-interface.bat, sends logging messages to `logs/model_interface_log.txt`.
 
-#### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
+#### <a name="interactive-mode"></a>3.4.1 Interactive Mode
 
 Agent adaptation: interactive mode is preserved only as historical context. For agent work, read scenario names from the database, region names from results or batch query files, and query definitions from XML files directly. Inspect `model_interface.properties` as plain text to locate the active query file, for example:
 
@@ -248,7 +248,7 @@ Note if the query file is not found the ModelInterface will ask you to select a 
 
 Agent adaptation: query XML is plain text. Copy it between files, repositories, or messages as needed, then edit and save the underlying query file directly instead of relying on GUI copy/paste or interactive save-menu actions.
 
-#### <a name="modelinterface-batch-modes"> 3.4.2 ModelInterface Batch Modes </a>
+#### <a name="modelinterface-batch-modes"></a>3.4.2 ModelInterface Batch Modes
 
 When doing scenario analysis on GCAM results it is often very useful to predefine the set of queries you would like to look at and automatically save the results to CSV or XLS format for plotting or making tables, etc.  Setting up the Model Interface to do this is done in one or two steps depending on the level of automation you would like.
 
@@ -339,7 +339,7 @@ yet as complete as the R package, the python package supports basic
 functionality including importing individual or batched queries as
 pandas data frames for analysis or use in other python programs.
 
-### 3.5 <a name="controlling-the-level-of-xml-db-output"> Controlling the level of XML DB Output </a>
+### 3.5 <a name="controlling-the-level-of-xml-db-output"></a>Controlling the level of XML DB Output
 
 The GCAM XML database output is verbose and can consume a lot of disk space.  Users may seek to limit or even query and discard these results, particularly when doing a large number of runs, to save space and time.  To do this they can configure in `<GCAM Workspace>/exe/XMLDBDriver.poperties` the following options:
 

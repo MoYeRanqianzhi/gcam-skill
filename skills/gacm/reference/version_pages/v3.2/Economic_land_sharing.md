@@ -26,7 +26,7 @@ Also note that, since land value, price, or rent is equivalent to the profit tha
 Land Competition Compared to Energy System Competition
 ------------------------------------------------------
 
-This logit competition appears similar to our modeling of relative-cost based sharing of technologies in the [GCAM energy system](The_Energy_System.md), but it differs in two very important ways. First, here it is based on profit, so exponents are positive, and second, the average profit equations developed by John Clarke and Jae Edmonds &lt;ref&gt;Clarke, J. F. and J. Edmonds (1993). "Modeling Energy Technologies in a Competitive Market." Energy Economics 15(2): 123-129.&lt;/ref&gt; are used rather than a straight weighted average of profits. With the Clarke/Edmonds approach, we avoid the situation where the weighted average profit is not monotonic in the individual profits. For example, if a simple weighted average is used to compute profit, then if the profit of the least profitable technology is increased, while all other profits are kept constant, the weighted average profit can decrease. This phenomenon is because the share of the least profitable technology will increase as its profit increases, dragging the average profit downward.
+This logit competition appears similar to our modeling of relative-cost based sharing of technologies in the [GCAM energy system](The_Energy_System.md), but it differs in two very important ways. First, here it is based on profit, so exponents are positive, and second, the average profit equations developed by John Clarke and Jae Edmonds  [Source: Clarke, J. F. and J. Edmonds (1993). "Modeling Energy Technologies in a Competitive Market." Energy Economics 15(2): 123-129.] are used rather than a straight weighted average of profits. With the Clarke/Edmonds approach, we avoid the situation where the weighted average profit is not monotonic in the individual profits. For example, if a simple weighted average is used to compute profit, then if the profit of the least profitable technology is increased, while all other profits are kept constant, the weighted average profit can decrease. This phenomenon is because the share of the least profitable technology will increase as its profit increases, dragging the average profit downward.
 
 The Clarke and Edmonds average profit formula is a literal interpretation within the logit modeling that all investments are made up to the point at which marginal profits are equal to the price. As a result, investments are skewed to the more profitable side of the distributions. Thus, the average profit across competing options will be higher than the average profit of any of the individual options.
 
@@ -47,5 +47,3 @@ The average profit rate for a node resulting from the share competition in each 
 
 References
 ----------
-
-&lt;references /&gt;

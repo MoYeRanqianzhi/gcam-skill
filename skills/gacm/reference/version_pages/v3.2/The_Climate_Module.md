@@ -13,8 +13,7 @@ Load this page when the user needs version-specific detail from this exact page 
 ---
 
 The GCAM employs the MAGICC model version 5. MAGICC is documented in
-several papers<sup><a href="#ref1">[1]</a><a href="#ref2">[2]</a><a
-href="#ref3">[3]</a></sup>. In the current version of GCAM, the MAGICC
+several papers<sup>[[1]](#ref1)[[2]](#ref2)[[3]](#ref3)</sup>. In the current version of GCAM, the MAGICC
 code has been re-implemented in C++. MAGICC consists of a coupled set
 of simple models for the entire chain from emissions to concentrations
 to global radiative forcing to global changes in temperature and
@@ -60,7 +59,7 @@ Direct and indirect forcing from aerosols is included. Direct forcing
 from sulfur dioxide, black carbon, and organic carbon are taken to be
 proportional to SO2, BC, and OC emissions, respectively. The GCAM
 version of MAGICC has been updated to include a direct representation
-of BC and OC emissions provided by GCAM.<sup><a href="#ref4">[4]</a></sup>
+of BC and OC emissions provided by GCAM.<sup>[[4]](#ref4)</sup>
 In the distribution version of MAGICC, BC
 and OC forcing is, in contrast, inferred from proxy measures such as
 land-use change and SO2 or CO emissions. Indirect cloud forcing in
@@ -79,150 +78,61 @@ land glaciers and (optionally) large arctic and antarctic ice sheets
 are also included.
 
 MAGICC has been shown to be able to emulate the global-mean results
-from most complex general circulation models<sup><a href="#ref5">[5]</a></sup>. A range of
+from most complex general circulation models<sup>[[5]](#ref5)</sup>. A range of
 user-specified parameters, including climate sensitivity,
-carbon-cycle<sup><a href="#ref6">[6]</a></sup>, and aerosol forcing strength, are available that
+carbon-cycle<sup>[[6]](#ref6)</sup>, and aerosol forcing strength, are available that
 enable a GCAM user to produce a wide range of climate
 scenarios.
 
-<table>
-  <caption>Table 1: Sources of greenhouse gases in GCAM</caption>
-  <tr>
-    <th> </th>
-    <th>GCAM</th>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> CO<sub>2</sub> fuel combustion</td>
-    <td> Endogenous by technology and fuel</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> CO<sub>2</sub> from other industry</td>
-    <td> Endogenous by technology and fuel</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> CO<sub>2</sub> from land use change</td>
-    <td> Endogenous by technology and land use</td>
-  </tr>
-
-  <tr style="background-color: LemonChiffon">
-    <td> CH<sub>4</sub></td>
-    <td> Endogenous, mitigation with MAC</td>
-  </tr>
-
-  <tr style="background-color: LemonChiffon">
-    <td> N<sub>2</sub>O</td>
-    <td> Endogenous, mitigation with MAC</td>
-  </tr>
-
-  <tr style="background-color: Salmon">
-    <td> CFCs</td>
-    <td> Exogenous</td>
-  </tr>
-
-  <tr style="background-color: LemonChiffon">
-    <td> HFCs</td>
-    <td> Endogenous, mitigation with MAC</td>
-  </tr>
-
-  <tr style="background-color: LemonChiffon">
-    <td> PFCs</td>
-    <td> Endogenous, mitigation with MAC</td>
-  </tr>
-
-  <tr style="background-color: LemonChiffon">
-    <td> SF<sub>y</sub></td>
-    <td> Endogenous, mitigation with MAC</td>
-  </tr>
-
-  <tr style="background-color: Salmon">
-    <td> Other Montreal gases</td>
-    <td> Exogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> CO</td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> NO<sub>x</sub></td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> VOC</td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> SO<sub>2</sub></td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> BC from fossil fuel burning</td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> OC from fossil fuel burning</td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> BC from biomass burning</td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Aquamarine">
-    <td> OC from biomass burning</td>
-    <td> Endogenous</td>
-  </tr>
-
-  <tr style="background-color: Salmon">
-    <td> Nitrate</td>
-    <td> Exogenous</td>
-  </tr>
-
-  <tr style="background-color: Salmon">
-    <td> Mineral dust</td>
-    <td> Exogenous</td>
-  </tr>
-
-  <tr style="background-color: Salmon">
-    <td> Albedo</td>
-    <td> Exogenous</td>
-  </tr>
-</table>
+|   | GCAM |
+| --- | --- |
+| CO<sub>2</sub> fuel combustion | Endogenous by technology and fuel |
+| CO<sub>2</sub> from other industry | Endogenous by technology and fuel |
+| CO<sub>2</sub> from land use change | Endogenous by technology and land use |
+| CH<sub>4</sub> | Endogenous, mitigation with MAC |
+| N<sub>2</sub>O | Endogenous, mitigation with MAC |
+| CFCs | Exogenous |
+| HFCs | Endogenous, mitigation with MAC |
+| PFCs | Endogenous, mitigation with MAC |
+| SF<sub>y</sub> | Endogenous, mitigation with MAC |
+| Other Montreal gases | Exogenous |
+| CO | Endogenous |
+| NO<sub>x</sub> | Endogenous |
+| VOC | Endogenous |
+| SO<sub>2</sub> | Endogenous |
+| BC from fossil fuel burning | Endogenous |
+| OC from fossil fuel burning | Endogenous |
+| BC from biomass burning | Endogenous |
+| OC from biomass burning | Endogenous |
+| Nitrate | Exogenous |
+| Mineral dust | Exogenous |
+| Albedo | Exogenous |
 
 References
 ---------
 
-<a name="ref1">[1]</a> Wigley, T.M.L. and Raper, S.C.B. 1992. Implications for Climate
+<a name="ref1"></a>[1] Wigley, T.M.L. and Raper, S.C.B. 1992. Implications for Climate
 And Sea-Level of Revised IPCC Emissions Scenarios, _Nature_ 357,
 293–300.
 
-<a name="ref2">[2]</a> Wigley, T.M.L. and Raper, S.C.B. 2002. Reasons
+<a name="ref2"></a>[2] Wigley, T.M.L. and Raper, S.C.B. 2002. Reasons
 for larger warming projections in the IPCC Third Assessment Report, _J. Climate_ 15, 2945–2952.
 
-<a name="ref3">[3]</a> Raper, S.C.B., Wigley T.M.L. and Warrick
+<a name="ref3"></a>[3] Raper, S.C.B., Wigley T.M.L. and Warrick
 R.A. 1996. in _Sea-Level Rise and Coastal Subsidence: Causes, Consequences and Strategies_ J.D. Milliman, B.U. Haq, Eds., Kluwer
 Academic Publishers, Dordrecht, The Netherlands,
 pp. 11–45.
 
 <!-- This is the closest match I could find to the SJ Smith, et. al, -->
 <!-- in preparation, paper cited in the original text.  -rpl -->
-<a name="ref4">[4]</a> SJ Smith, A Mizrahi, "Near-term climate mitigation by short-lived forcers"
+<a name="ref4"></a>[4] SJ Smith, A Mizrahi, "Near-term climate mitigation by short-lived forcers"
     _Proceedings of the National Academy of Sciences_, 2013
 
-<a name="ref5">[5]</a> Raper, S. C. B. and U. Cubasch
+<a name="ref5"></a>[5] Raper, S. C. B. and U. Cubasch
 (1996) Emulation of the results from a coupled general circulation
 model using a simple climate model, _GEOPHYSICAL RESEARCH LETTERS_,
 VOL. 23, NO. 10, PP. 1107-1110fckLRdoi:10.1029/96GL01065
 
-<a name="ref6">[6]</a> Smith, Steven J. and J.A. Edmonds (2006) The
+<a name="ref6"></a>[6] Smith, Steven J. and J.A. Edmonds (2006) The
 Economic Implications of Carbon Cycle Uncertainty, _Tellus B_ 58 (5),
 pp. 586–590.

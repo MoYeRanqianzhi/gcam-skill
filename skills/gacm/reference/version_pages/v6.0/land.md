@@ -36,7 +36,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Profit rate of managed land | By GLU | 1975$ per thous $$km^2$$ | [Land Supply Module](supply_land.md) |
 | Logit exponents | By GLU and land node | Unitless | [Exogenous](inputs_land.md) |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.md#description) in that it lists all inputs to the land module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote"></a>1: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.md#description) in that it lists all inputs to the land module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## Description
 

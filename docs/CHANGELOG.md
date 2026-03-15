@@ -20,6 +20,10 @@
 - Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.
 
 ## 2026-03-16
+- Normalized residual HTML presentation inside bundled page output so raw `<a href>...</a>` links, HTML navigation tables, and bold-only container markup are rewritten into markdown text structures during generation.
+- Reworked diagram-driven `index.md` landing pages into text-first navigation tables so version entry pages remain useful without images or clickable UI diagrams.
+- Replaced remaining interactive `File -> Manage DB` and `File -> Export` instructions in repeated build/data-system passages with headless or source-tool-neutral guidance.
+- Expanded `validate_bundled_pages.py` so bundled pages now fail on raw HTML href/table markup and on the known residual GUI/menu-path phrases that were still slipping through page-bundle generation.
 - Tightened page-bundle sanitization to remove raw web style blocks (`<style>...</style>`) and presentational `class=` attributes from bundled pages while preserving semantic links and anchors.
 - Extended bundled-page sanitization to also clean escaped legacy web markup such as `&lt;br&gt;`, `&lt;span ...&gt;`, `&lt;font ...&gt;`, and `&lt;div&gt;` that remained in older wiki-derived pages, especially `v3.2`.
 - Expanded `validate_bundled_pages.py` so generated pages now fail if raw web-widget/button markup, raw font tags, styled spans, raw line-break tags, raw style blocks, or raw HTML `class=` attributes reappear.

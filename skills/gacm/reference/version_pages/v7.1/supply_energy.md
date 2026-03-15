@@ -36,7 +36,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Energy commodity prices | By region, fuel, and year | 1975$/GJ | [Marketplace](marketplace.md) |
 | GHG value | By region, technology, gas, and year | 1975$/GJ | [Emissions](emissions.md) |
 
-<a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#description) in that it lists all inputs to the energy supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
+<a name="table_footnote"></a>1: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#description) in that it lists all inputs to the energy supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
 ## Description
 
@@ -315,36 +315,36 @@ Hydrogen
 
 ## References
 
-<a name="anl2015">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
+<a name="anl2015"></a>[ANL 2015] Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
 
-<a name="deloitte2008">[Deloitte 2008]</a> Deloitte Development LLC, 2008, *Geothermal Risk Mitigation Strategies Report*, prepared for Department of Energy, Office of Energy Efficiency and Renewable Energy, Geothermal Program. [Link](https://www1.eere.energy.gov/geothermal/pdfs/geothermal_risk_mitigation.pdf)
+<a name="deloitte2008"></a>[Deloitte 2008] Deloitte Development LLC, 2008, *Geothermal Risk Mitigation Strategies Report*, prepared for Department of Energy, Office of Energy Efficiency and Renewable Energy, Geothermal Program. [Link](https://www1.eere.energy.gov/geothermal/pdfs/geothermal_risk_mitigation.pdf)
 
-<a name="doe2021">[ANL 2015]</a> Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
+<a name="doe2021"></a>[ANL 2015] Argonne National Laboratory, 2015, *Hydrogen delivery scenario analysis model (HDSAM)*, Argonne National Laboratory. [Link](https://hdsam.es.anl.gov/index.php?content=hdsam)
 
-<a name="dooley2009">[Dooley and Dahowski 2009]</a> Dooley, J.J., and Dahowski, R.T. 2009. Large-scale U.S. unconventional fuels production and the role of carbon dioxide capture and storage technologies in reducing their greenhouse gas emissions. *Energy Procedia* 1(1), pp. 4225-4232. [Link](http://www.sciencedirect.com/science/article/pii/S1876610209008765)
+<a name="dooley2009"></a>[Dooley and Dahowski 2009] Dooley, J.J., and Dahowski, R.T. 2009. Large-scale U.S. unconventional fuels production and the role of carbon dioxide capture and storage technologies in reducing their greenhouse gas emissions. *Energy Procedia* 1(1), pp. 4225-4232. [Link](http://www.sciencedirect.com/science/article/pii/S1876610209008765)
 
-<a name="enerdata2014">[Enerdata 2014]</a> Enerdata, 2016. *The Future of Gas-to-Liquid (GTL) Industry*. [Link](http://www.enerdata.net/enerdatauk/press-and-publication/energy-news-001/future-gas-liquid-gtl-industry_29879.html)
+<a name="enerdata2014"></a>[Enerdata 2014] Enerdata, 2016. *The Future of Gas-to-Liquid (GTL) Industry*. [Link](http://www.enerdata.net/enerdatauk/press-and-publication/energy-news-001/future-gas-liquid-gtl-industry_29879.html)
 
-<a name="eurek2017">[Eurek et al. 2017]</a> Eurek, K., P. Sullivan, M. Gleason, D. Hettinger, D. Heimiller, A. Lopez (2017). An improved global wind resource estimate for integrated assessment models. Energy Economics, 64.
+<a name="eurek2017"></a>[Eurek et al. 2017] Eurek, K., P. Sullivan, M. Gleason, D. Hettinger, D. Heimiller, A. Lopez (2017). An improved global wind resource estimate for integrated assessment models. Energy Economics, 64.
 
-<a name="glebova2013">[Glebova 2013]</a> Glebova, O. 2013. *Gas to Liquids: Historical Development and Future Prospects*, Report NG 80, Oxford Institute for Energy Studies. [Link](https://www.oxfordenergy.org/wpcms/wp-content/uploads/2013/12/NG-80.pdf)
+<a name="glebova2013"></a>[Glebova 2013] Glebova, O. 2013. *Gas to Liquids: Historical Development and Future Prospects*, Report NG 80, Oxford Institute for Energy Studies. [Link](https://www.oxfordenergy.org/wpcms/wp-content/uploads/2013/12/NG-80.pdf)
 
-<a name="gregg2010">[Gregg and Smith 2010]</a> Gregg, J.S., and Smith, S.J. Global and regional potential for bioenergy from agricultural and forestry residue biomass. *Mitigation and Adaptation Strategies for Global Change* 15(3), pp 241-262. [Link](http://link.springer.com/article/10.1007/s11027-010-9215-4)
+<a name="gregg2010"></a>[Gregg and Smith 2010] Gregg, J.S., and Smith, S.J. Global and regional potential for bioenergy from agricultural and forestry residue biomass. *Mitigation and Adaptation Strategies for Global Change* 15(3), pp 241-262. [Link](http://link.springer.com/article/10.1007/s11027-010-9215-4)
 
-<a name="hannam2009">[Hannam et al. 2009]</a> Hannam, P., Kyle, P., and Smith, S.J. 2009. *Global Deployment of Geothermal Energy Using a New Characterization in GCAM 1.0*, PNNL-19231, Pacific Northwest National Laboratory. [Link](http://www.pnl.gov/main/publications/external/technical_reports/PNNL-19231.pdf)
+<a name="hannam2009"></a>[Hannam et al. 2009] Hannam, P., Kyle, P., and Smith, S.J. 2009. *Global Deployment of Geothermal Energy Using a New Characterization in GCAM 1.0*, PNNL-19231, Pacific Northwest National Laboratory. [Link](http://www.pnl.gov/main/publications/external/technical_reports/PNNL-19231.pdf)
 
-<a name="iea2011">[IEA 2011]</a> International Energy Agency, 2011, *Energy Balances of OECD Countries: Documentation for Beyond 2020 Files*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf)
+<a name="iea2011"></a>[IEA 2011] International Energy Agency, 2011, *Energy Balances of OECD Countries: Documentation for Beyond 2020 Files*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/documentation_OECDBAL_2011.pdf)
 
-<a name="iea2012">[IEA 2012]</a> International Energy Agency, 2011, *Energy Balances of OECD Countries 1960-2010 and Energy Balances of Non-OECD Countries 1971-2010*, International Energy Agency, Paris, France. [Link](http://www.iea.org/bookshop/661-Energy_Balances_of_OECD_Countries)
+<a name="iea2012"></a>[IEA 2012] International Energy Agency, 2011, *Energy Balances of OECD Countries 1960-2010 and Energy Balances of Non-OECD Countries 1971-2010*, International Energy Agency, Paris, France. [Link](http://www.iea.org/bookshop/661-Energy_Balances_of_OECD_Countries)
 
-<a name="iea2019">[IEA 2019]</a> International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France.
+<a name="iea2019"></a>[IEA 2019] International Energy Agency, 2019, *Energy Balances of OECD Countries 1960-2017 and Energy Balances of Non-OECD Countries 1971-2017*, International Energy Agency, Paris, France.
 
-<a name="iha2000">[IHA 2000]</a> International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
+<a name="iha2000"></a>[IHA 2000] International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 
-<a name="linden1976">[Linden et al. 1976]</a> Linden, H.R., Bodle, W.W., Lee, B.S., and Vyas, K.C. 1976. Production of high-btu gas from coal. *Annual Reviews of Energy* 1, pp. 65-86. [Link](http://www.annualreviews.org/doi/pdf/10.1146/annurev.eg.01.110176.000433)
+<a name="linden1976"></a>[Linden et al. 1976] Linden, H.R., Bodle, W.W., Lee, B.S., and Vyas, K.C. 1976. Production of high-btu gas from coal. *Annual Reviews of Energy* 1, pp. 65-86. [Link](http://www.annualreviews.org/doi/pdf/10.1146/annurev.eg.01.110176.000433)
 
-<a name="nrel2018">[NREL 2018]</a> National Renewable Energy Laboratory, 2018, *H2A: Hydrogen Analysis Production Models*, National Renewable Energy Laboratory. [Link](https://www.nrel.gov/hydrogen/h2a-production-models.html)
+<a name="nrel2018"></a>[NREL 2018] National Renewable Energy Laboratory, 2018, *H2A: Hydrogen Analysis Production Models*, National Renewable Energy Laboratory. [Link](https://www.nrel.gov/hydrogen/h2a-production-models.html)
 
-<a name="zwart2006">[Zwart et al. 2006]</a> Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)
+<a name="zwart2006"></a>[Zwart et al. 2006] Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)
 
-<a name="Hassen2020">[Hanssen et al. 2020]</a> Hanssen, S.V., Daioglou, V., Steinmann, Z.J.N., Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, D.P., 2020. Biomass residues as twenty-first century bioenergy feedstock—a comparison of eight integrated assessment models. Climatic Change 163, 1569–1586. [Link](https://doi.org/10.1007/s10584-019-02539-x)
+<a name="Hassen2020"></a>[Hanssen et al. 2020] Hanssen, S.V., Daioglou, V., Steinmann, Z.J.N., Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, D.P., 2020. Biomass residues as twenty-first century bioenergy feedstock—a comparison of eight integrated assessment models. Climatic Change 163, 1569–1586. [Link](https://doi.org/10.1007/s10584-019-02539-x)

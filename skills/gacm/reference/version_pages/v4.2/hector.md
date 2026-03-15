@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v4.2`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.2/BUNDLE_INDEX.md`
+- Note: This adapted Hector page rewrites IDE integration click paths into agent-readable dependency and build-setting summaries.
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -106,39 +107,20 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
 
 2. Verify that both GCAM and hector successfully build independently.  If not you should consult the build instructions for each. [BuildHector](https://github.com/JGCRI/hector/wiki/BuildHector)
 
-3. Open the GCAM project in Xcode.
+3. Agent adaptation: skip the Xcode click path. Treat the following values as the relevant build facts:
 
-4. Locate the “objects” project properties from the Project
-   Navigator. Go to the Build Settings and find the Preprocessor
-   Macros and add to whichever build configuration you need:  `USE_HECTOR=1`
-
-5. Go to the Build Settings and find the Other Linker Flags and add to
-   whichever build configuration you need: `-lgsl -lgslcblas -lm`
-
-6. Go to the Build Settings and find the Library Search Paths and add
-   to whichever build configuration you need: `<path to gsl
-   install>/lib`
-
-7. Go to the Build Settings and find the User Header Search Paths and
-	add to it the following entry: `../../climate/source/hector/headers`
-
-8. Go to the Build Settings and find the C++ Language Dialect and ensure that it is set to the following value from the drop down menu: `Compiler Default`
-
-9. Go to the Build Settings and find the C++ Standard Library and ensure that it is set to the following value from the drop down menu: `libstdc++ `
-
-10. Next add the Hector project to GCAM by right clicking on the
-    “objects” project properties in the Project Navigator and select
-    `Add to “objects”…`. Select the Hector project file which is
-    located in
-    `cvs/objects/climate/source/hector/project_files/Xcode/hector.xcodeproj`
-
-11. Under the “objects” project properties from the Project Navigator go to the Build Phases.
-	Open the Target Dependencies and click the +.  In the dialog find “hector-lib” from under the “Hector” project.
-	Open the Link Binary With Libraries and click the +.  In the dialog find “libhector-lib.a” from under the “Workspace” category.
-
-12. Ensure that objects is your current build target and Xcode will now re-build Hector and GCAM as necessary and link them together.  The GCAM is still run the same as always and will control calling Hector (if configured via add-on files to use Hector instead of MAGICC).
+- Define `USE_HECTOR=1`.
+- Add linker flags `-lgsl -lgslcblas -lm`.
+- Add library search path `<path to gsl install>/lib`.
+- Add user header search path `../../climate/source/hector/headers`.
+- Set the C++ language dialect to `Compiler Default`.
+- Set the C++ standard library to `libstdc++`.
+- Ensure the workspace includes `cvs/objects/climate/source/hector/project_files/Xcode/hector.xcodeproj`.
+- Ensure the GCAM target links the Hector dependency/library pair `hector-lib` and `libhector-lib.a`.
+- After those settings are in place, rebuilding GCAM should rebuild and link Hector as needed.
 
 #### Building GCAM-Hector on Visual Studio
+
 1.  Move or symlink the Hector workspace under the GCAM workspace under `cvs/objects/climate/source/hector` Note that the name of the workspace that GCAM will be looking for will be “Hector”.  If you wish to retain version numbering etc we recommend creating a symlink:
 
 ```
@@ -148,32 +130,18 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
 
 2. Verify that both GCAM and Hector successfully build independently.  If not you should consult the build instructions for each. [BuildHector](https://github.com/JGCRI/hector/wiki/BuildHector)
 
-3. Open the GCAM project in Visual Studio.
+3. Agent adaptation: skip the Visual Studio click path. Treat the following values as the relevant build facts:
 
-4. Locate the “objects-main” project properties from the Solution
-   Explorer. Go to the Configuration Properties –- C/C++ --
-   Preprocessor and find the Preprocessor Definitions and add to
-   whichever build configuration you need: `USE_HECTOR`
-
-5. Go to the Configuration Properties –- C/C++ -- General and find the Additional Include Directories and add to it the following entry: `..\..\climate\source\hector\headers`
-
-6. Go to the Configuration Properties –- Linker -- General and find the Additional Library Directories and add to whichever build configuration you need: `<path to gsl install>/Release`
-
-7. Go to the Configuration Properties –- Linker -- Input and find the Additional Dependencies and add to whichever build configuration you need: `gsl.lib`
-
-8. Next add the Hector project to GCAM by right clicking on the
-   “Solution” project properties in the Solution Explorer and select
-   `Add -> Existing project…`. Select the Hector project file which is
-   located in
-   `cvs/objects/climate/source/hector/project_files/VS/hector-lib.vcxproj`
-
-9. Right click on “objects-main” from the Solution Explorer and select
-   References. In the dialog click the button Add New References…  In
-   the dialog check the “hector-lib” and click ok and ok again.
-
-10. Now you can build solution and GCAM and Hector will be re-built as necessary and link them together.  The GCAM is still run the same as always and will control calling Hector (if configured via add-on files to use Hector instead of MAGICC).
+- Define `USE_HECTOR` in the project preprocessor settings.
+- Add include directory `..\..\climate\source\hector\headers`.
+- Add library directory `<path to gsl install>/Release`.
+- Add link dependency `gsl.lib`.
+- Ensure the solution includes `cvs/objects/climate/source/hector/project_files/VS/hector-lib.vcxproj`.
+- Ensure `objects-main` references `hector-lib` so GCAM and Hector rebuild and link together as needed.
+- After those settings are in place, building the solution should rebuild and link Hector as needed.
 
 ## References
+
 1. Hartin, C. A., Patel, P., Schwarber, A., Link, R. P., and
    Bond-Lamberty, B. P.: A simple object-oriented and open-source
    model for scientific and policy analyses of the global climate

@@ -12,7 +12,7 @@ import re
 import shutil
 from collections import defaultdict
 from pathlib import Path
-from typing import Iterable
+from typing import Callable, Iterable
 
 from version_catalog import VERSION_PAGES_ROOT, get_version_info, ordered_versions
 
@@ -92,8 +92,39 @@ USER_GUIDE_OPEN_DB_RE = re.compile(
     r"^Select `Open` from the Model Interface File menu.*(?:\n|$)",
     re.MULTILINE,
 )
+USER_GUIDE_DOWNLOAD_SITE_RE = re.compile(
+    r"^.*To download GCAM you can follow the `Download GCAM` link in the upper right ha(?:d|nd) corner\..*$",
+    re.MULTILINE,
+)
+USER_GUIDE_RUN_GCAM_RE = re.compile(
+    r"^In order to run GCAM double click on (?:the `run-gcam` executable script|the executable) "
+    r"or run the executable from the command line\.\s+You should see log messages scroll up the screen as GCAM "
+    r"reads in xml files and begins solving each model period\. Log information for each run can be found in "
+    r"`exe/logs/main_log\.txt`\.\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_RUN_GCAM_FAILURE_RE = re.compile(
+    r"^The most common failure to run GCAM when double clicking the `run-gcam` executable script typically relate "
+    r"to Java\.\s+Dealing with Java differs depending on your system\.\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_VIEW_OUTPUT_RE = re.compile(
+    r"^To view model output open the ModelInterface application\. This multi-platform application is written in "
+    r"java and requires that java be installed on your machine\.\s*$",
+    re.MULTILINE,
+)
 USER_GUIDE_RUN_QUERY_RE = re.compile(
     r'^To view data select one or more scenarios.*(?:\n|$)',
+    re.MULTILINE,
+)
+USER_GUIDE_TABLE_VIEW_RE = re.compile(
+    r"^A tabular data display will appear on the left and a simple graphical output will appear on the right\. "
+    r"If multiple queries were selected, these will open in different tabs\.\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_SORTING_RE = re.compile(
+    r"^\*Sorting\*: You can sort results in the Model Interface tables by clicking on the table heading\. "
+    r"You can add secondary sorting by holding ctrl while click another column heading\.\s*$",
     re.MULTILINE,
 )
 USER_GUIDE_SCREENSHOT_RE = re.compile(
@@ -103,6 +134,108 @@ USER_GUIDE_SCREENSHOT_RE = re.compile(
 USER_GUIDE_COPY_DATA_RE = re.compile(
     r"^\*Copying Data\*:.*(?:\n|$)",
     re.MULTILINE,
+)
+USER_GUIDE_MODELINTERFACE_SECTION_RE = re.compile(
+    r"^The model interface is a GCAM tool to view GCAM results from the \[BaseX\]\(http://basex\.org\) XML "
+    r"database or convert CSV files to XML\.\s+You may find a copy at the top level of your release package and "
+    r"can be run by double clicking the `ModelInterface\.jar` \(on Mac this will be ModelInterface\.app\)\.\s+"
+    r"This section will focus mainly on viewing results\.\s+It can be used in an \[interactive mode\]"
+    r"\(#interactive-mode\) or users can set up \[batch query\]\(#modelinterface-batch-modes\) files to "
+    r"automate dumping results to CSV or XLS\.\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_MODELINTERFACE_MAC_BUNDLE_RE = re.compile(
+    r"^Note as of GCAM 4\.4 the ModelInterface package on the Mac.*?^```.*?^```[ \t]*\n?",
+    re.MULTILINE | re.DOTALL,
+)
+USER_GUIDE_INTERACTIVE_INTRO_RE = re.compile(
+    r"^Please see the \[Quick Start\]\([^)]+\) section for the basics on how to open an database and run queries\.\s+"
+    r"The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in "
+    r"the database\.\s+The `Queries` are loaded from a query file\.\s+You can check the "
+    r"`model_interface\.properties` file which is located in the folder as the `ModelInterface\.jar`(?: or if "
+    r"using the `ModelInterface\.app` on the Mac in your home directory)?:\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_QUERY_FILE_PROMPT_RE = re.compile(
+    r"^Note if the query file is not found the ModelInterface will ask you to select a new one\. "
+    r"Each query is represented in it'?s own XML syntax such as:\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_QUERY_XML_SHARE_RE = re.compile(
+    r"^This XML can be copied directly out of the ModelInterface by using Ctrl-C \(or CMD-C on Mac\) and pasted "
+    r"back into the Model Interface or as text elsewhere such as email\.\s+Similarly the XML text can be copied "
+    r"out of an email and pasted back into the Model Interface using Ctrl-V \(or CMD-V on Mac\)\.\s+This is a "
+    r"handy short cut for sharing or editing queries\.\s+You will notice when queries are modified a `\*` appears "
+    r"at the root of the q(?:eries|ueries)\.\s+You can choose to `File -> Save` to update the underlying query "
+    r"file or use `File -> Save As` to save and switch to a new query file\.\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_QUERY_XML_TRANSFER_RE = re.compile(
+    r"^The actual queries are of the same format as described \[above\]\(#interactive-mode\) and can be copied "
+    r"out of a query file or pasted from the Model Interface\.\s*$",
+    re.MULTILINE,
+)
+USER_GUIDE_BATCH_FILE_INTERACTIVE_RE = re.compile(
+    r'^Users can run this "batch query" file from an interactive Model Interface session by selecting '
+    r"`File -> Batch File` and selecting the \"batch query\" file they wish to run\.\s+Users are then asked where "
+    r"to save the results \(\.csv saves as CSV and \.xls saves to excel\) and which scenarios to run\.\s*$",
+    re.MULTILINE,
+)
+
+GCAM_BUILD_PARALLEL_XCODE_RE = re.compile(
+    r"^\* Xcode edit Build Settings -> Preprocessor Macros -> add `GCAM_PARALLEL_ENABLED=0`\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_PARALLEL_VISUAL_RE = re.compile(
+    r"^\* Visual edit Project -> objects-main Properties -> C/C\+\+ -> Preprocessor -> Preprocessor Definitions "
+    r"-> add `GCAM_PARALLEL_ENABLED=0`\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_XCODE_INTRO_RE = re.compile(
+    r"^Mac users who would like to use the Xcode integrated development environment.*?Users can find the project "
+    r"file under `(?P<project>[^`]+)`\. Once open you should change the `Scheme` to build the `Release` target\.\s+"
+    r"You can find the scheme settings here:\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_XCODE_FINAL_RE = re.compile(
+    r"^Finally sel(?:ect|cet) menu option `Product -> Build` to build GCAM\.\s+Once complete an executable will be "
+    r"copied to `(?P<output>[^`]+)` and you can still use `(?P<wrapper>[^`]+)` to run it\.\s+Note that to run "
+    r"GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace\. "
+    r"This is done within the `Options` section of the current scheme\.\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_XCODE_INFO_TAB_RE = re.compile(
+    r"^Then under the `Info` tab change the build configuration to `Release`:\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_VS_INTRO_RE = re.compile(
+    r"^(?P<preamble>Users will need to have Microsoft Visual Studio C\+\+ compiler installed.*?)(?:Users can find "
+    r"the project file under `(?P<project>[^`]+)`\.  Once open you should change the `Solution Configurations` "
+    r"and `Solution Platform` to `Release` and `x64`:\s*)$",
+    re.MULTILINE,
+)
+GCAM_BUILD_VS_TOOLSET_RE = re.compile(
+    r"^Also you will likely have to change the `Platform Toolset` under menu "
+    r"`Project -> objects-main Properties\.\.` to the latest toolset installed with your Visual Studio\.\s+Note "
+    r"that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory "
+    r"within your workspace and update the \[PATH environment variable to find jvm\.dll\]\((?P<java_ref>[^)]+)\)\. "
+    r"This is done within the same project properties dialog under the `Debugging` section and properties "
+    r"`Working Directory` and `Environment`\.\s*$",
+    re.MULTILINE,
+)
+GCAM_BUILD_VS_FINAL_RE = re.compile(
+    r"^Finally select menu option `Build -> Build Solution` to build GCAM\.\s+Once complete an executable will be "
+    r"copied to `(?P<output>[^`]+)` and you can still use `(?P<wrapper>[^`]+)` to run it\.\s*$",
+    re.MULTILINE,
+)
+
+HECTOR_XCODE_UI_BLOCK_RE = re.compile(
+    r"^3\. Open the GCAM project in Xcode\..*?^#### Building GCAM-Hector on Visual Studio\s*$",
+    re.MULTILINE | re.DOTALL,
+)
+HECTOR_VISUAL_UI_BLOCK_RE = re.compile(
+    r"^3\. Open the GCAM project in Visual Studio\..*?^## References\s*$",
+    re.MULTILINE | re.DOTALL,
 )
 
 WIKILINK_ALIAS_MAP = {
@@ -290,41 +423,204 @@ def sanitize_absolute_paths(text: str) -> str:
 
 def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     changed = False
+
+    def replace(
+        pattern: re.Pattern[str], replacement: str | Callable[[re.Match[str]], str]
+    ) -> None:
+        nonlocal text, changed
+        updated = pattern.sub(replacement, text)
+        if updated != text:
+            text = updated
+            changed = True
+
     updated = LEGACY_PREVIOUS_VERSION_RE.sub("", text)
     if updated != text:
         text = updated
         changed = True
 
     if rel_source.name == "user-guide.md":
-        updated = USER_GUIDE_OPEN_DB_RE.sub(
+        replace(
+            USER_GUIDE_DOWNLOAD_SITE_RE,
+            "This document provides information on acquiring and running the GCAM model. "
+            "Agent adaptation: the upstream source referenced website navigation for release downloads; "
+            "in this skill, resolve the target release from repository contents, version route docs, or release "
+            "archives instead of relying on page layout. There will typically be separate platform release "
+            "packages plus a source archive for rebuild workflows.\n",
+        )
+        replace(
+            USER_GUIDE_RUN_GCAM_RE,
+            "Agent adaptation: invoke GCAM from the shell instead of desktop launch. Expect log messages as GCAM "
+            "reads XML inputs and solves each model period; inspect `exe/logs/main_log.txt` for run diagnostics.\n",
+        )
+        replace(
+            USER_GUIDE_RUN_GCAM_FAILURE_RE,
+            "The most common wrapper-launch failures when starting GCAM from packaged scripts typically relate to "
+            "Java. Dealing with Java differs depending on your system.\n",
+        )
+        replace(
+            USER_GUIDE_VIEW_OUTPUT_RE,
+            "Agent adaptation: result inspection should start from batch or file-based query automation, not "
+            "interactive ModelInterface browsing. The underlying ModelInterface tooling is still Java-based, so "
+            "Java remains required when those query tools are used.\n",
+        )
+        replace(
+            USER_GUIDE_OPEN_DB_RE,
             "Agent adaptation: the upstream source described interactive ModelInterface browsing here. "
             "For agent use, prefer headless query automation via `ModelInterface/InterfaceMain -b <batch.xml>`, "
             "post-run `XMLDBDriver.properties` batch queries, or the shared `reference/query_automation.md` guide.\n",
-            text,
         )
-        if updated != text:
-            text = updated
-            changed = True
-        updated = USER_GUIDE_RUN_QUERY_RE.sub(
+        replace(
+            USER_GUIDE_RUN_QUERY_RE,
             "Agent adaptation: interactive scenario/region/query selection is omitted in this text-only bundle. "
             "Treat scenario, region, and query names as identifiers for headless batch execution instead.\n",
-            text,
         )
-        if updated != text:
-            text = updated
-            changed = True
-        updated = USER_GUIDE_SCREENSHOT_RE.sub("", text)
-        if updated != text:
-            text = updated
-            changed = True
-        updated = USER_GUIDE_COPY_DATA_RE.sub(
+        replace(
+            USER_GUIDE_TABLE_VIEW_RE,
+            "Agent adaptation: interactive table/chart rendering is omitted in this text-only bundle. Treat query "
+            "results as structured outputs to export, diff, sort, and visualize with shell or data-analysis tools.\n",
+        )
+        replace(
+            USER_GUIDE_SORTING_RE,
+            "*Agent adaptation*: Sort and reshape exported results with shell, Python, R, SQL, or spreadsheet "
+            "automation rather than interactive table widgets.\n",
+        )
+        replace(USER_GUIDE_SCREENSHOT_RE, "")
+        replace(
+            USER_GUIDE_COPY_DATA_RE,
             "*Agent adaptation*: Prefer CSV/XLS export through headless batch queries or extraction libraries "
             "instead of manual copy/paste from the ModelInterface UI.\n",
-            text,
         )
-        if updated != text:
-            text = updated
-            changed = True
+        replace(
+            USER_GUIDE_MODELINTERFACE_SECTION_RE,
+            "The model interface is the historical GCAM tool for querying [BaseX](http://basex.org) XML "
+            "databases and converting CSV files to XML.\n\n"
+            "Agent adaptation: the packaged `ModelInterface.jar` / `ModelInterface.app` is not the default "
+            "workflow in this bundle. Prefer direct batch execution, query-file editing, and scripted CSV/XLS "
+            "export.\n\n"
+            "Agent adaptation: treat the `interactive mode` subsection below as historical context and prefer "
+            "batch or direct file-based workflows.\n",
+        )
+        replace(
+            USER_GUIDE_MODELINTERFACE_MAC_BUNDLE_RE,
+            "Agent adaptation: older macOS packaging notes about `ModelInterface.app` bundle metadata are not the "
+            "primary workflow for agents. Prefer invoking the jar from the shell or editing "
+            "`model_interface.properties` directly in a text-accessible working directory.\n",
+        )
+        replace(
+            USER_GUIDE_INTERACTIVE_INTRO_RE,
+            "Agent adaptation: interactive mode is preserved only as historical context. For agent work, read "
+            "scenario names from the database, region names from results or batch query files, and query "
+            "definitions from XML files directly. Inspect `model_interface.properties` as plain text to locate "
+            "the active query file, for example:\n",
+        )
+        replace(
+            USER_GUIDE_QUERY_FILE_PROMPT_RE,
+            "If the query file is not found, update the configured query-file path directly instead of relying on "
+            "an interactive chooser. Each query is represented in its own XML syntax such as:\n",
+        )
+        replace(
+            USER_GUIDE_QUERY_XML_SHARE_RE,
+            "Agent adaptation: query XML is plain text. Copy it between files, repositories, or messages as "
+            "needed, then edit and save the underlying query file directly instead of relying on GUI copy/paste "
+            "or interactive save-menu actions.\n",
+        )
+        replace(
+            USER_GUIDE_QUERY_XML_TRANSFER_RE,
+            "The actual queries are the same XML definitions described [above](#interactive-mode) and can be "
+            "copied between query files, repositories, or batch command files.\n",
+        )
+        replace(
+            USER_GUIDE_BATCH_FILE_INTERACTIVE_RE,
+            "Agent adaptation: the interactive batch-file menu path is omitted. The portable workflow is to "
+            "reference the batch query file from a ModelInterface batch command file and execute it from the "
+            "shell, setting output paths and scenario names in XML rather than interactive dialogs.\n",
+        )
+
+    if rel_source.name == "gcam-build.md":
+        replace(
+            GCAM_BUILD_PARALLEL_XCODE_RE,
+            "* Xcode project adaptation: set the preprocessor macro `GCAM_PARALLEL_ENABLED=0` if you must "
+            "disable parallel GCAM in the Xcode project.\n",
+        )
+        replace(
+            GCAM_BUILD_PARALLEL_VISUAL_RE,
+            "* Visual Studio project adaptation: set the preprocessor definition `GCAM_PARALLEL_ENABLED=0` if "
+            "you must disable parallel GCAM in the Visual Studio project.\n",
+        )
+        replace(
+            GCAM_BUILD_XCODE_INTRO_RE,
+            lambda match: (
+                "Agent adaptation: the upstream Xcode walkthrough was UI-oriented. For agent workflows, prefer "
+                "the Makefile build. If you must use the bundled Xcode project, the essential facts are the "
+                f"project path `{match.group('project')}`, the compiler baseline noted above, and the need to use "
+                "the `Release` configuration.\n"
+            ),
+        )
+        replace(
+            GCAM_BUILD_XCODE_FINAL_RE,
+            lambda match: (
+                "For Xcode-based builds, use the `Release` configuration and ensure the runtime working "
+                "directory is the workspace `exe` directory. The resulting executable is copied to "
+                f"`{match.group('output')}` and can still be launched with `{match.group('wrapper')}`.\n"
+            ),
+        )
+        replace(GCAM_BUILD_XCODE_INFO_TAB_RE, "")
+        replace(
+            GCAM_BUILD_VS_INTRO_RE,
+            lambda match: (
+                f"{match.group('preamble').strip()} "
+                f"The bundled project file is `{match.group('project')}`. Agent adaptation: if this project is "
+                "used, treat `Release` + `x64` as the effective build configuration instead of relying on IDE "
+                "menu selection.\n"
+            ),
+        )
+        replace(
+            GCAM_BUILD_VS_TOOLSET_RE,
+            lambda match: (
+                "If this Visual Studio project is used, update `Platform Toolset` to the newest installed "
+                "toolset. For IDE or debugger launches, set the runtime working directory to the workspace `exe` "
+                "directory and update the "
+                f"[PATH environment variable to find jvm.dll]({match.group('java_ref')}) so the JVM runtime can "
+                "be located.\n"
+            ),
+        )
+        replace(
+            GCAM_BUILD_VS_FINAL_RE,
+            lambda match: (
+                "Build the Visual Studio solution in `Release`/`x64`; the resulting executable is copied to "
+                f"`{match.group('output')}` and can still be launched with `{match.group('wrapper')}`.\n"
+            ),
+        )
+
+    if rel_source.name == "hector.md":
+        replace(
+            HECTOR_XCODE_UI_BLOCK_RE,
+            "3. Agent adaptation: skip the Xcode click path. Treat the following values as the relevant build "
+            "facts:\n\n"
+            "- Define `USE_HECTOR=1`.\n"
+            "- Add linker flags `-lgsl -lgslcblas -lm`.\n"
+            "- Add library search path `<path to gsl install>/lib`.\n"
+            "- Add user header search path `../../climate/source/hector/headers`.\n"
+            "- Set the C++ language dialect to `Compiler Default`.\n"
+            "- Set the C++ standard library to `libstdc++`.\n"
+            "- Ensure the workspace includes `cvs/objects/climate/source/hector/project_files/Xcode/hector.xcodeproj`.\n"
+            "- Ensure the GCAM target links the Hector dependency/library pair `hector-lib` and `libhector-lib.a`.\n"
+            "- After those settings are in place, rebuilding GCAM should rebuild and link Hector as needed.\n\n"
+            "#### Building GCAM-Hector on Visual Studio\n",
+        )
+        replace(
+            HECTOR_VISUAL_UI_BLOCK_RE,
+            "3. Agent adaptation: skip the Visual Studio click path. Treat the following values as the relevant "
+            "build facts:\n\n"
+            "- Define `USE_HECTOR` in the project preprocessor settings.\n"
+            "- Add include directory `..\\\\..\\\\climate\\\\source\\\\hector\\\\headers`.\n"
+            "- Add library directory `<path to gsl install>/Release`.\n"
+            "- Add link dependency `gsl.lib`.\n"
+            "- Ensure the solution includes `cvs/objects/climate/source/hector/project_files/VS/hector-lib.vcxproj`.\n"
+            "- Ensure `objects-main` references `hector-lib` so GCAM and Hector rebuild and link together as needed.\n"
+            "- After those settings are in place, building the solution should rebuild and link Hector as needed.\n\n"
+            "## References\n",
+        )
 
     if changed:
         text = re.sub(r"\n{3,}", "\n\n", text)
@@ -495,6 +791,14 @@ def render_source_page(
     if rel_source.name == "user-guide.md":
         lines.append(
             "- Note: This adapted user-guide page rewrites interactive ModelInterface browsing into headless-agent guidance and omits screenshot-dependent UI steps."
+        )
+    if rel_source.name == "gcam-build.md":
+        lines.append(
+            "- Note: This adapted build page rewrites GUI IDE click paths into agent-readable configuration targets and prefers Makefile/headless builds when available."
+        )
+    if rel_source.name == "hector.md":
+        lines.append(
+            "- Note: This adapted Hector page rewrites IDE integration click paths into agent-readable dependency and build-setting summaries."
         )
     if source_version != bundle_version:
         lines.append(f"- Source provenance: inherited from `{source_version}` because `{bundle_version}` links to this page but its authoring tree does not contain a version-local copy")

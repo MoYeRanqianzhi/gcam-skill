@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v5.2`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v5.2/BUNDLE_INDEX.md`
+- Note: This adapted build page rewrites GUI IDE click paths into agent-readable configuration targets and prefers Makefile/headless builds when available.
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -293,22 +294,16 @@ JAVA_LIB = /usr/lib/jvm/default-java/jre/lib/amd64/server
 ```
 
 ### 4.2 Building with Xcode
-Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
+Agent adaptation: the upstream Xcode walkthrough was UI-oriented. For agent workflows, prefer the Makefile build. If you must use the bundled Xcode project, the essential facts are the project path `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`, the compiler baseline noted above, and the need to use the `Release` configuration.
 
-
-Then under the `Info` tab change the build configuration to `Release`:
-
-
-Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
+For Xcode-based builds, use the `Release` configuration and ensure the runtime working directory is the workspace `exe` directory. The resulting executable is copied to `<GCAM Workspace>/exe` and can still be launched with `run-gcam.command`.
 
 ### 4.3 Building with Visual Studio
-Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://visualstudio.microsoft.com/vs/express/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
+Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 4.4 you will need a version which supports the C++ 14 standard.  Visual Studio 2015 is known to work.  Note Microsoft does provide a free option called ["Express"](https://visualstudio.microsoft.com/vs/express/). The bundled project file is `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`. Agent adaptation: if this project is used, treat `Release` + `x64` as the effective build configuration instead of relying on IDE menu selection.
 
+If this Visual Studio project is used, update `Platform Toolset` to the newest installed toolset. For IDE or debugger launches, set the runtime working directory to the workspace `exe` directory and update the [PATH environment variable to find jvm.dll](#232-java-on-windows) so the JVM runtime can be located.
 
-Also you will likely have to change the `Platform Toolset` under menu `Project -> objects-main Properties..` to the latest toolset installed with your Visual Studio.  Note that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory within your workspace and update the [PATH environment variable to find jvm.dll](#232-java-on-windows). This is done within the same project properties dialog under the `Debugging` section and properties `Working Directory` and `Environment`.
-
-
-Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.bat` to run it.
+Build the Visual Studio solution in `Release`/`x64`; the resulting executable is copied to `<GCAM Workspace>/exe` and can still be launched with `run-gcam.bat`.
 
 ## 5 Recompiling Java Components
 The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are included with the GCAM source code (in the Git repository or release package) and are inherently cross platform.  Users will not typically need to recompile these unless they need to apply bug fixes or feature updates.  In such a case simple Makefiles have been provided.  Note the [Java compiler](#23-java) is required.  In both cases users will need the `<GCAM Workspace>/libs/jars` which are included in both the Mac and Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).

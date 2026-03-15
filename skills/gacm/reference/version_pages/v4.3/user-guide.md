@@ -27,7 +27,7 @@ Load this page when the user needs version-specific detail from this exact page 
 * [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
 
 ## <a name="gcam-intro"> 1.Introduction </a>
- This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 4.3 release.  There will be a few files available for download:
+This document provides information on acquiring and running the GCAM model. Agent adaptation: the upstream source referenced website navigation for release downloads; in this skill, resolve the target release from repository contents, version route docs, or release archives instead of relying on page layout. There will typically be separate platform release packages plus a source archive for rebuild workflows.
 
 * Source code (in zip or tar.gz format).  This is the core of the release and contains all model source code and data processing scripts.
 * data-system.tar.gz contains the XML input files as well as supporting CSV files for users who do not have access to the proprietary IEA energy balance data necessary for running the gcam-data-system or would like to get a quick start running GCAM.
@@ -58,7 +58,7 @@ A `log_conf.xml` file is also needed, but this file is provided in the
 release package and should therefore already be present in the exe
 directory.
 
-In order to run GCAM double click on the `run-gcam` executable script or run the executable from the command line.  You should see log messages scroll up the screen as GCAM reads in xml files and begins solving each model period. Log information for each run can be found in `exe/logs/main_log.txt`.
+Agent adaptation: invoke GCAM from the shell instead of desktop launch. Expect log messages as GCAM reads XML inputs and solves each model period; inspect `exe/logs/main_log.txt` for run diagnostics.
 
 After a successful model run the log file will end with the following text (depending on your set-up and platform, you might also see this on your screen):
 
@@ -73,15 +73,15 @@ Model exiting successfully.
 
 Comprehensive model output from each scenario is stored in an XML database. (Note that the current BaseX database is not compatible with older versions of GCAM and the GCAM model interface that use the .dbxml format.)
 
-To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine.
+Agent adaptation: result inspection should start from batch or file-based query automation, not interactive ModelInterface browsing. The underlying ModelInterface tooling is still Java-based, so Java remains required when those query tools are used.
 
 Agent adaptation: the upstream source described interactive ModelInterface browsing here. For agent use, prefer headless query automation via `ModelInterface/InterfaceMain -b <batch.xml>`, post-run `XMLDBDriver.properties` batch queries, or the shared `reference/query_automation.md` guide.
 
 Agent adaptation: interactive scenario/region/query selection is omitted in this text-only bundle. Treat scenario, region, and query names as identifiers for headless batch execution instead.
 
-A tabular data display will appear on the left and a simple graphical output will appear on the right. If multiple queries were selected, these will open in different tabs.
+Agent adaptation: interactive table/chart rendering is omitted in this text-only bundle. Treat query results as structured outputs to export, diff, sort, and visualize with shell or data-analysis tools.
 
-*Sorting*: You can sort results in the Model Interface tables by clicking on the table heading. You can add secondary sorting by holding ctrl while click another column heading.
+*Agent adaptation*: Sort and reshape exported results with shell, Python, R, SQL, or spreadsheet automation rather than interactive table widgets.
 
 *Agent adaptation*: Prefer CSV/XLS export through headless batch queries or extraction libraries instead of manual copy/paste from the ModelInterface UI.
 
@@ -288,11 +288,15 @@ Note that target finder runs can also be configured in [Batch mode](#gcam-batch-
 
 ### 3.4 <a name="modelinterface"> ModelInterface </a>
 
-The model interface is a GCAM tool to view GCAM results from the [BaseX](http://basex.org) XML database or convert CSV files to XML.  You may find a copy at the top level of your release package and can be run by double clicking the `ModelInterface.jar` (on Mac this will be ModelInterface.app).  This section will focus mainly on viewing results.  It can be used in an [interactive mode](#interactive-mode) or users can set up [batch query](#modelinterface-batch-modes) files to automate dumping results to CSV or XLS.
+The model interface is the historical GCAM tool for querying [BaseX](http://basex.org) XML databases and converting CSV files to XML.
+
+Agent adaptation: the packaged `ModelInterface.jar` / `ModelInterface.app` is not the default workflow in this bundle. Prefer direct batch execution, query-file editing, and scripted CSV/XLS export.
+
+Agent adaptation: treat the `interactive mode` subsection below as historical context and prefer batch or direct file-based workflows.
 
 #### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
 
-Please see the [Quick Start](#viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar`:
+Agent adaptation: interactive mode is preserved only as historical context. For agent work, read scenario names from the database, region names from results or batch query files, and query definitions from XML files directly. Inspect `model_interface.properties` as plain text to locate the active query file, for example:
 
 ```
 <entry key="queryFile">../Main_User_Workspace/output/queries/Main_queries.xml</entry>
@@ -309,7 +313,7 @@ Each query is represented in it's own XML syntax such as:
 </emissionsQueryBuilder>
 ```
 
-This XML can be copied directly out of the ModelInterface by using Ctrl-C (or CMD-C on Mac) and pasted back into the Model Interface or as text elsewhere such as email.  Similarly the XML text can be copied out of an email and pasted back into the Model Interface using Ctrl-V (or CMD-V on Mac).  This is a handy short cut for sharing or editing queries.  You will notice when queries are modified a `*` appears at the root of the queries.  You can choose to `File -> Save` to update the underlying query file or use `File -> Save As` to save and switch to a new query file.
+Agent adaptation: query XML is plain text. Copy it between files, repositories, or messages as needed, then edit and save the underlying query file directly instead of relying on GUI copy/paste or interactive save-menu actions.
 
 #### <a name="modelinterface-batch-modes"> 3.4.2 ModelInterface Batch Modes </a>
 
@@ -331,9 +335,9 @@ First you must set up a "batch query" file.  An example of such a file can be fo
     </aQuery>
 ```
 
-The actual queries are of the same format as described [above](#interactive-mode) and can be copied out of a query file or pasted from the Model Interface.
+The actual queries are the same XML definitions described [above](#interactive-mode) and can be copied between query files, repositories, or batch command files.
 
-Users can run this "batch query" file from an interactive Model Interface session by selecting `File -> Batch File` and selecting the "batch query" file they wish to run.  Users are then asked where to save the results (.csv saves as CSV and .xls saves to excel) and which scenarios to run.
+Agent adaptation: the interactive batch-file menu path is omitted. The portable workflow is to reference the batch query file from a ModelInterface batch command file and execute it from the shell, setting output paths and scenario names in XML rather than interactive dialogs.
 
 Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well (and even collapse the "batch query" to be defined with in the "batch command" itself).  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
 

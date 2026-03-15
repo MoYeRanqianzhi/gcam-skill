@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v4.3`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.3/BUNDLE_INDEX.md`
+- Note: This adapted Hector page rewrites IDE integration click paths into agent-readable dependency and build-setting summaries.
 
 Load this page when the user needs version-specific detail from this exact page family.
 

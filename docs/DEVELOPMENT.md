@@ -46,6 +46,7 @@ High-value shared docs to maintain:
 - Re-run `validate_page_bundle_content_parity.py` when changing `generate_bundled_pages.py` or bundled page content so the full `reference/version_pages/**/*.md` tree stays byte-for-byte aligned with generator output.
 - Re-run `validate_page_bundle_contract.py` after changing `generate_bundled_pages.py` or the generated page-bundle layer so `reference/version_pages/README.md`, per-version `BUNDLE_INDEX.md`, and delta `release_note.md` / `cmp_index.md` files cannot silently drift away from progressive-disclosure and non-pretend rules.
 - Re-run `validate_page_bundle_agent_adaptation.py` after regenerating bundled pages so repeated interactive ModelInterface walkthroughs in `user-guide.md` stay rewritten into headless-agent guidance and old wiki `Click here` navigation residue does not re-enter the published skill.
+- Treat `validate_page_bundle_agent_adaptation.py` as the guardrail for bundled page CLI-first adaptation, not just `user-guide.md`: it now also rejects website download-chrome phrasing, desktop-launch wording, Xcode/Visual Studio click paths in `gcam-build.md`, and legacy IDE-integration choreography in old `hector.md` pages.
 - Re-run generation after changing `version_catalog.py` so `version_inventory.md` and `versions/*.md` stay in sync with the topic set.
 - Re-run `validate_authoring_sources.py` before `generate_bundled_pages.py` so missing `gcam-doc` inputs or version-map drift fail fast instead of silently producing incomplete bundles.
 - Re-run `generate_bundled_pages.py` after changing bundling rules so `reference/version_pages/` stays in sync with the authoring sources.
@@ -89,6 +90,7 @@ High-value shared docs to maintain:
 - Bundled pages must also stay machine-agnostic: sanitize concrete user-home and installed-tool absolute paths into generic placeholders during generation instead of preserving upstream machine-local examples verbatim.
 - Shared topic docs should translate upstream GUI instructions into agent-usable CLI and configuration workflows whenever possible.
 - Shared topic docs are the authoritative agent layer; keep them phrased in terms of headless execution, XML/config editing, and batch extraction, while leaving historical UI prose inside `reference/version_pages/` only as traceable evidence.
+- Generated page bundles should still be agent-usable evidence, not raw human-web prose dumps: rewrite repeated site chrome, desktop-launch wording, menu/button click paths, and IDE pane choreography into concise CLI/configuration notes whenever the upstream instruction is templatic and repeated across versions.
 - If you add a new root shared runtime doc under `skills/gacm/reference/`, also add it to `version_catalog.COMMON_TOPICS` and regenerate the version references, or the inventory-parity validator will fail.
 - Authoring-time generation scripts may depend on the bundled `gcam-doc/` authoring tree; runtime skill use must not depend on that tree being present.
 - Runtime docs and scripts must stay portable: never hardcode local machine paths such as `E:\...`, `C:\...`, `/Users/...`, `/home/...`, `file://`, or `vscode://`.

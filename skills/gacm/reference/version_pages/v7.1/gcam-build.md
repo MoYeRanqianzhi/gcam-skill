@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v7.1`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v7.1/BUNDLE_INDEX.md`
+- Note: This adapted build page rewrites GUI IDE click paths into agent-readable configuration targets and prefers Makefile/headless builds when available.
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -39,7 +40,6 @@ Most of these libraries can also be installed through package managers:
 | Boost  | `boost`                         | `libboost-dev`                |
 | Java   | (Cask) `brew cask install java` | `default-jre` `default-jdk`   |
 | TBB    | `tbb`                           | `libtbb-dev`                  |
-
 
 ### 2.1 Boost
 Boost includes many general purpose utilities for the C++ language and helps GCAM compile correctly across most platforms.  The library can be downloaded from [Boost](http://www.boost.org/users/download).  The version released with GCAM was 1.62 however any recent version should work.  The Xcode and Visual Studio project files will expect boost to be located in `<GCAM Workspace>/libs` and where the folder unziped after downloading `boost_1_62_0` is either renamed or symlinked to `boost-lib`.  When building using the Makefile they can be located anywhere and are referenced by setting [an environment variable](#41-building-with-makefile). GCAM only requires the Boost headers so no further installation is required.
@@ -127,9 +127,9 @@ Eigen is used by GCAM to provide linear algebra algorithms, utilities, and data 
 ### 2.5 Intel TBB
 The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utilities and algorithms to facilitate parallel processing.  We rely on TBB to utilize multiple CPU/cores to speed up GCAM runs.  Users can download pre-built binaries for Windows, Mac, and select Linux distributions (and it can often be found in package managers such as those noted above).  The prebuilt binaries can be downloaded from [the Intel TBB Github repo](https://github.com/oneapi-src/oneTBB/releases).  You can unzip it into your `libs` directory and rename/symlink to just `tbb` (no version numbers). Note users can easily disable GCAM Parallel by editing `utils/base/include/definitions.h` and changing `GCAM_PARALLEL_ENABLED` from `1` to `0` or alternatively updating their build platform:
 * Makefile: defining the environment variable `export USE_GCAM_PARALLEL=0`
-* Xcode edit Build Settings -> Preprocessor Macros -> add `GCAM_PARALLEL_ENABLED=0`
-* Visual edit Project -> objects-main Properties -> C/C++ -> Preprocessor -> Preprocessor Definitions -> add `GCAM_PARALLEL_ENABLED=0`
+* Xcode project adaptation: set the preprocessor macro `GCAM_PARALLEL_ENABLED=0` if you must disable parallel GCAM in the Xcode project.
 
+* Visual Studio project adaptation: set the preprocessor definition `GCAM_PARALLEL_ENABLED=0` if you must disable parallel GCAM in the Visual Studio project.
 
 ## 3 Compiling Hector
 [Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).
@@ -209,22 +209,16 @@ JAVA_LIB=/usr/lib/jvm/default-java/jre/lib/amd64/server
 ```
 
 ### 4.2 Building with Xcode
-Mac users who would like to use the Xcode integrated development environment must have it installed (available from the Apple App Store), however a recent version with C++ 14 support is required.  Xcode version 8.1+ have been known to work.  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`. Once open you should change the `Scheme` to build the `Release` target.  You can find the scheme settings here:
+Agent adaptation: the upstream Xcode walkthrough was UI-oriented. For agent workflows, prefer the Makefile build. If you must use the bundled Xcode project, the essential facts are the project path `<GCAM Workspace>/cvs/objects/build/xcode3/objects.xcodeproj`, the compiler baseline noted above, and the need to use the `Release` configuration.
 
-
-Then under the `Info` tab change the build configuration to `Release`:
-
-
-Finally select menu option `Product -> Build` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.command` to run it.  Note that to run GCAM from within Xcode, you must set the working directory to the `exe` directory within your workspace. This is done within the `Options` section of the current scheme.
+For Xcode-based builds, use the `Release` configuration and ensure the runtime working directory is the workspace `exe` directory. The resulting executable is copied to `<GCAM Workspace>/exe` and can still be launched with `run-gcam.command`.
 
 ### 4.3 Building with Visual Studio
-Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 7.0 you will need a version which supports the C++ 17 standard.  Visual Studio 2017 is known to work.  Note Microsoft does provide a free option called ["Community"](https://visualstudio.microsoft.com/free-developer-offers/).  Users can find the project file under `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`.  Once open you should change the `Solution Configurations` and `Solution Platform` to `Release` and `x64`:
+Users will need to have Microsoft Visual Studio C++ compiler installed (usually called for Windows Desktop).  Note that since GCAM 7.0 you will need a version which supports the C++ 17 standard.  Visual Studio 2017 is known to work.  Note Microsoft does provide a free option called ["Community"](https://visualstudio.microsoft.com/free-developer-offers/). The bundled project file is `<GCAM Workspace>/cvs/objects/build/vc10/objects.vcxproj`. Agent adaptation: if this project is used, treat `Release` + `x64` as the effective build configuration instead of relying on IDE menu selection.
 
+If this Visual Studio project is used, update `Platform Toolset` to the newest installed toolset. For IDE or debugger launches, set the runtime working directory to the workspace `exe` directory and update the [PATH environment variable to find jvm.dll](#232-java-on-windows) so the JVM runtime can be located.
 
-Also you will likely have to change the `Platform Toolset` under menu `Project -> objects-main Properties..` to the latest toolset installed with your Visual Studio.  Note that to run GCAM from within Visual Studio, you must also set the working directory to the `exe` directory within your workspace and update the [PATH environment variable to find jvm.dll](#232-java-on-windows). This is done within the same project properties dialog under the `Debugging` section and properties `Working Directory` and `Environment`.
-
-
-Finally select menu option `Build -> Build Solution` to build GCAM.  Once complete an executable will be copied to `<GCAM Workspace>/exe` and you can still use `run-gcam.bat` to run it.
+Build the Visual Studio solution in `Release`/`x64`; the resulting executable is copied to `<GCAM Workspace>/exe` and can still be launched with `run-gcam.bat`.
 
 ## 5 Recompiling Java Components
 The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are included with the GCAM source code (in the Git repository or release package) and are inherently cross platform.  Users will not typically need to recompile these unless they need to apply bug fixes or feature updates.  In such a case simple Makefiles have been provided.  Note the [Java compiler](#23-java) is required.  In both cases users will need the `<GCAM Workspace>/libs/jars` which are included in both the Mac and Windows Release Package or from the [ModelInterface Releases on Github](https://github.com/JGCRI/modelinterface/releases).

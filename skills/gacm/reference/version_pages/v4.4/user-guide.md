@@ -27,7 +27,7 @@ Load this page when the user needs version-specific detail from this exact page 
 * [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
 
 ## <a name="gcam-intro"> 1.Introduction </a>
- This document provides information on download and get running the GCAM model. To download GCAM you can follow the `Download GCAM` link in the upper right had corner.  Users should find the GCAM version 4.4 release.  There will be a few files available for download:
+This document provides information on acquiring and running the GCAM model. Agent adaptation: the upstream source referenced website navigation for release downloads; in this skill, resolve the target release from repository contents, version route docs, or release archives instead of relying on page layout. There will typically be separate platform release packages plus a source archive for rebuild workflows.
 
 * gcam-v4.4-Mac-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Mac OS X platform.  **Note for most Mac users this is typically the only package required.**
 * gcam-v4.4-Windows-Release-Package.zip contains the GCAM executable, supporting libraries, the ModelInterface, and input XML files for the Windows platform. **Note for most Windows users this is typically the only package required.**
@@ -52,7 +52,7 @@ A `log_conf.xml` file is also needed, but this file is provided in the
 release package and should therefore already be present in the exe
 directory.
 
-In order to run GCAM double click on the `run-gcam` executable script or run the executable from the command line.  You should see log messages scroll up the screen as GCAM reads in xml files and begins solving each model period. Log information for each run can be found in `exe/logs/main_log.txt`.
+Agent adaptation: invoke GCAM from the shell instead of desktop launch. Expect log messages as GCAM reads XML inputs and solves each model period; inspect `exe/logs/main_log.txt` for run diagnostics.
 
 After a successful model run the log file will end with the following text (depending on your set-up and platform, you might also see this on your screen):
 
@@ -65,7 +65,7 @@ Model exiting successfully.
 
 #### 2.1.1 Common failures
 
-The most common failure to run GCAM when double clicking the `run-gcam` executable script typically relate to Java.  Dealing with Java differs depending on your system.
+The most common wrapper-launch failures when starting GCAM from packaged scripts typically relate to Java. Dealing with Java differs depending on your system.
 
 #### 2.1.1.1 Windows
 
@@ -94,121 +94,11 @@ On the Mac a missing Java usually prompts an install of "legacy Java" from Apple
 
 Comprehensive model output from each scenario is stored in an XML database. (Note that the current BaseX database is not compatible with older versions of GCAM and the GCAM model interface that use the .dbxml format.)
 
-To view model output open the ModelInterface application. This multi-platform application is written in java and requires that java be installed on your machine.
+Agent adaptation: result inspection should start from batch or file-based query automation, not interactive ModelInterface browsing. The underlying ModelInterface tooling is still Java-based, so Java remains required when those query tools are used.
 
 Agent adaptation: the upstream source described interactive ModelInterface browsing here. For agent use, prefer headless query automation via `ModelInterface/InterfaceMain -b <batch.xml>`, post-run `XMLDBDriver.properties` batch queries, or the shared `reference/query_automation.md` guide.
 
-Note as of GCAM 4.4 the ModelInterface package on the Mac may prompt you to select your query file if it can not locate it.  This file is typically located in `<GCAM Workspace>/output/queries/Main_queries.xml`.
-
-Agent adaptation: interactive scenario/region/query selection is omitted in this text-only bundle. Treat scenario, region, and query names as identifiers for headless batch execution instead.
-
-A tabular data display will appear on the left and a simple graphical output will appear on the right. If multiple queries were selected, these will open in different tabs.
-
-*Sorting*: You can sort results in the Model Interface tables by clicking on the table heading. You can add secondary sorting by holding ctrl while click another column heading.
-
-*Agent adaptation*: Prefer CSV/XLS export through headless batch queries or extraction libraries instead of manual copy/paste from the ModelInterface UI.
-
-## 3. <a name="gcam-users-guide"> GCAM User's Guide </a>
-
-This user's guide contains the following sections:
-
-* [Configuration File](#configuration-file)
-* [GCAM Batch file](#gcam-batch-mode)
-* [Target finder mode](#target-finder)
-* [ModelInterface](#modelinterface)
-* [Controlling the level of XML DB Output](#controlling-the-level-of-xml-db-output)
-
-### 3.1 <a name="configuration-file"> Configuration File </a>
-
-The configuration file directs the GCAM executable as to what files to read in and allows the user to set various runtime and output options. A configuration file must always be present for GCAM run. The configuration file is divided into following sections:
-
-Config Section | Description
------------- | -------------
-Files| Points GCAM to various core input and output file locations. The most common item in this block that might need to be changed is the `xmldb-location`. Changing this item allows the user to change the name and location of the output xml database.
-ScenarioComponents | This is where GCAM reads in the data that define a scenario. Each entry has a name and a path that must point to a valid GCAM xml input file. Note that the name attribute of each ScenarioComponent is for readability only, these are not used by GCAM.
-Strings | The primary component in this section that should be modified is the `scenarioName`, which should be a short descriptive name for the scenario.
-Bools | These boolean variables alter how GCAM runs and allow some alternative modes for GCAM operation.
-Ints | These integer variables set various GCAM run and output options.
-
-#### 3.1.1 Scenario Components
-
-The `configuration_ref.xml` file distributed with GCAM contains the list of input files that define the reference scenario for that GCAM release. Do not modify any of the original scenario component files. If you wish to make a change, make a copy of the file and modify the copy.
-
-A common method of modifying a scenario is to add on additional components at the end of the list of scenario component files. Scenario components are read in order, and later data supersedes earlier data. A *climate policy*, for example, can be defined by adding a climate policy component. Examples of climate policy components can be found in the `input/policy` folder of the GCAM distribution.
-
-For running multiple scenarios, [Batch Mode](#gcam-batch-mode) is often more convenient.
-
-#### 3.1.2 `<Files>` Input Options
-
-The following table summarizes the options available under the `<Files>` section of the configuration file. Note that for output files the `write-output` attribute is used to enable/disable output. The `append-scenario-name` attribute can be used to instruct GCAM to append the scenario name to the specified filename. See  `configuration_ref.xml` for examples.
-
-File Tag | Description
------------- | -------------
-xmlInputFileName | First XML file read in. In recent versions of GCAM this is used to readin the modeltime object, which sets the time intervals for GCAM. The modeltime object can only be read in once.
-BatchFileName | Name of the [batch file input](#gcam-batch-mode). This will only be used if the `BatchMode` boolean is set to 1.
-policy-target-file | Run the model in [target finder mode](#target-finder).  This will only be used if `find-path` boolean is set to 1.
-GHGInputFileName | Default MAGICC input for GHG emissions time series.
-xmldb-location | Location and name of xml output database
-xmlOutputFileName | Output xml filename. This xml file contains a complete input dataset that will replicate this scenario. Note that these files can be very large.
-xmlDebugFileName | Name of debug output file. For the specified `debug-region` (see below), a set of internal state variables will be output at the end of each model period.
-climatFileName | Output file that contains the GHG and pollutant emissions that was passed to MAGICC.
-outFileName | csv formatted GCAM output.  Note These results are not maintained, users should prefer xmldb output instead.
-costCurvesOutputFileName | Output for cost curves if `createCostCurve` is set to 1.
-batchCSVOutputFile | csv output of a minimal set of variables. This is useful during large batch runs where creating an xml database would result in excessively large files.
-
-#### 3.1.3 `<Strings>` Input Options
-
-The following table summarizes the options available under the `<Strings>` section of the configuration file. These options should be strings, specified without quotes.
-
-File Tag | Description
------------- | -------------
-scenarioName | Name of the scenario. This name will be embedded in output xml data. For batch file operation this name is the prefix to the final file name.
-debug-region | String that specifies which region is used for debugging output (see xmlDebugFileName), which provides a dump, by model period, of GCAM internal state variables which can be useful for debugging and understanding results.
-MAGICC-input-dir | Input directory for necessary MAGICC input files. This normally should not be changed.
-MAGICC-output-dir | Directory for MAGICC model output files.
-
-#### 3.1.4 `<Bools>` Input Options
-
-The following table summarizes the options available under the `<Bools>` section of the configuration file. These values should be specified as either 1 or 0.
-
-File Tag | Description
------------- | -------------
-CalibrationActive | Activates model calibration. Under normal operation this should be turned on.
-BatchMode | Activates [GCAM batch mode](#gcam-batch-mode) operation. A valid `BatchFileName` must also be specified.
-find-path | [Turn on path finding capability](#target-finder). A valid `policy-target-file` must also be specified.
-createCostCurve | Turns on calculation of a CO2 cost curve. The model will be run multiple times to generate a CO2 cost curve, which will be integrated to estimate total policy costs.
-debugChecking | Turns on some internal consistency checks.
-
-#### 3.1.5 `<Ints>` Input Options
-
-The following table summarizes the options available under the `<Ints>` section of the configuration file. These values should be specified as integers.
-
-File Tag | Description
------------- | -------------
-numPointsForCO2CostCurve | Number of points to use in CO2 cost curve calculation (if `createCostCurve` is turned on).
-carbon-output-start-year | Starting year for carbon-cycle output in the XML database
-climateOutputInterval | Output interval for climate data (concentrations, forcing, temperature, etc.) in the XML database
-parallel-grain-size | A performance tuning option when GCAM is compiled with multi-threaded support.
-stop-period | Specify an early model exit.  Run up to and including the given period, -1 indicates run all periods.
-restart-period | Instructs GCAM to trust read in market prices up but not including the specified period for the initial solution prices.  This can be used in conjunction with `stop-period` to support checkpoint and restarting of a GCAM simulation.  Setting a value beyond the final model period can also speed up [target finder](#target-finder) scenarios.
-
-### 3.2 <a name="gcam-batch-mode"> GCAM Batch Mode </a>
-
-If running multiple scenarios, GCAM can also be run in Batch mode, in which a batch input file contains user-specified sets of add-on components that can be used to define multiple scenarios, which will then will all be run. In order to run in batch mode the `BatchMode` bool(ean) setting in the configuration file must be set to 1, and a batch input file must be specified as `BatchFileName` under `<Files>`.
-
-The Batch file has the following format:
-
-```XML
-<BatchRunner>
-	<ComponentSet name="Policy scenarios">
-		<FileSet name="_set1">
-		</FileSet>
-		<FileSet name="_tax">
-			<Value name="ctax">../input/policy/carbon_tax.xml</Value>
-		</FileSet>
-	</ComponentSet>
-</BatchRunner>
-```
+Agent adaptation: older macOS packaging notes about `ModelInterface.app` bundle metadata are not the primary workflow for agents. Prefer invoking the jar from the shell or editing `model_interface.properties` directly in a text-accessible working directory.
 
 The XML files within each `FileSet` block will be read in after the `ScenarioComponents` in the configuration file and then run. The scenario name of the run will be the name of each `FileSet` appended to the `scenarioName` in the configuration file.
 
@@ -311,22 +201,17 @@ Note that target finder runs can also be configured in [Batch mode](#gcam-batch-
 
 ### 3.4 <a name="modelinterface"> ModelInterface </a>
 
-The model interface is a GCAM tool to view GCAM results from the [BaseX](http://basex.org) XML database or convert CSV files to XML.  You may find a copy at the top level of your release package and can be run by double clicking the `ModelInterface.jar` (on Mac this will be ModelInterface.app).  This section will focus mainly on viewing results.  It can be used in an [interactive mode](#interactive-mode) or users can set up [batch query](#modelinterface-batch-modes) files to automate dumping results to CSV or XLS.
+The model interface is the historical GCAM tool for querying [BaseX](http://basex.org) XML databases and converting CSV files to XML.
 
-Note as of GCAM 4.4 the ModelInterface package on the Mac will by default save the `model_interface.properties` file in your home directory.  You can change this by:
+Agent adaptation: the packaged `ModelInterface.jar` / `ModelInterface.app` is not the default workflow in this bundle. Prefer direct batch execution, query-file editing, and scripted CSV/XLS export.
 
-* Right click on the `ModelInteface.app` and select "Show Package Contents"
-* Edit `Contents/Info.plist` (using TextEdit should be sufficient)
-* Change the following `<string>` to an appropriate location, note you must use absolute paths.
+Agent adaptation: treat the `interactive mode` subsection below as historical context and prefer batch or direct file-based workflows.
 
-```
-<key>WorkingDirectory</key>
-<string>$USER_HOME</string>
-```
+Agent adaptation: older macOS packaging notes about `ModelInterface.app` bundle metadata are not the primary workflow for agents. Prefer invoking the jar from the shell or editing `model_interface.properties` directly in a text-accessible working directory.
 
 #### <a name="interactive-mode"> 3.4.1 Interactive Mode </a>
 
-Please see the [Quick Start](#22-viewing-model-results) section for the basics on how to open an database and run queries.  The `Scenarios` and `Regions` sections get populated automatically from the GCAM results that are stored in the database.  The `Queries` are loaded from a query file.  You can check the `model_interface.properties` file which is located in the folder as the `ModelInterface.jar` or if using the `ModelInterface.app` on the Mac in your home directory:
+Agent adaptation: interactive mode is preserved only as historical context. For agent work, read scenario names from the database, region names from results or batch query files, and query definitions from XML files directly. Inspect `model_interface.properties` as plain text to locate the active query file, for example:
 
 ```
 <entry key="queryFile">../output/queries/Main_queries.xml</entry>
@@ -343,7 +228,7 @@ Note if the query file is not found the ModelInterface will ask you to select a 
 </emissionsQueryBuilder>
 ```
 
-This XML can be copied directly out of the ModelInterface by using Ctrl-C (or CMD-C on Mac) and pasted back into the Model Interface or as text elsewhere such as email.  Similarly the XML text can be copied out of an email and pasted back into the Model Interface using Ctrl-V (or CMD-V on Mac).  This is a handy short cut for sharing or editing queries.  You will notice when queries are modified a `*` appears at the root of the queries.  You can choose to `File -> Save` to update the underlying query file or use `File -> Save As` to save and switch to a new query file.
+Agent adaptation: query XML is plain text. Copy it between files, repositories, or messages as needed, then edit and save the underlying query file directly instead of relying on GUI copy/paste or interactive save-menu actions.
 
 #### <a name="modelinterface-batch-modes"> 3.4.2 ModelInterface Batch Modes </a>
 
@@ -365,9 +250,9 @@ First you must set up a "batch query" file.  An example of such a file can be fo
     </aQuery>
 ```
 
-The actual queries are of the same format as described [above](#interactive-mode) and can be copied out of a query file or pasted from the Model Interface.
+The actual queries are the same XML definitions described [above](#interactive-mode) and can be copied between query files, repositories, or batch command files.
 
-Users can run this "batch query" file from an interactive Model Interface session by selecting `File -> Batch File` and selecting the "batch query" file they wish to run.  Users are then asked where to save the results (.csv saves as CSV and .xls saves to excel) and which scenarios to run.
+Agent adaptation: the interactive batch-file menu path is omitted. The portable workflow is to reference the batch query file from a ModelInterface batch command file and execute it from the shell, setting output paths and scenario names in XML rather than interactive dialogs.
 
 Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well (and even collapse the "batch query" to be defined with in the "batch command" itself).  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
 

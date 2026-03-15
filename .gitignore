@@ -1,0 +1,13 @@
+Agents.md
+Claude.md
+gcam-core/
+gcam-doc/
+gcamreader/
+gcamextractor/
+**/.git/
+**/.DS_Store
+**/__pycache__/
+*.pyc
+node_modules/
+dist/
+*.log

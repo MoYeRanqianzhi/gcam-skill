@@ -31,8 +31,6 @@ Load this page when the user needs version-specific detail from this exact page 
 | Supply of all water types | Basin and year  | km<sup>3</sup> | [Water Supply Module](supply_water.md) |
 | Demand for water withdrawals and consumption | Basin and year  | km<sup>3</sup> | [Water Demand Module](demand_water.md) |
 
-<br/>
-
 ## Description
 
 GCAM operates by determining a set of prices that ensure supply is equal to demand for all time steps. The marketplace collects the supplies and demands and uses [solver algorithms](solver.md) to determine those prices.

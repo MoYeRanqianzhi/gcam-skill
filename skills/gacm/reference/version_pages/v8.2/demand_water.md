@@ -42,11 +42,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | GDP per capita | By region and year | thous 1990$ per person | [Economy Module](economy.md) |
 | Population | By region and year | thousand | [Economy](economy.md) |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.md#water">Demand Inputs Page</a> in that it lists all inputs to the water demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-</font>
-
-<br/>
 
 ## Description
 
@@ -69,7 +65,6 @@ More documentation of the approach to modeling agricultural water demand in GCAM
 ### Industrial manufacturing
 
 The industrial manufacturing sector's water demands include surface and groundwater that is self-supplied by industrial manufacturers. The water demanded by this sector excludes water demands of coal mining and oil and gas production, which are represented in the respective energy production sectors. It also excludes water withdrawn for cooling of on-site (i.e., located at industrial facilities) thermo-electric power generation, which is modeled in the electricity generation sector. Finally, industrial facilities' use of municipal water is also excluded (modeled in the municipal water sector). Note that the definitional bounds differ from the "industrial water withdrawals" in [FAO Aquastat](#fao2016), in that the latter includes the electric power sector.
-
 
 ### Livestock
 
@@ -96,11 +91,9 @@ For more information, see  [Hejazi et al. 2013](#hejazi2013) and summarized in [
 * **biophysical water consumption**: total water required for crop evapo-transpiration; the sum of "blue" and "green" water in [Mekonnen and Hoekstra 2011](#mekonnen2011)
 * **seawater**: water from the oceans, including brackish estuaries, that is withdrawn for cooling thermo-electric power plants, or used in primary energy production.
 
-
 ### Basin-To-Region and Basin-To-Sector Mapping
 
 Agricultural water demand is modeled at the basin level directly. Demands for water from other sectors are modeled at the geopolitical region and then mapped to the basin. For more information, see the detailed description of the [basin mapping](details_water.md#basin-to-region-and-basin-to-sector-mapping).
-
 
 ## Equations
 The equations that determine water demand are described here.
@@ -132,9 +125,7 @@ Future transformations in the electricity sector could entail major shifts in po
 
 Not applicable. The IAMC reference card does not have water demand related entries.
 
-<font size="-1">
 <a name="elec_footnote">2</a>: Note that because of the limits to the supplysector/subsector/technology structure of the energy system technologies in GCAM, this additional "cooling system" level of nesting is achieved through the use of “pass-through” technologies and sectors. To help with interpretation of the model output, the electric sector queries have been written to report these cooling system technologies under the "electricity" sector, but the raw input XML files and model output nevertheless have the fully disaggregated structure.
-</font>
 
 ## References
 

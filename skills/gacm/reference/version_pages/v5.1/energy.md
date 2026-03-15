@@ -46,7 +46,6 @@ GCAM models depletable resources (oil, unconventional oil, natural gas, coal, an
 
 **Illustrative examples of supply curves and totall supplies for fossil resources in GCAM (from GCAM 5.1.2)**
 
-
 ### Renewable Resources
 
 GCAM's renewable resources include wind, solar, geothermal, hydropower, and biomass; some regions are also assigned a "traditional biomass" resource. In contrast to the depletable resources, whose cumulative stocks are explicitly tracked, renewable resource quantities in GCAM are always indicated in terms of annual flows. Wind, solar, geothermal, and hydropower are considered only as options for producing electricity, and are not traded between regions. Traditional biomass is only used by the buildings sector in selected regions. Of the six renewable energy resources, only biomass is (a) traded globally, and (b) used as an energy form or feedstock in a wide variety of sectors.
@@ -89,8 +88,6 @@ While most of the effort in modeling biomass supply is in the [agriculture and l
 
 Traditional biomass in GCAM is defined as the IEA's "primary solid biomass" product consumed by the residential sector, in selected regions where it is considered to be an important part of the energy system. The largest consumers of traditional biomass in 2010 were China, India, and Western Africa. The specific energy goods involved include firewood, agricultural residues, animal dung, and others; no effort is made to disaggregate the category into these consistuent parts, or to link the production volumes with the agriculture and land use module.
 
-
-
 ## Energy Transformation
 
 Broadly, the energy transformation sectors in GCAM consist of all supplysectors between the energy resources and the final demands, where the latter are identified by the final-energy keywords "buildings", "industry", or "transportation". Energy transformation sectors consume energy goods which are supplied either by resources or other energy transformation sectors, and they produce energy goods which are consumed either by other energy transformation sectors or by final demand sectors. This category is also considered to include a number of "pass-through" supplysectors whose purpose is explicit tracking of cost mark-ups and efficiency losses in the inter-sectoral transportation of energy goods. The main energy transformation sectors highlighted in this documentation are [electricity](energy.md#electricity), [refining](energy.md#refining), [gas processing](energy.md#en_gas_processing), [hydrogen production](energy.md#hydrogen), and [district services](energy.md#district-services).
@@ -100,7 +97,6 @@ In energy transformation sectors, the output unit and input unit are EJ (per yea
 In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
 
 **Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.**
-
 
 ### Electricity
 
@@ -201,7 +197,6 @@ The representation of hydrogen in GCAM includes 10 production technologies in tw
 
 **Hydrogen structure, with example input-output coefficients shown.**
 
-
 ### Hydrogen Production
 
 As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
@@ -209,7 +204,6 @@ As in the H2A model, the production of hydrogen takes place in two distinct sect
 The most common hydrogen production technology today is natural gas steam reforming, though coal chemical transformation is the dominant technology in China [IEA 2007](energy.md#iea2007). In GCAM, all regions have access to all technologies when hydrogen as an energy carrier becomes available; as shown in the figure above, hydrogen can be produced from up to 7 primary energy sources. Three of these sources (coal, gas, and biomass) include production technologies with CCS, characterized by higher costs and higher energy intensities, but lower CO<sub>2</sub> emissions.
 
 The wind and solar technologies are electrolysis technologies, but are specifically disaggregated because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](energy.md#electricity)). In contrast, the nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
-
 
 ## Final Energy Consumption
 

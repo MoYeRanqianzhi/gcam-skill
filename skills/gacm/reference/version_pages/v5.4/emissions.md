@@ -20,7 +20,6 @@ CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<s
 
 Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population), technology mix, and abatement measures. How this is represented in GCAM varies by emission type.
 
-
 # Table of Contents
 
 - [Inputs to the Module](#inputs-to-the-module)
@@ -45,8 +44,6 @@ Future emissions are determined by the evolution of drivers (such as energy cons
 | Agricultural production| By GLU, technology, year | Mt/yr | [Land Supply Module](supply_land.md) |
 | Land use and land use change | By GLU, type, year | thous km<sup>3</sup> | [Land Module](land.md) |
 
-<br/>
-
 ## Description
 
 ### <a name="co2-emissions"/>CO<sub>2</sub> Emissions
@@ -67,7 +64,6 @@ Land-Use and Land-Cover Change emissions are tracked separately. See [Carbon Emi
 
 We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM
 
-
 #### Initialization
 
 ##### Data sources
@@ -81,7 +77,6 @@ We summarize here some general points common to non-CO<sub>2</sub> emissions in 
 * Additional information on fluorinated gases is from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections).
 
 Note that there are some [calibration year differences between CEDS and GCAM](details_emissions.md#calibration-year-differences-between-ceds-and-gcam).
-
 
 #### Modeling approach
 
@@ -126,17 +121,12 @@ where:
 | `MAC` | Marginal Abatement Cost Curve |
 | `Eprice` | Emissions Price |
 
-<br/>
-
-
 `MAC`-related parameters:
 
 | XML Tag | Description |
 | :------------- |:-------------|
 | `tech-change` | annual improvement of reduction potential defined in MAC curve|
 | `mac-phase-in-time` | MAC phase-in periods (see description below)|
-
-<br/>
 
 Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2019](#epa2019) ([Ou et al. 2021](#ou2021a)). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
@@ -199,8 +189,6 @@ XML Tag | Description
 `start-year` | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)
 `final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
 `allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
-
-<br/>
 
 ## IAMC Reference Card
 

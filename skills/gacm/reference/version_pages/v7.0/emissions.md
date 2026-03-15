@@ -20,7 +20,6 @@ CO<sub>2</sub>, CH<sub>4</sub>, N<sub>2</sub>O, CF<sub>4</sub>, C<sub>2</sub>F<s
 
 Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population), technology mix, and abatement measures. How this is represented in GCAM varies by emission type.
 
-
 # Table of Contents
 
 - [Inputs to the Module](#inputs-to-the-module)
@@ -45,8 +44,6 @@ Future emissions are determined by the evolution of drivers (such as energy cons
 | Agricultural production| By GLU, technology, year | Mt/yr | [Land Supply Module](supply_land.md) |
 | Land use and land use change | By GLU, type, year | thous km<sup>3</sup> | [Land Module](land.md) |
 
-<br/>
-
 ## Description
 
 ### <a name="co2-emissions"/>CO<sub>2</sub> Emissions
@@ -69,7 +66,6 @@ Land-Use and Land-Cover Change emissions are tracked separately. See [Carbon Emi
 
 We summarize here some general points common to non-CO<sub>2</sub> emissions in GCAM. Note that the data sources and modeling approach of fugitive CO<sub>2</sub> emissions from fossil fuel production follow those of Non-CO<sub>2</sub> GHGs.
 
-
 #### Initialization
 
 ##### Data sources
@@ -85,7 +81,6 @@ We summarize here some general points common to non-CO<sub>2</sub> emissions in 
 * Additional information on fluorinated gases is from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections).
 
 Note that there are some [calibration year differences between CEDS and GCAM](details_emissions.md#calibration-year-differences-between-ceds-and-gcam).
-
 
 #### Modeling approach
 
@@ -130,17 +125,12 @@ where:
 | `MAC` | Marginal Abatement Cost Curve |
 | `Eprice` | Emissions Price |
 
-<br/>
-
-
 `MAC`-related parameters:
 
 | XML Tag | Description |
 | :------------- |:-------------|
 | `tech-change` | annual improvement of reduction potential defined in MAC curve|
 | `mac-phase-in-time` | MAC phase-in periods (see description below)|
-
-<br/>
 
 Non-CO<sub>2</sub> GHG emissions are proportional to the activity except for any reductions in emission intensity due to the MAC curve. As noted above, the MAC curves are assigned to a wide variety of technologies, mapped directly from [EPA 2019](#epa2019) ([Ou et al. 2021](#ou2021a)). Under a carbon policy, emissions are reduced by an amount determined by the MAC curve.
 
@@ -227,15 +217,11 @@ mac-price-conversion | Value to multiply market price by to convert to unit expe
 Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
 zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
 
-<br/>
-
-
 ## Insights and Intuition
 
 ### NonCO2 GHG abatement
 
 In summary, nonCO2 GHG emissions can be controlled by three mechanisms. First, changes in activity (phasing out of carbon-intensive fuels due to climate policy) will reduce non-CO2 GHG emissions (e.g. fugitive CH4 from natural gas production). Second, for emission sources without explicit representation of the underlying activity, emission reductions are calculated off of [MAC curves](#equations) that are parametrized to abatement technologies and abatement levels. While decarbonization-driven fuel switching mainly reduces non-CO2 emissions from fuel extraction and end use, targeted non-CO2 mitigation measures can significantly reduce fluorinated gas emissions from industrial processes and cooling sectors. [(Ou et al. 2021)](https://www.nature.com/articles/s41467-021-26509-z). Finally, carbon prices can be directly passed to nonCO2 GHGs, see [example](policies_examples.md#linked-policy).
-
 
 ### Markets
 
@@ -256,7 +242,6 @@ XML Tag | Description
 `final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
 `allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
 
-<br />
 #### Emissions Control Drop Folder
 There is a method in the GCAM data system that allows users to selectively specify both new vintage emissions factors and existing vintage retrofits (base-year or future) for technologies, replacing the current smooth GDP control for those technologies, without changing any model code. The user just needs to place any number of CSV input files into a folder, and the system will generate XML input files that will use this new data to replace any previous emission factors and/or GDP control functions. Two options are available. The first, and main, option is to specify a New Source Performance Standard (NSPS) for a technology, which is the emission factor that newly built technologies should have (often specified by air pollution control regulations). The NSPS is functionally applied as an emission factor. The second option is to specify retrofits (only applicable to technologies with a lifetime > 1 period). Retrofits are implemented as a linear-control object such that the emissions factor linearly declines from its value in a specified start year to its end year, for the specified technology vintage. The code automatically removes the existing GDP control object for any technology for which either a NSPS or retrofit is specified.
 
@@ -265,8 +250,6 @@ Both retrofits and NSPS can be specified by either a specific GCAM region, GCAM 
 The system will generate two sets of output .xml files. One for core GCAM inputs (that are now a standard part of the configuration file) and a separate set of “user” input files which are intended for changes that are specific to a project, but not part of the GCAM core model.
 
 For instructions on how to implement this, see the [README](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/emission_controls/README.md) in the emissions user_emission_controls folder in the data system.
-
-<br/>
 
 ## IAMC Reference Card
 

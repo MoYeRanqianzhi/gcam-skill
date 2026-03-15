@@ -128,14 +128,22 @@ system does not attempt to run more than one GCAM instance per
 node. The best way to do this is to put the following in your batch
 script:
 <code>
-#PBS -l nodes=1  <br>
-#PBS -l walltime=10:00  <br>
-#PBS -l pmem=40gb  <br>
-#PBS -A gcam  <br>
-set bindir=/lustre/data/rpl/gcam-parallel/exe  <br>
-set wdir=$bindir  <br>
-cd $wdir  <br>
-time gcam.exe -Cconfig-g500.xml -Llconf-g500.xml  <br>
+#PBS -l nodes=1
+
+#PBS -l walltime=10:00
+
+#PBS -l pmem=40gb
+
+#PBS -A gcam
+
+set bindir=/lustre/data/rpl/gcam-parallel/exe
+
+set wdir=$bindir
+
+cd $wdir
+
+time gcam.exe -Cconfig-g500.xml -Llconf-g500.xml
+
 </code>
 By reserving 40GB of memory for each GCAM-parallel process, you will
 ensure that no other processes are scheduled on that node, even though

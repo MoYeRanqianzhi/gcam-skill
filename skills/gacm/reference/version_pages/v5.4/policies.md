@@ -64,8 +64,6 @@ mac-price-conversion | Value to multiply market price by to convert to unit expe
 Note | mac-price-conversion can also be set to -1, which is a flag to turn off all use of the MAC curve. This is useful for sensitivity studies.
 zero-cost-phase-in-time | Number of years over which to phase-in "below-zero" MAC curve reductions (default = 25 years)
 
-<br/>
-
 ## <a name="energy-production-policies"/> Energy Production Policies
 
 There are times in which users would like to explore the implications of a constraint on production or a minimum production requirement. This capability allows GCAM users to model policies such as renewable portfolio standards and biofuels standards. Across sectors, these constraints must be applied as quantity constraints, but they can be applied as share constraints within individual sectors (e.g., fraction of electricity that comes from solar power). In implementing these policies, this can either be a lower bound or upper bound. The model will solve for the tax (upper bound) or subsidy (lower bound) required to reach the given constraint. Examples of [bioenergy constraints](policies_examples.md#energy-constraint) are provided.
@@ -90,7 +88,6 @@ In addition to identifying policy prices as one measure of cost, GCAM employs th
 
 A detailed description of the method used in GCAM is documented in [Bradley et al. (1991)](policies.md#Bradley1991). In general, the approach is as follows. GCAM calculates the cost of emissions mitigation at each GCAM time step. For example in the figure below, the cost of moving from a reference path without a carbon tax (blue) to the emissions path with a carbon tax (green) in period T can be calculated simply. Successive scenarios with fixed carbon taxes in period T are run. The associated emissions are recorded for each carbon tax. The cost is calculated as the area of the purple triangle, which is the integral of each emissions mitigation step weighted by the carbon tax that was required to deliver the reduction. The final ton of carbon emissions is the most expensive ton, because it is assumed that for a carbon tax, emissions mitigation occurs with the least expensive tons being reduced first. The final ton of carbon is simply the carbon tax rate itself. The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below.
 
-
 As discussed in [Bradley et al. (1991)](policies.md#Bradley1991) and demonstrated in [Calvin et al. (2014)](policies.md#Calvin2014), the approach can be used to calculate costs for a wide range of heterogeneous non-price policies. While conceptually similar to the simple approach above, the other is tedious. Similarly, the deadweight loss approach can be used to calculate the cost of policies other than carbon taxes. It is completely general [Mankiw & Hakes (2012)](policies.md#Mankiw2012).
 
 The approach is employed at each GCAM time step. Costs occurring between time steps is inferred by interpolation. Costs over time can be summed. Costs can be summed with or without discounting. But, the GCAM user needs to be aware of the implications of whatever approach is employed.
@@ -98,7 +95,6 @@ The approach is employed at each GCAM time step. Costs occurring between time st
 The deadweight loss approach is not without its limitations. While the numerical calculation is simple for a uniform carbon tax (or a cap-and-trade regime), more complex policies are more tedious to represent. Second, there is no link back to the macro-economy. Changes of the magnitude associated with stringent climate policies will have macro-economic consequences. Those consequence will, in turn affect the scale of economic activity. Third, there is no way to calculate the effects of alternative uses of tax revenue or carbon permit allocations.
 
 Note that calculation of policy costs is currently only supported for polices pegged to CO<sub>2</sub> prices.
-
 
 ## References
 <a name="Arrow1950">[Arrow 1950]</a> Arrow, Kenneth J. (1950). "A Difficulty in the Concept of Social Welfare" (PDF). Journal of Political Economy. 58 (4): 328–346. doi:10.1086/256963.

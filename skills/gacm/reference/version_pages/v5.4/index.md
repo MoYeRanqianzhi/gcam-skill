@@ -14,15 +14,24 @@ Load this page when the user needs version-specific detail from this exact page 
 
 This documentation describes GCAM v5.4 ([DOI](https://doi.org/10.5281/zenodo.5093192))
 
-
 **GCAM diagram. Click on each box for a more detailed description of that element.**
 <table>
 <tr>
-<td rowspan="4"> <b>Inputs</b> <br> <a href="inputs_supply.md"> [omitted image: input supply]</a> <br> <a href="inputs_land.md"> [omitted image: input land]</a> <br> <a href="inputs_economy.md"> [omitted image: input economy]</a> <br> <a href="inputs_demand.md"> [omitted image: input demand]</a></td>
+<td rowspan="4"> <b>Inputs</b>
+ <a href="inputs_supply.md"> [omitted image: input supply]</a>
+ <a href="inputs_land.md"> [omitted image: input land]</a>
+ <a href="inputs_economy.md"> [omitted image: input economy]</a>
+ <a href="inputs_demand.md"> [omitted image: input demand]</a></td>
 <td>  </td>
-<td> <b>Supply</b> <br> <a href="supply_energy.md"> [omitted image: supply energy]</a>  <a href="supply_water.md"> [omitted image: supply water]</a>  <a href="supply_land.md"> [omitted image: supply land]</a> </td>
+<td> <b>Supply</b>
+ <a href="supply_energy.md"> [omitted image: supply energy]</a>  <a href="supply_water.md"> [omitted image: supply water]</a>  <a href="supply_land.md"> [omitted image: supply land]</a> </td>
 <td> </td>
-<td rowspan="4"> <b>Outputs</b> <br> <a href="outputs_quantity.md"> [omitted image: output quantity]</a> <br> <a href="outputs_prices.md"> [omitted image: output price]</a> <br> <a href="outputs_trade.md"> [omitted image: output trade]</a> <br> <a href="outputs_land.md"> [omitted image: output land]</a> <br> <a href="outputs_emissions.md"> [omitted image: output emissions]</a> </td>
+<td rowspan="4"> <b>Outputs</b>
+ <a href="outputs_quantity.md"> [omitted image: output quantity]</a>
+ <a href="outputs_prices.md"> [omitted image: output price]</a>
+ <a href="outputs_trade.md"> [omitted image: output trade]</a>
+ <a href="outputs_land.md"> [omitted image: output land]</a>
+ <a href="outputs_emissions.md"> [omitted image: output emissions]</a> </td>
 </tr>
 <tr>
 <td> <a href="land.md"> [omitted image: land]</a>  </td>
@@ -34,12 +43,12 @@ This documentation describes GCAM v5.4 ([DOI](https://doi.org/10.5281/zenodo.509
 </tr>
 <tr>
 <td>  </td>
-<td>  <b>Demand</b> <br> <a href="demand_energy.md"> [omitted image: demand energy]</a>  <a href="demand_water.md"> [omitted image: demand water]</a>  <a href="demand_land.md"> [omitted image: demand land]</a>  </td>
+<td>  <b>Demand</b>
+ <a href="demand_energy.md"> [omitted image: demand energy]</a>  <a href="demand_water.md"> [omitted image: demand water]</a>  <a href="demand_land.md"> [omitted image: demand land]</a>  </td>
 <td>   </td>
 </tr>
 </table>
 
-<br/>
 A general overview of GCAM is also provided [here](overview.md).
 
 ### Earth System

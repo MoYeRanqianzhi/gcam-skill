@@ -40,9 +40,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#food-feed-and-forestry) in that it lists all inputs to the land supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
-
 ## Description
-
 
 ### Variable Costs
 
@@ -61,7 +59,6 @@ The main points can be summarized as:
 * Variable costs create price floors
 * Variable costs should be based on technology data. They should not be used as calibration parameters to adjust profits.
 * Variable costs should not include land costs, value-added categories of land, return to capital, and owner-wages.
-
 
 ## Equations
 
@@ -130,7 +127,6 @@ where $$s_i$$ is the share of technology or subsector $$i$$, $$alpha_i$$ is the 
 
 See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/relative_cost_logit.cpp) and [absolute cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/absolute_cost_logit.cpp).
 
-
 ## Policy options
 
 There are a number of ways that policies can be applied directly to influence the land sector in GCAM. These include the following.
@@ -162,8 +158,5 @@ Agricultural commodities
 - [X] Ruminant meat
 - [X] Non-ruminant meat and eggs
 - [X] Dairy products
-
-
-
 
 ## References

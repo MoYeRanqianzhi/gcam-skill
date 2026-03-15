@@ -16,7 +16,7 @@ PNNL is committed to making the Global Change Assessment Model (GCAM)
 a community tool – expanding its user community and gradually opening
 the development of the model to this community. A range of users
 across the globe are now using and modifying GCAM for their individual
-research needs.&nbsp;This wiki is still a work in progress. We will
+research needs. This wiki is still a work in progress. We will
 continue to expand this page with detail as available. In the interim,
 please download the GCAM Tutorial presentation from the 2011 Community
 Modeling meeting
@@ -32,10 +32,10 @@ addition, we have included a list of model parameters
   Institute might respond. Finally, it serves as a means to make
   announcements about updates or changes to the model. To subscribe to
   the listserve with email, please send an email
-  to&nbsp;<listserv@listserv.umd.edu>&nbsp;with the email body:
+  to <listserv@listserv.umd.edu> with the email body:
   subscribe gcam-community . You can also go directly to the website
   for the listserv, which has all the functionality including posting
-  at:&nbsp;[<https://listserv.umd.edu/archives/gcam-community.html>](https://listserv.umd.edu/archives/gcam-community.html). You
+  at: [<https://listserv.umd.edu/archives/gcam-community.html>](https://listserv.umd.edu/archives/gcam-community.html). You
   do not have to be registered to view the archive on the
   website.
 

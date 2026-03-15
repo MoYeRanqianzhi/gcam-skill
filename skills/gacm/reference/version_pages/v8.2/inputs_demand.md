@@ -54,9 +54,7 @@ Table 1: External inputs used for demand of energy<sup>[1](#table_footnote1)</su
 | Non-renewable groundwater supply curves - electricity inputs | Electricity inputs to groundwater production | External data | <a href="https://github.com/JGCRI/superwell">Superwell</a> | 20 grades per geopolitical region and GLU | GJ per $$m^3$$ |
 | Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v2024_07_08` | Specified by country, technology, gas, and year | Various |
 
-
-<font size="-1"><a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.md#inputs-to-the-module">Energy Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
-<br/>
+<a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="demand_energy.md#inputs-to-the-module">Energy Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
@@ -138,7 +136,6 @@ Historical non-CO<sub>2</sub> emissions information is provided in the GCAM rele
 
 ### Water
 
-
 #### Description
 
 Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</sup>
@@ -155,9 +152,8 @@ Table 2: External inputs used for demand of water <sup>[2](#table_footnote2)</su
 | Municipal water use efficiency | Water efficiency values for municipalities | Shiklomanov 2000 | Continent | Percent |
 | Municipal water cost | Price per unit of water delivered to municipalities | International Benchmarking Network for Water and Sanitation Utilities (IBNET) | External data set | Country | USD per $$km^3$$ |
 
-<font size="-1"><a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="demand_water.md#inputs-to-the-module">Water Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
+<a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="demand_water.md#inputs-to-the-module">Water Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
-<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
 #### Data
@@ -184,9 +180,8 @@ Table 3: External inputs used for demand of food, feed, and forestry <sup>[3](#t
 | Food demand parameters | Set of 11 parameters required for the food demand model | External data | [Ambrosia](https://github.com/jgcri/ambrosia) | | unitless |
 | Logit exponents | Share parameters dictating substitution between different commodities | Assumption |  | Specified by type demand | unitless |
 
-<font size="-1"><a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.md#inputs-to-the-module">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.</font>
+<a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="demand_land.md#inputs-to-the-module">Food, Feed, and Forestry Demand Modeling Page</a> in that it only lists external inputs to the demand module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
-<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
 #### Data
@@ -240,6 +235,5 @@ Parameters needed for the food demand module are determined by a separate model,
 <a name="mekonnen2011">[Mekonnen and Hoekstra 2011]</a> Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577–1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
 
 <a name="vassolo2005">[Vassolo and Döll 2005]</a> Vassolo, S., and Döll, P. 2005. Global-scale gridded estimates of thermoelectric power and manufacturing water use. *Water Resources Research* 41, W04010. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)
-
 
 ​

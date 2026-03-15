@@ -32,11 +32,8 @@ Table 1: External inputs used for economics<sup>[1](#table_footnote1)</sup>
 | National accounts | National accounts including capital, investment, depreciation, value-added, etc. | External data set | <a href="https://www.rug.nl/ggdc/productivity/pwt/pwt-releases/pwt9.1"> Penn World Table V9.1</a> | Country and year | million 2011US$ |
 | National accounts | Value-added inputs and sectorial input-output tables in 2004, 2007, 2011, and 2014 | External data set | <a href="https://www.gtap.agecon.purdue.edu/databases/v10/index.aspx"> GTAP V10 Data Base</a> | Country, year, and sector | Nominal US$ and value shares |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="economy.md#inputs-to-the-module">Economy Modeling Page</a> in that it only lists external inputs to the economics module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
-</font>
 
-<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
 ### Input Data

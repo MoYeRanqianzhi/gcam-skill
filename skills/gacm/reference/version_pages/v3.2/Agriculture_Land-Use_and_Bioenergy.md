@@ -77,7 +77,6 @@ Competition between alternative land uses in the GCAM is modeled using
 a [nested logit architecture](Nested_logit_architecture.md). A
 representative, simplified nnesting structure is depicted in Figure 1.
 
-
 ###### Figure 1. Competition for Land in GCAM
 
 The costs of supplying agricultural products are based on regional
@@ -104,7 +103,6 @@ differentiated yield (and therefore profit) increases. The same rate
 is applied to biomass as to other crops, though this and all other
 rates of change could be specified differently by scenario.
 
-
 The AEZs within each of the 14 geopolitical GCAM regions are based on
 the research developed for the GTAP model using SAGE land use
 categories&lt;ref&gt;Monfreda, C., N. Ramankutty and T. W. Hertel
@@ -124,15 +122,11 @@ each of the 151 subregions. The model is designed to allow
 specification of different options for future crop management for each
 crop in each subregion.
 
-&lt;br&gt;Historical land use allocation is based on data from HYDE&lt;ref&gt;<https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=1900%3C/ref%3E> for cropland, urban land, tundra, and rock/ice/desert. Managed forest and managed pasture land are calculated in each time period based on each region's annual production, disaggregated to AEZ's according to the estimated production of each AEZ.&nbsp;Unmanaged forest, unmanaged pasture, grassland, and shrubland are compiled from the HYDE data, with forest and pasture calculated as their respective values minus the managed forms in each of these lands. Historical agricultural production and harvested cropland area are taken from the [FAOSTAT](http://www.faostat.fao.org) database for 1990 and 2005, disaggregated to the AEZ level on the basis of production and harvested area in the GTAP data. Cropping systems are divided into nine food categories (rice, wheat, corn, other grains, oil crops,sugar crops, palm fruit, roots &amp; tubers, and miscellaneous crops) and animal production is represented by five categories (beef, dairy, pork, poultry, and other ruminants). The characterizations of animal production technologies are based on IMAGE data; subsectors are “mixed” and “pastoral”, and inputs to the systems are (1) fodder herbs and crop residues; (2) pasture and foddergrass; (3) feedcrops; and (4) scavenging and other. Under this categorization, animal feed is supplied both by pasture land and by grain and fodder crops and thus future demand for animal products impacts land allocation in GCAM. &lt;br&gt;
+Historical land use allocation is based on data from HYDE&lt;ref&gt;<https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=1900%3C/ref%3E> for cropland, urban land, tundra, and rock/ice/desert. Managed forest and managed pasture land are calculated in each time period based on each region's annual production, disaggregated to AEZ's according to the estimated production of each AEZ. Unmanaged forest, unmanaged pasture, grassland, and shrubland are compiled from the HYDE data, with forest and pasture calculated as their respective values minus the managed forms in each of these lands. Historical agricultural production and harvested cropland area are taken from the [FAOSTAT](http://www.faostat.fao.org) database for 1990 and 2005, disaggregated to the AEZ level on the basis of production and harvested area in the GTAP data. Cropping systems are divided into nine food categories (rice, wheat, corn, other grains, oil crops,sugar crops, palm fruit, roots &amp; tubers, and miscellaneous crops) and animal production is represented by five categories (beef, dairy, pork, poultry, and other ruminants). The characterizations of animal production technologies are based on IMAGE data; subsectors are “mixed” and “pastoral”, and inputs to the systems are (1) fodder herbs and crop residues; (2) pasture and foddergrass; (3) feedcrops; and (4) scavenging and other. Under this categorization, animal feed is supplied both by pasture land and by grain and fodder crops and thus future demand for animal products impacts land allocation in GCAM.
 
-&lt;br&gt;The composition of SAGE’s 14 natural vegetation classifications is calculated in each region and AEZ for each of the five GCAM natural vegetation categories. Specifically, GCAM’s forest includes 8 SAGE categories, grassland includes 2, shrubland includes 2, tundra includes 1, and rock/ice/desert includes 2.&nbsp;Next, carbon contents are assigned to each of the SAGE 14 natural vegetation types, based on literature estimates&lt;ref&gt;Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.&lt;/ref&gt;&lt;ref&gt;King, A. W., Post, W. M., and Wullschleger, S. D. 1997. The potential response of terrestrial carbon storage to changes in climate and atmospheric CO2. Climatic Change, 35(2), 199–227. Springer. Retrieved March 9, 2011, from <http://www.springerlink.com/index/K528446L38325833.pdf>.&lt;/ref&gt;&lt;ref&gt;Olson J.S., Watts J.A. and Allinson L.J. 1983 Carbon in Live Vegetation in Major World Ecosystems. Environmental Sciences Division Publication No. 1997. Oak Ridge National Laboratory, Tennessee.&lt;/ref&gt;.&nbsp;The carbon density of each region/AEZ/GCAM land type is calculated as the weighted average of the carbon contents of the SAGE natural vegetation types within the GCAM natural vegetation types, for each region and AEZ. For instance, GCAM forest in USA AEZ 9 is 53% temperate needleleaf evergreen forest, 12% temperate deciduous forest, 1% boreal evergreen forest, and 34% mixed evergreen/deciduous forest. Therefore the average carbon content of USA AEZ 9 forest is (160)(0.53) + (135)(0.12) + (90)(0.01) + (103)(0.34) = 137 MgC/ha, or 13.7 kgC/m2. Similar calculations are used for vegetation carbon contents for forest, grassland, shrubland, tundra, and rock/ice/desert.&nbsp;
+The composition of SAGE’s 14 natural vegetation classifications is calculated in each region and AEZ for each of the five GCAM natural vegetation categories. Specifically, GCAM’s forest includes 8 SAGE categories, grassland includes 2, shrubland includes 2, tundra includes 1, and rock/ice/desert includes 2. Next, carbon contents are assigned to each of the SAGE 14 natural vegetation types, based on literature estimates&lt;ref&gt;Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.&lt;/ref&gt;&lt;ref&gt;King, A. W., Post, W. M., and Wullschleger, S. D. 1997. The potential response of terrestrial carbon storage to changes in climate and atmospheric CO2. Climatic Change, 35(2), 199–227. Springer. Retrieved March 9, 2011, from <http://www.springerlink.com/index/K528446L38325833.pdf>.&lt;/ref&gt;&lt;ref&gt;Olson J.S., Watts J.A. and Allinson L.J. 1983 Carbon in Live Vegetation in Major World Ecosystems. Environmental Sciences Division Publication No. 1997. Oak Ridge National Laboratory, Tennessee.&lt;/ref&gt;. The carbon density of each region/AEZ/GCAM land type is calculated as the weighted average of the carbon contents of the SAGE natural vegetation types within the GCAM natural vegetation types, for each region and AEZ. For instance, GCAM forest in USA AEZ 9 is 53% temperate needleleaf evergreen forest, 12% temperate deciduous forest, 1% boreal evergreen forest, and 34% mixed evergreen/deciduous forest. Therefore the average carbon content of USA AEZ 9 forest is (160)(0.53) + (135)(0.12) + (90)(0.01) + (103)(0.34) = 137 MgC/ha, or 13.7 kgC/m2. Similar calculations are used for vegetation carbon contents for forest, grassland, shrubland, tundra, and rock/ice/desert.
 
-&lt;br&gt;
-
-Unmanaged pasture vegetation carbon contents are set equal to the region/AEZ’s corresponding SAGE grassland carbon contents. Managed pasture carbon contents are set equal to one half of unmanaged pasture carbon contents.&nbsp;Managed forest vegetation carbon contents are set equal to one half of the unmanaged forest carbon contents. See below for derivation and justification of managed forest land allocation and carbon contents.&nbsp;Cropland vegetation carbon contents are calculated based on yields, crop moisture contents, and harvest indices.
-
-&lt;br&gt;
+Unmanaged pasture vegetation carbon contents are set equal to the region/AEZ’s corresponding SAGE grassland carbon contents. Managed pasture carbon contents are set equal to one half of unmanaged pasture carbon contents. Managed forest vegetation carbon contents are set equal to one half of the unmanaged forest carbon contents. See below for derivation and justification of managed forest land allocation and carbon contents. Cropland vegetation carbon contents are calculated based on yields, crop moisture contents, and harvest indices.
 
 Bioenergy Production
 --------------------
@@ -238,7 +232,6 @@ carbon dioxide capture and storage in the transport and electricity
 sectors under stringent CO2 concentration limit
 scenarios. International Journal of Greenhouse Gas Control 4: 865-877.
 
-
 Land Policy in GCAM
 -------------------
 
@@ -281,7 +274,6 @@ pricing strategies are enabled in GCAM, the stock approach is used.
 We can impose taxes, subsidies or constraints (upper or lower bounds)
 on bioenergy. In the case of constraints, the GCAM solver will compute
 the tax or subsidy needed to ensure the constraint is met.
-
 
 Fertilizer
 ----------
@@ -332,6 +324,4 @@ that consumes no energy input.
 References
 ----------
 
-&lt;references /&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
-
-&lt;br&gt;
+&lt;references /&gt;

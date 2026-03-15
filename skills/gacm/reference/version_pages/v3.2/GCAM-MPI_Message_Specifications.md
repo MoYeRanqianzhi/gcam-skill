@@ -61,7 +61,6 @@ to return is unnecessary.
 |      1            | $$N_e$$              | (int)     | Number of GHG emissions to report. |
 | $$N_e$$         | emission GHG     | (char\[`GHGNAMEMAX`\])  | String indicating the GHG for which to report emissions. Pad with NUL characters as necessary. |
 
-
 **LINMIN**
 Perform a line minimization starting along the line containing the
 input point and parallel to the input direction vector. The initial

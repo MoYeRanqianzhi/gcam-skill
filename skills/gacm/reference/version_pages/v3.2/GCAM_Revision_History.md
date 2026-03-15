@@ -15,7 +15,7 @@ Load this page when the user needs version-specific detail from this exact page 
 Version History
 ---------------
 
-GCAM developers use a version control system to manage revisions to the model.&nbsp;Since the transition from MiniCAM to [GCAM](toc.md), there have been three major releases of the model, as well as hundreds of minor revisions.&lt;br&gt;
+GCAM developers use a version control system to manage revisions to the model. Since the transition from MiniCAM to [GCAM](toc.md), there have been three major releases of the model, as well as hundreds of minor revisions.
 
 ### GCAM 1.0
 
@@ -25,11 +25,11 @@ GCAM 1.0 was the initial release version of the GCAM model. This version ran wit
 
 GCAM 2.0 introduced variable timesteps to the model, with the default model timestep moving from 15 years to 5 years. Subsequent GCAM 2.0 revisions included the introduction of the C++ version of the climate module (r.4090). With the additional of 5 year time steps, it became important to accurately reflect historical observations in 2010. Model results were revised to reflect this in r.4137.
 
-### GCAM 3.0&lt;br&gt;
+### GCAM 3.0
 
-The latest major revision to the model began with the introduction of an extensive update to the the agriculture and land use portion of GCAM. This expanded the number of regions in this portion of the model from 14 to 151 regions based on agro-ecological zones (the energy system continues to use 14 aggregate regions). This introduced substantial complexities to the model and increased the total solution time. Model run time was substantially reduced with the release of an improved solver in r.4371. This is the version that was distributed at the 2011 Community Modeling Meeting held in December at JGCRI's College Park, MD office.&lt;br&gt;
+The latest major revision to the model began with the introduction of an extensive update to the the agriculture and land use portion of GCAM. This expanded the number of regions in this portion of the model from 14 to 151 regions based on agro-ecological zones (the energy system continues to use 14 aggregate regions). This introduced substantial complexities to the model and increased the total solution time. Model run time was substantially reduced with the release of an improved solver in r.4371. This is the version that was distributed at the 2011 Community Modeling Meeting held in December at JGCRI's College Park, MD office.
 
-### GCAM 3.1&lt;br&gt;
+### GCAM 3.1
 
 The latest model release (r.4517), now distributed under the ECL open source license, contains a mechanistic building model which simulates explicit energy services for a representative commercial and residential building in each region. The climate model was revised with an explicit representation of historical emissions (used to calibrate concentration and forcing calculations), along with several smaller fixes to non-CO2 emissions. Other changes include explicit trading of unconventional oil and regional CO2 storage supply curves for CCS. GCAM 3.1 was made available through a new web interface in June 2012.
 
@@ -354,37 +354,12 @@ Viewing Wiki Documentation For Previous Versions
 ` <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>`
 `</w:LatentStyles>`
 
-&lt;/xml&gt;&lt;!\[endif\]--&gt; &lt;!--\[if gte mso 10\]&gt; &lt;style&gt;
+&lt;/xml&gt;&lt;!\[endif\]--&gt; &lt;!--\[if gte mso 10\]&gt;  &lt;!\[endif\]--&gt; &lt;!--StartFragment--&gt;
 
-`/* Style Definitions */`
+At the top of each page you may notice some text indicating which version of GCAM the documentation on that page is valid for. GCAM is a research tool that is constantly evolving and we hope to always keep the wiki up to date with the latest revision of GCAM. Users however may not always be able to use the latest version of GCAM therefore may want to view documentation for earlier versions. In order to accommodate these users we will adhere to the following scheme to make it straightforward to retrieve the documentation valid for the revision you are using.
 
-table.MsoNormalTable
-
-`   {mso-style-name:"Table Normal";`
-`   mso-tstyle-rowband-size:0;`
-`   mso-tstyle-colband-size:0;`
-`   mso-style-noshow:yes;`
-`   mso-style-priority:99;`
-`   mso-style-parent:"";`
-`   mso-padding-alt:0in 5.4pt 0in 5.4pt;`
-`   mso-para-margin:0in;`
-`   mso-para-margin-bottom:.0001pt;`
-`   mso-pagination:widow-orphan;`
-`   font-size:12.0pt;`
-`   font-family:Cambria;`
-`   mso-ascii-font-family:Cambria;`
-`   mso-ascii-theme-font:minor-latin;`
-`   mso-hansi-font-family:Cambria;`
-`   mso-hansi-theme-font:minor-latin;}`
-
-&lt;/style&gt; &lt;!\[endif\]--&gt; &lt;!--StartFragment--&gt;
-
-At the top of each page you may notice some text indicating which version of GCAM the documentation on that page is valid for.&lt;span style="mso-spacerun:yes"&gt;&nbsp;&lt;/span&gt;GCAM is a research tool that is constantly evolving and we hope to always keep the wiki up to date with the latest revision of GCAM.&lt;span style="mso-spacerun:yes"&gt;&nbsp;&lt;/span&gt;Users however may not always be able to use the latest version of GCAM therefore may want to view documentation for earlier versions.&lt;span style="mso-spacerun:yes"&gt;&nbsp;&lt;/span&gt;In order to accommodate these users we will adhere to the following scheme to make it straightforward to retrieve the documentation valid for the revision you are using.
-
-Should&nbsp;the note on the page your are viewing indicate that it was revised for a version of GCAM later than what you are interested in click on the “history” tab at the top of that page:
-
+Should the note on the page your are viewing indicate that it was revised for a version of GCAM later than what you are interested in click on the “history” tab at the top of that page:
 
 On this page you will find a list of edits to the wiki page of interest. For each edit there may be a comment giving some insight about what changed in that edit. In these comments we will indicate when an edit was made for upgrades made in GCAM. Here you will want to select the last version of the wiki page before it was updated to a later GCAM revision than what you are looking for.
 
-
-Note&nbsp;that this strategy was adopted May 1, 2012 and all edits prior to this date should be assumed to be valid for GCAM 3.0 r4371.
+Note that this strategy was adopted May 1, 2012 and all edits prior to this date should be assumed to be valid for GCAM 3.0 r4371.

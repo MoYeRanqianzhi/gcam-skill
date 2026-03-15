@@ -45,10 +45,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Shares of wastewater treated | By region and year | Unitless | [Exogenous](inputs_demand.md) |
 | Non-renewable groundwater supply curves - electricity inputs | 20 grades per geopolitical region and GLU | GJ per $$m^3$$ | [Exogenous](inputs_demand.md) |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.md#energy">Demand Inputs Page</a> in that it lists all inputs to the energy demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-</font>
-<br/>
 
 ## Description
 
@@ -122,8 +119,6 @@ The modeling approach is documented in [Kyle et al. (2021)](demand_energy.md#kyl
 * Multiplication of water flow volumes by assumed energy intensities
 * Adjustment of historical energy consumption in the commercial and industrial sectors to accommodate explicitly represented EFW
 
-
-
 ## Equations
 The equations that determine energy demand are described here.
 
@@ -192,7 +187,6 @@ Where $$Y$$ is the per-capita GDP, $$P$$ is the total service price aggregated a
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-
 ### Transportation subsector competition
 
 At the subsector level, the subsector competition may add the time value of transportation, as shown in the equation for the price ($$P$$) of mode $$i$$, in region $$r$$ and time period $$t$$:
@@ -217,9 +211,7 @@ In this equation, $$P_f$$ stands for the fuel price, $$I$$ is the vehicle fuel i
 
 See `calcCost` in [tran_technology.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/technologies/source/tran_technology.cpp).
 
-
 ### Industry service demand
-
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
@@ -229,14 +221,7 @@ GCAM has the capability to model three technologies which consume thermal and/or
 
 In GCAM, DACCS technologies indirectly compete with (a) emissions abatement; and (b) other carbon removal technologies such as BECCS and afforestation based on its cost and the subsidy paid for CO2 removal (i.e., the carbon emissions price). This competition is created by defining an additional "no-DAC" technology which does not capture carbon and has zero cost.
 
-
-
-
-
 **Schematic of DACCS technology competition in GCAM's CO2 Removal (CDR) Sector**
-
-
-
 
 ## Equations
 The equations that determine energy demand are described here.
@@ -301,7 +286,6 @@ $$
 s_i=\frac{α_i * exp⁡(β*p_i)}{\sum_{j=1}^{N}α_j * exp(β*p_j))}
 $$
 
-
 Where:
 
 $$α_i$$ = the shareweight of the technology.
@@ -311,7 +295,6 @@ $$β$$ = the logit coefficient, which determines how large a cost difference is 
 Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in 2020, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price).
 
 In each region, the base year service demand for the CO2 removal sector (currently, the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO2 per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO2 removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
-
 
 ## Policy options
 
@@ -374,7 +357,6 @@ Residential and commercial
 - [ ] Lighting
 - [ ] Other electrical uses
 - [ ] Water heating
-
 
 ## References
 

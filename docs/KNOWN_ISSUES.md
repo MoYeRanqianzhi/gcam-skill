@@ -16,3 +16,4 @@
 - Page-level bundles normalize local markdown links and materialize inherited or CMP trace pages where needed, but some exact source pages still refer to omitted figures in prose because the upstream documentation depended on diagrams.
 - Inherited page bundles are explicitly labeled, but they still reflect the nearest traceable source file rather than a guaranteed version-local restatement when the upstream version tree omitted that page.
 - Some exact page bundles still preserve historical GUI prose for traceability; shared topic docs are the authoritative agent-first headless CLI/config guidance.
+- Some `v3.2` wiki-derived page bundles still contain escaped citation tags such as `&lt;ref&gt;...&lt;/ref&gt;` or `&lt;references /&gt;`; this is older authoring residue, not runtime/path deception, and remains a cleanup target.

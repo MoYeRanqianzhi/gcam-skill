@@ -20,6 +20,9 @@
 - Added explicit headless query guidance for ModelInterface batch mode, `gcamreader`, `rgcam`, and `gcamextractor`.
 
 ## 2026-03-16
+- Tightened page-bundle sanitization to remove raw web style blocks (`<style>...</style>`) and presentational `class=` attributes from bundled pages while preserving semantic links and anchors.
+- Extended bundled-page sanitization to also clean escaped legacy web markup such as `&lt;br&gt;`, `&lt;span ...&gt;`, `&lt;font ...&gt;`, and `&lt;div&gt;` that remained in older wiki-derived pages, especially `v3.2`.
+- Expanded `validate_bundled_pages.py` so generated pages now fail if raw web-widget/button markup, raw font tags, styled spans, raw line-break tags, raw style blocks, or raw HTML `class=` attributes reappear.
 - Added dedicated shared reference docs for configuration workflows, query automation, workspace layout recognition, and version-specific operational differences.
 - Wired those docs into `SKILL.md`, navigation, coverage mapping, and bundled topic listings for better progressive disclosure.
 - Fixed `doc_search.py` so historical-page searches no longer fail on the current Windows console encoding.

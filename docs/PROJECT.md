@@ -36,6 +36,7 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - Continue expanding bundled topic coverage where the skill still compresses very specialized upstream material.
 - Add more deterministic helper scripts if repeated manual authoring or validation steps appear.
 - Continue auditing lower-frequency human-oriented residue in inherited historical page bundles so CLI-first adaptation remains comprehensive beyond the already-normalized `user-guide.md`, `gcam-build.md`, and legacy `hector.md` families.
+- Continue normalizing old wiki citation residue in `v3.2` page bundles where `&lt;ref&gt;...&lt;/ref&gt;` and `&lt;references /&gt;` still survive as textual artifacts after web-shell cleanup.
 
 ## Decision Log
 - 2026-03-15: Rebuilt the skill to remove machine-specific absolute paths.
@@ -60,3 +61,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Reordered `doc_search.py` to prioritize version-route and page-entry docs so progressive-disclosure search results stay agent-safe under `--max-matches`.
 - 2026-03-16: Rewrote repeated bundled `user-guide.md` GUI walkthrough blocks into headless-agent notes and stripped obsolete v3.2 previous-version click-through boilerplate from page bundles.
 - 2026-03-16: Extended page-bundle adaptation to also rewrite download-site chrome, desktop-launch/menu residue, `gcam-build.md` IDE click paths, and legacy `hector.md` integration choreography into CLI-first or configuration-oriented agent notes, with validator coverage expanded to reject those regressions.
+- 2026-03-16: Hardened bundled-page sanitization to strip raw/escaped web presentation residue such as style blocks, button wrappers, line-break tags, font wrappers, span wrappers, and presentation-only HTML `class=` attributes while keeping semantic anchors and links intact.

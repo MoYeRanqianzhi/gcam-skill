@@ -17,7 +17,6 @@ The Global Change Assessment Model (GCAM) and GCAM-USA
 
 The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from EIA (2012).
 
-
 Note, several aspects of the energy system are still modeled at the aggregate U.S. level. Most notably this applies to primary production of fossil resources including oil, gas, and coal. The supply of biomass energy feedstocks, which include residues and dedicated energy crops, is modeled at the level of 10 agro-ecological zones (AEZ) in the United States (Calvin et al 2014, Wise et al 2014). As with primary fossil resources, biomass feedstocks are assumed to be freely traded at one global price.
 
 Developing a historical energy balance for model calibration
@@ -86,8 +85,7 @@ Electricity Trade
 
 For electricity trade between states we group states roughly into the 13 NEMS Electricity Market Module Regions (EIA 2010) plus Alaska and Hawaii. Whereby states within the same sub-region can trade freely within that sub-region, trade between regions may be limited.
 
-
-<span id="_Ref277591668" class="anchor"></span>Modeled electricity markets based on NEMS.
+<span id="_Ref277591668"></span>Modeled electricity markets based on NEMS.
 
 Renewable Energy
 ================
@@ -103,8 +101,7 @@ The region-specific CO<sub>2</sub> transport and storage cost curves for the U.S
 
 In keeping with the US electricity-specific CCS modeling presented in [Wise et al. (2007](#_ENREF_4)), the CO<sub>2</sub> transport and storage cost curves represented in this analysis have been adjusted to account for the fact that the cost of CO<sub>2</sub> capture can vary by an order of magnitude for the different CO<sub>2</sub> sources modeled to generate the raw region specific CO2 transport and storage cost (i.e., a natural gas processing plant generates a virtually pure stream of CO<sub>2</sub> that can be captured – already dehydrated and compressed - for a cost of less than $10/tonCO<sub>2</sub>, while an older and relatively small pulverized coal plant could see capture costs well above $50/tonCO<sub>2</sub>) and which kinds of CO<sub>2</sub> point sources get to access what kinds of geologic storage reservoirs is influenced strongly by the capture costs.  Therefore, without the sort of adjustments performed, the raw region-specific CO<sub>2</sub> transport and storage curves would present an unrealistically low representation of the net cost of CO<sub>2</sub> transport and storage likely to be experienced by large stationary CO<sub>2</sub> point sources like coal, natural gas, and biomass – fired power plants and refineries, which are the anthropogenic CO<sub>2</sub> sources that are modeled specifically in GCAM-USA.
 
-
-<span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
+<span id="_Ref277591731"></span>Carbon storage potential by electricity market.
 
 Socio-economics
 ===============
@@ -131,11 +128,11 @@ Zhou Y, J Eom, and LE Clarke.  2013.  "The effect of climate change, populatio
 
 Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds.  2014.  "Trade-offs of different land and bioenergy policies on the path to achieving climate targets."  Climatic Change 123(3-4):691-704.  doi:10.1007/s10584-013-0897-y
 
-<span id="_ENREF_1" class="anchor"></span>Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO<sub>2</sub> transport & storage cost curves. Energy Procedia 4, 2732-2739.
+<span id="_ENREF_1"></span>Dahowski, R., Davidson, C., Dooley, J., 2011. Comparing large scale CCS deployment potential in the USA and China: A detailed analysis based on country-specific CO<sub>2</sub> transport & storage cost curves. Energy Procedia 4, 2732-2739.
 
-<span id="_ENREF_2" class="anchor"></span>Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO<sub>2</sub> Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
+<span id="_ENREF_2"></span>Dahowski, R., Dooley, J., Davidson, C., Bachu, S., Gupta, N., 2005. Building the Cost Curves for CO<sub>2</sub> Storage: North America. IEA Greenhouse Gas R&D Programme, Cheltenham, UK.
 
-<span id="_ENREF_3" class="anchor"></span>Dahowski, R.T., Davidson, C.L., Li, X.C., Wei, N., 2012. A $70/tCO<sub>2</sub> greenhouse gas mitigation backstop for China's industrial and electric power sectors: Insights from a comprehensive CCS cost curve. International Journal of Greenhouse Gas Control 11, 73-85.
+<span id="_ENREF_3"></span>Dahowski, R.T., Davidson, C.L., Li, X.C., Wei, N., 2012. A $70/tCO<sub>2</sub> greenhouse gas mitigation backstop for China's industrial and electric power sectors: Insights from a comprehensive CCS cost curve. International Journal of Greenhouse Gas Control 11, 73-85.
 
 Denholm, P. and R. Margolis. 2008. Supply Curves for Rooftop Solar PV-Generated Electricity for the United States. National Renewable Energy Laboratory, Technical Report NREL / TP-6A0-44073, November 2008.
 
@@ -165,7 +162,7 @@ U.S. Energy Information Agency (EIA 2014b) Table 4. Biodiesel producers and prod
 
 Wise MA, JJ Dooley, P Luckow, KV Calvin, and GP Kyle.  2014.  "[Agriculture, Land Use, Energy and Carbon Emission Impacts of Global Biofuel Mandates to Mid-Century](http://dx.doi.org/10.1016/j.apenergy.2013.08.042)."  Applied Energy 114:763-773.  doi:10.1016/j.apenergy.2013.08.042
 
-<span id="_ENREF_4" class="anchor"></span>Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
+<span id="_ENREF_4"></span>Wise, M., Dooley, J., Dahowski, R., Davidson, C., 2007. Modeling the impacts of climate policy on the deployment of carbon dioxide capture and geologic storage across electric power regions in the United States. International Journal of Greenhouse Gas Control 1, 261-270.
 
 Zhou Y, LE Clarke, J Eom, GP Kyle, PL Patel, SH Kim, JA Dirks, EA Jensen, Y Liu, JS Rice, LC Schmidt, and TE Seiple.  2014.  "Modeling the effect of climate change on U.S. state-level buildings energy demands in an integrated assessment framework."  Applied Energy 113:1077-1088.  doi:10.1016/j.apenergy.2013.08.034
 

@@ -36,9 +36,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | Energy commodity prices | By region, fuel, and year | 1975$/GJ | [Marketplace](marketplace.md) |
 | GHG value | By region, technology, gas, and year | 1975$/GJ | [Emissions](emissions.md) |
 
-
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#description) in that it lists all inputs to the energy supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-
 
 ## Description
 
@@ -62,7 +60,6 @@ All regions are assigned a onshore wind and offshore wind energy supply curves, 
 
 Solar energy is modeled as two separate resources: "global solar resource" and "distributed_PV", where the latter refers only to photovoltaic installations on residential and commercial buildings. As with wind, both of these resources are indicated in terms of electricity production. Global solar resource is modeled as an unlimited resource, and with a very low price; unlike with wind, it is assumed that marginal resource-related costs do not escalate with deployment levels. The "distributed_PV" supply curve is of the same functional form as the wind supply curve, with an upward-sloping function designed to capture the increases in costs with deployment. Resource potential in each region is based on estimated building floorspace. The technology and backup-related costs are documented in the [electricity sector](#electricity). Capacity factors and costs vary by region and type of solar (e.g., distributed photovoltaic (PV), concentrating solar power (CSP)). See [solar](details_energy.md#solar) for more details.
 
-
 ##### Geothermal
 
 Modeling of geothermal energy in GCAM is documented in [Hannam et al. (2009)](supply_energy.md#hannam2009). Like wind and solar, geothermal energy is only used in GCAM as a source of electricity production, but the quantities in the resource supply curves are indicated in terms of EJ of heat input to power plants, estimated as 10 times the quantity of electricity generated. This 10% thermo-electric efficiency is a bit lower than most regions where it has been estimated, but is the [IEA's (2011)](supply_energy.md#iea2011) default assumption. The supply curves in each region are graded, similar to the fossil resource curves but with the exception that the quantities refer to annual flows, not cumulative stocks. As with wind and solar, the supply curves are intended to capture only the portion of the costs of producing geothermal electricity that escalate with deployment, with the remainder of the costs in the corresponding technologies of the electricity sector. In the four phases of geothermal electricity production identified by [Deloitte (2008)](supply_energy.md#deloitte2008), the supply curves in GCAM include identification, exploration, and drilling, but not production. See also [geothermal](details_energy.md#geothermal)
@@ -79,7 +76,6 @@ The supply curve of the residual biomass is updated (in GCAM `v7.1`) based on in
 ##### Traditional biomass
 
 Traditional biomass in GCAM is defined as the IEA's "primary solid biomass" product consumed by the residential sector, in selected regions where it is considered to be an important part of the energy system. The largest consumers of traditional biomass in 2010 were China, India, and Western Africa. The specific energy goods involved include firewood, agricultural residues, animal dung, and others; no effort is made to disaggregate the category into these consistuent parts, or to link the production volumes with the agriculture and land use module.
-
 
 ### Energy Transformation
 
@@ -316,7 +312,6 @@ CO2
 Hydrogen
 - [X] Yes (aggregate)
 - [ ] Yes (spatially explicit)
-
 
 ## References
 

@@ -19,12 +19,10 @@ Hector, an open-source, object-oriented, reduced-form global climate carbon-cycl
 
 Figure 1: Conceptual diagram of the CO<sub>2</sub> fluxes (numbered thick gray arrows) between Hector’s four major carbon cycle boxes: a well-mixed atmosphere (Atmosphere), terrestrial carbon cycle (Land), ocean carbon cycle (Ocean), and fossil fuels (Earth). The thinner arrows within the land and ocean boxes denote Hector's more complex submodule carbon cycle dynamics, which are not discussed in detail here. The solid lines indicate that CO<sub>2</sub> fluxes are calculated within Hector, whereas the dashed lines indicate that the fluxes are externally defined inputs read into the model. The fluxes are labeled: (1) CO<sub>2</sub> emissions from fossil fuels and industry and uptake carbon capture technologies; (2) CO<sub>2</sub> emissions and uptake from land use change (e.g., afforestation, deforestation, etc.); (3) vegetation uptake from the atmosphere (4) the aggregate CO<sub>2</sub> from respiration from the terrestrial biosphere; and ocean carbon (5) uptake and (6) outgassing. The model’s permafrost implementation (Woodard et al. 2021) emits both CO<sub>2</sub> and CH4 into the atmosphere.
 
-
 ## GCAM-Hector interactions
 Currently the GCAM sectors interact with Hector via emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system and earth system (e.g., temperature, carbon-fluxes, etc.). Hector's climate information can be used as a climate constraint for in a [GCAM policy run](policies.md).
 
 Table 1: Emissions and sources from each sector passed to Hector.
-
 
 | Emission| Sector  | Notes |
 | ---|:----| :------ |
@@ -83,7 +81,6 @@ At every time step Hector calculates and outputs key climate variables.
 * Sea surface temperature
 * Ocean to atmosphere heat flux
 
-
 ## Getting and Installing Hector for Use with GCAM
 For users who are running GCAM with the Mac or Windows Release Package, Hector support is already compiled in.  For users compiling from source or interested in getting the Hector source, please see the [Hector section in How to Set Up and Build GCAM](gcam-build.md#3-compiling-hector).
 
@@ -94,7 +91,6 @@ Hector is a flexible, simple climate model. Users can run Hector under various c
 **Hector Configurations**
 
 By default, Hector's carbon cycle model treats the entire land surface as a single, homogeneous ecosystem. However, it is possible to introduce some land surface heterogeneity by splitting the land surface into several different biomes with distinct parameters. This is explained in detail [here](https://jgcri.github.io/hector/articles/multiple-biomes.html).
-
 
 **Hector Parameters**
 

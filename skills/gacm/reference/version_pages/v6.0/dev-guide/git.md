@@ -108,7 +108,6 @@ The final component is a descriptive name that gives an idea of
 what kind of work you're doing on the branch.  You'll have to type
 this fairly frequently, so don't make it too long.
 
-
 #### Opening pull requests
 
 Once you've made some progress on your development, you will want to

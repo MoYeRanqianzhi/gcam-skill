@@ -68,12 +68,9 @@ GCAM models depletable resources (oil, unconventional oil, natural gas, coal, an
 
 #### Oil and unconventional oil
 
-
 #### Natural gas
 
-
 #### Coal
-
 
 ### Renewable Resources
 
@@ -117,8 +114,6 @@ While most of the effort in modeling biomass supply is in the [agriculture and l
 
 Traditional biomass in GCAM is defined as the IEA's "primary solid biomass" product consumed by the residential sector, in selected regions where it is considered to be an important part of the energy system. The largest consumers of traditional biomass in 2010 were China, India, and Western Africa. The specific energy goods involved include firewood, agricultural residues, animal dung, and others; no effort is made to disaggregate the category into these consistuent parts, or to link the production volumes with the agriculture and land use module.
 
-
-
 ## Energy Transformation
 
 Broadly, the energy transformation sectors in GCAM consist of all supplysectors between the energy resources and the final demands, where the latter are identified by the final-energy keywords "buildings", "industry", or "transportation". Energy transformation sectors consume energy goods which are supplied either by resources or other energy transformation sectors, and they produce energy goods which are consumed either by other energy transformation sectors or by final demand sectors. This category is also considered to include a number of "pass-through" supplysectors whose purpose is explicit tracking of cost mark-ups and efficiency losses in the inter-sectoral transportation of energy goods. The main energy transformation sectors highlighted in this documentation are [electricity](energy.md#electricity), [refining](energy.md#refining), [gas processing](energy.md#en_gas_processing), [hydrogen production](energy.md#hydrogen), and [district services](energy.md#district-services).
@@ -128,7 +123,6 @@ In energy transformation sectors, the output unit and input unit are EJ (per yea
 In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources (colored red) and the final demands (colored light blue).
 
 Simplified schematic of the energy system in each region, showing the inter-sectoral flows of energy goods in GCAM.
-
 
 ### Electricity
 
@@ -227,7 +221,6 @@ The representation of hydrogen in GCAM includes 10 production technologies in tw
 
 Hydrogen structure, with example input-output coefficients shown.
 
-
 ### Hydrogen Production
 
 As in the H2A model, the production of hydrogen takes place in two distinct sectors: H<sub>2</sub> Forecourt Production (i.e., on-site generation) and H<sub>2</sub> Central Production. The hydrogen produced at central facilities incurs additional cost mark-ups to reflect the distribution costs, whereas forecourt production typically entails higher energy intensities on the production side, and higher per-unit costs. Central production also has a greater diversity of feedstock options, described below.
@@ -236,7 +229,6 @@ The most common hydrogen production technology today is natural gas steam reform
 
 The wind and solar technologies are electrolysis technologies, but are specifically disaggregated because these uses of wind and solar energy do not incur any backup-related costs, unlike in the electricity sector where backup costs increase as a function of their share of total grid capacity (see [electricity](energy.md#electricity)). In contrast, the nuclear technology represents thermal splitting, which does not use electricity as an intermediate energy product.
 
-
 ## Final Energy Consumption
 
 ### Buildings
@@ -244,7 +236,6 @@ The wind and solar technologies are electrolysis technologies, but are specifica
 GCAM disaggregates the building sector into residential and commercial and models three aggregate services (heating, cooling, and other). Within each region, each type of building and each service starts with a different mix of fuels supplying energy (see Figure below). The future evolution of building energy use is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers.  Floorspace depends on population, income, and exogenously specified satiation levels. The level of building service demands per unit of floorspace depend on climate, building shell conductivity, income, and satiation levels.
 
 Per-capita Residential and Commercial Energy Use in 2010
-
 
 ### Industry
 

@@ -16,7 +16,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 The GCAM ecosystem of models and tools provides a suite of options for interfacing with GCAM inputs and outputs.  The following are a list of models and tools created for the GCAM user community with their descriptions and location:
 
-
 ### Extraction and formatting
 
 #### `rgcam`
@@ -43,7 +42,6 @@ The `gcamrpt` R package provides functions for converting GCAM output into the f
 
 _Repository_:  https://github.com/JGCRI/gcamrpt
 
-
 ### Execution and workflow
 
 #### `pygcam`
@@ -52,7 +50,6 @@ The `pygcam` package comprises a set of Python modules and a main driver script 
 
 _Repository_:  https://github.com/JGCRI/pygcam
 _Read the Docs_:  https://pygcam.readthedocs.io/en/latest/intro.html
-
 
 ### Data development
 
@@ -67,7 +64,6 @@ _Repository_:  https://github.com/JGCRI/gcamdata
 The `moirai` Land Data System (Moirai LDS) is designed to produce recent historical land data inputs for the AgLU module of GCAM data system1, but the Moirai LDS outputs could also be used by other models/applications. The `moirai` are the Greek Fates, and this software is named Moirai to represent the fundamental influence of land data inputs on model outcomes. The primary function of the Moirai LDS is to combine spatially explicit input data (e.g., raster images) with tabular input data (e.g., crop price table) to generate tabular output data for a suite of variables. Some of these outputs replace the data provide by the Global Trade Analysis Project (GTAP), and other data replace and augment the original GCAM GIS processing. The Moirai LDS output data are aggregated by Geographic Land Unit (GLU)2 within each country. The GLU coverage is an input to the Moirai LDS (as a thematic raster image and an associated CSV file that maps the thematic integers to names), and the GLU boundaries can be determined arbitrarily. Previous versions of GCAM (and Moirai LDS) used only bioclimatic Agro-Ecological Zones (AEZs) and corresponding data that were provided by GTAP, as the GLUs. As a result, some AEZ terminology still exists in the code, but this terminology now refers more generally to GLUs. The Moirai LDS now enables any set of boundaries to be used as GLUs (including AEZs), allowing for more flexible generation of land use region boundaries (defined as the intersection of GLUs with geopolitical regions). The current default set of GLUs is the same set of 235 global watersheds as used by the GCAM water module. The GCAM 5.1 geopolitical regions (32 or 14) are included and used as inputs to Moirai to generate a mapping file between the Moirai outputs, which are at the level of the intersection between the GLUs and the country boundaries, and the geopolitical regions. The diagnostics scripts use this geopolitical region mapping in some cases. Moirai can also recalibrate three of the outputs (crop production, harvested area, and land rent) to a specified year that is the center of a five-year averaging window. No recalibration retains the circa 2000, 7-year average of the source data. The cucrrency-year for land rent can also be specified, and the default is 2001 to match the GTAP data.
 
 _Repository_:  https://github.com/JGCRI/moirai
-
 
 ### Single system
 
@@ -101,7 +97,6 @@ _Repository_:  https://github.com/JGCRI/food-demand
 
 _Repository_:  https://github.com/JGCRI/gcamland
 
-
 ### Disaggregation
 
 #### `tethys`
@@ -116,7 +111,6 @@ _Repository_:  https://github.com/JGCRI/tethys
 
 _Repository_:  https://github.com/IMMM-SFA/demeter
 
-
 ### Statistical Emulators
 
 #### `fldgen`
@@ -124,7 +118,6 @@ _Repository_:  https://github.com/IMMM-SFA/demeter
 The `fldgen` R package provides functions to learn the spatial, temporal, and inter-variable correlation of the variability in an earth system model (ESM) and generate random two-variable fields (e.g., temperature and precipitation) with equivalent properties.
 
 _Repository_:  https://github.com/JGCRI/fldgen
-
 
 ### Visualization
 
@@ -140,7 +133,6 @@ The GCAM Dashboard is a scenario explorer for GCAM. Its purpose is to provide a 
 
 _Repository_:  https://github.com/JGCRI/GCAM-LAC-dashboard
 
-
 ### Integration
 
 #### `cassandra`
@@ -148,7 +140,6 @@ _Repository_:  https://github.com/JGCRI/GCAM-LAC-dashboard
 Cassandra is a coupling framework for scientific models that tracks model dependencies and automates the running of multiple interconnected models.
 
 _Repository_:  https://github.com/JGCRI/cassandra
-
 
 ### General
 

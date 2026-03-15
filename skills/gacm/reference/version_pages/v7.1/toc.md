@@ -14,7 +14,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ## GCAM Documentation Topics
 
-
 * [GCAM Model Overview](overview.md)
 * Inputs
 	- [Demand](inputs_demand.md)

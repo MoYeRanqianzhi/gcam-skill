@@ -38,11 +38,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.md) |
 | Population | By region and year | thousand | [Economy module](economy.md) |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.md#food-feed-and-forestry">Demand Inputs Page</a> in that it lists all inputs to the land demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-</font>
-
-<br/>
 
 ## Description
 
@@ -51,7 +47,6 @@ Load this page when the user needs version-specific detail from this exact page 
 Food demand, i.e., income and own-/cross-price respones of staples and non-staples composites, is based on the approach documented in [Edmonds et al. (2017)](#edmonds2017). A nested logit structure is used to aggregate GCAM food commodities (calorie-based) and connect them to the top-level food demand model. See additional details in food data updates in [CMP #360](cmp/360-AgLU_data_and_methods.md) and related parameter updates in [CMP #393](cmp/CMP393_AgLU_Parameters_Update.md).
 
 Food demand nesting structure in GCAM.  Note, FiberCrop is moved to the Oil nest since over 99% of the FiberCrop for food consumption is cottonseed oil.
-
 
 ### Feed demand
 
@@ -62,12 +57,10 @@ Shares of feed are determined by a [logit sharing approach](choice.md), which de
 Non-food, non-feed demand, including forestry demand, is determined by price, income, and population size.
 Note that forestry demand is represented for two product pools, namely wood pulp and sawnwood production.
 
-
 ### Future demand (storage)
 In GCAM `v7.1`, GCAM incorporated agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
 
 The development leveraged the recently compiled supply-utilization accounts to separate stock variations, opening stock, closing stock, and loss associated with stockholding behavior. The competitive storage model employs a logit sharing structure, where changes in the ratio between closing stock and “current consumption” (i.e., stock-to-use ratio) are responsive to current market prices and expected prices for storage in the next period. We use a lagged price expectation and apply a loss parameter to closing stock to derive the loss associated with interannual storage in a region for a given sector. Currently, agricultural storage is introduced for 13 GCAM crop commodities. See additional details in [CMP #382](cmp/382-AgFoodStorage.md).
-
 
 Schematic of the updating GCAM modeling structure to represent stockholder behaviors. Source: Zhao et al. (2024).
 
@@ -101,7 +94,6 @@ where $$pcGDP$$ is per-capita GDP, $$P$$ is the commodity price, $$\alpha^i_t$$ 
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-
 ## Policy options
 
 One of the main policy options is the usage of the food preference elasticity for SSPs (especially SSP1) which increases the demand for certain food types which correspond to a more sustainable diet which reduces meat consumption. Moreover, the bio-externality cost adds restrictions to the amount of bio-energy that will be demanded. This is also a user modifiable parameter.
@@ -115,8 +107,6 @@ Future food demand is determined dynamically by changes in income and prices. Th
 ### Land conservation effectively limits the supply of productive land, while biofuel consumption increases the demand and competition for that land
 
 This paper looked at demand pathways across sectors under different land scarcity scenarios. [(Dolan et al. 2022)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002466)
-
-
 
 ## IAMC Reference Card
 
@@ -135,9 +125,6 @@ Agriculture and forestry demands
 - [X] Forest industrial roundwood
 - [X] Forest fuelwood
 - [X] Forest residues
-
-
-
 
 ## References
 

@@ -70,7 +70,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 | Challenges | Challenges to Mitigation | Low | Medium | High | Low | High |
 |           | Challenges to Adaptation | Low | Medium | High | High | Low |
 
-
 ### Electricity Assumptions
 
 Table 3 maps technology & SSP to either core, advanced (less expensive), or low (more expensive). Costs are assumed to be equal across regions; however, resource bases for renewable energy technologies differ across regions, leading to differences in deployment in the future.
@@ -88,7 +87,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <col style="width: 16%" />
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td><p><strong>Plant Type</strong></p></td>
 <td><p><strong>SSP1</strong></p></td>
 <td><p><strong>SSP2</strong></p></td>
@@ -96,7 +95,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p><strong>SSP4</strong></p></td>
 <td><p><strong>SSP5</strong></p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Nuclear</p></td>
 <td><p>LOW</p></td>
 <td><p>CORE</p></td>
@@ -104,7 +103,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Geothermal</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -112,7 +111,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>PV</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -120,17 +119,18 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>PV with storage</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 <td><p>LOW</p></td>
 <td><p>ADV</p></td>
 <td>CORE
-<p><br />
+<p>
+
 </p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Rooftop PV</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -138,7 +138,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>CSP</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -146,7 +146,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>CSP with storage</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -154,7 +154,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Wind</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -162,7 +162,7 @@ Table 3 maps technology & SSP to either core, advanced (less expensive), or low 
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Wind with storage</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -187,7 +187,6 @@ Table 4 details assumptions made for fossil fuel supply. Similar to renewables, 
 | Conventional Oil | 0.5% | 0.5% | 0.5% | 1% | 2% |
 | Unconventional Oil | 0% |  0.5% | 0.5% | 2% |
 
-
 **Table 4b**: Fossil Fuel Assumptions across SSPs: Cost Adder in 2100 ($/GJ)
 {: .tbl}
 
@@ -207,8 +206,9 @@ Table 5 includes information on implementation of the SSPs for building energy d
 
 <table>
 <tbody>
-<tr class="odd">
-<td><p><br />
+<tr>
+<td><p>
+
 </p></td>
 <td><p><strong>SSP1</strong></p></td>
 <td><p><strong>SSP2</strong></p></td>
@@ -216,7 +216,7 @@ Table 5 includes information on implementation of the SSPs for building energy d
 <td><p><strong>SSP4</strong></p></td>
 <td><p><strong>SSP5</strong></p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Fuel Preference Elasticity for Traditional Bioenergy</p></td>
 <td><p>-2.5</p></td>
 <td><p>-2</p></td>

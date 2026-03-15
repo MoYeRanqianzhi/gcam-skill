@@ -70,8 +70,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 | Challenges | Challenges to Mitigation | Low | Medium | High | Low | High | |
 |           | Challenges to Adaptation | Low | Medium | High | High | Low | |
 
-<br/>
-
 ### Electricity Assumptions
 
 <a name="table3"></a>Table 3 maps technology & SSP to either core, advanced (less expensive), or low (more expensive). Costs are assumed to be equal across regions; however, resource bases for renewable energy technologies differ across regions, leading to differences in deployment in the future. Inputs are specified in the [Advanced Technology](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_adv.csv) and [Low Technology](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_capital_low.csv) input files.
@@ -89,7 +87,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <col style="width: 16%" />
 </colgroup>
 <tbody>
-<tr class="odd">
+<tr>
 <td><p><strong>Plant Type</strong></p></td>
 <td><p><strong>SSP1</strong></p></td>
 <td><p><strong>SSP2</strong></p></td>
@@ -97,7 +95,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p><strong>SSP4</strong></p></td>
 <td><p><strong>SSP5</strong></p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Nuclear</p></td>
 <td><p>LOW</p></td>
 <td><p>CORE</p></td>
@@ -105,7 +103,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Geothermal</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -113,7 +111,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>PV</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -121,17 +119,18 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>PV with storage</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 <td><p>LOW</p></td>
 <td><p>ADV</p></td>
 <td>CORE
-<p><br />
+<p>
+
 </p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Rooftop PV</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -139,7 +138,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>CSP</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -147,7 +146,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>CSP with storage</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -155,7 +154,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="odd">
+<tr>
 <td><p>Wind</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -163,7 +162,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Wind with storage</p></td>
 <td><p>ADV</p></td>
 <td><p>CORE</p></td>
@@ -173,8 +172,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 </tr>
 </tbody>
 </table>
-
-<br/>
 
 ### Fossil Fuel Assumptions
 
@@ -190,7 +187,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 | Conventional Oil | 0.5% | 0.5% | 0.5% | 1% | 2% |
 | Unconventional Oil | 0% |  0.5% | 0.5% | 2% |
 
-
 **Table 4b**: Fossil Fuel Assumptions across SSPs: Cost Adder in 2100 ($/GJ)
 {: .tbl}
 
@@ -201,8 +197,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 | Conventional Oil | $0.20 | $0.20 | $0.20 | $0.98 | $0 |
 | Unconventional Oil | $0.21 | $0.21 | $0.21 | $1.06 | $0 |
 
-<br/>
-
 ### Building Energy Demand Assumptions
 
 <a name="table5"></a>Table 5 includes information on implementation of the SSPs for building energy demand. In particular we adjust the rate at which traditional bioenergy is phased out across SSPs. This is done in GCAM by adjusting the fuel preference elasticity, a parameter that links preferences (i.e., the share weight of the logit function) to per capita income. More negative fuel preference elasticities result in faster phase outs. This parameter is used to capture differences in intraregional inequality between SSP3 and SSP4; namely, we assume a faster phase out for the same income level in SSP3 than in SSP4. Fuel preference elasticities are specified in the following input files: [SSP1 and SSP5](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP15.csv), [SSP3](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP3.csv), and [SSP4](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A44.fuelprefElasticity_SSP4.csv).
@@ -212,8 +206,9 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 
 <table>
 <tbody>
-<tr class="odd">
-<td><p><br />
+<tr>
+<td><p>
+
 </p></td>
 <td><p><strong>SSP1</strong></p></td>
 <td><p><strong>SSP2</strong></p></td>
@@ -221,7 +216,7 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 <td><p><strong>SSP4</strong></p></td>
 <td><p><strong>SSP5</strong></p></td>
 </tr>
-<tr class="even">
+<tr>
 <td><p>Fuel Preference Elasticity for Traditional Bioenergy</p></td>
 <td><p>-2.5</p></td>
 <td><p>-2</p></td>
@@ -231,8 +226,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 </tr>
 </tbody>
 </table>
-
-<br/>
 
 ### Agriculture and Land Use Assumptions
 
@@ -245,8 +238,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 |:----------------|:----------------|:----------------|:----------------|:----------------|:----------------|
 | Agricultural Productivity Growth | 50% above GCAM default | GCAM default | 50% below GCAM default | 50% above GCAM default / GCAM default / 50% below GCAM default | 50% above GCAM default |
 | Meat Demand | Demand linked to income and price. Shift in preferences among meat products away from beef, sheep, and goats. | Demand linked to income and price. | Demand linked to income and price.  | Demand linked to income and price. | Demand linked to income and price. |
-
-<br/>
 
 ### Climate Policy
 
@@ -269,8 +260,6 @@ To implement the SSPs within GCAM, we use the demographic and economic assumptio
 | High Income | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 | Medium Income | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price | No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
 | Low Income |Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) | Carbon Price on Land is Equal to 50% of Energy Carbon Price |No Land Policy (i.e., FFICT in Wise et al., 2009) |No Land Policy (i.e., FFICT in Wise et al., 2009) | Carbon Price on Land is Equal to Energy Carbon Price (i.e., UCT in Wise et al., 2009) |
-
-<br/>
 
 ## Differences between Official SSPs and SSPs using the current model version
 

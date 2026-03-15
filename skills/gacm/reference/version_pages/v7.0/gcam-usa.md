@@ -17,9 +17,7 @@ The Global Change Analysis Model (GCAM) and GCAM-USA
 
 The GCAM model was expanded to include greater spatial detail in the USA region, referred to as GCAM-USA. In GCAM-USA the 50 U.S. states plus the District of Columbia (hereafter, the 51 states) are included as explicit regions that operate within the global GCAM model. Energy transformation (electricity generation and refined liquids production) and end-use demands (buildings, transportation, and industry) are modeled at the individual state level. Inter-state trade of all energy goods is considered, with state-specific consumer price mark-ups assigned for coal, natural gas, and refined liquids assigned based on price data from [EIA 2017b](gcam-usa.md#eia2017b).
 
-
 Note that several aspects of the energy system are still modeled at the aggregate U.S. level. Most notably, this applies to primary production of fossil resources including oil, gas, and coal. The supply of biomass energy feedstocks, which include residues and dedicated energy crops, is modeled at the level of 22 water basins in the United States ([Calvin et al. 2019](gcam-usa.md#calvin2019), [Calvin et al. 2014](gcam-usa.md#calvin2014), [Wise et al. 2014](gcam-usa.md#wise2014)). As with the global model, biomass feedstocks are distinguished between those produced and consumed domestically and those traded in a global market.
-
 
 Story-line for the GCAM-USA reference scenario
 ==============================================
@@ -51,7 +49,6 @@ Overall, despite growing electricity demand, the assumption of no new freshwater
 
 Water supply: Our reference scenario adopts the renewable and non-renewable water supplies that are calculated and implemented for all water basins in the USA region in the global GCAM.
 
-
 Interpretation of GCAM-USA results
 ==================================
 
@@ -60,7 +57,6 @@ The state-level results based on GCAM-USA need cautious interpretation. It is im
 For example, the model produces monotonic results for state-level projections of energy demand in the end-use sectors. This is because service demands in these sectors are based on (i) either empirically grounded equations that define service demands in the sectors as continuous functions of population and economic growth (for the buildings and transportation sectors) or (ii) simple elasticities (for the industrial sector). The logit-share equation is then used to allocate various fuels to meet the service demands.
 
 In contrast, the decision-making frameworks employed in the model could result in non-monotonic state-level results for the electricity and refining sectors. In these sectors, smooth functions are used to retire existing capacity and the logit-share equation is then used to share out investments across technologies in terms of physical quantities (EJ) of energy produced (rather than capacity installed), resulting in generally smooth allocations. In reality, decisions at the state-level are discrete and often result in lumpy retirements and investments (e.g. a full coal facility would retire in reality; however, our smooth retirement functions could imply fractional retirements. Likewise, investments would occur in full power plants, while our the logit-share equation could imply investment in a fraction of a power plant). In addition, GCAM does not account for on-the-ground factors that affect technology deployment (e.g. land use restrictions and electricity transmission infrastructure) which further affect the ability of the model to make discrete decisions about investments in new capacity and the relative contribution of trade in meeting domestic demands. For instance, our modeling of inter-state trade assumes that states within a grid region can trade freely with each other and that the necessary infrastructure to facilitate such trade either exists already or can be built easily. This could result in more rapid shifts in electricity trade between states compared to what has been observed historically. Nevertheless, our framework produces monotonic results for these sectors at relatively aggregate spatial resolutions (e.g. grid regions or national level) for which the model offers a scientific, detailed, and bottom-up accounting framework.
-
 
 Socio-economics
 ===============
@@ -75,12 +71,10 @@ For future labor productivity growth assumptions, we utilize per-capita GDP grow
 
 Finally, the USA-region's population and labor productivity assumptions were updated to match the sum-of-states population and GDP when running GCAM-USA.  The result is that the USA region's population and GDP is different from assumptions in the core (32 region version), but is consistent with the sum-of-states population and GDP when GCAM-USA is run.
 
-
 Developing a historical energy balance for model calibration
 ============================================================
 
 The first step to modeling at the 51 state level was to create energy balances--that is, production and consumption of different forms of energy by each modeled sector, fuel, and state. These data were developed from 1971 to the final historical year of 2015, and applied in the model base years of 1975, 1990, 2005, 2010, and 2015. In the data processing of the state-level energy data, the aggregated national GCAM-USA energy balances (i.e., all states added together) must still be equal to the corresponding flows in the USA region of the global GCAM data set, which are derived from International Energy Agency (IEA) Energy Balances. With this in mind, we use proportional allocations to disaggregate the US-level quantity flows to the states, utilizing state level data sets from the US Energy Information Agency (EIA). The EIA SEDS (State Energy Data System) was used as the primary data set for this purpose ([EIA 2017a](gcam-usa.md#eia2017a)). The main steps of the data processing methods are described in the subsequent sections.
-
 
 End-use sectors
 ===============
@@ -114,11 +108,9 @@ As in the remainder of GCAM, the transportation sector in GCAM-USA is disaggrega
 | Truck | refined liquids | Distillate fuel oil in transportation |
 | Truck | gas | Distillate fuel oil in transportation |
 
-<br />
 Industrial energy allocations require more complicated processing steps, due to the refinery sector's energy use being included in the industry sector of SEDS, as well as the need to assign nation-level electricity co-generation at industrial facilities. The national estimates of cogeneration by fuel are from the IEA's Autoproducer CHP Plants, defined as facilities whose power production is primarily in support of activities that are on-site. No state-and fuel-level inventory of co-generation was available, so fuel consumption by the whole industrial sector is used to derive the state-wise proportional allocations of both the fuel inputs and electricity outputs to/from cogeneration. Currently, the "other industrial energy use" supplysector represents the remaining industrial energy use other than sectors such as cement, N fertilizer, and refinery. This "other industrial energy use" supplysector represents fuel-level competition without breaking out detailed industrial services (iron, steel, chemical etc.).
 
 As in the remainder of the model, cement and N fertilizer are modeled specifically by state, with the state-wise allocation of energy consumption and physical outputs based on the value of shipments of the corresponding NAICS code. Specifically, cement is disaggregated by the value of shipments from *3273: Cement and concrete product manufacturing*. Fertilizer is disaggregated by *3253: Pesticide, fertilizer, and other agricultural chemical mfg*. States with zero output from these industries in the historical years are assumed to remain that way in future years as well.
-
 
 Electricity generation
 ======================
@@ -139,15 +131,12 @@ GCAM-USA includes state-specific assumptions for power sector coal retirements. 
 
 GCAM-USA includes state-specific retirement assumptions for existing nuclear power plants. We use data on plant-level generation and retirement obtained from various sources including planned retirement dates from the Nuclear Regulatory Commission (NRC). The plant-level data are aggregated to the state-level to develop state-level retirement functions.
 
-
 Electricity Trade
 =================
 
 For electricity trade between states we group states roughly into the 15 "grid regions" consistent with the North American Electric Reliability Corporation regions. Whereby states within the same sub-region can trade freely within that sub-region, as previously described. Trade between grid regions is driven by economic competition and is calculated as gross trade volumes utilizing two specific datasets to determine, first, overall net trade ([EIA 2018c](gcam-usa.md#eia2018c)), and the trade between Power Control Areas (PCAs) [Chini et al. 2018](gcam-usa.md#chini2018) which are used to disaggregate net trade to gross imports and exports for each grid region.
 
-
-<span id="_Ref277591668" class="anchor"></span>Modeled electricity markets based on NEMS.
-
+<span id="_Ref277591668"></span>Modeled electricity markets based on NEMS.
 
 Refining sector
 ===============
@@ -160,12 +149,10 @@ For biomass liquids, the energy output (biofuel production) for the whole USA is
 
 Liquid fuels used as industrial feedstocks for the whole nation are then disaggregated to states on the basis of the sum of asphalt and petrochemical feedstocks consumption in each state. Natural gas used as feedstocks (i.e., used for non-energy purposes) is not explicitly accounted in the EIA SEDS database. This is not surprising as (a) unlike liquid fuels, there is nothing different about the natural gas used as feedstocks from that used for energy, and (b) the characterization of gas as "feedstock" as opposed to "energy" is a difficult one which is only done post-hoc based on product yields, and only in some energy inventories. Moreover, in many cases (e.g. ammonia production, hydrogen production), even the "feedstock" uses of natural gas entail 100% release of fuel carbon as CO<sub>2</sub>. In any case, the IEA-based national estimate of natural gas feedstocks is disaggregated to states on the basis of each state's share of the whole nation's use of (liquid fuel) petrochemical feedstocks, which are used as a proxy for the size of the chemicals industry in each state. This amount of gas is then deducted from the SEDS estimate of industrial energy use of gas in each state. Note also that most of the natural gas "feedstocks" in the US (estimated in the IEA Energy Balances) are for ammonia production; see [IEA 2009](gcam-usa.md#iea2009) for a description of the accounting methods. Because ammonia production is explicitly modeled, this national estimate of natural gas feedstocks in GCAM is considerably lower than the number in the IEA Energy Balances.
 
-
 Renewable Energy
 ================
 
 Renewable energy resources are modeled at the state level.  Renewable technologies include a separation between state-specific resource cost curves, which represent marginal costs that increase with deployment, plus technology capital costs that are the same in all states, but whose costs are levelized in the model with state-specific capacity factors. The escalation of the supply curve reflects reducing capacity factors as the most optimal locations are used first. Wind, utility-scale PV and CSP curves are developed from [Eurek et al. 2016](gcam-usa.md#eurek2016). Geothermal resources are from [Lopez et al. 2012](gcam-usa.md#lopez2012) and are currently held fixed  in the future with user ability to switch to endogenous geothermal future growth. Supply curves for residential rooftop PV are obtained from [Denholm and Margolis 2008](gcam-usa.md#denholm2008).  As in rest of GCAM, we model hydropower generation as an exogenous output. Our exogenous output assumptions are developed to i.) match state-level hydro outputs in 2015 to actual generation in 2015 and ii.) align long-term hydro generation with AEO-2020 projections. Specifically, we obtain 2020 state-level fixed outputs by applying growth rates to 2015 fixed outputs based on historical data from EIA. We then use national level hydropower generation projections from AEO-2020 [EIA 2020](gcam-usa.md#eia2020) and apply national growth-rates to all states for model years beyond 2020. Beyond 2050, we assume constant outputs through 2100.
-
 
 Carbon-Dioxide Capture and Geologic Storage
 ===========================================
@@ -176,19 +163,14 @@ The region-specific CO<sub>2</sub> transport and storage cost curves for the U.S
 
 In keeping with the US electricity-specific CCS modeling presented in [Wise et al. 2007](gcam-usa.md#wise2007), the CO<sub>2</sub> transport and storage cost curves represented in this analysis have been adjusted to account for the fact that the cost of CO<sub>2</sub> capture can vary by an order of magnitude for the different CO<sub>2</sub> sources modeled to generate the raw region specific CO<sub>2</sub> transport and storage cost (i.e., a natural gas processing plant generates a virtually pure stream of CO<sub>2</sub> that can be captured - already dehydrated and compressed - for a cost of less than $10/tonCO<sub>2</sub>, while an older and relatively small pulverized coal plant could see capture costs well above $50/tonCO<sub>2</sub>) and which kinds of CO<sub>2</sub> point sources get to access what kinds of geologic storage reservoirs is influenced strongly by the capture costs. Therefore, without the sort of adjustments performed, the raw region-specific CO<sub>2</sub> transport and storage curves would present an unrealistically low representation of the net cost of CO<sub>2</sub> transport and storage likely to be experienced by large stationary CO<sub>2</sub> point sources like coal, natural gas, and biomass fired power plants and refineries, which are the anthropogenic CO<sub>2</sub> sources that are modeled specifically in GCAM-USA.
 
-
-<span id="_Ref277591731" class="anchor"></span>Carbon storage potential by electricity market.
-
+<span id="_Ref277591731"></span>Carbon storage potential by electricity market.
 
 Direct Air Capture
 ===========================================
 
 In GCAM-USA, the [same technological assumptions](demand_energy.md#direct-air-capture-for-carbon-dioxide-removal) used for the 32 core regions have been applied to US states. The assumptions for the energy and financial inputs for DAC follow those from the global DAC technologies in the same SSP scenario ([Fuhrman et. al. 2021](https://iopscience.iop.org/article/10.1088/1748-9326/ac2db0)) (so users should use the same SSP files for global and GCAM-USA DAC add-ons).  These assumptions are applied to the states in GCAM-USA. The existing assumptions for energy and geologic carbon storage supply in each state and grid region further determine the relative attractiveness to deploy DACCS in a given state within GCAM (see figure below).
 
-
 Share of cumulative carbon storage potential by state. State-level DAC potential is directly correlated with the carbon storage potential. Carbon storage assumptions can be found in GCAM data system in [Dooley_CCS_USA](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/gcam-usa/Dooley_CCS_USA.csv).
-
-
 
 Water
 ===========================================
@@ -227,7 +209,6 @@ State-level technology share-weights, which influence the competition between co
 
 This approach differs somewhat from the global GCAM, where future cooling shares are exogenously specified by region. Historically calibrated share-weights are not carried forward into the future in the global model.
 
-
 Non-CO2 GHGs
 ===========
 GCAM-USA represents state-level CH4 and N2O emissions in the electricity, buildings, industrial energy use, industrial processes, urban processes, refining, and N fertilizer sectors. HFC emissions are represented in the buildings sector (for residential and commercial cooling). SF6 emissions associated with the electricity transmission system are represented at grid-region level (in the electricity_net_ownuse sector). Resource production and agricultural activity are still represented at the national level; thus, emissions from these sectors are also represented at the national level and are not currently downscaled to states.
@@ -235,7 +216,6 @@ GCAM-USA represents state-level CH4 and N2O emissions in the electricity, buildi
 Historical CH4 and N2O emissions in industrial processes and urban processes are calibrated to the [2022 U.S. State-level Non-CO2 GHG Mitigation Report](gcam-usa.md#epa2022). Emissions in other sectors are represented using the same emission factors as the "USA" region in the 32-region GCAM, developed from the [2019 EPA Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report](emissions.md#epa2019).
 
 Currently, GCAM-USA uses the same marginal abatement cost (MAC) curves as the "USA" region in the 32-region GCAM.
-
 
 Air Pollutants
 ============
@@ -259,7 +239,6 @@ The GCAM-USA air pollutant representation is focused on energy-emissions interac
 | Process (industry, urban, cement) | A GDP control is applied to 2015 - 2100 for all supplysectors and technologies. |
 | Refining and related | N/A |
 
-<br />
 BC and OC: The NEI does not include BC/OC emissions. BC/OC emissions factors are derived from PM<sub>2.5</sub> emissions using BC/OC ratios. This can lead to some inconsistency between GCAM USA BC/OC emissions and PM<sub>2.5</sub> emissions. In practice this is usually not a significant issue because most analysis uses either BC/OC (climate-focused analysis) or PM<sub>2.5</sub> (air pollution focused analysis) emissions, but not both.
 
 For the power sector, only the GCAM-USA configuration with endogenous cooling technologies (elec_segments_water_USA.xml) is compatible with GCAM-USA air pollutant emissions. For industrial energy use, emission factors for future years are applied assuming industrial sector vintaging (industry_vintage_USA.xml) is being used; not utilizing the industry vintaging feature could lead to discontinuity in future air pollutant emissions.

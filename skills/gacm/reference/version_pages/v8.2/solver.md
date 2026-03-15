@@ -351,7 +351,6 @@ not yet solved.
 
 ## Advanced Solver Details
 
-
 ### Compile-time configuration options
 
 In order to compute its iteration step, the Broyden solver must solve
@@ -420,8 +419,6 @@ subroutines (replace NN with the number of processors you have):
 export MKL_NUM_THREADS=1
 export MKL_DOMAIN_NUM_THREADS="BLAS=NN"
 ```
-
-
 
 ### Model abstraction layer
 

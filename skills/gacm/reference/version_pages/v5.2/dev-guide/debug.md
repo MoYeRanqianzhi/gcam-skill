@@ -38,7 +38,6 @@ Possible causes:
 
 * If running from code editor, the project’s working directory needs to be set to the exe/ folder. Sometimes it defaults to the `cvs/objects/build/*/` folder
 
-
 #### Problem: Crash while reading ScenarioComponents XML files
 _Message immediately follows the parsing of an individual input file._
 
@@ -49,7 +48,6 @@ Possible causes:
 * File was not found (look for typos in the file name)
 
 * File was not correctly formatted (when edited by hand)
-
 
 #### Problem: Crash after parsing, but before first period
 _Message immediately follows "XML parsing complete."_

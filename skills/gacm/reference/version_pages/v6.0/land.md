@@ -38,8 +38,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.md#description) in that it lists all inputs to the land module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
-<br/>
-
 ## Description
 
 ### Economic Modeling Approach
@@ -204,7 +202,6 @@ This section summarizes some of the land-based policy options available in GCAM.
 
 With this policy, we can set aside some land, removing it from economic competition. This will result in that land area being fixed across time and any land expansion/contraction will not affect this area.
 
-
 #### (GCAM defualt) Protection constraints based on land suitability and protection constraints
 By default, levels of available land for expansion are decided based on levels of suitability (as defined by Zabel et al. 2014) and protection constraints (as defined by the IUCN). There are 7 mutually exclusive types of land based on these suitability and protection constraints. They are:
 
@@ -232,13 +229,11 @@ An example file is included to implement this policy is included in GCAM; see [g
 
 We can impose constraints (lower or upper bounds) on bioenergy within GCAM. Under such a policy, GCAM will calculate the tax or subsidy required to ensure that the constraint is met. Note that by default a bioenergy constraint in GCAM (starting with v4.4) is imposed based on the amount of subsidy available for net negative emissions.
 
-
 See [Energy Constraint](policies_examples.md#energy-constraint) for an xml snippet.
 
 ### Carbon densities
 
 As mentioned above the user can also select different "states" of carbon other than the "q3_state" (which is considered the steady state). These include the weighted average, median, q1, min or max value. These can be selected in constant `aglu.CARBON_STATE` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L373).
-
 
 ### Land expansion costs/constraints
 
@@ -265,7 +260,6 @@ The effect of an increase in one type of land depends on where that increase occ
 
 ### Implications of policy
 The choice of [policy options](#policy-options) in the land system has a dramatic effect on the resulting land allocation, resulting in changes in agricultural production, energy production, emissions, and prices. This result is demonstrated in [Calvin et al. (2014)](https://link.springer.com/article/10.1007/s10584-013-0897-y). For example, policies that place a value on carbon in the land system will result in a transition to high carbon ecosystems (i.e., reforestation and afforestation). Policies that incentivize low carbon energy systems, without any additional incentives in the land system, result in large-scale deployment of bioenergy.
-
 
 ## IAMC Reference Card
 
@@ -312,7 +306,6 @@ Carbon dioxide removal
 - [X] Bioenergy with CCS
 - [X] Reforestation
 - [X] Afforestation
-
 
 ## References
 

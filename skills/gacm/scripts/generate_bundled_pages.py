@@ -66,6 +66,27 @@ MD_IMAGE_RE = re.compile(r"!\[([^\]]*)\]\(([^)]+)\)")
 HTML_IMG_RE = re.compile(r"<img\b[^>]*\/?>", re.IGNORECASE)
 HTML_IMG_SRC_RE = re.compile(r'src="([^"]+)"', re.IGNORECASE)
 HTML_IMG_ALT_RE = re.compile(r'alt="([^"]+)"', re.IGNORECASE)
+HTML_STYLE_BLOCK_RE = re.compile(r"<style\b[^>]*>.*?</style>", re.IGNORECASE | re.DOTALL)
+HTML_BR_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
+HTML_BUTTON_RE = re.compile(r"<button\b[^>]*>(?P<label>.*?)</button>", re.IGNORECASE | re.DOTALL)
+HTML_SPAN_RE = re.compile(r"<span\b[^>]*>(?P<content>.*?)</span>", re.IGNORECASE | re.DOTALL)
+HTML_FONT_RE = re.compile(r"</?font\b[^>]*>", re.IGNORECASE)
+HTML_CLASS_ATTR_RE = re.compile(
+    r'(?P<prefix><[A-Za-z][^>]*?)\sclass\s*=\s*(?:"[^"]*"|\'[^\']*\')',
+    re.IGNORECASE,
+)
+ESCAPED_HTML_STYLE_BLOCK_RE = re.compile(r"&lt;style\b.*?&gt;.*?&lt;/style&gt;", re.IGNORECASE | re.DOTALL)
+ESCAPED_HTML_BR_RE = re.compile(r"&lt;br\s*/?&gt;", re.IGNORECASE)
+ESCAPED_HTML_BUTTON_RE = re.compile(
+    r"&lt;button\b.*?&gt;(?P<label>.*?)&lt;/button&gt;",
+    re.IGNORECASE | re.DOTALL,
+)
+ESCAPED_HTML_SPAN_RE = re.compile(
+    r"&lt;span\b.*?&gt;(?P<content>.*?)&lt;/span&gt;",
+    re.IGNORECASE | re.DOTALL,
+)
+ESCAPED_HTML_FONT_RE = re.compile(r"&lt;/?font\b.*?&gt;", re.IGNORECASE)
+ESCAPED_HTML_DIV_RE = re.compile(r"&lt;/?div\b.*?&gt;", re.IGNORECASE)
 MARKDOWN_LINK_RE = re.compile(r"(?<!!)\[([^\]]+)\]\(([^)]+)\)")
 HTML_HREF_RE = re.compile(r'(?P<prefix>href=")(?P<target>[^"]+)(?P<suffix>")', re.IGNORECASE)
 HEADING_RE = re.compile(r"^\s*#\s+(.+?)\s*$", re.MULTILINE)
@@ -703,6 +724,61 @@ def rewrite_html_hrefs(segment: str, version: str) -> str:
     return HTML_HREF_RE.sub(repl, segment)
 
 
+def normalize_inline_html(segment: str) -> str:
+    def unwrap_button(match: re.Match[str]) -> str:
+        label = match.group("label")
+        label = re.sub(r"\s+", " ", label).strip()
+        return label
+
+    def unwrap_span(match: re.Match[str]) -> str:
+        content = match.group("content")
+        if content.strip():
+            return content
+        return match.group(0)
+
+    def strip_class_attr(match: re.Match[str]) -> str:
+        return match.group("prefix")
+
+    segment = HTML_STYLE_BLOCK_RE.sub("", segment)
+    segment = HTML_BR_RE.sub("\n", segment)
+    segment = HTML_BUTTON_RE.sub(unwrap_button, segment)
+    for _ in range(8):
+        updated = HTML_SPAN_RE.sub(unwrap_span, segment)
+        if updated == segment:
+            break
+        segment = updated
+    segment = HTML_FONT_RE.sub("", segment)
+    for _ in range(4):
+        updated = HTML_CLASS_ATTR_RE.sub(strip_class_attr, segment)
+        if updated == segment:
+            break
+        segment = updated
+    segment = segment.replace("&nbsp;", " ")
+    return segment
+
+
+def normalize_escaped_inline_html(segment: str) -> str:
+    def unwrap_button(match: re.Match[str]) -> str:
+        label = match.group("label")
+        label = re.sub(r"\s+", " ", label).strip()
+        return label
+
+    def unwrap_span(match: re.Match[str]) -> str:
+        return match.group("content")
+
+    segment = ESCAPED_HTML_STYLE_BLOCK_RE.sub("", segment)
+    segment = ESCAPED_HTML_BR_RE.sub("\n", segment)
+    segment = ESCAPED_HTML_BUTTON_RE.sub(unwrap_button, segment)
+    for _ in range(8):
+        updated = ESCAPED_HTML_SPAN_RE.sub(unwrap_span, segment)
+        if updated == segment:
+            break
+        segment = updated
+    segment = ESCAPED_HTML_FONT_RE.sub("", segment)
+    segment = ESCAPED_HTML_DIV_RE.sub("\n", segment)
+    return segment
+
+
 def apply_outside_code_fences(text: str, transform) -> str:
     parts: list[str] = []
     last = 0
@@ -716,10 +792,18 @@ def apply_outside_code_fences(text: str, transform) -> str:
 
 def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = rewrite_images(text)
-    text = apply_outside_code_fences(text, lambda chunk: rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version))
+    text = apply_outside_code_fences(
+        text,
+        lambda chunk: normalize_escaped_inline_html(
+            normalize_inline_html(
+                rewrite_html_hrefs(rewrite_markdown_links(chunk, version), version)
+            )
+        ),
+    )
     text = strip_image_artifacts(text)
     text = sanitize_absolute_paths(text)
     text = apply_agent_text_adaptations(text, rel_source)
+    text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip() + "\n"
 
 

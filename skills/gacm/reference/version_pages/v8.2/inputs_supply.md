@@ -48,12 +48,7 @@ GCAM's supply inputs include information on production, prices, technology cost 
 | CO<sub>2</sub> emissions coefficients | Default carbon content of fuels | External data | [CDIAC](#cdiac2017) and [IEA](#iea2023)  | Specified by fuel | kgC / GJ |
 | Historical CO<sub>2</sub> emissions | Historical emissions of CO<sub>2</sub> | External data | [CDIAC](#cdiac2017) | Specified by nation and year | ktC per year |
 
-
-<font size="-1">
-<a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.md#inputs-to-the-module">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>
-</font>
-
-<br/>
+<a name="table_footnote1">1</a>: Note that this table differs from the one provided on the <a href="supply_energy.md#inputs-to-the-module">Energy Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
@@ -72,7 +67,6 @@ CO<sub>2</sub> capture rates for refining are specified in [A22.globaltech_co2ca
 ##### Retirement rules
 
 Retirement rules are specified in [A22.globaltech_retirement.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A22.globaltech_retirement.csv), [A23.globaltech_retirement.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A23.globaltech_retirement.csv), [A25.globaltech_retirement.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A25.globaltech_retirement.csv), and  [A10.ResSubresourceProdLifetime.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/energy/A10.ResSubresourceProdLifetime.csv).
-
 
 ##### Logit exponents
 
@@ -133,11 +127,7 @@ Historical non-CO<sub>2</sub> emissions information is provided in the GCAM rele
 | Groundwater supply curves (cost and availability) | Amount of groundwater available in each basin at increasingly high graded levels | [Niazi et al., 2025](#niazi2025); [Turner et al., 2019a](#turner2019a) | Water basin and year | $$km^3$$ available per USD |
 | Desalination cost | Cost of desalinated water within a basin which is available at high cost and available once the price of water within a basin surpasses a certain threshold | Exogenous Data | Global Constant | USD per $$km^3$$ |
 
-<font size="-1">
-<a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="supply_water.md#inputs-to-the-module">Water Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>
-</font>
-
-<br/>
+<a name="table_footnote2">2</a>: Note that this table differs from the one provided on the <a href="supply_water.md#inputs-to-the-module">Water Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
@@ -176,11 +166,7 @@ The costs of desalinated water reflects electrical energy input and capital and 
 | Logit exponents | Share parameters dictating substitution between different feed options for livestock | Assumption |  | Specified by type of livestock | unitless |
 | Historical non-CO<sub>2</sub> emissions | Historical emissions of non-CO<sub>2</sub> | External data | [CEDS](https://github.com/JGCRI/CEDS) `v2024_07_08` | Specified by country, technology, gas, and year | Various |
 
-<font size="-1">
-<a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="supply_land.md#inputs-to-the-module">Land Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.<br/>
-</font>
-
-<br/>
+<a name="table_footnote3">3</a>: Note that this table differs from the one provided on the <a href="supply_land.md#inputs-to-the-module">Land Supply Modeling Page</a> in that it only lists external inputs to the supply module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
@@ -202,7 +188,6 @@ GCAM captures change in yield due to increases in fertilizer use or irrigation e
 
 GCAM uses producer prices to initialize the model (future prices are endogenous). Those prices are provided in [GCAMFAOSTAT_ProdPrice.csv.gz](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/GCAMFAOSTAT_ProdPrice.csv.gz).
 
-
 ##### Cost of production
 
 The costs associated with land, irrigation, and fertilizer are endogenously determined in GCAM (see [Land Supply](supply_land.md)). Other costs of production are exogenously specified and the data used for those costs can be found in [USDA_cost_data.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_cost_data.csv), with [USDA_item_cost.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/USDA/USDA_item_cost.csv) specifying which costs are included in GCAM. Note that we use cost information for the USA in all regions.
@@ -210,8 +195,6 @@ The costs associated with land, irrigation, and fertilizer are endogenously dete
 ##### Emissions
 
 Historical non-CO<sub>2</sub> emissions information is provided in the GCAM release as "pre-built" data aggregated to GCAM regions, technologies, and fuels. Users that want to build using CEDS raw data, for example to build for different regional aggregations, will need to generate CEDS data using the open-source [CEDS system](https://github.com/JGCRI/CEDS) and place the resulting emissions data by country, fuel, and sector within the [CEDS folder](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/CEDS).
-
-
 
 #### gcamfaostat
 
@@ -223,22 +206,13 @@ There has been a significant data method update for the GCAM AgLU (Agriculture a
 
 The aggregation of agricultural data from FAO countries and commodities to GCAM regions and commodities are included in gcamdata. The commodity mapping is provided in [Mapping_SUA_PrimaryEquivalent.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/Mapping_SUA_PrimaryEquivalent.csv) and shown in the following Figures for crop harvested area and food availability.
 
-
-
-
 Mapping between FAO and GCAM primary (land-based) commodities (A) and count of FAO commodities per GCAM commodity (B)
 
 Mapping between FAO and GCAM food commodities (A) and count of FAO commodities per GCAM commodity (B)
 
-
 In GCAM `v7.1`, leveraging the newly compiled SUA data, we separated opening stock, closing stock, and the corresponding storage loss.
 
 Schematic of the restructuring of the supply-utilization accounts in GCAM to separate agricultural storage and the corresponding loss
-
-
-
-
-
 
 ## References
 

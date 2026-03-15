@@ -46,7 +46,6 @@ To answer this question we set up some simple standalone experiment: use the XML
 | Xerces/SAX  | 11s   | 1   MB |
 | Rapid (DOM) | 3s    | 900 MB |
 
-
 From these test we can see actually the different Xerces parsers run in a very similar time.  There is an incredible difference in memory usage however which seems to be where SAX parsing's real advantage lies.  Rapid XML indeed is much faster and an in between in terms of memory usage. Although at this point we are not concerned with memory usage as GCAM's actual memory use high will far eclipse the usage during XML Parse.  So let's take a closer look at Rapid XML to understand why it is so fast and are it's trade off ones we can live with.
 
 ### Rapid XML Parser
@@ -325,7 +324,6 @@ void>::type parseDataI(const rapidxml::xml_node<char>* aNode, DataType& aData) {
 }
 ```
 
-
 ##### XMLParseHelper::parseData / CONTAINER
 For CONTAINER Data we need to first determine if an instance of the class already exists and if not create a new one.  To tell if an instance already exists we need to search the array of CONTAINERs and check the `getName()` / `getYear()` and see if the XML attribute "name" / "year" matches any existing instances.  Of course all of this is generic.  So to determine if to search on name or year we can utilize the GCAM Fusion utility `NamedFilter` / `YearFilter`.  And again we need to naively loop over the entire array of CONTAINERs to see if we have a match.
 
@@ -425,7 +423,6 @@ void>::type parseDataI(const rapidxml::xml_node<char>* aNode, DataType& aData) {
     getDataVector.getFullDataVector(parseChildHelper);
 }
 ```
-
 
 ### Debugging XML Parse
 When users are developing new code, say they added some variable but for some reason it doesn't seem like it is getting parsed.  In the old approach it is really easy to add some "print" statements in the XMLParse method and see if we get the expected message when the code is run.

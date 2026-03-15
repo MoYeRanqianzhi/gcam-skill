@@ -20,10 +20,8 @@ The Heckscher-Ohlin theorem explains trade using factor endowments and predicts 
 
 The trade of agricultural products were mostly modeled using the Heckscher-Ohlin approach in early versions of GCAM (e.g., GCAM v4), and trade of livestock products was fixed in these versions. But GCAM has been updated to the Armington style trade modeling approach for most of the agricultural and livestock proudcts. However, FodderHerb is modeled using the Heckscher-Ohlin approach and FodderGrass is not traded. Also, major energy commodities such as coal, gas, oil, bio-energy, etc. are also traded in a single world market with the Heckscher-Ohlin approach.
 
-
 ## Armington Style Trade
 For the agricultural and livestock commodities in GCAM (except fodder crops and fish & other meats), we use an Armington style distinction between domestic and imported goods. The Armington approach assumes products are differentiated by source and consumers view goods produced in different countries as imperfect substitutes (Armington, 1969). The theoretical background and the derivation of the logit-based Armington approach is documented in Zhao et al. (2020). In this approach, the competition between imports and domestic is governed by a logit. Imports are from a single global pool that draws from all regions and is also governed by a logit. The logit-based Armington approach requires a segmented regional market, as oppose to the integrated world market in the Heckscher-Ohlin approach. Thus, it allows differentiating regional prices and tracing gross trade flows.
-
 
 The structural implementations of a "global-market" versus a "regional-market" representation are shown in Figure 1 with an example of corn trade.
 
@@ -32,7 +30,6 @@ Figure 1: Global (upper) and regional (lower) agricultural markets structures, f
 In the global-market representation, each region's production is output to a global market, which in turn supplies each region's demand sectors (i.e., food, feed, biofuel production, and other uses). As there is only one global market per crop commodity, all regions see the same price. Similarly, the impacts of a supply (demand) shock within any region do not directly cause a shock to the demand (supply) of that region; these sorts of within-region impacts are buffered by the global market.
 
 In the regional-market representation, one additional sector per crop is added to each region for representing domestic supplies; consistent with GCAM terminology elsewhere, these sectors are named, e.g., "regional corn". The total domestic supply of any crop and region is equal to production minus exports plus imports. The production sector's prices are region-specific, as are the "regional crop" prices seen by the demand sectors. Therefore, a shock to the producer prices of an agricultural commodity in some region has a direct impact on the consumption sectors within that region.
-
 
 Furthermore, the two market structures are also compared in Figure 2 with an example of a global wheat market equilibrium with demand and supply flows in 2010.
 
@@ -47,7 +44,6 @@ The logit parameters are calibrated based on literature information of trade ela
 
 ## Fixed Interregion Trade
 Livestock products were held fixed at their historical value for the rest of the simulation, in early versions of GCAM (e.g., GCAM v4). But they have been updated using the logit-based Armington approach.
-
 
 ## No Trade of Secondary energy goods
 Note that secondary energy products such as [Electricity](energy.md#electricity) or [Refined Liquids](energy.md#refining) are assumed to not be traded at all between the GCAM geo-political regions.

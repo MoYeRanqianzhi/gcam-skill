@@ -53,6 +53,7 @@ High-value shared docs to maintain:
 - Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable and image markup stays stripped.
 - `validate_bundled_pages.py` also enforces portability inside `reference/version_pages/**/*.md`: real machine-specific absolute paths and file URIs must be sanitized out of bundled page content, while generic placeholders such as `/path/to`, `<GCAM Workspace>`, `<JAVA_HOME>`, and `<USER_HOME>` remain allowed.
 - `validate_bundled_pages.py` also enforces case-insensitive filesystem safety inside `reference/version_pages/`: no lowercased path collisions and no legacy generated `INDEX.md` directory indexes may remain.
+- `validate_bundled_pages.py` now also rejects raw bundled web-shell residue such as `<button>`, `onclick=`, `<font>`, `<br>`, `<style>...</style>`, and raw HTML `class=` attributes; when these regressions appear, fix `generate_bundled_pages.py` and regenerate instead of hand-editing generated pages.
 - Re-run `validate_conceptual_docs_contract.py` after editing conceptual shared docs such as `overview.md`, `common_assumptions.md`, `choice_marketplace.md`, `energy_system.md`, `land_system.md`, `water_system.md`, `economy.md`, `emissions_climate.md`, `policies_scenarios.md`, `inputs_outputs.md`, `developer_workflows.md`, `data_system.md`, `ssp.md`, or `gcam_usa.md` so they cannot silently drift away from version-routing-aware bundled-baseline guidance.
 - Re-run `validate_maintenance_memory_contract.py` after editing `docs/DEVELOPMENT.md` or `docs/CHANGELOG.md` so the shared maintainer workflow and hardening history do not silently drift out of long-term memory.
 - Re-run `validate_semantic_contract_coverage.py` after adding or removing any root shared doc, persistent memory doc, or dedicated validator so every top-level skill doc remains owned by an explicit behavior-level contract.
@@ -87,10 +88,12 @@ High-value shared docs to maintain:
 - When a page links to a non-bundled local CMP PDF, generate a clearly labeled `cmp trace page` instead of pretending the binary asset is bundled.
 - Historical site-root links such as `../toc.html` must route to bundled `v8.2/toc.md`, not to a non-existent synthetic root file.
 - Bundled pages must stay text-only: strip raw image markup and avoid bundling binary figure assets.
+- Bundled pages should strip both raw HTML presentation residue and escaped legacy web markup when it is clearly web-shell noise rather than model content.
 - Bundled pages must also stay machine-agnostic: sanitize concrete user-home and installed-tool absolute paths into generic placeholders during generation instead of preserving upstream machine-local examples verbatim.
 - Shared topic docs should translate upstream GUI instructions into agent-usable CLI and configuration workflows whenever possible.
 - Shared topic docs are the authoritative agent layer; keep them phrased in terms of headless execution, XML/config editing, and batch extraction, while leaving historical UI prose inside `reference/version_pages/` only as traceable evidence.
 - Generated page bundles should still be agent-usable evidence, not raw human-web prose dumps: rewrite repeated site chrome, desktop-launch wording, menu/button click paths, and IDE pane choreography into concise CLI/configuration notes whenever the upstream instruction is templatic and repeated across versions.
+- Remaining legacy wiki citation tags such as `&lt;ref&gt;...&lt;/ref&gt;` in some `v3.2` pages are not yet normalized into cleaner agent text; treat them as known cleanup debt, not as a reason to reintroduce raw web markup.
 - If you add a new root shared runtime doc under `skills/gacm/reference/`, also add it to `version_catalog.COMMON_TOPICS` and regenerate the version references, or the inventory-parity validator will fail.
 - Authoring-time generation scripts may depend on the bundled `gcam-doc/` authoring tree; runtime skill use must not depend on that tree being present.
 - Runtime docs and scripts must stay portable: never hardcode local machine paths such as `E:\...`, `C:\...`, `/Users/...`, `/home/...`, `file://`, or `vscode://`.

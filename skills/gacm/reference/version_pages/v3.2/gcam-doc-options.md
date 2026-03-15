@@ -54,7 +54,6 @@ All of the options in this section are hosted free of charge.
   MediaWiki hosting services, both free and paid.  The full list is
   available at https://www.mediawiki.org/wiki/Hosting_services .
 
-
 ## Customized domains
 
 Both Miraheze and GitHub Pages (but not GitHub Wiki) support custom

@@ -97,5 +97,4 @@ Autonomous energy efficiency improvements
 - [X] Yes (exogenous)
 - [ ] Yes (endogenous)
 
-
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Economy Inputs Page](inputs_economy.md#description) in that it lists all inputs to the economy module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.

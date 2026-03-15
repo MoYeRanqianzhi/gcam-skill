@@ -36,7 +36,7 @@ GCAM's inputs include information on production, consumption, prices, land, carb
 <dt>Carbon</dt> <dd>Inputs include potential vegetation and soil carbon density (i.e., carbon density if the land grew to equilibrium) and a mature age. Currently, we derive vegetation carbon densities for crops from the FAO computed crop yield. All other carbon densities and mature ages come from Houghton (1999) and King (1997).</dd>
 
 <dt>Other Emissions</dt> <dd>Inputs include emissions of all non-CO<sub>2</sub> gases and species for each year and region. Data for BC and OC is from the RCP inventory (Lamarque et al., 2011). Data for all other gases and species is from EDGAR (European Commission, 2010).</dd>
-</dl><br/>
+</dl>
 
 ### Outputs
 
@@ -76,7 +76,7 @@ are produced from agricultural waste burning, forest fires,
 deforestation, and savannah burning. Livestock emissions are
 calculated annually at the 32 region level. All other emissions are
 calculated annually at the 283 region level.</dd>
-</dl><br/>
+</dl>
 
 ## Economic Modeling Approach
 
@@ -101,7 +101,6 @@ Before discussing our nesting approach, it is useful to consider the space of po
 The other extreme is that of no substitution. This would be accomplished with near zero or zero logit exponents, whether in a single nest or multiple nests. This implies that either it is physically impossible or the transition costs are too high to allow switching from one land type to another. Currently, in GCAM, we use zero logit exponents in a very limited number of situations, where we do not want any substitution (e.g., we do not allow cropland to expand into desert or tundra).  However, in most situations, we employ positive logit exponents and allow economics to dictate the land allocation within a region.
 
 Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. Figure 1 shows the nesting diagram of land with an AEZ subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
-
 
 Figure 1: AgLU Land Nest
 

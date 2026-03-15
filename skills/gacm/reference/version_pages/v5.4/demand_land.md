@@ -38,11 +38,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.md) |
 | Population | By region and year | thousand | [Economy module](economy.md) |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.md#food-feed-and-forestry">Demand Inputs Page</a> in that it lists all inputs to the land demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-</font>
-
-<br/>
 
 ## Description
 
@@ -88,7 +84,6 @@ where $$pcGDP$$ is per-capita GDP, $$P$$ is the commodity price, $$\alpha^i_t$$ 
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-
 ## Policy options
 
 To be completed...
@@ -114,9 +109,6 @@ Agriculture and forestry demands
 - [X] Forest industrial roundwood
 - [X] Forest fuelwood
 - [X] Forest residues
-
-
-
 
 ## References
 

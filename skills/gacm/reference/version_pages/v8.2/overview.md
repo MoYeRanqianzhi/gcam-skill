@@ -54,42 +54,35 @@ Supplied with input information from the GCAM Data System, the GCAM Core is the 
 
 The exact structure of the model explored in the GCAM core - for example, the number of regions and technologies - is data driven. In all cases, the GCAM core represents the entire world, but it is constructed with different levels of resolution for each of these different systems (see Figure 2). In the current release version of GCAM, the energy-economy system operates at 32 regions globally (see tables below), land is divided into >300 subregions, and water is tracked for 233 basins worldwide. The Earth system module operates at a global scale.
 
-<style type="text/css">
-.header{font-weight:bold;background-color:#333333;color:#ffffff;vertical-align:top}
-.first_col{font-weight:bold;vertical-align:top}
-.second_col{vertical-align:top}
-</style>
 <table>
   <caption>Spatial scale of systems in the release version of GCAM</caption>
   <tr>
-    <th class="header">GCAM Component</th>
-    <th class="header">Geospatial Resolution</th>
+    <th>GCAM Component</th>
+    <th>Geospatial Resolution</th>
   </tr>
   <tr>
-    <td class="first_col">Macro-Economy</td>
-    <td class="second_col">32 Geopolitical Regions</td>
+    <td>Macro-Economy</td>
+    <td>32 Geopolitical Regions</td>
   </tr>
     <tr>
-    <td class="first_col">Energy System</td>
-    <td class="second_col">32 Geopolitical Regions</td>
+    <td>Energy System</td>
+    <td>32 Geopolitical Regions</td>
   </tr>
     <tr>
-    <td class="first_col">Land System</td>
-    <td class="second_col">396 subregions</td>
+    <td>Land System</td>
+    <td>396 subregions</td>
   </tr>
     <tr>
-    <td class="first_col">Water Supplies</td>
-    <td class="second_col">235 Hydrologic Basins</td>
+    <td>Water Supplies</td>
+    <td>235 Hydrologic Basins</td>
   </tr>
     <tr>
-    <td class="first_col">Physical Earth System</td>
-    <td class="second_col">Global</td>
+    <td>Physical Earth System</td>
+    <td>Global</td>
   </tr>
 </table>
-<br/>
 
 Figure 2: GCAM regional mapping
-
 
 | GCAM Region	| Countries |
 |:-------------:|:---------:|
@@ -127,7 +120,6 @@ Figure 2: GCAM regional mapping
 | USA | United States |
 
 Table: Mapping from GCAM region to country
-
 
 The core operating principle for GCAM is that of market equilibrium. Representative agents in GCAM use information on prices, as well as other information that might be relevant, and make decisions about the allocation of resources. These representative agents exist throughout the model, representing, for example, regional electricity sectors, regional refining sectors, regional energy demand sectors, and land users who have to allocate land among competing crops within any given land region. Markets are the means by which these representative agents interact with one another. Agents indicate their intended supply and/or demand for goods and services in the markets. GCAM solves for a set of market prices so that supplies and demands are balanced in all these markets across the model. The [GCAM solution process](solver.md) is the process of iterating on market prices until this equilibrium is reached. Markets exist for physical flows such as electricity or agricultural commodities, but they also can exist for other types of goods and services, for example tradable carbon permits.
 

@@ -38,8 +38,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Land Inputs Page](inputs_land.md#description) in that it lists all inputs to the land module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
-<br/>
-
 ## Description
 
 ### Economic Modeling Approach
@@ -229,7 +227,6 @@ The effect of an increase in one type of land depends on where that increase occ
 ### Implications of policy
 The choice of [policy options](#policy-options) in the land system has a dramatic effect on the resulting land allocation, resulting in changes in agricultural production, energy production, emissions, and prices. This result is demonstrated in [Calvin et al. (2014)](https://link.springer.com/article/10.1007/s10584-013-0897-y). For example, policies that place a value on carbon in the land system will result in a transition to high carbon ecosystems (i.e., reforestation and afforestation). Policies that incentivize low carbon energy systems, without any additional incentives in the land system, result in large-scale deployment of bioenergy.
 
-
 ## IAMC Reference Card
 
 Land Cover
@@ -275,7 +272,6 @@ Carbon dioxide removal
 - [X] Bioenergy with CCS
 - [X] Reforestation
 - [X] Afforestation
-
 
 ## References
 

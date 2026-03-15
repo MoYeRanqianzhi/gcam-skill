@@ -38,11 +38,7 @@ Load this page when the user needs version-specific detail from this exact page 
 | GDP per capita | By region and year | thous 1990$ per person | [Economy module](economy.md) |
 | Population | By region and year | thousand | [Economy module](economy.md) |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="inputs_demand.md#food-feed-and-forestry">Demand Inputs Page</a> in that it lists all inputs to the land demand module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
-</font>
-
-<br/>
 
 ## Description
 
@@ -88,7 +84,6 @@ where $$pcGDP$$ is per-capita GDP, $$P$$ is the commodity price, $$\alpha^i_t$$ 
 
 See `calcDemand` in [minicam_price_elasticity_function.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/functions/source/minicam_price_elasticity_function.cpp).
 
-
 ## Policy options
 
 One of the main policy options is the usage of the food preference elasticity for SSPs (especially SSP1) which increases the demand for certain food types which correspond to a more sustainable diet which reduces meat consumption. Moreover, the bio-externality cost adds restrictions to the amount of bio-energy that will be demanded. This is also a user modifiable parameter.
@@ -102,8 +97,6 @@ Future food demand is determined dynamically by changes in income and prices. Th
 ### Land conservation effectively limits the supply of productive land, while biofuel consumption increases the demand and competition for that land
 
 This paper looked at demand pathways across sectors under different land scarcity scenarios. [(Dolan et al. 2022)](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2021EF002466)
-
-
 
 ## IAMC Reference Card
 
@@ -122,9 +115,6 @@ Agriculture and forestry demands
 - [X] Forest industrial roundwood
 - [X] Forest fuelwood
 - [X] Forest residues
-
-
-
 
 ## References
 

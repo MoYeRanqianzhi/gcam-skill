@@ -67,7 +67,6 @@ The following policy examples are provided in this section.
 * [Land Constraint](#land-constraint)
 * [Energy Intensity Standard](#res)
 
-
 ## <a name="carbon-price"/> Carbon Price
 The following input file will create a carbon price of $1/tC (in $1990) in the USA, starting in the year 2020 and going through out the model time horizon. Additional regions can be added to this file. Regions with the same `market` name will use the same carbon price.
 

@@ -39,16 +39,11 @@ One of the most important determinants of energy, agriculture, and land-use is t
 
 Since GCAM v7, GCAM incorporates a macroeconomic module that allows for fully endogenizing GDP responses. This model creates a two-way coupling between the scale of economic activity, measured as GDP, and the existing energy sector module. In the simple macro-economic model that we employ here, the two-way interaction is developed for each geo-political region in GCAM. The system is assumed to be open, with each of the regions interacting with others in the global economy via trade. Figure 1 shows the new elements in relation to existing GCAM elements.
 
-
-
 Figure 1: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange
-
 
 ### GCAM-macro (KLEM) Description
 
 At the heart of the "production" of GDP in the macroeconomic model is the materials sector ($$X$$). The materials sector is the source of all net output not originating in the energy system ($$E$$). $$X_{M}$$ represents the sale of new final goods and services. Additionally, the materials sector consumes all net $E$ output, measured here as efficiency-weighted end-use energy. $$X_{M}$$ therefore serves as the retailer to the economy.
-
-
 
 $$
 X_M = F_M (X_{K,M}, X_{L,M}, X_{E,M})
@@ -127,8 +122,6 @@ where $$i=E,K,M$$ and $$R=regions$$.
 
 For code updates, see scripts in [national_account.cpp](https://github.com/JGCRI/gcam-core/blob/master/cvs/objects/containers/source/national_account.cpp).
 
-
-
 ### GCAM-macro (KLEM) Social Accounting Matrix
 
 The two-way interactions between energy and the economy require the articulation of a set of simplifying assumptions about an economy. Those simplifying assumptions carry implications for the way national income and product accounts are tracked. To facilitate the appropriate accounting within the GCAM macro-economic system, we articulate an implied national Social Accounting Matrix (SAM). We use the SAM to help ensure macroeconomic consistency.
@@ -144,8 +137,6 @@ Because each row and column must sum to exactly the same thing, we can also calc
 Another useful cross-check that is enabled by the SAM is the savings-investment cross-check where Savings ($$S$$) plus net international financial transfers ($$NX$$) equals Investment ($$I$$). Note that we have chosen to include energy-consuming consumer durable goods purchases, such as cars and household appliances, in our capital account (rather than lumped into consumption). They are not formally investment purchases but represent part of the underlying energy-using infrastructure of the economy. The net international financial transfers will be inherited from the historical national accounts data. In the data system, we provide a constant to allow users to phase it out by a certain year or hold it constant for all years. It is currently configured to phase out by 2035.
 
 Another example of a useful cross-check is the equality between net exports of new, final goods and services and offsetting international capital transfers. That is, both the "$$ROW$$" column and "$$ROW$$" row must sum to zero.
-
-
 
 Figure 2: GCAM-macro (KLEM) Social Accounting Matrix
 
@@ -167,8 +158,6 @@ The inclusion of the GCAM macro module expands the range of options available fo
 
 A significant advantage of the macroeconomic module is that it enables the direct output of GDP and/or consumption consequences for a broader range of perturbations, eliminating the need for post-processing. In contrast, the deadweight loss approach requires case-by-case development of methods when the economy is perturbed by factors other than emissions mitigation enforced through a carbon price. Changes in consumption and/or GDP can be observed, for example, in response to regulatory interventions, variations in water availability, or weather/climate-related factors.
 
-
-
 ## References
 
 Edmonds, Jae, and John Reilly. "A long-term global energy-economic model of carbon dioxide release from fossil fuel use." *Energy Economics* 5, no. 2 (1983): 74-88.
@@ -184,8 +173,6 @@ Aguiar, Angel, Maksym Chepeliev, Erwin L. Corong, Robert McDougall, and Dominiqu
 IEA. "World Energy Outlook 2022." (2022).
 
 IIASA. "SSP Database." (2024).
-
-
 
 ## IAMC Reference Card
 

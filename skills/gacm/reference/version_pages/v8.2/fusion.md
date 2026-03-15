@@ -20,10 +20,8 @@ who is interested in modifying or adding new components to GCAM itself.
 *Note:* the discussion that follows is aimed at an audience proficient with
  C++.  GCAM developers looking to understand how to make their GCAM module complaint with GCAM Fusion should check the [Developer Guide](dev-guide/examples.md).
 
-
 Background
 ----------
-
 
 GCAM is a object oriented model using a hierarchical structure to represent the
 various sectors and activities that it models.  This is convenient for setting
@@ -48,7 +46,6 @@ XML via simple XPath queries that look like:
 Thus GCAM Fusion is a query engine for GCAM with a query syntax _somewhat_ like
 XPath using the same data names as the XML input tags.  Users can then use the
 search results as they like including changing the value of the results.
-
 
 Providing a hook to calling feedbacks
 -------------------------------------
@@ -128,7 +125,6 @@ public:
     virtual void calcFeedbacksAfterPeriod( Scenario* aScenario, const IClimateModel* aClimateModel, const int aPeriod ) = 0;
 };
 ```
-
 
 An Introduction Using an Illustrative Example
 ---------------------------------------------
@@ -367,13 +363,11 @@ struct GatherEmiss {
     template<typename T>
     void processData( T& aData );
 
-
     // call back methods for GCAMFusion
     // called if the second templated argument to GCAMFusion is true
     // we won't be using it in this example.
     //template<typename T>
     //void pushFilterStep( const DataType& aData );
-
 
     // call back methods for GCAMFusion
     // called if the third templated argument to GCAMFusion is true
@@ -404,7 +398,6 @@ The `GCAMFusion` object constructor takes two arguments:
 
 Then we can call GCAM Fusion with a search string and have it use the above
 struct to process the results:
-
 
 ```cpp
 void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario, const IClimateModel* aClimateModel,
@@ -463,7 +456,6 @@ then we've made a mistake in setting up the system.  Therefore, in the generic
 template, which will be instantiated for any other types that might be returned
 by the search, we assert that the code should never get there during runtime.
 If for some reason it does, then the run will abort with an error.
-
 
 Next we do something with our results.  To keep things simple for illustrative
 purposes, we'll adjust degree days by a scale factor, but you could in principle
@@ -645,8 +637,6 @@ complex setup procedures, since it avoids having to replicate the setup within
 GCAM.  The main disadvantage to this method is that it requires a lot of
 GCAM-specific modifications to your model.  These modifications will have to be
 disabled to use your model in stand-alone mode or to couple to another model.
-
-
 
 Intended Use of GCAM Fusion
 ---------------------------

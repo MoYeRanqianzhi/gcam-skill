@@ -30,11 +30,8 @@ Table 1: External inputs used for economics<sup>[1](#table_footnote1)</sup>
 | GDP growth rate | Near-term growth rate of GDP (2015-2024) | External data set | <a href="http://www.imf.org/external/pubs/ft/weo/2015/02/weodata/index.aspx">IMF</a> | Country and year | % |
 | GDP  | GDP by country and year, used for 2025-2100 | External data set | <a href="https://secure.iiasa.ac.at/web-apps/ene/SspDb/dsd?Action=htmlpage&page=about">SSP database, OECD Model</a> | Country and year | billion US$2005/yr (PPP) |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="economy.md#inputs-to-the-module">Economy Modeling Page</a> in that it only lists external inputs to the economics module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
-</font>
 
-<br/>
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 
 ### Input Data

@@ -20,6 +20,15 @@ CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 RAW_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 RAW_HTML_IMG_RE = re.compile(r"<img\b", re.IGNORECASE)
+RAW_HTML_BUTTON_RE = re.compile(r"<button\b|onclick\s*=", re.IGNORECASE)
+RAW_HTML_FONT_RE = re.compile(r"</?font\b", re.IGNORECASE)
+RAW_HTML_STYLE_TAG_RE = re.compile(r"<style\b|</style>", re.IGNORECASE)
+RAW_HTML_CLASS_ATTR_RE = re.compile(
+    r"<[A-Za-z][^>]*\sclass\s*=\s*(?:\"[^\"]*\"|'[^']*')",
+    re.IGNORECASE,
+)
+RAW_HTML_STYLED_SPAN_RE = re.compile(r"<span\b[^>]*style=", re.IGNORECASE)
+RAW_HTML_BREAK_RE = re.compile(r"<br\s*/?>", re.IGNORECASE)
 LEGACY_IMAGE_RE = re.compile(r"Image reference:")
 PLACEHOLDER_IMAGE_RE = re.compile(r"\[\[IMAGE_OMITTED:")
 WINDOWS_ABS_RE = re.compile(r"\b[A-Za-z]:[\\/]")
@@ -92,6 +101,18 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw markdown image syntax remains")
         if RAW_HTML_IMG_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html image tag remains")
+        if RAW_HTML_BUTTON_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html widget/button markup remains")
+        if RAW_HTML_FONT_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html font tag remains")
+        if RAW_HTML_STYLE_TAG_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html style block remains")
+        if RAW_HTML_CLASS_ATTR_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html class attribute remains")
+        if RAW_HTML_STYLED_SPAN_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw styled span markup remains")
+        if RAW_HTML_BREAK_RE.search(text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw html line-break tag remains")
         if LEGACY_IMAGE_RE.search(text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> legacy image reference marker remains")
         if PLACEHOLDER_IMAGE_RE.search(text):

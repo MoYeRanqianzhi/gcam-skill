@@ -81,7 +81,6 @@ There are some naming conventions for a few emission species/sectors within GCAM
 * Emissions from most agricultural activities are suffixed with "\_AGR", except for burning of agricultural waste on fields (AWB), which are suffixed with "\_AWB". (This allows us to separate emissions from these distinct processes from the same technology.) These are in addition to emissions named without a suffix. So to obtain total emissions, the three variants of a given species should be added (e.g., CH4 emissions is the sum of CH4, CH4"\_AGR", and CH4"\_AWB".)
 * Sulfur dioxide (SO<sub>2</sub>) emissions are currently differentiated by four metaregions (SO2\_1,SO2\_2,SO2\_3,SO2\_4). These are kept separate for purposes of feeding the emissions information to the climate model; for emissions estimation, these different categories should be added to obtain global totals.
 
-
 ## <a name="non-co2-ghg-emissions">Non-CO<sub>2</sub> GHG Emissions</a>
 
 The non-CO<sub>2</sub> greenhouse gases include methane (CH<sub>4</sub>), nitrous oxide (N<sub>2</sub>O) and fluorinated gases. These emissions, *E*, are modeled for any given technology in time period *t* as:
@@ -133,7 +132,6 @@ Note that the GCAM implementation of the SSP scenarios used a different approach
 
 ## <a name="user-options">Advanced Non-CO<sub>2</sub> User Options</a>
 
-
 ### Markets
 
 For information on using markets for non-CO2 emissions see the [markets For non-CO<sub>2</sub>](./policies.md#non-co2-markets) section of the polices page.
@@ -152,7 +150,6 @@ end-year | Year by which emission factor should reach specified value
 start-year | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)
 final-emissions-coefficient | Emissions coefficient that should be set by end-year (and every year thereafter)
 allow-ef-increase | (optional) Allow emission factors to increase from their start-year value (default to false)
-
 
 ## References
 

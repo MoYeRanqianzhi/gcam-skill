@@ -14,7 +14,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 GCAM's external land inputs include information on land, carbon, other emissions, and the value of unmanaged land in the historical period. These inputs are required for each [global land unit](common_assumptions.md#global-land-units) and [historical year](common_assumptions.md#historical-years).
 
-
 ## External Inputs
 
 ### Description
@@ -32,10 +31,7 @@ Table 1: External inputs used by the land model <sup>[1](#table_footnote)</sup>
 | Share Parameters | GCAM requires the user to specify the logit exponents that determine the substitutability between different leaves and nodes in the land model. These parameters were chosen to produce land supply elasticities comparable to those found in the literature, although it should be noted that there is not a transformation between logit exponents and supply elasticities for all land types. | Assumption |  | Specified by land node | N/A |
 | Parameters to introduce a new land type | For land types that do not exist in the historical period, GCAM requires parameters to introduce these land types in the future. Specifically, GCAM needs to know how that land type will compete with other land types in its nest _if_ it were to have equal profit. | Assumption | | Currently specified globally, but could be specified by region and water basin | Share |
 
-<font size="-1">
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the <a href="land.md#inputs-to-the-module">Land Modeling Page</a> in that it only lists external inputs to the land module (either data sources or assumptions). Additionally, the units listed are the units of the raw inputs, rather than the units the GCAM requires.
-</font>
-
 
 Note that for the Shared Socioeconomic Pathways (SSPs), different inputs are used for some variables. See [SSPs](ssp.md) for more information.
 

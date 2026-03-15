@@ -33,7 +33,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 <a name="table_footnote">1</a>: Note that this table differs from the one provided on the [Supply Inputs Page](inputs_supply.md#description) in that it lists all inputs to the water supply module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 
-
 ## Description
 
 Three distinct sources of fresh water are modeled, renewable water (surface and ground), non-renewable groundwater, and desalinated water. Renewable water is water that is replenished naturally by surface runoff and subsurface infiltration and release. Non-renewable groundwater is fossil groundwater resources or groundwater where abstraction exceeds recharge. Renewable water and non-renewable groundwater are separately modeled for each basin. Desalinated water is available as an additional source of freshwater within each basin and for alternative end-use demands for water.
@@ -46,11 +45,9 @@ Renewable water supplies are based on runoff estimates from Xanthos, a detailed 
 
 Non-renewable groundwater is also represented at the basin-scale so that it is a supplemental source to basin renewable water. Non-renewable groundwater is modeled as a graded depletable resource with a fixed amount of total groundwater availability. Detailed global assessments of porosity, aquifer thickness, permeability, and water depth are utilized to establish the total volume of water available at the grid-scale. Basin level estimates of environmentally exploitable groundwater are aggregated from grid-scale data. A groundwater supply curve representing the relationship between exploitable groundwater and cost of extraction is constructed from a physics-based extraction cost model. Capital and operating costs that include well installation and maintenance costs as a function of depth and geological complexity, and energy inputs and costs required for pumping are included for a rigorous estimate of the relationship between groundwater volume and extraction cost ([Turner et al. 2019a](#turner2019a); [Kim et al. 2016](#kim2016)).
 
-
 ### Desalinated water
 
 Desalinated water is available as source of freshwater from purified saline water. Electrical energy input and capital and operational costs are included for representing the cost of desalinated water. Due to the high cost of desalination, desalinated water is only utilized when renewable and non-renewable water supplies are scarce and the cost of freshwater is high. In GCAM core simulations, more expensive desalinated water is assumed to be available for non-irrigation purposes only. However, it can be made available for irrigation use or excluded from any end-use representations of water demand through simple data input changes that either includes or excludes the desalination technology option. Desalinated water representation is nested within the water distribution sectors where it competes with basin water supply from renewable and nonrenewable sources.
-
 
 ### Water distribution
 
@@ -76,8 +73,6 @@ To be completed...
 
 Co-linkages
 - [X] Water availability
-
-
 
 ## References
 

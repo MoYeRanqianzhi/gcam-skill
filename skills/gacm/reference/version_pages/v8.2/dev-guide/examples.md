@@ -31,8 +31,6 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ### FilterStep objects
 
-
-
 A FilterStep is the object that GCAMFusion uses to search a single GCAM
 container's data vector.  It can optionally specify a data name to match which
 is compared against the `Data::mDataName`.  If the data name in the FilterStep
@@ -58,8 +56,6 @@ would also find a share-weight object contained in the sector itself if there
 were any, but in this example there are no such matches; share weights are only
 defined for subsectors and technologies.
 
-
-
 ### Filter objects
 
 A Filter object allows GCAMFusion to select a subset of a data object that is a
@@ -70,11 +66,7 @@ container for other objects. The available Filters are:
 * YearFilter: Calls the -&gt;getYear() method if the data is `CONTAINER` or uses the `Modeltime` to convert period index to year if the data is `ARRAY` and compares that year in it's predicate. `SIMPLE` data will never match.
 * IndexFilter: Computes the index offset of each element in an `ARRAY` or `CONTAINER` Data for comparison in it's predicate. `SIMPLE` Data will never match.
 
-
-
 ### Predicates
-
-
 
 A predicate is a way to test whether a year, or name, or index, etc matches a
 value the user was looking for. Currently predicates can only operate on string
@@ -89,7 +81,6 @@ versa. The available predicates are:
 |   IntGreaterThanEq | int | Tests if the proposition is greater or equal to an int value.|
 |   IntLessThan | int | Tests if the proposition is strictly less than an int value.|
 |   IntLessThanEq | int | Tests if the proposition is less or equal to an int value.|
-
 
 ### Constructing filters using a string notation
 
@@ -111,7 +102,6 @@ constructing the string are:
 * A `//` can be used to cause the next filter step to match an arbitrary number
   of levels (including zero) down the tree.  *E.g.*, `sector//technology`.
 
-
 Writing New GCAM Components
 ---------------------------
 
@@ -119,7 +109,6 @@ When developing new C++ classes for GCAM, it is important to make them
 compatible with GCAM Fusion.  The next few sections explain how GCAM Fusion is
 put together, why it was done that way, and what this means for developing new
 C++ classes.
-
 
 ### Background and rationale
 
@@ -130,7 +119,6 @@ implementing two-way feedbacks with GCAM we need to:
   leveraging their knowledge of the XML structure.
 * Avoid putting too much burden on GCAM developers to maintain the API when
   developing new capabilities.
-
 
 Our first challenge is that, while we currently have a mapping from XML name to
 data objects (such as XMLParse, toInputXML, or XMLDB output),  it is mostly a
@@ -172,7 +160,6 @@ In addition to the names, we need to be able to loop over the data members so
 that we could search for some particular member variable.  We need to tie each
 of these variables together so we can know which variables to loop over:
 
-
 ```cpp
 class Sector {
     DEFINE_DATA(                   // Put all of the member variables in a structure we can iterate over.
@@ -186,14 +173,11 @@ class Sector {
 }
 ```
 
-
-
 We also need to be able to know that "subsector" is actually a container of data
 itself and not just some simple data object.  Thus these containers are
 identified by name or year, such as `/subsector[@name='coal']`.  In fact it
 might be useful to note that the prices too can be filtered too even though it
 is not a container, such as `/price[@year=2010]`:
-
 
 ```cpp
 class Sector {
@@ -207,8 +191,6 @@ class Sector {
     )
 }
 ```
-
-
 
 Class inheritance presents an extra challenge.  Each subclass is allowed to
 define its own list of data, which is _cumulative_ with the data defined by its
@@ -241,7 +223,6 @@ class PassThroughSector: public Sector {
     )
 }
 ```
-
 
 ### Implementation
 
@@ -341,8 +322,6 @@ which is where GCAM Fusion gets its name.  Besides providing providing storage
 for mixed-type data, these "fusion" vectors allow us to perform algorithms at both compile
 time and run time.
 
-
-
 Note that an instance of the DataVectorType is only created if the
 `generateDatatVector()` method is called (which should typically only be called
 through GCAM Fusion via [ExpandDataVector](#expanddatavector)) thus there is no
@@ -350,8 +329,6 @@ runtime overhead penalty imposed on GCAM except when calling GCAMFusion to
 search for data.  In addition this implies that all of the changes required to
 allow for GCAM Fusion need only to be made in the header files by declaring
 variables as described above.
-
-
 
 What to know when writing or updating a GCAM class
 --------------------------------------------------
@@ -370,8 +347,6 @@ software infrastructure such as automatically generating all XML parsing code,
 or make several copies of a running GCAM memory space to allow for parallel
 computation.
 
-
-
 ### Make all DATA definitions protected:
 
 All member variable definitions should be protected instead of private.  It may
@@ -380,8 +355,6 @@ of the Sector base class.   Unfortunately if we want to generically join the
 Sector and PassThroughSector data vectors for introspection via GCAM Fusion the
 PassThroughSector needs access to the entire Sector data vector.
 
-
-
 ### Using the DEFINE\_DATA macros:
 
 We provide a utility header `#include
@@ -389,17 +362,13 @@ We provide a utility header `#include
 for defining data members.  Generally these will be instantiated by using the
 following Macros:
 
-
-
 #### DEFINE\_DATA( ... ) and DEFINE\_DATA\_WITH\_PARENT( ... )
-
 
 These calls are used to wrap all of the class data member definitions.  A user
 must use the `DEFINE_DATA_WITH_PARENT` for any class that is derived from a
 base class.  Even if that base class is abstract with no data members.  The very
 first argument to the `DEFINE_DATA_WITH_PARENT` is the name of the direct
 parent of this subclass for instance:
-
 
 ```cpp
 class Technology: public ITechnology {
@@ -426,7 +395,6 @@ define and data members.  The first argument to `DEFINE_DATA` must be a list of
 the name of the class then all possible subclasses of the class.  Note that
 classes that do not have any classes derive from them will still use this method
 and the subclass list will only contain itself.
-
 
 ```cpp
 // Need to forward declare the subclasses as well.
@@ -487,8 +455,6 @@ class Sector {
 };
 ```
 
-
-
 #### DEFINE\_VARIABLE with flag SIMPLE
 
 This is used to define a member variable that is just a piece of data such as
@@ -497,18 +463,13 @@ definition tag if the member variable does not contain more data
 (i.e. `/price/logit-exponent` isn't valid) or can't be filtered
 (i.e. `/name[@year=2025]` isn't valid).
 
-
-
 #### DEFINE\_VARIABLE with flag ARRAY
-
 
 This is used to define a member variable that is an array of simple data such as
 PeriodVector&lt;Value&gt; or vector&lt;int&gt;, etc.  More directly, you want to
 use this definition tag if the member variable does not contain more data
 (i.e. `/price/logit-exponent` isn't valid) but can be filtered
 (i.e. `/price[@year=2025]` is valid).
-
-
 
 #### DEFINE\_VARIABLE with flag CONTAINER
 
@@ -525,11 +486,7 @@ isn't a vector and just a single object it may still make sense to filter by
 name, such an example would be the climate model
 `/climate-model[@name='hector']`.
 
-
-
 #### DEFINE\_VARIABLE with flag SIMPLE | STATE or ARRAY | STATE
-
-
 
 The data flags can be combined with the vertical bar operator `|` if associating
 more tags may be useful.  Note Data **must** be tagged with one
@@ -541,7 +498,6 @@ in [Centrally Managed State Variables](#centrally-managed-state-variables).
 
 #### DEFINE\_VARIABLE including NOT_PARSABLE
 
-
 The `NOT_PARSABLE` flag was added when we switched to automatic generation of the XML parsing.  It is used to indicate which Data should not be able to be set via XML parse, such as variables which are model output only.  Note, it may also be [set](rapid_parse.md#tagging-data-as-not_parsable) in some cases when [special parsing](rapid_parse.md#example-of-aparsable-special-case) behaviors are required as well.
 
 ### Add your new class to `gcam_data_containers.h`
@@ -549,11 +505,7 @@ Since the `GCAMFusion` object determines which GCAM objects it will access at ru
 
 ### Some side effects from the way we have done the data definitions
 
-
-
-<span style="color: rgb(0,0,0);font-weight: bold;">No more use of smart pointers as data members</span>
-
-
+No more use of smart pointers as data members
 
 These were dropped because it made detecting what the actual data was much more
 difficult (i.e. the type I need to know is `IDiscreteChoice*` not
@@ -562,11 +514,8 @@ back in, it will result in a lot more template specialization and work
 arounds.  Also note `std::auto_ptr` is deprecated in favor of
 `std::unique_ptr`.
 
-
-
 Centrally Managed State Variables
 ---------------------------------
-
 
 A new feature that is enabled by GCAM Fusion, although otherwise unrelated, is
 tagging and collecting "state" variables into a central location where they can
@@ -575,7 +524,6 @@ variables we refer to any variable whose value gets set during a call
 to `World::calc`.  Such an example would be `mPrice` of the `Sector` class as the
 price of intermediate sectors are dynamically calculated as the share weighted
 cost of it's competing inputs.
-
 
 State variables are of interest since during partial derivative calculations we
 start from some "base" state, change just one price, re-run the model by
@@ -602,14 +550,12 @@ was strewn throughout the code in many places:
     recalculate it's Price Activity.  A strategy which creates extra work and
     potentially easy to break/get wrong.
 
-
 With the changes to central manage state that come along with GCAM Fusion we simplify this to:
 
 -   The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory.
 -   Any GCAM object that needed to addToSupply/Demand must do so with a
     `Value` member variable marked as
 	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
-
 
 The new approach is simpler, and it's easier to guarantee we didn't miss
 something by using
@@ -618,7 +564,6 @@ running with GCAM Parallel enabled we can allocate a "scratch" space for every
 thread allowing for each of the ~470 partial derivative calculations to be
 calculated completely independently and in parallel from each other.  This gives
 us far greater parallelism than we had previously.
-
 
 To make this work, developers must tag the Data definitions in classes they are
 writing with the `STATE`
@@ -629,17 +574,11 @@ simplicity and to provide an object that gives us an opportunity for indirection
 to swap out the actual location of the underlying data from a central location
 we have limited state variables to use the `Value` class:
 
-
-
 `DEFINE_VARIABLE( SIMPLE | STATE, "price", mPrice, Value )`
-
 
 or
 
-
 `DEFINE_VARIABLE( ARRAY | STATE, "emissions", mEmissions, objects::PeriodVector<Value> )`
-
-
 
 By adding the `STATE` tag it allows us to search, using GCAM Fusion, for all of
 the objects with that tag.  A new class `ManageStateVariables` is responsible
@@ -647,11 +586,9 @@ doing the search as well as all of the other state maintenance as discussed
 below.  Note that state data is collected each period so as to keep the number
 of values to store and copy remains reasonable.  To do this we:
 
-
 -   Skip data that is in a Technology that is not operating or a Market not of the current year
 -   Data in a period vector are only collected for the current period.
 -   Data in a year vector (such as LUC emissions) for only the years in the current timestep.
-
 
 Once we know how many state data there are in a period we can allocate space to
 store the centrally managed data in a two dimensional array.  The first
@@ -667,10 +604,7 @@ reasonable amount.  Currently we observe 300,000 to 700,000 double values
 depending on the model period which is ~ 2 - 5 MB worth of memory per scratch
 space.
 
-
-
 After the central state memory is allocated we loop over each state Value and set a flag to indicate that it is active state and assign it an offset into the centrally managed state.  We also set static variable `Value::sCentralValue` to point to the centrally managed "base" state.  Thus the Value class will lookup the actual data using:
-
 
 ```cpp
 /*!
@@ -690,10 +624,7 @@ inline double& Value::getInternal() {
 }
 ```
 
-
 When it comes time to calculate partial derivatives `Value::sCentralValue` is reset to the "scratch" space (thus the reason to make it static so it may be quickly switched in all Values).  Before each partial is calculated the "scratch" array is copied over with the "base" array using the highly optimized function `memcpy`:
-
-
 
 ```cpp
 /*!
@@ -712,30 +643,19 @@ void ManageStateVariables::copyState() {
 }
 ```
 
-
-
 Note that with GCAM parallel `Value::sCentralValue` is a thread local variable thus each variable can be independently set by each thread that is accessing that code.  What this means in practical terms is for instance that the electricity technology Gas CC could have calculated different costs at the same exact time depending on which computation thread is asking.
-
-
 
 Once we are done solving the period the `ManageStateVariables` will loop back over each state Value and reset the `mIsStateCopy` flag and copy back the "base" state value for long term storage.  Also releasing the memory for the centrally managed state's arrays.
 
-
-
 #### Ensuring that no state variable is missed
-
 
 We can check to make sure that not Data definitions were missed being tagged as
 "state" by enabling the preprocessor flag `DEBUG_STATE` which will enable checks
 to flag Values that are changed during a call to `World::calc` as well as other
 checks to ensure Values get collected / reset properly.
 
-
-
 Other GCAM Fusion related utilities
 -----------------------------------
-
-
 
 ### ExpandDataVector
 
@@ -753,8 +673,6 @@ generic it needs to be templated however mixing virtual methods with templated
 argument is not allowed by the compiler due to possibly infinite method
 combinations.
 
-
-
 ### Factory
 
 A generic templated factory that which utilizes the [SubClassFamilyVector](#define_data---and-define_data_with_parent--) to provide two methods:
@@ -768,12 +686,8 @@ In file included from <USER_HOME>/model/gcam-core/cvs/objects/util/base/source/x
 
 This class allows us to replace all of the various Factory singleton classes that used to exist in GCAM and is a critical part of the [generic XML Parse code generation](rapid_parse.md#xml-parse-call-structure).
 
-
-
 C++11/14 Features:
 ------------------
-
-
 
 Some code written in GCAM Fusion take advantage of some new language
 features. While not always necessary they proved useful. Note this isn't the
@@ -782,9 +696,7 @@ Fusion. In addition there are some classes, such as regular expressions, which
 are also part of the new standard however I will not talk about them since it
 doesn't change any language expressions that may be confusing to C++ coders.
 
-
 ### auto
-
 
 You may see variables declared as the `auto` type. It is however not a type;
 instead, it allows the developer to elide the variable type and allow the
@@ -813,8 +725,6 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 }
 ```
 
-
-
 ### decltype(..)
 
 The `decltype` declaration allows you to copy the type of some other
@@ -824,14 +734,11 @@ necessary to specify, or even know, the exact type of the container:
 
 `typename decltype( mSomeContainer )::const_iterator`
 
-
-
 ### Using decltype in the return
 
 For the same reason it is useful to take advantage of `decltype` you may want to
 take advantage in declaring a function return type based off of the argument
 passed in. To do this you need to use some slightly alternative syntax:
-
 
 ```cpp
 template<typename SomeVectorDef>
@@ -855,7 +762,6 @@ with algorithm templates from the `std::algorithm` library, such as `find_if`.
 Likewise, when dealing with structures of unknown and differing types, as might
 happen when writing a template class or function, we need to use templated
 functors to deal with each different type:
-
 
 ```cpp
 struct Helper {
@@ -888,13 +794,10 @@ available in the closure.  Including an `&` in front of the variable indicates
 to pass by reference.  Simply providing the `&` indicates make available all
 local variables by reference.
 
-
 ### Foreach in C++
-
 
 C++ introduced its version of foreach, which reduces the verbosity of looping
 over arrays of data. So instead of:
-
 
 ```cpp
 vector<ITechnology*> techs;
@@ -905,7 +808,6 @@ for( vector<ITechnology*>::const_iterator it = techs.begin(); it != techs.end();
 
 or
 
-
 ```cpp
 vector<ITechnology*> techs;
 for( sizt_t index = 0; index < tech.size(); ++index ) {
@@ -914,8 +816,6 @@ for( sizt_t index = 0; index < tech.size(); ++index ) {
 ```
 
 We can write:
-
-
 
 ```cpp
 vector<ITechnology*> techs;

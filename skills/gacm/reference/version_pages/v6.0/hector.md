@@ -99,7 +99,6 @@ Hector is a flexible, simple climate model. Users can run Hector under various c
 
 By default, Hector's carbon cycle model treats the entire land surface as a single, homogeneous ecosystem. However, it is possible to introduce some land surface heterogeneity by splitting the land surface into several different biomes with distinct parameters. This is explained in detail [here](https://jgcri.github.io/hector/articles/multiple-biomes.html).
 
-
 **Hector Parameters**
 
 Hector has many parameters can be user adjusted; see the [online Hector manual](https://jgcri.github.io/hector/) for more information.

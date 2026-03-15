@@ -18,13 +18,11 @@ reasonable amount of time (10-20 min) on most personal computers. Some
 requirements have increased with the release of
 [GCAM 3.0](GCAM_Revision_History.md), please see below.
 
-
 Hardware Requirements
 ---------------------
 
 -   At least 4 GB of RAM
 -   5GB of free disk space (model output databases can quickly become large files)
-
 
 Software Requirements
 ---------------------
@@ -35,14 +33,12 @@ Software Requirements
     -   Linux
 -   64-bit Java
 
-
 Additionally, Windows users will need to download the Visual Studio
 2010 Redistributable Package (x64) available
-at:&nbsp;[<http://www.microsoft.com/download/en/details.aspx?id=14632>](http://www.microsoft.com/download/en/details.aspx?id=14632). An
+at: [<http://www.microsoft.com/download/en/details.aspx?id=14632>](http://www.microsoft.com/download/en/details.aspx?id=14632). An
 error saying
 `the program can't start because MSVCR100.dll is missing from your computer`
 is indicative of this software not being installed.
-
 
 Recommended Software
 --------------------

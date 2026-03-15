@@ -100,7 +100,6 @@ functions	|X	|n/a
 #ifndef MeaningfulNameH         // first line of the header file
 #define MeaningfulNameH         // second line of the header file
 
-
                       // body of the header file.
 
 #endif  // MeaningfulNameH      // last line of the header file; note comment
@@ -211,7 +210,6 @@ Function names should preferably be an action verb. Boolean-valued functions (th
 #### 3.5 Namespaces
 Namespace collision should be minimized without introducing cryptic naming conventions by using the C++ namespace or Java package constructs.
 `(Java)` Create a new Java package to group classes of related functionality. Package source and class files then reside in a convenient hierarchical directory structure that maps directly to the package name.
-
 
 ### 4 Style Guidelines
 The primary purpose of style guidelines is to facilitate long-term maintenance. During maintenance, programmers who are usually not the original authors are responsible for understanding source code from a variety of applications. Having a common presentation format reduces confusion and speeds comprehension. Therefore, the following guidelines are specified based on the principles of good programming practice and readability. In the cases where two or more equally valid alternatives are available, one was selected to simplify specification. In the future, automated tools may be used to apply style guidelines to source code files.

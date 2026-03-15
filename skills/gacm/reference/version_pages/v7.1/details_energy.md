@@ -31,7 +31,6 @@ The figures below show some illustrative examples of supply curves used within G
 
 **Illustrative examples of supply curves and total supplies for fossil resources in GCAM**
 
-
 #### Representation of unconventional oil as a technology within crude oil
 
 Unconventional oil and crude oil are represented as distinct subresources within a single resource (crude oil). Combining these oil types into a one resource allows for a single price that governs supply expansion. The additional costs and energy inputs related to unconventional oil production are represented in the technology contained within the unconventional oil subresource.
@@ -111,7 +110,6 @@ The structure of the natural gas supply and distribution in GCAM is shown below:
 
 Note that in this structure, biogas and coal gas compete for market share of the "gas processing" market, which is upstream of the gas pipeline and distribution sectors. This structure is intended to allow for substitution away from natural gas as the feedstock for the gaseous fuels used by the energy transformation and consumption sectors, as determined by the relative economics.
 
-
 Note however that the following sectors consume natural gas upstream of the network shown in the figure above: unconventional oil production, gas-to-liquids refineries, and central hydrogen production. The gas used by these three processes is not assigned the cost mark-ups or upstream pipeline losses assumed in other industrial or energy sector consumers, and there is no capacity for the model to supply the gas used for these purposes with coal- or biomass-derived gas.
 
 ### District Services
@@ -187,7 +185,8 @@ With the exception of water abstraction, the energy intensities by sector and pr
 
 **Table 3: Assumed Energy Intensities by process**
 
-| Sector | Process | Fuel | Energy Intensity <br> (kWh per $$m^3$$) |
+| Sector | Process | Fuel | Energy Intensity
+ (kWh per $$m^3$$) |
 | :--- | :--- | :--- | :-: |
 | Desalinated water | Reverse osmosis | Electricity | 2.75 |
 | Desalinated water | Thermal distillation | Natural gas or liquid fuels | 58.3 |
@@ -215,8 +214,6 @@ building-node-input/+{year}base-building-size, building-node-input/+base-buildin
 ```
 
 The figure below is an example XML of user-specified residential floorspace values for Maine.
-
-
 
 ## References
 

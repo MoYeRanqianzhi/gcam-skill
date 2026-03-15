@@ -117,12 +117,9 @@ We have represented the water at the scale of major river basins. Currently 235 
 49|Dniester|99|Eastern Jordan-Syria|149|Niger|199|Limpopo
 50|Italy-East Coast|100	|Africa-Red Sea-Gulf of Aden Coast|150|Micronesia|200|La Puna Region
 
-<br/>
-
 ### Global Land Units
 
 For GCAM3.0 through GCAM4.4, the Agriculture and Land Use model subdivided the GCAM geopolitical regions into as many as 18 climatically defined agro-ecological zones (AEZs) developed by the GTAP group. GCAM5+ switches subregions to water basin-defined geographic land units (GLUs). The land data system files are produced by the [Moirai](https://github.com/JGCRI/moirai), described in Di Vittorio et al. (2016).
-
 
 ## Temporal Resolution
 

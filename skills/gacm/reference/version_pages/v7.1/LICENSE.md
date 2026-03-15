@@ -17,8 +17,6 @@ Version 2.0, April 2007
 
 [View Summary of Educational Community License, Version 2.0 (ECL-2.0) on TLDRLegal](https://tldrlegal.com/license/educational-community-license,-version-2.0-(ecl-2.0)#summary) » ([Disclaimer](http://opensource.org/node/778))
 
-
-
 The Educational Community License version 2.0 ("ECL") consists of the
 Apache 2.0 license, modified to change the scope of the patent grant
 in section 3 to be specific to the needs of the education communities

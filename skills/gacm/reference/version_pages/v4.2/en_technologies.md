@@ -13,7 +13,9 @@ Load this page when the user needs version-specific detail from this exact page 
 ---
 
 This page documents the parameters and functional forms found within technologies in GCAM's energy system. In the heirarchy of the information in the XML input and output files, the technology is located at the following level:
-<br/>**scenario / world / region / supplysector / subsector / technology**<br/>
+
+**scenario / world / region / supplysector / subsector / technology**
+
 Note that in the input XML files, technology-level information may be located within individual regions' "technology", "stub-technology", "intermittent-technology" tags, or within the global-technology-database.
 
 The information computed within technologies is passed up to subsectors and then subsequently to supplysectors (the markets). Quantities, such as the input and output, are simply added; i.e., the subsector output is equal to the sum of the constituent technologies. Subsector costs are computed as the output-weighted average of constituent technology costs, using only the new installations in the given time period. That is, where a technology's lifetime is assumed longer than the length of the model time period, and there is stock carryover from prior time periods, the technology costs in a given time period only reflect the installations in that time period. The costs of each technology are estimated as the average levelized costs of producing the given good, including all fuel costs, amortized capital costs, operations and maintenance costs, and where applicable, emissions penalties.

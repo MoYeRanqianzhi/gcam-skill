@@ -34,6 +34,7 @@ High-value shared docs to maintain:
 
 ## Testing Notes
 - No automated tests included yet.
+- Use `python skills/gacm/scripts/validate_all.py` as the default one-shot validation suite before commit; run individual validators when narrowing down a failure.
 - Validate workflows by running `scripts/doc_search.py --list-versions`.
 - Validate versioned lookups by running `scripts/doc_search.py --version <version> --pattern <term>`.
 - Validate page-bundle lookups by running `scripts/doc_search.py --version <version> --scope pages --pattern <term>`.

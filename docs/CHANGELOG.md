@@ -30,3 +30,4 @@
 - Removed an invalid `v8.2` entry from the delta-only CMP source map in the page-bundle generator.
 - Strengthened `validate_version_routes.py` to compare route docs against `generate_version_references.py` output and regenerated all `reference/versions/*.md` files so they include the current shared topic set.
 - Tightened `doc_search.py` so invalid `--version` values fail cleanly across all scopes and `--root` cannot escape the bundled `reference/` tree.
+- Added `validate_all.py` as a one-shot entry point for the bundled validation suite.

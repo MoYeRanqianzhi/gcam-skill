@@ -43,6 +43,7 @@ High-value shared docs to maintain:
 - Re-run `validate_bundled_pages.py` after regenerating so local markdown links stay fully resolvable and image markup stays stripped.
 - Re-run `validate_shared_references.py` after editing shared docs, routing docs, or `SKILL.md` so template placeholders, real local references, and topic listings stay consistent.
 - Re-run `validate_version_routes.py` after changing `version_catalog.py`, regenerating `versions/*.md`, or modifying key route docs so version inventory, route docs, page directories, and `v8.2` baseline declarations stay aligned.
+- Treat `version_inventory.md` and `reference/versions/*.md` as generated artifacts from `generate_version_references.py`; do not hand-edit them unless you also intend to update the generator.
 - Re-run representative `doc_search.py --version ... --scope pages --pattern ...` commands on Windows after search-tool changes to catch console encoding regressions.
 
 ## Page Bundle Rules

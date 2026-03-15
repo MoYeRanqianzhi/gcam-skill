@@ -14,8 +14,8 @@ Checks:
 from __future__ import annotations
 
 import re
-from pathlib import Path
 
+from generate_version_references import render_inventory, render_version_file
 from version_catalog import REFERENCE_ROOT, VERSION_PAGES_ROOT, ordered_versions
 
 
@@ -44,6 +44,8 @@ def validate_inventory(errors: list[str]) -> None:
     expected_versions = [info.version for info in ordered_versions()]
     if listed_versions != expected_versions:
         errors.append("version_inventory.md table order/content drifted from version_catalog.py")
+    if text != render_inventory():
+        errors.append("version_inventory.md content drifted from generate_version_references.py")
 
 
 def validate_route_docs(errors: list[str]) -> None:
@@ -68,6 +70,11 @@ def validate_route_docs(errors: list[str]) -> None:
         index_ref = f"`version_pages/{info.version}/INDEX.md`"
         if index_ref not in text:
             errors.append(f"{path.relative_to(REFERENCE_ROOT)} -> missing page bundle index reference")
+        expected_text = render_version_file(info)
+        if text != expected_text:
+            errors.append(
+                f"{path.relative_to(REFERENCE_ROOT)} -> content drifted from generate_version_references.py"
+            )
 
 
 def validate_page_bundle_dirs(errors: list[str]) -> None:

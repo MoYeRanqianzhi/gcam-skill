@@ -27,3 +27,4 @@ High-signal milestone log for the `gacm` skill. Fine-grained edits belong in Git
 - Added `scripts/generate_modelinterface_batch.py` so agents can deterministically emit minimal headless ModelInterface batch-command XML instead of hand-typing boilerplate.
 - Reworked progressive disclosure so `SKILL.md` now uses the standard 3-level model with explicit stop-loading guidance.
 - Removed the parity validator's global monkeypatch dependency by letting `generate_bundled_pages.py` render into an explicit output root during validation.
+- Added explicit official `gcam-core` repository, releases, and `releases/latest` URLs to the release workflow so agents can give direct GCAM download entry points without guessing asset names.

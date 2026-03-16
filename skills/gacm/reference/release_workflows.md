@@ -25,6 +25,17 @@ If the user is unsure, default to a release package first.
 - Use the exact version the user asked for.
 - If the user does not specify one, the skill baseline is `v8.2`, but do not silently fetch a different release on the user's behalf.
 
+### 1a. Official upstream entry points
+Use stable official URLs instead of inventing asset names:
+- source repository: `https://github.com/JGCRI/gcam-core`
+- release page with downloadable assets: `https://github.com/JGCRI/gcam-core/releases`
+- latest tagged release redirect: `https://github.com/JGCRI/gcam-core/releases/latest`
+
+Operational rule:
+- If the user asks to "download GCAM", send the releases page first.
+- If the user asks for the latest GCAM release, send the `releases/latest` URL.
+- If the user asks to clone source, use the repository URL or `https://github.com/JGCRI/gcam-core.git`.
+
 ### 2. Pick the correct asset class
 Typical release assets documented in the upstream user guide:
 - platform-specific release packages for running GCAM

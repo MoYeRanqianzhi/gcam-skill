@@ -48,3 +48,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Added dedicated operational docs for release acquisition, workspace classification, query automation, and companion-tool APIs.
 - 2026-03-16: Renamed generated page-bundle directory indexes to `BUNDLE_INDEX.md` so Windows case-insensitive filesystems do not clobber bundled upstream source pages such as `index.md`.
 - 2026-03-16: Preserved the rule that generated page bundles must be fixed through generator changes and regeneration, not hand-edited patching.
+- 2026-03-16: Added explicit official `gcam-core` repository and releases URLs to the release workflow so direct download guidance no longer relies on placeholders.

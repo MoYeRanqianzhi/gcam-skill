@@ -497,6 +497,10 @@ DEV_GUIDE_TEST_FRAMEWORK_HISTORICAL_BUTTON_RE = re.compile(
     r'^Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins with the "JGCRI-gcam-pic" tag and the following metadata payload:\s*$',
     re.MULTILINE,
 )
+DEV_GUIDE_TEST_FRAMEWORK_CLEAR_OUTPUT_RE = re.compile(
+    r'Run `stage_run\.sh` with the arguments: `scenario, config_file_name, length\(user_options\[\["clear_output"\]\]\)?` '
+    r"\(the last will give 0 if that check box was not selected and 1 if it was\)"
+)
 DEV_GUIDE_GETTING_STARTED_PR_STEP_RE = re.compile(
     r"^6\.\s+When your development is complete, open a pull request\.\s*$",
     re.MULTILINE,
@@ -656,6 +660,10 @@ V32_INDUSTRY_US_ENERGY_REQUIREMENTS_RE = re.compile(
 V32_SOCIOECONOMIC_FIGURES_RE = re.compile(
     r"Population and GDP in the current baseline scenario are shown in Figures 2 and 3\."
 )
+V32_REGIONAL_SCOPE_MAP_RE = re.compile(
+    r"GCAM is a global model\.\s+The economy and energy system are disaggregated into 14 geopolitical regions "
+    r"\(\*\*Table 1\*\* and \*\*Figure 1\*\*\):"
+)
 V32_DEPLETABLE_RESOURCE_FIGURES_RE = re.compile(
     r"Resource supply curves for natural gas, crude oil, unconventional oil, and coal are shown for each of the 14 GCAM regions in Figures 1-4 below\."
 )
@@ -692,6 +700,9 @@ V32_UNCONVENTIONAL_REFINING_FIGURE_RE = re.compile(
 V32_ECONOMIC_LAND_COMPETITION_FIGURE_RE = re.compile(
     r"Figure 1 below shows a competition between two options with distributions of profits\. In this example, option 2 will get a higher share than 1 due to its higher potential average profit\. Sharing will be done between option 1 and option 2 in order to allocate all land to one of the two options so that the marginal profit rates of option 1 and option 2 are equal to each other\. At this point, there are no potential gains from changing the shares\. Also from Figure 1, this point at which marginal profits are equal must also be equal to the marginal value or price of land\. Only those instances of option 1 and option 2 which have profit rates higher than or equal to the land price at the margin will be implemented\."
 )
+V32_ECONOMIC_LAND_DISTRIBUTION_FIGURE_RE = re.compile(
+    r"the distribution in profit rates per unit of land in Figure 1 is equivalent to"
+)
 V32_ECONOMIC_LAND_SHARE_EQUATION_RE = re.compile(
     r"The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, is shown here\.\s+\[omitted image:[^\]]+\]",
     re.IGNORECASE,
@@ -710,6 +721,13 @@ POLICIES_FIGURE_EXAMPLE_RE = re.compile(
 )
 POLICIES_TAX_REVENUE_RE = re.compile(
     r"The tax revenue can be calculated as the tax rate times the remaining emissions, shown in red below\.",
+    re.MULTILINE,
+)
+DEMAND_LAND_STORAGE_FIGURE_RE = re.compile(
+    r"The schematic showing the structure updates is presented in the following figure\."
+)
+DEMAND_LAND_STORAGE_CAPTION_RE = re.compile(
+    r"^Schematic of the updating GCAM modeling structure to represent stockholder behaviors\. Source: Zhao et al\. \(2024\)\.\s*$",
     re.MULTILINE,
 )
 USER_GUIDE_OPEN_DB_WAIT_BUTTON_RE = re.compile(
@@ -1380,6 +1398,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         "The omitted figures summarized population and GDP in the current baseline scenario.",
     )
     replace(
+        V32_REGIONAL_SCOPE_MAP_RE,
+        "GCAM is a global model. The economy and energy system are disaggregated into 14 geopolitical regions, listed in **Table 1**; the omitted figure was a regional map of those same regions:",
+    )
+    replace(
         V32_DEPLETABLE_RESOURCE_FIGURES_RE,
         "The omitted regional resource-curve examples covered natural gas, crude oil, unconventional oil, and coal.",
     )
@@ -1428,6 +1450,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         "An omitted figure illustrated two competing land-use options with profit distributions. In that example, the option with the higher potential average profit receives the larger share, while land is allocated until the marginal profit rates of the competing options and the land price at the margin are equal.",
     )
     replace(
+        V32_ECONOMIC_LAND_DISTRIBUTION_FIGURE_RE,
+        "the distribution in profit rates per unit of land in the omitted figure is equivalent to",
+    )
+    replace(
         V32_ECONOMIC_LAND_SHARE_EQUATION_RE,
         "The logit sharing equation for land uses across an assumed level of competition, whether leaves in a node or among nodes in a nest, was embedded as an inline source image and is omitted in this text bundle. It defines each option's land share from relative profitability at that nest level.",
     )
@@ -1446,6 +1472,14 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     replace(
         POLICIES_TAX_REVENUE_RE,
         "The tax revenue can be calculated as the tax rate times the remaining emissions.",
+    )
+    replace(
+        DEMAND_LAND_STORAGE_FIGURE_RE,
+        "An omitted figure summarized the structural updates used to represent this stockholding behavior.",
+    )
+    replace(
+        DEMAND_LAND_STORAGE_CAPTION_RE,
+        "Omitted figure summary: Schematic of the updated GCAM modeling structure used to represent stockholding behavior. Source: Zhao et al. (2024).",
     )
     replace(
         re.compile(
@@ -1795,6 +1829,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         replace(
             DEV_GUIDE_TEST_FRAMEWORK_HISTORICAL_BUTTON_RE,
             "Historical workflow note: invoking that validation action called Jenkins with the `JGCRI-gcam-pic` tag and the following metadata payload:\n",
+        )
+        replace(
+            DEV_GUIDE_TEST_FRAMEWORK_CLEAR_OUTPUT_RE,
+            'Run `stage_run.sh` with the arguments: `scenario, config_file_name, length(user_options[["clear_output"]])` (the last value is `0` when `clear_output` is disabled and `1` when it is enabled)',
         )
 
     if rel_source.parts[-2:] == ("dev-guide", "getting_started.md"):

@@ -214,7 +214,7 @@ Jenkins will then trigger the [JGCRI/gcam-pic](https://ci.pnnl.gov/jenkins/job/J
   * If the current "FileSet" was really from a runner-set (and not single-scenario-runner) then set "find-path" to 1 and update "policy-target-file" accordingly
   * Otherwise append to contents of the FileSet to the `<ScenarioComponents>`
   * write out the generated config XML
-  * Run `stage_run.sh` with the arguments: `scenario, config_file_name, length(user_options[["clear_output"]]` (the last will give 0 if that check box was not selected and 1 if it was)
+  * Run `stage_run.sh` with the arguments: `scenario, config_file_name, length(user_options[["clear_output"]])` (the last value is `0` when `clear_output` is disabled and `1` when it is enabled)
 
 `stage_run.sh` takes care of:
 * Clear the output database if so configured

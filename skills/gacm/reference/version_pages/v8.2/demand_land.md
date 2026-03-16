@@ -50,12 +50,11 @@ Non-food, non-feed demand, including forestry demand, is determined by price, in
 Note that forestry demand is represented for two product pools, namely wood pulp and sawnwood production.
 
 ### Future demand (storage)
-GCAM incorporates agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
+GCAM incorporates agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). An omitted figure summarized the structural updates used to represent this stockholding behavior.
 
 The development leveraged the recently compiled supply-utilization accounts to separate stock variations, opening stock, closing stock, and loss associated with stockholding behavior. The competitive storage model employs a logit sharing structure, where changes in the ratio between closing stock and "current consumption" (i.e., stock-to-use ratio) are responsive to current market prices and expected prices for storage in the next period. We use a lagged price expectation and apply a loss parameter to closing stock to derive the loss associated with interannual storage in a region for a given sector. Currently, agricultural storage is introduced for 13 GCAM crop commodities. See additional details in [CMP #382](cmp/382-AgFoodStorage.md).
 
-Schematic of the updating GCAM modeling structure to represent stockholder behaviors. Source: Zhao et al. (2024).
-
+Omitted figure summary: Schematic of the updated GCAM modeling structure used to represent stockholding behavior. Source: Zhao et al. (2024).
 ## Equations
 The equations that determine food, feed, and forest demand are described here.
 

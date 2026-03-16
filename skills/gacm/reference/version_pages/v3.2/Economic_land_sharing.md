@@ -21,7 +21,7 @@ An omitted figure illustrated two competing land-use options with profit distrib
 
 Omitted figure summary: Example competition between two options with distributions of potential profit
 
-Also note that, since land value, price, or rent is equivalent to the profit that would be earned from using this land, there is not one price for land in each region. Instead, the distribution in profit rates per unit of land in Figure 1 is equivalent to a distribution of land prices over that region. There is a land price at the margin which is equal at the marginal point for each competing option, but the rest of the distribution of land prices that are realized will be higher than this margin. In other words, land at the margin will have a lower price than the better quality land.
+Also note that, since land value, price, or rent is equivalent to the profit that would be earned from using this land, there is not one price for land in each region. Instead, the distribution in profit rates per unit of land in the omitted figure is equivalent to a distribution of land prices over that region. There is a land price at the margin which is equal at the marginal point for each competing option, but the rest of the distribution of land prices that are realized will be higher than this margin. In other words, land at the margin will have a lower price than the better quality land.
 
 Land Competition Compared to Energy System Competition
 ------------------------------------------------------

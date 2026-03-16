@@ -18,7 +18,7 @@ Geographic Coverage and Regions
 
 -----------------------------------------
 
-GCAM is a global model.  The economy and energy system are disaggregated into 14 geopolitical regions (**Table 1** and **Figure 1**):
+GCAM is a global model. The economy and energy system are disaggregated into 14 geopolitical regions, listed in **Table 1**; the omitted figure was a regional map of those same regions:
 
 |                |                     |                |
 |----------------|---------------------|----------------|

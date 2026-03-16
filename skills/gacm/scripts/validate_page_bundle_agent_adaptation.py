@@ -106,6 +106,7 @@ FIGURE_DEPENDENT_FORBIDDEN = (
     "the energy system depicted below",
     "The nesting structure of the electric sector is shown in the figure below",
     "shown in the following figure",
+    "presented in the following figure",
     "as indicated in the figure above, this technology does not differentiate between conventional and unconventional oil",
     "Resource curves for fossil fuels are shown below.",
     "depicted graphically below",
@@ -146,6 +147,8 @@ FIGURE_DEPENDENT_FORBIDDEN = (
     "In the figure below, the rate of growth as a function of time since planting is shown",
     "For example in the figure below, the cost of moving",
     "shown in red below",
+    "GCAM is a global model.  The economy and energy system are disaggregated into 14 geopolitical regions (**Table 1** and **Figure 1**):",
+    "Schematic of the updating GCAM modeling structure to represent stockholder behaviors.",
 )
 FIGURE_DEPENDENT_REGEXES = (
     re.compile(
@@ -198,6 +201,7 @@ RAW_FIGURE_TEXT_REGEXES = (
         re.IGNORECASE,
     ),
     re.compile(rf"\bgiven in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(rf"\bin Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
     re.compile(rf"\bwhat is in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
     re.compile(rf"\bthe omitted Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
     re.compile(rf"\bdisplayed in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
@@ -222,6 +226,7 @@ TEST_FRAMEWORK_FORBIDDEN = (
     'Pull Request Notifier "Button" labeled "Launch Validation Runs"',
     "button form was generated manually",
     'Historical UI note: the internal "Launch Validation Runs" button invoked Jenkins',
+    "check box was not selected",
 )
 
 GETTING_STARTED_REQUIRED = (

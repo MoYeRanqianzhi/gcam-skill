@@ -92,7 +92,7 @@ scenarios. Under cropland are all food and other agriculture products
 (e.g., corn, wheat, sugars, etc.), including biomass crops, along with
 an unmanaged land category called other arable land. Note that several
 crops are included explicitly in the CropLand node, and the grouping
-of "AllOtherCrops" is simply a convenience for the omitted figure.
+of "AllOtherCrops" is simply a convenience in the omitted figure summary.
 
 With the specification above, we can make substitution across
 categories more or less difficult by choosing lower or higher logit

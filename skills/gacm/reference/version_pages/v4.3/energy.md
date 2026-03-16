@@ -255,7 +255,7 @@ The approach to modeling transportation in GCAM has been documented in [Kim et a
 
 The transportation sector in GCAM is subdivided into four final demands: long-distance passenger air travel, (other) passenger travel, international freight shipping, and (other) freight. The transportation sector excludes energy consumption and materials moved via pipeline transport (but see [gas supply system](energy.md#gas-processing)). Energy used by mobile mining, agricultural, industrial, and construction equipment is similarly not considered as transportation energy use, unless used on roadways and for the primary purpose of moving passengers and/or freight.
 
-The structure of the passenger sector differs by region, but a typical region is depicted Figure 11.
+The structure of the passenger sector differs by region; the omitted schematic summarized one typical regional structure.
 
 Omitted figure summary: Schematic of passenger sector in a typical GCAM region.
 

@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v8.2`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v8.2/BUNDLE_INDEX.md`
+- Note: This adapted data-system page rewrites source-tool GUI export wording into dataset-shape requirements, filesystem targets, and text-first preprocessing steps.
 
 Load this page when the user needs version-specific detail from this exact page family.
 

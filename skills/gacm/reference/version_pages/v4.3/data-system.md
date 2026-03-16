@@ -7,6 +7,7 @@ Bundled adapted source page for GCAM `v4.3`.
 - Coverage mode: `full-tree page bundle`
 - Bundle mode: `text-only page bundle; images omitted`
 - Version page index: `version_pages/v4.3/BUNDLE_INDEX.md`
+- Note: This adapted data-system page rewrites source-tool GUI export wording into dataset-shape requirements, filesystem targets, and text-first preprocessing steps.
 
 Load this page when the user needs version-specific detail from this exact page family.
 
@@ -50,7 +51,7 @@ The idea behind the full GCAM data system is to assimilate and aggregate primary
 As mentioned the IEA Energy Balances dataset is required and must be [installed](#installing-iea-data).  Once that is done users can successfully [run the gcam-data-system](#running-gcam-data-system).
 
 ### 3.1 Installing IEA Data
-Users who have access the the [IEA energy balances](https://www.iea.org/statistics/relateddatabases/worldenergystatisticsandbalances/) will need to export the data from the Beyond 2020 browser.  The GCAM data system is configured for the 2012 edition of the IEA energy balances, which goes through 2010 for all countries and sectors, and provides 2011 estimates for a small selection of variables. While more recent versions with more recent years will ostensibly work with the existing R code, any changes to the names or available categories of any variables (COUNTRY, PRODUCT, FLOW) in the source data will require updates to the mappings and/or code. To export the data in the format used by the data system, users should open the `Beyond 2020 Browser`, and toggle the variables so that the years are columns, and the following ID variables are all displayed, with no variables held fixed:
+Users who have access to the [IEA energy balances](https://www.iea.org/statistics/relateddatabases/worldenergystatisticsandbalances/) must obtain a CSV export from the licensed source dataset. The GCAM data system is configured for the 2012 edition of the IEA energy balances, which goes through 2010 for all countries and sectors and provides 2011 estimates for a small selection of variables. More recent editions may still work with the existing R code, but any changes to the names or available categories of `COUNTRY`, `PRODUCT`, or `FLOW` will require mapping and/or code updates. Agent adaptation: do not rely on a specific GUI such as `Beyond 2020 Browser`. Instead, ensure the export uses years as columns and keeps the following ID fields present with no dimensions fixed:
 ```
 COUNTRY (as names)
 FLOW (as "short names", or ID codes)

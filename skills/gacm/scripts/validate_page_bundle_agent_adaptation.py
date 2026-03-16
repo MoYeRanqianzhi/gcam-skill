@@ -188,7 +188,10 @@ FIGURE_DEPENDENT_REGEXES = (
 )
 FIGURE_LABEL_TOKEN = r"[A-Za-z]*\d[A-Za-z0-9.\-]*"
 RAW_FIGURE_TEXT_REGEXES = (
-    re.compile(rf"^Figure\s+{FIGURE_LABEL_TOKEN}:", re.IGNORECASE | re.MULTILINE),
+    re.compile(
+        rf"^\s*(?:#+\s*)?(?:\*\*|__)?Figure\s+{FIGURE_LABEL_TOKEN}(?:[:.]|\s+-)",
+        re.IGNORECASE | re.MULTILINE,
+    ),
     re.compile(rf"\bFrom Figure\s+{FIGURE_LABEL_TOKEN}\b"),
     re.compile(
         rf"\bFigure\s+{FIGURE_LABEL_TOKEN}\s+(illustrates|shows|provides|summarizes|depicts|compares|contrasts|maps|presents|describes)\b",
@@ -197,6 +200,10 @@ RAW_FIGURE_TEXT_REGEXES = (
     re.compile(rf"\bgiven in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
     re.compile(rf"\bwhat is in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
     re.compile(rf"\bthe omitted Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(rf"\bdisplayed in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(rf"\bshown schematically in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(rf",\s*Figure\s+{FIGURE_LABEL_TOKEN}\.(?=\s+[A-Z])", re.IGNORECASE),
+    re.compile(rf"\bdepicted(?:\s+in)?\s+Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
     re.compile(r"Figure source:", re.IGNORECASE),
     re.compile(r"\bFig\.\s*\d+[A-Za-z]\b"),
 )
@@ -245,6 +252,20 @@ GIT_FORBIDDEN = (
     "Open a pull request as soon you have some progress to share.",
     "Once you have opened the pull request,",
     "mark your pull request as",
+)
+
+DATA_SYSTEM_REQUIRED = (
+    "This adapted data-system page rewrites source-tool GUI export wording into dataset-shape requirements, filesystem targets, and text-first preprocessing steps.",
+)
+
+DATA_SYSTEM_LEGACY_IEA_BROWSER_REQUIRED = (
+    "Agent adaptation: do not rely on a specific GUI such as `Beyond 2020 Browser`.",
+)
+
+DATA_SYSTEM_FORBIDDEN = (
+    "open the `Beyond 2020 Browser`",
+    "toggle the variables so that the years are columns",
+    "displayed, with no variables held fixed",
 )
 
 
@@ -424,6 +445,32 @@ def validate_devguide_git_pages(errors: list[str]) -> None:
                 )
 
 
+def validate_data_system_pages(errors: list[str]) -> None:
+    for info in ordered_versions():
+        if info.coverage_mode == "delta-only":
+            continue
+        path = VERSION_PAGES_ROOT / info.version / "data-system.md"
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for snippet in DATA_SYSTEM_REQUIRED:
+            if snippet not in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} missing required data-system adaptation snippet: {snippet}"
+                )
+        if info.version in {"v4.3", "v4.4"}:
+            for snippet in DATA_SYSTEM_LEGACY_IEA_BROWSER_REQUIRED:
+                if snippet not in text:
+                    errors.append(
+                        f"{path.relative_to(VERSION_PAGES_ROOT.parent)} missing required data-system legacy adaptation snippet: {snippet}"
+                    )
+        for snippet in DATA_SYSTEM_FORBIDDEN:
+            if snippet in text:
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains forbidden data-system GUI residue: {snippet}"
+                )
+
+
 def main() -> int:
     errors: list[str] = []
     validate_user_guides(errors)
@@ -433,6 +480,7 @@ def main() -> int:
     validate_devguide_getting_started_pages(errors)
     validate_devguide_analysis_pages(errors)
     validate_devguide_git_pages(errors)
+    validate_data_system_pages(errors)
     validate_global_residue(errors)
     validate_figure_dependent_residue(errors)
 

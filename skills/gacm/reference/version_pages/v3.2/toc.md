@@ -52,7 +52,7 @@ costs.
 Primary energy can be transformed into other energy forms. These
 transformations are performed in energy transformation sectors and
 together provide a suite of final energy forms for consumption by
-end-use sectors: buildings, industry and transport, Figure 3. These
+end-use sectors: buildings, industry and transport. The omitted figure summarized that transformation-to-end-use linkage. These
 sectors in turn have multiple technology options with which to
 transform final energy forms into energy services. For example
 residential buildings demand heating, cooling, lighting, hot water,

@@ -77,7 +77,7 @@ and vice versa.
 Competition between alternative land uses in the GCAM is modeled using
 a [nested logit architecture](Nested_logit_architecture.md). The omitted figure summarized one representative simplified land-nesting structure.
 
-###### Figure 1. Competition for Land in GCAM
+Omitted figure summary: Competition for Land in GCAM
 
 The costs of supplying agricultural products are based on regional
 characteristics, such as the productivity of land and the variable

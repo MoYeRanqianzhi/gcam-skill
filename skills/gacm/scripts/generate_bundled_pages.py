@@ -187,10 +187,13 @@ LINKED_IMAGE_LABEL_PLACEHOLDER_RE = re.compile(
     re.IGNORECASE,
 )
 FIGURE_ARTIFACT_RE = re.compile(r"(?i)(?:<br\s*/?>|&lt;br&gt;|&nbsp;|\{:\s*\.fig\s*\})")
-FIGURE_CAPTION_LINE_RE = re.compile(r"^\s*(?:#+\s*)?Figure\s+\d+(?:[:.]|\b)", re.IGNORECASE)
+FIGURE_CAPTION_LINE_RE = re.compile(
+    r"^\s*(?:#+\s*)?(?:\*\*|__)?Figure\s+\d+(?:[:.]|\b)",
+    re.IGNORECASE,
+)
 FIGURE_LABEL_TOKEN = r"[A-Za-z]*\d[A-Za-z0-9.\-]*"
 FIGURE_CAPTION_ONLY_RE = re.compile(
-    rf"^\s*(?:#+\s*)?Figure\s+(?P<number>{FIGURE_LABEL_TOKEN}):\s*(?P<caption>\S.*)?$",
+    rf"^\s*(?:#+\s*)?(?:\*\*|__)?Figure\s+(?P<number>{FIGURE_LABEL_TOKEN})(?:[:.]|\s+-)\s*(?P<caption>.*?)(?:\*\*|__)?\s*$",
     re.IGNORECASE,
 )
 FIGURE_SENTENCE_VERB_RE = re.compile(
@@ -210,6 +213,18 @@ OMITTED_FIGURE_NUMBER_RE = re.compile(
 )
 FIGURE_SOURCE_RE = re.compile(r"Figure source:", re.IGNORECASE)
 FIG_PANEL_REF_RE = re.compile(r"\bFig\.\s*\d+(?P<panel>[A-Za-z])\b")
+DISPLAYED_IN_FIGURE_INLINE_RE = re.compile(
+    rf",\s*displayed in Figure\s+{FIGURE_LABEL_TOKEN},\s*",
+    re.IGNORECASE,
+)
+SHOWN_SCHEMATICALLY_IN_FIGURE_INLINE_RE = re.compile(
+    rf",\s*shown schematically in Figure\s+{FIGURE_LABEL_TOKEN}\s+and\s+detailed in\s+",
+    re.IGNORECASE,
+)
+INLINE_TRAILING_FIGURE_SENTENCE_RE = re.compile(
+    rf",\s*Figure\s+{FIGURE_LABEL_TOKEN}\.(?=\s+[A-Z])",
+    re.IGNORECASE,
+)
 WINDOWS_JAVA_INCLUDE_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]include\b"
 )
@@ -385,6 +400,18 @@ DATA_SYSTEM_IEA_EXPORT_RE = re.compile(
     r"`(?P<path>[^`]+)` folder\.",
     re.MULTILINE,
 )
+DATA_SYSTEM_IEA_BROWSER_RE = re.compile(
+    r"Users who have access the the \[IEA energy balances\]\((?P<link>[^)]+)\) will need to export the data from "
+    r"the Beyond 2020 browser\.\s+The GCAM data system is configured for the 2012 edition of the IEA energy "
+    r"balances, which goes through 2010 for all countries and sectors, and provides 2011 estimates for a small "
+    r"selection of variables\. While more recent versions with more recent years will ostensibly work with the "
+    r"existing R code, any changes to the names or available categories of any variables \(COUNTRY, PRODUCT, "
+    r"FLOW\) in the source data will require updates to the mappings and/or code\. To export the data in the "
+    r"format used by the data system, users should open the `Beyond 2020 Browser`, and toggle the variables so "
+    r"that the years are columns, and the following ID variables are all displayed, with no variables held "
+    r"fixed:\s*$",
+    re.MULTILINE,
+)
 INDEX_DIAGRAM_CLICK_RE = re.compile(
     r"^\*\*GCAM diagram\. Click on each box for a more detailed description of that element\.\*\*\s*$",
     re.MULTILINE,
@@ -483,6 +510,12 @@ HISTORICAL_AGLU_SIMPLIFIED_STRUCTURE_RE = re.compile(
 OVERVIEW_RESOLUTION_FIGURE_RE = re.compile(
     r"it is constructed with different levels of resolution for each of these different systems \(see Figure 2\)\."
 )
+OVERVIEW_HUMAN_EARTH_SYSTEMS_FIGURE_RE = re.compile(
+    rf"IA models include both human and physical Earth systems,\s*Figure\s+{FIGURE_LABEL_TOKEN}\."
+)
+OVERVIEW_FIVE_SYSTEMS_FIGURE_RE = re.compile(
+    rf"The interactions between these different systems all take place within the GCAM core; that is, they are not modeled as independent modules, but as one integrated whole,\s*Figure\s+{FIGURE_LABEL_TOKEN}\."
+)
 ENERGY_SYSTEM_SCHEMATIC_RE = re.compile(
     r"^In the schematic of the energy system depicted below, the energy transformation and distribution sectors include all sectors except for the resources \(colored red\) and the final demands \(colored light blue\)\.\s*$",
     re.MULTILINE,
@@ -550,7 +583,7 @@ N_FERTILIZER_SCHEMATIC_RE = re.compile(
     re.MULTILINE,
 )
 PASSENGER_TYPICAL_REGION_RE = re.compile(
-    r"^The structure of the passenger sector differs by region, but a typical region is depicted below\.\s*$",
+    rf"^The structure of the passenger sector differs by region, but a typical region is depicted(?: below| in Figure\s+{FIGURE_LABEL_TOKEN}| Figure\s+{FIGURE_LABEL_TOKEN})\.\s*$",
     re.MULTILINE,
 )
 PASSENGER_AS_SHOWN_RE = re.compile(
@@ -593,6 +626,9 @@ TRADE_MARKET_COMPARISON_FIGURE_RE = re.compile(
 )
 V32_TRANSPORTATION_STRUCTURE_RE = re.compile(
     r"GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping \(see Figure 1\)\."
+)
+V32_TOC_END_USE_SECTORS_FIGURE_RE = re.compile(
+    rf"end-use sectors: buildings, industry and transport,\s*Figure\s+{FIGURE_LABEL_TOKEN}\."
 )
 V32_INDUSTRY_AGGREGATE_FIGURE_RE = re.compile(
     r"In all non-US regions, the industrial sector is represented as a consumer of generic energy services and feedstocks, as shown in Figure 1\."
@@ -1019,11 +1055,32 @@ def normalize_figure_text_residue(text: str) -> str:
         lambda match: f"in the omitted figure and {match.group('table')}",
         text,
     )
+    text = DISPLAYED_IN_FIGURE_INLINE_RE.sub(" ", text)
+    text = SHOWN_SCHEMATICALLY_IN_FIGURE_INLINE_RE.sub(
+        ", summarized in the omitted figure and detailed in ",
+        text,
+    )
+    text = INLINE_TRAILING_FIGURE_SENTENCE_RE.sub(
+        ". The omitted figure summarized the referenced structure.",
+        text,
+    )
     text = THIS_FIGURE_RE.sub("the omitted figure", text)
     text = FIGURE_SOURCE_RE.sub("Source:", text)
     text = FIG_PANEL_REF_RE.sub(
         lambda match: f"panel {match.group('panel').lower()}",
         text,
+    )
+    text = text.replace(
+        "simply a convenience for the omitted figure",
+        "simply a convenience in the omitted figure summary",
+    )
+    text = text.replace(
+        "beyond what is shown in the omitted figure",
+        "beyond what is summarized in the omitted figure",
+    )
+    text = text.replace(
+        "shown in the omitted figure",
+        "summarized in the omitted figure",
     )
     return text
 
@@ -1105,6 +1162,14 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     replace(
         OVERVIEW_RESOLUTION_FIGURE_RE,
         "it is constructed with different levels of resolution for each of these different systems.",
+    )
+    replace(
+        OVERVIEW_HUMAN_EARTH_SYSTEMS_FIGURE_RE,
+        "IA models include both human and physical Earth systems. The omitted figure summarized one illustrative mapping of those human and Earth systems.",
+    )
+    replace(
+        OVERVIEW_FIVE_SYSTEMS_FIGURE_RE,
+        "The interactions between these different systems all take place within the GCAM core; that is, they are not modeled as independent modules, but as one integrated whole. The omitted figure summarized those five interacting systems.",
     )
     replace(
         ENERGY_SYSTEM_SCHEMATIC_RE,
@@ -1247,6 +1312,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
     replace(
         V32_TRANSPORTATION_STRUCTURE_RE,
         "GCAM contains a detailed representation of transportation energy use and service demands, with the sector divided into three service demands: passenger, freight, and international shipping. The omitted figure summarized that top-level transportation structure.",
+    )
+    replace(
+        V32_TOC_END_USE_SECTORS_FIGURE_RE,
+        "end-use sectors: buildings, industry and transport. The omitted figure summarized that transformation-to-end-use linkage.",
     )
     replace(
         V32_INDUSTRY_AGGREGATE_FIGURE_RE,
@@ -1546,6 +1615,20 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         )
 
     if rel_source.name == "data-system.md":
+        replace(
+            DATA_SYSTEM_IEA_BROWSER_RE,
+            lambda match: (
+                "Users who have access to the [IEA energy balances]"
+                f"({match.group('link')}) must obtain a CSV export from the licensed source dataset. "
+                "The GCAM data system is configured for the 2012 edition of the IEA energy balances, which goes "
+                "through 2010 for all countries and sectors and provides 2011 estimates for a small selection of "
+                "variables. More recent editions may still work with the existing R code, but any changes to the "
+                "names or available categories of `COUNTRY`, `PRODUCT`, or `FLOW` will require mapping and/or "
+                "code updates. Agent adaptation: do not rely on a specific GUI such as `Beyond 2020 Browser`. "
+                "Instead, ensure the export uses years as columns and keeps the following ID fields present with "
+                "no dimensions fixed:\n"
+            ),
+        )
         replace(
             DATA_SYSTEM_IEA_EXPORT_RE,
             lambda match: (
@@ -2286,6 +2369,10 @@ def render_source_page(
     if rel_source.name == "gcam-build.md":
         lines.append(
             "- Note: This adapted build page rewrites GUI IDE click paths into agent-readable configuration targets and prefers Makefile/headless builds when available."
+        )
+    if rel_source.name == "data-system.md":
+        lines.append(
+            "- Note: This adapted data-system page rewrites source-tool GUI export wording into dataset-shape requirements, filesystem targets, and text-first preprocessing steps."
         )
     if rel_source.name == "hector.md":
         lines.append(

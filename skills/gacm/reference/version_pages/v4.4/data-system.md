@@ -79,11 +79,11 @@ Detailed documentation of the GCAM data system can be found in `<GCAM Workspace>
 ### 3.3 Troubleshooting
 If, when running the data system using 'make', an error is encountered you are likely to see a message such as this:
 ```
-/Applications/Xcode.app/Contents/Developer/usr/bin/make -C modeltime-data level2
+make -C modeltime-data level2
 ../modeltime-processing-code/level2/L200.modeltime.R
 R CMD BATCH --no-save --no-restore ../modeltime-processing-code/level2/L200.modeltime.R ../modeltime-processing-code/logs/L2.Rout
 make[1]: *** [../modeltime-processing-code/logs/L200.modeltime.R.log] Error 1
 make: *** [modeltime] Error 2
 ```
 
-For an indication of the problem, check the log files in the indicated directory (in this case the directory: '/modeltime-processing-code/logs/'). Often an indication of the problem can be found there, for example you might have to load a missing R package. Note that the generic level log (e.g. "L2.Rout") generally will contain any R system errors. The log file named for the routine will contain log messages written out by the GCAM data system. (As noted above, you should delete any named log files corresponding to scripts that erred to assure that these scrips will be re-run when the 'make' command is next used.)
+For an indication of the problem, check the log files in the indicated directory (in this case the directory `modeltime-processing-code/logs/`). Often an indication of the problem can be found there, for example you might have to load a missing R package. Note that the generic level log (e.g. "L2.Rout") generally will contain any R system errors. The log file named for the routine will contain log messages written out by the GCAM data system. (As noted above, you should delete any named log files corresponding to scripts that erred to assure that these scrips will be re-run when the 'make' command is next used.)

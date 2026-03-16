@@ -60,7 +60,8 @@ overwrite the previous version of the GCAM executable file, if any.
 
 GCAM-parallel adds one additional parameter, `parallel-grain-size`, to
 the GCAM configuration file. It is set in the "ints" section of the
-main configuration file:```
+main configuration file:
+```
 <Value name="parallel-grain-size">5</Value>
 ```
 

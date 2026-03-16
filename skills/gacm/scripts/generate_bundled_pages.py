@@ -234,6 +234,9 @@ WINDOWS_JAVA_LIB_RE = re.compile(
 WINDOWS_JAVA_HOME_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+\b"
 )
+XCODE_DEVELOPER_MAKE_RE = re.compile(
+    r"(?i)/Applications/Xcode\.app/Contents/Developer/usr/bin/make\b"
+)
 POSIX_USER_HOME_RE = re.compile(r"(?<![A-Za-z])/(?:Users|home)/[A-Za-z0-9_.-]+")
 LEGACY_PREVIOUS_VERSION_RE = re.compile(
     r"^.*Click here for info on how to view a previous version\..*(?:\n|$)",
@@ -1089,6 +1092,7 @@ def sanitize_absolute_paths(text: str) -> str:
     text = WINDOWS_JAVA_INCLUDE_RE.sub(r"<JAVA_HOME>\\include", text)
     text = WINDOWS_JAVA_LIB_RE.sub(r"<JAVA_HOME>\\lib", text)
     text = WINDOWS_JAVA_HOME_RE.sub("<JAVA_HOME>", text)
+    text = XCODE_DEVELOPER_MAKE_RE.sub("make", text)
     text = POSIX_USER_HOME_RE.sub("<USER_HOME>", text)
     return text
 
@@ -1615,6 +1619,10 @@ def apply_agent_text_adaptations(text: str, rel_source: Path) -> str:
         )
 
     if rel_source.name == "data-system.md":
+        text = text.replace(
+            "directory: '/modeltime-processing-code/logs/'",
+            "directory `modeltime-processing-code/logs/`",
+        )
         replace(
             DATA_SYSTEM_IEA_BROWSER_RE,
             lambda match: (
@@ -2292,6 +2300,7 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
         text,
         lambda chunk: apply_outside_inline_code(chunk, normalize_figure_text_residue),
     )
+    text = MISATTACHED_CODE_FENCE_RE.sub("\n```", text)
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip() + "\n"
 

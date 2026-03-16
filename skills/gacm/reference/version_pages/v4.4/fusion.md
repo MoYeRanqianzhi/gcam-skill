@@ -1324,7 +1324,8 @@ functionName( SomeVectorDef aVector ) -> decltype( aVector )::const_iterator {
 
 Closures allow you to construct anonymous functions that capture variables
 from their immediate environment.  They are especially useful in conjunction
-with algorithm templates from the `std::algorithm` library, such as `find_if`.```cpp
+with algorithm templates from the `std::algorithm` library, such as `find_if`.
+```cpp
     int nsub = successors_subgraph.count();
     typename groupset_t::iterator it_sg_ex_srcs =
       find_if(subgroups.begin(), subgroups.end(),

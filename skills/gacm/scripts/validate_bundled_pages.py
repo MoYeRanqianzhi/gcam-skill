@@ -60,6 +60,9 @@ WRAPPED_CITATION_LINK_RE = re.compile(r"\[\([^][]*[A-Za-z][^][]*?\d{4}[^][]*\)\]
 BROKEN_ANCHOR_CITATION_LINK_RE = re.compile(r"\[[^\]]*?\(\d{4}\]\(#[^)]+\)\)")
 BROKEN_DOUBLE_BRACKET_REF_RE = re.compile(r"\[\[[^\]]+\]\]\([^)]+\)|\[\[[^\]]+\]\([^)]+\)\]")
 RAW_TEXT_ENTITY_RE = re.compile(r"&amp;|&quot;|&#(?:160|xA0|xa0);", re.IGNORECASE)
+XCODE_DEVELOPER_MAKE_RE = re.compile(
+    r"(?i)/Applications/Xcode\.app/Contents/Developer/usr/bin/make\b"
+)
 
 
 def strip_code_fences(text: str) -> str:
@@ -204,6 +207,17 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> zero-width unicode character remains")
         if TYPOGRAPHIC_PUNCT_RE.search(raw_text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> typographic unicode punctuation residue remains")
+        if XCODE_DEVELOPER_MAKE_RE.search(raw_text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> non-portable Xcode developer make path remains")
+        for line_no, raw_line in enumerate(raw_text.splitlines(), start=1):
+            stripped = raw_line.lstrip()
+            if "```" in raw_line and stripped and not stripped.startswith("```"):
+                snippet = raw_line.strip()
+                if len(snippet) > 160:
+                    snippet = snippet[:157] + "..."
+                errors.append(
+                    f"{page.relative_to(VERSION_PAGES_ROOT.parent)}:{line_no} -> markdown code fence remains attached to surrounding prose: {snippet}"
+                )
         for line_no, line in enumerate(text.splitlines(), start=1):
             normalized_line = normalize_portability_line(line)
             if (

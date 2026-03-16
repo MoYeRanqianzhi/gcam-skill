@@ -105,7 +105,8 @@ functions	|X	|n/a
 ```
 
 #### 2.4 Prolog
-The following standard Copyright Notice will appear first in the prolog in every file:```
+The following standard Copyright Notice will appear first in the prolog in every file:
+```
 /*
 * LEGAL NOTICE
 * This computer software was prepared by Battelle Memorial Institute,
@@ -203,7 +204,8 @@ The primary purpose of style guidelines is to facilitate long-term maintenance. 
 #### 4.1 Lines
 
 ##### 4.1.1 Line Length
-All lines should be displayable without wrapping on an 80-character display. If wrapping is required, try to break at an operator, and start the next line with the operator vertically aligned. For example:```cpp
+All lines should be displayable without wrapping on an 80-character display. If wrapping is required, try to break at an operator, and start the next line with the operator vertically aligned. For example:
+```cpp
     cout << "This is an example of a line which must be wrapped, value = "
          << value << endl;
 ```
@@ -214,7 +216,8 @@ Each statement should begin on a new line.
 #### 4.2 Comments
 
 ##### 4.2.1 Automated Documentation Comments
-For comments meant to be extracted by an automated documentation tool, follow the Java convention of using the standard C comment delimiters with an extra asterisk on the first one, as shown:```cpp
+For comments meant to be extracted by an automated documentation tool, follow the Java convention of using the standard C comment delimiters with an extra asterisk on the first one, as shown:
+```cpp
     /**
       * This is a module, class, function, or instance variable comment
       * that will be extracted by an automated documentation tool.
@@ -242,7 +245,8 @@ TDB
 #### 4.3 Formatting
 
 ##### 4.3.1 Indentation and Braces
-The contents of all code blocks should be indented to improve readability. Three spaces are recommended as the standard indentation. Braces should be placed to show the level of indentation of the code block, with the open brace at the end of the statement which starts the block, and the close brace indented to match the statement.```cpp
+The contents of all code blocks should be indented to improve readability. Three spaces are recommended as the standard indentation. Braces should be placed to show the level of indentation of the code block, with the open brace at the end of the statement which starts the block, and the close brace indented to match the statement.
+```cpp
         int main() {
                 doSomething();
         }
@@ -283,7 +287,8 @@ The contents of all code blocks should be indented to improve readability. Three
         }
 ```
 
-##### 4.3.2 Pointer and Reference Position`(C++)` All declarations of pointer or reference variables and function arguments should have the dereference operator `*` and the address-of operator `&` placed adjacent to the type, not the variable. For example:```cpp
+##### 4.3.2 Pointer and Reference Position`(C++)` All declarations of pointer or reference variables and function arguments should have the dereference operator `*` and the address-of operator `&` placed adjacent to the type, not the variable. For example:
+```cpp
         char*   text;                   // right
         char    *text;                  // not recommended
 
@@ -294,7 +299,8 @@ The contents of all code blocks should be indented to improve readability. Three
 #### 4.4 Statements
 
 ##### 4.4.1 Control Statements
-All control statements should be followed by an indented code block enclosed with braces, even if it only contains one statement. This makes the code consistent and allows the block to be easily expanded in the future. For example:```cpp
+All control statements should be followed by an indented code block enclosed with braces, even if it only contains one statement. This makes the code consistent and allows the block to be easily expanded in the future. For example:
+```cpp
         if ( value == 0 ) {                 // right
                 doSomething();
         }
@@ -306,7 +312,8 @@ All control statements should be followed by an indented code block enclosed wit
 ```
 
 ##### 4.4.2 Conditional Statements
-Conditional statements found in `if`, `while`, and `do` statements should be explicit based on the data type of the variable being tested. For example:```cpp
+Conditional statements found in `if`, `while`, and `do` statements should be explicit based on the data type of the variable being tested. For example:
+```cpp
         int value = getValue();
         if ( value == 0 ) {                 // right
                 doSomething();
@@ -320,14 +327,16 @@ Conditional statements found in `if`, `while`, and `do` statements should be exp
                 doSomethingElse();
         }
 ```
-`(Java)````java
+`(Java)
+````java
         boolean value = getValue();
         if ( !value ) {                     // right - this is explicit
                 doSomethingElse();          // test for boolean type
         }
 ```
 
-##### 4.4.3 Include Statements`(C++)` For both source and header files, #include statements should be grouped together at the top of the file after the prolog. Includes should be logically grouped together, with the groups separated by a blank line. System includes should use the `<file.h>` notation, and all other includes should use the `"file.h"` notation. Path names should never be explicitly used in `#include` statements (with the exception of vendor library files such as Motif), since this is inherently non-portable. For example:```cpp
+##### 4.4.3 Include Statements`(C++)` For both source and header files, #include statements should be grouped together at the top of the file after the prolog. Includes should be logically grouped together, with the groups separated by a blank line. System includes should use the `<file.h>` notation, and all other includes should use the `"file.h"` notation. Path names should never be explicitly used in `#include` statements (with the exception of vendor library files such as Motif), since this is inherently non-portable. For example:
+```cpp
         #include <stdlib.h>                     // right
         #include <stdio.h>                      //
         #include <Xm/Xm.h>                      //
@@ -341,7 +350,8 @@ Conditional statements found in `if`, `while`, and `do` statements should be exp
 #### 4.5 Declarations
 
 ##### 4.5.1 Variable Declaration
-Each variable should be individually declared on a separate line. Variables may be grouped by type, with groups separated by a blank line. Variable names should be aligned vertically for readability. There is no required ordering of types, however some platforms will give optimal performance if declarations are ordered from largest to smallest (e.g., `double`, `int`, `short`, `char`).```cpp
+Each variable should be individually declared on a separate line. Variables may be grouped by type, with groups separated by a blank line. Variable names should be aligned vertically for readability. There is no required ordering of types, however some platforms will give optimal performance if declarations are ordered from largest to smallest (e.g., `double`, `int`, `short`, `char`).
+```cpp
         int*    a;              // right
         int     b;              //
         int     c;              //
@@ -365,7 +375,8 @@ Each variable should be individually declared on a separate line. Variables may 
 The two preceding examples are prone to error; notice that a is declared as a pointer to integer and b and c are declared as integers, not as pointers to integers.
 
 ##### 4.5.2 External Variable Declaration`(C++)` All external variables should be placed in header files. In general the use of global variables is discouraged. Use the following method to allow external variables to be created only once while using a single declaration. In the header file which declares the global variable, use a flag to cause the default action on inclusion to be referencing of an externally created variable. Only in the source file that wants to actually create the variable will this flag be defined.
-In the header file `MeaningfulName.h`,```cpp
+In the header file `MeaningfulName.h`,
+```cpp
         #ifdef MeaningfulNameInit    // the flag is called MeaningfulNameInit
         #define EXTERN               // create the variable (only in main.cpp)
         #else
@@ -374,24 +385,28 @@ In the header file `MeaningfulName.h`,```cpp
         EXTERN ErrorLogger errorLog;
         #undef EXTERN
 ```
-All of the source files should include this header file normally:```cpp
+All of the source files should include this header file normally:
+```cpp
         #include meaningfulname.h
 ```
-while the following should appear only in the source file where you actually want to declare the variable and allocate memory for it (typically in `main.cpp`):```cpp
+while the following should appear only in the source file where you actually want to declare the variable and allocate memory for it (typically in `main.cpp`):
+```cpp
         #define MeaningfulNameInit
         #include meaningfulname.h
         #undef MeaningfulNameInit
 ```
 
 ##### 4.5.3 Numeric Constant Declaration
-Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric constants. For example:```cpp
+Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric constants. For example:
+```cpp
         const int    VALUE  = A73B2X;   // right, hexadecimal constant
         const double EVALUE = 1.2E9;    // right, scientific notation constant
 
         const float  FVALUE = 1.2e9;    // wrong, lowercase e
 ```
 
-##### 4.5.4 Enumerated Type Declaration`(C++)` The enum type name and enumerated constants should each reside on a separate line. Constants and comments should be aligned vertically. Following is an example of a valid enum declaration:```cpp
+##### 4.5.4 Enumerated Type Declaration`(C++)` The enum type name and enumerated constants should each reside on a separate line. Constants and comments should be aligned vertically. Following is an example of a valid enum declaration:
+```cpp
         enum CompassPoints {    // Enums used to specify direction.
                 NORTH = 0,      //
                 SOUTH = 1,      //
@@ -400,7 +415,8 @@ Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric cons
         };
 ```
 
-##### 4.5.5 Struct and Union Declaration`(C++)` The `struct` type name and structure members should each reside on a separate line. This format separates the members for easy reading, is easy to comment, and eliminates line wrapping for large numbers of members. Each `struct` should have a one-line description on the same line as the type name. Each member should have a comment describing what it is, and units if applicable. Members and comments should be aligned vertically. Following is an example of a valid `struct` declaration:```cpp
+##### 4.5.5 Struct and Union Declaration`(C++)` The `struct` type name and structure members should each reside on a separate line. This format separates the members for easy reading, is easy to comment, and eliminates line wrapping for large numbers of members. Each `struct` should have a one-line description on the same line as the type name. Each member should have a comment describing what it is, and units if applicable. Members and comments should be aligned vertically. Following is an example of a valid `struct` declaration:
+```cpp
         struct MeaningfulName {         // This is a struct of some data.
                 int     firstInteger;   // This is the first int.
                 int     secondInteger;  // This is the second int.
@@ -409,7 +425,8 @@ Use only the uppercase suffixes (e.g., L, X, U, E, F) when defining numeric cons
         };
 ```
 
-##### 4.5.6 Class Declaration`(C++,Java)` All class definitions should include a constructor, (virtual) destructor, copy constructor and operator=.   If the class has a pointer, provide a deep copy constructor (i.e., allocates memory and copies the object being pointed to, not just maintains a pointer to the original object).  If any of these four are not currently needed, create stub versions and place in the private section so they will not be automatically generated, then accidentally used.  (This protects from core dumps.)  All classes should have public, protected, and private access sections declared, in this order. Friend declarations should appear before the public section. All member variables should be either protected or private. It is recommended that definitions of inline functions follow the class declaration, although trivial inline functions (e.g., `{}` or `{ return x; }`) may be defined within the declaration itself. Each member function and variable should be commented using the automated documentation comment delimiter. Member functions should be commented in the same fashion as a regular function. Member variables should each have a one line description. Members and comments should be aligned vertically. For example:```cpp
+##### 4.5.6 Class Declaration`(C++,Java)` All class definitions should include a constructor, (virtual) destructor, copy constructor and operator=.   If the class has a pointer, provide a deep copy constructor (i.e., allocates memory and copies the object being pointed to, not just maintains a pointer to the original object).  If any of these four are not currently needed, create stub versions and place in the private section so they will not be automatically generated, then accidentally used.  (This protects from core dumps.)  All classes should have public, protected, and private access sections declared, in this order. Friend declarations should appear before the public section. All member variables should be either protected or private. It is recommended that definitions of inline functions follow the class declaration, although trivial inline functions (e.g., `{}` or `{ return x; }`) may be defined within the declaration itself. Each member function and variable should be commented using the automated documentation comment delimiter. Member functions should be commented in the same fashion as a regular function. Member variables should each have a one line description. Members and comments should be aligned vertically. For example:
+```cpp
         class Value : public BaseValue {
         public:
                 Value();                        // Default constructor.
@@ -441,7 +458,8 @@ Where practical, have only one `return` from a function or method as the last st
 Avoid the use of casts except where unavoidable, since this can introduce run-time bugs by defeating compiler type-checking. Working with third-party libraries (e.g., X or Motif) often requires the use of casts.  When you need to cast, document the reasons.
 
 #### 5.5 Literals
-Use constants instead of literal values wherever possible. For example:```cpp
+Use constants instead of literal values wherever possible. For example:
+```cpp
 const double PI = 3.141259;                     // right
 const char APP_NAME = "ACME Spreadsheet 1.0";   // right
 
@@ -460,11 +478,13 @@ The use of `typedef` is discouraged when actual types such as `class`, `struct`,
 The use of `extern` (e.g., global) variables is strongly discouraged. The exception is for programs which benefit from having a small number of object pointers accessible globally via `extern`.
 The use of `goto` statements is not allowed.
 
-#### 5.8 Macros`(C++)` All arguments to macros should be enclosed in parentheses to eliminate ambiguity on expansion. For example:```cpp
+#### 5.8 Macros`(C++)` All arguments to macros should be enclosed in parentheses to eliminate ambiguity on expansion. For example:
+```cpp
 #define MAX( x, y )   ( (x) > (y) ) ? (x) : (y) )
 ```
 
-#### 5.9 Debug Compile-time Switch`(C++)` Code used only during development for debugging or performance monitoring should be conditionally compiled using `#ifdef` compile-time switches. The symbols to use are `DEBUG` and `STATS`, respectively. Debug statements announcing entry into a function or member function should provide the entire function name including the class. For example:```cpp
+#### 5.9 Debug Compile-time Switch`(C++)` Code used only during development for debugging or performance monitoring should be conditionally compiled using `#ifdef` compile-time switches. The symbols to use are `DEBUG` and `STATS`, respectively. Debug statements announcing entry into a function or member function should provide the entire function name including the class. For example:
+```cpp
 #ifdef DEBUG
     cout << "MeaningfulName::doSomething: about to do something" << endl;
 #endif
@@ -478,7 +498,8 @@ Asserts will be used to verify assumptions including pre- and post-conditions.  
 
 #### 5.12 Destructors`(C++)` All classes which allocate resources which are not automatically freed (e.g., have pointer variables) should have a destructor which explicitly frees the resources. Since any class may someday be used as a base class, destructors should be declared `virtual`, even if empty.
 
-#### 5.13 Argument Passing`(C++)` If the argument is small and will not be modified, use the default pass by value. If the argument is large and will not be modified, pass by `const` reference. If the argument will be modified, pass by reference. For example:```cpp
+#### 5.13 Argument Passing`(C++)` If the argument is small and will not be modified, use the default pass by value. If the argument is large and will not be modified, pass by `const` reference. If the argument will be modified, pass by reference. For example:
+```cpp
 void A::function( int p_notChanged );               // default: pass by value
 void B::function( const C& p_bigReadOnlyObject )    // pass by const reference
 void C::function( int p_notChanged, int& p_result );  // pass by reference
@@ -490,7 +511,8 @@ void C::function( int p_notChanged, int& p_result );  // pass by reference
 
 #### 5.16 Const Member Functions`(C++)` It is recommended that all member functions (example:  `func(...) const {...}`) which do not modify the member variables of an object be declared `const`. This allows these functions to be called for objects which were either declared as `const` or passed as `const` arguments.`(C++)` It is recommended that all member function parameters be declared const (example:  `func(const int i){...}`) when possible.
 
-#### 5.17 Referencing Non-C++ Functions`(C++)` Use the `extern "C"` mechanism to allow access to non-C++ (not just C) functions. This mechanism disables C++ name mangling, which allows the linker to resolve the function references. For example:```cpp
+#### 5.17 Referencing Non-C++ Functions`(C++)` Use the `extern "C"` mechanism to allow access to non-C++ (not just C) functions. This mechanism disables C++ name mangling, which allows the linker to resolve the function references. For example:
+```cpp
 extern "C" {
     void aFunction();           // single non-C++ function prototype
 }

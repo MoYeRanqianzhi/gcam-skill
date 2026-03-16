@@ -27,14 +27,16 @@ Most users will interact with the testing framework through repository review ev
 * They need to extend or add tests
 * A change that affects the way we run Core scenarios such as how we run a policy
 
-As described in the details [below](test_framework.md#background) the testing framework is contained in it's own Git repository but included in the GCAM core repository as a submodule.  Thus to get the scripts you will need to update it:```
+As described in the details [below](test_framework.md#background) the testing framework is contained in it's own Git repository but included in the GCAM core repository as a submodule.  Thus to get the scripts you will need to update it:
+```
 > cd <GCAM workspace>
 > git submodule update --init util/testing-framework
 ```
 
 To understand how the testing framework is organized and how it all fits together users can read the detailed description [below](test_framework.md#background).
 
-The development cycle is the same as any other:```
+The development cycle is the same as any other:
+```
 > cd util/testing-framework
 > git checkout -b my-new-feature-branch
 > # make the required changes
@@ -44,7 +46,8 @@ The development cycle is the same as any other:```
 > git push
 ```
 
-However where it differs is we now need to update the submodule "pointer" in the GCAM workspace as well:```
+However where it differs is we now need to update the submodule "pointer" in the GCAM workspace as well:
+```
 > cd ../../
 > git add util/testing-framework
 > git commit

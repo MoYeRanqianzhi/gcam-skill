@@ -79,7 +79,8 @@ most recent release version of GCAM.  This will usually be the most
 recent commit on the `master` branch.  We have a lot of branches open
 on the GCAM repository at any given time, so it's important to keep
 the branches organized.  We use a hierarchical naming scheme with
-names in the following form:```
+names in the following form:
+```
 <user>/<branch-type>/<name>
 ```
 The first part is a user identifier, so everyone knows whom to talk to

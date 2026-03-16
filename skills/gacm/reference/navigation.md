@@ -35,7 +35,10 @@ After version routing, open only the topic docs needed for the task:
 - `running_gcam.md`: reference runs, configuration, batch mode, target finder, XML DB controls, and headless query flow
 - `configuration_workflows.md`: safe editing patterns for configuration files, scenario components, batch mode, and target finder
 - `query_automation.md`: headless query execution, XML DB driver workflows, and extraction-tool selection
+- `gcamreader_api.md`: Python package surfaces such as `Query`, `parse_batch_query`, `LocalDBConn`, `RemoteDBConn`, and `runQuery`
+- `gcamextractor_api.md`: R package surfaces such as `readgcam`, `params`, `queries`, `map_param_query`, and `.Proj` reuse
 - `building_gcam.md`: command-line compilation and runtime prerequisites
+- `release_workflows.md`: release-package download, unpack, upgrade, and source-vs-release decision rules
 - `workspace_layouts.md`: how to detect release workspaces, source checkouts, and legacy layout differences
 - `version_operation_notes.md`: family-level command, path, compiler, and query differences across versions
 - `solver.md`: solver algorithms and configuration logic

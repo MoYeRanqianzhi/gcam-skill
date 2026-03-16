@@ -4,7 +4,7 @@ Skill-bundled operational summary for running GCAM scenarios through shell comma
 
 Use this file after version routing. `v8.2` is the bundled full-topic baseline. Older versions may use different workspace layouts, packaging, or database conventions, so keep the exact version route in scope.
 
-Open `configuration_workflows.md` for deeper configuration editing patterns, `query_automation.md` for headless extraction details, and `workspace_layouts.md` when the user provides real paths.
+Open `configuration_workflows.md` for deeper configuration editing patterns, `query_automation.md` for headless extraction details, `release_workflows.md` when the workspace has not been acquired yet, and `workspace_layouts.md` when the user provides real paths.
 
 ## Default Execution Pattern
 For agent use, prefer one of these command-line paths:

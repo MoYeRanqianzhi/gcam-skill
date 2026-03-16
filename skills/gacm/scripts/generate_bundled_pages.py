@@ -2676,8 +2676,8 @@ def write_file(path: Path, content: str) -> None:
     path.write_text(content, encoding="utf-8")
 
 
-def version_page_root(version: str) -> Path:
-    return VERSION_PAGES_ROOT / version
+def version_page_root(version: str, output_root: Path | None = None) -> Path:
+    return (output_root or VERSION_PAGES_ROOT) / version
 
 
 def find_target_source(version: str, rel_path: Path) -> tuple[str, Path] | None:
@@ -2708,8 +2708,8 @@ def is_local_target(target: str) -> bool:
     return bool(target) and not target.startswith("#") and not SCHEME_RE.match(target)
 
 
-def collect_missing_local_pages(version: str) -> list[Path]:
-    root = version_page_root(version)
+def collect_missing_local_pages(version: str, output_root: Path | None = None) -> list[Path]:
+    root = version_page_root(version, output_root)
     missing: set[Path] = set()
     for page in sorted(root.rglob("*.md")):
         text = page.read_text(encoding="utf-8", errors="ignore")
@@ -2730,8 +2730,10 @@ def collect_missing_local_pages(version: str) -> list[Path]:
     return sorted(missing)
 
 
-def materialize_missing_target(version: str, rel_path: Path) -> bool:
-    root = version_page_root(version)
+def materialize_missing_target(
+    version: str, rel_path: Path, output_root: Path | None = None
+) -> bool:
+    root = version_page_root(version, output_root)
     target = root / rel_path
     if target.exists():
         return False
@@ -2760,20 +2762,20 @@ def materialize_missing_target(version: str, rel_path: Path) -> bool:
     return True
 
 
-def ensure_missing_targets(version: str) -> None:
+def ensure_missing_targets(version: str, output_root: Path | None = None) -> None:
     while True:
-        missing = collect_missing_local_pages(version)
+        missing = collect_missing_local_pages(version, output_root)
         if not missing:
             return
         wrote_any = False
         for rel_path in missing:
-            wrote_any = materialize_missing_target(version, rel_path) or wrote_any
+            wrote_any = materialize_missing_target(version, rel_path, output_root) or wrote_any
         if not wrote_any:
             return
 
 
-def build_full_tree_version(version: str) -> None:
-    version_root = version_page_root(version)
+def build_full_tree_version(version: str, output_root: Path | None = None) -> None:
+    version_root = version_page_root(version, output_root)
     if version_root.exists():
         shutil.rmtree(version_root)
 
@@ -2790,7 +2792,7 @@ def build_full_tree_version(version: str) -> None:
             ),
         )
 
-    ensure_missing_targets(version)
+    ensure_missing_targets(version, output_root)
 
     page_paths = sorted(
         path.relative_to(version_root)
@@ -2800,8 +2802,8 @@ def build_full_tree_version(version: str) -> None:
     write_file(version_root / BUNDLE_INDEX_NAME, render_full_tree_index(version, page_paths))
 
 
-def build_delta_version(version: str) -> None:
-    version_root = version_page_root(version)
+def build_delta_version(version: str, output_root: Path | None = None) -> None:
+    version_root = version_page_root(version, output_root)
     if version_root.exists():
         shutil.rmtree(version_root)
     write_file(version_root / "release_note.md", render_delta_release_note(version))
@@ -2809,8 +2811,9 @@ def build_delta_version(version: str) -> None:
     write_file(version_root / BUNDLE_INDEX_NAME, render_delta_index(version))
 
 
-def write_root_readme() -> None:
-    write_file(VERSION_PAGES_ROOT / "README.md", render_root_readme())
+def write_root_readme(output_root: Path | None = None) -> None:
+    root = output_root or VERSION_PAGES_ROOT
+    write_file(root / "README.md", render_root_readme())
 
 
 def render_root_readme() -> str:
@@ -2830,7 +2833,8 @@ def render_root_readme() -> str:
     return "\n".join(lines)
 
 
-def main() -> int:
+def main(output_root: Path | None = None) -> int:
+    root = output_root or VERSION_PAGES_ROOT
     errors = validate_authoring_sources()
     if errors:
         for item in errors[:200]:
@@ -2838,13 +2842,13 @@ def main() -> int:
         if len(errors) > 200:
             print(f"... truncated {len(errors) - 200} additional errors")
         return 1
-    VERSION_PAGES_ROOT.mkdir(parents=True, exist_ok=True)
-    write_root_readme()
+    root.mkdir(parents=True, exist_ok=True)
+    write_root_readme(root)
     for info in ordered_versions():
         if info.version in FULL_TREE_VERSIONS:
-            build_full_tree_version(info.version)
+            build_full_tree_version(info.version, root)
         else:
-            build_delta_version(info.version)
+            build_delta_version(info.version, root)
     return 0
 
 

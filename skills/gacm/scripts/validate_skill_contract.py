@@ -32,6 +32,7 @@ REQUIRED_SECTION_SNIPPETS = {
         "Default to pure text, command-line, and configuration-file workflows.",
         "Prefer editing XML/configuration files and running headless tools over GUI instructions.",
         "Do not claim access to `gcam-doc`, `gcam-core`, `gcamreader`, or `gcamextractor` checkouts unless the user actually provides them.",
+        "Treat bundled generation and validator scripts as maintainer-only tooling, not as runtime GCAM dependencies for end users.",
     ),
     "Version Routing": (
         "If the user explicitly names a version, use that version exactly.",
@@ -48,6 +49,7 @@ REQUIRED_SECTION_SNIPPETS = {
         "open `reference/versions/<version>.md`.",
         "open `reference/version_pages/<version>/BUNDLE_INDEX.md`.",
         "Use `reference/navigation.md` to choose the smallest topic set that answers the request.",
+        "If two sources already establish the answer, stop loading more files.",
     ),
     "Task Triage": (
         "**All requests**: `reference/version_inventory.md`",

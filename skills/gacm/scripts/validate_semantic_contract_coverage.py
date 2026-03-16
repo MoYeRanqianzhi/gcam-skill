@@ -43,9 +43,12 @@ CONTRACT_OWNERS: dict[str, set[str]] = {
         "reference/running_gcam.md",
         "reference/configuration_workflows.md",
         "reference/query_automation.md",
+        "reference/gcamreader_api.md",
+        "reference/gcamextractor_api.md",
         "reference/workspace_layouts.md",
         "reference/version_operation_notes.md",
         "reference/building_gcam.md",
+        "reference/release_workflows.md",
         "reference/tools.md",
     },
     "validate_solver_contract.py": {

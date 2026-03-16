@@ -51,7 +51,8 @@ Purpose:
 ## Tooling Coverage
 - `user-guide.md` ModelInterface batch and XML DB control sections -> `running_gcam.md`
 - `user-guide.md` R/Python extraction sections -> `tools.md`
-- `gcamreader` authoring references -> `tools.md`
+- `gcamreader` authoring references -> `tools.md`, `gcamreader_api.md`
 - `rgcam` authoring references -> `tools.md`
-- `gcamextractor` authoring references -> `tools.md`
+- `gcamextractor` authoring references -> `tools.md`, `gcamextractor_api.md`
+- `user-guide.md` release-package download and quickstart packaging sections, plus `gcam-build.md` release/source distinctions -> `release_workflows.md`
 - broader GCAM ecosystem references -> `developer_workflows.md`

@@ -39,8 +39,9 @@ REQUIRED_SECTION_SNIPPETS = {
         "`v8.2` is the bundled current full-topic baseline because it maps to the root `gcam-doc` tree.",
     ),
     "Tooling Coverage": (
-        "`gcamreader` authoring references -> `tools.md`",
-        "`gcamextractor` authoring references -> `tools.md`",
+        "`gcamreader` authoring references -> `tools.md`, `gcamreader_api.md`",
+        "`gcamextractor` authoring references -> `tools.md`, `gcamextractor_api.md`",
+        "`user-guide.md` release-package download and quickstart packaging sections, plus `gcam-build.md` release/source distinctions -> `release_workflows.md`",
     ),
 }
 
@@ -53,6 +54,9 @@ REQUIRED_SHARED_DOC_REFS = (
     "version_operation_notes.md",
     "navigation.md",
     "tools.md",
+    "gcamreader_api.md",
+    "gcamextractor_api.md",
+    "release_workflows.md",
 )
 
 

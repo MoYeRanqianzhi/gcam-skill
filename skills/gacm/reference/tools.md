@@ -16,6 +16,8 @@ Prefer dedicated headless tools over interactive ModelInterface workflows when t
 ## gcamreader (Python)
 Purpose: run GCAM query XML against a BaseX database and return Pandas DataFrames or CSV output.
 
+Open `gcamreader_api.md` when the user needs object-level Python usage, method names, return semantics, or failure handling.
+
 ### Install
 ```bash
 pip install gcamreader
@@ -62,6 +64,8 @@ Bundled role summary:
 
 ## gcamextractor (R)
 Purpose: extract GCAM data to standardized tables, convert units, and aggregate by parameter/class.
+
+Open `gcamextractor_api.md` when the user needs `readgcam` argument behavior, `.Proj` caching rules, or parameter/query mapping details.
 
 ### Install
 ```r

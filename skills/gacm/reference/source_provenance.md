@@ -8,7 +8,9 @@ This skill is a bundled synthesis, not a verbatim vendor drop.
 - Release updates through `v8.7`
 - GCAM core project overview material used during authoring
 - `gcamreader` README and CLI usage used during authoring
+- `gcamreader` query API source and package tests used during authoring
 - `gcamextractor` README and vignette usage used during authoring
+- `gcamextractor` `readgcam` source and generated `man/*.Rd` docs used during authoring
 
 ## What This Means
 - The skill is designed to be portable and open-source.

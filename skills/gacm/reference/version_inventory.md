@@ -51,7 +51,10 @@ These bundled topic docs are the main progressive-disclosure entry points after 
 - `running_gcam.md`
 - `configuration_workflows.md`
 - `query_automation.md`
+- `gcamreader_api.md`
+- `gcamextractor_api.md`
 - `building_gcam.md`
+- `release_workflows.md`
 - `workspace_layouts.md`
 - `version_operation_notes.md`
 - `solver.md`

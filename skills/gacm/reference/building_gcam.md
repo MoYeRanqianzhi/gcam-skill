@@ -4,7 +4,7 @@ Bundled build summary for GCAM, rewritten for agent-oriented CLI workflows.
 
 Use this file after version routing. Compiler and dependency details evolve across versions, but the command-line build pattern remains the safest default.
 
-Open `workspace_layouts.md` when you need to decide whether the user has a source checkout, a release workspace, or a legacy nested package layout.
+Open `workspace_layouts.md` when you need to decide whether the user has a source checkout, a release workspace, or a legacy nested package layout. Open `release_workflows.md` when the user still needs to choose between downloading a release package and building from source.
 
 ## Default Build Policy
 - Prefer command-line builds.

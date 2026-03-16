@@ -39,6 +39,20 @@ REQUIRED_SNIPPETS = {
         "This is the most direct way to reuse GCAM query XML from the command line.",
         "Use a higher-level extraction library when:",
     ),
+    "gcamreader_api.md": (
+        "# gcamreader API (Python)",
+        "The upstream Python API uses `runQuery`, not `run_query`.",
+        "## Core Objects and Functions",
+        "`LocalDBConn(dbpath, dbfile, suppress_gabble=True, miclasspath=None, validatedb=True, maxMemory='4g')`",
+        "if the parsed CSV contains a `value` column, `gcamreader` groups by every other column and sums `value`",
+    ),
+    "gcamextractor_api.md": (
+        "# gcamextractor API (R)",
+        "## Main Entry Point: `readgcam`",
+        "`paramsSelect` can be:",
+        "If `queryFile=NULL`, the package writes bundled `queries_xml` to `folder/queries.xml`",
+        "source and generated docs are slightly out of sync: the current R source includes `removeVintages=F` in `readgcam`",
+    ),
     "workspace_layouts.md": (
         "Guide to recognizing GCAM workspace structure from paths and files instead of guessing.",
         "Never assume a machine-specific absolute path.",
@@ -58,6 +72,13 @@ REQUIRED_SNIPPETS = {
         "Compile only when:",
         "msbuild cvs/objects/build/vc10/objects.vcxproj /p:Configuration=Release /p:Platform=x64",
         "summarize those pages into CLI build actions instead of reproducing IDE click paths unless the user explicitly requests them.",
+    ),
+    "release_workflows.md": (
+        "# Release Workflows (Download, Unpack, Upgrade)",
+        "Prefer release packages when the user only needs to:",
+        "Do not invent release asset names or platform packages; use the exact asset names visible in the provided release context.",
+        "If the unpacked workspace lacks `exe/`, `input/`, or wrapper scripts such as `run-gcam`, `run-gcam.bat`, or `run-gcam.command`, you probably downloaded source code rather than a release package.",
+        "For source builds or long-lived code changes, switch to `building_gcam.md`.",
     ),
     "tools.md": (
         "# GCAM Tooling (Headless Extraction)",

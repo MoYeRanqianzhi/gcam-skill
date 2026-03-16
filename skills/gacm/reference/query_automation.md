@@ -77,6 +77,8 @@ Use a batch query file when:
 - you want region selection controlled in XML
 - you want a stable artifact that can be reused across scenarios
 
+Use `scripts/generate_modelinterface_batch.py` when you need a minimal batch-command XML file quickly and do not want to hand-type the `ModelInterfaceBatch` wrapper.
+
 ### Choose Extraction Libraries Instead
 Use a higher-level extraction library when:
 - the user wants Python or R tables, not GCAM query authoring
@@ -91,6 +93,8 @@ Use when:
 - CSV or DataFrame output is enough
 - local or remote BaseX access is needed
 
+Open `gcamreader_api.md` when the user needs the Python object model or method-level behavior.
+
 ### `rgcam`
 Use when:
 - the user works in R
@@ -103,7 +107,9 @@ Use when:
 - they want unit conversion and aggregation by parameter/class
 - they are already organizing work around `paramsSelect`
 
-Open `tools.md` for install and usage examples.
+Open `gcamextractor_api.md` when the user needs the exact R argument surface or `.Proj` reuse behavior.
+
+Open `tools.md` for install and selection examples.
 
 ## Storage and Performance Controls
 When result volume is the problem, do not change the model first.

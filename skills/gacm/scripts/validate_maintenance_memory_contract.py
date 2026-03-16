@@ -20,6 +20,7 @@ CHANGELOG_DOC = REPO_ROOT / "docs" / "CHANGELOG.md"
 DEVELOPMENT_REQUIRED_SNIPPETS = (
     "Use `skill-creator` skill guidance when modifying or extending the skill.",
     "Commit after each meaningful part; tag at key milestones.",
+    "Bundled maintainer scripts under `skills/gacm/scripts/` target Python 3.10+.",
     "Use `python skills/gacm/scripts/validate_all.py` as the default one-shot validation suite before commit",
     "Re-run `validate_conceptual_docs_contract.py` after editing conceptual shared docs",
     "Re-run `validate_page_bundle_contract.py` after changing `generate_bundled_pages.py` or the generated page-bundle layer",
@@ -41,6 +42,7 @@ CHANGELOG_REQUIRED_SNIPPETS = (
     "Added `validate_solver_contract.py` and wired it into `validate_all.py`",
     "Added `validate_page_bundle_contract.py` and wired it into `validate_all.py`",
     "Renamed generated page-bundle directory indexes from `INDEX.md` to `BUNDLE_INDEX.md`",
+    "Added dedicated API references for `gcamreader` and `gcamextractor`, including object-level usage, argument surfaces, caching rules, and failure patterns.",
 )
 
 

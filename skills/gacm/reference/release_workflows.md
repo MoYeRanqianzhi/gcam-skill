@@ -31,8 +31,11 @@ Use stable official URLs instead of inventing asset names:
 - release page with downloadable assets: `https://github.com/JGCRI/gcam-core/releases`
 - latest tagged release redirect: `https://github.com/JGCRI/gcam-core/releases/latest`
 
+If the user wants an exact direct package URL instead of the generic release page, open `release_assets/direct_download_links.md`.
+
 Operational rule:
 - If the user asks to "download GCAM", send the releases page first.
+- If the user asks for an exact known package URL by version and platform, use `release_assets/direct_download_links.md`.
 - If the user asks for the latest GCAM release, send the `releases/latest` URL.
 - If the user asks to clone source, use the repository URL or `https://github.com/JGCRI/gcam-core.git`.
 

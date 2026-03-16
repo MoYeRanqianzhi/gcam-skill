@@ -193,6 +193,7 @@ Electricity used for non-renewable groundwater pumping is represented in future 
 ## Optional Exogenous Floorspace
 
 If the base assumptions are not desired, user-specified residential or commercial building floorspace values (in billion m^2) can be added in a `.csv` file that is outside that datasystem. An XML can be generated from this `.csv` through Model Interface using the following header:
+
 ```
 Floorspace, world/+{name}region, region/+{name}gcam-consumer, gcam-consumer/+{name}nodeInput, nodeInput/+{name}building-node-input,
 building-node-input/+{year}base-building-size, building-node-input/+base-building-size, scenario, scenario/world

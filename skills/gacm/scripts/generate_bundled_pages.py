@@ -225,6 +225,17 @@ INLINE_TRAILING_FIGURE_SENTENCE_RE = re.compile(
     rf",\s*Figure\s+{FIGURE_LABEL_TOKEN}\.(?=\s+[A-Z])",
     re.IGNORECASE,
 )
+LANGUAGE_SCOPE_TOKEN_RE = re.compile(
+    r"`\((?P<tag>C\+\+|Java|C\+\+, ?Java)\)`"
+)
+LANGUAGE_SCOPE_HEADING_RE = re.compile(
+    r"^(?P<prefix>#+\s+)(?P<title>[^`\n]+?)`\((?P<tag>C\+\+|Java|C\+\+, ?Java)\)`(?:\s+(?P<rest>\S.*))?$",
+    re.MULTILINE,
+)
+LANGUAGE_SCOPE_LINE_RE = re.compile(
+    r"^`\((?P<tag>C\+\+|Java|C\+\+, ?Java)\)`\s*(?P<rest>.*)$",
+    re.MULTILINE,
+)
 WINDOWS_JAVA_INCLUDE_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]include\b"
 )
@@ -1122,6 +1133,37 @@ def normalize_problem_unicode_punctuation(text: str) -> str:
     text = re.sub(r"(?<=\w)[\u2010\u2013\u2014](?=\w)", "-", text)
     text = UNICODE_DASH_RE.sub(" - ", text)
     text = re.sub(r"\s+-\s+", " - ", text)
+    return text
+
+
+def render_language_scope(tag: str) -> str:
+    return ", ".join(part.strip() for part in tag.split(","))
+
+
+def normalize_language_scope_notation(text: str) -> str:
+    text = re.sub(
+        r"(?<=\.)\s*(`\((?:C\+\+|Java|C\+\+, ?Java)\)`)",
+        r"\n\1",
+        text,
+    )
+
+    def rewrite_heading(match: re.Match[str]) -> str:
+        heading = f"{match.group('prefix')}{match.group('title').rstrip()} ({render_language_scope(match.group('tag'))})"
+        rest = (match.group("rest") or "").strip()
+        if not rest:
+            return heading
+        return f"{heading}\n\n{rest}"
+
+    text = LANGUAGE_SCOPE_HEADING_RE.sub(rewrite_heading, text)
+
+    def rewrite_prefixed_line(match: re.Match[str]) -> str:
+        scope = render_language_scope(match.group("tag"))
+        rest = (match.group("rest") or "").strip()
+        if not rest:
+            return f"{scope}:"
+        return f"{scope}: {rest}"
+
+    text = LANGUAGE_SCOPE_LINE_RE.sub(rewrite_prefixed_line, text)
     return text
 
 
@@ -2174,13 +2216,21 @@ def normalize_citation_markup(segment: str) -> str:
 
 
 def apply_outside_inline_code(text: str, transform) -> str:
+    def transform_preserving_edge_newlines(segment: str) -> str:
+        leading_newlines = len(segment) - len(segment.lstrip("\n"))
+        trailing_newlines = len(segment) - len(segment.rstrip("\n"))
+        core_end = len(segment) - trailing_newlines if trailing_newlines else len(segment)
+        core = segment[leading_newlines:core_end]
+        transformed = transform(core)
+        return ("\n" * leading_newlines) + transformed + ("\n" * trailing_newlines)
+
     parts: list[str] = []
     last = 0
     for match in INLINE_CODE_RE.finditer(text):
-        parts.append(transform(text[last : match.start()]))
+        parts.append(transform_preserving_edge_newlines(text[last : match.start()]))
         parts.append(match.group(0))
         last = match.end()
-    parts.append(transform(text[last:]))
+    parts.append(transform_preserving_edge_newlines(text[last:]))
     return "".join(parts)
 
 
@@ -2296,6 +2346,7 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = normalize_omitted_image_lines(text)
     text = sanitize_absolute_paths(text)
     text = apply_agent_text_adaptations(text, rel_source)
+    text = apply_outside_code_fences(text, normalize_language_scope_notation)
     text = apply_outside_code_fences(
         text,
         lambda chunk: apply_outside_inline_code(chunk, normalize_figure_text_residue),

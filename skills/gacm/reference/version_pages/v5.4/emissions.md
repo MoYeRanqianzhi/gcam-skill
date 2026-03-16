@@ -176,7 +176,11 @@ This also means that GHG objects can be removed or overwritten after a given yea
 In addition to the GDP control object, a linear-control object is also available that allows a user to specify that an emission factor will linearly change over time to a user-defined value over a specified time period. The parameters controlling the linear-control object are:
 
 XML Tag | Description
------------- | -------------`end-year` | Year by which emission factor should reach specified value`start-year` | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)`final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)`allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
+------------ | -------------
+`end-year` | Year by which emission factor should reach specified value
+`start-year` | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)
+`final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
+`allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
 
 ## IAMC Reference Card
 

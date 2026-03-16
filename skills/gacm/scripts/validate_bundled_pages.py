@@ -63,6 +63,13 @@ RAW_TEXT_ENTITY_RE = re.compile(r"&amp;|&quot;|&#(?:160|xA0|xa0);", re.IGNORECAS
 XCODE_DEVELOPER_MAKE_RE = re.compile(
     r"(?i)/Applications/Xcode\.app/Contents/Developer/usr/bin/make\b"
 )
+GLUED_LANGUAGE_SCOPE_RE = re.compile(
+    r"(?<=\S)`\((?:C\+\+|Java|C\+\+, ?Java)\)`"
+)
+LANGUAGE_SCOPE_LINE_START_RE = re.compile(
+    r"^`\((?:C\+\+|Java|C\+\+, ?Java)\)`",
+    re.MULTILINE,
+)
 
 
 def strip_code_fences(text: str) -> str:
@@ -209,6 +216,10 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> typographic unicode punctuation residue remains")
         if XCODE_DEVELOPER_MAKE_RE.search(raw_text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> non-portable Xcode developer make path remains")
+        if GLUED_LANGUAGE_SCOPE_RE.search(text_without_inline):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> glued language-scope notation remains")
+        if LANGUAGE_SCOPE_LINE_START_RE.search(text_without_inline):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> raw line-start language-scope notation remains")
         for line_no, raw_line in enumerate(raw_text.splitlines(), start=1):
             stripped = raw_line.lstrip()
             if "```" in raw_line and stripped and not stripped.startswith("```"):

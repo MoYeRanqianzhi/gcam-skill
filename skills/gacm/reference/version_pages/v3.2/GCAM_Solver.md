@@ -164,22 +164,50 @@ The solver configuration, including the choice of solver or solvers to
 use and settable solver parameters, is selected in the solver
 configuration file. This file is specified in the input Configuration
 file using a line of the form:
+
 `<Value name="solver_config">../input/solution/cal_solver_config.xml</Value>`
 
 ### Syntax
 
 The solver configuration file comprises a series of blocks that
 specify the configuration of the solver to use in each period of the
-model run. For example:` <user-configurable-solver year="2005">``       <solution-tolerance>0.001</solution-tolerance>``       <solution-floor>0.0001</solution-floor>``       <calibration-tolerance>0.01</calibration-tolerance>``       <max-model-calcs>2500</max-model-calcs> ``        .``        .``        .`` </user-configurable-solver>`
+model run. For example:
+` <user-configurable-solver year="2005">`
+
+`       <solution-tolerance>0.001</solution-tolerance>`
+
+`       <solution-floor>0.0001</solution-floor>`
+
+`       <calibration-tolerance>0.01</calibration-tolerance>`
+
+`       <max-model-calcs>2500</max-model-calcs> `
+
+`        .`
+
+`        .`
+
+`        .`
+
+` </user-configurable-solver>`
 
 The first line indicates that this is the configuration to be used in 2005. If the same solver configuration is to be used for all subsequent years, we can add the "fillout" parameter:
+
 ` <user-configurable-solver year="2010" fillout="1">`
 
 The first few lines of the configuration specify [General Solver Parameters](#General_Solver_Parameters), which apply to all solver components. For the most part, these parameters dictate things like stopping conditions, which apply to all of the solver components that will be used.
 
 Following the general parameters are one or more blocks that specify
 solver components, which direct the solver to run particular solution
-algorithms. For example:`       <log-newton-raphson-backtracking-solver-component>``           <max-iterations>25</max-iterations>``           <ftol>1.0e-3</ftol>``           <solution-info-filter>solvable-nr || (market-type="Tax" &amp;&amp; solvable)</solution-info-filter>``       </log-newton-raphson-backtracking-solver-component>`
+algorithms. For example:
+`       <log-newton-raphson-backtracking-solver-component>`
+
+`           <max-iterations>25</max-iterations>`
+
+`           <ftol>1.0e-3</ftol>`
+
+`           <solution-info-filter>solvable-nr || (market-type="Tax" &amp;&amp; solvable)</solution-info-filter>`
+
+`       </log-newton-raphson-backtracking-solver-component>`
 
 The first few lines specify parameters that are specific to this
 particular solver component. The `solution-info-filter` line gives a
@@ -236,14 +264,19 @@ The predicates available to filter markets are:
 * **unsolved**: True for markets that are not yet solved.
 
 Predicates can be combined with the logical operators **and** (&&)
-(*NB:* Since the & character is reserved in XML, it must be written as`&amp;amp;`), **or** (||), and **not** (!) to form compound
+(*NB:* Since the & character is reserved in XML, it must be written as
+`&amp;amp;`), **or** (||), and **not** (!) to form compound
 predicates. These conjunctions can be grouped with parentheses.
 
 For example:
+
 ` <solution-info-filter>solvable-nr || (market-type="Tax" &amp;amp;&amp;amp; solvable)</solution-info-filter>`
 
 or
-` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; ``      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
+
+` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; `
+
+`      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
 
 The first of these accept all solvable-nr markets and all solvable tax
 markets (even if they don't meet the NR requirements). The second

@@ -416,6 +416,7 @@ When users are developing new code, say they added some variable but for some re
 In the new way (in the generic case, i.e. no special case XMLParse was defined) it isn't so straightforward.  You could add print statements in XMLParseHelper.  But that code is being used to generate XML Parse for all classes so it would be like added print statements in all XMLParse methods which clearly isn't so useful.
 
 To aid with this issue we include a feature to allow users to easily target specific GCAM classes for XML Parse debugging.  To enable this a user can edit `util/base/source/xml_parse_helper.cpp`, close to the top of the source file they will find `XMLPARSE_DEBUG_CONTAINERS` (empty by default to avoid the extra compile time / run time burden to enable the debugging):
+
 ```
 // A tuple of GCAM Containers for which we want to debug the XML parsing
 // such as `(World, ReserveSubResource)`.  Users can choose any class even

@@ -31,6 +31,7 @@ GCAM requires a valid `configuration.xml` file be present in the exe directory o
 Agent adaptation: invoke GCAM from the shell instead of desktop launch. Expect log messages as GCAM reads XML inputs and solves each model period; inspect `exe/logs/main_log.txt` for run diagnostics.
 
 After a successful model run the log file will end with the following text (depending on your set-up and platform, you might also see this on your screen):
+
 ```
 Starting output to XML Database.
 Data Readin, Model Run & Write Time: 1273.42 seconds.
@@ -142,6 +143,7 @@ restart-period | Instructs GCAM to trust read in market prices up but not includ
 If running multiple scenarios, GCAM can also be run in Batch mode, in which a batch input file contains user-specified sets of add-on components that can be used to define multiple scenarios, which will then will all be run. In order to run in batch mode the `BatchMode` bool(ean) setting in the configuration file must be set to 1, and a batch input file must be specified as `BatchFileName` under `<Files>`.
 
 The Batch file has the following format:
+
 ```XML
 <BatchRunner>
 	<ComponentSet name="Policy scenarios">
@@ -162,6 +164,7 @@ Note that there is also a [batch functionality](#modelinterface-batch-modes) wit
 
 ### 3.3 Target Finder
 Enabling this mode for running GCAM involves specifying a [policy target file](#files-input-options) and enabaling [find-path](#bools-input-options).  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
+
 ```XML
 <policy-target-runner name="forcing_4p5">
     <!-- tax-name | default: CO2 | The market name to change the price on -->
@@ -231,6 +234,7 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
 ```
 
 Note that target finder runs can also be configured in [Batch mode](#gcam-batch-mode).  In this case you should leave the `find-path` bool to `0`.  Note the `policy-target-file` are specified in their own section, and `<single-scenario-runner />` indicates to run a permutation with no target finding, e.g. the reference scenario:
+
 ```XML
 <BatchRunner>
     <ComponentSet name="Policy scenarios">
@@ -261,11 +265,13 @@ Agent adaptation: treat the `interactive mode` subsection below as historical co
 #### 3.4.1 Interactive Mode
 
 Agent adaptation: interactive mode is preserved only as historical context. For agent work, read scenario names from the database, region names from results or batch query files, and query definitions from XML files directly. Inspect `model_interface.properties` as plain text to locate the active query file, for example:
+
 ```
 <entry key="queryFile">../Main_User_Workspace/output/queries/Main_queries.xml</entry>
 ```
 
 Each query is represented in it's own XML syntax such as:
+
 ```XML
 <emissionsQueryBuilder title="GHG emissions by region">
     <axis1 name="GHG">GHG</axis1>
@@ -282,6 +288,7 @@ Agent adaptation: query XML is plain text. Copy it between files, repositories, 
 When doing scenario analysis on GCAM results it is often very useful to predefine the set of queries you would like to look at and automatically save the results to CSV or XLS format for plotting or making tables, etc.  Setting up the Model Interface to do this is done in one or two steps depending on the level of automation you would like.
 
 First you must set up a "batch query" file.  An example of such a file can be found in `output/gcam_diagnostics/batch_queries/Model_verification_queries.xml`.  The idea of such a file is you list the quries you would like to run one after the other and for each query you include the regions (which can be any of the region names available in the database or query context) you would like to query.
+
 ```
 <queries>
     <aQuery>
@@ -301,6 +308,7 @@ The actual queries are the same XML definitions described [above](#interactive-m
 Agent adaptation: the interactive batch-file menu path is omitted. The portable workflow is to reference the batch query file from a ModelInterface batch command file and execute it from the shell, setting output paths and scenario names in XML rather than interactive dialogs.
 
 Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well.  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
+
 ```XML
 <ModelInterfaceBatch>
     <!-- Note multiple sets of the following are allowed to run several
@@ -333,6 +341,7 @@ Alternatively if users prefer to set up a workflow that does not require any man
 ```
 
 Users can the invoke the Model Interface from the command line to call their batch file and no user interface will be presented:
+
 ```
 java -jar ../../ModelInterface/ModelInterface.jar -b batch_queries/xmldb_batch.xml
 ```

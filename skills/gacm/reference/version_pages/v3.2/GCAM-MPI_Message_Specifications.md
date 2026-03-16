@@ -118,6 +118,7 @@ Set new parameters to a previously initialized tax function.
 | GHG       | (char\[`GHGNAMEMAX`\]) | String indicating the greenhouse gas the tax applies to. Pad with NUL characters if the name is shorter than GHGNAMEMAX. |
 | $$N_p$$   | (int)                  | Number of regular parameters. This value must match the value used to initialized the function.   |
 | params    | (double\[$$N_p$$\])    | Values of the parameters.    |
+
 `TAXLVL`
 Specify a tax level to evaluate as a variation from a previously set
 policy. Typically this would be used to evaluate a single point on the
@@ -130,6 +131,7 @@ abatement curve for the policy in question.
 
 Output Messages
 ---------------
+
 `RSLT`
 Return data from a worker task.
 
@@ -145,6 +147,7 @@ Return data from a worker task.
 | $$N_t $$        | GHG                  | (char\[`GHGNAMEMAX`\])    | String giving the name of the GHG the target applies to. Pad as necessary for short names. This field will be ignored for targets that do not apply to an individual gas, but the field must still be present. |
 | $$N_t $$        | Target Period        | (int)                     | The period at which the target was evaluated. This might be fixed, or might be determined from the data (e.g., the maximum value taken on by the target)  |
 | $$N_t $$        | Target value          | (double)                  | The value of the target in Target Period  |
+
 `RTN`
 Miscellaneous returned data that does not conform to the standard set
 forth under RSLT. This message is a freeform response, the meaning of

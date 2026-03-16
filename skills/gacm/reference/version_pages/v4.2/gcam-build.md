@@ -39,6 +39,7 @@ Once you expand the xerces zip or tar file, you can find detailed installation i
 
 #### 2.2.1 Xerces Windows Notes
 GCAM requires the 64-bit version of the library to be built.  This means you should change the build configuration to `Release` and the Solution Platform to `x64` when building the library.  Only the core library is needed, the command line tools and tests are not necessary.  Once built you can copy (or symlink using `mklink /D`, note administrative privledges may be required to run this command) the build artifacts to where the [Visual Studio](#building-with-visual-studio) project file is expecting them:
+
 ```
 <Release Package>/Main_User_Workspace/libs/xercesc/include
 <Release Package>/Main_User_Workspace/libs/xercesc/lib
@@ -55,12 +56,14 @@ Set the following environment variables:
 * `XERCES_INSTALL`:  Set to the directory in which you want to install xerces.
 
 Example:
+
 ```
 export XERCES_SRC=$HOME/GCAM/build/xerces-c-3.1.1
 export XERCES_INSTALL=<Release Package>/Main_User_Workspace/libs/xercesc
 ```
 
 With these variables set, you can configure and build xerces as follows:
+
 ```
 cd $XERCES_SRC
 ./configure CFLAGS="-arch x86_64" CXXFLAGS="-arch x86_64" --prefix=$XERCES_INSTALL --disable-netaccessor-curl
@@ -68,6 +71,7 @@ make install
 ```
 
 After installing xerces, you can optionally delete all the intermediate files that were generated during the xerces build by running:
+
 ```
 make clean
 ```
@@ -77,6 +81,7 @@ Java is required by GCAM in order to store results in a [BaseX](http://basex.org
 
 #### 2.3.1 Disable Java
 GCAM can be configured to compile without Java support, doing so implies GCAM results are not written to the BaseX database.  To disable Java edit `<Release Package>/Main_User_Workspace/cvs/objects/util/base/include/definitions.h` and set `__HAVE_JAVA__` to `0`:
+
 ```cpp
 //! A flag which turns on or off the compilation of the XML database code.
 #ifndef __HAVE_JAVA__
@@ -85,6 +90,7 @@ GCAM can be configured to compile without Java support, doing so implies GCAM re
 ```
 
 Note that even if you turn off Java support you can still have GCAM generate the XML document that _would_ have been inserted into the database by editing `<Release Package>/Main_User_Workspace/cvs/objects/reporting/source/xml_db_outputter.cpp` and set `DEBUG_XML_DB` to `1`:
+
 ```cpp
 // Whether to write a text file with the contents that are to be inserted
 // into the XML database.
@@ -95,6 +101,7 @@ Agent adaptation: `debug_db.xml` is a text XML dump of the results that would ha
 
 #### 2.3.2 Java On Windows
 On Windows users can get by with just installing the Standard Runtime Environment (JRE) for running GCAM however when building the Java Development Kit (JDK) is reccommended.  GCAM will expect the following header and lib files within `<Release Package>/Main_User_Workspace/libs`:
+
 ```
 libs/java/include/jni.h
 libs/java/include/jni_md.h
@@ -102,6 +109,7 @@ libs/java/lib/jvm.lib
 ```
 
 Which can be placed there by copying or symlinking:
+
 ```
 <JAVA_HOME>\include
 <JAVA_HOME>\lib
@@ -111,12 +119,14 @@ In addtion the PATH variable may need to be updated so that GCAM can find the `j
 
 #### 2.3.3 Java on Mac
 Java on the Mac is complicated by Apple's custom Java installation and subsequent removal of said Java since OSX 10.10+.  The Apple version is only up to the now ancient Java version 1.6.  It can still be installed on newer version of OS X with an explict download.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<Release Package>/Main_User_Workspace/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following in Terminal to resolve the issue:
+
 ```
 JAVA_HOME=$(/usr/libexec/java_home)
 open $JAVA_HOME/../Info.plist
 ```
 
 And add the following `JVMCapabilities`:
+
 ```
 <dict>
     <key>JVMCapabilities</key>
@@ -128,6 +138,7 @@ And add the following `JVMCapabilities`:
 ```
 
 Users who want to use the Xcode build environment will need to set up in the `<Release Package>/Main_User_Workspace/libs` the `include` and `lib` directories.  For users using the old Apple JDK the `run-gcam.command` will copy into place a stub library to appropriately call the Apple `JavaVM.framework` (TODO: where to find the include).  For users using the Oracle/openJDK Java they will need to create the following symlinks:
+
 ```
 cd <Release Package>/Main_User_Workspace/libs/java
 JAVA_HOME=$(/usr/libexec/java_home)
@@ -145,6 +156,7 @@ Once users have gotten the additional third party libraries installed they can p
 Users on POSIX systems can use the generic Makefiles to build GCAM on their system.  In addition Mac users who do not wish to install/use Xcode can also use these (they will still have to install the Apple Command line tools at a minimum).  Windows users have also had success using the Makefiles under cygwin however some modification was necessary and is beyond the scope of this document.
 
 The core of the Makefile configuration is located under `<Release Package>/Main_User_Workspace/cvs/objects/build/linux/configure.gcam` however typically users simply set the following environment variables (with values set appropriately for their system):
+
 ```
 export CXX=g++
 export BOOST_INCLUDE=${HOME}/libs/boost-lib
@@ -156,6 +168,7 @@ export JAVA_LIB=${JAVA_HOME}/jre/lib/server
 ```
 
 With these environment variables set a user can simple run:
+
 ```
 cd <Release Package>/Main_User_Workspace/cvs/objects/build/linux
 make gcam -j 8

@@ -94,6 +94,7 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
    workspace that GCAM will be looking for will be "hector".  If you
    wish to retain version numbering etc we recommend creating a
    symlink:
+
 ```
 	cd  cvs/objects/climate/source
 	ln - s /path/to/your/hector-v1.1.2 hector
@@ -116,6 +117,7 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
 #### Building GCAM-Hector on Visual Studio
 
 1.  Move or symlink the Hector workspace under the GCAM workspace under `cvs/objects/climate/source/hector` Note that the name of the workspace that GCAM will be looking for will be "Hector".  If you wish to retain version numbering etc we recommend creating a symlink:
+
 ```
 	cd  cvs/objects/climate/source
 	mklink /D  hector c:/path/to/your/hector-v1.1.2

@@ -47,6 +47,7 @@ Boost includes many general purpose utilities for the C++ language and helps GCA
 
 #### 2.1.1 Building Boost Windows Notes
 Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/windows.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  On Windows boost users will need to use the `Developer Command Prompt for VS20NN` (and they may need to run as Administrator) to ensure the C++ compiler can be found to build boost.  In addition they will need to ensure the libraries are built as 64-bit:
+
 ```
 cd <GCAM Workspace>/libs/boost-lib
 bootstrap.bat
@@ -57,6 +58,7 @@ b2 --with-system --with-filesystem address-model=64 stage
 Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Note for users who want to use [Xcode](#42-building-with-xcode) to build, the default project file setting is to use `libc++` instead of `libstdc++` so you should build boost accordingly.
 
 It is generally simplest to build using the command line by using the following commands:
+
 ```
 cd <GCAM Workspace>/libs/boost-lib
 ./bootstrap.sh --with-libraries=system,filesystem
@@ -64,6 +66,7 @@ cd <GCAM Workspace>/libs/boost-lib
 ```
 
 Note on the Mac the prefix seems to get ignored.  So users will want to change to relative path install names instead by using the following commands:
+
 ```
 cd <GCAM Workspace>/libs/boost-lib/stage/lib
 install_name_tool -id @rpath/libboost_system.dylib libboost_system.dylib
@@ -73,6 +76,7 @@ install_name_tool -change libboost_system.dylib @rpath/libboost_system.dylib lib
 
 #### 2.1.3 Building Boost POSIX Notes
 Users can look at [Boost documentation](http://www.boost.org/doc/libs/1_62_0/more/getting_started/unix-variants.html#prepare-to-use-a-boost-library-binary) for building the needed libraries.  Generally it will be something like:
+
 ```
 cd <GCAM Workspace>/libs/boost-lib
 ./bootstrap.sh --with-libraries=system,filesystem --prefix=<GCAM Workspace>/libs/boost-lib/stage/lib
@@ -85,6 +89,7 @@ Once you expand the xerces zip or tar file, you can find detailed installation i
 
 #### 2.2.1 Xerces Windows Notes
 GCAM requires the 64-bit version of the library to be built.  This means you should change the build configuration to `Release` and the Solution Platform to `x64` when building the library.  Only the core library is needed, the command line tools and tests are not necessary.  Once built you can copy (or symlink using `mklink /D`, note administrative privileges may be required to run this command) the build artifacts to where the [Visual Studio](#43-building-with-visual-studio) project file is expecting them:
+
 ```
 <GCAM Workspace>/libs/xercesc/include
 <GCAM Workspace>/libs/xercesc/lib
@@ -101,12 +106,14 @@ Set the following environment variables:
 * `XERCES_INSTALL`:  Set to the directory in which you want to install xerces.
 
 Example:
+
 ```
 export XERCES_SRC=$HOME/GCAM/build/xerces-c-3.1.1
 export XERCES_INSTALL=<GCAM Workspace>/libs/xercesc
 ```
 
 With these variables set, you can configure and build xerces as follows:
+
 ```
 cd $XERCES_SRC
 ./configure CFLAGS="-arch x86_64" CXXFLAGS="-arch x86_64" --prefix=$XERCES_INSTALL --disable-netaccessor-curl
@@ -114,6 +121,7 @@ make install
 ```
 
 After installing xerces, you can optionally delete all the intermediate files that were generated during the xerces build by running:
+
 ```
 make clean
 ```
@@ -123,6 +131,7 @@ Java is required by GCAM in order to store results in a [BaseX](http://basex.org
 
 #### 2.3.1 Disable Java
 GCAM can be configured to compile without Java support, doing so implies GCAM results are not written to the BaseX database.  To disable Java edit `<GCAM Workspace>/cvs/objects/util/base/include/definitions.h` and set `__HAVE_JAVA__` to `0`:
+
 ```cpp
 //! A flag which turns on or off the compilation of the XML database code.
 #ifndef __HAVE_JAVA__
@@ -131,6 +140,7 @@ GCAM can be configured to compile without Java support, doing so implies GCAM re
 ```
 
 Note that even if you turn off Java support you can still have GCAM generate the XML document that _would_ have been inserted into the database by editing `<GCAM Workspace>/cvs/objects/reporting/source/xml_db_outputter.cpp` and set `DEBUG_XML_DB` to `1`:
+
 ```cpp
 // Whether to write a text file with the contents that are to be inserted
 // into the XML database.
@@ -141,6 +151,7 @@ Agent adaptation: `debug_db.xml` is a text XML dump of the results that would ha
 
 #### 2.3.2 Java On Windows
 On Windows users can get by with just installing the Standard Runtime Environment (JRE) for running GCAM however when building the Java Development Kit (JDK) is recommended.  Note the openJDK only provides a zip archive and does not come with a windows installer, which isn't strictly necessary for it to work with GCAM however users may find the version distributed by [Redhat](https://developers.redhat.com/products/openjdk/download) easier because it does provide a Windows installer.  GCAM will expect the following header and lib files within `<GCAM Workspace>/libs`:
+
 ```
 libs/java/include/jni.h
 libs/java/include/win32/jni_md.h
@@ -148,6 +159,7 @@ libs/java/lib/jvm.lib
 ```
 
 Which can be placed there by copying or symlinking:
+
 ```
 <JAVA_HOME>\include
 <JAVA_HOME>\lib
@@ -157,18 +169,21 @@ In addtion the PATH variable may need to be updated so that GCAM can find the `j
 
 #### 2.3.3 Java on Mac
 Note since GCAM now requires Java 1.7+ the old Apple supplied Java installation is no longer supported.  All versions of OS X can still use a more recent version of Java from Oracle/openJDK instead (**note** users must install the JDK, not the JRE).  Again we now recommend users install the openJDK version.  Note, openJDK only provides a zip archive, to install on the Mac a user may simply run in the Terminal:
+
 ```
 tar -zxf openjdk-12.0.1_osx-x64_bin.tar.gz
 sudo mv jdk-12.0.1.jdk /Library/Java/JavaVirtualMachines/
 ```
 
 Even if users on OS X 10.10+ install the Oracle/openJDK version of Java they may still be prompted to install the old Apple JDK when running GCAM or the Model Interface.  Note the purpose of the `<GCAM Workspace>/exe/run-gcam.command` wrapper is partially to detect and work around some of these issues.  For users that are being asked to install the old Apple JDK even if the newer version is installed they can try the following edit to the Java JDK Info.plist file in Terminal to resolve the issue:
+
 ```
 JAVA_HOME=$(/usr/libexec/java_home)
 open $JAVA_HOME/../Info.plist
 ```
 
 And add the following `JVMCapabilities`:
+
 ```
 <dict>
     <key>JVMCapabilities</key>
@@ -180,6 +195,7 @@ And add the following `JVMCapabilities`:
 ```
 
 Users who want to use the Xcode build environment will need to set up in the `<GCAM Workspace>/libs` the `include` and `lib` directories.  Users will need to create the following symlinks:
+
 ```
 cd <GCAM Workspace>/libs/java
 JAVA_HOME=$(/usr/libexec/java_home)
@@ -217,6 +233,7 @@ The Intel / OneAPI Thread Building Blocks (TBB) library is a collection of utili
 [Hector](hector.md) is the simple climate developed at JGCRI.  It is available from the hector project's [Github repository](https://github.com/JGCRI/hector).
 
 The GCAM Make / project files are expecting the hector source to be in `<GCAM Workspace>/cvs/objects/climate/source/hector`.  If you cloned the GCAM Git repository onto your local system, you can place hector into the appropriate location within the GCAM workspace by initializing it's submodule:
+
 ```
 cd <GCAM Workspace>
 git submodule init cvs/objects/climate/source/hector
@@ -224,12 +241,14 @@ git submodule update cvs/objects/climate/source/hector
 ```
 
 We have also added a Make target to do that for you:
+
 ```
 cd <GCAM Workspace>
 make install_hector
 ```
 
 If you have simply downloaded the standalone GCAM release `Source code` then you will have to go to Hector page on Git hub and download the branch [gcam-integration](https://github.com/JGCRI/hector/archive/gcam-integration.zip).  You can then unpack and move into place hector:
+
 ```
 cd <GCAM Workspace>/cvs/objects/climate/source
 unzip gcam-integration.zip
@@ -243,6 +262,7 @@ Once users have gotten the additional third party libraries and hector installed
 Users on POSIX systems can use the generic Makefiles to build GCAM on their system.  In addition Mac users who do not wish to install/use Xcode can also use these (they will still have to install the Apple Command line tools at a minimum).  Windows users have also had success using the Makefiles under cygwin however some modification was necessary and is beyond the scope of this document.
 
 The core of the Makefile configuration is located under `<GCAM Workspace>/cvs/objects/build/linux/configure.gcam` however typically users simply set the following environment variables (with values set appropriately for their system):
+
 ```
 export CXX=g++
 export BOOST_INCLUDE=${HOME}/libs/boost-lib
@@ -260,6 +280,7 @@ export TBB_LIB=${HOME}/libs/tbb/lib
 (Note that unlike the other variables, `JARS_LIB` points to all of the jar _files_, **not** the jar _directory_, which is why the `*` wildcard is necessary. `JARS_LIB` may also be set to point to multiple different files by concatenating the paths, e.g. `export JARS_LIB=/path/to/BaseX-9.5.0.jar:/path/to/joost-0.9.1.jar:${HOME}/libs/jars/*`).
 
 With these environment variables set a user can simple run:
+
 ```
 cd <GCAM Workspace>/cvs/objects/build/linux
 make gcam -j 8
@@ -269,11 +290,13 @@ Note the `-j 8` is simply to compile multiple sources files at a time (set as ap
 
 #### 4.1.1 Recommended configuration using Ubuntu 16.04
 Assuming the libraries were installed via the `apt` package manager using a command like the following:
+
 ```
 sudo apt install libboost-dev libboost-system-dev libboost-filesystem-dev libxerces-c-dev default-jre default-jdk
 ```
 
 ...the following variables can be used:
+
 ```
 USRLIB=/usr/lib/x86_64-linux-gnu
 
@@ -308,6 +331,7 @@ The Java components of GCAM `XMLDBDriver.jar` and `ModelInterface.jar` are inclu
 
 ### 5.1 Recompiling ModelInterface.jar
 Users will need to set up the classpath and run the following.  Note that the ModelInterface is developed in it's [own Git repository](https://github.com/JGCRI/modelinterface) but GCAM contains a submodule reference pointing specifically to the version known to work with your version of GCAM.
+
 ```
 export CLASSPATH=<GCAM Workspace>/libs/jars/\*
 cd <GCAM Workspace>/output/modelInterface/
@@ -319,6 +343,7 @@ cp ModelInterface.jar ../
 
 ### 5.2 Recompiling XMLDBDriver.jar
 Users will need to set up the classpath and run the following which will also copy it into the `exe` directory where GCAM will be expecting it.
+
 ```
 export CLASSPATH=<GCAM Workspace>/libs/jars/*:<GCAM Workspace>/output/modelInterface/ModelInterface.jar
 cd <GCAM Workspace>/cvs/objects/java/source

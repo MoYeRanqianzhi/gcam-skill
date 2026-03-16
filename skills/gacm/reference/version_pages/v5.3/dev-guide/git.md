@@ -86,7 +86,8 @@ if they have questions about the branch.  For branches on Bitbucket,
 use your initials for this part.  For branches on GitHub, use your
 GitHub username.  The branch type is a descriptor indicating what the
 purpose of the branch is.  The most common types are `feature`, for
-new features, and `bugfix` for fixing bugs.  Other types include`paper` (changes to support a paper you're writing), `project`
+new features, and `bugfix` for fixing bugs.  Other types include
+`paper` (changes to support a paper you're writing), `project`
 (changes supporting a long-running project), or `experimental`
 (speculative development that may or may not eventually be adopted).
 The final component is a descriptive name that gives an idea of

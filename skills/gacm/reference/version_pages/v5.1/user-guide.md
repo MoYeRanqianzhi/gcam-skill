@@ -56,6 +56,7 @@ directory.
 Agent adaptation: invoke GCAM from the shell instead of desktop launch. Expect log messages as GCAM reads XML inputs and solves each model period; inspect `exe/logs/main_log.txt` for run diagnostics.
 
 After a successful model run the log file will end with the following text (depending on your set-up and platform, you might also see this on your screen):
+
 ```
 Starting output to XML Database.
 Data Readin, Model Run & Write Time: 1273.42 seconds.
@@ -76,6 +77,7 @@ If a user sees a message similar to any of the following:
 * Or sometimes a generic message about the application is unable to start correctly (referencing some memory address)
 
 The most likely case is that the `run-gcam.bat` script was unable to detect the correct version of GCAM to use.  Either there is no 64-bit version of Java installed or both a 32-bit and 64-bit is installed and it didn't choose the right one.  In either case you should edit `run-gcam.bat` and update the `JAVA_HOME` manually to point to the correct location and delete the `REM` before the `SET`:
+
 ```
 REM Users may set the following location to the appropriate Java Runtime installation location
 REM instead of trying to detect the appropriate location.  This may be necessary if the default
@@ -92,7 +94,8 @@ On the Mac a missing Java usually prompts an install of "legacy Java" from Apple
 ##### 2.1.1.2.1 Troubleshooting Java on Mac
 The`<GCAM Workspace>/exe/run-gcam.command`script attempts to put a symbolic link into the `libs/java` directory that points to the location of the necessary java libraries (e.g., `libjvm.dylib`).
 
-If, when attempting to run GCAM, the libraries are not found, you will get an error message of:`dyld: Library not loaded: @rpath/libjvm.dylib`. In this case the problem may be that the symlink is not actually pointing to the directory that contains the needed library. This can occur if the `run-gcam.command`script gets out of sync with the java version (e.g. using an older version of GCAM or if java is updated).
+If, when attempting to run GCAM, the libraries are not found, you will get an error message of:
+`dyld: Library not loaded: @rpath/libjvm.dylib`. In this case the problem may be that the symlink is not actually pointing to the directory that contains the needed library. This can occur if the `run-gcam.command`script gets out of sync with the java version (e.g. using an older version of GCAM or if java is updated).
 
 To fix this, use `ls -l` or `readlink` within terminal to resolve the symlink path. If the path is incorrect, then create a new symlink that points to the java `sdk` directory that contains the libjvm.dylib library (please see [Java when compiling GCAM](gcam-build.md#23-java) for details on how to do this).
 
@@ -115,6 +118,7 @@ Note that there is also a [batch functionality](#modelinterface-batch-modes) wit
 ### 3.3 <a name="target-finder"></a>Target finder
 
 Enabling this mode for running GCAM involves specifying a [policy target file](#312-files-input-options) and enabling [find-path](#314-bools-input-options).  In addition when a user is running target finder with a negative emissions budget constraint they should be sure to set up the market, for example by reading in the policy file `carbon_tax_0.xml`.  When run in this mode GCAM will run a scenario several times to find the optimal path to satisfy the configured climate goal.  Running GCAM in such a mode can take quite a bit of time, one option to speed this up is to set `restart-period` to 22 in the [configuration file as noted above](#315-ints-input-options).  Example policy target files are supplied in `input/policy` and are self documented:
+
 ```XML
 <policy-target-runner name="forcing_4p5">
     <!-- tax-name | default: CO2 | The market name to change the price on -->
@@ -184,6 +188,7 @@ Enabling this mode for running GCAM involves specifying a [policy target file](#
 ```
 
 Note that target finder runs can also be configured in [Batch mode](#gcam-batch-mode).  In this case you should leave the `find-path` bool to `0`.  Note the `policy-target-file` are specified in their own section, and `<single-scenario-runner />` indicates to run a permutation with no target finding, e.g. the reference scenario:
+
 ```XML
 <BatchRunner>
     <ComponentSet name="Policy scenarios">
@@ -216,11 +221,13 @@ Agent adaptation: older macOS packaging notes about `ModelInterface.app` bundle 
 #### <a name="interactive-mode"></a>3.4.1 Interactive Mode
 
 Agent adaptation: interactive mode is preserved only as historical context. For agent work, read scenario names from the database, region names from results or batch query files, and query definitions from XML files directly. Inspect `model_interface.properties` as plain text to locate the active query file, for example:
+
 ```
 <entry key="queryFile">../output/queries/Main_queries.xml</entry>
 ```
 
 Note if the query file is not found the ModelInterface will ask you to select a new one.  Each query is represented in it's own XML syntax such as:
+
 ```XML
 <emissionsQueryBuilder title="GHG emissions by region">
     <axis1 name="GHG">GHG</axis1>
@@ -237,6 +244,7 @@ Agent adaptation: query XML is plain text. Copy it between files, repositories, 
 When doing scenario analysis on GCAM results it is often very useful to predefine the set of queries you would like to look at and automatically save the results to CSV or XLS format for plotting or making tables, etc.  Setting up the Model Interface to do this is done in one or two steps depending on the level of automation you would like.
 
 First you must set up a "batch query" file.  An example of such a file can be found in `output/gcam_diagnostics/batch_queries/Model_verification_queries.xml`.  The idea of such a file is you list the queries you would like to run one after the other and for each query you include the regions (which can be any of the region names available in the database or query context) you would like to query.
+
 ```
 <queries>
     <aQuery>
@@ -256,6 +264,7 @@ The actual queries are the same XML definitions described [above](#interactive-m
 Agent adaptation: the interactive batch-file menu path is omitted. The portable workflow is to reference the batch query file from a ModelInterface batch command file and execute it from the shell, setting output paths and scenario names in XML rather than interactive dialogs.
 
 Alternatively if users prefer to set up a workflow that does not require any manual user interaction they may prefer to set up a "batch command" file as well (and even collapse the "batch query" to be defined with in the "batch command" itself).  An example of such a file can be found at `output/gcam_diagnostics/batch_queries/xmldb_batch.xml`:
+
 ```XML
 <ModelInterfaceBatch>
     <!-- Note multiple sets of the following are allowed to run several
@@ -290,6 +299,7 @@ Alternatively if users prefer to set up a workflow that does not require any man
 ```
 
 Users can the invoke the Model Interface from the command line as follows to call their batch file and no user interface will be presented.  Note if a batch file named `-` is specified then the "batch commands" are read from the STDIN.  Users can also instruct the ModelInterface to save log output to a file by using the flags `-l path/to/log/output.txt`.
+
 ```
 CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/output/modelInterface/ModelInterface.jar
 java -cp $CLASSPATH ModelInterface/InterfaceMain -b batch_queries/xmldb_batch.xml
@@ -323,6 +333,7 @@ pandas data frames for analysis or use in other python programs.
 ### 3.5 <a name="controlling-the-level-of-xml-db-output"></a>Controlling the level of XML DB Output
 
 The GCAM XML database output is verbose and can consume a lot of disk space.  Users may seek to limit or even query and discard these results, particularly when doing a large number of runs, to save space and time.  To do this they can configure in `<GCAM Workspace>/exe/XMLDBDriver.poperties` the following options:
+
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
@@ -376,6 +387,7 @@ Runs the Model Interface in [batch mode](#modelinterface-batch-modes) if in the 
 
 #### 3.5.4 Using these features on an exported XML results file
 The tools that provide these features can be run independently from GCAM via the command line.  This can be useful for working with .xml files exported from the XML DB or the [debug_db.xml file](gcam-build.md#231-disable-java).  A user could programmatically load them back into a new XML DB using any of the aforementioned features.  This is done by calling the `<GCAM Workspace>/exe/XMLDBDriver.jar` directly:
+
 ```
 CLASSPATH=<GCAM Workspace>/libs/jars*:<GCAM Workspace>/output/modelInterface/ModelInterface.jar
 java -cp ${CLASSPATH}:XMLDBDriver.jar XMLDBDriver --help

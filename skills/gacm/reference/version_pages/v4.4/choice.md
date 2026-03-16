@@ -196,6 +196,7 @@ recalculating the parameters.
 A choice function is specified by including its declaration in the
 sector to which it will pertain.  Consider this excerpt from the GCAM
 Reference Scenario (GRS) configuration:
+
 ```xml
          <supplysector name="electricity">
             <relative-cost-logit>
@@ -225,7 +226,8 @@ case is -10, which produces more aggressive switching behavior with
 changing costs.
 
 Either of these declarations could be changed to the Logit choice
-function by changing the `<relative-cost-logit>` XML tag to`<absolute-cost-logit>`.  The `<logit-exponent>` tag could be left
+function by changing the `<relative-cost-logit>` XML tag to
+`<absolute-cost-logit>`.  The `<logit-exponent>` tag could be left
 alone to produce a choice function that is similar to the Modified
 Logit version for costs close to those found in the calibration year.
 However, the behaviors of the two functions will diverge as costs

@@ -151,12 +151,9 @@ In the Logit case the distribution is the *Generalized Extreme Value
 (GEV)* distribution, while in the Modified Logit case the distribution
 is the *Weibull* distribution.
 
-Figure 1: Comparison of the probability distributions underlying the
-two choice functions.  Increasing the mean of the GEV (left)
-translates the distribution along the x-axis unchanged.  Increasing
-the mean of the Weibull (right) also broadens the distribution.
+Omitted figure summary: Comparison of the probability distributions underlying the two choice functions. Increasing the mean of the GEV (left) translates the distribution along the x-axis unchanged. Increasing the mean of the Weibull (right) also broadens the distribution.
 
-From Figure 1 it is apparent that changing the mean of a GEV
+From the omitted figure it is apparent that changing the mean of a GEV
 distribution while keeping its logit coefficient constant does not
 change the shape of the distribution.  By contrast, changing the mean
 of a Weibull distribution while keeping the logit exponent constant
@@ -199,7 +196,6 @@ recalculating the parameters.
 A choice function is specified by including its declaration in the
 sector to which it will pertain.  Consider this excerpt from the GCAM
 Reference Scenario (GRS) configuration:
-
 ```xml
          <supplysector name="electricity">
             <relative-cost-logit>
@@ -229,8 +225,7 @@ case is -10, which produces more aggressive switching behavior with
 changing costs.
 
 Either of these declarations could be changed to the Logit choice
-function by changing the `<relative-cost-logit>` XML tag to
-`<absolute-cost-logit>`.  The `<logit-exponent>` tag could be left
+function by changing the `<relative-cost-logit>` XML tag to`<absolute-cost-logit>`.  The `<logit-exponent>` tag could be left
 alone to produce a choice function that is similar to the Modified
 Logit version for costs close to those found in the calibration year.
 However, the behaviors of the two functions will diverge as costs

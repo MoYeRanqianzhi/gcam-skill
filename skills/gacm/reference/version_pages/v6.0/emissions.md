@@ -224,11 +224,7 @@ This also means that GHG objects can be removed or overwritten after a given yea
 In addition to the GDP control object, a linear-control object is also available that allows a user to specify that an emission factor will linearly change over time to a user-defined value over a specified time period. The parameters controlling the linear-control object are:
 
 XML Tag | Description
------------- | -------------
-`end-year` | Year by which emission factor should reach specified value
-`start-year` | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)
-`final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)
-`allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
+------------ | -------------`end-year` | Year by which emission factor should reach specified value`start-year` | (Optional) Start year after which EF should begin to decline. (defaults to final calibration year)`final-emissions-coefficient` | Emissions coefficient that should be set by end-year (and every year thereafter)`allow-ef-increase` | (optional) Allow emission factors to increase from their start-year value (default to false)
 
 #### Emissions Control Drop Folder
 There is a method in the GCAM data system that allows users to selectively specify both new vintage emissions factors and existing vintage retrofits (base-year or future) for technologies, replacing the current smooth GDP control for those technologies, without changing any model code. The user just needs to place any number of CSV input files into a folder, and the system will generate XML input files that will use this new data to replace any previous emission factors and/or GDP control functions. Two options are available. The first, and main, option is to specify a New Source Performance Standard (NSPS) for a technology, which is the emission factor that newly built technologies should have (often specified by air pollution control regulations). The NSPS is functionally applied as an emission factor. The second option is to specify retrofits (only applicable to technologies with a lifetime > 1 period). Retrofits are implemented as a linear-control object such that the emissions factor linearly declines from its value in a specified start year to its end year, for the specified technology vintage. The code automatically removes the existing GDP control object for any technology for which either a NSPS or retrofit is specified.

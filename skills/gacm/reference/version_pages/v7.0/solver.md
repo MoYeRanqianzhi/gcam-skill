@@ -222,7 +222,6 @@ The solver configuration, including the choice of solver or solvers to
 use and settable solver parameters, is selected in the solver
 configuration file. This file is specified in the input Configuration
 file using a line of the form:
-
 `<Value name="solver_config">../input/solution/cal_solver_config.xml</Value>`
 
 ### Syntax
@@ -230,7 +229,6 @@ file using a line of the form:
 The solver configuration file comprises a series of blocks that
 specify the configuration of the solver to use in each period of the
 model run. For example:
-
 ```
  <user-configurable-solver year="2005">
        <solution-tolerance>0.001</solution-tolerance>
@@ -246,7 +244,6 @@ model run. For example:
 The first line indicates that this is the configuration to be used
 in 2005. If the same solver configuration is to be used for all
 subsequent years, we can add the "fillout" parameter:
-
 `<user-configurable-solver year="2010" fillout="1">`
 
 The first few lines of the configuration specify
@@ -258,7 +255,6 @@ components that will be used.
 Following the general parameters are one or more blocks that specify
 solver components, which direct the solver to run particular solution
 algorithms. For example:
-
 ```
        <broyden-solver-component>
            <max-iterations>25</max-iterations>
@@ -330,18 +326,14 @@ The predicates available to filter markets are:
 * **unsolved**: True for markets that are not yet solved.
 
 Predicates can be combined with the logical operators **and** (&&)
-(*NB:* Since the & character is reserved in XML, it must be written as
-`&amp;amp;`), **or** (||), and **not** (!) to form compound
+(*NB:* Since the & character is reserved in XML, it must be written as`&amp;amp;`), **or** (||), and **not** (!) to form compound
 predicates. These conjunctions can be grouped with parentheses.
 
 For example:
-
 ` <solution-info-filter>solvable-nr || (market-type="Tax" &amp;amp;&amp;amp; solvable)</solution-info-filter>`
 
 or
-
-` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; `
-`      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
+` <solution-info-filter>unsolved &amp;amp;&amp;amp; solvable &amp;amp;&amp;amp; ``      !(market-name="globalcrude oil" || market-name="globalnatural gas" || market-name="globalcoal") </solution-info-filter>`
 
 The first of these would accept all solvable-nr markets and all
 solvable tax markets (even if they don't meet the NR
@@ -384,7 +376,6 @@ The SVD solver must be selected at compile time.  If you have an old
 GCAM build in your workspace you will have to run `make clean` to
 clear out the old object files.  You will also need to set the
 following environment variables:
-
 ```
 export USE_LAPACK=1
 export BOOST_NUMERIC_BINDINGS=/path/to/numeric/binding/sources
@@ -392,7 +383,6 @@ export BOOST_NUMERIC_BINDINGS=/path/to/numeric/binding/sources
 
 If you are using MKL, additionally set the following environment
 variables:
-
 ```
 export MKL_CFLAGS=-fopenmp -I/path/to/mkl/include/files
 export MKL_LDFLAGS=-fopenmp -L/path/to/mkl/lib -lmkl_intel_lp64 -lmkl_core -lmkl_gnu_thread -ldl -lpthread -lm
@@ -401,7 +391,6 @@ export MKL_RPATH=-Wl,rpath,/path/to/mkl/lib
 
 If you are using some other LAPACK, you must instead set (assuming
 that LAPACK and BLAS are installed in the same place):
-
 ```
 export LAPACKINC=/path/to/lapack/include/files
 export LAPACKLIB=/path/to/lapack/library/files
@@ -414,7 +403,6 @@ GCAM with LAPACK normally.  If you are using MKL, then there is some
 run-time environment setup you should do.  While not strictly
 required, these settings will give you better performance in the SVD
 subroutines (replace NN with the number of processors you have):
-
 ```
 export MKL_NUM_THREADS=1
 export MKL_DOMAIN_NUM_THREADS="BLAS=NN"

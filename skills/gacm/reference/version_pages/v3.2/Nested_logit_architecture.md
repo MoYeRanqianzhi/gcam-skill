@@ -78,7 +78,7 @@ Land nesting approach in GCAM
 
 Our current approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. The omitted figure summarized the land nesting diagram within a subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
 
-###### Figure 1: Competition for land in GCAM
+Omitted figure summary: Competition for land in GCAM
 
 The agro-forestry (non-pasture) node contains three competing nodes:
 shrub and grass lands, forest lands, and croplands. Shrublands and
@@ -92,7 +92,7 @@ scenarios. Under cropland are all food and other agriculture products
 (e.g., corn, wheat, sugars, etc.), including biomass crops, along with
 an unmanaged land category called other arable land. Note that several
 crops are included explicitly in the CropLand node, and the grouping
-of "AllOtherCrops" is simply a convenience for this figure.
+of "AllOtherCrops" is simply a convenience for the omitted figure.
 
 With the specification above, we can make substitution across
 categories more or less difficult by choosing lower or higher logit

@@ -24,7 +24,7 @@ GCAM is an integrated, multi-sector model that explores both human and Earth sys
 
 GCAM allows users to explore what-if scenarios, quantifying the implications of possible future conditions. These outputs are not predictions of the future; they are a way of analyzing the potential impacts of different assumptions about future conditions. GCAM reads in external "scenario assumptions" about key drivers (e.g., population, economic activity, technology, and policies) and then assesses the implications of these assumptions on key scientific or decision-relevant outcomes (e.g., commodity prices, energy use, land use, water use, emissions, and concentrations).
 
-Figure 1: Conceptual diagram of the way that IA models use scenario assumptions to produce fuller, modeled scenarios that include a wide range of additional information
+Omitted figure summary: Conceptual diagram of the way that IA models use scenario assumptions to produce fuller, modeled scenarios that include a wide range of additional information
 
 Developing and quantifying a single set of scenario assumptions is the most common way that a model such as GCAM is used to explore scientific and assessment questions. However, another class of question that GCAM has taken up is the systematic representation of uncertainty. As early as the 1980s, GCAM was used to map the implications of uncertain key input assumptions and parameters into implied distributions of outputs, such as greenhouse gas emissions, energy use, energy prices, and trade patterns. A range of techniques has been employed using GCAM to explore the potential range of future outcomes. Techniques include scenarios analysis, sensitivity analysis, and Monte Carlo simulations. Exploring and understanding the role of uncertainty in shaping events remains an important research use of GCAM.
 
@@ -62,7 +62,7 @@ The exact structure of the model explored in the GCAM core - for example, the nu
 | Water Supplies | 235 Hydrologic Basins |
 | Physical Earth System | Global |
 
-Figure 2: GCAM regional mapping
+Omitted figure summary: GCAM regional mapping
 
 | GCAM Region	| Countries |
 |:-------------:|:---------:|
@@ -105,7 +105,7 @@ The core operating principle for GCAM is that of market equilibrium. Representat
 
 As an example, in any single model period, GCAM derives a demand for natural gas starting with all of the uses to which natural gas might be put, such as passenger and freight transport, power generation, hydrogen production, heating, cooling and cooking, fertilizer production, and other industrial energy uses. Those demands depend on the external assumptions about, for example, electricity generating technology efficiencies, but also on the price of all of the commodities in the model. GCAM then calculates the amount of natural gas that suppliers would like to supply given their available technology for extracting resources and the market price. The model gathers this same information for all of the commodities and then adjusts prices so that in every market during that period supplies of everything from rice to solar power match demands.
 
-Figure 3: Conceptual Schematic of the Operation of the GCAM Core
+Omitted figure summary: Conceptual Schematic of the Operation of the GCAM Core
 
 GCAM is a dynamic recursive model, meaning that decision-makers do not know the future when making a decision today. (In contrast, intertemporal optimization models assume that agents know the entire future with certainty when they make decisions.) After it solves each period, the model then uses the resulting state of the world, including the consequences of decisions made in that period - such as resource depletion, capital stock retirements and installations, and changes to the landscape - and then moves to the next time step and performs the same exercise. For long-lived investments, decision-makers may account for future profit streams, but those estimates would be based on current prices.
 

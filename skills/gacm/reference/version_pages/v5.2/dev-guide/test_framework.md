@@ -25,16 +25,14 @@ Most users will interact with the testing framework through repository review ev
 * They need to extend or add tests
 * A change that affects the way we run Core scenarios such as how we run a policy
 
-As described in the details [below](test_framework.md#background) the testing framework is contained in it's own Git repository but included in the GCAM core repository as a submodule.  Thus to get the scripts you will need to update it:
-```
+As described in the details [below](test_framework.md#background) the testing framework is contained in it's own Git repository but included in the GCAM core repository as a submodule.  Thus to get the scripts you will need to update it:```
 > cd <GCAM workspace>
 > git submodule update --init util/testing-framework
 ```
 
 To understand how the testing framework is organized and how it all fits together users can read the detailed description [below](test_framework.md#background).
 
-The development cycle is the same as any other:
-```
+The development cycle is the same as any other:```
 > cd util/testing-framework
 > git checkout -b my-new-feature-branch
 > # make the required changes
@@ -44,8 +42,7 @@ The development cycle is the same as any other:
 > git push
 ```
 
-However where it differs is we now need to update the submodule "pointer" in the GCAM workspace as well:
-```
+However where it differs is we now need to update the submodule "pointer" in the GCAM workspace as well:```
 > cd ../../
 > git add util/testing-framework
 > git commit
@@ -185,7 +182,6 @@ Jenkins will then trigger the [JGCRI/gcam-pic](https://ci.pnnl.gov/jenkins/job/J
 * Save `$BUTTON_FORM_DATA` into a file `user_options.json` which can be processed later when we are setting up the runs on PIC
 * rsync the current workspace to PIC at `/pic/projects/GCAM/gcam-ci-run/${PULL_REQUEST_ID}`
 * Run the script `util/testing-framework/pic/run_tests.sh` on PIC via ssh and passing the arguments: `$BUILD_NUMBER $PULL_REQUEST_ID $GIT_COMMIT`
-
 `run_tests.sh` takes care of:
 * Update the "PIC verification run setup" build status in the pull request to `IN_PROGRESS`
 * `make xml`
@@ -199,7 +195,6 @@ Jenkins will then trigger the [JGCRI/gcam-pic](https://ci.pnnl.gov/jenkins/job/J
 * Run `parse_gcam_batch.R exe/configuration_ref.xml exe/batch_SSP_SPA4.xml`
 * Run `parse_gcam_batch.R exe/configuration_ref.xml exe/batch_SSP_SPA5.xml`
 * Update the "PIC verification run setup" build status in the pull request to `SUCCESS`
-
 `parse_gcam_batch.R` takes care of:
 * Parse the configuration and batch XML using the `xml2` package
 * Parse the `user_options.json` using the `jsonlite` package
@@ -215,7 +210,6 @@ Jenkins will then trigger the [JGCRI/gcam-pic](https://ci.pnnl.gov/jenkins/job/J
   * Otherwise append to contents of the FileSet to the `<ScenarioComponents>`
   * write out the generated config XML
   * Run `stage_run.sh` with the arguments: `scenario, config_file_name, length(user_options[["clear_output"]]` (the last will give 0 if that check box was not selected and 1 if it was)
-
 `stage_run.sh` takes care of:
 * Clear the output database if so configured
 * Delete the folder  `exe_${SCENARIO}` if it existed previously

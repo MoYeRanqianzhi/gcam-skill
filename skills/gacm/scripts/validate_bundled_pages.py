@@ -16,7 +16,6 @@ from version_catalog import VERSION_PAGES_ROOT
 
 
 LINK_RE = re.compile(r"(?<!!)\[[^\]]+\]\(([^)]+)\)")
-CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
 NBSP_CHAR_RE = re.compile("\u00a0")
 ZERO_WIDTH_CHAR_RE = re.compile(r"[\u200b\u200c\u200d\ufeff]")
@@ -64,7 +63,15 @@ RAW_TEXT_ENTITY_RE = re.compile(r"&amp;|&quot;|&#(?:160|xA0|xa0);", re.IGNORECAS
 
 
 def strip_code_fences(text: str) -> str:
-    return CODE_FENCE_RE.sub("", text)
+    lines: list[str] = []
+    in_fence = False
+    for line in text.splitlines(keepends=True):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            continue
+        if not in_fence:
+            lines.append(line)
+    return "".join(lines)
 
 
 def strip_inline_code(text: str) -> str:
@@ -84,7 +91,11 @@ def split_target(raw: str) -> str:
 
 
 def should_ignore(target: str) -> bool:
-    return not target or target.startswith("#") or bool(SCHEME_RE.match(target))
+    if not target or target.startswith("#") or bool(SCHEME_RE.match(target)):
+        return True
+    if " " in target and not any(marker in target for marker in ("/", "\\", ".", "#")):
+        return True
+    return False
 
 
 def normalize_target(base: Path, target: str) -> Path:

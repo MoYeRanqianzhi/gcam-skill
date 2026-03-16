@@ -23,19 +23,19 @@ GCAM is global in scope and disaggregated into 14 geopolitical
 regions, explicitly linked through international trade in energy
 commodities, agricultural and forest products, and other goods such as
 emissions permits. It is a dynamic-recursive market equilibrium
-model. Figure 1 provides an overview of the general structure of the
+model. The omitted figure provides an overview of the general structure of the
 energy system of the GCAM. The scale of human activities is determined
 by the interaction between labor force, determined by work-aged
 population, labor participation and unemployment rate assumptions and
-the price of energy services. Figure 2 provides an overview of
+the price of energy services. The omitted figure provides an overview of
 agriculture and land use in the GCAM and its linkage to the GCAM
 energy system. An important feature of the GCAM architecture is that
 the GCAM terrestrial carbon cycle model is embedded within the
 agriculture-land-use system model.
 
-###### Figure 1: Overall structure of the general structure of the energy system of the GCAM
+Omitted figure summary: Overall structure of the general structure of the energy system of the GCAM
 
-###### Figure 2: Overall structure of the agriculture-land-use module of the GCAM
+Omitted figure summary: Overall structure of the agriculture-land-use module of the GCAM
 
 The energy system model produces and transforms energy for use in
 three end-use sectors: buildings, industry and transport. Production
@@ -65,7 +65,7 @@ and captured CO2 explicitly. CO2 storage reservoirs are disaggregated
 by region, type and grade. Similarly nuclear waste storage represents
 a potential limit on cumulative deployment and reactor choice.
 
-###### Figure 3: Overview of energy production and transformation in GCAM.
+Omitted figure summary: Overview of energy production and transformation in GCAM.
 
 Table 1 provides an overview of the key features of the model. The
 individual modules along with relevant parameters and assumptions are

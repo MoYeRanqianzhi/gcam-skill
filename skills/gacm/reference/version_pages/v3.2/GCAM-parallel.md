@@ -38,8 +38,7 @@ Using GCAM-parallel
 
 To build the parallel version of GCAM, first obtain a copy of
 TBB. Build and install it according to the instructions contained in
-the TBB distribution. Enable the parallel modules by setting
-`GCAM_PARALLEL_ENABLED = 1` in the
+the TBB distribution. Enable the parallel modules by setting`GCAM_PARALLEL_ENABLED = 1` in the
 [configuration file](GCAM_Build_Configuration.md)
 (`configure.gcam`). There are also a few environment variables that
 will need to be set: - `TBB_INCDIR`: The top-level directory containing the TBB header
@@ -54,16 +53,14 @@ will need to be set: - `TBB_INCDIR`: The top-level directory containing the TBB 
 If you have previously built GCAM, you will have to run `make clean`
 at this point. After that, `make gcam` will build a parallel-enabled
 version of gcam and place it in the `exe` directory, under the top
-level of the GCAM working directory. The final program is called
-`gcam.exe`, just like the regular (non-parallel) version, so it will
+level of the GCAM working directory. The final program is called`gcam.exe`, just like the regular (non-parallel) version, so it will
 overwrite the previous version of the GCAM executable file, if any.
 
 ### Running
 
 GCAM-parallel adds one additional parameter, `parallel-grain-size`, to
 the GCAM configuration file. It is set in the "ints" section of the
-main configuration file:
-```
+main configuration file:```
 <Value name="parallel-grain-size">5</Value>
 ```
 
@@ -219,12 +216,10 @@ flow graph to dispatch the tasks in a GCAM parallel evaluation.
 A parallel model evaluation is invoked by calling `World::calc()` with
 a second argument that is a pointer to a TBB flow graph. The prototype
 for this call is:
-
 `   void World::calc(int period, GcamFlowGraph *work_graph);`
 
 The World class stores a pointer to the global flow graph, so full
 model evaluations can be run by calling:
-
 `   world->calc(aPeriod, world->getGlobalFlowGraph());`
 
 In principle, partial model evaluations (such as those that occur when
@@ -234,9 +229,7 @@ the version of `World::calc()` above. However, the GCAM setup
 functions currently do not generate any partial flow graphs. Partial
 evaluations can be performed serially by calling the standard version
 of `World::calc()`:
-
-`   const std::vector<IActivity*>& affectedNodes = mkts[partj].getDependencies();`
-`   world->calc(period, affectedNodes);`
+`   const std::vector<IActivity*>& affectedNodes = mkts[partj].getDependencies();``   world->calc(period, affectedNodes);`
 
 There is also a mechanism for passing a mask that allows you to run
 the global flow graph while skipping undesired nodes.
@@ -258,16 +251,12 @@ sectors that independently add to these quantities, and there is no
 guarantee that their tasks will be executed in the same grain (which
 would force them to be serialized) [2](#footnote2) In this
 case, we avoid having a critical section by replacing the market
-member variables representing supply and demand with
-`tbb::combinable`. The combinable class allows each thread to create a
-thread-local copy of the underlying variable. The class supports the
-`combine()` method, which performs a reduction operation over the
-extant thread-local copies. For example,
-`demand.combine(std::plus<double>)` will sum the thread-local partial
+member variables representing supply and demand with`tbb::combinable`. The combinable class allows each thread to create a
+thread-local copy of the underlying variable. The class supports the`combine()` method, which performs a reduction operation over the
+extant thread-local copies. For example,`demand.combine(std::plus<double>)` will sum the thread-local partial
 results. The `tbb::combinable` class can avoid critical sections for
 any concurrent operation that can be expressed as a reduction over
-partial results. TBB also provides the
-`tbb::enumerable_thread_specific` class to provide thread-local
+partial results. TBB also provides the`tbb::enumerable_thread_specific` class to provide thread-local
 storage for cases where the final result is not expressible as a
 reduction. Either of these mechanisms should be used wherever possible
 in preference to critical sections.

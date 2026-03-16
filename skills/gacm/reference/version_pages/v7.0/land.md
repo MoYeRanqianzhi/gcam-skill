@@ -44,7 +44,7 @@ Economic land use decisions in GCAM are based on a logit model of sharing based 
 
 The way land types are nested in GCAM, in combination with the logit exponents used, determines the substitutability of different land types in the model in future periods. The omitted figure summarized a simplified land nesting diagram for a subregion. Crops are further divided beyond that simplified sketch, including irrigated/rainfed and hi/lo fertilizer branches. For more information, see the detailed description of the [land nesting strategy](details_land.md#land-nesting-strategy).
 
-Figure 1: AgLU Land Nest
+Omitted figure summary: AgLU Land Nest
 
 #### Intensification
 
@@ -78,7 +78,6 @@ GCAM tracks carbon stocks by calculating and storing cumulative land-use change 
 The latest soil and vegetation carbon densities are initialized from inputs which are processed by the `moirai` land data system. `moirai` processes fine resolution soil carbon inputs from the Soilgrids dataset (Hengl et al. 2017) and similar vegetation carbon inputs from Spawn et al. (2020). These raw carbon densities represent the year 2010.
 
 Soil carbon densities represent top soil (depth of 0-30 cm) and vegetation carbon densities are a sum of above and below ground biomass densities. As mentioned above, GCAM requires a steady state carbon density and not just the contemporary carbon density. The steady state carbon density is compatible with the GCAM methodology to represent land use transitions.
-
 `moirai` thus calculates 6 "states" of carbon for each GLU land type combination when aggregating up the carbon densities from the gridcell level to the GLU land type level. The user can select any state of carbon by changing the constant `aglu.CARBON_STATE` in [constants.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/constants.R#L373). The 6 states are,  `median_value` (median of all available grid cells), `min_value` (minimum of all available grid cells), `max_value` (maximum of all available grid cells),`weighted_average` (weighted average of all available grid cells using the land area as a weight), `q1_value` (first quartile of all available grid cells) and `q3_value` (3rd quartile of all available grid cells).
 
 The `q3_value` is the default for GCAM since it is the most representative of the steady state.

@@ -8,6 +8,7 @@ Checks:
 - bundled `gcam-build.md` pages rewrite GUI IDE click paths into agent-readable build requirements
 - bundled `hector.md` pages rewrite IDE integration click paths into dependency/build-setting summaries
 - legacy v3.2 wiki "click here to view a previous version" boilerplate is removed
+- raw figure captions and direct figure-number references are normalized into text-only wording
 """
 
 from __future__ import annotations
@@ -185,6 +186,20 @@ FIGURE_DEPENDENT_REGEXES = (
         r"Figure 1 below shows a competition between two options with distributions of profits\."
     ),
 )
+FIGURE_LABEL_TOKEN = r"[A-Za-z]*\d[A-Za-z0-9.\-]*"
+RAW_FIGURE_TEXT_REGEXES = (
+    re.compile(rf"^Figure\s+{FIGURE_LABEL_TOKEN}:", re.IGNORECASE | re.MULTILINE),
+    re.compile(rf"\bFrom Figure\s+{FIGURE_LABEL_TOKEN}\b"),
+    re.compile(
+        rf"\bFigure\s+{FIGURE_LABEL_TOKEN}\s+(illustrates|shows|provides|summarizes|depicts|compares|contrasts|maps|presents|describes)\b",
+        re.IGNORECASE,
+    ),
+    re.compile(rf"\bgiven in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(rf"\bwhat is in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(rf"\bthe omitted Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE),
+    re.compile(r"Figure source:", re.IGNORECASE),
+    re.compile(r"\bFig\.\s*\d+[A-Za-z]\b"),
+)
 
 TEST_FRAMEWORK_REQUIRED = (
     "This adapted testing-framework page preserves historical internal CI topology but rewrites pull-request/button/UI phrasing into repository events, webhook payloads, and status API concepts.",
@@ -321,6 +336,11 @@ def validate_figure_dependent_residue(errors: list[str]) -> None:
             if pattern.search(text):
                 errors.append(
                     f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still matches forbidden figure-dependent pattern: {pattern.pattern}"
+                )
+        for pattern in RAW_FIGURE_TEXT_REGEXES:
+            if pattern.search(text):
+                errors.append(
+                    f"{path.relative_to(VERSION_PAGES_ROOT.parent)} still contains raw figure-text residue: {pattern.pattern}"
                 )
 
 

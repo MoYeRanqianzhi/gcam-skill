@@ -41,8 +41,7 @@ GCAM from a high level.  However, most users will not be familar with GCAM objec
 and member variable names.  They are usually familiar with the XML tag names
 used in the input/output which typically map directly on to those internal
 variables. In addition many of our users have grown accustomed to searching the
-XML via simple XPath queries that look like:
-`/scenario[@name='Reference']//sector[@name='electricity]//share-weight[@year <= 2050]`.
+XML via simple XPath queries that look like:`/scenario[@name='Reference']//sector[@name='electricity]//share-weight[@year <= 2050]`.
 Thus GCAM Fusion is a query engine for GCAM with a query syntax _somewhat_ like
 XPath using the same data names as the XML input tags.  Users can then use the
 search results as they like including changing the value of the results.
@@ -72,7 +71,6 @@ functions in the interface are
   end of a model period.
 
 The full definition of `IModelFeedbackCalc` is:
-
 ```cpp
 /*!
  * \ingroup Objects
@@ -145,7 +143,6 @@ the heating and cooling degree days with in GCAM for the next simulation period.
 <a name="feedback"></a>
 To start we will create a new class which implements the feedback interface
 mentioned above.
-
 ```cpp
 #include "containers/include/imodel_feedback_calc.h"
 
@@ -201,7 +198,6 @@ functions allow us to activate our feedback by including them in an XML add-on
 file
 
 The source code that goes with this declaration will then look like the following skeleton:
-
 ```cpp
 #include "util/base/include/definitions.h"
 #include <cassert>
@@ -262,7 +258,6 @@ void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario,
 
 The two XML functions allow us to set up our feedback object from GCAM XML input
 files.  Here is how they are defined:
-
 ```cpp
 bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
     /*! \pre Make sure we were passed a valid node. */
@@ -312,11 +307,9 @@ void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
 With these functions in place, you will be able to activate the feedbacks by
 including an XML add-on file in your GCAM configuration.  Including the add-on
 file will cause the feedback object to be created and added to the scenario's
-list of feedbacks.  The `calcFeedbacksBeforePeriod` and
-`calcFeedbacksAfterPeriod` methods will then be run automatically at the
+list of feedbacks.  The `calcFeedbacksBeforePeriod` and`calcFeedbacksAfterPeriod` methods will then be run automatically at the
 beginning and end of each GCAM time step.
 The add-on file would contain the following XML:
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <scenario>
@@ -331,7 +324,6 @@ The add-on file would contain the following XML:
 Next we will add in some calls to GCAM Fusion to query for the global CO2
 emissions from the model.  You will need to include the following header files
 into your .cpp file:
-
 ```cpp
 #include "util/base/include/gcam_fusion.hpp"
 #include "util/base/include/gcam_data_containers.h"
@@ -352,7 +344,6 @@ will be called on data found by the search.  The functions required will depend
 on what combination of the three event types supported by GCAM Fusion you are
 using.  The event types eare explained below.  If you aren't using an event
 type, you can omit its processing function.
-
 ```cpp
 struct GatherEmiss {
     // a variable to keep the sum
@@ -425,7 +416,6 @@ value.
 As mentioned above, when GCAMFusion finds a result that matches the search it
 will call `processData` and the user can get or set the value as appropriate for
 their needs:
-
 ```cpp
 template<typename T>
 void GatherEmiss::processData( T& aData ) {
@@ -453,7 +443,6 @@ Next we do something with our results.  To keep things simple for illustrative
 purposes, we'll adjust degree days by a scale factor, but you could in principle
 do anything here, including running another model and passing it the data you
 just received.
-
 ```cpp
     if( aPeriod == modeltime->getFinalCalibrationPeriod() ) {
         // just store the base year value
@@ -469,7 +458,6 @@ when we were collecting the CO2 emissions.  The data passed to `processData` is
 passed by reference to the actual parameter that lives in the GCAM objects and
 is not const so we are free to change it as we please.  These are the queries
 for building heating and cooling services:
-
 ```cpp
     // Note the actual services are "resid heating" or "comm cooling", etc so we
     // use regular expression partial matching so we do not have to spell it out.
@@ -492,7 +480,6 @@ for building heating and cooling services:
 ```
 
 And here are the call backs that set the scaled degree days in those sectors:
-
 ```cpp
 template<typename T>
 void DegreeDaysFeedback::processData( T& aData ) {

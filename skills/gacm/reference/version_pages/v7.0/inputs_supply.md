@@ -202,9 +202,9 @@ There has been a significant data method update for the GCAM AgLU (Agriculture a
 
 The aggregation of agricultural data from FAO countries and commodities to GCAM regions and commodities are included in gcamdata. The commodity mapping is provided in [Mapping_SUA_PrimaryEquivalent.csv](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/aglu/FAO/Mapping_SUA_PrimaryEquivalent.csv). The omitted figures illustrated representative harvested-area and food mappings.
 
-Figure 1: Mapping between FAO and GCAM primary (land-based) commodities (A) and count of FAO commodities per GCAM commodity (B)
+Omitted figure summary: Mapping between FAO and GCAM primary (land-based) commodities (A) and count of FAO commodities per GCAM commodity (B)
 
-Figure 2: Mapping between FAO and GCAM food commodities (A) and count of FAO commodities per GCAM commodity (B)
+Omitted figure summary: Mapping between FAO and GCAM food commodities (A) and count of FAO commodities per GCAM commodity (B)
 
 ## References
 

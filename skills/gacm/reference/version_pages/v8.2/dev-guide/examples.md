@@ -129,7 +129,6 @@ the variable.
 We can illustrate this with a pseudocode example.  C++ only needs to know what
 type the data member is and what you will call it in your C++ code, and you
 specify these things in a member declaration:
-
 ```cpp
 class Sector {
     //! Sector name
@@ -143,7 +142,6 @@ class Sector {
 
 For our purposes we want to add an XML -- or user readable name.  We'd like to
 do something like this, but C++ doesn't allow it:
-
 ```cpp
 // Not valid C++
 class Sector {
@@ -195,7 +193,6 @@ class Sector {
 Class inheritance presents an extra challenge.  Each subclass is allowed to
 define its own list of data, which is _cumulative_ with the data defined by its
 class ancestors.
-
 ```cpp
 class PassThroughSector: public Sector {
     // Because a PassThroughSector is also a sector, it has all of the members
@@ -212,7 +209,6 @@ In order to treat these subclasses properly, GCAM Fusion will have to splice the
 lists of data from all the classes in the hierarchy together at run
 time.  Therefore, we need additional tags to provide the information it needs to
 do that.
-
 ```cpp
 class PassThroughSector: public Sector {
     DEFINE_DATA_WITH_PARENT(
@@ -232,7 +228,6 @@ series of macros and use some template meta programming to transform these data
 definitions into the valid, yet much more, C++ syntax during the compiler's
 preprocessing step.  The source code at the end of the previous section gets
 preprocessed into code that looks like this:
-
 ```cpp
 class Sector {
     typedef boost::fusion::vector<Data<string, SIMPLE>, Data<PeriodVector<double>, ARRAY>, Data<vector<Subsector*>, CONTAINER> > DataVectorType;
@@ -250,12 +245,10 @@ To be clear, all of the code in this block is generated automatically from the
 input in the previous block; developers never have to handle it directly;
 they'll be using the constructs from the last section.
 
-You will notice that we use such classes as `Data<string, SIMPLE>` and
-`Data<Subsector*, CONTAINER>`.  These are just helper structs to let us tie
+You will notice that we use such classes as `Data<string, SIMPLE>` and`Data<Subsector*, CONTAINER>`.  These are just helper structs to let us tie
 together user facing names as well as potentially other meta data with a
 reference to the actual data being contained (such as string or Subsector\*).
 Here is how they are defined:
-
 ```cpp
 /*!
  * \brief Basic structure for holding data members for GCAM classes.
@@ -322,8 +315,7 @@ which is where GCAM Fusion gets its name.  Besides providing providing storage
 for mixed-type data, these "fusion" vectors allow us to perform algorithms at both compile
 time and run time.
 
-Note that an instance of the DataVectorType is only created if the
-`generateDatatVector()` method is called (which should typically only be called
+Note that an instance of the DataVectorType is only created if the`generateDatatVector()` method is called (which should typically only be called
 through GCAM Fusion via [ExpandDataVector](#expanddatavector)) thus there is no
 runtime overhead penalty imposed on GCAM except when calling GCAMFusion to
 search for data.  In addition this implies that all of the changes required to
@@ -428,7 +420,6 @@ Within the `DEFINE_DATA*` sections after the declarations related to the
 subclass tree navigation are the actual data member definitions.  They are
 listed one after the other separated by commas.  Each definition will use one of
 the following Macros depending on the nature of that data definition:
-
 ```cpp
 class Sector {
     protected:
@@ -483,8 +474,7 @@ they may be filtered by [NamedFilter](#filter-objects) or
 vector<Subsector\*> for instance this allows us to search only the one
 that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
 isn't a vector and just a single object it may still make sense to filter by
-name, such an example would be the climate model
-`/climate-model[@name='hector']`.
+name, such an example would be the climate model`/climate-model[@name='hector']`.
 
 #### DEFINE\_VARIABLE with flag SIMPLE | STATE or ARRAY | STATE
 
@@ -508,11 +498,9 @@ Since the `GCAMFusion` object determines which GCAM objects it will access at ru
 No more use of smart pointers as data members
 
 These were dropped because it made detecting what the actual data was much more
-difficult (i.e. the type I need to know is `IDiscreteChoice*` not
-`std::auto_ptr<IDiscreteChoice*>`).  I could try harder if we want to put these
+difficult (i.e. the type I need to know is `IDiscreteChoice*` not`std::auto_ptr<IDiscreteChoice*>`).  I could try harder if we want to put these
 back in, it will result in a lot more template specialization and work
-arounds.  Also note `std::auto_ptr` is deprecated in favor of
-`std::unique_ptr`.
+arounds.  Also note `std::auto_ptr` is deprecated in favor of`std::unique_ptr`.
 
 Centrally Managed State Variables
 ---------------------------------
@@ -664,8 +652,7 @@ combinations.
 
 ### Factory
 
-A generic templated factory that which utilizes the [SubClassFamilyVector](#define_data---and-define_data_with_parent--) to provide two methods: - `Factory::canCreateType`: Will take an XML node name as an argument and return `true` if any of the classes in `SubClassFamilyVector`'s `getXMLNameStatic()` matches and false otherwise.  Note, the class must also be construct-able (i.e. not abstract) to return `true`. - `Factory::createType`: Will take an XML node name as an argument and return a new instance of the class in `SubClassFamilyVector` whos `getXMLNameStatic()` matches.  If no class matches `0` is returned and a warning will be generated.  One major caveat is this method assumes that each class can be constructed with an constructor which takes no arguments.  If the class does require arguments to the constructor you will get a compile time error such as:
-```
+A generic templated factory that which utilizes the [SubClassFamilyVector](#define_data---and-define_data_with_parent--) to provide two methods: - `Factory::canCreateType`: Will take an XML node name as an argument and return `true` if any of the classes in `SubClassFamilyVector`'s `getXMLNameStatic()` matches and false otherwise.  Note, the class must also be construct-able (i.e. not abstract) to return `true`. - `Factory::createType`: Will take an XML node name as an argument and return a new instance of the class in `SubClassFamilyVector` whos `getXMLNameStatic()` matches.  If no class matches `0` is returned and a warning will be generated.  One major caveat is this method assumes that each class can be constructed with an constructor which takes no arguments.  If the class does require arguments to the constructor you will get a compile time error such as:```
 In file included from <USER_HOME>/model/gcam-core/cvs/objects/util/base/source/xml_parse_helper.cpp:81:
 ../../util/base/include/factory.h:119:25: error: no matching constructor for initialization of 'typename boost::remove_pointer<decltype(aType)>::type' (aka 'LinearControl')
                     new typename boost::remove_pointer<decltype( aType )>::type : aCurrResult;
@@ -692,7 +679,6 @@ figure it out unambiguously then it will raise an error. This is particularly
 useful when dealing with templated typedefs and nested or derived types, where
 the type definitions can get quite complex. For example, it is easier to write
 and understand:
-
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
 void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
@@ -703,7 +689,6 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 ```
 
 Than to write:
-
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
 void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
@@ -718,7 +703,6 @@ The `decltype` declaration allows you to copy the type of some other
 variable. This is useful for deriving other types.  For example, this
 declaration gives the const iterator associated with a container.  It isn't
 necessary to specify, or even know, the exact type of the container:
-
 `typename decltype( mSomeContainer )::const_iterator`
 
 ### Using decltype in the return
@@ -738,8 +722,7 @@ functionName( SomeVectorDef aVector ) -> decltype( aVector )::const_iterator {
 
 Closures allow you to construct anonymous functions that capture variables
 from their immediate environment.  They are especially useful in conjunction
-with algorithm templates from the `std::algorithm` library, such as `find_if`.
-```cpp
+with algorithm templates from the `std::algorithm` library, such as `find_if`.```cpp
     int nsub = successors_subgraph.count();
     typename groupset_t::iterator it_sg_ex_srcs =
       find_if(subgroups.begin(), subgroups.end(),
@@ -766,7 +749,6 @@ bool isNameCoal = boost::fusion::any(vec, func);
 ```
 
 With closures this can be written more simply:
-
 ```cpp
 boost::fusion::vector<Sector, Subsector, ITechnology> vec(aSector, aSubsector, aTech);
 bool isNameCoal = boost::fusion::any(vec,

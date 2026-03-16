@@ -21,7 +21,6 @@ In either case it will be *very* helpful to have the `Make` and its associated u
 #### 1.1.1 Getting Make on Windows
 The easiest way to get the required utilities is to install the [Git version control system for Windows](https://git-scm.com/downloads) (and preferred as using Git to manage changes and get the latest GCAM development updates is in itself very useful).  The Git download contains a `Git bash` which can provide a command line interface to run the `make` command.
 Unfortunately, it does not contain the `Make` utility itself but a suitable version can be found through [Win Builds](http://win-builds.org/1.5.0/packages/windows_64/make-4.0-5-x86_64-w64-mingw32.txz).  There are many ways to install Make into a location in which the Git Bash can find it.  The follow is one way that should work if run in Git bash:
-
 ```
 cd ~
 mkdir bin
@@ -34,7 +33,6 @@ Mac users can use the Terminal app to run the `make` commands however the requir
 
 ### 1.2 R and Packages for Running The Full Data System
 Data processing in the GCAM data system is done using the [R programming language for statistical computing](https://www.r-project.org).  In addition we use the "reshape2" R package which can typically be installed through R:
-
 ```
 install.packages("reshape2")
 install.packages("stringr")
@@ -53,7 +51,6 @@ As mentioned the IEA Energy Balances dataset is required and must be [installed]
 
 ### 3.1 Installing IEA Data
 Users who have access the the [IEA energy balances](https://www.iea.org/statistics/relateddatabases/worldenergystatisticsandbalances/) will need to export the data from the Beyond 2020 browser.  The GCAM data system is configured for the 2012 edition of the IEA energy balances, which goes through 2010 for all countries and sectors, and provides 2011 estimates for a small selection of variables. While more recent versions with more recent years will ostensibly work with the existing R code, any changes to the names or available categories of any variables (COUNTRY, PRODUCT, FLOW) in the source data will require updates to the mappings and/or code. To export the data in the format used by the data system, users should open the `Beyond 2020 Browser`, and toggle the variables so that the years are columns, and the following ID variables are all displayed, with no variables held fixed:
-
 ```
 COUNTRY (as names)
 FLOW (as "short names", or ID codes)
@@ -70,7 +67,6 @@ If using a more recent edition, users should check to make sure that the country
 
 ### 3.2 Running GCAM Data System
 In order to run the GCAM data system users simply need to run the make commands such as:
-
 ```
 cd <GCAM Workspace>/input/gcam-data-system
 make xml
@@ -81,7 +77,6 @@ Detailed documentation of the GCAM data system can be found in `<GCAM Workspace>
 
 ### 3.3 Troubleshooting
 If, when running the data system using 'make', an error is encountered you are likely to see a message such as this:
-
 ```
 /Applications/Xcode.app/Contents/Developer/usr/bin/make -C modeltime-data level2
 ../modeltime-processing-code/level2/L200.modeltime.R

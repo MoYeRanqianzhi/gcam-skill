@@ -41,8 +41,7 @@ GCAM from a high level.  However, most users will not be familar with GCAM objec
 and member variable names.  They are usually familiar with the XML tag names
 used in the input/output which typically map directly on to those internal
 variables. In addition many of our users have grown accustomed to searching the
-XML via simple XPath queries that look like:
-`/scenario[@name='Reference']//sector[@name='electricity]//share-weight[@year <= 2050]`.
+XML via simple XPath queries that look like:`/scenario[@name='Reference']//sector[@name='electricity]//share-weight[@year <= 2050]`.
 Thus GCAM Fusion is a query engine for GCAM with a query syntax _somewhat_ like
 XPath using the same data names as the XML input tags.  Users can then use the
 search results as they like including changing the value of the results.
@@ -72,7 +71,6 @@ functions in the interface are
   end of a model period.
 
 The full definition of `IModelFeedbackCalc` is:
-
 ```cpp
 /*!
  * \ingroup Objects
@@ -145,7 +143,6 @@ the heating and cooling degree days with in GCAM for the next simulation period.
 <a name="feedback"></a>
 To start we will create a new class which implements the feedback interface
 mentioned above.
-
 ```cpp
 #include "containers/include/imodel_feedback_calc.h"
 
@@ -201,7 +198,6 @@ functions allow us to activate our feedback by including them in an XML add-on
 file
 
 The source code that goes with this declaration will then look like the following skeleton:
-
 ```cpp
 #include "util/base/include/definitions.h"
 #include <cassert>
@@ -262,7 +258,6 @@ void DegreeDaysFeedback::calcFeedbacksAfterPeriod( Scenario* aScenario,
 
 The two XML functions allow us to set up our feedback object from GCAM XML input
 files.  Here is how they are defined:
-
 ```cpp
 bool DegreeDaysFeedback::XMLParse( const DOMNode* aNode ) {
     /*! \pre Make sure we were passed a valid node. */
@@ -312,11 +307,9 @@ void DegreeDaysFeedback::toInputXML( ostream& aOut, Tabs* aTabs ) const {
 With these functions in place, you will be able to activate the feedbacks by
 including an XML add-on file in your GCAM configuration.  Including the add-on
 file will cause the feedback object to be created and added to the scenario's
-list of feedbacks.  The `calcFeedbacksBeforePeriod` and
-`calcFeedbacksAfterPeriod` methods will then be run automatically at the
+list of feedbacks.  The `calcFeedbacksBeforePeriod` and`calcFeedbacksAfterPeriod` methods will then be run automatically at the
 beginning and end of each GCAM time step.
 The add-on file would contain the following XML:
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <scenario>
@@ -331,7 +324,6 @@ The add-on file would contain the following XML:
 Next we will add in some calls to GCAM Fusion to query for the global CO2
 emissions from the model.  You will need to include the following header files
 into your .cpp file:
-
 ```cpp
 #include "util/base/include/gcam_fusion.hpp"
 #include "util/base/include/gcam_data_containers.h"
@@ -352,7 +344,6 @@ will be called on data found by the search.  The functions required will depend
 on what combination of the three event types supported by GCAM Fusion you are
 using.  The event types eare explained below.  If you aren't using an event
 type, you can omit its processing function.
-
 ```cpp
 struct GatherEmiss {
     // a variable to keep the sum
@@ -425,7 +416,6 @@ value.
 As mentioned above, when GCAMFusion finds a result that matches the search it
 will call `processData` and the user can get or set the value as appropriate for
 their needs:
-
 ```cpp
 template<typename T>
 void GatherEmiss::processData( T& aData ) {
@@ -453,7 +443,6 @@ Next we do something with our results.  To keep things simple for illustrative
 purposes, we'll adjust degree days by a scale factor, but you could in principle
 do anything here, including running another model and passing it the data you
 just received.
-
 ```cpp
     if( aPeriod == modeltime->getFinalCalibrationPeriod() ) {
         // just store the base year value
@@ -469,7 +458,6 @@ when we were collecting the CO2 emissions.  The data passed to `processData` is
 passed by reference to the actual parameter that lives in the GCAM objects and
 is not const so we are free to change it as we please.  These are the queries
 for building heating and cooling services:
-
 ```cpp
     // Note the actual services are "resid heating" or "comm cooling", etc so we
     // use regular expression partial matching so we do not have to spell it out.
@@ -492,7 +480,6 @@ for building heating and cooling services:
 ```
 
 And here are the call backs that set the scaled degree days in those sectors:
-
 ```cpp
 template<typename T>
 void DegreeDaysFeedback::processData( T& aData ) {
@@ -753,7 +740,6 @@ the variable.
 We can illustrate this with a pseudocode example.  C++ only needs to know what
 type the data member is and what you will call it in your C++ code, and you
 specify these things in a member declaration:
-
 ```cpp
 class Sector {
     //! Sector name
@@ -767,7 +753,6 @@ class Sector {
 
 For our purposes we want to add an XML -- or user readable name.  We'd like to
 do something like this, but C++ doesn't allow it:
-
 ```cpp
 // Not valid C++
 class Sector {
@@ -819,7 +804,6 @@ class Sector {
 Class inheritance presents an extra challenge.  Each subclass is allowed to
 define its own list of data, which is _cumulative_ with the data defined by its
 class ancestors.
-
 ```cpp
 class PassThroughSector: public Sector {
     // Because a PassThroughSector is also a sector, it has all of the members
@@ -836,7 +820,6 @@ In order to treat these subclasses properly, GCAM Fusion will have to splice the
 lists of data from all the classes in the hierarchy together at run
 time.  Therefore, we need additional tags to provide the information it needs to
 do that.
-
 ```cpp
 class PassThroughSector: public Sector {
     DEFINE_DATA_WITH_PARENT(
@@ -856,7 +839,6 @@ series of macros and use some template meta programming to transform these data
 definitions into the valid, yet much more, C++ syntax during the compiler's
 preprocessing step.  The source code at the end of the previous section gets
 preprocessed into code that looks like this:
-
 ```cpp
 class Sector {
     typedef boost::fusion::vector<Data<string, SIMPLE>, Data<PeriodVector<double>, ARRAY>, Data<vector<Subsector*>, CONTAINER> > DataVectorType;
@@ -874,12 +856,10 @@ To be clear, all of the code in this block is generated automatically from the
 input in the previous block; developers never have to handle it directly;
 they'll be using the constructs from the last section.
 
-You will notice that we use such classes as `Data<string, SIMPLE>` and
-`Data<Subsector*, CONTAINER>`.  These are just helper structs to let us tie
+You will notice that we use such classes as `Data<string, SIMPLE>` and`Data<Subsector*, CONTAINER>`.  These are just helper structs to let us tie
 together user facing names as well as potentially other meta data with a
 reference to the actual data being contained (such as string or Subsector\*).
 Here is how they are defined:
-
 ```cpp
 /*!
  * \brief Basic structure for holding data members for GCAM classes.
@@ -946,8 +926,7 @@ which is where GCAM Fusion gets its name.  Besides providing providing storage
 for mixed-type data, these "fusion" vectors allow us to perform algorithms at both compile
 time and run time.
 
-Note that an instance of the DataVectorType is only created if the
-`generateDatatVector()` method is called (which should typically only be called
+Note that an instance of the DataVectorType is only created if the`generateDatatVector()` method is called (which should typically only be called
 through GCAM Fusion via [ExpandDataVector](#expanddatavector)) thus there is no
 runtime overhead penalty imposed on GCAM except when calling GCAMFusion to
 search for data.  In addition this implies that all of the changes required to
@@ -1052,7 +1031,6 @@ Within the `DEFINE_DATA*` sections after the declarations related to the
 subclass tree navigation are the actual data member definitions.  They are
 listed one after the other separated by commas.  Each definition will use one of
 the following Macros depending on the nature of that data definition:
-
 ```cpp
 class Sector {
     protected:
@@ -1107,8 +1085,7 @@ thery may be filtered by [NamedFilter](#filter-objects) or
 vector<Subsector\*> for instance this allows us to search only the one
 that matches the name: `/subsector[@name='coal']/share-weight`.  If the data
 isn't a vector and just a single object it may still make sense to filter by
-name, such an example would be the climate model
-`/climate-model[@name='hector']`.
+name, such an example would be the climate model`/climate-model[@name='hector']`.
 
 #### DEFINE\_VARIABLE with flag SIMPLE | STATE or ARRAY | STATE
 
@@ -1125,11 +1102,9 @@ in [Centrally Managed State Variables](#centrally-managed-state-variables).
 No more use of smart pointers as data members
 
 These were dropped because it made detecting what the actual data was much more
-difficult (i.e. the type I need to know is `IDiscreteChoice*` not
-`std::auto_ptr<IDiscreteChoice*>`).  I could try harder if we want to put these
+difficult (i.e. the type I need to know is `IDiscreteChoice*` not`std::auto_ptr<IDiscreteChoice*>`).  I could try harder if we want to put these
 back in, it will result in a lot more template specialization and work
-arounds.  Also note `std::auto_ptr` is deprecated in favor of
-`std::unique_ptr`.
+arounds.  Also note `std::auto_ptr` is deprecated in favor of`std::unique_ptr`.
 
 Centrally Managed State Variables
 ---------------------------------
@@ -1306,7 +1281,6 @@ figure it out unambigously then it will raise an error. This is particularly
 useful when dealing with templated typedefs and nested or derivived types, where
 the type defininitions can get quite complex. For example, it is easier to write
 and understand:
-
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
 void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
@@ -1317,7 +1291,6 @@ void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
 ```
 
 Than to write:
-
 ```cpp
 template<typename SomeKindOfArrayOfContainerType>
 void someFunc(ContainerData<SomeKindOfArrayOfContainerType> aData ) {
@@ -1332,7 +1305,6 @@ The `decltype` declaraiton allows you to copy the type of some other
 variable. This is useful for deriving other types.  For example, this
 declaration gives the const iterator associated with a container.  It isn't
 necessary to specify, or even know, the exact type of the container:
-
 `typename decltype( mSomeContainer )::const_iterator`
 
 ### Using decltype in the return
@@ -1352,8 +1324,7 @@ functionName( SomeVectorDef aVector ) -> decltype( aVector )::const_iterator {
 
 Closures allow you to construct anonymous functions that capture variables
 from their immediate environment.  They are especially useful in conjunction
-with algorithm templates from the `std::algorithm` library, such as `find_if`.
-```cpp
+with algorithm templates from the `std::algorithm` library, such as `find_if`.```cpp
     int nsub = successors_subgraph.count();
     typename groupset_t::iterator it_sg_ex_srcs =
       find_if(subgroups.begin(), subgroups.end(),
@@ -1380,7 +1351,6 @@ bool isNameCoal = boost::fusion::any(vec, func);
 ```
 
 With closures this can be written more simply:
-
 ```cpp
 boost::fusion::vector<Sector, Subsector, ITechnology> vec(aSector, aSubsector, aTech);
 bool isNameCoal = boost::fusion::any(vec,

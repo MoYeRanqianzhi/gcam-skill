@@ -22,13 +22,11 @@ The GCAM ecosystem of models and tools provides a suite of options for interfaci
 ### Extraction and formatting
 
 #### `rgcam`
-
 `rgcam` is an R package provides functions for extracting data from GCAM output databases.  The central concept in `rgcam` is the "project data file", which contains an R-native representation of selected queries for one or more scenarios. The package provides functions to run the GCAM Model Interface to extract data and add the results to a new or existing project data file, as well as to manage previously created project data.
 
 _Repository_:  https://github.com/JGCRI/rgcam
 
 #### `gcam_reader`
-
 `gcam_reader` is a Python package similar to `rgcam` that provides functions for extracting data from GCAM output databases.
 
 _Repository_:  https://github.com/JGCRI/gcam_reader
@@ -71,13 +69,11 @@ _Repository_:  https://github.com/JGCRI/moirai
 ### Single system
 
 #### `hector`
-
 `hector` is an open source, object-oriented, simple global climate carbon-cycle model. It runs essentially instantaneously while still representing the most critical global scale earth system processes, and is one of a class of models heavily used for for emulating complex climate models and uncertainty analyses.
 
 _Repository_:  https://github.com/JGCRI/hector
 
 #### `xanthos`
-
 `xanthos` is an open-source hydrologic model, written in Python, designed to quantify and analyze global water availability. `xanthos` simulates historical and future global water availability on a monthly time step at a spatial resolution of 0.5 geographic degrees. `xanthos` was designed to be extensible and used by scientists that study global water supply and work with GCAM. Xanthos uses a user-defined configuration file to specify model inputs, outputs and parameters. `xanthos` has been tested using actual global data sets and the model is able to provide historical observations and future estimates of renewable freshwater resources in the form of total runoff, average streamflow, potential evapotranspiration, actual evapotranspiration, accessible water, hydropower potential, and more.
 
 _Repository_:  https://github.com/JGCRI/xanthos
@@ -89,13 +85,11 @@ Future changes in Earth system state will impact agricultural yields and, throug
 _Repository_:  https://github.com/JGCRI/persephone
 
 #### `gcamfd`
-
 `gcamfd` calculates food demand using the Edmonds et. al model.  The Edmonds model divides food consumption into two categories, staples, which represent basic foodstuffs, and nonstaples, which represent higher-quality foods. Demand for staples increases at low income, but eventually peaks and begins to decline with higher income. Demand for nonstaples increases with income over all income ranges; however, total (staple + nonstaple) demand saturates asymptotically at high income.
 
 _Repository_:  https://github.com/JGCRI/food-demand
 
 #### `gcamland`
-
 `gcamland` replicates the land allocation decisions made in GCAM (https:://github.com/jgcri/gcam-core). The equations are documented in Wise et al. (2014). `gcamland` takes in prices and agricultural productivity growth and calculates land allocation. The model can operate in either hindcast (1975-2010) or future mode (2010-2100), running either single simulations or large ensembles.
 
 _Repository_:  https://github.com/JGCRI/gcamland
@@ -103,13 +97,11 @@ _Repository_:  https://github.com/JGCRI/gcamland
 ### Disaggregation
 
 #### `tethys`
-
 `tethys` is a spatiotemporal downscaling model for global water withdrawal from GCAM water demand outputs.  This model was created to link `xanthos` (a global hydrologic modeling framework) and GCAM.  The main objective of `tethys` is to downscale GCAM water demand outputs into monthly gridded (0.5-degree) data by domestic, electricity,  irrigation, livestock, manufacturing, and mining sectors.
 
 _Repository_:  https://github.com/JGCRI/tethys
 
 #### `demeter`
-
 `demeter` is a land-use and land-cover disaggregation and change detection model built to downscale GCAM land allocation outputs to a user-desired gridded resolution.  Projected land allocation from GCAM is traditionally transferred to Earth System Models (ESMs) in a variety of gridded formats and spatial resolutions as inputs for simulating biophysical and biogeochemical fluxes. Existing tools for performing this translation generally require a number of manual steps which introduces error and is inefficient. Demeter makes this process seamless and repeatable by providing gridded land-use and land-cover change (LULCC) products derived directly from GCAM in a variety of formats and resolutions commonly used by ESMs. Demeter is publicly available via GitHub and has an extensible output module allowing for future ESM needs to be easily accommodated.
 
 _Repository_:  https://github.com/IMMM-SFA/demeter

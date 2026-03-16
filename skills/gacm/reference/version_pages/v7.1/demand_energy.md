@@ -157,7 +157,7 @@ The hydrogen production stage of ammonia production emits a relatively pure stre
 
 More details can be found in [CMP #377](cmp/377-FoodProcessing.md).
 
-**Structure of the food processing sector, including technologies and fuels used for process heat generation, inputs to the overall food processing sector, and the link to food demand.  The left side of the diagram indicates the division of energy demands into process heating and electricity; the right side shows the sources of process heat represented in the model. Combined heat and power technologies, also known as cogeneration technologies, are abbreviated as cogen in this figure.**
+**Structure of the food processing sector, including technologies and fuels used for process heat generation, inputs to the overall food processing sector, and the link to food demand.  The left side of the diagram indicates the division of energy demands into process heating and electricity; the right side shows the sources of process heat represented in the model. Combined heat and power technologies, also known as cogeneration technologies, are abbreviated as cogen in the omitted figure.**
 
 ### Transportation
 
@@ -234,9 +234,7 @@ See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/obj
 The demand for residential per-capita floorspace, f, in future time period t is shown below:
 
 $$ f_{t,r} = (UnadjSat_{r} - a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_{t,r})))  + k_{r} $$
-
-`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by "habitable" land (all land except "rock and dessert" and "tundra" ). `GDPpc` is per capita GDP.
-`a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.
+`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by "habitable" land (all land except "rock and dessert" and "tundra" ). `GDPpc` is per capita GDP.`a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([LA144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zchunk_LA144.building_det_flsp.R#L400)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.
 Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the gcamdata system.
 Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year. It captures the "unobservable" effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
 

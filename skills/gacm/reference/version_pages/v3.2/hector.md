@@ -19,7 +19,7 @@ This section describes the new climate module - Hector - that is available for u
 
 Hector, an open-source, object-oriented, reduced-form global climate carbon-cycle model, is written in C++. This model runs essentially instantaneously while still representing the most critical global-scale earth system processes. Hector has a three-part main carbon cycle: a one-pool atmosphere, land, and ocean. The model's terrestrial carbon cycle includes primary production and respiration fluxes, accommodating arbitrary geographic divisions into, e.g., ecological biomes or political units. Hector actively solves the inorganic carbon system in the surface ocean, directly calculating air - sea fluxes of carbon and ocean pH. Hector reproduces the global historical trends of atmospheric [CO2], radiative forcing, and surface temperatures. The model simulates all four Representative Concentration Pathways (RCPs) with equivalent rates of change of key variables over time compared to current observations, MAGICC, and models from CMIP5 (Hartin et al., 2015). Hector's flexibility, open-source nature, and modular design facilitates a broad range of research in various areas.
 
-Figure 1: Representation of Hector's carbon cycle, land, atmosphere, and ocean. The atmosphere consists of one well-mixed box. The ocean consists of four boxes, with advection and water mass exchange simulating thermohaline circulation. At steady state, the high-latitude surface ocean takes up carbon from the atmosphere, while the low-latitude surface ocean off-gases carbon to the atmosphere. The land consists of a user-defined number of biomes or regions for vegetation, detritus and soil. At steady state the vegetation takes up carbon from the atmosphere while the detritus and soil release carbon back into the atmosphere. The earth pool is continually debited with each time step to act as a mass balance check on the carbon system.
+Omitted figure summary: Representation of Hector's carbon cycle, land, atmosphere, and ocean. The atmosphere consists of one well-mixed box. The ocean consists of four boxes, with advection and water mass exchange simulating thermohaline circulation. At steady state, the high-latitude surface ocean takes up carbon from the atmosphere, while the low-latitude surface ocean off-gases carbon to the atmosphere. The land consists of a user-defined number of biomes or regions for vegetation, detritus and soil. At steady state the vegetation takes up carbon from the atmosphere while the detritus and soil release carbon back into the atmosphere. The earth pool is continually debited with each time step to act as a mass balance check on the carbon system.
 
 ## GCAM-Hector interactions
 Currently the GCAM sectors interact with Hector via their emissions.  At every time step, emissions from GCAM are passed to Hector. Hector converts these emissions to concentrations when necessary, and calculates the associated radiative forcing, as well as the response of the climate system (e.g., temperature, carbon-fluxes, etc.)
@@ -94,7 +94,6 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
    workspace that GCAM will be looking for will be "hector".  If you
    wish to retain version numbering etc we recommend creating a
    symlink:
-
 ```
 	cd  cvs/objects/climate/source
 	ln - s /path/to/your/hector-v1.1.2 hector
@@ -117,7 +116,6 @@ Frst download Hctor from (Note that at the time of this writing only v1.1.2 has 
 #### Building GCAM-Hector on Visual Studio
 
 1.  Move or symlink the Hector workspace under the GCAM workspace under `cvs/objects/climate/source/hector` Note that the name of the workspace that GCAM will be looking for will be "Hector".  If you wish to retain version numbering etc we recommend creating a symlink:
-
 ```
 	cd  cvs/objects/climate/source
 	mklink /D  hector c:/path/to/your/hector-v1.1.2

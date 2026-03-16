@@ -33,7 +33,7 @@ One of the most important determinants of energy, agriculture, and land-use is t
 
 Since GCAM v7, GCAM incorporates a macroeconomic module that allows for fully endogenizing GDP responses. This model creates a two-way coupling between the scale of economic activity, measured as GDP, and the existing energy sector module. In the simple macro-economic model that we employ here, the two-way interaction is developed for each geo-political region in GCAM. The system is assumed to be open, with each of the regions interacting with others in the global economy via trade. The omitted figure summarized the new macroeconomic elements in relation to the existing GCAM elements.
 
-Figure 1: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange
+Omitted figure summary: Schematic of the major components of the GCAM macroeconomic model (earlier version in blue; the version in this CMP in blue and orange
 
 ### GCAM-macro (KLEM) Description
 
@@ -122,7 +122,7 @@ The two-way interactions between energy and the economy require the articulation
 
 A SAM organizes an economy's transactions and resource transfers between production activities, factors of production, and institutions into a consistent set of accounts. The process of drafting the GCAM SAM provides the occasion for explicitly confronting the simplifying assumptions that go into the model.
 
-A SAM is a series of double-entry bookkeeping accounts for which each row has a corresponding column and vice versa. An important feature of a SAM is that row sums and the corresponding column sums **MUST** be equal. This system of equalities enables post-calculation cross-checks on GCAM macro-economy solutions. If a row and column are not equal, the model has failed to solve correctly. The GCAM-macro SAM follows the approach developed by Hogan and Manne (Hogan and Manne 1978) and is given in Figure 2. In the SAM accounting framework that we have developed, light green cells report inter-industry transactions. While important for ensuring consistency in our representation of the macro economy, these transactions are not part of the GDP.
+A SAM is a series of double-entry bookkeeping accounts for which each row has a corresponding column and vice versa. An important feature of a SAM is that row sums and the corresponding column sums **MUST** be equal. This system of equalities enables post-calculation cross-checks on GCAM macro-economy solutions. If a row and column are not equal, the model has failed to solve correctly. The GCAM-macro SAM follows the approach developed by Hogan and Manne (Hogan and Manne 1978) and is given in the omitted figure. In the SAM accounting framework that we have developed, light green cells report inter-industry transactions. While important for ensuring consistency in our representation of the macro economy, these transactions are not part of the GDP.
 
 The GDP is the value of new, final goods and services produced in a given year. Entries in the gold cells represent purchases of new, final goods and services by three categories of economic agents. Our aggregate agents are households and government ($$HH+G$$), capital ($$Cap$$), and the rest of the world ($$ROW$$). Our materials sector ($$M$$) is the retailer to the economy, and thus, all sales of new, final goods and services are sold by the materials sector ($$M$$), with one important exception, the net export of energy products to the $$ROW$$. GDP is the sum of $$C+I+G+net exports$$ or the sum of all of the values in the gold cells.
 
@@ -132,7 +132,7 @@ Another useful cross-check that is enabled by the SAM is the savings-investment 
 
 Another example of a useful cross-check is the equality between net exports of new, final goods and services and offsetting international capital transfers. That is, both the "$$ROW$$" column and "$$ROW$$" row must sum to zero.
 
-Figure 2: GCAM-macro (KLEM) Social Accounting Matrix
+Omitted figure summary: GCAM-macro (KLEM) Social Accounting Matrix
 
 ### Historical Data for Calibration
 

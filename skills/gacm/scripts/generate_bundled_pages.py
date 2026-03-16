@@ -188,6 +188,28 @@ LINKED_IMAGE_LABEL_PLACEHOLDER_RE = re.compile(
 )
 FIGURE_ARTIFACT_RE = re.compile(r"(?i)(?:<br\s*/?>|&lt;br&gt;|&nbsp;|\{:\s*\.fig\s*\})")
 FIGURE_CAPTION_LINE_RE = re.compile(r"^\s*(?:#+\s*)?Figure\s+\d+(?:[:.]|\b)", re.IGNORECASE)
+FIGURE_LABEL_TOKEN = r"[A-Za-z]*\d[A-Za-z0-9.\-]*"
+FIGURE_CAPTION_ONLY_RE = re.compile(
+    rf"^\s*(?:#+\s*)?Figure\s+(?P<number>{FIGURE_LABEL_TOKEN}):\s*(?P<caption>\S.*)?$",
+    re.IGNORECASE,
+)
+FIGURE_SENTENCE_VERB_RE = re.compile(
+    rf"\bFigure\s+{FIGURE_LABEL_TOKEN}\s+(?P<verb>illustrates|shows|provides|summarizes|depicts|compares|contrasts|maps|presents|describes)\b",
+    re.IGNORECASE,
+)
+FROM_FIGURE_RE = re.compile(rf"\bFrom Figure\s+{FIGURE_LABEL_TOKEN}\b")
+GIVEN_IN_FIGURE_RE = re.compile(rf"\bgiven in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE)
+WHAT_IS_IN_FIGURE_RE = re.compile(rf"\bwhat is in Figure\s+{FIGURE_LABEL_TOKEN}\b", re.IGNORECASE)
+IN_FIGURE_AND_TABLE_RE = re.compile(
+    rf"\bin Figure\s+{FIGURE_LABEL_TOKEN}\s+and\s+(?P<table>Table\s+\d+)\b",
+    re.IGNORECASE,
+)
+THIS_FIGURE_RE = re.compile(r"\bthis figure\b", re.IGNORECASE)
+OMITTED_FIGURE_NUMBER_RE = re.compile(
+    rf"\b(?P<prefix>(?:[Tt]he|[Aa]n?)\s+omitted)\s+Figure\s+{FIGURE_LABEL_TOKEN}\b"
+)
+FIGURE_SOURCE_RE = re.compile(r"Figure source:", re.IGNORECASE)
+FIG_PANEL_REF_RE = re.compile(r"\bFig\.\s*\d+(?P<panel>[A-Za-z])\b")
 WINDOWS_JAVA_INCLUDE_RE = re.compile(
     r"(?i)\b[A-Za-z]:[\\/](?:Program Files|Program Files \(x86\))[\\/]Java[\\/][^\\/\s`]+[\\/]include\b"
 )
@@ -944,6 +966,66 @@ def normalize_omitted_image_lines(text: str) -> str:
         ):
             lines.append(f"Omitted figure summary: {format_omitted_image_labels(labels)}.")
     return "\n".join(lines)
+
+
+def is_figure_caption_continuation(line: str) -> bool:
+    stripped = line.strip()
+    if not stripped:
+        return False
+    if stripped.startswith(("```", "#", "- ", "* ", "| ")):
+        return False
+    if re.match(r"^\d+\.\s", stripped):
+        return False
+    if FIGURE_CAPTION_ONLY_RE.match(stripped):
+        return False
+    return True
+
+
+def normalize_figure_text_residue(text: str) -> str:
+    lines = text.splitlines()
+    normalized_lines: list[str] = []
+    index = 0
+    while index < len(lines):
+        match = FIGURE_CAPTION_ONLY_RE.match(lines[index])
+        if not match:
+            normalized_lines.append(lines[index])
+            index += 1
+            continue
+
+        caption_parts: list[str] = []
+        if match.group("caption"):
+            caption_parts.append(match.group("caption").strip())
+        index += 1
+        while index < len(lines) and is_figure_caption_continuation(lines[index]):
+            caption_parts.append(lines[index].strip())
+            index += 1
+
+        caption = re.sub(r"\s+", " ", " ".join(caption_parts)).strip()
+        if caption:
+            normalized_lines.append(f"Omitted figure summary: {caption}")
+        else:
+            normalized_lines.append("Omitted figure summary.")
+
+    text = "\n".join(normalized_lines)
+    text = OMITTED_FIGURE_NUMBER_RE.sub(lambda match: f"{match.group('prefix')} figure", text)
+    text = FIGURE_SENTENCE_VERB_RE.sub(
+        lambda match: f"The omitted figure {match.group('verb').lower()}",
+        text,
+    )
+    text = FROM_FIGURE_RE.sub("From the omitted figure", text)
+    text = GIVEN_IN_FIGURE_RE.sub("given in the omitted figure", text)
+    text = WHAT_IS_IN_FIGURE_RE.sub("what is shown in the omitted figure", text)
+    text = IN_FIGURE_AND_TABLE_RE.sub(
+        lambda match: f"in the omitted figure and {match.group('table')}",
+        text,
+    )
+    text = THIS_FIGURE_RE.sub("the omitted figure", text)
+    text = FIGURE_SOURCE_RE.sub("Source:", text)
+    text = FIG_PANEL_REF_RE.sub(
+        lambda match: f"panel {match.group('panel').lower()}",
+        text,
+    )
+    return text
 
 
 def sanitize_absolute_paths(text: str) -> str:
@@ -2123,6 +2205,10 @@ def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = normalize_omitted_image_lines(text)
     text = sanitize_absolute_paths(text)
     text = apply_agent_text_adaptations(text, rel_source)
+    text = apply_outside_code_fences(
+        text,
+        lambda chunk: apply_outside_inline_code(chunk, normalize_figure_text_residue),
+    )
     text = re.sub(r"\n{3,}", "\n\n", text)
     return text.strip() + "\n"
 

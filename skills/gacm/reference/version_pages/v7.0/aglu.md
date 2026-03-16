@@ -92,9 +92,9 @@ The other extreme is that of no substitution. This would be accomplished with ne
 
 Our approach is to use a nesting strategy that allows the logit exponents to reflect differences in substitutability across land categories. The omitted figure summarized the land nesting diagram within a subregion. At the top is all land, which is divided into two main types of nodes: agro-forestry land and the remaining categories of land that are not suitable for agriculture. This second category could be divided further if useful. The next node layer contains two further nodes: all agro-forestry, non-pasture land and all pasture land. The pasture land node contains two competing uses (land leaves in the code): managed pasture (that which feeds marketed livestock) and unmanaged pasture.
 
-Figure 1: AgLU Land Nest
+Omitted figure summary: AgLU Land Nest
 
-The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that several crops are included explicitly in the CropLand node, and the grouping of "AllOtherCrops" is simply a convenience for this figure.  Additionally, crops are further divided beyond what is in Figure 1, nesting irrigated/rainfed and hi/lo fertilizer.
+The agro-forestry (non-pasture) node contains three competing nodes: shrub and grass lands, forest lands, and croplands. Shrublands and grasslands are separated from the rest as they are both classified as unmanaged land categories and we want to control their substitutability between each other separately. Finally, the forestland node competes with the total cropland node. Within forestland, there are managed and unmanaged forest leaves,  and we have added a woody biomass option there in some regions and scenarios. Under cropland are all food and other agriculture products (e.g., corn, wheat, sugars, etc.), including biomass crops, along with an unmanaged land category called other arable land. Note that several crops are included explicitly in the CropLand node, and the grouping of "AllOtherCrops" is simply a convenience for the omitted figure.  Additionally, crops are further divided beyond what is shown in the omitted figure, nesting irrigated/rainfed and hi/lo fertilizer.
 
 With this specification, we can make substitution across categories
 more or less difficult by choosing lower or higher logit parameters.
@@ -178,7 +178,7 @@ Version 5.2 and greater of GCAM include the capability to represent regional agr
 
 The omitted figure summarized the structural implementations of a "global-market" versus a "regional-market" representation using a representative crop-trade example.
 
-Figure 2: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
+Omitted figure summary: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
 
 In the global-market representation, each region's production is output to a global market, which in turn supplies each region's demand sectors (i.e., food, feed, biofuel production, and other uses). As there is only one global market per crop commodity, all regions see the same price. Similarly, the impacts of a supply (demand) shock within any region do not directly cause a shock to the demand (supply) of that region; these sorts of within-region impacts are buffered by the global market.
 

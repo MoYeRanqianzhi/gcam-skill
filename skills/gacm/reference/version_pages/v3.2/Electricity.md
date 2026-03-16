@@ -88,7 +88,7 @@ GCAM frequently runs three scenarios for nuclear power. In the first, the nuclea
 
 Assumptions on the availability of natural uranium vary widely. In the GCAM reference scenario, we use a supply curve for natural uranium based on a generalized simple crustal model of the relationship between uranium abundance and concentration fitted to the resource estimates and costs from the IAEA Redbook. This uranium supply curve, displayed in Figure 1, provides the global availability of uranium in million metric tons (MTU) as a function of price ($/kgU). We refer to this supply curve as the PPM-Cost Model (PPM). The availability of uranium at a given price from the PPM supply curve falls within the range of estimates derived by the Gen IV Fuel Cycle Crosscut Group (FCCG) and Deffeyes and MacGregor. It is worth noting that the natural uranium supply curve is assumed to be continuous and that significant amounts of natural uranium are available beyond those estimates in the Redbook data in lesser concentrations but at higher costs. Any estimates of the future cost of undiscovered mineral resources, whether conventional or not, are speculative and the judicious selection of a particular model depends on how it will be used. Estimates of cost and of the practicality of recovery vary widely, however. In our study, we assume that uranium resources are available if prices rise sufficiently high.
 
-###### Figure 1: Uranium Supply Curve
+Omitted figure summary: Uranium Supply Curve
 
 Hydroelectricity
 

@@ -25,7 +25,7 @@ For the agricultural, livestock, and forestry commodities in GCAM (except fodder
 
 The omitted figure summarized the structural implementations of a "global-market" versus a "regional-market" representation using a representative crop-trade example.
 
-Figure 1: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
+Omitted figure summary: Global (upper) and regional (lower) agricultural markets structures, for a representative crop and three representative regions.
 
 In the global-market representation, each region's production is output to a global market, which in turn supplies each region's demand sectors (i.e., food, feed, biofuel production, and other uses). As there is only one global market per crop commodity, all regions see the same price. Similarly, the impacts of a supply (demand) shock within any region do not directly cause a shock to the demand (supply) of that region; these sorts of within-region impacts are buffered by the global market.
 
@@ -33,7 +33,7 @@ In the regional-market representation, one additional sector per crop is added t
 
 An omitted comparison figure also contrasted the two market structures using a 2010 global wheat market-equilibrium example with demand and supply flows.
 
-Figure 2: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in Fig. 2a and 10 MT in Fig. 2b.
+Omitted figure summary: Global wheat market equilibrium in 2010: integrated world markets vs. segmented regional markets. In fully integrated world markets (a), arrows represent regional production and consumption volume flows and markets clear at the world level. In segmented regional markets (b), arrows in a single region represent domestic wheat supply, arrows between regions and the world represent trade volume flows, and markets clear at the regional level. Regional supplies are distinguished by color. The flows shown are in million tons (MT). Note that the scales are different in each diagram. Each tick mark represents 15 MT of wheat in panel a and 10 MT in panel b.
 
 For each traded commodity with the logit-based Armington approach, this structure introduces two new nests with [calibrated logit choice](choice.md):
 

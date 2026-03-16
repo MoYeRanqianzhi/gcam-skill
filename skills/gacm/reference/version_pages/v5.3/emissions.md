@@ -51,7 +51,7 @@ Where E indicates carbon emissions, S indicates carbon stocks, A indicates land 
 
 When land is converted to forests, the vegetation carbon content of that new forest land exponentially approaches an exogenously-specified, region-dependent value in order to represent the finite time required for forests to grow. The omitted figure illustrated the implied regrowth timescales.
 
-Figure 1: Timescales for forest regrowth in GCAM.
+Omitted figure summary: Timescales for forest regrowth in GCAM.
 
 Changes in the carbon content of soils due to land-use change also exponentially approach an equilibrium value using a region-dependent timescale. This represents the timescales for carbon pool changes in soils.
 

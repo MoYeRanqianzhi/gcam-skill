@@ -77,8 +77,7 @@ most recent release version of GCAM.  This will usually be the most
 recent commit on the `master` branch.  We have a lot of branches open
 on the GCAM repository at any given time, so it's important to keep
 the branches organized.  We use a hierarchical naming scheme with
-names in the following form:
-```
+names in the following form:```
 <user>/<branch-type>/<name>
 ```
 The first part is a user identifier, so everyone knows whom to talk to
@@ -86,8 +85,7 @@ if they have questions about the branch.  For branches on Bitbucket,
 use your initials for this part.  For branches on GitHub, use your
 GitHub username.  The branch type is a descriptor indicating what the
 purpose of the branch is.  The most common types are `feature`, for
-new features, and `bugfix` for fixing bugs.  Other types include
-`paper` (changes to support a paper you're writing), `project`
+new features, and `bugfix` for fixing bugs.  Other types include`paper` (changes to support a paper you're writing), `project`
 (changes supporting a long-running project), or `experimental`
 (speculative development that may or may not eventually be adopted).
 The final component is a descriptive name that gives an idea of

@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -100,21 +92,7 @@ This paper looked at demand pathways across sectors under different land scarcit
 
 ## IAMC Reference Card
 
-Agriculture and forestry demands
-- [X] Agriculture food
-- [X] Agriculture food crops
-- [X] Agriculture food livestock
-- [X] Agriculture feed
-- [X] Agriculture feed crops
-- [X] Agriculture feed livestock
-- [X] Agriculture non-food
-- [X] Agriculture non-food crops
-- [X] Agriculture non-food livestock
-- [X] Agriculture bioenergy
-- [X] Agriculture residues
-- [X] Forest industrial roundwood
-- [X] Forest fuelwood
-- [X] Forest residues
+Agriculture and forestry demands - [X] Agriculture food - [X] Agriculture food crops - [X] Agriculture food livestock - [X] Agriculture feed - [X] Agriculture feed crops - [X] Agriculture feed livestock - [X] Agriculture non-food - [X] Agriculture non-food crops - [X] Agriculture non-food livestock - [X] Agriculture bioenergy - [X] Agriculture residues - [X] Forest industrial roundwood - [X] Forest fuelwood - [X] Forest residues
 
 ## References
 

@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -69,25 +61,25 @@ Residential floorspace, building service and energy demand, and direct GHG and a
 * Floorspace increases with income until a maximum (saturation) point is achieved. Conceptually, this level should be similar across regions over the world, but it is not possible to test this assumption with observed data.
 * Population density is also an important factor for estimating residential floorspace demand:
 	* Per capita floorspace in rural areas (lower pop density) is higher than in urban areas (higher pop density)
-	* The cross-regional data (historical observations) shows that, comparing two wealthy economies with “high” per capita income, the region with the higher population density (e.g., Japan) demands less per capita floorspace.
-* Comparing some similar countries, with high per capita income and low population density (e.g., USA and Canada or Australia), there are substantial differences in observed floorspace demand. Therefore, the function includes some “unobservable” effects over time to reflect these observed differences.
+	* The cross-regional data (historical observations) shows that, comparing two wealthy economies with "high" per capita income, the region with the higher population density (e.g., Japan) demands less per capita floorspace.
+* Comparing some similar countries, with high per capita income and low population density (e.g., USA and Canada or Australia), there are substantial differences in observed floorspace demand. Therefore, the function includes some "unobservable" effects over time to reflect these observed differences.
 
 After testing alternative functional forms, the Gompertz-type function resulted to be the best alternative to fit the cross-regional observed data for all regions with different incomes and population densities. Additional details and parameters on the function are below. Note that total region-level residential floorspace is calculated by adding up the floorspace across different socioeconomic groups. Floorspace for each group is the product between per capita floorspace and subregional population.
 
-**Commercial floorspace** depends on population, income, and exogenously specified satiation levels. It is estimated using the “satiation demand” function, described in [Eom et al. 2013](https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
+**Commercial floorspace** depends on population, income, and exogenously specified satiation levels. It is estimated using the "satiation demand" function, described in [Eom et al. 2013](https://www.sciencedirect.com/science/article/pii/S0360544212006214). Therefore, commercial floorspace will increase as per capita GDP increases until a satiation point is achieved.
 
 Finally, note that GCAM also includes the option to specify [floorspace exogenously](details_energy.md#optional-exogenous-floorspace).
 
 #### Building energy demand
 
 The future evolution of building energy use within each region, socioeconomic group, type of building, and service is shaped by changes in (1) floorspace, (2) the level of building service per unit of floorspace, and (3) fuel and technology choices by consumers, which are driven by fuel and non-fuel cost, shareweights and logit parameters ([Clarke et al., 2018](https://www.sciencedirect.com/science/article/pii/S0140988318300112), [Sampedro et al., 2022](https://iopscience.iop.org/article/10.1088/1748-9326/ac43df)).
-Focusing on service demand, the model disaggregates three energy services for each building type: heating, cooling, and “other” services. Heating and cooling are considered thermal services, while “other” is categorized as generic. GCAM has a flexible structure, so it is possible to implement a more detailed service disaggregation if data is available. For example, given the large amount of data available, GCAM-USA models 14 residential services, namely cooling, heating, cooking, lighting, water heating, clothes dryer, clothes washer, computers, dishwashers, freezers, furnace fans, refrigerators, televisions, and other energy services.
+Focusing on service demand, the model disaggregates three energy services for each building type: heating, cooling, and "other" services. Heating and cooling are considered thermal services, while "other" is categorized as generic. GCAM has a flexible structure, so it is possible to implement a more detailed service disaggregation if data is available. For example, given the large amount of data available, GCAM-USA models 14 residential services, namely cooling, heating, cooking, lighting, water heating, clothes dryer, clothes washer, computers, dishwashers, freezers, furnace fans, refrigerators, televisions, and other energy services.
 
-In addition, the model distinguishes between “modern” versus “traditional” services. Traditional services include services provided by coal and traditional biomass. Modern services are the main energy source in developed economies, and it is set that their demand will increase as income raises, until a satiation level is achieved. Therefore, the demand for modern energy services depends on historical trends, satiation levels, service affordability (income/ServicePrice), and the thermal load, which includes a range of parameters:
+In addition, the model distinguishes between "modern" versus "traditional" services. Traditional services include services provided by coal and traditional biomass. Modern services are the main energy source in developed economies, and it is set that their demand will increase as income raises, until a satiation level is achieved. Therefore, the demand for modern energy services depends on historical trends, satiation levels, service affordability (income/ServicePrice), and the thermal load, which includes a range of parameters:
 * Heating/cooling degree days (HDD or CDD) represent how much (in degrees), and for how long (in days) the temperature was below (above) a determined level. The model includes the option to read in HDDs and CDDs from different Earth-System models, and with and without incorporating the future effects of climate change.
-* Building shell conductivity: this parameter combines indices for cooling and heating conductivity in a single value, so it indicates the “overall” building efficiency. The parameter can be set per region and sector (residential/commercial), and by default, it assumes a gradual efficiency improvement up to 2040 based on projections from the Annual Energy Outlook (U.S. EIA), with no GDP-based decile specific improvements for the longer term.
+* Building shell conductivity: this parameter combines indices for cooling and heating conductivity in a single value, so it indicates the "overall" building efficiency. The parameter can be set per region and sector (residential/commercial), and by default, it assumes a gradual efficiency improvement up to 2040 based on projections from the Annual Energy Outlook (U.S. EIA), with no GDP-based decile specific improvements for the longer term.
 * R is the ratio of floorspace to building area. By default, it is assumed to be 5.5 for all regions without varying over time. It could also be set per region and sector.
-* IG represents the internal gains per unit of floorspace associated with the heat released by “other” energy services (f.e. appliances) dividing the final energy of other services by the efficiency of each technology. λ is the internal-gains-scalar that adjusts the internal gains for the different regions by multiplying the regional internal gains with the ratio of degree days to USA degree days.
+* IG represents the internal gains per unit of floorspace associated with the heat released by "other" energy services (f.e. appliances) dividing the final energy of other services by the efficiency of each technology. λ is the internal-gains-scalar that adjusts the internal gains for the different regions by multiplying the regional internal gains with the ratio of degree days to USA degree days.
 
 On the other hand, future demand of traditional services does not follow the same path as modern sources. Historical data clearly shows that the consumption of these traditional fuels decreases as income rises. Therefore, demand for traditional services is driven by a functional form that represents the inverse of service affordability, measured as the income divided by the service price. Using affordability instead of income allows to capture some price dynamics that may have an impact on specific scenarios. For example, in a low-carbon scenario with a higher price of coal, the phase-out of residential coal would be even faster, as would be expected in real world.
 
@@ -242,12 +234,12 @@ See [relative cost logit](https://github.com/JGCRI/gcam-core/blob/master/cvs/obj
 
 The demand for residential per-capita floorspace, f, in future time period t is shown below:
 
-$$ f_{t,r} = (UnadjSat_{r} – a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_{t,r})))  + k_{r} $$
+$$ f_{t,r} = (UnadjSat_{r} - a * log(PD_{t,r})) * exp(-b * exp(-c * log(GDPpc_{t,r})))  + k_{r} $$
 
-`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by “habitable” land (all land except “rock and dessert” and “tundra” ). `GDPpc` is per capita GDP.
+`UnadjSat` is the maximum per capita floorspace value a consumer demands at his maximum income level. Below this satiation point, the marginal utility of floorspace is positive. Above that point, the marginal utility is negative. As shown in the equation, this value is adjusted based on the population density (`PD`), which is calculated as the population divided by "habitable" land (all land except "rock and dessert" and "tundra" ). `GDPpc` is per capita GDP.
 `a`, `b`, and `c` are constant parameters that have been estimated in the econometric analysis developed in the model data system ([zenergy_L144.building_det_flsp.R](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/R/zenergy_L144.building_det_flsp.R)). They represent the effect of the population density and the per capita income, respectively, in the estimation of per capita floorspace.
 Note that for USA, parameters have been estimated outside the model (using subnational data) and are read in by the gcamdata system.
-Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year. It captures the “unobservable” effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
+Finally, parameter `k` is the regional bias adder, which represents the difference between the observed and estimated per capita floorspace in the final calibration year. It captures the "unobservable" effects that cannot be captured with the used variables, and it is kept constant over the whole time horizon.
 
 #### Commercial
 
@@ -255,7 +247,7 @@ The demand for per-capita commercial floorspace, *f*, in future time period *t* 
 
 $$ f_{t,r}=s_{r} * [1-exp(-\frac{ln(2)}{\mu_{r}}I_{t,r}] + a_{r} $$
 
-So per capita floorspace demand (`f`) in period `t`, region `r`, would depend on an exogenously specified satiation level (`s`), the “satiation impedance” calibration parameter (`μ`), the income per capita and a bias-correction parameter (`a`).
+So per capita floorspace demand (`f`) in period `t`, region `r`, would depend on an exogenously specified satiation level (`s`), the "satiation impedance" calibration parameter (`μ`), the income per capita and a bias-correction parameter (`a`).
 
 ### Building service demand
 
@@ -273,7 +265,7 @@ $$ h_{t,r,i}=k_{r} * (HDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{h,r}*IG_{t,r,i})
 
 $$ c_{t,r,i}=k_{r} * (CDD_{t,r}*\eta_{t,r,i}*R_{t,r,i}-\lambda_{c,r}*IG_{t,r,i}) * [1-exp(-\frac{ln(2)}{\mu_{r}}\frac{I_{t,r,i}}{P_{t,r}})] $$
 
-where HDD and CDD refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services. The function shows that the two calibration parameters (k and μ) are estimated at region level (they don’t have the i sub-index). Note that the prices used in the estimation of the calibration parameters (P) are equal for all consumers due to lack of subnational data.
+where HDD and CDD refer to heating and cooling degree days, respectively, η is the exogenous average building shell conductance, R is the exogenous average floor-to-surface ratio of buildings, IG is the internal gain heat from other building services, and λ is an exogenous internal gain scaler. In this way, the demands of heating and cooling services per unit of floorspace may vary depending on changes in climate, building shell characteristics, and the amount of internal gain heat coming from other modeled services. The function shows that the two calibration parameters (k and μ) are estimated at region level (they don't have the i sub-index). Note that the prices used in the estimation of the calibration parameters (P) are equal for all consumers due to lack of subnational data.
 
 #### Traditional Services
 
@@ -321,7 +313,7 @@ See `calcCost` in [tran_technology.cpp](https://github.com/JGCRI/gcam-core/blob/
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
-GCAM has the capability to model three technologies which consume thermal and/or electrical energy for the sole purpose of removing carbon dioxide from the atmosphere, broadly referred to as direct air capture with carbon storage (DACCS). The first is an aqueous hydroxide solvent process requiring water, high-temperature thermal energy from natural gas for solvent regeneration, and electricity to run ancillary equipment.  The second archetype relies on the same aqueous hydroxide solvent process but uses electricity to generate the high temperatures (>900 ˚C) required for regeneration. The third uses solid adsorbents, with the lower-temperature heat required for sorbent regeneration generated by an electric heat pump. These technologies remove CO2 from the atmosphere and send it to geologic storage, along with any captured combustion emissions from process heat.  The techno-economic assessment for the input parameters of DACCS was based on the work of [Keith et. al. 2018](https://www.sciencedirect.com/science/article/pii/S2542435118302253), [Mazzotti et. al. 2013](https://link.springer.com/article/10.1007/s10584-012-0679-y), [Beuttler et. al. 2019](https://www.frontiersin.org/articles/10.3389/fclim.2019.00010/full), and [Fasihi et. al. 2019](https://www.sciencedirect.com/science/article/pii/S0959652619307772).
+GCAM has the capability to model three technologies which consume thermal and/or electrical energy for the sole purpose of removing carbon dioxide from the atmosphere, broadly referred to as direct air capture with carbon storage (DACCS). The first is an aqueous hydroxide solvent process requiring water, high-temperature thermal energy from natural gas for solvent regeneration, and electricity to run ancillary equipment.  The second archetype relies on the same aqueous hydroxide solvent process but uses electricity to generate the high temperatures (>900 °C) required for regeneration. The third uses solid adsorbents, with the lower-temperature heat required for sorbent regeneration generated by an electric heat pump. These technologies remove CO2 from the atmosphere and send it to geologic storage, along with any captured combustion emissions from process heat.  The techno-economic assessment for the input parameters of DACCS was based on the work of [Keith et. al. 2018](https://www.sciencedirect.com/science/article/pii/S2542435118302253), [Mazzotti et. al. 2013](https://link.springer.com/article/10.1007/s10584-012-0679-y), [Beuttler et. al. 2019](https://www.frontiersin.org/articles/10.3389/fclim.2019.00010/full), and [Fasihi et. al. 2019](https://www.sciencedirect.com/science/article/pii/S0959652619307772).
 
 [Fuhrman et. al. 2020 (a)](https://www.nature.com/articles/s41558-020-0876-z), and [Fuhrman et al 2020 (b)](https://academic.oup.com/oocc/article/1/1/kgab004/6284217) used GCAM to study the global and regional potential of DACCS processes using natural gas for high temperature heat as well as the implications of their deployment for the food-energy-water systems. The Methods and Supplementary Information of these studies document the general approach to modeling DACCS in GCAM, which is summarized in more detail below.
 
@@ -386,10 +378,10 @@ $$ElectricEnergyIntensity$$ is in $$kWh/m^3$$.
 
 ### Direct Air Capture for Carbon Dioxide Removal
 
-We use GCAM’s (unmodified) logit choice model for economic choice between DACCS technologies. This includes the “choice” to not deploy DACCS and instead use other mitigation or negative emissions technologies (i.e., the "no-DAC" technology). The share $$s_i$$ of any DACCS technology with price $$p_i$$ is computed as follows:
+We use GCAM's (unmodified) logit choice model for economic choice between DACCS technologies. This includes the "choice" to not deploy DACCS and instead use other mitigation or negative emissions technologies (i.e., the "no-DAC" technology). The share $$s_i$$ of any DACCS technology with price $$p_i$$ is computed as follows:
 
 $$
-s_i=\frac{α_i * exp⁡(β*p_i)}{\sum_{j=1}^{N}α_j * exp(β*p_j))}
+s_i=\frac{α_i * exp(β*p_i)}{\sum_{j=1}^{N}α_j * exp(β*p_j))}
 $$
 
 Where:
@@ -398,9 +390,9 @@ $$α_i$$ = the shareweight of the technology.
 
 $$β$$ = the logit coefficient, which determines how large a cost difference is required to produce a given difference in market share.
 
-Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM’s treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in the first model future period, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price).
+Shareweights are used to represent societal preferences, infrastructure buildup, and barriers or accelerants to market entry. Consistent with GCAM's treatment of other new and emerging technologies, we set shareweights for DACCS technologies to zero in the first model future period, and linearly increase to 1 by 2050 for most scenarios. This means that by 2100, DACCS technologies are competing solely based on their cost minus the subsidy for removing carbon dioxide from the atmosphere (again, equal to the carbon emissions price).
 
-In each region, the base year service demand for the CO2 removal sector (currently, the sum of “no DAC” + “DAC” technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO2 per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO2 removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
+In each region, the base year service demand for the CO2 removal sector (currently, the sum of "no DAC" + "DAC" technologies for which the share of each technology is computed) is set for the USA region at an arbitrarily-high value, with the deployment share of DAC technologies being determined by the sum of their energy, water, and non-energy costs, minus any carbon price subsidy.  The choice of each region's base year service demand ultimately sets the maximum limit on the amount of DACCS that may be deployed in that region in the model. The 2000 MtC base year service demand for the USA region was selected to allow a maximum of over 7 Gt-CO2 per year of DACCS deployment in this region. However, the modeled DACCS deployment would likely never reach this very high ceiling due to indirect competition with emissions abatement and other CO2 removal technologies (e.g., renewables, BECCS, afforestation). Base year service demand for other regions is scaled linearly by each region's cumulative onshore carbon storage capacity relative to the USA region.
 
 ## Policy options
 
@@ -424,53 +416,19 @@ Alternative income distribution pathways will impact residential energy demand, 
 
 ## IAMC Reference Card
 
-Passenger transportation
-- [X] Passenger trains
-- [X] Buses
-- [X] Light Duty Vehicles (LDVs)
-- [X] Electric LDVs
-- [X] Hydrogen LDVs
-- [X] Hybrid LDVs
-- [X] Gasoline LDVs
-- [X] Diesel LDVs
-- [X] Passenger aircrafts
-- [X] CNG Buses
-- [X] CNG Three-wheelers
-- [X] Diesel Three-wheelers
-- [X] Electric Buses
-- [X] Electric Three-wheelers
-- [X] LPG/CNG LDVs
+Passenger transportation - [X] Passenger trains - [X] Buses - [X] Light Duty Vehicles (LDVs) - [X] Electric LDVs - [X] Hydrogen LDVs - [X] Hybrid LDVs - [X] Gasoline LDVs - [X] Diesel LDVs - [X] Passenger aircrafts - [X] CNG Buses - [X] CNG Three-wheelers - [X] Diesel Three-wheelers - [X] Electric Buses - [X] Electric Three-wheelers - [X] LPG/CNG LDVs
 
-Freight transportation
-- [X] Freight trains
-- [X] Heavy duty vehicles
-- [X] Freight aircrafts
-- [X] Freight ships
+Freight transportation - [X] Freight trains - [X] Heavy duty vehicles - [X] Freight aircrafts - [X] Freight ships
 
-Industry
-- [X] Steel production
-- [X] Aluminium production
-- [X] Cement production
-- [X] Petrochemical production
-- [ ] Paper production
-- [ ] Plastics production
-- [ ] Pulp production
+Industry - [X] Steel production - [X] Aluminium production - [X] Cement production - [X] Petrochemical production - [ ] Paper production - [ ] Plastics production - [ ] Pulp production
 
-Residential and commercial
-- [X] Space heating
-- [X] Space cooling
-- [ ] Cooking
-- [ ] Refrigeration
-- [ ] Washing
-- [ ] Lighting
-- [ ] Other electrical uses
-- [ ] Water heating
+Residential and commercial - [X] Space heating - [X] Space cooling - [ ] Cooking - [ ] Refrigeration - [ ] Washing - [ ] Lighting - [ ] Other electrical uses - [ ] Water heating
 
 ## References
 
 <a name="bts2015"></a>[BTS 2015] Bureau of Transportation Statistics, 2015, *Table 3-21: Average Freight Revenue Per Ton-mile (Current cents)*, U.S. Department of Transportation, Office of the Assistant Secretary for Research and Technology. [Link](http://www.rita.dot.gov/bts/sites/rita.dot.gov.bts/files/publications/national_transportation_statistics/html/table_03_21.html)
 
-<a name="beuttler2019"></a>[Beuttler et al. 2019] Beuttler, C., Charles, L., and Wurzbacher, J. “The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions” *Frontiers in Climate* 1, (2019) [Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
+<a name="beuttler2019"></a>[Beuttler et al. 2019] Beuttler, C., Charles, L., and Wurzbacher, J. "The Role of Direct Air Capture in Mitigation of Anthropogenic Greenhouse Gas Emissions" *Frontiers in Climate* 1, (2019) [Link](https://www.frontiersin.org/article/10.3389/fclim.2019.00010/full)
 
 <a name="CDIAC2017"></a>[CDIAC 2017] Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
@@ -478,23 +436,23 @@ Residential and commercial
 
 <a name="doe2015"></a>[DOE 2015] U.S. Department of Energy. 2015. *DOE H2A Production Analysis*, DOE Hydrogen and Fuel Cells Program. [Link](https://www.hydrogen.energy.gov/h2a_production.html)
 
-<a name="fasihi2019"></a>[Fasihi 2019] Fasihi, M., Efimova, O., and Breyer, C. “Techno-Economic Assessment of CO 2 Direct Air Capture Plants” *Journal of Cleaner Production* 224, (2019): 957–980. [Link](doi:10.1016/j.jclepro.2019.03.086)
+<a name="fasihi2019"></a>[Fasihi 2019] Fasihi, M., Efimova, O., and Breyer, C. "Techno-Economic Assessment of CO 2 Direct Air Capture Plants" *Journal of Cleaner Production* 224, (2019): 957-980. [Link](doi:10.1016/j.jclepro.2019.03.086)
 
-<a name="fuhrman2020a"></a>[Fuhrman et al. 2020a] Fuhrman J, McJeon H, Patel P, Doney S C, Shobe W M and Clarens A F 2020 Food–energy–water implications of negative emissions technologies in a +1.5 °C future Nat. Clim. Chang. 10 920–7 [Link](http://dx.doi.org/10.1038/s41558-020-0876-z)
+<a name="fuhrman2020a"></a>[Fuhrman et al. 2020a] Fuhrman J, McJeon H, Patel P, Doney S C, Shobe W M and Clarens A F 2020 Food-energy-water implications of negative emissions technologies in a +1.5 °C future Nat. Clim. Chang. 10 920-7 [Link](http://dx.doi.org/10.1038/s41558-020-0876-z)
 
-<a name="fuhrman2020b"></a>[Fuhrman et al. 2020b] Fuhrman J Clarens A F, McJeon H, Patel P, Ou Y, Doney S C, Shobe W M and Pradhan S 2021. The role of negative emissions in meeting China’s 2060 carbon neutrality goal Oxford Open Clim. Chang. 1 1–15 [Link](https://academic.oup.com/oocc/article/1/1/kgab004/6284217)
+<a name="fuhrman2020b"></a>[Fuhrman et al. 2020b] Fuhrman J Clarens A F, McJeon H, Patel P, Ou Y, Doney S C, Shobe W M and Pradhan S 2021. The role of negative emissions in meeting China's 2060 carbon neutrality goal Oxford Open Clim. Chang. 1 1-15 [Link](https://academic.oup.com/oocc/article/1/1/kgab004/6284217)
 
 <a name="iea2007"></a>[IEA 2007] International Energy Agency, 2007, *Tracking Industrial Energy Efficiency and CO2 Emissions*, International Energy Agency, Paris, France. [Link](https://www.iea.org/publications/freepublications/publication/tracking_emissions.pdf)
 
 <a name="iea2021"></a>[IEA 2021] International Energy Agency, 2007, *World Energy Balances Database Documentation*, International Energy Agency, Paris, France. [Link](http://wds.iea.org/wds/pdf/worldbal_documentation.pdf)
 
-<a name="keith2018"></a>[Keith et al 2018] Keith, D. W., Holmes, G., St Angelo, D., and Heidel, K. “A Process for Capturing CO 2 from the Atmosphere” (2018) [Link](https://doi.org/10.1016/j.joule.2018.05.006)
+<a name="keith2018"></a>[Keith et al 2018] Keith, D. W., Holmes, G., St Angelo, D., and Heidel, K. "A Process for Capturing CO 2 from the Atmosphere" (2018) [Link](https://doi.org/10.1016/j.joule.2018.05.006)
 
 <a name="kim2006"></a>[Kim et al. 2006] Kim, S., Edmonds, J., Lurz, J., Smith, S.J., and Wise, M. 2006. The objECTS Framework for integrated Assessment: Hybrid Modeling of Transportation. *The Energy Journal* 27, Special Issue: Hybrid Modeling of Energy-Environment Policies: Reconciling Bottom-up and Top-down, pp. 63-91. [Link](http://www.iaee.org/en/publications/ejarticle.aspx?id=2168)
 
 <a name="kyle2011"></a>[Kyle and Kim 2011] Kyle, P., and Kim, S. 2011. Long-term implications of alternative light-duty vehicle technologies for global greenhouse gas emissions and primary energy demands. *Energy Policy* 39, pp. 3012-3024. [Link](http://www.sciencedirect.com/science/article/pii/S0301421511001960)
 
-<a name="kyle2016"></a>[Kyle et al. 2016] Kyle, P., Johnson, N., Davies, E., Bijl, D.L., Mouratiadou, I., Bevione, M., Drouet, L., Fujimori, S., Liu, Y., and Hejazi, M. 2016. Setting the system boundaries of “energy for water” for integrated modeling. *Environmental Science & Technology 50(17), 8930-8931. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01066)
+<a name="kyle2016"></a>[Kyle et al. 2016] Kyle, P., Johnson, N., Davies, E., Bijl, D.L., Mouratiadou, I., Bevione, M., Drouet, L., Fujimori, S., Liu, Y., and Hejazi, M. 2016. Setting the system boundaries of "energy for water" for integrated modeling. *Environmental Science & Technology 50(17), 8930-8931. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01066)
 
 <a name="kyle2021"></a>[Kyle et al. 2021] Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., and Liu, Y. 2021. Assessing the future of global energy-for-water. *Environmental Research Letters* 16(2), 024031. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/abd8a9)
 
@@ -502,11 +460,11 @@ Residential and commercial
 
 <a name="mahasenan2005"></a>[Mahasenan et al. 2005] Mahasenan, N., Dahowski, R.T., and Davidson, C.L. 2005. The role of carbon dioxide capture and storage in reducing emissions from cement plants in North America. *Proceedings of the 7th International Conference on Greenhouse Gas Control Technologies* 1, pp. 901-909. [Link](https://www.sciencedirect.com/science/article/pii/B9780080447049500914)
 
-<a name="mazzotti2013"></a>[Mazzotti et al. 2013] Mazzotti, M., Baciocchi, R., Desmond, M. J., and Socolow, R. H. “Direct Air Capture of CO2 with Chemicals: Optimization of a Two-Loop Hydroxide Carbonate System Using a Countercurrent Air-Liquid Contactor” *Climatic Change* 118, no. 1 (2013): 119–135. [Link](http://link.springer.com/10.1007/s10584-012-0679-y)
+<a name="mazzotti2013"></a>[Mazzotti et al. 2013] Mazzotti, M., Baciocchi, R., Desmond, M. J., and Socolow, R. H. "Direct Air Capture of CO2 with Chemicals: Optimization of a Two-Loop Hydroxide Carbonate System Using a Countercurrent Air-Liquid Contactor" *Climatic Change* 118, no. 1 (2013): 119-135. [Link](http://link.springer.com/10.1007/s10584-012-0679-y)
 
 <a name="mishra2013"></a>[Mishra et al. 2013] Mishra, G.S., Kyle, P., Teter, J., Morrison, G.M., Kim, S., and Yeh, S. 2013. *Transportation Module of Global Change Assessment Model (GCAM): Model Documentation*, Research Report UCD-ITS-RR-13-05, Institute of Transportation Studies, University of California, Davis. [Link] (https://itspubs.ucdavis.edu/wp-content/themes/ucdavis/pubs/download_pdf.php?id=1884)
 
-<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413-422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
 
 <a name="niazi2025"></a>[Niazi et al. 2025] Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
@@ -526,7 +484,7 @@ Residential and commercial
 
 <a name="shafer2000"></a>[Shafer and Victor 2000] Shafer, A., and Victor, D. 2000. The future mobility of the world population. *Transportation Research Part A: Policy and Practice* 34(3), pp. 171-205. [Link](http://www.sciencedirect.com/science/article/pii/S0965856498000718)
 
-<a name="turner2019"></a>[Turner et al. 2019] Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth’s Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
+<a name="turner2019"></a>[Turner et al. 2019] Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth's Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
 
 <a name="VanRuijven2016"></a>[Van Ruijven et al. 2016] Van Ruijven, Bas J., et al. "Long-term model-based projections of energy use and CO2 emissions from the global steel and cement industries." Resources, Conservation and Recycling 112 (2016): 15-36.
 

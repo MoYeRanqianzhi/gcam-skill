@@ -107,3 +107,5 @@
 - Expanded `validate_bundled_pages.py` so raw/escaped sub/sup tags, broken double-bracket reference links, and prose-side HTML entity residue outside inline code now fail fast.
 - Added global bundled-page cleanup for actual Unicode non-breaking spaces and zero-width characters, so copied HTML/wiki whitespace no longer leaks into prose, inline code, or fenced examples across historical versions.
 - Expanded `validate_bundled_pages.py` so literal `NBSP` and zero-width Unicode characters now fail anywhere in generated page bundles, preventing regression from copy/paste artifacts.
+- Added generator-side normalization for typographic Unicode punctuation residue, converting smart quotes/apostrophes to ASCII, normalizing Unicode dashes to ASCII hyphen usage, removing thin-space and invisible function-application artifacts, converting `×` to `x`, and normalizing the rare `˚` temperature mark to `°`.
+- Expanded `validate_bundled_pages.py` so smart quotes, Unicode dash variants, thin spaces, invisible math separators, ring-above temperature marks, and multiplication signs now fail fast if they reappear in generated bundles.

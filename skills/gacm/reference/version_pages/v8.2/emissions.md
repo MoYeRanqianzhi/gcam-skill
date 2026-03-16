@@ -20,15 +20,7 @@ CO2, CH4, N2O, CF4, C2F6, SF6, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC14
 
 Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population), technology mix, and abatement measures. How this is represented in GCAM varies by emission type.
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Policy options](#policy-options)
-- [References](#references)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Policy options](#policy-options) - [References](#references) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -153,7 +145,7 @@ where $$R_{t_1, p}$$ and $$R_{t_2, p}$$ represent MAC reduction in year $$t_1$$ 
 
 In general, MAC curve is an aggregated representation of physical changes (retrofit, technology upgrade, process optimization), and in real world, these changes take time to finish. If omitting these "time costs" or other institutional barriers, the first MAC year (as well as the carbon price year) would lead to a dramatic yet sometimes unrealistic MAC-driven emission reductions. `mac-phase-in-time` offers users an option to make additional adjustment for the existing MAC reductions due to factors other than "zero-cost" emission reductions and technological changes. A primary purpose is to smoothly phase in MACs in early modeling periods, so `mac-phase-in-time` can be applied to make the reduction in those first several modeling periods more realistic; A second purpose is to allow users to explore scenarios when different regions have different MAC phase-in periods. The default `mac-phase-in-time` is 25 years.
 
-Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well.
+Below-zero (i.e. "no cost") MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well.
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
@@ -255,58 +247,17 @@ There is a method in the GCAM data system that allows users to selectively speci
 
 Both retrofits and NSPS can be specified by either a specific GCAM region, GCAM meta-region, or all regions. These can also be specified to occur at a specific year (most useful for countries with near-term policies in place) or at a user-specified per capita GDP level.
 
-The system will generate two sets of output .xml files. One for core GCAM inputs (that are now a standard part of the configuration file) and a separate set of “user” input files which are intended for changes that are specific to a project, but not part of the GCAM core model.
+The system will generate two sets of output .xml files. One for core GCAM inputs (that are now a standard part of the configuration file) and a separate set of "user" input files which are intended for changes that are specific to a project, but not part of the GCAM core model.
 
 For instructions on how to implement this, see the [README](https://github.com/JGCRI/gcam-core/blob/master/input/gcamdata/inst/extdata/emissions/emission_controls/README.md) in the emissions user_emission_controls folder in the data system.
 
 ## IAMC Reference Card
 
-Greenhouse gases
-- [X] CO2 fossil fuels
-- [X] CO2 cement
-- [X] CO2 land use
-- [X] CH4 energy
-- [X] CH4 land use
-- [X] CH4 other
-- [X] N2O energy
-- [X] N2O land use
-- [X] N2O other
-- [X] CFCs
-- [X] HFCs
-- [X] SF6
-- [X] PFCs
+Greenhouse gases - [X] CO2 fossil fuels - [X] CO2 cement - [X] CO2 land use - [X] CH4 energy - [X] CH4 land use - [X] CH4 other - [X] N2O energy - [X] N2O land use - [X] N2O other - [X] CFCs - [X] HFCs - [X] SF6 - [X] PFCs
 
-Pollutants
-- [X] CO energy
-- [X] CO land use
-- [X] CO other
-- [X] NOx energy
-- [X] NOx land use
-- [X] NOx other
-- [X] VOC energy
-- [X] VOC land use
-- [X] VOC other
-- [X] SO2 energy
-- [X] SO2 land use
-- [X] SO2 other
-- [X] BC energy
-- [X] BC land use
-- [X] BC other
-- [X] OC energy
-- [X] OC land use
-- [X] OC other
-- [X] NH3 energy
-- [X] NH3 land use
-- [X] NH3 energy
-- [X] NH3 other
+Pollutants - [X] CO energy - [X] CO land use - [X] CO other - [X] NOx energy - [X] NOx land use - [X] NOx other - [X] VOC energy - [X] VOC land use - [X] VOC other - [X] SO2 energy - [X] SO2 land use - [X] SO2 other - [X] BC energy - [X] BC land use - [X] BC other - [X] OC energy - [X] OC land use - [X] OC other - [X] NH3 energy - [X] NH3 land use - [X] NH3 energy - [X] NH3 other
 
-Carbon dioxide removal
-- [X] Bioenergy with CCS
-- [X] Reforestation
-- [X] Afforestation
-- [ ] Soil carbon enhancement
-- [X] Direct air capture
-- [ ] Enhanced weathering
+Carbon dioxide removal - [X] Bioenergy with CCS - [X] Reforestation - [X] Afforestation - [ ] Soil carbon enhancement - [X] Direct air capture - [ ] Enhanced weathering
 
 ## References
 
@@ -323,7 +274,7 @@ Carbon dioxide removal
 
 <a name="rao2017"></a>[Rao et al. 2017] Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246-358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
 
-<a name="ou2021a"></a>[Ou et al. 2021] Ou, Y., Roney, C., Alsalam, J., et al. 2021. Deep mitigation of CO2 and non-CO2 greenhouse gases toward 1.5 °C and 2 °C futures. *Nature Communications* 12. doi:10.1038/s41467-021-26509-z [Link](https://www.nature.com/articles/s41467-021-26509-z)
+<a name="ou2021a"></a>[Ou et al. 2021] Ou, Y., Roney, C., Alsalam, J., et al. 2021. Deep mitigation of CO2 and non-CO2 greenhouse gases toward 1.5 °C and 2 °C futures. *Nature Communications* 12. doi:10.1038/s41467-021-26509-z [Link](https://www.nature.com/articles/s41467-021-26509-z)
 
 <a name="smith2005"></a>[Smith et al. 2005] Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 

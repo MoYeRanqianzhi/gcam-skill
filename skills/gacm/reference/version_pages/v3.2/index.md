@@ -46,7 +46,7 @@ productivity growth assumptions drive the energy and land-use systems
 employing numerous technology options to produce, transform, and
 provide energy services as well as to produce agriculture and forest
 products, and to determine land use and land cover. Using a run period
-extending from 1990 – 2100 at 5 year intervals, GCAM has been used to
+extending from 1990-2100 at 5 year intervals, GCAM has been used to
 explore the potential role of emerging energy supply technologies and
 the greenhouse gas consequences of specific policy measures or energy
 technology adoption including; CO2 capture and storage, bioenergy,
@@ -58,7 +58,7 @@ emission targets from various sources including the Intergovernmental
 Panel on Climate Change (IPCC). Output includes projections of future
 energy supply and demand and the resulting greenhouse gas emissions,
 radiative forcing and climate effects of 16 greenhouse gases, aerosols
-and short-lived species at 0.5×0.5 degree resolution, contingent on
+and short-lived species at 0.5x0.5 degree resolution, contingent on
 assumptions about future population, economy, technology, and climate
 mitigation policy.
 
@@ -76,8 +76,8 @@ mitigation policy.
 
 Edmonds, J., and J. Reilly (1985)Global Energy: Assessing the Future (Oxford University Press, New York) pp.317.
 
-Edmonds, J., M. Wise, H. Pitcher, R. Richels, T. Wigley, and C. MacCracken. (1997) “An Integrated Assessment of Climate Change and the Accelerated Introduction of Advanced Energy Technologies”, Mitigation and Adaptation Strategies for Global Change, 1, pp. 311-39
+Edmonds, J., M. Wise, H. Pitcher, R. Richels, T. Wigley, and C. MacCracken. (1997) "An Integrated Assessment of Climate Change and the Accelerated Introduction of Advanced Energy Technologies", Mitigation and Adaptation Strategies for Global Change, 1, pp. 311-39
 
-Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) “The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation ” Energy Journal (Special Issue #2) pp 51-80.
+Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) "The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation " Energy Journal (Special Issue #2) pp 51-80.
 
 [Full list of GCAM publications](http://wiki.umd.edu/gcam/index.php/References)

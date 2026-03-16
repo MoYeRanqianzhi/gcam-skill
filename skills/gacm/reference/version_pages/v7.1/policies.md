@@ -45,15 +45,15 @@ Setting price-adjust to zero means that there is no economic feedback for the pr
 
 Note that you must first create a policy by reading in a <ghgpolicy> object (by reading an an XML with this object first, see the various policy files in the GCAM release) and then you can define how this links to any emissions (through <linked-ghg-policy> objects).
 
-This flexibility allows CO2-only, CO2-equivalent, or non-CO2 markets/constraints for various “baskets” of emissions as needed.
+This flexibility allows CO2-only, CO2-equivalent, or non-CO2 markets/constraints for various "baskets" of emissions as needed.
 
-Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only – e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, price-adjust would be set to zero).
+Note that the GCAM default set-up includes economic feedbacks for methane and nitrous oxide. This is an idealized assumption, but might not happen in real-world policies. For example, in many current systems agricultural emissions are offsets only - e.g., they get paid to reduce emissions, but are not charged for any remaining emissions. (So to simulate this type of policy, price-adjust would be set to zero).
 
 ### <a name="non-co2-markets"></a> Markets For non-CO2 Emission Species
 
 Markets in GCAM can be set for any emission species. (e.g., CH4 -only market, NOx market, etc.)
 
-Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you’ve added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO2 and NOx markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices.
+Note that it generally does not make sense to set up an emissions market unless the model has a direct way to reduce emissions. (e.g. you've added relevant MAC curves.) For example, in [Shi et al. (2017)](policies.md#shi2017) US electricity sector SO2 and NOx markets were used to represent current policies that cap emissions in certain states. MAC curves for existing power plants were added to allow emissions to change in response to market prices.
 
 xml inputs within the MAC curve that will be needed to set-up new markets are:
 
@@ -86,7 +86,7 @@ There are a number of ways that policies can be applied directly to influence th
 
 The cost of GHG emissions mitigation is a concept that is not uniquely defined. A wide range of measures are used in the literature. These include, the price of carbon (or as appropriate given the policy) needed to achieve a desired emission mitigation goal, reduction in Gross Domestic Product (GDP), consumption loss, deadweight loss, and equivalent variation. Beyond that the concept of net cost, which includes the benefits of emissions mitigation as well as the resource cost of emissions reduction and the social cost of carbon are also encountered. GCAM makes no attempt to calculate the benefits.
 
-In addition to identifying policy prices as one measure of cost, GCAM employs the “deadweight loss” approach to measuring welfare loss from emissions mitigation efforts. GCAM employs the deadweight loss approach for several reasons. First, the deadweight loss approach is numerically straight forward to calculate in GCAM. Second, the deadweight loss approach provides a computationally tractable method to measuring the change in welfare, though it is only an approximation. In principle the equivalent variation is the right approach to measure an individual’s loss in welfare. Equivalent variation measures the minimum amount of income that would be needed to leave consumers just as happy with the new price (e.g. carbon tax) as without. However, its calculation requires either knowledge of all of society’s individual preference functions or the existence of a well-ordered set of social preferences, a requirement that [Arrow (1950)](policies.md#Arrow1950) demonstrated to be impossible under ordinary circumstances. Third, the deadweight loss approach takes advantage of GCAM’s detailed technological characterization.
+In addition to identifying policy prices as one measure of cost, GCAM employs the "deadweight loss" approach to measuring welfare loss from emissions mitigation efforts. GCAM employs the deadweight loss approach for several reasons. First, the deadweight loss approach is numerically straight forward to calculate in GCAM. Second, the deadweight loss approach provides a computationally tractable method to measuring the change in welfare, though it is only an approximation. In principle the equivalent variation is the right approach to measure an individual's loss in welfare. Equivalent variation measures the minimum amount of income that would be needed to leave consumers just as happy with the new price (e.g. carbon tax) as without. However, its calculation requires either knowledge of all of society's individual preference functions or the existence of a well-ordered set of social preferences, a requirement that [Arrow (1950)](policies.md#Arrow1950) demonstrated to be impossible under ordinary circumstances. Third, the deadweight loss approach takes advantage of GCAM's detailed technological characterization.
 
 A detailed description of the method used in GCAM is documented in [Bradley et al. (1991)](policies.md#Bradley1991). In general, the approach is as follows. GCAM calculates the cost of emissions mitigation at each GCAM time step. For example, in period T, compare a reference path without a carbon tax to the emissions path with a carbon tax; the cost of moving between them can be calculated directly. Successive scenarios with fixed carbon taxes in period T are run. The associated emissions are recorded for each carbon tax. The cost is calculated as the area of the purple triangle, which is the integral of each emissions mitigation step weighted by the carbon tax that was required to deliver the reduction. The final ton of carbon emissions is the most expensive ton, because it is assumed that for a carbon tax, emissions mitigation occurs with the least expensive tons being reduced first. The final ton of carbon is simply the carbon tax rate itself. The tax revenue can be calculated as the tax rate times the remaining emissions.
 
@@ -99,7 +99,7 @@ The deadweight loss approach is not without its limitations. While the numerical
 Note that calculation of policy costs is currently only supported for polices pegged to CO2 prices.
 
 ## References
-<a name="Arrow1950"></a>[Arrow 1950] Arrow, Kenneth J. (1950). "A Difficulty in the Concept of Social Welfare" (PDF). Journal of Political Economy. 58 (4): 328–346. doi:10.1086/256963.
+<a name="Arrow1950"></a>[Arrow 1950] Arrow, Kenneth J. (1950). "A Difficulty in the Concept of Social Welfare" (PDF). Journal of Political Economy. 58 (4): 328-346. doi:10.1086/256963.
 [Link](http://dx.doi.org/10.1086/256963)
 
 <a name="Bhattacharya2001"></a>[Bhattacharya 2001] Bhattacharya, Jay. (2001). Three measures of the change in welfare.
@@ -113,4 +113,4 @@ Note that calculation of policy costs is currently only supported for polices pe
 
 <a name="Mankiw2012"></a>[Mankiw & Hakes 2012] Mankiw, N.  and David Hakes (2012). Principles of microeconomics. South-Western Cengage Learning.
 
-<a name="shi2017"></a>[Shi et al. 2017] Shi W, Ou Y, Smith S J, Ledna C M, Nolte C G, Loughlin D H 2017. "Projecting state-level air pollutant emissions using an integrated assessment model: GCAM-USA" *Applied Energy* 208 511–521. doi: 10.1016/j.apenergy.2017.09.122. [Link](https://www.sciencedirect.com/science/article/pii/S0306261917314125)
+<a name="shi2017"></a>[Shi et al. 2017] Shi W, Ou Y, Smith S J, Ledna C M, Nolte C G, Loughlin D H 2017. "Projecting state-level air pollutant emissions using an integrated assessment model: GCAM-USA" *Applied Energy* 208 511-521. doi: 10.1016/j.apenergy.2017.09.122. [Link](https://www.sciencedirect.com/science/article/pii/S0306261917314125)

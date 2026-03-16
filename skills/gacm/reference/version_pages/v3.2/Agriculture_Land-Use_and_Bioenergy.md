@@ -31,7 +31,7 @@ either to protect forests or to plant bioenergy crops could put upward
 pressure on crop prices that would not otherwise occur.
 
 To capture these dynamics, GCAM includes a completely integrated model
-that allocates the land area for each of GCAM’s regions among
+that allocates the land area for each of GCAM's regions among
 different land uses, tracks production from these uses, and tracks
 carbon flows into and out of terrestrial reservoirs. The GCAM
 agriculture, land use, land cover, terrestrial carbon cycle module
@@ -117,11 +117,11 @@ each of the 151 subregions. The model is designed to allow
 specification of different options for future crop management for each
 crop in each subregion.
 
-Historical land use allocation is based on data from HYDE [Source: <https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=1900>] for cropland, urban land, tundra, and rock/ice/desert. Managed forest and managed pasture land are calculated in each time period based on each region's annual production, disaggregated to AEZ's according to the estimated production of each AEZ. Unmanaged forest, unmanaged pasture, grassland, and shrubland are compiled from the HYDE data, with forest and pasture calculated as their respective values minus the managed forms in each of these lands. Historical agricultural production and harvested cropland area are taken from the [FAOSTAT](http://www.faostat.fao.org) database for 1990 and 2005, disaggregated to the AEZ level on the basis of production and harvested area in the GTAP data. Cropping systems are divided into nine food categories (rice, wheat, corn, other grains, oil crops,sugar crops, palm fruit, roots & tubers, and miscellaneous crops) and animal production is represented by five categories (beef, dairy, pork, poultry, and other ruminants). The characterizations of animal production technologies are based on IMAGE data; subsectors are “mixed” and “pastoral”, and inputs to the systems are (1) fodder herbs and crop residues; (2) pasture and foddergrass; (3) feedcrops; and (4) scavenging and other. Under this categorization, animal feed is supplied both by pasture land and by grain and fodder crops and thus future demand for animal products impacts land allocation in GCAM.
+Historical land use allocation is based on data from HYDE [Source: <https://www.gtap.agecon.purdue.edu/resources/res_display.asp?RecordID=1900>] for cropland, urban land, tundra, and rock/ice/desert. Managed forest and managed pasture land are calculated in each time period based on each region's annual production, disaggregated to AEZ's according to the estimated production of each AEZ. Unmanaged forest, unmanaged pasture, grassland, and shrubland are compiled from the HYDE data, with forest and pasture calculated as their respective values minus the managed forms in each of these lands. Historical agricultural production and harvested cropland area are taken from the [FAOSTAT](http://www.faostat.fao.org) database for 1990 and 2005, disaggregated to the AEZ level on the basis of production and harvested area in the GTAP data. Cropping systems are divided into nine food categories (rice, wheat, corn, other grains, oil crops,sugar crops, palm fruit, roots & tubers, and miscellaneous crops) and animal production is represented by five categories (beef, dairy, pork, poultry, and other ruminants). The characterizations of animal production technologies are based on IMAGE data; subsectors are "mixed" and "pastoral", and inputs to the systems are (1) fodder herbs and crop residues; (2) pasture and foddergrass; (3) feedcrops; and (4) scavenging and other. Under this categorization, animal feed is supplied both by pasture land and by grain and fodder crops and thus future demand for animal products impacts land allocation in GCAM.
 
-The composition of SAGE’s 14 natural vegetation classifications is calculated in each region and AEZ for each of the five GCAM natural vegetation categories. Specifically, GCAM’s forest includes 8 SAGE categories, grassland includes 2, shrubland includes 2, tundra includes 1, and rock/ice/desert includes 2. Next, carbon contents are assigned to each of the SAGE 14 natural vegetation types, based on literature estimates [Source: Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.] [Source: King, A. W., Post, W. M., and Wullschleger, S. D. 1997. The potential response of terrestrial carbon storage to changes in climate and atmospheric CO2. Climatic Change, 35(2), 199–227. Springer. Retrieved March 9, 2011, from <http://www.springerlink.com/index/K528446L38325833.pdf>.] [Source: Olson J.S., Watts J.A. and Allinson L.J. 1983 Carbon in Live Vegetation in Major World Ecosystems. Environmental Sciences Division Publication No. 1997. Oak Ridge National Laboratory, Tennessee.]. The carbon density of each region/AEZ/GCAM land type is calculated as the weighted average of the carbon contents of the SAGE natural vegetation types within the GCAM natural vegetation types, for each region and AEZ. For instance, GCAM forest in USA AEZ 9 is 53% temperate needleleaf evergreen forest, 12% temperate deciduous forest, 1% boreal evergreen forest, and 34% mixed evergreen/deciduous forest. Therefore the average carbon content of USA AEZ 9 forest is (160)(0.53) + (135)(0.12) + (90)(0.01) + (103)(0.34) = 137 MgC/ha, or 13.7 kgC/m2. Similar calculations are used for vegetation carbon contents for forest, grassland, shrubland, tundra, and rock/ice/desert.
+The composition of SAGE's 14 natural vegetation classifications is calculated in each region and AEZ for each of the five GCAM natural vegetation categories. Specifically, GCAM's forest includes 8 SAGE categories, grassland includes 2, shrubland includes 2, tundra includes 1, and rock/ice/desert includes 2. Next, carbon contents are assigned to each of the SAGE 14 natural vegetation types, based on literature estimates [Source: Houghton, R.A. 1999. The annual net flux of carbon to the atmosphere from changes in land use 1850-1990. Tellus 51B: 298-313.] [Source: King, A. W., Post, W. M., and Wullschleger, S. D. 1997. The potential response of terrestrial carbon storage to changes in climate and atmospheric CO2. Climatic Change, 35(2), 199-227. Springer. Retrieved March 9, 2011, from <http://www.springerlink.com/index/K528446L38325833.pdf>.] [Source: Olson J.S., Watts J.A. and Allinson L.J. 1983 Carbon in Live Vegetation in Major World Ecosystems. Environmental Sciences Division Publication No. 1997. Oak Ridge National Laboratory, Tennessee.]. The carbon density of each region/AEZ/GCAM land type is calculated as the weighted average of the carbon contents of the SAGE natural vegetation types within the GCAM natural vegetation types, for each region and AEZ. For instance, GCAM forest in USA AEZ 9 is 53% temperate needleleaf evergreen forest, 12% temperate deciduous forest, 1% boreal evergreen forest, and 34% mixed evergreen/deciduous forest. Therefore the average carbon content of USA AEZ 9 forest is (160)(0.53) + (135)(0.12) + (90)(0.01) + (103)(0.34) = 137 MgC/ha, or 13.7 kgC/m2. Similar calculations are used for vegetation carbon contents for forest, grassland, shrubland, tundra, and rock/ice/desert.
 
-Unmanaged pasture vegetation carbon contents are set equal to the region/AEZ’s corresponding SAGE grassland carbon contents. Managed pasture carbon contents are set equal to one half of unmanaged pasture carbon contents. Managed forest vegetation carbon contents are set equal to one half of the unmanaged forest carbon contents. See below for derivation and justification of managed forest land allocation and carbon contents. Cropland vegetation carbon contents are calculated based on yields, crop moisture contents, and harvest indices.
+Unmanaged pasture vegetation carbon contents are set equal to the region/AEZ's corresponding SAGE grassland carbon contents. Managed pasture carbon contents are set equal to one half of unmanaged pasture carbon contents. Managed forest vegetation carbon contents are set equal to one half of the unmanaged forest carbon contents. See below for derivation and justification of managed forest land allocation and carbon contents. Cropland vegetation carbon contents are calculated based on yields, crop moisture contents, and harvest indices.
 
 Bioenergy Production
 --------------------
@@ -188,7 +188,7 @@ Purpose-grown bioenergy refers to crops whose primary purpose is the
 provision of energy. These would include, for example, lignocellulosic
 crops such switchgrass, miscanthus, and woody poplar, as well as oil
 crops such as jatropha. The profitability of purpose-grown,
-“second-generation” bioenergy depends on the expected profitability of
+"second-generation" bioenergy depends on the expected profitability of
 raising and selling that crop relative to other land-use options in
 GCAM. This in turn depends on numerous other model factors including:
 bioenergy crop productivity (which in turn depends on the character of
@@ -205,7 +205,7 @@ demand and supplies in all energy markets.
 
 A variety of crops could potentially be grown as bioenergy
 feedstocks. The productivity of those crops will depend on where they
-are grown—which soils they are grown in, climate characteristics and
+are grown-which soils they are grown in, climate characteristics and
 their variability, whether or not they are fertilized or irrigated,
 the availability of nitrogen and other minerals, ambient CO2
 concentrations, and their latitude. In this analysis we assume that a
@@ -255,7 +255,7 @@ based on the carbon content of their land. If the carbon content of
 the land changes, for example, by cutting forests to grow bioenergy
 crops, then the tax or subsidy that the landowner receives is adjusted
 to represent the new carbon stock in the land. The stock approach can
-be viewed as applying a “carbon” rental rate on the carbon in
+be viewed as applying a "carbon" rental rate on the carbon in
 land. Both approaches have strengths and weaknesses. Real-world
 approaches may not be explicitly one or the other. When terrestrial
 pricing strategies are enabled in GCAM, the stock approach is used.
@@ -298,14 +298,13 @@ assumed improvements in yields.
 
 The FAO maintains a historical time series of fertilizer production
 and consumption in all countries, in terms of total N. The production
-data includes non-agricultural use of fertilizers, and as such is 5 -
-10% higher than the global consumption quantities, which include only
+data includes non-agricultural use of fertilizers, and as such is 5 - 10% higher than the global consumption quantities, which include only
 fertilizer used for agricultural purposes. In GCAM we are only
 concerned with the fertilizer produced for agriculture, so all
 production in all regions is uniformly adjusted downwards so that
 global production and consumption balance. Due to the large volume of
-trade in the base year—the Soviet Union, for example, exports greater
-than 80% of the fertilizer it produces —GCAM does include trade in
+trade in the base year-the Soviet Union, for example, exports greater
+than 80% of the fertilizer it produces - GCAM does include trade in
 fertilizer, though in the same simple, exogenous fashion as trade in
 meat is modeled. Exporting regions are assigned an additional final
 demand with a fixed output for the duration of the model run, and

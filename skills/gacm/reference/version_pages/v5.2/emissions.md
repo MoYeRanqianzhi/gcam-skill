@@ -35,7 +35,7 @@ GCAM endogenously estimates CO2 fossil-fuel related emissions based on fossil fu
 
 GCAM can be considered as a process model for CO2 emissions and reductions. CO2 emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO2 as a carbon-price is applied within the model.
 
-CO2 emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region’s IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO2 from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
+CO2 emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region's IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO2 from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
 
 CO2 emissions from gas flaring are not currently included in GCAM.
 
@@ -102,7 +102,7 @@ Non-CO2 GHG emissions are proportional to the activity except for any reductions
 
 The default set-up is that MAC curves use the scenario's carbon price (if any). The non-CO2 GHG MACs are an exogenous input, and are read in as the percent of emissions abated as a function of the emissions prices. Note that they are read in with explicit cost points (i.e., piece-wise linear form), with no underlying equation describing the percentage of abatement as a function of the carbon price.
 
-Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero carbon price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the no-zero-cost-reductions option to 1 within a MAC curve.)
+Below-zero (i.e. "no cost") MAC mitigation (e.g. MAC reduction percentage is > 0 at zero carbon price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the no-zero-cost-reductions option to 1 within a MAC curve.)
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
@@ -153,7 +153,7 @@ allow-ef-increase | (optional) Allow emission factors to increase from their sta
 
 ## References
 
-<a name="calvin2017"></a>[Calvin et al. 2017] Calvin, K., Bond-Lamberty, B., Clarke, L., et al. 2017. The SSP4: a world of deepening inequality. *Global Environmental Change* 42: 284–296. doi:10.1016/j.gloenvcha.2016.06.010. [Link](https://www.sciencedirect.com/science/article/pii/S095937801630084X)
+<a name="calvin2017"></a>[Calvin et al. 2017] Calvin, K., Bond-Lamberty, B., Clarke, L., et al. 2017. The SSP4: a world of deepening inequality. *Global Environmental Change* 42: 284-296. doi:10.1016/j.gloenvcha.2016.06.010. [Link](https://www.sciencedirect.com/science/article/pii/S095937801630084X)
 
 <a name="cdiac2017"></a>[CDIAC 2017] Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
@@ -163,8 +163,8 @@ allow-ef-increase | (optional) Allow emission factors to increase from their sta
 
 <a name="epa2013"></a>[EPA 2013] US EPA, 2013, *Global Mitigation of Non-CO2 Greenhouse Gases: 2010-2030*. EPA-430-R-13-011, United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/sites/production/files/2016-06/documents/mac_report_2013.pdf)
 
-<a name="lamarque2010"></a>[Lamarque et al. 2010] Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
+<a name="lamarque2010"></a>[Lamarque et al. 2010] Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017-7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
-<a name="rao2017"></a>[Rao et al. 2017] Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
+<a name="rao2017"></a>[Rao et al. 2017] Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246-358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
 
 <a name="smith2005"></a>[Smith et al. 2005] Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)

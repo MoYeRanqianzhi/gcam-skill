@@ -20,6 +20,7 @@ CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
 NBSP_CHAR_RE = re.compile("\u00a0")
 ZERO_WIDTH_CHAR_RE = re.compile(r"[\u200b\u200c\u200d\ufeff]")
+TYPOGRAPHIC_PUNCT_RE = re.compile(r"[“”‘’–—‐ ⁡˚×]")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 RAW_MD_IMAGE_RE = re.compile(r"!\[[^\]]*\]\(([^)]+)\)")
 RAW_HTML_IMG_RE = re.compile(r"<img\b", re.IGNORECASE)
@@ -190,6 +191,8 @@ def main() -> int:
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> non-breaking space character remains")
         if ZERO_WIDTH_CHAR_RE.search(raw_text):
             errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> zero-width unicode character remains")
+        if TYPOGRAPHIC_PUNCT_RE.search(raw_text):
+            errors.append(f"{page.relative_to(VERSION_PAGES_ROOT.parent)} -> typographic unicode punctuation residue remains")
         for line_no, line in enumerate(text.splitlines(), start=1):
             normalized_line = normalize_portability_line(line)
             if (

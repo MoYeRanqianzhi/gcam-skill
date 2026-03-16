@@ -20,15 +20,7 @@ CO2, CH4, N2O, CF4, C2F6, SF6, HFC23, HFC32, HFC43-10mee, HFC125, HFC134a, HFC14
 
 Future emissions are determined by the evolution of drivers (such as energy consumption, land-use, and population), technology mix, and abatement measures. How this is represented in GCAM varies by emission type.
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Policy options](#policy-options)
-- [References](#references)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Policy options](#policy-options) - [References](#references) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -52,7 +44,7 @@ GCAM endogenously estimates CO2 fossil-fuel related emissions based on fossil fu
 
 GCAM can be considered as a process model for CO2 emissions and reductions. CO2 emissions change over time as fuel consumption in GCAM endogenously changes. Application of Carbon Capture and Storage (CCS) is explicitly considered as separate technological options for a number of processes, such as electricity generation and fertilizer manufacturing. The GCAM, in effect, produces a Marginal Abatement Curve for CO2 as a carbon-price is applied within the model.
 
-CO2 emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region’s IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO2 from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
+CO2 emissions from limestone used in cement production are also estimated. Limestone consumption has one global emissions factor, however, each region's IO coefficient (limestone / cement) is calibrated to return CDIAC estimates ([CDIAC 2017](#cdiac2017)). (CO2 from fuel consumed in producing limestone is estimated in the same manner as other fuel consumption.)
 
 CO2 emissions from gas flaring are not currently included in GCAM.
 
@@ -141,7 +133,7 @@ where $$R_{t_1, p}$$ and $$R_{t_2, p}$$ represent MAC reduction in year $$t_1$$ 
 
 In general, MAC curve is an aggregated representation of physical changes (retrofit, technology upgrade, process optimization), and in real world, these changes take time to finish. If omitting these "time costs" or other institutional barriers, the first MAC year (as well as the carbon price year) would lead to a dramatic yet sometimes unrealistic MAC-driven emission reductions. `mac-phase-in-time` offers users an option to make additional adjustment for the existing MAC reductions due to factors other than "zero-cost" emission reductions and technological changes. A primary purpose is to smoothly phase in MACs in early modeling periods, so `mac-phase-in-time` can be applied to make the reduction in those first several modeling periods more realistic; A second purpose is to allow users to explore scenarios when different regions have different MAC phase-in periods. The default `mac-phase-in-time` is 25 years.
 
-Below-zero (i.e. “no cost”) MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well.
+Below-zero (i.e. "no cost") MAC mitigation (e.g. MAC reduction percentage is > 0 at zero emission price) are applied in the reference case and phased in over several decades. (This can be turned off by setting the `no-zero-cost-reductions` option to 1 within a MAC curve.) Here, below-zero MAC mitigation is assumed to be unaffected by `tech-change`, despite that it is not necessarily unreasonable in general to think that technological change would impact below-zero options, as well.
 
 Note that a species-specific emissions market can also be specified using advanced options, described below.
 
@@ -192,56 +184,15 @@ XML Tag | Description
 
 ## IAMC Reference Card
 
-Greenhouse gases
-- [X] CO2 fossil fuels
-- [X] CO2 cement
-- [X] CO2 land use
-- [X] CH4 energy
-- [X] CH4 land use
-- [X] CH4 other
-- [X] N2O energy
-- [X] N2O land use
-- [X] N2O other
-- [X] CFCs
-- [X] HFCs
-- [X] SF6
-- [X] PFCs
+Greenhouse gases - [X] CO2 fossil fuels - [X] CO2 cement - [X] CO2 land use - [X] CH4 energy - [X] CH4 land use - [X] CH4 other - [X] N2O energy - [X] N2O land use - [X] N2O other - [X] CFCs - [X] HFCs - [X] SF6 - [X] PFCs
 
-Pollutants
-- [X] CO energy
-- [X] CO land use
-- [X] CO other
-- [X] NOx energy
-- [X] NOx land use
-- [X] NOx other
-- [X] VOC energy
-- [X] VOC land use
-- [X] VOC other
-- [X] SO2 energy
-- [X] SO2 land use
-- [X] SO2 other
-- [X] BC energy
-- [X] BC land use
-- [X] BC other
-- [X] OC energy
-- [X] OC land use
-- [X] OC other
-- [X] NH3 energy
-- [X] NH3 land use
-- [X] NH3 energy
-- [X] NH3 other
+Pollutants - [X] CO energy - [X] CO land use - [X] CO other - [X] NOx energy - [X] NOx land use - [X] NOx other - [X] VOC energy - [X] VOC land use - [X] VOC other - [X] SO2 energy - [X] SO2 land use - [X] SO2 other - [X] BC energy - [X] BC land use - [X] BC other - [X] OC energy - [X] OC land use - [X] OC other - [X] NH3 energy - [X] NH3 land use - [X] NH3 energy - [X] NH3 other
 
-Carbon dioxide removal
-- [X] Bioenergy with CCS
-- [X] Reforestation
-- [X] Afforestation
-- [ ] Soil carbon enhancement
-- [X] Direct air capture
-- [ ] Enhanced weathering
+Carbon dioxide removal - [X] Bioenergy with CCS - [X] Reforestation - [X] Afforestation - [ ] Soil carbon enhancement - [X] Direct air capture - [ ] Enhanced weathering
 
 ## References
 
-<a name="calvin2017"></a>[Calvin et al. 2017] Calvin, K., Bond-Lamberty, B., Clarke, L., et al. 2017. The SSP4: a world of deepening inequality. *Global Environmental Change* 42: 284–296. doi:10.1016/j.gloenvcha.2016.06.010. [Link](https://www.sciencedirect.com/science/article/pii/S095937801630084X)
+<a name="calvin2017"></a>[Calvin et al. 2017] Calvin, K., Bond-Lamberty, B., Clarke, L., et al. 2017. The SSP4: a world of deepening inequality. *Global Environmental Change* 42: 284-296. doi:10.1016/j.gloenvcha.2016.06.010. [Link](https://www.sciencedirect.com/science/article/pii/S095937801630084X)
 
 <a name="cdiac2017"></a>[CDIAC 2017] Boden, T., and Andres, B. 2017, *National CO2 Emissions from Fossil-Fuel Burning, Cement Manufacture, and Gas Flaring: 1751-2014*, Carbon Dioxide Information Analysis Center, Oak Ridge National Laboratory. [Link](http://cdiac.ess-dive.lbl.gov/ftp/ndp030/nation.1751_2014.ems)
 
@@ -250,12 +201,12 @@ Carbon dioxide removal
 
 <a name="epa2019"></a>[EPA 2019] US EPA, 2019, *Global Non-CO2 Greenhouse Gas Emission Projection & Mitigation Potential Report*. United States Environmental Protection Agency, Office of Atmospheric Programs. [Link](https://www.epa.gov/global-mitigation-non-co2-greenhouse-gases/global-non-co2-greenhouse-gas-emission-projections)
 
-<a name="lamarque2010"></a>[Lamarque et al. 2010] Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017–7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
+<a name="lamarque2010"></a>[Lamarque et al. 2010] Lamarque, J.F., Bond, T. C., Eyring, V., et al. 2010. Historical (1850-2000) gridded anthropogenic and biomass burning emissions of reactive gases and aerosols: methodology and application, *Atmospheric Chemistry and Physics* 10(15): 7017-7039. doi:10.5194/acp-10-7017-2010. [Link](https://www.atmos-chem-phys.net/10/7017/2010/acp-10-7017-2010.html)
 
-<a name="ou2021a"></a>[Ou et al. 2021] Ou, Y., Roney, C., Alsalam, J., et al. 2021. Deep mitigation of CO2 and non-CO2 greenhouse gases toward 1.5 °C and 2 °C futures. *Nature Communications* 12. doi:10.1038/s41467-021-26509-z [Link](https://www.nature.com/articles/s41467-021-26509-z)
+<a name="ou2021a"></a>[Ou et al. 2021] Ou, Y., Roney, C., Alsalam, J., et al. 2021. Deep mitigation of CO2 and non-CO2 greenhouse gases toward 1.5 °C and 2 °C futures. *Nature Communications* 12. doi:10.1038/s41467-021-26509-z [Link](https://www.nature.com/articles/s41467-021-26509-z)
 
-<a name="rao2017"></a>[Rao et al. 2017] Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246–358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
+<a name="rao2017"></a>[Rao et al. 2017] Rao, S., Klimont, Z., Smith, S., et al. 2017. Future air pollution int he Shared Socio-economic Pathways. *Global Environmental Change* 42: 246-358. doi:10.1016/j.gloenvcha.2016.05.012. [Link](https://www.sciencedirect.com/science/article/pii/S0959378016300723)
 
 <a name="smith2005"></a>[Smith et al. 2005] Smith, S.J., Pitcher, H., and Wigley, T. 2005. "Future Sulfur Dioxide Emissions" *Climatic Change* 3: 267-318. doi: 10.1007/s10584-005-6887-y. [Link](https://link.springer.com/article/10.1007/s10584-005-6887-y)
 
-<a name="Hoesly2018"></a>[Hoesly et al. 2018]Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750–2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369–408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018
+<a name="Hoesly2018"></a>[Hoesly et al. 2018]Hoesly, R. M., Smith, S. J., Feng, L., Klimont, Z., Janssens-Maenhout, G., Pitkanen, T., Seibert, J. J., Vu, L., Andres, R. J., Bolt, R. M., Bond, T. C., Dawidowski, L., Kholod, N., Kurokawa, J.-I., Li, M., Liu, L., Lu, Z., Moura, M. C. P., O'Rourke, P. R., and Zhang, Q.: Historical (1750-2014) anthropogenic emissions of reactive gases and aerosols from the Community Emissions Data System (CEDS), *Geosci. Model Dev*., 11, 369-408, [Link](https://doi.org/10.5194/gmd-11-369-2018), 2018

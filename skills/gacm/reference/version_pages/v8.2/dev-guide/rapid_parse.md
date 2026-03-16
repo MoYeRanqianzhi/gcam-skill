@@ -12,23 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Background](#background)
-  - [Performance Analysis](#is-switching-xml-parse-method--libraries-even-worth-it)
-  - [How RapidXML Works](#rapid-xml-parser)
-- [Converting GCAM’s XMLParse](#converting-gcams-xmlparse)
-  - [XML Parse and Fusion Data Definitions](#gcam-fusion-data-declerations-and-their-relationship-to-xml-parse)
-  - [Overview of how XML Parse generation works](#xml-parse-call-structure)
-    - [Parsing the child data of a container (ParseChildData)](#parsechilddataprocessdatavector)
-    - [When custom parsing behavior is required (AParsable)](#example-of-aparsable-special-case)
-    - [Checking if an XML tag matches some Data (XMLParseHelper::tagsMatch)](#xmlparsehelpertagsmatch)
-    - [Parsing SIMPLE / ARRAY / Container Data (XMLParseHelper::parseData)](#xmlparsehelperparsedata)
-- [Debugging XML Parse](#debugging-xml-parse)
-- [Common errors for developers](#common-issues-and-errors-to-consider-for-developers)
-  - [When to tag Data `NOT_PARSABLE`](#tagging-data-as-not_parsable)
-  - [Unresolved symbol error during linking](#unresolved-symbol-error-during-linking)
-  - [The generic Factory and no argument constructors](#the-generic-factory-and-no-argument-constructors)
+# Table of Contents - [Background](#background) - [Performance Analysis](#is-switching-xml-parse-method--libraries-even-worth-it) - [How RapidXML Works](#rapid-xml-parser) - [Converting GCAM's XMLParse](#converting-gcams-xmlparse) - [XML Parse and Fusion Data Definitions](#gcam-fusion-data-declerations-and-their-relationship-to-xml-parse) - [Overview of how XML Parse generation works](#xml-parse-call-structure) - [Parsing the child data of a container (ParseChildData)](#parsechilddataprocessdatavector) - [When custom parsing behavior is required (AParsable)](#example-of-aparsable-special-case) - [Checking if an XML tag matches some Data (XMLParseHelper::tagsMatch)](#xmlparsehelpertagsmatch) - [Parsing SIMPLE / ARRAY / Container Data (XMLParseHelper::parseData)](#xmlparsehelperparsedata) - [Debugging XML Parse](#debugging-xml-parse) - [Common errors for developers](#common-issues-and-errors-to-consider-for-developers) - [When to tag Data `NOT_PARSABLE`](#tagging-data-as-not_parsable) - [Unresolved symbol error during linking](#unresolved-symbol-error-during-linking) - [The generic Factory and no argument constructors](#the-generic-factory-and-no-argument-constructors)
 
 ## Background
 We have been using the Xerces C++ XML parser to parse the XML inputs for GCAM for quite a long time.  It is widely considered stable, mature, and the most complete XML parsing library for C++.  Providing for and adhering to all of the W3C XML standards, most of which we do not actually take advantage of in GCAM.

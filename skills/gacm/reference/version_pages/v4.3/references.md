@@ -45,9 +45,9 @@ Dooley, J.J., and R.T. Dahowski. 2008.  "Carbon Dioxide Capture and Geologic Sto
 Luckow P, MA Wise, JJ Dooley, and SH Kim. 2010. "Large-Scale Utilization of Biomass Energy and Carbon Dioxide Capture and Storage in the Transport and Electricity Sectors under Stringent CO2 Concentration Limit Scenarios." International Journal of Greenhouse Gas Control 4(5):865-877. [doi:10.1016/j.ijggc.2010.06.002](http://dx.doi.org/10.1016/j.ijggc.2010.06.002).
 
 Edmonds, J., J. Dooley, S. Kim, S. Friedman, and
-M. Wise. 2007. “Technology in an Integrated Assessment Model: The
+M. Wise. 2007. "Technology in an Integrated Assessment Model: The
 Potential Regional Deployment of Carbon Capture and Storage in the
-Context of Global CO2 Stabilization,” *Human-Induced Climate Change:
+Context of Global CO2 Stabilization," *Human-Induced Climate Change:
 An Interdisciplinary Perspective* (eds. Michael Schlesinger, Francisco
 C. de la Chesnaye, Haroon Kheshgi, Charles D. Kolstad, John Reilly,
 Joel B. Smith and Tom Wilson), Cambridge University Press. pp. 181-197.

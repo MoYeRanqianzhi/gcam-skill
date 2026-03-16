@@ -659,7 +659,7 @@ Exceptions to one-to-one mapping from the categories in the IEA Energy Balances 
 
 <a name="zamparini2007"></a>[Zamparini and Reggiani 2007] Zamparini, L., and Reggiani, A. 2007. Meta-analysis and the value of time savings: a transatlantic perspective in passenger transport. *Networks and Spatial Economics* 7, pp. 377-396. [Link](http://link.springer.com/article/10.1007/s11067-007-9028-5)
 
-<a name="zhang2010"></a>[Zhang et al. 2010] Zhang, Y., SJ Smith, GP Kyle, and PW Stackhouse Jr. (2010) Modeling the Potential for Thermal Concentrating Solar Power Technologies *Energy Policy* 38 pp. 7884–7897. [Link](https://doi.org/10.1016/j.enpol.2010.09.008)
+<a name="zhang2010"></a>[Zhang et al. 2010] Zhang, Y., SJ Smith, GP Kyle, and PW Stackhouse Jr. (2010) Modeling the Potential for Thermal Concentrating Solar Power Technologies *Energy Policy* 38 pp. 7884-7897. [Link](https://doi.org/10.1016/j.enpol.2010.09.008)
 
 <a name="zhou2012"></a>[Zhou et al. 2012] Zhou, Y., Luckow, P., Smith, S.J., and Clarke, L. 2012. Evaluation of global onshore wind energy potential and generation costs. *Environmental Science and Technology* 46(14), pp. 7857-7864. [Link](http://pubs.acs.org/doi/abs/10.1021/es204706m)
 

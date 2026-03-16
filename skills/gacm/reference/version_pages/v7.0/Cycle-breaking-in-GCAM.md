@@ -32,10 +32,7 @@ One consequence of this strategy is that although the Price and Demand Markets u
 | supply | trial price value (copied from "price") | trial demand value (copied from "price") |
 | demand | actual price (computed in model)        | actual demand (computed in model)        |
 
-Conceptually, this strategy is implemented by following two rules:
-
--   Model entities *reading* a price or a demand value from a market always receive the *trial* value.
--   Model entities *writing* a value into a market (whether by setting it or adding to it) always modify the *actual* value.
+Conceptually, this strategy is implemented by following two rules: - Model entities *reading* a price or a demand value from a market always receive the *trial* value. - Model entities *writing* a value into a market (whether by setting it or adding to it) always modify the *actual* value.
 
 In software we implement these rules by overriding the setter and accessor methods as necessary. We also allow the Price Market to act as a proxy for the Demand Market, so that model entities reading or setting a demand value in the Price Market will actually access the corresponding Demand Market. This last step is not theoretically necessary, but it allows the cycle-breaking mechanism to operate transparently to the rest of the model. The Price Market serves all the functions the rest of the model expects of a Market, and the the Demand Market operates invisibly in the background. If we did not perform this bit of programming legerdemain, the rest of the model would have to allow for the possibility that the price of a good and its demand were represented in two different markets.
 

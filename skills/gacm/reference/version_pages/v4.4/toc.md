@@ -18,7 +18,7 @@ Load this page when the user needs version-specific detail from this exact page 
 * [Socioeconomics](macro-econ.md)
 * [GCAM Energy System](energy.md)
 * [Agriculture, Land-Use, and Bioenergy](aglu.md)
-* [Climate Module – Hector](hector.md)
+* [Climate Module - Hector](hector.md)
 * [Economic Choice in GCAM](choice.md)
 * [Technology Representation](en_technologies.md)
 * [Solution and Computation](solver.md)

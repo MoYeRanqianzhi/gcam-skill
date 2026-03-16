@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 **Table 1: Inputs required by the land allocation module  [1](#table_footnote)**
@@ -71,7 +63,7 @@ Land-use change CO2 emissions are calculated in GCAM using a simple accounting a
 
 #### Vegetation Carbon
 
-For vegetation carbon, we distinguish between two different activities – land expansion and land contraction. In the event that land allocated to a particular type contracts, i.e., there is less land in the current period than the previous period, we assume that all vegetation carbon emissions are released instantaneously.  In this event, the land-use change emissions for the current period from above ground carbon changes are equal to the change in above ground carbon stock. Emissions from above ground carbon changes for all other periods are equal to zero. In the event land expands, we spread the change in carbon stock across time depending on the length of time it takes for the vegetation to mature.  For crops, the mature age is typically set a 1 year, meaning that all carbon uptake occurs instantaneously. For forests, however, we assume it takes anywhere from 30 years to 100 years to uptake all of the carbon. We use an example of the Bertalanffy-Richards function (see [equation](#vegetation-carbon-emissions)).
+For vegetation carbon, we distinguish between two different activities - land expansion and land contraction. In the event that land allocated to a particular type contracts, i.e., there is less land in the current period than the previous period, we assume that all vegetation carbon emissions are released instantaneously.  In this event, the land-use change emissions for the current period from above ground carbon changes are equal to the change in above ground carbon stock. Emissions from above ground carbon changes for all other periods are equal to zero. In the event land expands, we spread the change in carbon stock across time depending on the length of time it takes for the vegetation to mature.  For crops, the mature age is typically set a 1 year, meaning that all carbon uptake occurs instantaneously. For forests, however, we assume it takes anywhere from 30 years to 100 years to uptake all of the carbon. We use an example of the Bertalanffy-Richards function (see [equation](#vegetation-carbon-emissions)).
 
 #### Soil Carbon
 
@@ -205,13 +197,13 @@ See [Energy Constraint](policies_examples.md#energy-constraint) for an xml snipp
 
 One approach we have implemented and tested is to add a land expansion cost curve to targeted land types in specific regions. Specifically, we have added land expansion cost curves to unmanaged forest land in individual regions in which a carbon policy resulted in fast transformation from grassland to unmanaged forest. This method effectively adds a cost associated with converting to forests.  This cost can be interpreted as the cost of planting, watering, fire management, etc. required to grow trees on previously unforested land.
 
-The land expansion cost curve is implemented as a “renewable” resource that land must “purchase” on a per-unit of land basis. The cost curve can be set at a zero cost up to a predefined amount of land: e.g., base year allocation, pre-industrial allocation, etc. Beyond this point, the cost curve increases to either represent a physical expansion cost or an arbitrarily high cost that would act as a hard constraint on expansion. One drawback to this approach is that each cost curve adds a market equation that needs to be solved. The market should behave well, but adding markets should always be done with care as it does put additional burdens on the solution algorithm.
+The land expansion cost curve is implemented as a "renewable" resource that land must "purchase" on a per-unit of land basis. The cost curve can be set at a zero cost up to a predefined amount of land: e.g., base year allocation, pre-industrial allocation, etc. Beyond this point, the cost curve increases to either represent a physical expansion cost or an arbitrarily high cost that would act as a hard constraint on expansion. One drawback to this approach is that each cost curve adds a market equation that needs to be solved. The market should behave well, but adding markets should always be done with care as it does put additional burdens on the solution algorithm.
 
 See [Land Constraint](policies_examples.md#land-constraint) for an xml snippet.
 
 ### Carbon Parks
 
-We have also included code to implement a crop technology that plants trees as densely as possible just for the purposes of storing carbon. Such a “carbon park” technology would allow us to explicitly include physical costs and demands for other inputs such as fertilizer and water when that modeling is available. This would clearly be a “managed” land option and would allow us some more options for modeling carbon policies. As with expansion costs/constraints, carbon parks are not a part of the current core configuration, but can be implemented through changes in input files.
+We have also included code to implement a crop technology that plants trees as densely as possible just for the purposes of storing carbon. Such a "carbon park" technology would allow us to explicitly include physical costs and demands for other inputs such as fertilizer and water when that modeling is available. This would clearly be a "managed" land option and would allow us some more options for modeling carbon policies. As with expansion costs/constraints, carbon parks are not a part of the current core configuration, but can be implemented through changes in input files.
 
 ## Insights and intuition
 
@@ -229,53 +221,17 @@ The choice of [policy options](#policy-options) in the land system has a dramati
 
 ## IAMC Reference Card
 
-Land Cover
-- [X] Cropland
-- [X] Cropland irrigated
-- [X] Cropland food crops
-- [X] Cropland feed crops
-- [X] Cropland energy crops
-- [X] Forest
-- [X] Managed forest
-- [X] Natural forest
-- [X] Pasture
-- [X] Shrubland
-- [X] Built-up area
+Land Cover - [X] Cropland - [X] Cropland irrigated - [X] Cropland food crops - [X] Cropland feed crops - [X] Cropland energy crops - [X] Forest - [X] Managed forest - [X] Natural forest - [X] Pasture - [X] Shrubland - [X] Built-up area
 
-Agriculture and forestry demands
-- [X] Agriculture food
-- [X] Agriculture food crops
-- [X] Agriculture food livestock
-- [X] Agriculture feed
-- [X] Agriculture feed crops
-- [X] Agriculture feed livestock
-- [X] Agriculture non-food
-- [X] Agriculture non-food crops
-- [X] Agriculture non-food livestock
-- [X] Agriculture bioenergy
-- [X] Agriculture residues
-- [X] Forest industrial roundwood
-- [ ] Forest fuelwood
-- [X] Forest residues
+Agriculture and forestry demands - [X] Agriculture food - [X] Agriculture food crops - [X] Agriculture food livestock - [X] Agriculture feed - [X] Agriculture feed crops - [X] Agriculture feed livestock - [X] Agriculture non-food - [X] Agriculture non-food crops - [X] Agriculture non-food livestock - [X] Agriculture bioenergy - [X] Agriculture residues - [X] Forest industrial roundwood - [ ] Forest fuelwood - [X] Forest residues
 
-Agricultural commodities
-- [X] Wheat
-- [X] Rice
-- [X] Other coarse grains
-- [X] Oilseeds
-- [X] Sugar crops
-- [X] Ruminant meat
-- [X] Non-ruminant meat and eggs
-- [X] Dairy products
+Agricultural commodities - [X] Wheat - [X] Rice - [X] Other coarse grains - [X] Oilseeds - [X] Sugar crops - [X] Ruminant meat - [X] Non-ruminant meat and eggs - [X] Dairy products
 
-Carbon dioxide removal
-- [X] Bioenergy with CCS
-- [X] Reforestation
-- [X] Afforestation
+Carbon dioxide removal - [X] Bioenergy with CCS - [X] Reforestation - [X] Afforestation
 
 ## References
 
-Calvin, K., Wise, M., Kyle, P., Patel, P., Clarke, L., Edmonds, J., 2014. Trade-offs of different land and bioenergy policies on the path to achieving climate targets. *Climatic Change* 123, 691–704. https://doi.org/10.1007/s10584-013-0897-y.
+Calvin, K., Wise, M., Kyle, P., Patel, P., Clarke, L., Edmonds, J., 2014. Trade-offs of different land and bioenergy policies on the path to achieving climate targets. *Climatic Change* 123, 691-704. https://doi.org/10.1007/s10584-013-0897-y.
 
 Calvin, K., Wise, M., Kyle, P., Clarke, L., Edmonds, J., 2017. A hindcast experiment using the GCAM 3.0 agriculture and land-use module. *Climate Change Economics* 8. https://doi.org/10.1142/S2010007817500051
 
@@ -285,4 +241,4 @@ Snyder, A. C., Link, R. P., & Calvin, K. V. (2017). Evaluation of integrated ass
 
 Wise, Marshall, Calvin, Katherine, Page Kyle, Patrick Luckow, James Edmonds.  2014. Economic and Physical Modeling of Land Use in GCAM 3.0 and an Application to Agricultural Productivity, Land, and Terrestrial Carbon.  Climate Change Economics. DOI 10.1142/S2010007814500031.
 
-Wise, M., Hodson, E. L., Mignone, B. K., Clarke, L., Waldhoff, S., & Luckow, P. (2015). An approach to computing marginal land use change carbon intensities for bioenergy in policy applications. Energy Economics, 50, 337–347. https://doi.org/10.1016/j.eneco.2015.05.009
+Wise, M., Hodson, E. L., Mignone, B. K., Clarke, L., Waldhoff, S., & Luckow, P. (2015). An approach to computing marginal land use change carbon intensities for bioenergy in policy applications. Energy Economics, 50, 337-347. https://doi.org/10.1016/j.eneco.2015.05.009

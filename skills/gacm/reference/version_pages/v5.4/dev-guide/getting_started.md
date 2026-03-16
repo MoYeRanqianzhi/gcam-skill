@@ -36,7 +36,7 @@ The possible options for \[type of branch\] include:
 
 1. "feature" if you are adding a new major feature to GCAM
 2. "bugfix" if you are making a minor change to GCAM
-3. "paper" if you are documenting a paper – note these changes may or may not go into the core
+3. "paper" if you are documenting a paper - note these changes may or may not go into the core
 
 ### General Advice
 

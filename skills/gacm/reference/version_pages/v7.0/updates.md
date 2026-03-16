@@ -64,7 +64,4 @@ Several changes have been made to GCAM since the last release version (v5.3). Th
  8. gcamdata updated to use drake and work with dplyr 1.0.0
  9. Removed unused code
  10. Minor updates and bugfixes
- 11. Optional features (not turned on by default):
-	- Direct Air Capture
-	- Ability to specify exogenous floorspace pathways
-	- Ability to scale CH4 and N2O emissions to EPA inventories
+ 11. Optional features (not turned on by default): - Direct Air Capture - Ability to specify exogenous floorspace pathways - Ability to scale CH4 and N2O emissions to EPA inventories

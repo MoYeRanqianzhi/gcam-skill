@@ -292,15 +292,7 @@ values that have not changed. It does not affect the results returned.
 
 The abstraction layer takes care of all of the manipulations that have
 to happen to get the model to run with a set of input prices. In
-order, these are:
-
--   Zeroing all market supplies and demands *(full calculation only)*.
--   Saving the current market values and setting flags *(partial calculation only)*.
--   Determining the affected nodes *(partial calculation only)*
--   Converting from log price to price.
--   Calling `world->calc()`
--   Converting from excess demand to log excess demand.
--   Restoring any state that was modified.
+order, these are: - Zeroing all market supplies and demands *(full calculation only)*. - Saving the current market values and setting flags *(partial calculation only)*. - Determining the affected nodes *(partial calculation only)* - Converting from log price to price. - Calling `world->calc()` - Converting from excess demand to log excess demand. - Restoring any state that was modified.
 
 This arrangement greatly simplifies the development of solver
 algorithms and eliminates redundant code that was formerly duplicated

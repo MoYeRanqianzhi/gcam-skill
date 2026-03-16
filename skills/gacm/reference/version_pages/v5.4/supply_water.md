@@ -12,14 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Model
 **Table 1: Inputs required by the supply module  [1](#table_footnote)**
@@ -71,8 +64,7 @@ To be completed...
 
 ## IAMC Reference Card
 
-Co-linkages
-- [X] Water availability
+Co-linkages - [X] Water availability
 
 ## References
 

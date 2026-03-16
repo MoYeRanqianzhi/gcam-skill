@@ -47,7 +47,7 @@ _Repository_:  https://github.com/JGCRI/gcamrpt
 
 #### `pygcam`
 
-The `pygcam` package comprises a set of Python modules and a main driver script designed to facilitate a more efficient workflow using GCAM.  The tools are intended to meet the needs of different types of users, from basic users who just want to run the model, to “power” users interested in writing custom scripts, to software developers wanting to write new automation front ends or other higher-level tools for working with GCAM.
+The `pygcam` package comprises a set of Python modules and a main driver script designed to facilitate a more efficient workflow using GCAM.  The tools are intended to meet the needs of different types of users, from basic users who just want to run the model, to "power" users interested in writing custom scripts, to software developers wanting to write new automation front ends or other higher-level tools for working with GCAM.
 
 _Repository_:  https://github.com/JGCRI/pygcam
 _Read the Docs_:  https://pygcam.readthedocs.io/en/latest/intro.html
@@ -56,7 +56,7 @@ _Read the Docs_:  https://pygcam.readthedocs.io/en/latest/intro.html
 
 #### `gcamdata`
 
-The increasing data requirements of complex models demand robust, reproducible, and transparent systems to track and prepare models’ inputs. The `gcamdata` R package processes raw inputs to produce the hundreds of XML files needed by GCAM.
+The increasing data requirements of complex models demand robust, reproducible, and transparent systems to track and prepare models' inputs. The `gcamdata` R package processes raw inputs to produce the hundreds of XML files needed by GCAM.
 
 _Repository_:  https://github.com/JGCRI/gcamdata
 

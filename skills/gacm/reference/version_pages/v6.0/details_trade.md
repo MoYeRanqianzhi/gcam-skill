@@ -76,17 +76,7 @@ Note that secondary energy products such as [Electricity](supply_energy.md#elect
 
 ## IAMC Reference Card
 
-Trade
-- [X] Coal
-- [X] Oil
-- [X] Gas
-- [X] Uranium
-- [ ] Electricity
-- [X] Bioenergy crops
-- [X] Food crops
-- [ ] Capital
-- [X] Emissions permits
-- [ ] Non-energy goods
+Trade - [X] Coal - [X] Oil - [X] Gas - [X] Uranium - [ ] Electricity - [X] Bioenergy crops - [X] Food crops - [ ] Capital - [X] Emissions permits - [ ] Non-energy goods
 
 ## References
 
@@ -98,6 +88,6 @@ Liu, J., Arndt, C., Hertel, T.W.J.J.o.E.I. (2004) Parameter estimation and measu
 
 Peter Debaere (2003) Relative factor abundance and trade. Journal of Political Economy 111, 589-610. 10.1086/374179
 
-Vanek, J. (1968) The factor proportions theory: The n—factor case. Kyklos 21, 749-756. 10.1111/j.1467-6435.1968.tb00141.x
+Vanek, J. (1968) The factor proportions theory: The n-factor case. Kyklos 21, 749-756. 10.1111/j.1467-6435.1968.tb00141.x
 
 Zhao, X., Wise, M., Waldhoff, S., Kyle, G.P., Huster, J., Ramig, C., Rafelski, L., Patel, P., Calvin, K, (2020). "The impact of agricultural trade approaches on global economic modeling" (Under review)

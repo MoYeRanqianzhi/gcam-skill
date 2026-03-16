@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -60,7 +52,7 @@ Note that forestry demand is represented for two product pools, namely wood pulp
 ### Future demand (storage)
 In GCAM `v7.1`, GCAM incorporated agricultural stockholding behavior as a technology of regional consumers who allocate regional supply to current consumption or future consumption (storage carried over to the next period). The schematic showing the structure updates is presented in the following figure.
 
-The development leveraged the recently compiled supply-utilization accounts to separate stock variations, opening stock, closing stock, and loss associated with stockholding behavior. The competitive storage model employs a logit sharing structure, where changes in the ratio between closing stock and “current consumption” (i.e., stock-to-use ratio) are responsive to current market prices and expected prices for storage in the next period. We use a lagged price expectation and apply a loss parameter to closing stock to derive the loss associated with interannual storage in a region for a given sector. Currently, agricultural storage is introduced for 13 GCAM crop commodities. See additional details in [CMP #382](cmp/382-AgFoodStorage.md).
+The development leveraged the recently compiled supply-utilization accounts to separate stock variations, opening stock, closing stock, and loss associated with stockholding behavior. The competitive storage model employs a logit sharing structure, where changes in the ratio between closing stock and "current consumption" (i.e., stock-to-use ratio) are responsive to current market prices and expected prices for storage in the next period. We use a lagged price expectation and apply a loss parameter to closing stock to derive the loss associated with interannual storage in a region for a given sector. Currently, agricultural storage is introduced for 13 GCAM crop commodities. See additional details in [CMP #382](cmp/382-AgFoodStorage.md).
 
 Schematic of the updating GCAM modeling structure to represent stockholder behaviors. Source: Zhao et al. (2024).
 
@@ -110,21 +102,7 @@ This paper looked at demand pathways across sectors under different land scarcit
 
 ## IAMC Reference Card
 
-Agriculture and forestry demands
-- [X] Agriculture food
-- [X] Agriculture food crops
-- [X] Agriculture food livestock
-- [X] Agriculture feed
-- [X] Agriculture feed crops
-- [X] Agriculture feed livestock
-- [X] Agriculture non-food
-- [X] Agriculture non-food crops
-- [X] Agriculture non-food livestock
-- [X] Agriculture bioenergy
-- [X] Agriculture residues
-- [X] Forest industrial roundwood
-- [X] Forest fuelwood
-- [X] Forest residues
+Agriculture and forestry demands - [X] Agriculture food - [X] Agriculture food crops - [X] Agriculture food livestock - [X] Agriculture feed - [X] Agriculture feed crops - [X] Agriculture feed livestock - [X] Agriculture non-food - [X] Agriculture non-food crops - [X] Agriculture non-food livestock - [X] Agriculture bioenergy - [X] Agriculture residues - [X] Forest industrial roundwood - [X] Forest fuelwood - [X] Forest residues
 
 ## References
 

@@ -19,19 +19,10 @@ requirements have increased with the release of
 [GCAM 3.0](GCAM_Revision_History.md), please see below.
 
 Hardware Requirements
----------------------
-
--   At least 4 GB of RAM
--   5GB of free disk space (model output databases can quickly become large files)
+--------------------- - At least 4 GB of RAM - 5GB of free disk space (model output databases can quickly become large files)
 
 Software Requirements
----------------------
-
--   A 64-bit operating system such as:
-    -   Windows 7
-    -   Mac OS X (10.5 or greater recommended)
-    -   Linux
--   64-bit Java
+--------------------- - A 64-bit operating system such as: - Windows 7 - Mac OS X (10.5 or greater recommended) - Linux - 64-bit Java
 
 Additionally, Windows users will need to download the Visual Studio
 2010 Redistributable Package (x64) available

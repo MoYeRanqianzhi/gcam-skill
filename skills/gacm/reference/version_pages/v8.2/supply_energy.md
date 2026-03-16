@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 **Table 1: Inputs required by the supply module  [1](#table_footnote)**
@@ -129,7 +121,7 @@ In most regions in GCAM, heat is not explicitly represented as an energy commodi
 
 #### Hydrogen
 
-Hydrogen is represented as a commodity in future time periods that is available for various energy and industrial processes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.md#iea2019), or most other energy statistics. As such, the representation excludes the on-site production and use of hydrogen at oil refineries, ammonia plants, and other present-day industrial facilities.  The representation of hydrogen in GCAM includes 10 “central” production technologies, as well as 2 “forecourt” (i.e. on-site) production technologies, which may have higher costs due to the economies of scale and higher capacity factors of central production, but the forecourt technologies avoid the costs and energy requirements of distribution. The hydrogen distribution representation differentiates a range of hydrogen commodities whose costs largely reflect the various temperatures and pressures at which hydrogen is transported and stored for different end-use applications. Production technology costs and energy intensities are from the U.S. Department of Energy’s Hydrogen Analysis (H2A) models [NREL 2018](supply_energy.md#nrel2018), and the distribution costs and energy intensities are from Argonne’s Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](supply_energy.md#anl2015). See [hydrogen](details_energy.md#hydrogen) for more information.
+Hydrogen is represented as a commodity in future time periods that is available for various energy and industrial processes. Hydrogen is not treated as a fuel in the IEA Energy Balances [IEA 2019](supply_energy.md#iea2019), or most other energy statistics. As such, the representation excludes the on-site production and use of hydrogen at oil refineries, ammonia plants, and other present-day industrial facilities.  The representation of hydrogen in GCAM includes 10 "central" production technologies, as well as 2 "forecourt" (i.e. on-site) production technologies, which may have higher costs due to the economies of scale and higher capacity factors of central production, but the forecourt technologies avoid the costs and energy requirements of distribution. The hydrogen distribution representation differentiates a range of hydrogen commodities whose costs largely reflect the various temperatures and pressures at which hydrogen is transported and stored for different end-use applications. Production technology costs and energy intensities are from the U.S. Department of Energy's Hydrogen Analysis (H2A) models [NREL 2018](supply_energy.md#nrel2018), and the distribution costs and energy intensities are from Argonne's Hydrogen Delivery Scenario Analysis Model (HDSAM) [ANL 2015](supply_energy.md#anl2015). See [hydrogen](details_energy.md#hydrogen) for more information.
 
 ### Energy Trade
 
@@ -213,105 +205,35 @@ DAC helps maintain oil sands production in the most ambitious global decarboniza
 
 ### Energy technology substitution
 
-Energy technology choice
-- [ ] No discrete technology choices
-- [X] Logit choice model
-- [ ] Production function
-- [ ] Linear choice (lowest cost)
-- [ ] Lowest cost with adjustment penalties
+Energy technology choice - [ ] No discrete technology choices - [X] Logit choice model - [ ] Production function - [ ] Linear choice (lowest cost) - [ ] Lowest cost with adjustment penalties
 
-Energy technology substitutability
-- [ ] Mostly high substitutability
-- [ ] Mostly low substitutability
-- [X] Mixed high and low substitutability
+Energy technology substitutability - [ ] Mostly high substitutability - [ ] Mostly low substitutability - [X] Mixed high and low substitutability
 
-Energy technology deployment
-- [ ] Expansion and decline constraints
-- [X] System integration constraints
+Energy technology deployment - [ ] Expansion and decline constraints - [X] System integration constraints
 
 ### Energy
 
-Electricity technologies
-- [X] Coal w/o CCS
-- [X] Coal w/ CCS
-- [X] Gas w/o CCS
-- [X] Gas w/ CCS
-- [X] Oil w/o CCS
-- [X] Oil w/ CCS
-- [X] Bioenergy w/o CCS
-- [X] Bioenergy w/ CCS
-- [X] Geothermal power
-- [X] Nuclear power
-- [X] Solar power
-- [X] Solar power-central PV
-- [X] Solar power-distributed PV
-- [X] Solar power-CSP
-- [X] Wind power
-- [X] Wind power-onshore
-- [X] Wind power-offshore
-- [X] Hydroelectric power
-- [ ] Ocean power
+Electricity technologies - [X] Coal w/o CCS - [X] Coal w/ CCS - [X] Gas w/o CCS - [X] Gas w/ CCS - [X] Oil w/o CCS - [X] Oil w/ CCS - [X] Bioenergy w/o CCS - [X] Bioenergy w/ CCS - [X] Geothermal power - [X] Nuclear power - [X] Solar power - [X] Solar power-central PV - [X] Solar power-distributed PV - [X] Solar power-CSP - [X] Wind power - [X] Wind power-onshore - [X] Wind power-offshore - [X] Hydroelectric power - [ ] Ocean power
 
-Hydrogen production
-- [X] Coal to hydrogen w/o CCS
-- [X] Coal to hydrogen w/ CCS
-- [X] Natural gas to hydrogen w/o CCS
-- [X] Natural gas to hydrogen w/ CCS
-- [X] Oil to hydrogen w/o CCS
-- [X] Oil to hydrogen w/ CCS
-- [X] Biomass to hydrogen w/o CCS
-- [X] Biomass to hydrogen w/ CCS
-- [X] Nuclear thermochemical hydrogen
-- [ ] Solar thermochemical hydrogen
-- [X] Electrolysis
+Hydrogen production - [X] Coal to hydrogen w/o CCS - [X] Coal to hydrogen w/ CCS - [X] Natural gas to hydrogen w/o CCS - [X] Natural gas to hydrogen w/ CCS - [X] Oil to hydrogen w/o CCS - [X] Oil to hydrogen w/ CCS - [X] Biomass to hydrogen w/o CCS - [X] Biomass to hydrogen w/ CCS - [X] Nuclear thermochemical hydrogen - [ ] Solar thermochemical hydrogen - [X] Electrolysis
 
-Refined liquids
-- [X] Coal to liquids w/o CCS
-- [X] Coal to liquids w/ CCS
-- [X] Gas to liquids w/o CCS
-- [X] Gas to liquids w/ CCS
-- [X] Bioliquids w/o CCS
-- [X] Bioliquids w/ CCS
-- [X] Oil refining
+Refined liquids - [X] Coal to liquids w/o CCS - [X] Coal to liquids w/ CCS - [X] Gas to liquids w/o CCS - [X] Gas to liquids w/ CCS - [X] Bioliquids w/o CCS - [X] Bioliquids w/ CCS - [X] Oil refining
 
-Refined gases
-- [X] Coal to gas w/o CCS
-- [X] Coal to gas w/ CCS
-- [X] Oil to gas w/o CCS
-- [X] Oil to gas w/ CCS
-- [X] Biomass to gas w/o CCS
-- [X] Biomass to gas w/ CCS
+Refined gases - [X] Coal to gas w/o CCS - [X] Coal to gas w/ CCS - [X] Oil to gas w/o CCS - [X] Oil to gas w/ CCS - [X] Biomass to gas w/o CCS - [X] Biomass to gas w/ CCS
 
-Heat generation
-- [X] Coal heat
-- [X] Natural gas heat
-- [X] Oil heat
-- [X] Biomass heat
-- [ ] Geothermal heat
-- [ ] Solarthermal heat
-- [X] CHP (coupled heat and power)
+Heat generation - [X] Coal heat - [X] Natural gas heat - [X] Oil heat - [X] Biomass heat - [ ] Geothermal heat - [ ] Solarthermal heat - [X] CHP (coupled heat and power)
 
 ### Grid Infrastructure
 
-Electricity
-- [X] Yes (aggregate)
-- [ ] Yes (spatially explicit)
+Electricity - [X] Yes (aggregate) - [ ] Yes (spatially explicit)
 
-Gas
-- [X] Yes (aggregate)
-- [ ] Yes (spatially explicit)
+Gas - [X] Yes (aggregate) - [ ] Yes (spatially explicit)
 
-Heat
-- [X] Yes (aggregate)
-- [ ] Yes (spatially explicit)
+Heat - [X] Yes (aggregate) - [ ] Yes (spatially explicit)
 
-CO2
-- [X] Yes (aggregate)
-- [ ] Yes (spatially explicit)
+CO2 - [X] Yes (aggregate) - [ ] Yes (spatially explicit)
 
-Hydrogen
-- [X] Yes (aggregate)
-- [ ] Yes (spatially explicit)
+Hydrogen - [X] Yes (aggregate) - [ ] Yes (spatially explicit)
 
 ## References
 
@@ -347,4 +269,4 @@ Hydrogen
 
 <a name="zwart2006"></a>[Zwart et al. 2006] Zwart, R., Boerrigter, H., Deurwaarder, E.P., van der Meijden, C.M., and van Paasen, S.V.B. 2006. *Production of Synthetic Natural Gas (SNG) from Biomass: Development and operation of an integrated bio-SNG system*. Report ECN-E-06-018, Energy Research Centre of the Netherlands. [Link](https://www.ecn.nl/docs/library/report/2006/e06018.pdf)
 
-<a name="Hassen2020"></a>[Hanssen et al. 2020] Hanssen, S.V., Daioglou, V., Steinmann, Z.J.N., Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, D.P., 2020. Biomass residues as twenty-first century bioenergy feedstock—a comparison of eight integrated assessment models. Climatic Change 163, 1569–1586. [Link](https://doi.org/10.1007/s10584-019-02539-x)
+<a name="Hassen2020"></a>[Hanssen et al. 2020] Hanssen, S.V., Daioglou, V., Steinmann, Z.J.N., Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, Hasegawa, T., Huijbregts, M.A.J., Van Vuuren, D.P., 2020. Biomass residues as twenty-first century bioenergy feedstock-a comparison of eight integrated assessment models. Climatic Change 163, 1569-1586. [Link](https://doi.org/10.1007/s10584-019-02539-x)

@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -125,7 +117,7 @@ Future transformations in the electricity sector could entail major shifts in po
 
 Not applicable. The IAMC reference card does not have water demand related entries.
 
-<a name="elec_footnote"></a>2: Note that because of the limits to the supplysector/subsector/technology structure of the energy system technologies in GCAM, this additional "cooling system" level of nesting is achieved through the use of “pass-through” technologies and sectors. To help with interpretation of the model output, the electric sector queries have been written to report these cooling system technologies under the "electricity" sector, but the raw input XML files and model output nevertheless have the fully disaggregated structure.
+<a name="elec_footnote"></a>2: Note that because of the limits to the supplysector/subsector/technology structure of the energy system technologies in GCAM, this additional "cooling system" level of nesting is achieved through the use of "pass-through" technologies and sectors. To help with interpretation of the model output, the electric sector queries have been written to report these cooling system technologies under the "electricity" sector, but the raw input XML files and model output nevertheless have the fully disaggregated structure.
 
 ## References
 
@@ -153,7 +145,7 @@ Not applicable. The IAMC reference card does not have water demand related entri
 
 <a name="mekonnen2010"></a>[Mekonnen and Hoekstra 2010] Mekonnen, M.M., and Hoekstra, A.Y. 2010. *The Green, Blue and Grey Water Footprint of Farm Animals and Animal Products. Vol 2: Appendices. Appendix IV. Drinking and service water footprint per animal (litre/day)*. Value of Water Research Report Series No. 48. UNESCO-IHE Institute for Water Education. [Link](http://waterfootprint.org/media/downloads/Report-48-WaterFootprint-AnimalProducts-Vol2.pdf)
 
-<a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577–1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
+<a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577-1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
 
 <a name="netl2008"></a>[NETL 2008] National Energy Technology Laboratory. *Water Requirements for Existing and Emerging Thermoelectric Plant Technologies*. DOE/NETL-402/080108, National Energy Technology Laboratory. [Link](http://www.circleofblue.org/wp-content/uploads/2010/08/Water-Requirements-for-Existing-and-Emerging-Thermoelectric-Technology.pdf)
 
@@ -165,4 +157,4 @@ Not applicable. The IAMC reference card does not have water demand related entri
 
 <a name="vickers2001"></a>[Vickers 2001] Vickers, A. 2001. *Handbook of Water Use and Conservation*. WaterPlow Press, Amherst, MA, USA. [Link](http://waterplowpress.com/)
 
-<a name="yonkofski2019"></a>[Yonkofski et al. 2019] Yonkofski, C., Watson, D., Hejazi, M. 2019 *Cost and Availability of Non-renewable Groundwater*. Earth’s Future (in review).
+<a name="yonkofski2019"></a>[Yonkofski et al. 2019] Yonkofski, C., Watson, D., Hejazi, M. 2019 *Cost and Availability of Non-renewable Groundwater*. Earth's Future (in review).

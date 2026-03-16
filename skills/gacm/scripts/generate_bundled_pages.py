@@ -172,6 +172,7 @@ CODE_FENCE_RE = re.compile(r"(^```.*?^```[ \t]*\n?)", re.MULTILINE | re.DOTALL)
 INLINE_CODE_RE = re.compile(r"(`+)([^`\n]*?)\1")
 MISATTACHED_CODE_FENCE_RE = re.compile(r"(?<![\r\n])```")
 ZERO_WIDTH_CHAR_RE = re.compile(r"[\u200b\u200c\u200d\ufeff]")
+UNICODE_DASH_RE = re.compile(r"[\u2010\u2013\u2014]")
 SCHEME_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+.\-]*:")
 CROSS_VERSION_TOC_RE = re.compile(r"^v\d+\.\d+/")
 IMAGE_PLACEHOLDER_RE = re.compile(r"\[\[IMAGE_OMITTED:([^\]]+)\]\]")
@@ -785,6 +786,30 @@ def parse_title(front_matter: str, body: str, fallback: str) -> str:
     return fallback.replace("_", " ")
 
 
+def normalize_heading_text(text: str) -> str:
+    text = text.replace("\u00a0", " ")
+    text = ZERO_WIDTH_CHAR_RE.sub("", text)
+    text = text.replace("\u2009", " ")
+    text = text.replace("\u2061", "")
+    text = text.translate(
+        str.maketrans(
+            {
+                "\u201c": '"',
+                "\u201d": '"',
+                "\u2018": "'",
+                "\u2019": "'",
+                "\u00d7": "x",
+                "\u02da": "\u00b0",
+            }
+        )
+    )
+    text = re.sub(r"(?<=\d)\s*[\u2010\u2013\u2014]\s*(?=\d)", "-", text)
+    text = re.sub(r"(?<=\w)[\u2010\u2013\u2014](?=\w)", "-", text)
+    text = UNICODE_DASH_RE.sub(" - ", text)
+    text = re.sub(r"\s+-\s+", " - ", text)
+    return text.strip()
+
+
 def strip_duplicate_heading(body: str, title: str) -> str:
     lines = body.splitlines()
     if not lines:
@@ -797,7 +822,7 @@ def strip_duplicate_heading(body: str, title: str) -> str:
     line = lines[idx].strip()
     if line.startswith("# "):
         candidate = line[2:].strip()
-        if candidate == title:
+        if normalize_heading_text(candidate) == normalize_heading_text(title):
             return "\n".join(lines[:idx] + lines[idx + 1 :]).lstrip("\n")
     return body
 
@@ -932,6 +957,28 @@ def sanitize_absolute_paths(text: str) -> str:
 def normalize_problem_unicode_whitespace(text: str) -> str:
     text = text.replace("\u00a0", " ")
     text = ZERO_WIDTH_CHAR_RE.sub("", text)
+    text = text.replace("\u2009", " ")
+    text = text.replace("\u2061", "")
+    return text
+
+
+def normalize_problem_unicode_punctuation(text: str) -> str:
+    text = text.translate(
+        str.maketrans(
+            {
+                "\u201c": '"',
+                "\u201d": '"',
+                "\u2018": "'",
+                "\u2019": "'",
+                "\u00d7": "x",
+                "\u02da": "\u00b0",
+            }
+        )
+    )
+    text = re.sub(r"(?<=\d)\s*[\u2010\u2013\u2014]\s*(?=\d)", "-", text)
+    text = re.sub(r"(?<=\w)[\u2010\u2013\u2014](?=\w)", "-", text)
+    text = UNICODE_DASH_RE.sub(" - ", text)
+    text = re.sub(r"\s+-\s+", " - ", text)
     return text
 
 
@@ -2051,6 +2098,7 @@ def apply_outside_code_fences(text: str, transform) -> str:
 
 def sanitize_body(text: str, version: str, rel_source: Path) -> str:
     text = normalize_problem_unicode_whitespace(text)
+    text = normalize_problem_unicode_punctuation(text)
     text = rewrite_images(text)
     text = MISATTACHED_CODE_FENCE_RE.sub("\n```", text)
     text = apply_outside_code_fences(
@@ -2131,6 +2179,7 @@ def render_source_page(
     front_matter, body = strip_front_matter(raw)
     rel_source = relative_source_path(source_version, source_path)
     title = parse_title(front_matter, body, source_path.stem)
+    title = normalize_heading_text(title)
     body = strip_duplicate_heading(body, title)
     body = sanitize_body(body, bundle_version, rel_source)
     lines = [

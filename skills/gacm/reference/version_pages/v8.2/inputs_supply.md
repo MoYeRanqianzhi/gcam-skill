@@ -14,11 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 GCAM's supply inputs include information on production, prices, technology cost and performance, and other emissions in the historical period in order to calibrate model parameters. In addition, GCAM's supply modeling requires information on future technology cost and performance and emissions factors for future periods. GCAM requires that supply data is globally consistent with [demand data](inputs_demand.md) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. These inputs are required for each [region](common_assumptions.md#regional-resolution) and [historical year](common_assumptions.md#historical-years).
 
-# Table of Contents
-
-- [Energy](#energy)
-- [Water](#water)
-- [Food, Feed, and Forestry](#food-feed-and-forestry)
+# Table of Contents - [Energy](#energy) - [Water](#water) - [Food, Feed, and Forestry](#food-feed-and-forestry)
 
 ## External Inputs
 
@@ -226,7 +222,7 @@ Schematic of the restructuring of the supply-utilization accounts in GCAM to sep
 
 <a name="liu2018"></a>[Liu et al. 2018] Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
 
-<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413-422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
 
 <a name="niazi2025"></a>[Niazi et al. 2025] Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 

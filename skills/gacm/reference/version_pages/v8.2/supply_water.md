@@ -12,14 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Model
 **Table 1: Inputs required by the supply module  [1](#table_footnote)**
@@ -40,7 +33,7 @@ Three distinct sources of fresh water are modeled, renewable water, non-renewabl
 ### Renewable water
 
 Renewable water supplies are based on runoff estimates from Xanthos, a detailed global hydrology model ([Liu et al. 2018](#liu2018); [Vernon et al. 2019](#vernon2019)). Xanthos accounts for surface and subsurface processes to compute runoff at 0.5° grid resolution. Global climate datasets are utilized in conjunction with Xanthos to determine historical annual average runoff aggregated for each basin ([Liu et al. 2018](#liu2018); [Turner et al. 2019b](#turner2019b); [Vernon et al. 2019](#vernon2019)). Of the total basin runoff, water available or accessible for human use takes into consideration requirements for ecosystem services, inaccessibility due to rapid flow and remote locations, and capacity of reservoir storage.  We define the volume of renewable water resources accessible for human use as:
-$$QA_i^t =  max( 0, min( QT_i^t – EFR_i, QB_i^t - EFR_i + RS_i ))$$,
+$$QA_i^t =  max( 0, min( QT_i^t - EFR_i, QB_i^t - EFR_i + RS_i ))$$,
 where $$QA_i^t$$, $$QT_i^t$$, and $$QB_i^t$$ are the annual volumes of accessible renewable water, natural streamflow and baseflow, respectively, in basin $$i$$ and year $$t$$; $$EFR_i$$ is the environmental flow requirement for each basin, and $$RS_i$$ is total reservoir storage capacity in each basin $$i$$ ([Kim et al. 2016](#kim2016)). The minimum function ensures that the combined baseflow and reservoir storage do not exceed total streamflow. All volumes are measured in $$km^3/yr$$. According to the GRanD database [Lehner et al. 2011](#lehner2011), the total reservoir storage volume globally is approximately 6,100 $$km^3/yr$$; their geographic locations are then used to compute the total reservoir storage capacity in each basin -- a quantity that is currently assumed constant over time. As explained above, $$EFR_i$$ is a function of the monthly average streamflow for each basin. Baseflow is computed as a fraction of annual streamflow following the estimates of ([Beck et al. 2013](#beck2013)). Accessible fractions of total runoff vary across basins and time dependent on changes in precipitation. Renewable water volumes up to the accessible fraction is available at nominal or low cost. Additional renewable water beyond the accessible fraction is available at significantly higher cost to ensure availability of water for ecosystem services and to reflect capital investments necessary for reservoir expansion ([Zhao et al. 2024](#zhao2024)).
 
 ### Non-renewable groundwater
@@ -75,8 +68,7 @@ The implementation of future sustainable water governance measures will require 
 
 ## IAMC Reference Card
 
-Co-linkages
-- [X] Water availability
+Co-linkages - [X] Water availability
 
 ## References
 
@@ -104,7 +96,7 @@ Co-linkages
 
 <a name="liu2018"></a>[Liu et al. 2018] Liu Y., M. Hejazi, H. Li, X. Zhang, G. Leng (2018). *A  hydrological emulator for global applications - HE v1.0.0*. Geoscientific Model Development. [Link](https://www.geosci-model-dev.net/11/1077/2018/gmd-11-1077-2018.pdf)
 
-<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413-422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
 
 <a name="niazi2025"></a>[Niazi et al. 2025] Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 
@@ -120,4 +112,4 @@ Co-linkages
 
 <a name="vernon2019"></a>[Vernon 2019] Vernon, C., M. Hejazi, S. Turner, Y. Liu, C. Braun, X. Li, and R. Link. *A Global Hydrologic Framework to Accelerate Scientific Discovery*. Journal of Open Research Software (2019). [Link](https://openresearchsoftware.metajnl.com/articles/10.5334/jors.245/)
 
-<a name="zhao2024"></a>[Zhao et al. 2024] Zhao, M., Wild, T. B., Graham, N. T., Kim, S. H., Binsted, M., Chowdhury, A. F. M. K., Msangi, S., Patel, P. L., Vernon, C. R., Niazi, H., Li, H. Y., & Abeshu, G. W. 2024. GCAM–GLORY v1.0: Representing global reservoir water storage in a multi-sector human–Earth system model. Geoscientific Model Development, 17(14), pp. 5587-5617. [Link](https://doi.org/10.5194/gmd-17-5587-2024)
+<a name="zhao2024"></a>[Zhao et al. 2024] Zhao, M., Wild, T. B., Graham, N. T., Kim, S. H., Binsted, M., Chowdhury, A. F. M. K., Msangi, S., Patel, P. L., Vernon, C. R., Niazi, H., Li, H. Y., & Abeshu, G. W. 2024. GCAM-GLORY v1.0: Representing global reservoir water storage in a multi-sector human-Earth system model. Geoscientific Model Development, 17(14), pp. 5587-5617. [Link](https://doi.org/10.5194/gmd-17-5587-2024)

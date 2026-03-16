@@ -12,7 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-GCAM is a multi‐regional dynamic-recursive model which couples a simple economic growth model with detailed energy system, agriculture system-land-use-terrestrial-carbon-cycle model and a simple atmosphere-ocean-climate model, MAGICC.
+GCAM is a multi-regional dynamic-recursive model which couples a simple economic growth model with detailed energy system, agriculture system-land-use-terrestrial-carbon-cycle model and a simple atmosphere-ocean-climate model, MAGICC.
 
 Geographic Coverage and Regions
 

@@ -378,23 +378,15 @@ struct GatherEmiss {
 ```
 
 We now have everything we need to use the GCAM Fusion interface.
-The `GCAMFusion` object takes four template parameters:
-
--   The handler object that we just defined.
--   A boolean flag to indicate whether the handler will process the start of each
-    step taken into a `CONTAINER` object (default is `false`).
--   A boolean flag to indicate whether the handler will process stepping out of
-    a `CONTAINER` object (default is false).
--   A boolean flag to indicate whether the handler will process the data being found
+The `GCAMFusion` object takes four template parameters: - The handler object that we just defined. - A boolean flag to indicate whether the handler will process the start of each
+    step taken into a `CONTAINER` object (default is `false`). - A boolean flag to indicate whether the handler will process stepping out of
+    a `CONTAINER` object (default is false). - A boolean flag to indicate whether the handler will process the data being found
     (default is `true`).
 
 The last flag (the one that defaults to `true`) is the most common use case, and
 it's the only one we will use in this example.
 
-The `GCAMFusion` object constructor takes two arguments:
-
--   A vector of FilterSteps
--   An instance of an object that can handle the results of the search
+The `GCAMFusion` object constructor takes two arguments: - A vector of FilterSteps - An instance of an object that can handle the results of the search
 
 Then we can call GCAM Fusion with a search string and have it use the above
 struct to process the results:

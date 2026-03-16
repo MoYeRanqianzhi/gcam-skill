@@ -33,7 +33,7 @@ that it is just as easy to switch from forest to wheat as it is to
 switch from corn to wheat. However, this conversion would not happen
 unless wheat was more profitable than forest or corn. With a high
 enough logit exponent for this single nest, the land sharing
-approaches an optimal “winner-take-all” result in that all land within
+approaches an optimal "winner-take-all" result in that all land within
 a region will be dedicated to the most profitable product in that
 region. A single nest with a high exponent represents the extreme end
 of unconstrained optimization in which there is no transition cost or
@@ -92,7 +92,7 @@ scenarios. Under cropland are all food and other agriculture products
 (e.g., corn, wheat, sugars, etc.), including biomass crops, along with
 an unmanaged land category called other arable land. Note that several
 crops are included explicitly in the CropLand node, and the grouping
-of “AllOtherCrops” is simply a convenience for this figure.
+of "AllOtherCrops" is simply a convenience for this figure.
 
 With the specification above, we can make substitution across
 categories more or less difficult by choosing lower or higher logit

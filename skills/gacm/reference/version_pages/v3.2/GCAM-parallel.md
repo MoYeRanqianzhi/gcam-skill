@@ -42,16 +42,12 @@ the TBB distribution. Enable the parallel modules by setting
 `GCAM_PARALLEL_ENABLED = 1` in the
 [configuration file](GCAM_Build_Configuration.md)
 (`configure.gcam`). There are also a few environment variables that
-will need to be set:
-
--   `TBB_INCDIR`: The top-level directory containing the TBB header
+will need to be set: - `TBB_INCDIR`: The top-level directory containing the TBB header
     files. The header files themselves should be in a directory called
     `tbb`, so, for example, the main TBB header will be
-    `$TBB_INCDIR/tbb/tbb.h`.
--   `TBB_LIBDIR`: Location of the TBB library files. The libraries
+    `$TBB_INCDIR/tbb/tbb.h`. - `TBB_LIBDIR`: Location of the TBB library files. The libraries
     should be directly in this directory (*i.e.*, without a tbb
-    subdirectory like the one under `$TBB_INCDIR`).
--   `TBB_LINK_DEBUG` *(Optional)*: Setting this environment variable
+    subdirectory like the one under `$TBB_INCDIR`). - `TBB_LINK_DEBUG` *(Optional)*: Setting this environment variable
     to 1 will use debug versions of the TBB libraries. Setting it to
     anything else, or leaving it unset, will use the normal libraries.
 
@@ -89,9 +85,7 @@ long (80 seconds or more) run times for the graph
 analysis. Consequently, values less than 20 are not recommended. If no
 value is specified, the default value of 30 will be used.
 
-The parallel extensions also add several additional log files:
-
--   `parallel_debug_log`: This log traces the values being written to
+The parallel extensions also add several additional log files: - `parallel_debug_log`: This log traces the values being written to
     and read from the marketplaces in the code. It is used to debug
     apparently incorrect results from the parallel versions of the
     calculation. The logging instances are actually commented out in
@@ -99,11 +93,9 @@ The parallel extensions also add several additional log files:
     "Log message"`) creates a substantial amount of overhead *even if*
     the log configuration is set to produce no output at that logging
     level. Enable this logging *only* if you are trying to track down
-    a discrepancy between serial and parallel versions of the code.
--   `flow-graph-log`: The subroutine that builds the flow graph
+    a discrepancy between serial and parallel versions of the code. - `flow-graph-log`: The subroutine that builds the flow graph
     structure writes a depiction of the flow graph it produces in dot
-    format into this log.
--   `parallel-grain-log`: The subroutine that builds the grain graph
+    format into this log. - `parallel-grain-log`: The subroutine that builds the grain graph
     writes a depiction of the grain graph into this log. Like the flow
     graph output, it is in dot format.
 

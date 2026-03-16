@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 **Table 1: Inputs required by the supply module  [1](#table_footnote)**
@@ -50,7 +42,7 @@ Variable costs set hard price floors in the model: production goes to zero when 
 
 Value-added categories are not included in the variable costs. In addition, variable costs do not include land costs, as the model is based on allocating land on per unit profits. They should also not include cost categories that represent return to capital or profits. We can assume these costs are captured in the distribution of profit rates behind the logit. Otherwise, consider that if these costs are put into our variable costs, ultimately all marginal profit rates (from economic theory) would be zero and provide no value to our modeling. In addition, accounting costs such as depreciation should not be part of variable costs.
 
-Data on labor costs can be difficult to use, since some farm wage categories are income that the farmer either earns or expects to be paid and thus, some labor costs are really profit to the land-owner (i.e., farmer). Therefore, we have restricted our variable cost data to include what is labeled as “hired labor”.
+Data on labor costs can be difficult to use, since some farm wage categories are income that the farmer either earns or expects to be paid and thus, some labor costs are really profit to the land-owner (i.e., farmer). Therefore, we have restricted our variable cost data to include what is labeled as "hired labor".
 
 Note that introducing variable costs that differ by region can result in unintended consequences. Different variable costs create different price floors, which can result in a region ceasing production of a particular product if technical change lowers the global product price significantly (i.e., to a point where the variable cost is less than the price received).
 
@@ -137,14 +129,6 @@ To be completed...
 
 ## IAMC Reference Card
 
-Agricultural commodities
-- [X] Wheat
-- [X] Rice
-- [X] Other coarse grains
-- [X] Oilseeds
-- [X] Sugar crops
-- [X] Ruminant meat
-- [X] Non-ruminant meat and eggs
-- [X] Dairy products
+Agricultural commodities - [X] Wheat - [X] Rice - [X] Other coarse grains - [X] Oilseeds - [X] Sugar crops - [X] Ruminant meat - [X] Non-ruminant meat and eggs - [X] Dairy products
 
 ## References

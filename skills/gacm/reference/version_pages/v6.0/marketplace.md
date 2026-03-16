@@ -12,12 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Policy options](#policy-options)
-- [Insights and intuition](#insights-and-intuition)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Policy options](#policy-options) - [Insights and intuition](#insights-and-intuition)
 
 ## Inputs to the Module
 **Table 1: Inputs required by the marketplace module**

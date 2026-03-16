@@ -36,7 +36,7 @@ Possible causes:
 
 * The `XMLInputFileName` or `BatchFileName` (or their pathways) are incorrect
 
-* If running from code editor, the project’s working directory needs to be set to the exe/ folder. Sometimes it defaults to the `cvs/objects/build/*/` folder
+* If running from code editor, the project's working directory needs to be set to the exe/ folder. Sometimes it defaults to the `cvs/objects/build/*/` folder
 
 #### Problem: Crash while reading ScenarioComponents XML files
 _Message immediately follows the parsing of an individual input file._
@@ -87,7 +87,7 @@ _Note: solution issues can be difficult to decipher_
 
 Things to try:
 
-* Useful to make ”one” change at a time
+* Useful to make "one" change at a time
 
 * Double check your configuration
 

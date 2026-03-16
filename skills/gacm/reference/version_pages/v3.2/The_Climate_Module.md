@@ -113,15 +113,15 @@ References
 
 <a name="ref1"></a>[1] Wigley, T.M.L. and Raper, S.C.B. 1992. Implications for Climate
 And Sea-Level of Revised IPCC Emissions Scenarios, _Nature_ 357,
-293–300.
+293-300.
 
 <a name="ref2"></a>[2] Wigley, T.M.L. and Raper, S.C.B. 2002. Reasons
-for larger warming projections in the IPCC Third Assessment Report, _J. Climate_ 15, 2945–2952.
+for larger warming projections in the IPCC Third Assessment Report, _J. Climate_ 15, 2945-2952.
 
 <a name="ref3"></a>[3] Raper, S.C.B., Wigley T.M.L. and Warrick
 R.A. 1996. in _Sea-Level Rise and Coastal Subsidence: Causes, Consequences and Strategies_ J.D. Milliman, B.U. Haq, Eds., Kluwer
 Academic Publishers, Dordrecht, The Netherlands,
-pp. 11–45.
+pp. 11-45.
 
 Comment: This is the closest match I could find to the SJ Smith, et. al,
 
@@ -137,4 +137,4 @@ VOL. 23, NO. 10, PP. 1107-1110fckLRdoi:10.1029/96GL01065
 
 <a name="ref6"></a>[6] Smith, Steven J. and J.A. Edmonds (2006) The
 Economic Implications of Carbon Cycle Uncertainty, _Tellus B_ 58 (5),
-pp. 586–590.
+pp. 586-590.

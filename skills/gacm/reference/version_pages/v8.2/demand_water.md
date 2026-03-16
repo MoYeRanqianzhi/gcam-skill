@@ -12,15 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [Policy options](#policy-options)
-- [IAMC Reference Card](#iamc-reference-card)
-- [References](#references)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [Policy options](#policy-options) - [IAMC Reference Card](#iamc-reference-card) - [References](#references)
 
 ## Inputs to the Module
 
@@ -125,7 +117,7 @@ Future transformations in the electricity sector could entail major shifts in po
 
 Not applicable. The IAMC reference card does not have water demand related entries.
 
-<a name="elec_footnote"></a>2: Note that because of the limits to the supplysector/subsector/technology structure of the energy system technologies in GCAM, this additional "cooling system" level of nesting is achieved through the use of “pass-through” technologies and sectors. To help with interpretation of the model output, the electric sector queries have been written to report these cooling system technologies under the "electricity" sector, but the raw input XML files and model output nevertheless have the fully disaggregated structure.
+<a name="elec_footnote"></a>2: Note that because of the limits to the supplysector/subsector/technology structure of the energy system technologies in GCAM, this additional "cooling system" level of nesting is achieved through the use of "pass-through" technologies and sectors. To help with interpretation of the model output, the electric sector queries have been written to report these cooling system technologies under the "electricity" sector, but the raw input XML files and model output nevertheless have the fully disaggregated structure.
 
 ## References
 
@@ -153,9 +145,9 @@ Not applicable. The IAMC reference card does not have water demand related entri
 
 <a name="mekonnen2010"></a>[Mekonnen and Hoekstra 2010] Mekonnen, M.M., and Hoekstra, A.Y. 2010. *The Green, Blue and Grey Water Footprint of Farm Animals and Animal Products. Vol 2: Appendices. Appendix IV. Drinking and service water footprint per animal (litre/day)*. Value of Water Research Report Series No. 48. UNESCO-IHE Institute for Water Education. [Link](http://waterfootprint.org/media/downloads/Report-48-WaterFootprint-AnimalProducts-Vol2.pdf)
 
-<a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577–1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
+<a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577-1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
 
-<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413–422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
+<a name="niazi2024"></a>[Niazi et al. 2024] Niazi, H., Wild, T. B., Turner, S. W. D., Graham, N. T., Hejazi, M., Msangi, S., Kim, S., Lamontagne, J. R., & Zhao, M. 2024. Global peak water limit of future groundwater withdrawals. Nature Sustainability, 7(4), pp. 413-422. [Link](https://doi.org/10.1038/s41893-024-01306-w)
 
 <a name="niazi2025"></a>[Niazi et al. 2025] Niazi, H., Ferencz, S. B., Graham, N. T., Yoon, J., Wild, T. B., Hejazi, M., Watson, D. J., and Vernon, C. R. 2025. Long-term hydro-economic analysis tool for evaluating global groundwater cost and supply: Superwell v1.1. Geoscientific Model Development, 18(5), pp. 1737-1767. [Link](https://doi.org/10.5194/gmd-18-1737-2025)
 

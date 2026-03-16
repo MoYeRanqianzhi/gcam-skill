@@ -14,11 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 GCAM's demand inputs include information on consumption and prices in the historical period in order to calibrate model parameters. Additional parameters related to income and price elasticities are needed for modeling future periods. GCAM requires demand data to be globally consistent with [supply data](inputs_supply.md) for each of its historical model periods as it solves for market equilibrium in these years as it does for future years. These inputs are required for each [region](common_assumptions.md#regional-resolution) and [historical year](common_assumptions.md#historical-years).
 
-# Table of Contents
-
-- [Energy](#energy)
-- [Water](#water)
-- [Food, Feed, and Forestry](#food-feed-and-forestry)
+# Table of Contents - [Energy](#energy) - [Water](#water) - [Food, Feed, and Forestry](#food-feed-and-forestry)
 
 ## External Inputs
 
@@ -232,6 +228,6 @@ Parameters needed for the food demand module are determined by a separate model,
 
 <a name="liu2016"></a>[Liu et al. 2016] Liu, Y., Hejazi, M., Kyle, P., Kim, S., Davies, E., Miralles, D., Teuling, A., He, Y., and Niyogi, D. 2016. Global and Regional Evaluation of Energy for Water. *Environmental Science & Technology* 50(17), 9736-9745. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01065)
 
-<a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577–1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
+<a name="mekonnen2011"></a>[Mekonnen and Hoekstra 2011] Mekonnen, M.M., and Hoekstra, A.Y. 2011. The green, blue and grey water footprint of crops and derived crop products. *Hydrology and Earth System Sciences* 15, pp 1577-1600. [Link](https://www.hydrol-earth-syst-sci.net/15/1577/2011/hess-15-1577-2011.html)
 
 <a name="vassolo2005"></a>[Vassolo and Döll 2005] Vassolo, S., and Döll, P. 2005. Global-scale gridded estimates of thermoelectric power and manufacturing water use. *Water Resources Research* 41, W04010. [Link](http://www.uni-frankfurt.de/45217769/Vassolo_Doell_WRR2005.pdf)

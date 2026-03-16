@@ -43,4 +43,4 @@ Edmonds, J. and J. Reilly. 1983. "A Long-Term, Global, Energy-Economic Model of 
 
 Moss, R. H., J. A. Edmonds, K. A. Hibbard, M. R. Manning, S. K. Rose, D. P. van Vuuren, T. R. Carter, S. Emori, M. Kainuma, T. Kram, G. A. Meehl, J. F. B. Mitchell, N. Nakicenovic, K. Riahi, S. J. Smith, R. J. Stouffer, A. M. Thomson, J. P. Weyant and T. J. Wilbanks (2010). "The next generation of scenarios for climate change research and assessment." Nature 463(7282): 747-756.
 
-van Vuuren, D. P., K. Riahi, K. Calvin, R. Dellink, J. Emmerling, S. Fujimori, S. Kc, E. Kriegler and B. O’Neill (2017). "The Shared Socio-economic Pathways: Trajectories for human development and global environmental change." Global Environmental Change 42: 148-152.
+van Vuuren, D. P., K. Riahi, K. Calvin, R. Dellink, J. Emmerling, S. Fujimori, S. Kc, E. Kriegler and B. O'Neill (2017). "The Shared Socio-economic Pathways: Trajectories for human development and global environmental change." Global Environmental Change 42: 148-152.

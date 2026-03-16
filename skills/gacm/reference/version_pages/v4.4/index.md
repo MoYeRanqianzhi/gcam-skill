@@ -124,7 +124,7 @@ Ebi, K., et al. (2014). "A new scenario framework for climate change research: b
 
 Edmonds, J., and J. Reilly (1985) Global Energy: Assessing the Future (Oxford University Press, New York) pp.317.
 
-Edmonds, J., M. Wise, H. Pitcher, R. Richels, T. Wigley, and C. MacCracken. (1997) “An Integrated Assessment of Climate Change and the Accelerated Introduction of Advanced Energy Technologies”, Mitigation and Adaptation Strategies for Global Change, 1, pp. 311-39
+Edmonds, J., M. Wise, H. Pitcher, R. Richels, T. Wigley, and C. MacCracken. (1997) "An Integrated Assessment of Climate Change and the Accelerated Introduction of Advanced Energy Technologies", Mitigation and Adaptation Strategies for Global Change, 1, pp. 311-39
 
 Edmonds, J.A., and J.M. Reilly. 1982. An introduction to the use of the IEA/ORAU Long-Term, Global, Energy Model. Institute for Energy Analysis Working Paper, Contribution No. 82-9. Institute for Energy Analysis, Oak Ridge Associated Universities, Washington, D.C.
 
@@ -132,7 +132,7 @@ Edmonds, J.A., and J.M. Reilly. 1983. A long-term global energy-economic model o
 
 Edmonds, J.A., and J.M. Reilly. 1983. Global energy productions and use to the year 2050, Energy (Oxford) 8(6): 419-432.
 
-Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) “The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation ” Energy Journal (Special Issue #2) pp 51-80.
+Kim, S.H., J. Edmonds, J. Lurz, S. J. Smith, and M. Wise (2006) "The ObjECTS Framework for Integrated Assessment: Hybrid Modeling of Transportation " Energy Journal (Special Issue #2) pp 51-80.
 
 Reilly, J. M., J. A. Edmonds, R. H. Gardner and A. L. Brenkert  (1987) "Uncertainty Analysis of the IEA/ORAU CO₂ Emissions Model"
 The Energy Journal, Vol. 8, No. 3, pp. 1-29

@@ -12,13 +12,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 ---
 
-# Table of Contents
-
-- [Inputs to the Module](#inputs-to-the-module)
-- [Description](#description)
-- [Equations](#equations)
-- [Insights and intuition](#insights-and-intuition)
-- [IAMC Reference Card](#iamc-reference-card)
+# Table of Contents - [Inputs to the Module](#inputs-to-the-module) - [Description](#description) - [Equations](#equations) - [Insights and intuition](#insights-and-intuition) - [IAMC Reference Card](#iamc-reference-card)
 
 ## Inputs to the Module
 **Table 1: Inputs required by the economic module  [1](#table_footnote)**
@@ -176,45 +170,25 @@ IIASA. "SSP Database." (2024).
 
 ## IAMC Reference Card
 
-Population
-- [X] Yes (exogenous)
-- [ ] Yes (endogenous)
+Population - [X] Yes (exogenous) - [ ] Yes (endogenous)
 
-Population age structure
-- [ ] Yes (exogenous)
-- [ ] Yes (endogenous)
+Population age structure - [ ] Yes (exogenous) - [ ] Yes (endogenous)
 
-Education level
-- [ ] Yes (exogenous)
-- [ ] Yes (endogenous)
+Education level - [ ] Yes (exogenous) - [ ] Yes (endogenous)
 
-Urbanization rate
-- [ ] Yes (exogenous)
-- [ ] Yes (endogenous)
+Urbanization rate - [ ] Yes (exogenous) - [ ] Yes (endogenous)
 
-GDP
-- [ ] Yes (exogenous)
-- [X] Yes (endogenous)
+GDP - [ ] Yes (exogenous) - [X] Yes (endogenous)
 
-Income distribution
-- [ ] Yes (exogenous)
-- [ ] Yes (endogenous)
+Income distribution - [ ] Yes (exogenous) - [ ] Yes (endogenous)
 
-Employment rate
-- [ ] Yes (exogenous)
-- [ ] Yes (endogenous)
+Employment rate - [ ] Yes (exogenous) - [ ] Yes (endogenous)
 
-Labor productivity
-- [X] Yes (exogenous)
-- [ ] Yes (endogenous)
+Labor productivity - [X] Yes (exogenous) - [ ] Yes (endogenous)
 
-Total factor productivity
-- [X] Yes (exogenous)
-- [ ] Yes (endogenous)
+Total factor productivity - [X] Yes (exogenous) - [ ] Yes (endogenous)
 
-Autonomous energy efficiency improvements
-- [X] Yes (exogenous)
-- [ ] Yes (endogenous)
+Autonomous energy efficiency improvements - [X] Yes (exogenous) - [ ] Yes (endogenous)
 
 <a name="table_footnote"></a>1: Note that this table differs from the one provided on the [Economy Inputs Page](inputs_economy.md#description) in that it lists all inputs to the economy module, including information passed from other modules. Additionally, the units listed are the units GCAM requires, rather than the units the raw input data uses.
 

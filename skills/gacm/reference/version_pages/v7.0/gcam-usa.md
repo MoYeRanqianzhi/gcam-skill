@@ -248,7 +248,7 @@ References
 
 <a name="calvin2014"></a>[Calvin et al. 2014] Calvin KV, MA Wise, GP Kyle, PL Patel, LE Clarke, and JA Edmonds. 2014. "Trade-offs of different land and bioenergy policies on the path to achieving climate targets." Climatic Change 123(3-4):691-704. doi:10.1007/s10584-013-0897-y
 
-<a name="calvin2019"></a>[Calvin et al. 2019] Calvin, K., Patel, P., Clarke, L., Asrar, G., Bond-Lamberty, B., Cui, R. Y., Di Vittorio, A., Dorheim, K., Edmonds, J., Hartin, C., Hejazi, M., Horowitz, R., Iyer, G., Kyle, P., Kim, S., Link, R., McJeon, H., Smith, S. J., Snyder, A., Waldhoff, S., and Wise, M.: GCAM v5.1: representing the linkages between energy, water, land, climate, and economic systems, Geosci. Model Dev., 12, 677–698, <https://doi.org/10.5194/gmd-12-677-2019>, 2019.
+<a name="calvin2019"></a>[Calvin et al. 2019] Calvin, K., Patel, P., Clarke, L., Asrar, G., Bond-Lamberty, B., Cui, R. Y., Di Vittorio, A., Dorheim, K., Edmonds, J., Hartin, C., Hejazi, M., Horowitz, R., Iyer, G., Kyle, P., Kim, S., Link, R., McJeon, H., Smith, S. J., Snyder, A., Waldhoff, S., and Wise, M.: GCAM v5.1: representing the linkages between energy, water, land, climate, and economic systems, Geosci. Model Dev., 12, 677-698, <https://doi.org/10.5194/gmd-12-677-2019>, 2019.
 
 <a name="ceds"></a>[Community Emissions Data System] O'Rourke, P. R, Smith, S. J., Mott, A., Ahsan, H., McDuffie, E. E., Crippa, M., Klimont, S., McDonald, B., Z., Wang, Nicholson, M. B, Feng, L., and Hoesly, R. M. (2021, February 05). CEDS v-2021-02-05 Emission Data 1975-2019 (Version Feb-05-2021). https://github.com/JGCRI/CEDS/releases/tag/2021_4_21_Release.
 

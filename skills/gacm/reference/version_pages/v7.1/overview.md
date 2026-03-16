@@ -69,7 +69,7 @@ Figure 2: GCAM regional mapping
 | Africa\_Eastern	| Burundi, Comoros, Djibouti, Eritrea, Ethiopia, Kenya, Madagascar, Mauritius, Reunion, Rwanda, Sudan, Somalia, Uganda |
 | Africa\_Northern | Algeria, Egypt, Western Sahara, Libya, Morocco, Tunisia |
 | Africa\_Southern | Angola, Botswana, Lesotho, Mozambique, Malawi, Namibia, Swaziland, Tanzania, Zambia, Zimbabwe |
-| Africa\_Western	 | Benin, Burkina Faso, Central African Republic, Cote d’Ivoire, Cameroon, Democratic Republic of the Congo, Congo, Cape Verde, Gabon, Ghana, Guinea, Gambia, Guinea-Bissau, Equatorial Guinea, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone, Sao Tome and Principe, Chad, Togo |
+| Africa\_Western	 | Benin, Burkina Faso, Central African Republic, Cote d'Ivoire, Cameroon, Democratic Republic of the Congo, Congo, Cape Verde, Gabon, Ghana, Guinea, Gambia, Guinea-Bissau, Equatorial Guinea, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone, Sao Tome and Principe, Chad, Togo |
 | Argentina | Argentina |
 | Australia\_NZ	| Australia, New Zealand |
 | Brazil | Brazil |

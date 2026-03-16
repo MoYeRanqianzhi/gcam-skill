@@ -14,14 +14,7 @@ Load this page when the user needs version-specific detail from this exact page 
 
 This page provides more detailed explanations of the descriptions provided in the [Energy Supply](supply_energy.md) and [Energy Demand](demand_energy.md) modeling pages.
 
-## Table of Contents
-
-- [Resources](#resources)
-- [Energy Transformation](#energy-transformation)
-- [Trade](#trade)
-- [Energy for water](#energy-for-water)
-- [Optional Exogenous Floorspace](#optional-exogenous-floorspace)
-- [References](#references)
+## Table of Contents - [Resources](#resources) - [Energy Transformation](#energy-transformation) - [Trade](#trade) - [Energy for water](#energy-for-water) - [Optional Exogenous Floorspace](#optional-exogenous-floorspace) - [References](#references)
 
 ## Resources
 
@@ -223,7 +216,7 @@ The following XML is an example of user-specified residential floorspace values 
 
 <a name="iha2000"></a>[IHA 2000] International Hydropower Association, et al., 2000, *Hydropower and the World's Energy Future*. [Link](http://www.ieahydro.org/media/ffab53b0/Hydropower%20and%20the%20World's%20Energy%20Future%20.pdf)
 
-<a name="kyle2016"></a>[Kyle et al. 2016] Kyle, P., Johnson, N., Davies, E., Bijl, D.L., Mouratiadou, I., Bevione, M., Drouet, L., Fujimori, S., Liu, Y., and Hejazi, M. 2016. Setting the system boundaries of “energy for water” for integrated modeling. *Environmental Science & Technology 50(17), 8930-8931. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01066)
+<a name="kyle2016"></a>[Kyle et al. 2016] Kyle, P., Johnson, N., Davies, E., Bijl, D.L., Mouratiadou, I., Bevione, M., Drouet, L., Fujimori, S., Liu, Y., and Hejazi, M. 2016. Setting the system boundaries of "energy for water" for integrated modeling. *Environmental Science & Technology 50(17), 8930-8931. [Link](https://pubs.acs.org/doi/abs/10.1021/acs.est.6b01066)
 
 <a name="kyle2021"></a>[Kyle et al. 2021] Kyle, P., Hejazi, M., Kim, S., Patel, P., Graham, N., and Liu, Y. 2021. Assessing the future of global energy-for-water. *Environmental Research Letters* 16(2), 024031. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/abd8a9)
 
@@ -233,6 +226,6 @@ The following XML is an example of user-specified residential floorspace values 
 
 <a name="sanders2012"></a>[Sanders and Webber 2012] Sanders, K., and Webber, M. 2012. Evaluating the energy consumed for water use in the United States. *Environmental Research Letters* 7(3), 0034034. [Link](https://iopscience.iop.org/article/10.1088/1748-9326/7/3/034034/meta)
 
-<a name="turner2019"></a>[Turner et al. 2019] Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth’s Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
+<a name="turner2019"></a>[Turner et al. 2019] Turner, S.W.D., Hejazi, M., Yonkofski, C., Kim, S.H., and Kyle, P. 2019. Influence of groundwater extraction costs and resource depletion limits on simulated global nonrenewable water withdrawals over the twenty-first century. *Earth's Future* 7, 123-135. [Link](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018EF001105)
 
-<a name="zhang2010"></a>[Zhang et al. 2010] Zhang, Y., SJ Smith, GP Kyle, and PW Stackhouse Jr. (2010) Modeling the Potential for Thermal Concentrating Solar Power Technologies *Energy Policy* 38 pp. 7884–7897. [Link](https://doi.org/10.1016/j.enpol.2010.09.008)
+<a name="zhang2010"></a>[Zhang et al. 2010] Zhang, Y., SJ Smith, GP Kyle, and PW Stackhouse Jr. (2010) Modeling the Potential for Thermal Concentrating Solar Power Technologies *Energy Policy* 38 pp. 7884-7897. [Link](https://doi.org/10.1016/j.enpol.2010.09.008)

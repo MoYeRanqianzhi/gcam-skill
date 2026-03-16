@@ -378,23 +378,15 @@ struct GatherEmiss {
 ```
 
 We now have everything we need to use the GCAM Fusion interface.
-The `GCAMFusion` object takes four template parameters:
-
--   The handler object that we just defined.
--   A boolean flag to indicate whether the handler will process the start of each
-    step taken into a `CONTAINER` object (default is `false`).
--   A boolean flag to indicate whether the handler will process stepping out of
-    a `CONTAINER` object (default is false).
--   A boolean flag to indicate whether the handler will process the data being found
+The `GCAMFusion` object takes four template parameters: - The handler object that we just defined. - A boolean flag to indicate whether the handler will process the start of each
+    step taken into a `CONTAINER` object (default is `false`). - A boolean flag to indicate whether the handler will process stepping out of
+    a `CONTAINER` object (default is false). - A boolean flag to indicate whether the handler will process the data being found
     (default is `true`).
 
 The last flag (the one that defaults to `true`) is the most common use case, and
 it's the only one we will use in this example.
 
-The `GCAMFusion` object constructor takes two arguments:
-
--   A vector of FilterSteps
--   An instance of an object that can handle the results of the search
+The `GCAMFusion` object constructor takes two arguments: - A vector of FilterSteps - An instance of an object that can handle the results of the search
 
 Then we can call GCAM Fusion with a search string and have it use the above
 struct to process the results:
@@ -1163,22 +1155,15 @@ from the "base" state.  However such a strategy would essentially double the
 number of computation required to calculate partial derivatives.  Instead GCAM
 has code to track and manage state to be able to quickly reset the "base" state
 when calculating partial derivatives.  However prior to GCAM Fusion this code
-was strewn throughout the code in many places:
-
--   Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them.
--   Any GCAM object that needed to addToSupply/Demand would have to keep an
+was strewn throughout the code in many places: - Each market had a "stored" price, supply, and demand and corresponding methods to store/restore them. - Any GCAM object that needed to addToSupply/Demand would have to keep an
     additional "state" member variables to make the call to the market
-    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );`
--   Any other state would get lazily recalculated by marking at the Activity
+    place: `mLastCalcValue = marketplace->addToDemand( mName, aRegionName, annualServiceDemand, mLastCalcValue, aPeriod );` - Any other state would get lazily recalculated by marking at the Activity
     level a "stale" flag.  If a Demand Activity was still marked as stale when
     it needed to recalculate a partial derivative then it would be forced to
     recalculate it's Price Activity.  A strategy which creates extra work and
     potentially easy to break/get wrong.
 
-With the changes to central manage state that come along with GCAM Fusion we simplify this to:
-
--   The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory.
--   Any GCAM object that needed to addToSupply/Demand must do so with a
+With the changes to central manage state that come along with GCAM Fusion we simplify this to: - The centrally managed "scratch" chunk of memory gets copied over with the "base" chunk of memory. - Any GCAM object that needed to addToSupply/Demand must do so with a
     `Value` member variable marked as
 	`STATE`: `marketplace->addToDemand( mName, aRegionName, mServiceDemands[ aPeriod ], aPeriod );`
 
@@ -1209,11 +1194,7 @@ By adding the `STATE` tag it allows us to search, using GCAM Fusion, for all of
 the objects with that tag.  A new class `ManageStateVaraibles` is responsible
 doing the search as well as all of the other state maintenance as discussed
 below.  Note that state data is collected each period so as to keep the number
-of values to store and copy remains reasonable.  To do this we:
-
--   Skip data that is in a Technology that is not operating or a Market not of the current year
--   Data in a period vector are only collected for the current period.
--   Data in a year vector (such as LUC emissions) for only the years in the current timestep.
+of values to store and copy remains reasonable.  To do this we: - Skip data that is in a Technology that is not operating or a Market not of the current year - Data in a period vector are only collected for the current period. - Data in a year vector (such as LUC emissions) for only the years in the current timestep.
 
 Once we know how many state data there are in a period we can allocate space to
 store the centrally managed data in a two dimensional array.  The first

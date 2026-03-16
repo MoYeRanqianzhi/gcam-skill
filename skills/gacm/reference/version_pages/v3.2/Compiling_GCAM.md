@@ -40,7 +40,7 @@ DBXML libraries:
 
 ```
    In file included from ../src/framework/ReferenceCounted.cpp:24:0:
-   ../include/xqilla/framework/XPath2MemoryManager.hpp:90:11: error: ‘ptrdiff_t’ does not name a type
+   ../include/xqilla/framework/XPath2MemoryManager.hpp:90:11: error: 'ptrdiff_t' does not name a type
 
 ```
 

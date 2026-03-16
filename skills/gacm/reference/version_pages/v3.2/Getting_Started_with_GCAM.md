@@ -13,7 +13,7 @@ Load this page when the user needs version-specific detail from this exact page 
 ---
 
 PNNL is committed to making the Global Change Assessment Model (GCAM)
-a community tool – expanding its user community and gradually opening
+a community tool - expanding its user community and gradually opening
 the development of the model to this community. A range of users
 across the globe are now using and modifying GCAM for their individual
 research needs. This wiki is still a work in progress. We will

@@ -18,8 +18,7 @@ This skill equips AI agents (Claude, etc.) with deep knowledge of the entire GCA
 Send the following to your AI agent (Claude Code, Codex, Cursor, etc.):
 
 ```
-Read this repository's README and install the GCAM Skill:
-https://github.com/MoYeRanqianzhi/gcam-skill
+Fetch https://raw.githubusercontent.com/MoYeRanqianzhi/gcam-skill/main/README.md and follow the LLM installation instructions inside to install the GCAM Skill.
 ```
 
 <details>

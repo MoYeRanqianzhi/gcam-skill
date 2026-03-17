@@ -18,8 +18,7 @@
 将以下内容发送给你的 AI Agent（Claude Code、Codex、Cursor 等）即可安装：
 
 ```
-Read this repository's README and install the GCAM Skill:
-https://github.com/MoYeRanqianzhi/gcam-skill
+Fetch https://raw.githubusercontent.com/MoYeRanqianzhi/gcam-skill/main/README.md and follow the LLM installation instructions inside to install the GCAM Skill.
 ```
 
 <details>

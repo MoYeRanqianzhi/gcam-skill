@@ -1,3 +1,5 @@
+🌐 [English](README.md) | [中文](README_CN.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [Español](README_ES.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [Português](README_PT.md) | [Русский](README_RU.md) | [العربية](README_AR.md)
+
 # GCAM Skill (`gacm`)
 
 一个可移植的、自包含的 AI Agent Skill，用于 [全球变化分析模型 (GCAM)](https://github.com/JGCRI/gcam-core)。无需本地安装 GCAM 即可为 AI Agent 提供完整的 GCAM 专业知识。

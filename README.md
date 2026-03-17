@@ -1,3 +1,5 @@
+🌐 [English](README.md) | [中文](README_CN.md) | [日本語](README_JA.md) | [한국어](README_KO.md) | [Español](README_ES.md) | [Français](README_FR.md) | [Deutsch](README_DE.md) | [Português](README_PT.md) | [Русский](README_RU.md) | [العربية](README_AR.md)
+
 # GCAM Skill (`gacm`)
 
 A portable, self-contained AI agent skill for the [Global Change Analysis Model (GCAM)](https://github.com/JGCRI/gcam-core). Provides comprehensive, version-aware GCAM expertise without requiring local model installations.

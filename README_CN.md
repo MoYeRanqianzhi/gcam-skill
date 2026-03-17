@@ -59,10 +59,10 @@ npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 安装完成后，在 Agent 中直接提问 GCAM 相关问题：
 
 ```
-> 如何在 GCAM v8.2 中设置碳税情景？
+> 在 GCAM v8.2 中设置一个碳税情景
 > 比较 SSP2 和 SSP5 的能源系统结果
 > 使用 gcamreader 提取各技术的发电量
-> v5.4 到 v7.1 之间土地系统有什么变化？
+> 分析 v5.4 到 v7.1 之间土地系统的变化
 ```
 
 Skill 会自动识别 GCAM 相关查询并路由到正确的版本文档。

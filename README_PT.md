@@ -59,10 +59,10 @@ npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 Após a instalação, basta fazer perguntas relacionadas ao GCAM no seu agente:
 
 ```
-> How do I set up a carbon tax scenario in GCAM v8.2?
+> Set up a carbon tax scenario in GCAM v8.2
 > Compare SSP2 and SSP5 energy system outcomes
 > Extract electricity generation by technology using gcamreader
-> What changed in the land system between v5.4 and v7.1?
+> Analyze land system changes between v5.4 and v7.1
 ```
 
 A skill é ativada automaticamente em consultas relacionadas ao GCAM e direciona para a documentação da versão correta.

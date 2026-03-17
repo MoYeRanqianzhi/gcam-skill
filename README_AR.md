@@ -59,10 +59,10 @@ npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 بعد التثبيت، اطرح أسئلة متعلقة بـ GCAM مباشرة في وكيل الذكاء الاصطناعي:
 
 ```
-> How do I set up a carbon tax scenario in GCAM v8.2?
+> Set up a carbon tax scenario in GCAM v8.2
 > Compare SSP2 and SSP5 energy system outcomes
 > Extract electricity generation by technology using gcamreader
-> What changed in the land system between v5.4 and v7.1?
+> Analyze land system changes between v5.4 and v7.1
 ```
 
 تتفعّل المهارة تلقائياً عند استلام استفسارات متعلقة بـ GCAM وتوجّهها إلى وثائق الإصدار الصحيح.

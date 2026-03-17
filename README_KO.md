@@ -59,10 +59,10 @@ npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 설치가 완료되면, 에이전트에서 GCAM 관련 질문을 바로 할 수 있습니다:
 
 ```
-> How do I set up a carbon tax scenario in GCAM v8.2?
+> Set up a carbon tax scenario in GCAM v8.2
 > Compare SSP2 and SSP5 energy system outcomes
 > Extract electricity generation by technology using gcamreader
-> What changed in the land system between v5.4 and v7.1?
+> Analyze land system changes between v5.4 and v7.1
 ```
 
 스킬은 GCAM 관련 쿼리를 자동으로 인식하여 올바른 버전 문서로 라우팅합니다.

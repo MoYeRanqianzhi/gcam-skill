@@ -33,11 +33,11 @@ The source material used to author the skill is documented in `skills/gacm/refer
 
 ## Open Tasks
 - Keep the bundled version catalog aligned with upstream GCAM releases.
-- Continue expanding bundled topic coverage where the skill still compresses very specialized upstream material.
-- Add more deterministic helper scripts if repeated manual authoring or validation steps appear.
 - Continue auditing long-tail historical prose and adaptation residue in generated page bundles.
 - Decide whether to split `generate_bundled_pages.py` once the current validation surface stabilizes enough to make a low-risk refactor worthwhile.
-- Expand operational helper tooling beyond `doc_search.py` if a clear repeated GCAM authoring task justifies it.
+- Validate expanded docs against upstream source for accuracy (especially new gcamextractor params list).
+- Consider adding rgcam API reference if source code becomes available.
+- Resolve Agents.md duplication with CLAUDE.md (delete or repurpose).
 
 ## Decision Log
 - 2026-03-15: Rebuilt the skill to remove machine-specific absolute paths.
@@ -50,3 +50,4 @@ The source material used to author the skill is documented in `skills/gacm/refer
 - 2026-03-16: Preserved the rule that generated page bundles must be fixed through generator changes and regeneration, not hand-edited patching.
 - 2026-03-16: Added explicit official `gcam-core` repository and releases URLs to the release workflow so direct download guidance no longer relies on placeholders.
 - 2026-03-16: Added `reference/release_assets/direct_download_links.md` with exact user-supplied package URLs for known GCAM versions and platforms.
+- 2026-03-17: Comprehensive doc expansion addressing all P0/P1 audit findings: expanded 9 topic docs, completed gcamextractor API (83+ params), added trade.md and scenario_analysis.md, fixed trigger surface with 13 missing domain terms, added script taxonomy, fixed .gitignore.

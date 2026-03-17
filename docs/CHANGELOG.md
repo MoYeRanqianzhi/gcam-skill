@@ -13,6 +13,17 @@ High-signal milestone log for the `gacm` skill. Fine-grained edits belong in Git
 - Rewrote the runtime skill and top-level reference docs to be CLI-first, text-only, and agent-oriented rather than GUI-first.
 - Added bundled topic docs for model structure, running, configuration, querying, tools, provenance, and version routing.
 
+## 2026-03-17
+- Comprehensive documentation expansion: 9 thin topic docs expanded to full GCAM coverage (ssp, gcam_usa, economy, energy_system, land_system, water_system, emissions_climate, data_system, policies_scenarios).
+- Completed `gcamextractor_api.md` with all 83+ paramsSelect values including buildings and hydrogen groups.
+- Added `trade.md` dedicated trade model reference covering three trade modes and Armington parameterization.
+- Added `scenario_analysis.md` for multi-scenario comparison workflows in Python and R.
+- Fixed SKILL.md trigger surface adding 13 missing domain terms (Moirai, RCP, IAMC, logit, emissions, etc.).
+- Added script taxonomy to `DEVELOPMENT.md` classifying 28 scripts into runtime/generator/validator categories.
+- Fixed `.gitignore` (removed dead entries for tracked files, added `.env`, `.venv/`, IDE dirs).
+- Added source-only release notes and Linux guidance to `direct_download_links.md`.
+- Updated `navigation.md`, `version_inventory.md`, `coverage_map.md` with new file mappings.
+
 ## 2026-03-16
 - Added `validate_all.py` as a one-shot entry point for the bundled validation suite.
 - Added `validate_conceptual_docs_contract.py` and wired it into `validate_all.py` to keep shared conceptual docs version-aware and baseline-aware.

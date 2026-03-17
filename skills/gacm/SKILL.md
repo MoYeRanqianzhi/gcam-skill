@@ -1,6 +1,6 @@
 ---
 name: gacm
-description: Portable GCAM expertise as a self-contained open-source skill. Use this skill whenever the user mentions GCAM, GCAM-USA, BaseX/XML DB, GCAM scenarios, policies, solver behavior, inputs, outputs, SSPs, build/compile tasks, version differences, ModelInterface, gcamreader, gcamextractor, rgcam, pygcam, hector, gcamdata, Fusion, target finder, KLEM, MAC curves, AgLU, or companion projects such as gcam-doc and gcam-core. Those names are trigger terms, not runtime dependencies. If the user names a GCAM version such as v3.2, v5.4, v7.1, or v8.2, route to that exact bundled version guide. If no version is named, default to the bundled current baseline v8.2.
+description: Portable GCAM expertise as a self-contained open-source skill. Use this skill whenever the user mentions GCAM, GCAM-USA, BaseX/XML DB, GCAM scenarios, policies, solver behavior, inputs, outputs, SSPs, RCPs, build/compile tasks, version differences, ModelInterface, gcamreader, gcamextractor, rgcam, pygcam, hector, gcamdata, Fusion, target finder, KLEM, MAC curves, AgLU, Moirai, logit choice, share weights, emissions, carbon, climate, land use, energy system, water system, trade, IAMC, scenario comparison, data analysis, or companion projects such as gcam-doc and gcam-core. Those names are trigger terms, not runtime dependencies. If the user names a GCAM version such as v3.2, v5.4, v7.1, or v8.2, route to that exact bundled version guide. If no version is named, default to the bundled current baseline v8.2.
 ---
 
 # GCAM Skill (gacm)
@@ -74,6 +74,8 @@ Common topic routes:
 - R extraction internals: `reference/gcamextractor_api.md`
 - locating files in a provided workspace: `reference/workspace_layouts.md`
 - family-level command/path differences: `reference/version_operation_notes.md`
+- trade model, Armington, import/export: `reference/trade.md`
+- scenario comparison, data analysis, visualization: `reference/scenario_analysis.md`
 
 ## Default Response Structure
 Keep answers traceable:
@@ -98,6 +100,8 @@ Fast route hints:
 - user gave a path and wants you to infer workspace structure: `reference/workspace_layouts.md`
 - user asks “does this differ by version?”: `reference/version_operation_notes.md`
 - user reports a failed run, bad logs, or Java/BaseX issues: `reference/running_gcam.md`, then `reference/solver.md` or `reference/building_gcam.md` as needed
+- trade structure, Armington, import/export: `reference/trade.md`
+- scenario comparison, multi-scenario analysis, visualization: `reference/scenario_analysis.md`
 
 ## Common Workflows
 

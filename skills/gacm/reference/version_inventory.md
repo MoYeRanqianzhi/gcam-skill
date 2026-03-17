@@ -65,6 +65,8 @@ These bundled topic docs are the main progressive-disclosure entry points after 
 - `tools.md`
 - `developer_workflows.md`
 - `updates.md`
+- `trade.md`
+- `scenario_analysis.md`
 - `data_system.md`
 - `coverage_map.md`
 - `source_provenance.md`

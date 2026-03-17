@@ -9,6 +9,9 @@ Operational rules:
 - Prefer these direct asset URLs only when the exact package is already known.
 - If the requested version or platform is absent here, fall back to `https://github.com/JGCRI/gcam-core/releases`.
 - Older releases may use legacy asset names such as `mac_binaries.tar.gz` or `windows_binaries.tar.gz` rather than the newer `Release-Package.zip` pattern.
+- **No Linux pre-built packages exist for any GCAM version.** Linux users must build from source (see `building_gcam.md`).
+- **Source-only releases (no binary packages):** v7.2, v7.3, v7.4, v8.0, v8.1, v8.3-v8.7 were incremental releases that did not include pre-built binary packages. For these versions, use `git clone --branch gcam-v<VERSION>` or download the source archive from the GitHub releases page and build from source.
+- **Pre-v4.3 releases:** v3.2 and v4.2 predate the modern release-package convention and have no downloadable binary assets.
 
 ## v8.2
 - Mac: `https://github.com/JGCRI/gcam-core/releases/download/gcam-v8.2/gcam-v8.2-Mac-Release-Package.zip`

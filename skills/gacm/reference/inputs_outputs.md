@@ -60,7 +60,7 @@ GCAM outputs are stored in the BaseX XML database and exposed via queries.
 - `profit-rate` by land leaf
 
 ### Trade Outputs
-Trade is inferred from production vs. consumption. GCAM uses Armington-style trade with separate domestic/import technologies and traded sectors.
+Trade is inferred from production vs. consumption. GCAM uses Armington-style trade with separate domestic/import technologies and traded sectors. For full trade model detail including the three trade modes (Heckscher-Ohlin, Armington, Fixed), Armington logit parameterization tables, and commodity-level trade mode assignments, open `trade.md`.
 
 ## Practical Notes
 - Query XML files define the exact aggregation and filtering logic; output interpretation depends heavily on query choice.

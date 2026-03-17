@@ -61,6 +61,30 @@
 - Keep bundled pages text-only, portable, and machine-agnostic.
 - Do not validate in parallel with generation; finish `generate_bundled_pages.py` first, then run validators.
 
+## Script Taxonomy
+
+All scripts live under `skills/gacm/scripts/` and target Python 3.10+.
+
+### Runtime (Agent daily use)
+- `doc_search.py` -- search bundled reference docs by version, scope, and regex pattern
+- `version_catalog.py` -- shared module: version registry, canonical lookup, family metadata
+
+### Generators (Build reference content, maintainer-only)
+- `generate_bundled_pages.py` -- transform `gcam-doc/` authoring sources into versioned page bundles
+- `generate_version_references.py` -- generate `version_inventory.md` and per-version route files
+- `generate_modelinterface_batch.py` -- generate a ModelInterface batch-command XML file
+
+### Validators (Maintenance and CI, maintainer-only)
+- `validate_all.py` -- one-shot orchestrator for the entire validation suite
+- `validate_authoring_sources.py`, `validate_bundled_pages.py`, `validate_page_bundle_agent_adaptation.py`, `validate_page_bundle_content_parity.py`, `validate_page_bundle_contract.py` -- page bundle validators
+- `validate_filesystem_hygiene.py`, `validate_portability.py` -- cross-platform and path hygiene
+- `validate_shared_references.py`, `validate_doc_search.py` -- progressive disclosure and search
+- `validate_skill_contract.py`, `validate_conceptual_docs_contract.py`, `validate_operational_docs_contract.py`, `validate_solver_contract.py`, `validate_navigation_contract.py` -- document contract validators
+- `validate_version_catalog.py`, `validate_version_guidance_contract.py`, `validate_version_routes.py` -- version routing validators
+- `validate_coverage_map_contract.py`, `validate_source_provenance_contract.py` -- coverage and provenance
+- `validate_project_memory_contract.py`, `validate_maintenance_memory_contract.py` -- docs/ memory validators
+- `validate_semantic_contract_coverage.py` -- meta-validator ensuring every doc has a contract owner
+
 ## Documentation Rules
 - `CHANGELOG.md` is for milestones only, not edit-by-edit transcripts.
 - `PROJECT.md` stores stable project identity, scope, and decisions.

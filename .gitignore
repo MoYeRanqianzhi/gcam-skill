@@ -1,5 +1,3 @@
-Agents.md
-Claude.md
 gcam-core/
 gcam-doc/
 gcamreader/
@@ -11,3 +9,11 @@ gcamextractor/
 node_modules/
 dist/
 *.log
+.env
+.env.*
+.venv/
+venv/
+.idea/
+.vscode/
+Thumbs.db
+*.egg-info/

@@ -49,7 +49,9 @@ After version routing, open only the topic docs needed for the task:
 - `tools.md`: headless extraction and automation tools such as gcamreader, rgcam, and gcamextractor
 - `developer_workflows.md`: Fusion, dev/debug workflows, pygcam, and the broader GCAM ecosystem
 - `updates.md`: release evolution and delta-only version notes
-- `data_system.md`: GCAM data system role
+- `trade.md`: trade model structure, Armington parameterization, three trade modes, commodity assignments
+- `scenario_analysis.md`: multi-scenario comparison workflows, Python/R extraction patterns, common analysis templates
+- `data_system.md`: GCAM data system role, gcamdata pipeline, chunk architecture
 - `coverage_map.md`: map from bundled docs back to the `v8.2` root topic pages
 - `source_provenance.md`: what upstream materials were synthesized into this skill
 

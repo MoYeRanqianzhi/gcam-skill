@@ -17,7 +17,9 @@ Purpose:
 - `demand_water.md`, `supply_water.md`, `details_water.md` -> `water_system.md`
 - `economy.md`, `inputs_economy.md` -> `economy.md`
 - `emissions.md`, `details_emissions.md`, `hector.md` -> `emissions_climate.md`
-- `details_inputs.md`, `details_trade.md` -> `inputs_outputs.md`
+- `details_inputs.md` -> `inputs_outputs.md`
+- `details_trade.md` -> `trade.md` (dedicated trade model doc), also summarized in `inputs_outputs.md`
+- `aglu.md` (versioned pages v4.2-v8.2) -> content absorbed into `land_system.md` and `energy_system.md`
 - `user-guide.md` -> `running_gcam.md`, `tools.md`
 - `user-guide.md` configuration, batch, and target-finder sections -> `configuration_workflows.md`
 - `user-guide.md` batch query, batch command, and XML DB control sections -> `query_automation.md`
@@ -56,3 +58,7 @@ Purpose:
 - `gcamextractor` authoring references -> `tools.md`, `gcamextractor_api.md`
 - `user-guide.md` release-package download and quickstart packaging sections, plus `gcam-build.md` release/source distinctions -> `release_workflows.md`
 - broader GCAM ecosystem references -> `developer_workflows.md`
+
+## Analysis and Cross-Cutting Coverage
+- scenario comparison and data analysis workflows -> `scenario_analysis.md`
+- trade model detail, Armington parameterization -> `trade.md`

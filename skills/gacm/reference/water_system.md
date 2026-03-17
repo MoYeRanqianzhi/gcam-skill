@@ -2,7 +2,7 @@
 
 Skill-bundled topic reference for water demand, supply, basin mapping, scarcity, and cooling-system competition in GCAM.
 
-Load this file after version routing when the user asks about river basins, water withdrawals vs consumption, cooling technologies, groundwater, desalination, water markets, or the water-energy-food nexus.
+Use this file after version routing when the user asks about river basins, water withdrawals vs consumption, cooling technologies, groundwater, desalination, water markets, or the water-energy-food nexus. `v5.4+` is the closest structural family to the bundled modern water summary. Use the exact version route file when the user asks about a historical water feature or a release-specific update.
 
 ---
 

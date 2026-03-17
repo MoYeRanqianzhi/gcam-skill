@@ -1,7 +1,7 @@
 # Emissions and Climate
 
 Skill-bundled topic reference for CO2/non-CO2 emissions, MAC curves, Hector coupling, and climate-target interpretation.
-Use after version routing when the user asks about emissions coefficients, GWP aggregation, linked GHG markets, air pollutants, climate constraints, or Hector outputs.
+Use this file after version routing when the user asks about emissions coefficients, GWP aggregation, linked GHG markets, air pollutants, climate constraints, or Hector outputs. Modern lines use Hector-centered language in the bundled baseline. `delta-only` releases can alter emissions or climate-relevant details without providing a full standalone retelling of all baseline material.
 
 ---
 

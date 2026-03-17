@@ -33,6 +33,8 @@ The source material used to author the skill is documented in `skills/gacm/refer
 
 ## Open Tasks
 - Keep the bundled version catalog aligned with upstream GCAM releases.
+- Continue expanding bundled topic coverage where the skill still compresses very specialized upstream material.
+- Add more deterministic helper scripts if repeated manual authoring or validation steps appear.
 - Continue auditing long-tail historical prose and adaptation residue in generated page bundles.
 - Decide whether to split `generate_bundled_pages.py` once the current validation surface stabilizes enough to make a low-risk refactor worthwhile.
 - Validate expanded docs against upstream source for accuracy (especially new gcamextractor params list).

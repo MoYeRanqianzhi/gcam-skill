@@ -99,7 +99,7 @@ When `saveData=TRUE`, the following CSVs are written:
 
 ## Parameter Selection Model
 
-`paramsSelect` accepts:
+`paramsSelect` can be:
 - `"All"` -- all params in `map_param_query`
 - A group name (e.g. `"energy"`, `"diagnostic"`)
 - A character vector of individual param names
@@ -549,7 +549,7 @@ price_2015 <- price_1990 * deflator
 - **invalid `paramsSelect`**: source prints available params via `map_param_query` then stops with `"None of the parameters in paramsSelect ... are available."`
 - **missing `gcamdatabase` path**: source stops if the provided database directory does not exist
 - **missing `gcamdata_folder`**: source warns `"gcamdata_folder provided: ... does not exist."` and skips params that require gcamdata
-- **`queryFile=NULL`**: the package materializes `queries_xml` into `folder/queries.xml` automatically
+- **`queryFile=NULL`**: If `queryFile=NULL`, the package writes bundled `queries_xml` to `folder/queries.xml`
 - **region naming**: the source normalizes `"United States"` to `"USA"`; US state abbreviations are mapped to `"USA"` region in aggregation
 - **no data returned**: if the selected regions/params/queries produce zero rows, returns a warning `"No data extracted for chosen arguments."` instead of a list
 - **cerf/go params auto-add pop**: when any of `elec_lifetime_scurve_yr`, `elec_lifetime_yr`, `elec_fuel_co2_content_tonsperMBTU`, `elec_carbon_capture_rate_fraction`, `elec_carbon_capture_escl_rate_fraction` is selected, `"pop"` is automatically prepended to `paramsSelect`
@@ -559,7 +559,7 @@ price_2015 <- price_1990 * deflator
 ## Practical Agent Rules
 - Start with `map_param_query` when the user asks what a parameter really means.
 - Prefer `.Proj` reuse for repeated analytic work.
-- Treat the current source signature as authoritative when the vignette, README, and generated `man/*.Rd` pages disagree.
+- Treat the current source signature as authoritative when the vignette, README, and generated `man/*.Rd` pages disagree. Note that source and generated docs are slightly out of sync: the current R source includes `removeVintages=F` in `readgcam` but the generated Rd files omit it.
 - The `diagnostic` group is a good starting point for users who want a quick cross-domain overview.
 - Energy params exist in three unit variants (EJ, MTOE, TWh) but only EJ is fully implemented in current source; MTOE/TWh conversion code is commented out.
 - If the user needs raw GCAM-native query parity rather than standardized tables, fall back to `query_automation.md` or `tools.md`.

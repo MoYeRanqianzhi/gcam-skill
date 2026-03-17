@@ -2,7 +2,7 @@
 
 Bundled summary of GCAM-USA -- the 51-state (50 states + D.C.) sub-national extension of GCAM.
 
-Use this file after version routing. For exact sector definitions, XML paths, or policy structures in a named release, route to the version-specific page under `version_pages/<version>/gcam-usa.md` before reusing bundled baseline guidance.
+Use this file after version routing. GCAM-USA is most explicitly documented in the later modern families and the bundled `v8.2` baseline. If the user asks for an exact GCAM-USA path, sector definition, or policy structure in a named release, route to that release before reusing bundled baseline guidance.
 
 ## What GCAM-USA Adds
 

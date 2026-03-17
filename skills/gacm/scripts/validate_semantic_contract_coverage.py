@@ -38,6 +38,8 @@ CONTRACT_OWNERS: dict[str, set[str]] = {
         "reference/data_system.md",
         "reference/ssp.md",
         "reference/gcam_usa.md",
+        "reference/trade.md",
+        "reference/scenario_analysis.md",
     },
     "validate_operational_docs_contract.py": {
         "reference/running_gcam.md",

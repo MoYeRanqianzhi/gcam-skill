@@ -96,7 +96,7 @@ Official SSPs were published from GCAM 4.0 (Calvin et al., 2017). Later versions
 | v5.1 | New land regions + multiple land technologies |
 | v7.2 | SSP socioeconomic database updated to v3.0.1 (2024 revision) |
 
-If the user asks about an older release, route to that version's page before applying modern assumptions.
+If the user asks about an older release, route to that version's page before applying modern assumptions. `v7.2` updates the SSP database inputs in the bundled delta stream. `v8.2` root docs are the bundled current full-topic baseline for SSP-oriented guidance.
 
 ## Data Access
 

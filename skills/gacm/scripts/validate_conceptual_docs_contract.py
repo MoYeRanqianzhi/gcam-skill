@@ -87,6 +87,12 @@ REQUIRED_SNIPPETS = {
         "GCAM-USA is most explicitly documented in the later modern families and the bundled `v8.2` baseline.",
         "If the user asks for an exact GCAM-USA path, sector definition, or policy structure in a named release, route to that release before reusing bundled baseline guidance.",
     ),
+    "trade.md": (
+        "Use this file after version routing",
+    ),
+    "scenario_analysis.md": (
+        "Use this file after version routing",
+    ),
 }
 
 

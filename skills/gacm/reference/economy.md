@@ -4,6 +4,8 @@ Skill-bundled topic reference for socioeconomic drivers, GDP formation, GCAM-mac
 
 Use this file after version routing when the user asks about GDP assumptions, macro coupling, savings, SAM consistency, income elasticity, or how economic activity feeds other GCAM modules. For version-specific equations and tables, load the appropriate `version_pages/<ver>/economy.md`.
 
+If the user asks about endogenous GDP or macro feedbacks, version routing is mandatory. `v7+` is the key modern macro era in the bundled references.
+
 ## Core Role
 
 The economy block sets the scale of demand throughout GCAM. Population and GDP together drive energy, agriculture, and land-use demands across 32 geo-political regions.

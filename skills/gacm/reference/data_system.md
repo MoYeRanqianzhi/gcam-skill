@@ -1,6 +1,6 @@
 # GCAM Data System
 
-Comprehensive reference for the `gcamdata` R package and related preprocessing that builds GCAM's XML input files.
+Comprehensive reference for the `gcamdata` R package and related preprocessing that builds GCAM's XML input files. Use this file after version routing. The data system is part of the GCAM ecosystem, not a runtime dependency of the `gacm` skill itself. `v8.2` root docs are the bundled current baseline for data-system interpretation in this skill.
 
 ## Role and Architecture
 The GCAM data system (the `gcamdata` R package, [github.com/JGCRI/gcamdata](https://github.com/JGCRI/gcamdata)) is the pipeline that transforms raw socioeconomic, energy, land, water, and emissions source data into the XML files GCAM reads at runtime. It is developed as a standalone R package since GCAM 5.1.

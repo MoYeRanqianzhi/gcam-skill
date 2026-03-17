@@ -2,7 +2,7 @@
 
 Reference for GCAM Agriculture and Land Use (AgLU): land allocation, terrestrial carbon, crop/livestock supply, bioenergy, forest management, and land-side policy mechanisms.
 
-Load this file when the user asks about GLUs, crop competition, land nesting, land carbon, afforestation, bioenergy land pressure, Moirai data, or land-use change emissions.
+Use this file after version routing when the user asks about GLUs, crop competition, land nesting, land carbon, afforestation, bioenergy land pressure, Moirai data, or land-use change emissions. `v5+` is the important transition to the modern land-data architecture. `v7.1` adds notable AgLU parameter and forestry-detail updates in the bundled historical cues.
 
 ---
 

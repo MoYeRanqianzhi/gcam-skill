@@ -1,6 +1,6 @@
 # Scenario Analysis and Data Processing
 
-Guide for comparing GCAM scenarios and processing results into actionable outputs.
+Guide for comparing GCAM scenarios and processing results into actionable outputs. Use this file after version routing.
 
 Open this file when the task involves:
 - comparing two or more GCAM scenarios

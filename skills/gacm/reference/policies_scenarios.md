@@ -1,6 +1,6 @@
 # Policies and Scenario Controls
 
-Comprehensive reference for GCAM policy mechanisms: emissions pricing, energy standards, land protection, and climate-target-driven runs. All XML examples use v8.2 conventions.
+Comprehensive reference for GCAM policy mechanisms: emissions pricing, energy standards, land protection, and climate-target-driven runs. Use this file after version routing. All XML examples use v8.2 conventions; these concepts remain the stable bundled baseline for the `v8.2` root doc tree and its nearby modern families. `delta-only` releases should be read as modifications layered onto these baseline policy patterns, not as standalone policy manuals.
 
 ## Emissions Policies
 

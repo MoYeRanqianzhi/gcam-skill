@@ -1,6 +1,6 @@
 # Energy System
 
-Topic reference for GCAM energy resources, transformation, demand sectors, technology competition, and trade. Load this file when the user asks about electricity, fuels, hydrogen, renewables, CCS, resource curves, energy demand, or energy trade.
+Topic reference for GCAM energy resources, transformation, demand sectors, technology competition, and trade. Use this file after version routing when the user asks about electricity, fuels, hydrogen, renewables, CCS, resource curves, energy demand, or energy trade. `v5.4+` is the closest historical family to this bundled modern energy-system summary. `v6.0+` expands hydrogen and direct-air-capture-related context substantially.
 
 ---
 

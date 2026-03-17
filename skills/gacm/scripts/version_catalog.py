@@ -59,6 +59,8 @@ COMMON_TOPICS: Tuple[str, ...] = (
     "tools.md",
     "developer_workflows.md",
     "updates.md",
+    "trade.md",
+    "scenario_analysis.md",
     "data_system.md",
     "coverage_map.md",
     "source_provenance.md",

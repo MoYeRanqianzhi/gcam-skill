@@ -2,22 +2,22 @@
 
 # GCAM Skill (`gacm`)
 
-Un skill d'agent IA portable et autonome pour le [Global Change Analysis Model (GCAM)](https://github.com/JGCRI/gcam-core). Fournit une expertise GCAM complète et tenant compte des versions, sans necessiter d'installation locale du modele.
+Un skill d'agent IA portable et autonome pour le [Global Change Analysis Model (GCAM)](https://github.com/JGCRI/gcam-core). Fournit une expertise GCAM complète et tenant compte des versions, sans nécessiter d'installation locale du modèle.
 
-## Fonctionnalites
+## Fonctionnalités
 
-Ce skill dote les agents IA (Claude, etc.) d'une connaissance approfondie de l'ensemble de l'ecosysteme GCAM :
+Ce skill dote les agents IA (Claude, etc.) d'une connaissance approfondie de l'ensemble de l'écosystème GCAM :
 
-- **Structure du modele** -- systemes energetiques, fonciers, hydrauliques, economiques, d'emissions et climatiques
-- **22 versions de GCAM** (v3.2 a v8.7) avec routage par version et documentation specifique a chaque version
-- **Configuration de scenarios** -- edition XML, conception de politiques, mode target-finder, executions par lots
-- **Extraction de donnees** -- references API Python (`gcamreader`) et R (`gcamextractor`) avec plus de 83 parametres d'extraction documentes
-- **Analyse de scenarios** -- flux de travail de comparaison multi-scenarios, modeles de visualisation, modeles d'analyse courants
-- **Compilation et installation** -- telechargement de versions, compilation depuis les sources, gestion de l'espace de travail
+- **Structure du modèle** -- systèmes énergétiques, fonciers, hydrauliques, économiques, d'émissions et climatiques
+- **22 versions de GCAM** (v3.2 à v8.7) avec routage par version et documentation spécifique à chaque version
+- **Configuration de scénarios** -- édition XML, conception de politiques, mode target-finder, exécutions par lots
+- **Extraction de données** -- références API Python (`gcamreader`) et R (`gcamextractor`) avec plus de 83 paramètres d'extraction documentés
+- **Analyse de scénarios** -- flux de travail de comparaison multi-scénarios, modèles de visualisation, modèles d'analyse courants
+- **Compilation et installation** -- téléchargement de versions, compilation depuis les sources, gestion de l'espace de travail
 
 ## Installation
 
-Envoyez le message suivant a votre agent IA (Claude Code, Codex, Cursor, etc.) :
+Envoyez le message suivant à votre agent IA (Claude Code, Codex, Cursor, etc.) :
 
 ```
 Fetch https://raw.githubusercontent.com/MoYeRanqianzhi/gcam-skill/main/README.md and follow the LLM installation instructions inside to install the GCAM Skill.
@@ -54,9 +54,9 @@ npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 
 </details>
 
-## Demarrage Rapide
+## Démarrage Rapide
 
-Une fois installe, posez simplement des questions relatives a GCAM dans votre agent :
+Une fois installé, posez simplement des questions relatives à GCAM dans votre agent :
 
 ```
 > How do I set up a carbon tax scenario in GCAM v8.2?
@@ -65,16 +65,16 @@ Une fois installe, posez simplement des questions relatives a GCAM dans votre ag
 > What changed in the land system between v5.4 and v7.1?
 ```
 
-Le skill s'active automatiquement sur les requetes liees a GCAM et redirige vers la documentation de la version appropriee.
+Le skill s'active automatiquement sur les requêtes liées à GCAM et redirige vers la documentation de la version appropriée.
 
-### Pour les Developpeurs
+### Pour les Développeurs
 
 ```bash
 git clone https://github.com/MoYeRanqianzhi/gcam-skill.git
 cd gcam-skill
 ```
 
-Verifier l'integrite du skill :
+Vérifier l'intégrité du skill :
 
 ```bash
 python skills/gacm/scripts/validate_all.py
@@ -85,67 +85,67 @@ python skills/gacm/scripts/validate_all.py
 ```
 skills/gacm/
 ├── SKILL.md                    # SOP -- workflow de l'agent, routage par version, divulgation progressive
-├── scripts/                    # 28 scripts Python (2 runtime, 3 generateurs, 23 validateurs)
-│   ├── doc_search.py           # Runtime : recherche dans les references par version/motif
-│   ├── version_catalog.py      # Runtime : registre des versions et metadonnees des familles
+├── scripts/                    # 28 scripts Python (2 runtime, 3 générateurs, 23 validateurs)
+│   ├── doc_search.py           # Runtime : recherche dans les références par version/motif
+│   ├── version_catalog.py      # Runtime : registre des versions et métadonnées des familles
 │   ├── generate_bundled_pages.py
 │   └── validate_all.py         # Suite de validation en une commande
-└── reference/                  # 33 documents thematiques + 22 bundles de versions
-    ├── overview.md             # Structure du modele et concepts fondamentaux
-    ├── energy_system.md        # Ressources, electricite, hydrogene, CCS, demande
-    ├── land_system.md          # AgLU, imbrication GLU, Moirai, comptabilite carbone
-    ├── water_system.md         # 235 bassins, technologies de refroidissement, nexus eau-energie-alimentation
+└── reference/                  # 33 documents thématiques + 22 bundles de versions
+    ├── overview.md             # Structure du modèle et concepts fondamentaux
+    ├── energy_system.md        # Ressources, électricité, hydrogène, CCS, demande
+    ├── land_system.md          # AgLU, imbrication GLU, Moirai, comptabilité carbone
+    ├── water_system.md         # 235 bassins, technologies de refroidissement, nexus eau-énergie-alimentation
     ├── economy.md              # PIB, KLEM, GCAM-macro, calibration SAM
     ├── emissions_climate.md    # CO2/non-CO2, courbes MAC, Hector, GWP, IAMC
     ├── policies_scenarios.md   # Taxe carbone, RES, target finder, exemples XML
-    ├── trade.md                # Armington, Heckscher-Ohlin, affectation des matieres premieres
-    ├── scenario_analysis.md    # Flux de travail de comparaison multi-scenarios Python/R
-    ├── gcamreader_api.md       # Reference API Python Query/Connection
-    ├── gcamextractor_api.md    # R readgcam() avec 83+ parametres, 14 groupes
-    ├── ssp.md                  # Narratifs SSP1-5, hypotheses quantitatives
-    ├── gcam_usa.md             # Extension infranationale a 51 etats
+    ├── trade.md                # Armington, Heckscher-Ohlin, affectation des matières premières
+    ├── scenario_analysis.md    # Flux de travail de comparaison multi-scénarios Python/R
+    ├── gcamreader_api.md       # Référence API Python Query/Connection
+    ├── gcamextractor_api.md    # R readgcam() avec 83+ paramètres, 14 groupes
+    ├── ssp.md                  # Narratifs SSP1-5, hypothèses quantitatives
+    ├── gcam_usa.md             # Extension infranationale à 51 États
     ├── versions/               # 22 fichiers de routage par version (v3.2--v8.7)
     └── version_pages/          # 614 fichiers Markdown de pages de versions
 ```
 
 ### Divulgation Progressive
 
-Le skill utilise un systeme de chargement a trois niveaux pour minimiser la consommation de la fenetre de contexte :
+Le skill utilise un système de chargement à trois niveaux pour minimiser la consommation de la fenêtre de contexte :
 
-| Niveau | Contenu | Moment du chargement | Cout en tokens |
+| Niveau | Contenu | Moment du chargement | Coût en tokens |
 |--------|---------|----------------------|----------------|
-| **1** | `name` + `description` | Toujours charge | ~130 tokens |
-| **2** | Workflow SKILL.md | Au declenchement du skill | ~2 800 tokens |
-| **3** | Documents thematiques, scripts, pages de versions | A la demande | Illimite |
+| **1** | `name` + `description` | Toujours chargé | ~130 tokens |
+| **2** | Workflow SKILL.md | Au déclenchement du skill | ~2 800 tokens |
+| **3** | Documents thématiques, scripts, pages de versions | À la demande | Illimité |
 
-Trois **portes d'arret de chargement** explicites empechent l'accumulation inutile de contexte.
+Trois **portes d'arrêt de chargement** explicites empêchent l'accumulation inutile de contexte.
 
 ## Couverture
 
-### Systemes GCAM
+### Systèmes GCAM
 
-| Systeme | Sujets couverts |
+| Système | Sujets couverts |
 |---------|-----------------|
-| Energie | Ressources fossiles/renouvelables, electricite (segments de charge, refroidissement), hydrogene (12 technologies), CCS, raffinage, integration de l'intermittence |
-| Foncier | AgLU logit imbrique, GLU, pretraitement Moirai, comptabilite carbone, bioenergie, elevage, gestion forestiere |
-| Eau | 6 secteurs de demande, 235 bassins, competition des technologies de refroidissement, eaux souterraines (Superwell), dessalement |
-| Economie | PIB exogene/endogene, production CES KLEM, calibration SAM, retroaction du prix du carbone |
-| Emissions | 30+ especes, courbes MAC, Hector v3.2.0 (pergelisol), GWP AR4/AR5, marches GES lies |
+| Énergie | Ressources fossiles/renouvelables, électricité (segments de charge, refroidissement), hydrogène (12 technologies), CCS, raffinage, intégration de l'intermittence |
+| Foncier | AgLU logit imbriqué, GLU, prétraitement Moirai, comptabilité carbone, bioénergie, élevage, gestion forestière |
+| Eau | 6 secteurs de demande, 235 bassins, compétition des technologies de refroidissement, eaux souterraines (Superwell), dessalement |
+| Économie | PIB exogène/endogène, production CES KLEM, calibration SAM, rétroaction du prix du carbone |
+| Émissions | 30+ espèces, courbes MAC, Hector v3.2.0 (pergélisol), GWP AR4/AR5, marchés GES liés |
 | Politique | Taxe/contrainte carbone, RES/CES, target finder (7 types d'objectifs), protection des terres, empilement multi-politiques |
-| Commerce | Heckscher-Ohlin, Armington (21 secteurs avec parametres logit), commerce fixe, commerce inter-etats GCAM-USA |
+| Commerce | Heckscher-Ohlin, Armington (21 secteurs avec paramètres logit), commerce fixe, commerce inter-États GCAM-USA |
 
 ### APIs des Outils
 
 | Outil | Couverture |
 |-------|-----------|
 | `gcamreader` (Python) | `Query`, `LocalDBConn`, `RemoteDBConn`, `runQuery`, `parse_batch_query`, modes CLI |
-| `gcamextractor` (R) | `readgcam()` 16 parametres, 83+ valeurs `paramsSelect` reparties en 14 groupes, mise en cache `.Proj`, agregation regionale |
-| `rgcam` (R) | Resume conceptuel ; pas de source dans le projet |
-| ModelInterface | Generation XML de commandes par lots en mode headless |
+| `gcamextractor` (R) | `readgcam()` 16 paramètres, 83+ valeurs `paramsSelect` réparties en 14 groupes, mise en cache `.Proj`, agrégation régionale |
+| `rgcam` (R) | Résumé conceptuel ; pas de source dans le projet |
+| ModelInterface | Génération XML de commandes par lots en mode headless |
 
 ### Support des Versions
 
-22 versions de **v3.2** a **v8.7**, organisees par famille de documentation :
+22 versions de **v3.2** à **v8.7**, organisées par famille de documentation :
 
 - `legacy-wiki` (v3.2)
 - `compact-modern` (v4.2--v4.4)
@@ -155,13 +155,13 @@ Trois **portes d'arret de chargement** explicites empechent l'accumulation inuti
 
 ## Validation
 
-Le skill comprend 22 validateurs automatises couvrant :
+Le skill comprend 22 validateurs automatisés couvrant :
 
-- Conformite aux contrats documentaires (phrases requises, prise en compte des versions)
-- Integrite des bundles de pages et parite de contenu
-- Hygiene du systeme de fichiers et portabilite multi-plateforme
+- Conformité aux contrats documentaires (phrases requises, prise en compte des versions)
+- Intégrité des bundles de pages et parité de contenu
+- Hygiène du système de fichiers et portabilité multi-plateforme
 - Alignement de la divulgation progressive
-- Couverture des contrats semantiques (chaque document dispose d'un validateur)
+- Couverture des contrats sémantiques (chaque document dispose d'un validateur)
 
 ```bash
 python skills/gacm/scripts/validate_all.py
@@ -170,9 +170,9 @@ python skills/gacm/scripts/validate_all.py
 
 ## Documentation du Projet
 
-La memoire persistante pour les contributeurs se trouve dans `docs/` :
+La mémoire persistante pour les contributeurs se trouve dans `docs/` :
 
-- `PROJECT.md` -- perimetre, decisions, taches en cours
+- `PROJECT.md` -- périmètre, décisions, tâches en cours
 - `DEVELOPMENT.md` -- guide de workflow, taxonomie des scripts, portes de validation
 - `CHANGELOG.md` -- journal des jalons
 - `KNOWN_ISSUES.md` -- limitations connues et dette technique
@@ -183,9 +183,9 @@ La memoire persistante pour les contributeurs se trouve dans `docs/` :
 
 ## Remerciements
 
-Ce skill synthetise le contenu de l'ecosysteme GCAM open source :
+Ce skill synthétise le contenu de l'écosystème GCAM open source :
 
 - [GCAM](https://github.com/JGCRI/gcam-core) -- le Global Change Analysis Model (PNNL/JGCRI)
 - [gcam-doc](https://github.com/JGCRI/gcam-doc) -- documentation officielle de GCAM
-- [gcamreader](https://github.com/JGCRI/gcamreader) -- interface de requetes Python
+- [gcamreader](https://github.com/JGCRI/gcamreader) -- interface de requêtes Python
 - [gcamextractor](https://github.com/JGCRI/gcamextractor) -- package d'extraction R

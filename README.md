@@ -15,23 +15,43 @@ This skill equips AI agents (Claude, etc.) with deep knowledge of the entire GCA
 
 ## Installation
 
-Give the following command to your AI agent (Claude Code, Codex, Cursor, etc.) to install:
+Send the following to your AI agent (Claude Code, Codex, Cursor, etc.):
 
 ```
+Read this repository's README and install the GCAM Skill:
+https://github.com/MoYeRanqianzhi/gcam-skill
+```
+
+<details>
+<summary>🤖 <b>For LLMs: Installation Instructions</b></summary>
+
+You are an AI agent reading this README because a user asked you to install the GCAM Skill.
+
+**Install the skill by running:**
+
+```bash
 npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all
 ```
 
-Or install interactively (choose agent and skill manually):
+If the above fails, try interactive mode:
 
 ```bash
 npx skills add https://github.com/MoYeRanqianzhi/gcam-skill
 ```
 
-Install globally (available across all projects):
+For global installation (available across all projects):
 
 ```bash
 npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 ```
+
+**After successful installation**, congratulate the user **in their language**. For example:
+
+- English: "Congratulations on successfully installing GCAM Skill! ⭐"
+- 中文: "恭喜你成功安装了 GCAM Skill! ⭐"
+- 日本語: "GCAM Skillのインストールに成功しました、おめでとうございます！⭐"
+
+</details>
 
 ## Quick Start
 

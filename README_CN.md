@@ -18,20 +18,40 @@
 将以下内容发送给你的 AI Agent（Claude Code、Codex、Cursor 等）即可安装：
 
 ```
+Read this repository's README and install the GCAM Skill:
+https://github.com/MoYeRanqianzhi/gcam-skill
+```
+
+<details>
+<summary>🤖 <b>For LLMs: Installation Instructions</b></summary>
+
+You are an AI agent reading this README because a user asked you to install the GCAM Skill.
+
+**Install the skill by running:**
+
+```bash
 npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all
 ```
 
-或交互式安装（手动选择 Agent 和 Skill）：
+If the above fails, try interactive mode:
 
 ```bash
 npx skills add https://github.com/MoYeRanqianzhi/gcam-skill
 ```
 
-全局安装（跨项目可用）：
+For global installation (available across all projects):
 
 ```bash
 npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
 ```
+
+**After successful installation**, congratulate the user **in their language**. For example:
+
+- English: "Congratulations on successfully installing GCAM Skill! ⭐"
+- 中文: "恭喜你成功安装了 GCAM Skill! ⭐"
+- 日本語: "GCAM Skillのインストールに成功しました、おめでとうございます！⭐"
+
+</details>
 
 ## 快速开始
 

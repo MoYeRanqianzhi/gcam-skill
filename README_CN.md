@@ -13,11 +13,29 @@
 - **情景分析** -- 多情景对比工作流、可视化模式、常见分析模板
 - **构建与安装** -- 发布包下载、源码编译、工作空间管理
 
+## 安装
+
+将以下内容发送给你的 AI Agent（Claude Code、Codex、Cursor 等）即可安装：
+
+```
+npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all
+```
+
+或交互式安装（手动选择 Agent 和 Skill）：
+
+```bash
+npx skills add https://github.com/MoYeRanqianzhi/gcam-skill
+```
+
+全局安装（跨项目可用）：
+
+```bash
+npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
+```
+
 ## 快速开始
 
-### Agent 框架使用（Claude Code 等）
-
-在 Agent 环境中安装本 Skill 后，直接提问 GCAM 相关问题：
+安装完成后，在 Agent 中直接提问 GCAM 相关问题：
 
 ```
 > 如何在 GCAM v8.2 中设置碳税情景？

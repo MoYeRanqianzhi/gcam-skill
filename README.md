@@ -13,11 +13,29 @@ This skill equips AI agents (Claude, etc.) with deep knowledge of the entire GCA
 - **Scenario analysis** -- multi-scenario comparison workflows, visualization patterns, common analysis templates
 - **Build & install** -- release download, source compilation, workspace management
 
+## Installation
+
+Give the following command to your AI agent (Claude Code, Codex, Cursor, etc.) to install:
+
+```
+npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all
+```
+
+Or install interactively (choose agent and skill manually):
+
+```bash
+npx skills add https://github.com/MoYeRanqianzhi/gcam-skill
+```
+
+Install globally (available across all projects):
+
+```bash
+npx skills add https://github.com/MoYeRanqianzhi/gcam-skill --all --global
+```
+
 ## Quick Start
 
-### For Agent Frameworks (Claude Code, etc.)
-
-Install the skill in your agent environment, then simply ask GCAM-related questions:
+Once installed, simply ask GCAM-related questions in your agent:
 
 ```
 > How do I set up a carbon tax scenario in GCAM v8.2?
